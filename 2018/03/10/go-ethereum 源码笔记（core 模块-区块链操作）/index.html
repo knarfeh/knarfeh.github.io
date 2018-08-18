@@ -65,7 +65,7 @@
 <meta property="og:site_name" content="Frank&#39;s Notes">
 <meta property="og:description" content="区块链区块链，即区块组成的链，不妨先从区块谈起。这一篇我们将着眼于区块链的一些基本操作。在区块链中，区块存储有效信息，在阅读源代码之前，我们应该对区块头，区块体，区块链这些基本的数据结构有所了解。">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-08-18T04:15:54.678Z">
+<meta property="og:updated_time" content="2018-08-18T07:16:33.161Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="go-ethereum 源码笔记（core 模块-区块链操作）">
 <meta name="twitter:description" content="区块链区块链，即区块组成的链，不妨先从区块谈起。这一篇我们将着眼于区块链的一些基本操作。在区块链中，区块存储有效信息，在阅读源代码之前，我们应该对区块头，区块体，区块链这些基本的数据结构有所了解。">
@@ -271,8 +271,8 @@
       
         <p>区块链区块链，即区块组成的链，不妨先从区块谈起。这一篇我们将着眼于区块链的一些基本操作。在区块链中，区块存储有效信息，在阅读源代码之前，我们应该对区块头，区块体，区块链这些基本的数据结构有所了解。</p>
 <a id="more"></a>
-<h2 id="数据结构"><a href="#数据结构" class="headerlink" title="数据结构"></a>数据结构</h2><p><code>Block</code>, <code>Header</code>, <code>BlockChain</code> 的数据结构请查阅 <a href="#TODO">go-ethereum 源码笔记（概览）</a></p>
-<h2 id="区块链基本操作"><a href="#区块链基本操作" class="headerlink" title="区块链基本操作"></a>区块链基本操作</h2><h3 id="创世区块"><a href="#创世区块" class="headerlink" title="创世区块"></a>创世区块</h3><p>在 <a href="#TODO">go-ethereum 源码笔记（cmd 模块-geth 命令）</a> 这一篇，我们提到有一个 <code>geth init</code> 命令，它可以用来创建创世区块。如果我们将本地的 geth 节点连接测试网络或主网的话，我们不会再进行创世区块的创建，因为区块链已经存在了，这时候应该是从其他节点进行同步。而如果我们需要运行一个私有链的话，这时候就需要一个创建一个创世区块。这部分代码在 <code>core/genesis.go</code> 中。</p>
+<h2 id="数据结构"><a href="#数据结构" class="headerlink" title="数据结构"></a>数据结构</h2><p><code>Block</code>, <code>Header</code>, <code>BlockChain</code> 的数据结构请查阅 <a href="https://knarfeh.com/2018/03/10/go-ethereum%20%E6%BA%90%E7%A0%81%E7%AC%94%E8%AE%B0%EF%BC%88%E6%A6%82%E8%A7%88%EF%BC%89/" target="_blank" rel="external">go-ethereum 源码笔记（概览）</a></p>
+<h2 id="区块链基本操作"><a href="#区块链基本操作" class="headerlink" title="区块链基本操作"></a>区块链基本操作</h2><h3 id="创世区块"><a href="#创世区块" class="headerlink" title="创世区块"></a>创世区块</h3><p>在 <a href="https://knarfeh.com/2018/03/10/go-ethereum%20%E6%BA%90%E7%A0%81%E7%AC%94%E8%AE%B0%EF%BC%88cmd%20%E6%A8%A1%E5%9D%97-geth%20%E5%91%BD%E4%BB%A4%EF%BC%89/" target="_blank" rel="external">go-ethereum 源码笔记（cmd 模块-geth 命令）</a> 这一篇，我们提到有一个 <code>geth init</code> 命令，它可以用来创建创世区块。如果我们将本地的 geth 节点连接测试网络或主网的话，我们不会再进行创世区块的创建，因为区块链已经存在了，这时候应该是从其他节点进行同步。而如果我们需要运行一个私有链的话，这时候就需要一个创建一个创世区块。这部分代码在 <code>core/genesis.go</code> 中。</p>
 <h4 id="数据结构-1"><a href="#数据结构-1" class="headerlink" title="数据结构"></a>数据结构</h4><p><code>genesis.go</code> 会定义创世区块的数据结构，提供创建，查询创世区块的方法。</p>
 <p>首先看 Genesis 结构体，它定义了创世区块应包含的数据。</p>
 <figure class="highlight groovy"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line">type Genesis struct &#123;</div><div class="line">	Config     *params.ChainConfig `<span class="string">json:</span><span class="string">"config"</span>`</div><div class="line">	Nonce      uint64              `<span class="string">json:</span><span class="string">"nonce"</span>`</div><div class="line">	Timestamp  uint64              `<span class="string">json:</span><span class="string">"timestamp"</span>`</div><div class="line">	ExtraData  []<span class="keyword">byte</span>              `<span class="string">json:</span><span class="string">"extraData"</span>`</div><div class="line">	GasLimit   uint64              `<span class="string">json:</span><span class="string">"gasLimit"</span>   <span class="string">gencodec:</span><span class="string">"required"</span>`</div><div class="line">	Difficulty *big.Int            `<span class="string">json:</span><span class="string">"difficulty"</span> <span class="string">gencodec:</span><span class="string">"required"</span>`</div><div class="line">	Mixhash    common.Hash         `<span class="string">json:</span><span class="string">"mixHash"</span>`</div><div class="line">	Coinbase   common.Address      `<span class="string">json:</span><span class="string">"coinbase"</span>`</div><div class="line">	Alloc      GenesisAlloc        `<span class="string">json:</span><span class="string">"alloc"</span>      <span class="string">gencodec:</span><span class="string">"required"</span>`</div><div class="line"></div><div class="line">	Number     uint64      `<span class="string">json:</span><span class="string">"number"</span>`</div><div class="line">	GasUsed    uint64      `<span class="string">json:</span><span class="string">"gasUsed"</span>`</div><div class="line">	ParentHash common.Hash `<span class="string">json:</span><span class="string">"parentHash"</span>`</div><div class="line">&#125;</div></pre></td></tr></table></figure>
@@ -337,16 +337,16 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2018/03/10/go-ethereum 源码笔记（cmd 模块-其他命令）/" rel="next" title="go-ethereum 源码笔记（cmd 模块-其他命令）">
-                <i class="fa fa-chevron-left"></i> go-ethereum 源码笔记（cmd 模块-其他命令）
+              <a href="/2018/03/10/go-ethereum 源码笔记（概览）/" rel="next" title="go-ethereum 源码笔记（概览）">
+                <i class="fa fa-chevron-left"></i> go-ethereum 源码笔记（概览）
               </a>
             
           </div>
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2018/03/10/go-ethereum 源码笔记（基础知识）/" rel="prev" title="go-ethereum 源码笔记（基础知识）">
-                go-ethereum 源码笔记（基础知识） <i class="fa fa-chevron-right"></i>
+              <a href="/2018/03/20/Telegram Bot 的长轮询 VS Webhook/" rel="prev" title="Telegram Bot 的长轮询 VS Webhook">
+                Telegram Bot 的长轮询 VS Webhook <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
