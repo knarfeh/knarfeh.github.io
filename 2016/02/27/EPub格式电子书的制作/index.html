@@ -1,0 +1,831 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  <link href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css"/>
+
+
+
+
+  <link href="//fonts.googleapis.com/css?family=Lato:300,400,700,400italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+
+
+
+<link href="/vendors/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=0.5.0" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="Python,EPub," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=0.5.0" />
+
+
+
+
+
+
+<meta name="description" content="最近在写的一个项目涉及到epub格式电子书的制作，借这个机会总结一下epub这个电子图书标准，并利用Python语言生成一本简单的epub格式电子书。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="EPub格式电子书的制作">
+<meta property="og:url" content="http://knarfeh.github.io/2016/02/27/EPub格式电子书的制作/index.html">
+<meta property="og:site_name" content="Frank's Notes">
+<meta property="og:description" content="最近在写的一个项目涉及到epub格式电子书的制作，借这个机会总结一下epub这个电子图书标准，并利用Python语言生成一本简单的epub格式电子书。">
+<meta property="og:image" content="http://7xi5vu.com1.z0.glb.clouddn.com/2016-02-28-bill.JPEG">
+<meta property="og:image" content="http://7xi5vu.com1.z0.glb.clouddn.com/2016-02-28-ibmepub.png">
+<meta property="og:image" content="http://7xi5vu.com1.z0.glb.clouddn.com/2016-02-28-treeepub.png">
+<meta property="og:updated_time" content="2016-09-16T15:31:12.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="EPub格式电子书的制作">
+<meta name="twitter:description" content="最近在写的一个项目涉及到epub格式电子书的制作，借这个机会总结一下epub这个电子图书标准，并利用Python语言生成一本简单的epub格式电子书。">
+<meta name="twitter:image" content="http://7xi5vu.com1.z0.glb.clouddn.com/2016-02-28-bill.JPEG">
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    scheme: 'Muse',
+    sidebar: {"display":"hide"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: 0,
+      author: '博主'
+    }
+  };
+</script>
+
+  <title> EPub格式电子书的制作 | Frank's Notes </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+            (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+          m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-75002639-1', 'auto');
+  ga('send', 'pageview');
+</script>
+
+
+
+
+
+
+
+
+
+  
+  
+
+  <div class="container one-collumn  page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">Frank's Notes</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle"></p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-home fa-fw"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-archive fa-fw"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-tags fa-fw"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                EPub格式电子书的制作
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-02-27T14:33:34+08:00" content="2016-02-27">
+              2016-02-27
+            </time>
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2016/02/27/EPub格式电子书的制作/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/02/27/EPub格式电子书的制作/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>最近在写的一个项目涉及到epub格式电子书的制作，借这个机会总结一下epub这个电子图书标准，并利用Python语言生成一本简单的epub格式电子书。  </p>
+<a id="more"></a>
+<h3 id="EPub的前世今生"><a href="#EPub的前世今生" class="headerlink" title="EPub的前世今生"></a>EPub的前世今生</h3><h4 id="为什么会有EPub"><a href="#为什么会有EPub" class="headerlink" title="为什么会有EPub"></a>为什么会有EPub</h4><p>我曾说过，电子书的阅读越来越流行是未来阅读发展的不可避免的趋势。纸质书籍是否会在历史长河中消失我们无从知晓，但可以确定的是，数字化阅读在未来至少十年中，会润物细无声般成为更多人的一种生活方式。  </p>
+<p>或许很多人都没有察觉到，我们这一代经历的正是一场关于人类获取信息，生产内容方式的巨变。从因特网诞生，电子邮件、超链接、富文本的广泛使用，再到现在所谓的”互联网2.0”，人们从“下载者”转变为“上传者”，这场转变的发展也不过是数十年而已，说到这，想起一张著名的图片：<br><img src="http://7xi5vu.com1.z0.glb.clouddn.com/2016-02-28-bill.JPEG" alt="比尔盖茨拿着光盘">  </p>
+<blockquote>
+<p>这张光盘能装下的信息比下面所有纸能记录下的都多</p>
+</blockquote>
+<p>–比尔盖茨，1994     </p>
+<p>随着技术的发展，人们开始不满足于简单的文本书籍，于是富文本格式开始出现（就网页浏览来说，可以理解为HTML是骨架，CSS是皮肤，JavaScript是动作，Wold当然也算，但不够开放通用），这不仅仅是表现形式的变化，交互性也开始展现了。在这个过程中，EPub作为一种自由的电子书开放标准，自然而然地孕育而生，也自然而然地进化着。<br>我们为什么需要EPub？我想一篇文章中的一段比我说的更好：  </p>
+<blockquote>
+<p>EPUB enables content to be created by an author or publisher once, via different tools and services, distributed through many channels, and viewed, online or offline, using many different devices and applications.  The EPUB specifications form a kind of “contract” between content creators and reading systems to enable this interoperability.</p>
+</blockquote>
+<p>来自epubzone上的一篇<a href="http://epubzone.org/epub-3-overview/understanding-epub-3" target="_blank" rel="external">文章</a></p>
+<h4 id="所以，EPub是什么"><a href="#所以，EPub是什么" class="headerlink" title="所以，EPub是什么"></a>所以，EPub是什么</h4><p>简单来说， EPub格式是一种电子书的标准，事实上几乎成为了行业标准，注意观察的话，几乎所有的电子书阅读器，从硬件到软件，都支持EPub格式的电子书（Kindle是一朵奇葩，原生系统不支持EPub，因为它要推自己的Mobi格式）。更具体的内容可以查<a href="https://en.wikipedia.org/wiki/EPUB" target="_blank" rel="external">wikipedia-EPUB</a>， 这里说个好玩的吧，EPub格式电子书采用zip压缩格式来包裹书籍内容以及格式控制的文件（因为遵循IDPF推出的OCF规范，而OCF规范遵循ZIP压缩技术），所以我们可以把.epub改成.zip，然后解压缩，直接阅读书籍的内容，这样一来，在PC | Mac上，没有EPub阅读器，照样可以打开EPub阅读。</p>
+<h3 id="怎么构建一本EPub格式的电子书"><a href="#怎么构建一本EPub格式的电子书" class="headerlink" title="怎么构建一本EPub格式的电子书"></a>怎么构建一本EPub格式的电子书</h3><p>上面提到，EPub格式的电子书其实是一个压缩包文件，里面有几个按照规范定义的文件，所谓标准，就是规范EPub文件中某些文件的格式、内容和位置等等。因此，如果我们想要自己制作一本EPub格式的电子书，首先要了解要制作的内容压缩为zip文件前的文件结构是什么，一个典型的EPub的文件结构是这样的：</p>
+<p><img src="http://7xi5vu.com1.z0.glb.clouddn.com/2016-02-28-ibmepub.png" alt="IBM epub"></p>
+<p>其实结构可以更简单，下面给出我用Python语言构建的EPub文件的文件结构：<br><img src="http://7xi5vu.com1.z0.glb.clouddn.com/2016-02-28-treeepub.png" alt="my epub"></p>
+<p>对比一下可以看出来有些文件并不是必须的，下面简单介绍一下EPub文件的目录结构：  </p>
+<h4 id="mimetype文件"><a href="#mimetype文件" class="headerlink" title="mimetype文件"></a>mimetype文件</h4><p>这个内容是固定的，就一行<br><code>application/epub+zip</code></p>
+<p>表明可以被EPub工具打开或zip工具打开</p>
+<h4 id="META-INF文件夹"><a href="#META-INF文件夹" class="headerlink" title="META-INF文件夹"></a>META-INF文件夹</h4><p>根据OCF（Open Container Format）标准，该文件夹包含一个文件container.xml，内容如下：</p>
+<pre><code>&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot; ?&gt;
+&lt;container version=&quot;1.0&quot; xmlns=&quot;urn:oasis:names:tc:opendocument:xmlns:container&quot;&gt;
+   &lt;rootfiles&gt; 
+       &lt;rootfile full-path=&quot;OPS/content.opf&quot; media-type=&quot;application/oebps-package+xml&quot;/&gt; &lt;/rootfiles&gt;
+&lt;/container&gt;
+</code></pre><p>它的功能是告诉阅读器电子书根文件路径以及打开方式，如果你修改了content.opf的名字或者把它放在其他位置，应该写明完整的路径。</p>
+<h4 id="OEBPS文件夹"><a href="#OEBPS文件夹" class="headerlink" title="OEBPS文件夹"></a>OEBPS文件夹</h4><p>OEBPS目录用于存放OPS文档、OPF文档、CSS文档、NCX文档， OEBPS这个名字是可变的，可以根据containter.xml进行配置。这里是OPS文件夹。  </p>
+<h5 id="opf文件："><a href="#opf文件：" class="headerlink" title="opf文件："></a>opf文件：</h5><p>content.opf文件的内容：  </p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line"><span class="php"><span class="meta">&lt;?</span>xml version=<span class="string">"1.0"</span> encoding=<span class="string">"UTF-8"</span> <span class="meta">?&gt;</span></span></div><div class="line"><span class="tag">&lt;<span class="name">package</span> <span class="attr">version</span>=<span class="string">"2.0"</span> <span class="attr">unique-identifier</span>=<span class="string">"PrimaryID"</span> <span class="attr">xmlns</span>=<span class="string">"http://www.idpf.org/2007/opf"</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">metadata</span> <span class="attr">xmlns:dc</span>=<span class="string">"http://purl.org/dc/elements/1.1/"</span> <span class="attr">xmlns:opf</span>=<span class="string">"http://www.idpf.org/2007/opf"</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">dc:title</span>&gt;</span>thisisbooktitle<span class="tag">&lt;/<span class="name">dc:title</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">dc:creator</span>&gt;</span>frank<span class="tag">&lt;/<span class="name">dc:creator</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">dc:description</span>&gt;</span>this is description<span class="tag">&lt;/<span class="name">dc:description</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">meta</span> <span class="attr">name</span>=<span class="string">"cover"</span> <span class="attr">content</span>=<span class="string">"cover"</span>/&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">metadata</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">manifest</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">item</span> <span class="attr">id</span>=<span class="string">'chapter1.html'</span> <span class="attr">href</span>=<span class="string">'chapter1.html'</span> <span class="attr">media-type</span>=<span class="string">'application/xhtml+xml'</span>/&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">item</span> <span class="attr">id</span>=<span class="string">'chapter2.html'</span> <span class="attr">href</span>=<span class="string">'chapter2.html'</span> <span class="attr">media-type</span>=<span class="string">'application/xhtml+xml'</span>/&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">item</span> <span class="attr">id</span>=<span class="string">"ncx"</span> <span class="attr">href</span>=<span class="string">"content.ncx"</span> <span class="attr">media-type</span>=<span class="string">"application/x-dtbncx+xml"</span>/&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">item</span> <span class="attr">id</span>=<span class="string">"cover"</span> <span class="attr">href</span>=<span class="string">"cover.jpg"</span> <span class="attr">media-type</span>=<span class="string">"image/jpeg"</span>/&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">manifest</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">spine</span> <span class="attr">toc</span>=<span class="string">"ncx"</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">itemref</span> <span class="attr">idref</span>=<span class="string">'chapter1.html'</span>/&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">itemref</span> <span class="attr">idref</span>=<span class="string">'chapter2.html'</span>/&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">spine</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">package</span>&gt;</span></div></pre></td></tr></table></figure>
+<p>这是一个标准的XML文件，遵循OPF规范，主要属性有：</p>
+<ul>
+<li><p>metadata<br>包括dc-metadata和x-metadata，dc-metadata有：  </p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">title</span>&gt;</span>:题名</div><div class="line"><span class="tag">&lt;<span class="name">creator</span>&gt;</span>：责任者</div><div class="line"><span class="tag">&lt;<span class="name">subject</span>&gt;</span>：主题词或关键词</div><div class="line"><span class="tag">&lt;<span class="name">description</span>&gt;</span>：内容描述</div><div class="line"><span class="tag">&lt;<span class="name">contributor</span>&gt;</span>：贡献者或其它次要责任者</div><div class="line"><span class="tag">&lt;<span class="name">date</span>&gt;</span>：日期</div><div class="line"><span class="tag">&lt;<span class="name">type</span>&gt;</span>：类型</div><div class="line"><span class="tag">&lt;<span class="name">format</span>&gt;</span>：格式</div><div class="line"><span class="tag">&lt;<span class="name">identifier</span>&gt;</span>：标识符</div><div class="line"><span class="tag">&lt;<span class="name">source</span>&gt;</span>：来源</div><div class="line"><span class="tag">&lt;<span class="name">language</span>&gt;</span>：语种</div><div class="line"><span class="tag">&lt;<span class="name">relation</span>&gt;</span>：相关信息</div><div class="line"><span class="tag">&lt;<span class="name">coverage</span>&gt;</span>：履盖范围</div><div class="line"><span class="tag">&lt;<span class="name">rights</span>&gt;</span>：权限描述</div></pre></td></tr></table></figure>
+<p>如果是未知属性可以用x-metadata描述  </p>
+</li>
+<li><p>menifest<br>文件列表， 列出OEBPS文档及相关的文档，由一个子元素构成，<item id="" href="" media-type="">,该元素由三个属性构成：   </item></p>
+</li>
+</ul>
+<figure class="highlight elm"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="title">id</span>:表示文件的<span class="type">ID</span>号</div><div class="line"><span class="title">href</span>：文件的相对路径</div><div class="line"><span class="title">media</span>-<span class="keyword">type</span>：文件的媒体类型</div></pre></td></tr></table></figure>
+<ul>
+<li>spine toc=”ncx”<br>表明书籍的阅读次序，其中有一个元素itemref idref=””，idref是menifest中的id</li>
+<li>opf还有很多其他属性，实际中用的并不多，即使用到也是一目了然的，如有需要可以连猜带蒙+搜索引擎。</li>
+</ul>
+<h5 id="ncx文件"><a href="#ncx文件" class="headerlink" title="ncx文件"></a>ncx文件</h5><p>content.ncx文件的内容：  </p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div></pre></td><td class="code"><pre><div class="line"><span class="php"><span class="meta">&lt;?</span>xml version=<span class="string">"1.0"</span> encoding=<span class="string">"utf-8"</span><span class="meta">?&gt;</span></span></div><div class="line"><span class="meta">&lt;!DOCTYPE ncx PUBLIC "-//NISO//DTD ncx 2005-1//EN" "http://www.daisy.org/z3986/2005/ncx-2005-1.dtd"&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">ncx</span> <span class="attr">version</span>=<span class="string">"2005-1"</span> <span class="attr">xmlns</span>=<span class="string">"http://www.daisy.org/z3986/2005/ncx/"</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">head</span>&gt;</span></div><div class="line">  <span class="tag">&lt;<span class="name">meta</span> <span class="attr">name</span>=<span class="string">"dtb:uid"</span> <span class="attr">content</span>=<span class="string">" "</span>/&gt;</span></div><div class="line">  <span class="tag">&lt;<span class="name">meta</span> <span class="attr">name</span>=<span class="string">"dtb:depth"</span> <span class="attr">content</span>=<span class="string">"-1"</span>/&gt;</span></div><div class="line">  <span class="tag">&lt;<span class="name">meta</span> <span class="attr">name</span>=<span class="string">"dtb:totalPageCount"</span> <span class="attr">content</span>=<span class="string">"0"</span>/&gt;</span></div><div class="line">  <span class="tag">&lt;<span class="name">meta</span> <span class="attr">name</span>=<span class="string">"dtb:maxPageNumber"</span> <span class="attr">content</span>=<span class="string">"0"</span>/&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">head</span>&gt;</span></div><div class="line"> <span class="tag">&lt;<span class="name">docTitle</span>&gt;</span><span class="tag">&lt;<span class="name">text</span>&gt;</span>thisisbooktitle<span class="tag">&lt;/<span class="name">text</span>&gt;</span><span class="tag">&lt;/<span class="name">docTitle</span>&gt;</span></div><div class="line"> <span class="tag">&lt;<span class="name">docAuthor</span>&gt;</span><span class="tag">&lt;<span class="name">text</span>&gt;</span>frank<span class="tag">&lt;/<span class="name">text</span>&gt;</span><span class="tag">&lt;/<span class="name">docAuthor</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">navMap</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">navPoint</span> <span class="attr">id</span>=<span class="string">'chapter1.html'</span> <span class="attr">class</span>=<span class="string">'level1'</span> <span class="attr">playOrder</span>=<span class="string">'1'</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">navLabel</span>&gt;</span> <span class="tag">&lt;<span class="name">text</span>&gt;</span>chapter1.html<span class="tag">&lt;/<span class="name">text</span>&gt;</span> <span class="tag">&lt;/<span class="name">navLabel</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">content</span> <span class="attr">src</span>=<span class="string">'chapter1.html'</span>/&gt;</span><span class="tag">&lt;/<span class="name">navPoint</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">navPoint</span> <span class="attr">id</span>=<span class="string">'chapter2.html'</span> <span class="attr">class</span>=<span class="string">'level1'</span> <span class="attr">playOrder</span>=<span class="string">'2'</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">navLabel</span>&gt;</span> <span class="tag">&lt;<span class="name">text</span>&gt;</span>chapter2.html<span class="tag">&lt;/<span class="name">text</span>&gt;</span> <span class="tag">&lt;/<span class="name">navLabel</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">content</span> <span class="attr">src</span>=<span class="string">'chapter2.html'</span>/&gt;</span><span class="tag">&lt;/<span class="name">navPoint</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">navMap</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">ncx</span>&gt;</span></div></pre></td></tr></table></figure>
+<p>该文件的作用是描述电子书的目录结构，这里的content.ncx文件并没有很明显的体现。有兴趣的话可以解压一本EPub格式的电子书看一看。</p>
+<p>最后，给出利用Python制作简单EPub文件的代码:  </p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div><div class="line">80</div><div class="line">81</div><div class="line">82</div><div class="line">83</div><div class="line">84</div><div class="line">85</div><div class="line">86</div><div class="line">87</div><div class="line">88</div><div class="line">89</div><div class="line">90</div><div class="line">91</div><div class="line">92</div><div class="line">93</div><div class="line">94</div><div class="line">95</div><div class="line">96</div><div class="line">97</div><div class="line">98</div><div class="line">99</div><div class="line">100</div><div class="line">101</div><div class="line">102</div><div class="line">103</div><div class="line">104</div><div class="line">105</div><div class="line">106</div><div class="line">107</div><div class="line">108</div><div class="line">109</div><div class="line">110</div><div class="line">111</div><div class="line">112</div><div class="line">113</div><div class="line">114</div><div class="line">115</div><div class="line">116</div><div class="line">117</div><div class="line">118</div><div class="line">119</div><div class="line">120</div><div class="line">121</div><div class="line">122</div></pre></td><td class="code"><pre><div class="line"><span class="comment">#!/usr/bin/env python</span></div><div class="line"><span class="comment"># -*- coding: utf-8 -*-</span></div><div class="line"></div><div class="line"><span class="keyword">import</span> os</div><div class="line"><span class="keyword">import</span> shutil</div><div class="line"></div><div class="line">title = <span class="string">'thisisbooktitle'</span></div><div class="line">creator = <span class="string">'frank'</span></div><div class="line">description = <span class="string">'this is description'</span></div><div class="line"></div><div class="line">htmllist = [<span class="string">'chapter1.html'</span>, <span class="string">'chapter2.html'</span>]    <span class="comment"># 来自《亲爱的安德烈》中的两章</span></div><div class="line"></div><div class="line">os.mkdir(<span class="string">'tmp'</span>)</div><div class="line"></div><div class="line">tmpfile = file(<span class="string">'tmp/mimetype'</span>, <span class="string">'w'</span>)</div><div class="line">tmpfile.write(<span class="string">'application/epub+zip'</span>)</div><div class="line">tmpfile.close()</div><div class="line"></div><div class="line">os.mkdir(<span class="string">'tmp/META-INF'</span>)</div><div class="line"></div><div class="line">tmpfile = file(<span class="string">'tmp/META-INF/container.xml'</span>, <span class="string">'w'</span>)</div><div class="line">tmpfile.write(<span class="string">'''&lt;?xml version="1.0" encoding="UTF-8" ?&gt;</span></div><div class="line">&lt;container version="1.0" xmlns="urn:oasis:names:tc:opendocument:xmlns:container"&gt;</div><div class="line">   &lt;rootfiles&gt; &lt;rootfile full-path="OPS/content.opf" media-type="application/oebps-package+xml"/&gt; &lt;/rootfiles&gt;</div><div class="line">&lt;/container&gt;</div><div class="line">''')</div><div class="line">tmpfile.close()</div><div class="line"></div><div class="line">os.mkdir(<span class="string">'tmp/OPS'</span>)</div><div class="line"></div><div class="line"><span class="keyword">if</span> os.path.isfile(<span class="string">'cover.jpg'</span>):     <span class="comment"># 如果有cover.jpg, 用来制作封面</span></div><div class="line">    shutil.copyfile(<span class="string">'cover.jpg'</span>, <span class="string">'tmp/OPS/cover.jpg'</span>)</div><div class="line">    <span class="keyword">print</span> <span class="string">'Cover.jpg found!'</span></div><div class="line"></div><div class="line">opfcontent = <span class="string">'''&lt;?xml version="1.0" encoding="UTF-8" ?&gt;</span></div><div class="line">&lt;package version="2.0" unique-identifier="PrimaryID" xmlns="http://www.idpf.org/2007/opf"&gt;</div><div class="line">&lt;metadata xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:opf="http://www.idpf.org/2007/opf"&gt;</div><div class="line">%(metadata)s</div><div class="line">&lt;meta name="cover" content="cover"/&gt;</div><div class="line">&lt;/metadata&gt;</div><div class="line">&lt;manifest&gt;</div><div class="line">%(manifest)s</div><div class="line">&lt;item id="ncx" href="content.ncx" media-type="application/x-dtbncx+xml"/&gt;</div><div class="line">&lt;item id="cover" href="cover.jpg" media-type="image/jpeg"/&gt;</div><div class="line">&lt;/manifest&gt;</div><div class="line">&lt;spine toc="ncx"&gt;</div><div class="line">%(ncx)s</div><div class="line">&lt;/spine&gt;</div><div class="line">&lt;/package&gt;</div><div class="line">'''</div><div class="line"></div><div class="line">dc = <span class="string">'&lt;dc:%(name)s&gt;%(value)s&lt;/dc:%(name)s&gt;'</span></div><div class="line">item = <span class="string">"&lt;item id='%(id)s' href='%(url)s' media-type='application/xhtml+xml'/&gt;"</span></div><div class="line">itemref = <span class="string">"&lt;itemref idref='%(id)s'/&gt;"</span></div><div class="line"></div><div class="line">metadata = <span class="string">'\n'</span>.join([</div><div class="line">        dc % &#123;<span class="string">'name'</span>: <span class="string">'title'</span>, <span class="string">'value'</span>: title&#125;,</div><div class="line">        dc % &#123;<span class="string">'name'</span>: <span class="string">'creator'</span>, <span class="string">'value'</span>: creator&#125;,</div><div class="line">        dc % &#123;<span class="string">'name'</span>: <span class="string">'description'</span>, <span class="string">'value'</span>: description&#125;,</div><div class="line">        ])</div><div class="line"></div><div class="line">manifest = []</div><div class="line">ncx = []</div><div class="line"></div><div class="line"><span class="keyword">for</span> htmlitem <span class="keyword">in</span> htmllist:</div><div class="line">    content = file(htmlitem, <span class="string">'r'</span>).read()</div><div class="line">    tmpfile = file(<span class="string">'tmp/OPS/%s'</span> % htmlitem, <span class="string">'w'</span>)</div><div class="line">    tmpfile.write(content)</div><div class="line">    tmpfile.close()</div><div class="line">    manifest.append(item % &#123;<span class="string">'id'</span>: htmlitem, <span class="string">'url'</span>: htmlitem&#125;)</div><div class="line">    ncx.append(itemref % &#123;<span class="string">'id'</span>: htmlitem&#125;)</div><div class="line"></div><div class="line">manifest=<span class="string">'\n'</span>.join(manifest)</div><div class="line">ncx=<span class="string">'\n'</span>.join(ncx)</div><div class="line"></div><div class="line">tmpfile = file(<span class="string">'tmp/OPS/content.opf'</span>, <span class="string">'w'</span>)</div><div class="line">tmpfile.write(opfcontent %&#123;<span class="string">'metadata'</span>: metadata, <span class="string">'manifest'</span>: manifest, <span class="string">'ncx'</span>: ncx,&#125;)</div><div class="line">tmpfile.close()</div><div class="line"></div><div class="line">ncx = <span class="string">'''&lt;?xml version="1.0" encoding="utf-8"?&gt;</span></div><div class="line">&lt;!DOCTYPE ncx PUBLIC "-//NISO//DTD ncx 2005-1//EN" "http://www.daisy.org/z3986/2005/ncx-2005-1.dtd"&gt;</div><div class="line">&lt;ncx version="2005-1" xmlns="http://www.daisy.org/z3986/2005/ncx/"&gt;</div><div class="line">&lt;head&gt;</div><div class="line">  &lt;meta name="dtb:uid" content=" "/&gt;</div><div class="line">  &lt;meta name="dtb:depth" content="-1"/&gt;</div><div class="line">  &lt;meta name="dtb:totalPageCount" content="0"/&gt;</div><div class="line">  &lt;meta name="dtb:maxPageNumber" content="0"/&gt;</div><div class="line">&lt;/head&gt;</div><div class="line"> &lt;docTitle&gt;&lt;text&gt;%(title)s&lt;/text&gt;&lt;/docTitle&gt;</div><div class="line"> &lt;docAuthor&gt;&lt;text&gt;%(creator)s&lt;/text&gt;&lt;/docAuthor&gt;</div><div class="line">&lt;navMap&gt;</div><div class="line">%(navpoints)s</div><div class="line">&lt;/navMap&gt;</div><div class="line">&lt;/ncx&gt;</div><div class="line">'''</div><div class="line"></div><div class="line">navpoint = <span class="string">'''&lt;navPoint id='%s' class='level1' playOrder='%d'&gt;</span></div><div class="line">&lt;navLabel&gt; &lt;text&gt;%s&lt;/text&gt; &lt;/navLabel&gt;</div><div class="line">&lt;content src='%s'/&gt;&lt;/navPoint&gt;'''</div><div class="line"></div><div class="line">navpoints = []</div><div class="line"><span class="keyword">for</span> i, htmlitem <span class="keyword">in</span> enumerate(htmllist):</div><div class="line">    navpoints.append(navpoint % (htmlitem, i+<span class="number">1</span>, htmlitem, htmlitem))</div><div class="line"></div><div class="line">tmpfile = file(<span class="string">'tmp/OPS/content.ncx'</span>, <span class="string">'w'</span>)</div><div class="line">tmpfile.write(ncx % &#123;</div><div class="line">    <span class="string">'title'</span>: title,</div><div class="line">    <span class="string">'creator'</span>: creator,</div><div class="line">    <span class="string">'navpoints'</span>: <span class="string">'\n'</span>.join(navpoints)&#125;)</div><div class="line">tmpfile.close()</div><div class="line"></div><div class="line"><span class="keyword">from</span> zipfile <span class="keyword">import</span> ZipFile</div><div class="line">epubfile = ZipFile(<span class="string">'book.epub'</span>, <span class="string">'w'</span>)</div><div class="line">os.chdir(<span class="string">'tmp'</span>)</div><div class="line"><span class="keyword">for</span> d, ds, fs <span class="keyword">in</span> os.walk(<span class="string">'.'</span>):</div><div class="line">    <span class="keyword">for</span> f <span class="keyword">in</span> fs:</div><div class="line">        epubfile.write(os.path.join(d, f))</div><div class="line">epubfile.close()</div><div class="line"></div><div class="line">shutil.rmtree(<span class="string">"../tmp"</span>)</div><div class="line"></div><div class="line"><span class="keyword">print</span> (<span class="string">"Done"</span>)</div></pre></td></tr></table></figure>
+<p>说明：chapter1.html, chapter2.html 是我从“亲爱的安德烈.epub”中提取的两章，你也可以替换成其他的内容，若上述python代码存为simple_epub.py，将<a href="https://gist.github.com/knarfeh/45fd821ebefcfa7dd5fc" target="_blank" rel="external">chapter1.html</a>，<a href="https://gist.github.com/knarfeh/b419b6726fd14ef1d58d" target="_blank" rel="external">chapter2.html</a>, simple_epub.py放在同一目录下， 通过<code>python simple_epub.py</code> 即可生成book.epub文件。</p>
+<p>参考资料：  </p>
+<ul>
+<li><a href="https://en.wikipedia.org/wiki/EPUB" target="_blank" rel="external">wikipedia-EPUB</a>  </li>
+<li><a href="http://www.hxa.name/articles/content/epub-guide_hxa7241_2007.html" target="_blank" rel="external">Epub Format Construction Guide</a> </li>
+<li><a href="http://idpf.org/epub" target="_blank" rel="external">international digital publishing forum</a> </li>
+<li><a href="http://epubzone.org/" target="_blank" rel="external">epubzone</a> </li>
+<li><a href="http://www.cnblogs.com/linlf03/archive/2011/12/13/2286218.html" target="_blank" rel="external">Epub基础知识介绍</a></li>
+</ul>
+
+      
+    </div>
+
+    <div>
+      
+        
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Python/" rel="tag">#Python</a>
+          
+            <a href="/tags/EPub/" rel="tag">#EPub</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2016/02/21/Bing Wallpaper/" rel="next" title="Bing Wallpaper">
+                <i class="fa fa-chevron-left"></i> Bing Wallpaper
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2016/02/29/用PyQt4+Python写一个简单的EPub阅读器(1:3)/" rel="prev" title="用PyQt4+Python写一个简单的EPub阅读器(1/3)">
+                用PyQt4+Python写一个简单的EPub阅读器(1/3) <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+      <div class="ds-thread" data-thread-key="2016/02/27/EPub格式电子书的制作/"
+           data-title="EPub格式电子书的制作" data-url="http://knarfeh.github.io/2016/02/27/EPub格式电子书的制作/">
+      </div>
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel ">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="https://avatars1.githubusercontent.com/u/6964284?v=3&s=460"
+               alt="Frank" />
+          <p class="site-author-name" itemprop="name">Frank</p>
+          <p class="site-description motion-element" itemprop="description"></p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">143</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+          
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">85</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/knarfeh" target="_blank">
+                  
+                    <i class="fa fa-github"></i> GitHub
+                  
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://twitter.com/knarfeh" target="_blank">
+                  
+                    <i class="fa fa-twitter"></i> Twitter
+                  
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://weibo.com/2753500945" target="_blank">
+                  
+                    <i class="fa fa-weibo"></i> Weibo
+                  
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://douban.com/people/61303280" target="_blank">
+                  
+                    <i class="fa fa-globe"></i> Douban
+                  
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+          <div class="cc-license motion-element" itemprop="license">
+            <a href="http://creativecommons.org/licenses/by-sa/4.0" class="cc-opacity" target="_blank">
+              <img src="/images/cc-by-sa.svg" alt="Creative Commons" />
+            </a>
+          </div>
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+      </section>
+
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc-indicator-top post-toc-indicator">
+            <i class="fa fa-angle-double-up"></i>
+          </div>
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#EPub的前世今生"><span class="nav-number">1.</span> <span class="nav-text">EPub的前世今生</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#为什么会有EPub"><span class="nav-number">1.1.</span> <span class="nav-text">为什么会有EPub</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#所以，EPub是什么"><span class="nav-number">1.2.</span> <span class="nav-text">所以，EPub是什么</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#怎么构建一本EPub格式的电子书"><span class="nav-number">2.</span> <span class="nav-text">怎么构建一本EPub格式的电子书</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#mimetype文件"><span class="nav-number">2.1.</span> <span class="nav-text">mimetype文件</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#META-INF文件夹"><span class="nav-number">2.2.</span> <span class="nav-text">META-INF文件夹</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#OEBPS文件夹"><span class="nav-number">2.3.</span> <span class="nav-text">OEBPS文件夹</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#opf文件："><span class="nav-number">2.3.1.</span> <span class="nav-text">opf文件：</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#ncx文件"><span class="nav-number">2.3.2.</span> <span class="nav-text">ncx文件</span></a></li></ol></li></ol></li></ol></div>
+            
+          </div>
+          <div class="post-toc-indicator-bottom post-toc-indicator">
+            <i class="fa fa-angle-double-down"></i>
+          </div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy;  2015 - 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Frank</span>
+</div>
+
+<div class="powered-by">
+  由 <a class="theme-link" href="http://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Muse
+  </a>
+</div>
+
+
+
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+
+  
+
+
+
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+  <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
+
+  <script type="text/javascript" src="/vendors/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  <script type="text/javascript" src="/vendors/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  <script type="text/javascript" src="/vendors/velocity/velocity.min.js"></script>
+
+  <script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js"></script>
+
+  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=0.5.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=0.5.0"></script>
+
+
+
+  
+  
+
+  
+  
+<script type="text/javascript" src="/js/src/scrollspy.js?v=0.5.0"></script>
+
+<script type="text/javascript" id="sidebar.toc.highlight">
+  $(document).ready(function () {
+    var tocSelector = '.post-toc';
+    var $tocSelector = $(tocSelector);
+    var activeCurrentSelector = '.active-current';
+
+    $tocSelector
+      .on('activate.bs.scrollspy', function () {
+        var $currentActiveElement = $(tocSelector + ' .active').last();
+
+        removeCurrentActiveClass();
+        $currentActiveElement.addClass('active-current');
+
+        $tocSelector[0].scrollTop = $currentActiveElement.position().top;
+      })
+      .on('clear.bs.scrollspy', function () {
+        removeCurrentActiveClass();
+      });
+
+    function removeCurrentActiveClass () {
+      $(tocSelector + ' ' + activeCurrentSelector)
+        .removeClass(activeCurrentSelector.substring(1));
+    }
+
+    function processTOC () {
+      getTOCMaxHeight();
+      toggleTOCOverflowIndicators();
+    }
+
+    function getTOCMaxHeight () {
+      var height = $('.sidebar').height() -
+                   $tocSelector.position().top -
+                   $('.post-toc-indicator-bottom').height();
+
+      $tocSelector.css('height', height);
+
+      return height;
+    }
+
+    function toggleTOCOverflowIndicators () {
+      tocOverflowIndicator(
+        '.post-toc-indicator-top',
+        $tocSelector.scrollTop() > 0 ? 'show' : 'hide'
+      );
+
+      tocOverflowIndicator(
+        '.post-toc-indicator-bottom',
+        $tocSelector.scrollTop() >= $tocSelector.find('ol').height() - $tocSelector.height() ? 'hide' : 'show'
+      )
+    }
+
+    $(document).on('sidebar.motion.complete', function () {
+      processTOC();
+    });
+
+    $('body').scrollspy({ target: tocSelector });
+    $(window).on('resize', function () {
+      if ( $('.sidebar').hasClass('sidebar-active') ) {
+        processTOC();
+      }
+    });
+
+    onScroll($tocSelector);
+
+    function onScroll (element) {
+      element.on('mousewheel DOMMouseScroll', function (event) {
+          var oe = event.originalEvent;
+          var delta = oe.wheelDelta || -oe.detail;
+
+          this.scrollTop += ( delta < 0 ? 1 : -1 ) * 30;
+          event.preventDefault();
+
+          toggleTOCOverflowIndicators();
+      });
+    }
+
+    function tocOverflowIndicator (indicator, action) {
+      var $indicator = $(indicator);
+      var opacity = action === 'show' ? 1 : 0;
+      $indicator.velocity ?
+        $indicator.velocity('stop').velocity({
+          opacity: opacity
+        }, { duration: 100 }) :
+        $indicator.stop().animate({
+          opacity: opacity
+        }, 100);
+    }
+
+  });
+</script>
+
+<script type="text/javascript" id="sidebar.nav">
+  $(document).ready(function () {
+    var html = $('html');
+    var TAB_ANIMATE_DURATION = 200;
+    var hasVelocity = $.isFunction(html.velocity);
+
+    $('.sidebar-nav li').on('click', function () {
+      var item = $(this);
+      var activeTabClassName = 'sidebar-nav-active';
+      var activePanelClassName = 'sidebar-panel-active';
+      if (item.hasClass(activeTabClassName)) {
+        return;
+      }
+
+      var currentTarget = $('.' + activePanelClassName);
+      var target = $('.' + item.data('target'));
+
+      hasVelocity ?
+        currentTarget.velocity('transition.slideUpOut', TAB_ANIMATE_DURATION, function () {
+          target
+            .velocity('stop')
+            .velocity('transition.slideDownIn', TAB_ANIMATE_DURATION)
+            .addClass(activePanelClassName);
+        }) :
+        currentTarget.animate({ opacity: 0 }, TAB_ANIMATE_DURATION, function () {
+          currentTarget.hide();
+          target
+            .stop()
+            .css({'opacity': 0, 'display': 'block'})
+            .animate({ opacity: 1 }, TAB_ANIMATE_DURATION, function () {
+              currentTarget.removeClass(activePanelClassName);
+              target.addClass(activePanelClassName);
+            });
+        });
+
+      item.siblings().removeClass(activeTabClassName);
+      item.addClass(activeTabClassName);
+    });
+
+    $('.post-toc a').on('click', function (e) {
+      e.preventDefault();
+      var targetSelector = NexT.utils.escapeSelector(this.getAttribute('href'));
+      var offset = $(targetSelector).offset().top;
+      hasVelocity ?
+        html.velocity('stop').velocity('scroll', {
+          offset: offset  + 'px',
+          mobileHA: false
+        }) :
+        $('html, body').stop().animate({
+          scrollTop: offset
+        }, 500);
+    });
+
+    // Expand sidebar on post detail page by default, when post has a toc.
+    NexT.motion.middleWares.sidebar = function () {
+      var $tocContent = $('.post-toc-content');
+
+      if (CONFIG.scheme !== 'Pisces' && (CONFIG.sidebar.display === 'post' || CONFIG.sidebar.display === 'always')) {
+        if ($tocContent.length > 0 && $tocContent.html().trim().length > 0) {
+          NexT.utils.displaySidebar();
+        }
+      }
+    };
+  });
+</script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=0.5.0"></script>
+
+
+
+  
+
+  
+    
+  
+
+  <script type="text/javascript">
+    var duoshuoQuery = {short_name:"knarfeh"};
+    (function() {
+      var ds = document.createElement('script');
+      ds.type = 'text/javascript';ds.async = true;
+      ds.id = 'duoshuo-script';
+      ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+      ds.charset = 'UTF-8';
+      (document.getElementsByTagName('head')[0]
+      || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+  </script>
+
+  
+    
+  
+
+
+
+
+
+  
+  
+  
+  <script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+      }
+    });
+  </script>
+
+  <script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+      var all = MathJax.Hub.getAllJax(), i;
+      for (i=0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';
+      }
+    });
+  </script>
+
+  
+    <script type="text/javascript" src="http://cdn.staticfile.org/mathjax/2.4.0/MathJax.js"></script>
+    <script type="text/javascript" src="http://cdn.staticfile.org/mathjax/2.4.0/config/TeX-AMS-MML_HTMLorMML.js"></script>
+  
+
+
+  
+
+
+</body>
+</html>

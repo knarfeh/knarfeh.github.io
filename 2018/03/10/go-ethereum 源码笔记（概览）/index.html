@@ -1,0 +1,961 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  <link href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css"/>
+
+
+
+
+  <link href="//fonts.googleapis.com/css?family=Lato:300,400,700,400italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+
+
+
+<link href="/vendors/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=0.5.0" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="cryptocurrency,Golang,geth," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=0.5.0" />
+
+
+
+
+
+
+<meta name="description" content="花了一点时间读以太坊的源代码，内容太多，所以一边看一边写，没想到越写越多，于是想着把笔记整理出来。 源码解读是一件费力不讨好的事情，因为看代码的时候我们看到的是最终解决方案，虽然可以看到 commit 的历史，但我们看不到作者的思路，踩过的坑，而且 geth 的设计文档，功能的相关讨论等信息不像 Kubernetes 那么规范透明，所以我看这些代码的时候很多地方也只是一知半解，欢迎有更多经验的朋友">
+<meta name="keywords" content="cryptocurrency,Golang,geth">
+<meta property="og:type" content="article">
+<meta property="og:title" content="go-ethereum 源码笔记（概览）">
+<meta property="og:url" content="http://knarfeh.github.io/2018/03/10/go-ethereum 源码笔记（概览）/index.html">
+<meta property="og:site_name" content="Frank&#39;s Notes">
+<meta property="og:description" content="花了一点时间读以太坊的源代码，内容太多，所以一边看一边写，没想到越写越多，于是想着把笔记整理出来。 源码解读是一件费力不讨好的事情，因为看代码的时候我们看到的是最终解决方案，虽然可以看到 commit 的历史，但我们看不到作者的思路，踩过的坑，而且 geth 的设计文档，功能的相关讨论等信息不像 Kubernetes 那么规范透明，所以我看这些代码的时候很多地方也只是一知半解，欢迎有更多经验的朋友">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="http://7xi5vu.com1.z0.glb.clouddn.com/stackexchange-ethereum-block-architecture.jpg">
+<meta property="og:image" content="http://7xi5vu.com1.z0.glb.clouddn.com/ethereum-leveld-architecture.png">
+<meta property="og:updated_time" content="2018-08-18T06:33:37.332Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="go-ethereum 源码笔记（概览）">
+<meta name="twitter:description" content="花了一点时间读以太坊的源代码，内容太多，所以一边看一边写，没想到越写越多，于是想着把笔记整理出来。 源码解读是一件费力不讨好的事情，因为看代码的时候我们看到的是最终解决方案，虽然可以看到 commit 的历史，但我们看不到作者的思路，踩过的坑，而且 geth 的设计文档，功能的相关讨论等信息不像 Kubernetes 那么规范透明，所以我看这些代码的时候很多地方也只是一知半解，欢迎有更多经验的朋友">
+<meta name="twitter:image" content="http://7xi5vu.com1.z0.glb.clouddn.com/stackexchange-ethereum-block-architecture.jpg">
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    scheme: 'Muse',
+    sidebar: {"display":"hide"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: 0,
+      author: '博主'
+    }
+  };
+</script>
+
+  <title> go-ethereum 源码笔记（概览） | Frank's Notes </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+            (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+          m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-75002639-1', 'auto');
+  ga('send', 'pageview');
+</script>
+
+
+
+
+
+
+
+
+
+  
+  
+
+  <div class="container one-collumn  page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">Frank's Notes</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle"></p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-home fa-fw"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-archive fa-fw"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-tags fa-fw"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-twitter">
+          <a href="/twitter" rel="section">
+            
+              <i class="menu-item-icon fa fa-coffee fa-fw"></i> <br />
+            
+            Twitter
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                go-ethereum 源码笔记（概览）
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2018-03-10T22:34:56+08:00" content="2018-03-10">
+              2018-03-10
+            </time>
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2018/03/10/go-ethereum 源码笔记（概览）/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2018/03/10/go-ethereum 源码笔记（概览）/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>花了一点时间读以太坊的源代码，内容太多，所以一边看一边写，没想到越写越多，于是想着把笔记整理出来。</p>
+<p>源码解读是一件费力不讨好的事情，因为看代码的时候我们看到的是最终解决方案，虽然可以看到 commit 的历史，但我们看不到作者的思路，踩过的坑，而且 geth 的设计文档，功能的相关讨论等信息不像 Kubernetes 那么规范透明，所以我看这些代码的时候很多地方也只是一知半解，欢迎有更多经验的朋友批评指正，不吝赐教，也欢迎有价值的讨论。看了一些书和文章，所以我这也算不上多原创，基本上所有看过的链接都记在 Reference 里面了。有的代码暂时看不懂就只能靠猜了，等待之后的实践中验证想法。尽管如此，对于同样想要阅读 geth 的源代码的人来说总还是有些作用，对于我个人来说整理出来这些文章也是一个总结知识，把点连成面的过程，希望同时能帮到其他人。</p>
+<p>geth 版本：master 分支，a1eb9c7d13240fd250866219a502d0cdc9924e06</p>
+<a id="more"></a>
+<p>这是第一篇，可以作为索引，后续发布其他文章后会不断更新👇</p>
+<ul>
+<li>go-ethereum 源码笔记（概览）</li>
+<li>go-ethereum 源码笔记（基础知识）</li>
+<li>go-ethereum 源码笔记（cmd 模块-geth 命令）</li>
+<li>go-ethereum 源码笔记（cmd 模块-其他命令）</li>
+<li>go-ethereum 源码笔记（core 模块-区块链操作）</li>
+</ul>
+<h2 id="涉及到的计算机专业知识"><a href="#涉及到的计算机专业知识" class="headerlink" title="涉及到的计算机专业知识"></a>涉及到的计算机专业知识</h2><ul>
+<li>网络知识，p2p 网络（Kad 算法） ，rpc 等等</li>
+<li>加密学，暂时不需要很深入，除非是像 <a href="http://teahour.fm/2018/07/08/how-to-build-blockchain-from-scratch.html" target="_blank" rel="external">How to build blockchain from scratch?</a> 说的需要构建加密函数相关的库，在大多数的场景下只需要知道加密函数的使用。当然越深入越好，这一块也可以做出创新；安全对于很多行业是命脉，对于区块链来说更是如此。</li>
+<li>编译原理，看 EVM 相关的实现时需要知道一些基本概念。</li>
+<li>分布式系统原理(一致性算法)</li>
+<li>智能合约</li>
+<li>数据库(LevelDB)，了解 LSM 的特点，不需要太深入的了解，知道 API 调用即可。当然知道底层原理最好，这块也有改进的空间，微博上的<a href="https://weibo.com/1875401263/GtTacBjm2?filter=hot&amp;root_comment_id=0&amp;type=comment" target="_blank" rel="external">邓草原</a>同学在做这方面的工作，针对区块链的数据特点设计专门的存储引擎，TPS 有不小的提升，不过我还没有细看代码，从讨论来看应该是参考了 Kafka 的存储特点。</li>
+<li>一些数据结构<ul>
+<li>MPT</li>
+<li>DAG</li>
+<li>布隆过滤器</li>
+<li>…</li>
+</ul>
+</li>
+</ul>
+<p>写完了这个系列可能会加个思维导图。</p>
+<h2 id="架构"><a href="#架构" class="headerlink" title="架构"></a>架构</h2><h3 id="总体架构图"><a href="#总体架构图" class="headerlink" title="总体架构图"></a>总体架构图</h3><p><img src="http://7xi5vu.com1.z0.glb.clouddn.com/stackexchange-ethereum-block-architecture.jpg" alt="https://i.stack.imgur.com/afWDt.jpg"></p>
+<h3 id="分层架构"><a href="#分层架构" class="headerlink" title="分层架构"></a>分层架构</h3><p><a href="https://book.douban.com/subject/30199891/" target="_blank" rel="external">以太坊技术详解与实战</a>这本书里介绍了以太坊的分层架构，其中的图片还挺有参考价值的，网络上没有找到原图，所以我自己画了一下：</p>
+<p><img src="http://7xi5vu.com1.z0.glb.clouddn.com/ethereum-leveld-architecture.png" alt="ethereum-leveld-architecture"></p>
+<h4 id="底层服务"><a href="#底层服务" class="headerlink" title="底层服务"></a>底层服务</h4><p>底层服务包括 P2P 网络、LevelDB 数据库、密码学算法和分片优化等基础服务。</p>
+<h4 id="核心层"><a href="#核心层" class="headerlink" title="核心层"></a>核心层</h4><p>核心层包括区块链、共识算法和以太坊虚拟机等。</p>
+<h4 id="顶层应用"><a href="#顶层应用" class="headerlink" title="顶层应用"></a>顶层应用</h4><p>这一层包括 API 接口、智能合约以及去中心化应用。</p>
+<h2 id="重要的数据结构"><a href="#重要的数据结构" class="headerlink" title="重要的数据结构"></a>重要的数据结构</h2><h3 id="core-types-block-go-区块的数据结构"><a href="#core-types-block-go-区块的数据结构" class="headerlink" title="/core/types/block.go 区块的数据结构"></a><code>/core/types/block.go</code> 区块的数据结构</h3><p>区块的数据结构在 <code>core/types/block.go</code> 中定义。先混个眼熟吧。</p>
+<figure class="highlight stylus"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">type Block struct &#123;</div><div class="line">	<span class="selector-tag">header</span>       *Header</div><div class="line">	uncles       []*Header</div><div class="line">	transactions Transactions</div><div class="line">	hash atomic<span class="selector-class">.Value</span></div><div class="line">	size atomic<span class="selector-class">.Value</span></div><div class="line">	<span class="selector-tag">td</span> *big<span class="selector-class">.Int</span></div><div class="line">	ReceivedAt   <span class="selector-tag">time</span><span class="selector-class">.Time</span></div><div class="line">	ReceivedFrom interface&#123;&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<table>
+<thead>
+<tr>
+<th><strong>重要字段</strong></th>
+<th><strong>描述</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>header</td>
+<td>header 指向 Header 结构（之后会详细说明），header 存储一个区块的基本信息。</td>
+</tr>
+<tr>
+<td>uncles</td>
+<td>指向 Header 结构</td>
+</tr>
+<tr>
+<td>transactions</td>
+<td>一组 transaction 结构</td>
+</tr>
+<tr>
+<td>hash</td>
+<td>当前区块的哈希值</td>
+</tr>
+<tr>
+<td>size</td>
+<td>当前区块的大小</td>
+</tr>
+<tr>
+<td>td</td>
+<td>当前区块高度</td>
+</tr>
+<tr>
+<td>ReceivedAt</td>
+<td>接收时间</td>
+</tr>
+<tr>
+<td>ReceivedFrom</td>
+<td>来源</td>
+</tr>
+</tbody>
+</table>
+<p>交易组成区块，一个一个区块以单向链表的形式连在一起组成区块链，毋庸置疑，这是最基础的数据结构，在 geth 的源代码中大量用到。</p>
+<p>其中 <code>Header</code> 的数据结构定义为：</p>
+<figure class="highlight groovy"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line">type Header struct &#123;</div><div class="line">	ParentHash  common.Hash    `<span class="string">json:</span><span class="string">"parentHash"</span>       <span class="string">gencodec:</span><span class="string">"required"</span>`</div><div class="line">	UncleHash   common.Hash    `<span class="string">json:</span><span class="string">"sha3Uncles"</span>       <span class="string">gencodec:</span><span class="string">"required"</span>`</div><div class="line">	Coinbase    common.Address `<span class="string">json:</span><span class="string">"miner"</span>            <span class="string">gencodec:</span><span class="string">"required"</span>`</div><div class="line">	Root        common.Hash    `<span class="string">json:</span><span class="string">"stateRoot"</span>        <span class="string">gencodec:</span><span class="string">"required"</span>`</div><div class="line">	TxHash      common.Hash    `<span class="string">json:</span><span class="string">"transactionsRoot"</span> <span class="string">gencodec:</span><span class="string">"required"</span>`</div><div class="line">	ReceiptHash common.Hash    `<span class="string">json:</span><span class="string">"receiptsRoot"</span>     <span class="string">gencodec:</span><span class="string">"required"</span>`</div><div class="line">	Bloom       Bloom          `<span class="string">json:</span><span class="string">"logsBloom"</span>        <span class="string">gencodec:</span><span class="string">"required"</span>`</div><div class="line">	Difficulty  *big.Int       `<span class="string">json:</span><span class="string">"difficulty"</span>       <span class="string">gencodec:</span><span class="string">"required"</span>`</div><div class="line">	Number      *big.Int       `<span class="string">json:</span><span class="string">"number"</span>           <span class="string">gencodec:</span><span class="string">"required"</span>`</div><div class="line">	GasLimit    uint64         `<span class="string">json:</span><span class="string">"gasLimit"</span>         <span class="string">gencodec:</span><span class="string">"required"</span>`</div><div class="line">	GasUsed     uint64         `<span class="string">json:</span><span class="string">"gasUsed"</span>          <span class="string">gencodec:</span><span class="string">"required"</span>`</div><div class="line">	Time        *big.Int       `<span class="string">json:</span><span class="string">"timestamp"</span>        <span class="string">gencodec:</span><span class="string">"required"</span>`</div><div class="line">	Extra       []<span class="keyword">byte</span>         `<span class="string">json:</span><span class="string">"extraData"</span>        <span class="string">gencodec:</span><span class="string">"required"</span>`</div><div class="line">	MixDigest   common.Hash    `<span class="string">json:</span><span class="string">"mixHash"</span>          <span class="string">gencodec:</span><span class="string">"required"</span>`</div><div class="line">	Nonce       BlockNonce     `<span class="string">json:</span><span class="string">"nonce"</span>            <span class="string">gencodec:</span><span class="string">"required"</span>`</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<table>
+<thead>
+<tr>
+<th><strong>字段</strong></th>
+<th><strong>描述</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>ParentHash</td>
+<td>父区块的哈希值</td>
+</tr>
+<tr>
+<td>UncleHash</td>
+<td>叔区块的哈希值</td>
+</tr>
+<tr>
+<td>Coinbase</td>
+<td>矿工得到奖励的账户，一般是矿工本地第一个账户</td>
+</tr>
+<tr>
+<td>Root</td>
+<td>表示当前所有用户状态</td>
+</tr>
+<tr>
+<td>TxHash</td>
+<td>本区块所有交易 Hash，即摘要</td>
+</tr>
+<tr>
+<td>ReceiptHash</td>
+<td>本区块所有收据 Hash，即摘要</td>
+</tr>
+<tr>
+<td>Bloom</td>
+<td>布隆过滤器，用来搜索收据</td>
+</tr>
+<tr>
+<td>Difficulty</td>
+<td>该区块难度，动态调整，与父区块和本区块挖矿时间有关。可参考 <code>github.com/ethereum/go-ethereum/consensus/ethash/consensus.go</code> 的 <code>CalcDifficulty</code></td>
+</tr>
+<tr>
+<td>Number</td>
+<td>该区块高度</td>
+</tr>
+<tr>
+<td>GasLimit</td>
+<td>gas 用量上限，该数值根据父区块 gas 用量调节，如果 <code>parentGasUsed &gt; parentGasLimit * (2/3)</code> ，则增大该数值，反之则减小该数值。可参看 <code>github.com/ethereum/go-ethereum/core/block_validator.go</code> 的 <code>CalcGasLimit</code></td>
+</tr>
+<tr>
+<td>GasUsed</td>
+<td>实际花费的 gas</td>
+</tr>
+<tr>
+<td>Time</td>
+<td>新区块的出块时间，严格来说是开始挖矿的时间</td>
+</tr>
+<tr>
+<td>Extra</td>
+<td>额外数据</td>
+</tr>
+<tr>
+<td>MixDigest</td>
+<td>混合哈希，与 nonce 结合使用</td>
+</tr>
+<tr>
+<td>Nonce</td>
+<td>加密学中的概念，在基本概念章节中有介绍</td>
+</tr>
+</tbody>
+</table>
+<p>它包含区块的属性信息，<code>ParentHash</code> 表示该区块的父区块哈希，我们通过 <code>ParentHash</code> 这个字段将一个一个区块连接起来组成区块链，但实际上我们并不会直接将链整个的存起来，它是以一定的数据结构一块一块存放的，geth 的底层数据库用的是 LevelDB，这是一个 key-value 数据库，要得到父区块时，我们通过 <code>ParentHash</code> 以及其他字符串组成 key，在 LevelDB 中查询该 key 对应的值，就能拿到父区块。</p>
+<h3 id="core-blockchain-go-区块链的数据结构"><a href="#core-blockchain-go-区块链的数据结构" class="headerlink" title="/core/blockchain.go 区块链的数据结构"></a>/core/blockchain.go 区块链的数据结构</h3><p><code>core/blockchain.go</code> 的 <code>BlockChain</code> 结构体定义了区块链的数据结构</p>
+<figure class="highlight stylus"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div></pre></td><td class="code"><pre><div class="line">type BlockChain struct &#123;</div><div class="line">	chainConfig *params<span class="selector-class">.ChainConfig</span></div><div class="line">	cacheConfig *CacheConfig</div><div class="line"></div><div class="line">	db     ethdb<span class="selector-class">.Database</span></div><div class="line">	triegc *prque<span class="selector-class">.Prque</span></div><div class="line">	gcproc <span class="selector-tag">time</span><span class="selector-class">.Duration</span></div><div class="line"></div><div class="line">	hc            *HeaderChain</div><div class="line">	rmLogsFeed    event<span class="selector-class">.Feed</span></div><div class="line">	chainFeed     event<span class="selector-class">.Feed</span></div><div class="line">	chainSideFeed event<span class="selector-class">.Feed</span></div><div class="line">	chainHeadFeed event<span class="selector-class">.Feed</span></div><div class="line">	logsFeed      event<span class="selector-class">.Feed</span></div><div class="line">	scope         event<span class="selector-class">.SubscriptionScope</span></div><div class="line">	genesisBlock  *types<span class="selector-class">.Block</span></div><div class="line"></div><div class="line">	mu      sync<span class="selector-class">.RWMutex</span></div><div class="line">	chainmu sync<span class="selector-class">.RWMutex</span></div><div class="line">	procmu  sync<span class="selector-class">.RWMutex</span></div><div class="line"></div><div class="line">	checkpoint       int</div><div class="line">	currentBlock     atomic<span class="selector-class">.Value</span></div><div class="line">	currentFastBlock atomic<span class="selector-class">.Value</span></div><div class="line"></div><div class="line">	stateCache   state<span class="selector-class">.Database</span></div><div class="line">	bodyCache    *lru<span class="selector-class">.Cache</span></div><div class="line">	bodyRLPCache *lru<span class="selector-class">.Cache</span></div><div class="line">	blockCache   *lru<span class="selector-class">.Cache</span></div><div class="line">	futureBlocks *lru<span class="selector-class">.Cache</span></div><div class="line"></div><div class="line">	quit    chan struct&#123;&#125;</div><div class="line">	running int32</div><div class="line">	procInterrupt int32</div><div class="line">	wg            sync<span class="selector-class">.WaitGroup</span></div><div class="line"></div><div class="line">	engine    consensus<span class="selector-class">.Engine</span></div><div class="line">	processor Processor</div><div class="line">	validator Validator</div><div class="line">	vmConfig  vm<span class="selector-class">.Config</span></div><div class="line"></div><div class="line">	badBlocks *lru<span class="selector-class">.Cache</span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p><code>UncleHash</code> 是 <code>Block</code> 结构体成员 <code>uncles</code> 的 RLP 哈希值，<code>uncles</code> 是一个 <code>Headers</code> 数组，关于叔区块，可以查阅以太坊的<a href="https://github.com/ethereum/wiki/wiki/Design-Rationale#uncle-incentivization" target="_blank" rel="external">设计原理</a>。在下一篇 <a href="#TODO">go-ethereum 源码笔记（基础知识）</a> 会详细介绍叔区块。</p>
+<p>Block 对象中还有一个比较重要的数据结构，那就是 <code>Transaction</code>，它是交易相关逻辑的基础。</p>
+<h3 id="core-types-transaction-go-交易的数据结构"><a href="#core-types-transaction-go-交易的数据结构" class="headerlink" title="/core/types/transaction.go 交易的数据结构"></a><code>/core/types/transaction.go</code> 交易的数据结构</h3><p>交易的数据结构</p>
+<figure class="highlight groovy"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div></pre></td><td class="code"><pre><div class="line">type Transaction struct &#123;</div><div class="line">	data txdata</div><div class="line">	<span class="comment">// caches</span></div><div class="line">	hash atomic.Value</div><div class="line">	size atomic.Value</div><div class="line">	from atomic.Value</div><div class="line">&#125;</div><div class="line"></div><div class="line">type txdata struct &#123;</div><div class="line">	AccountNonce uint64          `<span class="string">json:</span><span class="string">"nonce"</span>    <span class="string">gencodec:</span><span class="string">"required"</span>`</div><div class="line">	Price        *big.Int        `<span class="string">json:</span><span class="string">"gasPrice"</span> <span class="string">gencodec:</span><span class="string">"required"</span>`</div><div class="line">	GasLimit     uint64          `<span class="string">json:</span><span class="string">"gas"</span>      <span class="string">gencodec:</span><span class="string">"required"</span>`</div><div class="line">	Recipient    *common.Address `<span class="string">json:</span><span class="string">"to"</span>       <span class="string">rlp:</span><span class="string">"nil"</span>`</div><div class="line">	Amount       *big.Int        `<span class="string">json:</span><span class="string">"value"</span>    <span class="string">gencodec:</span><span class="string">"required"</span>`</div><div class="line">	Payload      []<span class="keyword">byte</span>          `<span class="string">json:</span><span class="string">"input"</span>    <span class="string">gencodec:</span><span class="string">"required"</span>`</div><div class="line"></div><div class="line">	V *big.Int `<span class="string">json:</span><span class="string">"v"</span> <span class="string">gencodec:</span><span class="string">"required"</span>`</div><div class="line">	R *big.Int `<span class="string">json:</span><span class="string">"r"</span> <span class="string">gencodec:</span><span class="string">"required"</span>`</div><div class="line">	S *big.Int `<span class="string">json:</span><span class="string">"s"</span> <span class="string">gencodec:</span><span class="string">"required"</span>`</div><div class="line"></div><div class="line">	Hash *common.Hash `<span class="string">json:</span><span class="string">"hash"</span> <span class="string">rlp:</span><span class="string">"-"</span>`</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>转账的定义中只有转入方，转出方的地址没有直接暴露。每一笔转账都有独立的 Price 和 GasLimit，这是 Ethereum 的安全保护策略，是一个值得称赞的设计，如果你对这个不熟悉，请查阅：<a href="https://github.com/ethereum/wiki/wiki/Glossary" target="_blank" rel="external">wiki/Glossary</a>，在之后的文章中也会有介绍。</p>
+<h3 id="geth-目录结构简述"><a href="#geth-目录结构简述" class="headerlink" title="geth 目录结构简述"></a>geth 目录结构简述</h3><figure class="highlight mipsasm"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div></pre></td><td class="code"><pre><div class="line">accounts        实现以太坊账户管理</div><div class="line"><span class="keyword">build </span>          编译和构建的一些脚本和配置</div><div class="line">cmd             命令行工具，又分了很多的命令行工具，下面会一个一个介绍</div><div class="line">    abigen      将以太坊智能合约定义转换为类型安全的 Go 或 <span class="keyword">Java </span>包的源码转换器</div><div class="line">    <span class="keyword">bootnode	</span>启动一个用于网络发现的节点</div><div class="line">    evm         以太坊虚拟机的开发工具，用来提供一个可配置的，受隔离的代码调试环境</div><div class="line">    faucet		以太坊 faucet 测试网络</div><div class="line">    geth        以太坊命令行客户端，最重要的一个工具</div><div class="line">    p2psim      提供了一个工具来模拟 p2p 的 API</div><div class="line">    puppeth     创建一个新的以太坊网络的向导</div><div class="line">    rlpdump     提供了一个 RLP 数据的格式化输出</div><div class="line">    <span class="keyword">swarm </span>      <span class="keyword">swarm </span>网络的接入点</div><div class="line">    util        提供了一些公共的工具</div><div class="line">    wnode       这是一个简单的 Whisper 节点。它可以用作独立的引导节点。此外可以用于不同的测试和诊断目的</div><div class="line">common      	提供了一些公共的工具类</div><div class="line">consensus       提供了以太坊的一些共识算法，比如 ethhash, clique(proof-of-authority)</div><div class="line">console         与终端交互相关的代码</div><div class="line">containers		Docker 容器相关的代码</div><div class="line">contracts		以太坊域名服务，票据支付方案</div><div class="line">core            以太坊的核心数据结构和算法(虚拟机，状态，区块链，布隆过滤器)</div><div class="line">crypto          加密和 hash 算法</div><div class="line">dashboard		以太坊后台管理 UI</div><div class="line">eth             实现了以太坊的协议</div><div class="line">ethclient       提供了以太坊的 RPC 客户端</div><div class="line">ethdb           封装 geth 的数据库(包括实际使用的 Leveldb 和供测试使用的内存数据库)</div><div class="line">ethstats        提供网络状态的报告</div><div class="line">event           处理实时的事件</div><div class="line">les             实现了以太坊的轻量级协议子集</div><div class="line">light           为以太坊轻量级客户端提供按需检索的功能</div><div class="line">log             提供对人机都友好的日志信息</div><div class="line">metrics         提供磁盘计数器</div><div class="line">miner           提供以太坊的区块创建和挖矿</div><div class="line">mobile          移动端使用的一些 warpper</div><div class="line">node            以太坊的多种类型的节点</div><div class="line">p2p             以太坊 p2p 网络协议</div><div class="line">rlp             以太坊编码算法</div><div class="line">rpc             远程方法调用</div><div class="line"><span class="keyword">swarm </span>          <span class="keyword">swarm </span>网络</div><div class="line">tests           测试</div><div class="line">trie            实现以太坊中的默克尔帕特里夏树</div><div class="line">whisper         提供了 whisper 节点的协议</div></pre></td></tr></table></figure>
+<h2 id="从编译源代码开始"><a href="#从编译源代码开始" class="headerlink" title="从编译源代码开始"></a>从编译源代码开始</h2><p>按照官方文档的建议设置好开发环境，在 go-ethereum 执行 <code>make build</code> 之后，我们可以在 build/bin 目录下找到 abigen, ethkey 等等可执行文件，实际上这些文件的入口函数都在 cmd 目录下，接下来的文章里我们会逐一介绍这些命令。</p>
+<h2 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h2><ul>
+<li><a href="https://bitcoin.org/en/developer-documentation" target="_blank" rel="external">bitcoin developer documentation</a></li>
+<li><a href="lilymoana.github.io/ethereum_theory.html">以太坊工作原理概述</a></li>
+<li><a href="http://ibloodline.com/articles/2018/02/05/go-ethereum.html" target="_blank" rel="external">go-ethereum 源码解读（一）</a></li>
+<li><a href="https://ethereum.github.io/yellowpaper/paper.pdf" target="_blank" rel="external">ethereum 黄皮书</a></li>
+<li><a href="https://ethereum.gitbooks.io/frontier-guide/content/index.html" target="_blank" rel="external">Ethereum Frontier Guide</a></li>
+<li><a href="https://github.com/ZtesoftCS/go-ethereum-code-analysis" target="_blank" rel="external">go-ethereum-code-analysis</a></li>
+<li><a href="https://github.com/libp2p/specs" target="_blank" rel="external">libp2p/specs</a></li>
+<li><a href="https://github.com/wugang33/go-ethereum-code-analysis/blob/master/go-ethereum%E6%BA%90%E7%A0%81%E9%98%85%E8%AF%BB%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA.md" target="_blank" rel="external">go ethereum 目录大概介绍</a></li>
+<li><a href="https://book.douban.com/subject/30199891/" target="_blank" rel="external">以太坊技术详解与实战</a></li>
+<li><a href="https://github.com/ethereum/wiki/wiki/Design-Rationale" target="_blank" rel="external">以太坊设计原理</a> ，非常重要，建议多读几遍</li>
+<li><a href="https://github.com/ethereum/pydevp2p" target="_blank" rel="external">ethereum/pydevp2p</a></li>
+<li><a href="https://github.com/Jeiwan/blockchain_go" target="_blank" rel="external">Jeiwan/blockchain_go</a></li>
+<li><a href="https://ethereum.stackexchange.com/questions/268/ethereum-block-architecture/757" target="_blank" rel="external">Ethereum block architecture</a></li>
+<li><a href="https://www.reddit.com/r/ethereum/" target="_blank" rel="external">Ethereum reddit</a></li>
+<li><a href="https://medium.com/@preethikasireddy/how-does-ethereum-work-anyway-22d1df506369" target="_blank" rel="external">How does ethereum work anyway</a></li>
+</ul>
+
+      
+    </div>
+
+    <div>
+      
+        
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/cryptocurrency/" rel="tag">#cryptocurrency</a>
+          
+            <a href="/tags/Golang/" rel="tag">#Golang</a>
+          
+            <a href="/tags/geth/" rel="tag">#geth</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/03/10/go-ethereum 源码笔记（基础知识）/" rel="next" title="go-ethereum 源码笔记（基础知识）">
+                <i class="fa fa-chevron-left"></i> go-ethereum 源码笔记（基础知识）
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/03/20/Telegram Bot 的长轮询 VS Webhook/" rel="prev" title="Telegram Bot 的长轮询 VS Webhook">
+                Telegram Bot 的长轮询 VS Webhook <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+      <div id="disqus_thread">
+        <noscript>
+          Please enable JavaScript to view the
+          <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a>
+        </noscript>
+      </div>
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel ">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="https://avatars1.githubusercontent.com/u/6964284?v=3&s=460"
+               alt="Frank" />
+          <p class="site-author-name" itemprop="name">Frank</p>
+          <p class="site-description motion-element" itemprop="description"></p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">174</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+          
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">125</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/knarfeh" target="_blank">
+                  
+                    <i class="fa fa-github"></i> GitHub
+                  
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://twitter.com/knarfeh" target="_blank">
+                  
+                    <i class="fa fa-twitter"></i> Twitter
+                  
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://weibo.com/2753500945" target="_blank">
+                  
+                    <i class="fa fa-weibo"></i> Weibo
+                  
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+          <div class="cc-license motion-element" itemprop="license">
+            <a href="http://creativecommons.org/licenses/by-sa/4.0" class="cc-opacity" target="_blank">
+              <img src="/images/cc-by-sa.svg" alt="Creative Commons" />
+            </a>
+          </div>
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+      </section>
+
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc-indicator-top post-toc-indicator">
+            <i class="fa fa-angle-double-up"></i>
+          </div>
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#涉及到的计算机专业知识"><span class="nav-number">1.</span> <span class="nav-text">涉及到的计算机专业知识</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#架构"><span class="nav-number">2.</span> <span class="nav-text">架构</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#总体架构图"><span class="nav-number">2.1.</span> <span class="nav-text">总体架构图</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#分层架构"><span class="nav-number">2.2.</span> <span class="nav-text">分层架构</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#底层服务"><span class="nav-number">2.2.1.</span> <span class="nav-text">底层服务</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#核心层"><span class="nav-number">2.2.2.</span> <span class="nav-text">核心层</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#顶层应用"><span class="nav-number">2.2.3.</span> <span class="nav-text">顶层应用</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#重要的数据结构"><span class="nav-number">3.</span> <span class="nav-text">重要的数据结构</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#core-types-block-go-区块的数据结构"><span class="nav-number">3.1.</span> <span class="nav-text">/core/types/block.go 区块的数据结构</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#core-blockchain-go-区块链的数据结构"><span class="nav-number">3.2.</span> <span class="nav-text">/core/blockchain.go 区块链的数据结构</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#core-types-transaction-go-交易的数据结构"><span class="nav-number">3.3.</span> <span class="nav-text">/core/types/transaction.go 交易的数据结构</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#geth-目录结构简述"><span class="nav-number">3.4.</span> <span class="nav-text">geth 目录结构简述</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#从编译源代码开始"><span class="nav-number">4.</span> <span class="nav-text">从编译源代码开始</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#参考资料"><span class="nav-number">5.</span> <span class="nav-text">参考资料</span></a></li></ol></div>
+            
+          </div>
+          <div class="post-toc-indicator-bottom post-toc-indicator">
+            <i class="fa fa-angle-double-down"></i>
+          </div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy;  2015 - 
+  <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Frank</span>
+</div>
+
+<div class="powered-by">
+  由 <a class="theme-link" href="http://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Muse
+  </a>
+</div>
+
+
+
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+
+  
+
+
+
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+  <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
+
+  <script type="text/javascript" src="/vendors/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  <script type="text/javascript" src="/vendors/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  <script type="text/javascript" src="/vendors/velocity/velocity.min.js"></script>
+
+  <script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js"></script>
+
+  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=0.5.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=0.5.0"></script>
+
+
+
+  
+  
+
+  
+  
+<script type="text/javascript" src="/js/src/scrollspy.js?v=0.5.0"></script>
+
+<script type="text/javascript" id="sidebar.toc.highlight">
+  $(document).ready(function () {
+    var tocSelector = '.post-toc';
+    var $tocSelector = $(tocSelector);
+    var activeCurrentSelector = '.active-current';
+
+    $tocSelector
+      .on('activate.bs.scrollspy', function () {
+        var $currentActiveElement = $(tocSelector + ' .active').last();
+
+        removeCurrentActiveClass();
+        $currentActiveElement.addClass('active-current');
+
+        $tocSelector[0].scrollTop = $currentActiveElement.position().top;
+      })
+      .on('clear.bs.scrollspy', function () {
+        removeCurrentActiveClass();
+      });
+
+    function removeCurrentActiveClass () {
+      $(tocSelector + ' ' + activeCurrentSelector)
+        .removeClass(activeCurrentSelector.substring(1));
+    }
+
+    function processTOC () {
+      getTOCMaxHeight();
+      toggleTOCOverflowIndicators();
+    }
+
+    function getTOCMaxHeight () {
+      var height = $('.sidebar').height() -
+                   $tocSelector.position().top -
+                   $('.post-toc-indicator-bottom').height();
+
+      $tocSelector.css('height', height);
+
+      return height;
+    }
+
+    function toggleTOCOverflowIndicators () {
+      tocOverflowIndicator(
+        '.post-toc-indicator-top',
+        $tocSelector.scrollTop() > 0 ? 'show' : 'hide'
+      );
+
+      tocOverflowIndicator(
+        '.post-toc-indicator-bottom',
+        $tocSelector.scrollTop() >= $tocSelector.find('ol').height() - $tocSelector.height() ? 'hide' : 'show'
+      )
+    }
+
+    $(document).on('sidebar.motion.complete', function () {
+      processTOC();
+    });
+
+    $('body').scrollspy({ target: tocSelector });
+    $(window).on('resize', function () {
+      if ( $('.sidebar').hasClass('sidebar-active') ) {
+        processTOC();
+      }
+    });
+
+    onScroll($tocSelector);
+
+    function onScroll (element) {
+      element.on('mousewheel DOMMouseScroll', function (event) {
+          var oe = event.originalEvent;
+          var delta = oe.wheelDelta || -oe.detail;
+
+          this.scrollTop += ( delta < 0 ? 1 : -1 ) * 30;
+          event.preventDefault();
+
+          toggleTOCOverflowIndicators();
+      });
+    }
+
+    function tocOverflowIndicator (indicator, action) {
+      var $indicator = $(indicator);
+      var opacity = action === 'show' ? 1 : 0;
+      $indicator.velocity ?
+        $indicator.velocity('stop').velocity({
+          opacity: opacity
+        }, { duration: 100 }) :
+        $indicator.stop().animate({
+          opacity: opacity
+        }, 100);
+    }
+
+  });
+</script>
+
+<script type="text/javascript" id="sidebar.nav">
+  $(document).ready(function () {
+    var html = $('html');
+    var TAB_ANIMATE_DURATION = 200;
+    var hasVelocity = $.isFunction(html.velocity);
+
+    $('.sidebar-nav li').on('click', function () {
+      var item = $(this);
+      var activeTabClassName = 'sidebar-nav-active';
+      var activePanelClassName = 'sidebar-panel-active';
+      if (item.hasClass(activeTabClassName)) {
+        return;
+      }
+
+      var currentTarget = $('.' + activePanelClassName);
+      var target = $('.' + item.data('target'));
+
+      hasVelocity ?
+        currentTarget.velocity('transition.slideUpOut', TAB_ANIMATE_DURATION, function () {
+          target
+            .velocity('stop')
+            .velocity('transition.slideDownIn', TAB_ANIMATE_DURATION)
+            .addClass(activePanelClassName);
+        }) :
+        currentTarget.animate({ opacity: 0 }, TAB_ANIMATE_DURATION, function () {
+          currentTarget.hide();
+          target
+            .stop()
+            .css({'opacity': 0, 'display': 'block'})
+            .animate({ opacity: 1 }, TAB_ANIMATE_DURATION, function () {
+              currentTarget.removeClass(activePanelClassName);
+              target.addClass(activePanelClassName);
+            });
+        });
+
+      item.siblings().removeClass(activeTabClassName);
+      item.addClass(activeTabClassName);
+    });
+
+    $('.post-toc a').on('click', function (e) {
+      e.preventDefault();
+      var targetSelector = NexT.utils.escapeSelector(this.getAttribute('href'));
+      var offset = $(targetSelector).offset().top;
+      hasVelocity ?
+        html.velocity('stop').velocity('scroll', {
+          offset: offset  + 'px',
+          mobileHA: false
+        }) :
+        $('html, body').stop().animate({
+          scrollTop: offset
+        }, 500);
+    });
+
+    // Expand sidebar on post detail page by default, when post has a toc.
+    NexT.motion.middleWares.sidebar = function () {
+      var $tocContent = $('.post-toc-content');
+
+      if (CONFIG.scheme !== 'Pisces' && (CONFIG.sidebar.display === 'post' || CONFIG.sidebar.display === 'always')) {
+        if ($tocContent.length > 0 && $tocContent.html().trim().length > 0) {
+          NexT.utils.displaySidebar();
+        }
+      }
+    };
+  });
+</script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=0.5.0"></script>
+
+
+
+  
+
+
+
+  
+
+    <script type="text/javascript">
+      var disqus_shortname = 'knarfeh';
+      var disqus_identifier = '2018/03/10/go-ethereum 源码笔记（概览）/';
+      var disqus_title = 'go-ethereum 源码笔记（概览）';
+      var disqus_url = 'http://knarfeh.github.io/2018/03/10/go-ethereum 源码笔记（概览）/';
+
+      function run_disqus_script(disqus_script){
+        var dsq = document.createElement('script');
+        dsq.type = 'text/javascript';
+        dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/' + disqus_script;
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+      }
+
+      run_disqus_script('count.js');
+      
+        run_disqus_script('embed.js');
+      
+    </script>
+  
+
+
+
+  
+  
+  
+  <script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+      }
+    });
+  </script>
+
+  <script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+      var all = MathJax.Hub.getAllJax(), i;
+      for (i=0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';
+      }
+    });
+  </script>
+
+  
+    <script type="text/javascript" src="http://cdn.staticfile.org/mathjax/2.4.0/MathJax.js"></script>
+    <script type="text/javascript" src="http://cdn.staticfile.org/mathjax/2.4.0/config/TeX-AMS-MML_HTMLorMML.js"></script>
+  
+
+
+  
+
+
+</body>
+</html>

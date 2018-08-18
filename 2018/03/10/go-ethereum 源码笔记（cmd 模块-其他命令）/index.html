@@ -1,0 +1,822 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  <link href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css"/>
+
+
+
+
+  <link href="//fonts.googleapis.com/css?family=Lato:300,400,700,400italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+
+
+
+<link href="/vendors/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=0.5.0" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="cryptocurrency,Golang,geth," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=0.5.0" />
+
+
+
+
+
+
+<meta name="description" content="cmd 包中除了 ethereum cli 客户端还包括很多其他可执行命令。下面我们将一一分析这些子命令，与上一篇 go-ethereum 源码笔记（cmd 模块-geth 命令）一样，我们不会深入到其他模块中，这一篇仅限于 cmd 模块。">
+<meta name="keywords" content="cryptocurrency,Golang,geth">
+<meta property="og:type" content="article">
+<meta property="og:title" content="go-ethereum 源码笔记（cmd 模块-其他命令）">
+<meta property="og:url" content="http://knarfeh.github.io/2018/03/10/go-ethereum 源码笔记（cmd 模块-其他命令）/index.html">
+<meta property="og:site_name" content="Frank&#39;s Notes">
+<meta property="og:description" content="cmd 包中除了 ethereum cli 客户端还包括很多其他可执行命令。下面我们将一一分析这些子命令，与上一篇 go-ethereum 源码笔记（cmd 模块-geth 命令）一样，我们不会深入到其他模块中，这一篇仅限于 cmd 模块。">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2018-08-18T06:28:48.387Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="go-ethereum 源码笔记（cmd 模块-其他命令）">
+<meta name="twitter:description" content="cmd 包中除了 ethereum cli 客户端还包括很多其他可执行命令。下面我们将一一分析这些子命令，与上一篇 go-ethereum 源码笔记（cmd 模块-geth 命令）一样，我们不会深入到其他模块中，这一篇仅限于 cmd 模块。">
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    scheme: 'Muse',
+    sidebar: {"display":"hide"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: 0,
+      author: '博主'
+    }
+  };
+</script>
+
+  <title> go-ethereum 源码笔记（cmd 模块-其他命令） | Frank's Notes </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+            (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+          m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-75002639-1', 'auto');
+  ga('send', 'pageview');
+</script>
+
+
+
+
+
+
+
+
+
+  
+  
+
+  <div class="container one-collumn  page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">Frank's Notes</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle"></p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-home fa-fw"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-archive fa-fw"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-tags fa-fw"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-twitter">
+          <a href="/twitter" rel="section">
+            
+              <i class="menu-item-icon fa fa-coffee fa-fw"></i> <br />
+            
+            Twitter
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                go-ethereum 源码笔记（cmd 模块-其他命令）
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2018-03-10T22:34:56+08:00" content="2018-03-10">
+              2018-03-10
+            </time>
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2018/03/10/go-ethereum 源码笔记（cmd 模块-其他命令）/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2018/03/10/go-ethereum 源码笔记（cmd 模块-其他命令）/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>cmd 包中除了 ethereum cli 客户端还包括很多其他可执行命令。下面我们将一一分析这些子命令，与上一篇 <a href="#TODO">go-ethereum 源码笔记（cmd 模块-geth 命令）</a>一样，我们不会深入到其他模块中，这一篇仅限于 cmd 模块。</p>
+<a id="more"></a>
+<h2 id="abigen"><a href="#abigen" class="headerlink" title="abigen"></a>abigen</h2><p>abigen 可以根据 sol 或 abi 文件生成特定语言的封装，支持 golang, objc, java 3种语言。它也能够编译 Solidity 原文件，使开发更便利。</p>
+<p>ABI 指的是 Application binary interface，字面意思是应用二进制接口。它是与区块链以外的以太坊系统中的合约进行交互的标准方式，同时也是合约与合约交互的标准方式。</p>
+<p>除了通过 RPC 的方式调用，部署合约，我们还可以使用 IPC 的方式，即使用 abigen 这种方式，使得部署合约更简单，更易于与代码集成。</p>
+<p>可以写一个简单的 <code>test.sol</code> 文件试一下，通过 <code>abigen --sol test.sol -pkg main --lang go --out test.go</code> 先生成一个 test.go 文件，观察这个生成的绑定文件你会发现这个文件生成了与这个合约交互的所有方法，里面还包含了部署的方法，可以通过客户端来可以调用这些方法。</p>
+<figure class="highlight stata"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div><div class="line">80</div><div class="line">81</div><div class="line">82</div><div class="line">83</div><div class="line">84</div><div class="line">85</div><div class="line">86</div><div class="line">87</div><div class="line">88</div><div class="line">89</div><div class="line">90</div><div class="line">91</div><div class="line">92</div><div class="line">93</div><div class="line">94</div><div class="line">95</div><div class="line">96</div><div class="line">97</div><div class="line">98</div><div class="line">99</div><div class="line">100</div></pre></td><td class="code"><pre><div class="line">func main() &#123;</div><div class="line">	flag.<span class="keyword">Parse</span>()</div><div class="line"></div><div class="line">	<span class="keyword">if</span> *abiFlag == <span class="string">""</span> &amp;&amp; *solFlag == <span class="string">""</span> &#123;</div><div class="line">		fmt.Printf(<span class="string">"No contract ABI (--abi) or Solidity source (--sol) specified\n"</span>)</div><div class="line">		os.<span class="keyword">Exit</span>(-1)</div><div class="line">	&#125; <span class="keyword">else</span> <span class="keyword">if</span> (*abiFlag != <span class="string">""</span> || *binFlag != <span class="string">""</span> || *typFlag != <span class="string">""</span>) &amp;&amp; *solFlag != <span class="string">""</span> &#123;</div><div class="line">		fmt.Printf(<span class="string">"Contract ABI (--abi), bytecode (--bin) and type (--type) flags are mutually exclusive with the Solidity source (--sol) flag\n"</span>)</div><div class="line">		os.<span class="keyword">Exit</span>(-1)</div><div class="line">	&#125;</div><div class="line">	<span class="keyword">if</span> *pkgFlag == <span class="string">""</span> &#123;</div><div class="line">		fmt.Printf(<span class="string">"No destination package specified (--pkg)\n"</span>)</div><div class="line">		os.<span class="keyword">Exit</span>(-1)</div><div class="line">	&#125;</div><div class="line">	<span class="keyword">var</span> lang bind.Lang</div><div class="line">	switch *langFlag &#123;</div><div class="line">	case <span class="string">"go"</span>:</div><div class="line">		lang = bind.LangGo</div><div class="line">	case <span class="string">"java"</span>:</div><div class="line">		lang = bind.LangJava</div><div class="line">	case <span class="string">"objc"</span>:</div><div class="line">		lang = bind.LangObjC</div><div class="line">	default:</div><div class="line">		fmt.Printf(<span class="string">"Unsupported destination language \"</span>%s\<span class="string">" (--lang)\n"</span>, *langFlag)</div><div class="line">		os.<span class="keyword">Exit</span>(-1)</div><div class="line">	&#125;</div><div class="line">	<span class="keyword">var</span> (</div><div class="line">		abis  []<span class="built_in">string</span></div><div class="line">		bins  []<span class="built_in">string</span></div><div class="line">		types []<span class="built_in">string</span></div><div class="line">	)</div><div class="line">	<span class="keyword">if</span> *solFlag != <span class="string">""</span> || *abiFlag == <span class="string">"-"</span> &#123;</div><div class="line">		exclude := make(map[string]bool)</div><div class="line">		<span class="keyword">for</span> _, kind := <span class="keyword">range</span> strings.<span class="keyword">Split</span>(*excFlag, <span class="string">","</span>) &#123;</div><div class="line">			exclude[strings.ToLower(kind)] = true</div><div class="line">		&#125;</div><div class="line"></div><div class="line">		<span class="keyword">var</span> contracts map[string]*compiler.<span class="keyword">Contract</span></div><div class="line">		<span class="keyword">var</span> <span class="keyword">err</span> <span class="keyword">error</span></div><div class="line">		<span class="keyword">if</span> *solFlag != <span class="string">""</span> &#123;</div><div class="line">			contracts, <span class="keyword">err</span> = compiler.CompileSolidity(*solcFlag, *solFlag)</div><div class="line">			<span class="keyword">if</span> <span class="keyword">err</span> != nil &#123;</div><div class="line">				fmt.Printf(<span class="string">"Failed to build Solidity contract: %v\n"</span>, <span class="keyword">err</span>)</div><div class="line">				os.<span class="keyword">Exit</span>(-1)</div><div class="line">			&#125;</div><div class="line">		&#125; <span class="keyword">else</span> &#123;</div><div class="line">			contracts, <span class="keyword">err</span> = contractsFromStdin()</div><div class="line">			<span class="keyword">if</span> <span class="keyword">err</span> != nil &#123;</div><div class="line">				fmt.Printf(<span class="string">"Failed to read input ABIs from STDIN: %v\n"</span>, <span class="keyword">err</span>)</div><div class="line">				os.<span class="keyword">Exit</span>(-1)</div><div class="line">			&#125;</div><div class="line">		&#125;</div><div class="line">		<span class="keyword">for</span> name, <span class="keyword">contract</span> := <span class="keyword">range</span> contracts &#123;</div><div class="line">			<span class="keyword">if</span> exclude[strings.ToLower(name)] &#123;</div><div class="line">				<span class="keyword">continue</span></div><div class="line">			&#125;</div><div class="line">			abi, _ := json.Marshal(<span class="keyword">contract</span>.Info.AbiDefinition) <span class="comment">// Flatten the compiler parse</span></div><div class="line">			abis = <span class="keyword">append</span>(abis, <span class="built_in">string</span>(abi))</div><div class="line">			bins = <span class="keyword">append</span>(bins, <span class="keyword">contract</span>.Code)</div><div class="line"></div><div class="line">			nameParts := strings.<span class="keyword">Split</span>(name, <span class="string">":"</span>)</div><div class="line">			types = <span class="keyword">append</span>(types, nameParts[len(nameParts)-1])</div><div class="line">		&#125;</div><div class="line">	&#125; <span class="keyword">else</span> &#123;</div><div class="line">		abi, <span class="keyword">err</span> := ioutil.ReadFile(*abiFlag)</div><div class="line">		<span class="keyword">if</span> <span class="keyword">err</span> != nil &#123;</div><div class="line">			fmt.Printf(<span class="string">"Failed to read input ABI: %v\n"</span>, <span class="keyword">err</span>)</div><div class="line">			os.<span class="keyword">Exit</span>(-1)</div><div class="line">		&#125;</div><div class="line">		abis = <span class="keyword">append</span>(abis, <span class="built_in">string</span>(abi))</div><div class="line"></div><div class="line">		bin := []byte&#123;&#125;</div><div class="line">		<span class="keyword">if</span> *binFlag != <span class="string">""</span> &#123;</div><div class="line">			<span class="keyword">if</span> bin, <span class="keyword">err</span> = ioutil.ReadFile(*binFlag); <span class="keyword">err</span> != nil &#123;</div><div class="line">				fmt.Printf(<span class="string">"Failed to read input bytecode: %v\n"</span>, <span class="keyword">err</span>)</div><div class="line">				os.<span class="keyword">Exit</span>(-1)</div><div class="line">			&#125;</div><div class="line">		&#125;</div><div class="line">		bins = <span class="keyword">append</span>(bins, <span class="built_in">string</span>(bin))</div><div class="line"></div><div class="line">		kind := *typFlag</div><div class="line">		<span class="keyword">if</span> kind == <span class="string">""</span> &#123;</div><div class="line">			kind = *pkgFlag</div><div class="line">		&#125;</div><div class="line">		types = <span class="keyword">append</span>(types, kind)</div><div class="line">	&#125;</div><div class="line">	code, <span class="keyword">err</span> := bind.Bind(types, abis, bins, *pkgFlag, lang)</div><div class="line">	<span class="keyword">if</span> <span class="keyword">err</span> != nil &#123;</div><div class="line">		fmt.Printf(<span class="string">"Failed to generate ABI binding: %v\n"</span>, <span class="keyword">err</span>)</div><div class="line">		os.<span class="keyword">Exit</span>(-1)</div><div class="line">	&#125;</div><div class="line">	<span class="keyword">if</span> *outFlag == <span class="string">""</span> &#123;</div><div class="line">		fmt.Printf(<span class="string">"%s\n"</span>, code)</div><div class="line">		<span class="built_in">return</span></div><div class="line">	&#125;</div><div class="line">	<span class="keyword">if</span> <span class="keyword">err</span> := ioutil.WriteFile(*outFlag, []byte(code), 0600); <span class="keyword">err</span> != nil &#123;</div><div class="line">		fmt.Printf(<span class="string">"Failed to write ABI binding: %v\n"</span>, <span class="keyword">err</span>)</div><div class="line">		os.<span class="keyword">Exit</span>(-1)</div><div class="line">	&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p><code>abigen</code> 命令的源码很简单，实际上就是调用 <code>accounts/abi</code> 以及 Solidity 编译器，主要的实现还是在 <code>accounts/abi</code> 里，这部分我们在后面的文章会继续深入。</p>
+<h2 id="bootnode"><a href="#bootnode" class="headerlink" title="bootnode"></a>bootnode</h2><p>bootnode 是 geth 客户端的精简版本，只实现了网络节点发现协议，不运行更高级别的应用协议。它可以用作轻量级引导节点，帮助在私有网络中查找 peers。</p>
+<p>以太坊在启动时至少需要一个对等节点，这样才能接入整个以太坊网络，bootnode 相当于一个第三方的中介，node 在启动时会将自己的信息注册到 bootnode 的路由中，并且会从 bootnode 得到其它节点的路由信息，一旦有了对等节点信息后就可以不需要连接 bootnode。公有链的节点硬编码了一些 bootnode 节点地址。</p>
+<figure class="highlight vbscript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div><div class="line">80</div><div class="line">81</div><div class="line">82</div><div class="line">83</div><div class="line">84</div><div class="line">85</div><div class="line">86</div><div class="line">87</div><div class="line">88</div><div class="line">89</div><div class="line">90</div><div class="line">91</div><div class="line">92</div><div class="line">93</div><div class="line">94</div><div class="line">95</div><div class="line">96</div><div class="line">97</div><div class="line">98</div><div class="line">99</div></pre></td><td class="code"><pre><div class="line">func main() &#123;</div><div class="line">	var (</div><div class="line">		listenAddr  = flag.<span class="built_in">String</span>(<span class="string">"addr"</span>, <span class="string">":30301"</span>, <span class="string">"listen address"</span>)</div><div class="line">		genKey      = flag.<span class="built_in">String</span>(<span class="string">"genkey"</span>, <span class="string">""</span>, <span class="string">"generate a node key"</span>)</div><div class="line">		writeAddr   = flag.Bool(<span class="string">"writeaddress"</span>, <span class="literal">false</span>, <span class="string">"write out the node's pubkey hash and quit"</span>)</div><div class="line">		nodeKeyFile = flag.<span class="built_in">String</span>(<span class="string">"nodekey"</span>, <span class="string">""</span>, <span class="string">"private key filename"</span>)</div><div class="line">		nodeKeyHex  = flag.<span class="built_in">String</span>(<span class="string">"nodekeyhex"</span>, <span class="string">""</span>, <span class="string">"private key as hex (for testing)"</span>)</div><div class="line">		natdesc     = flag.<span class="built_in">String</span>(<span class="string">"nat"</span>, <span class="string">"none"</span>, <span class="string">"port mapping mechanism (any|none|upnp|pmp|extip:&lt;IP&gt;)"</span>)</div><div class="line">		netrestrict = flag.<span class="built_in">String</span>(<span class="string">"netrestrict"</span>, <span class="string">""</span>, <span class="string">"restrict network communication to the given IP networks (CIDR masks)"</span>)</div><div class="line">		runv5       = flag.Bool(<span class="string">"v5"</span>, <span class="literal">false</span>, <span class="string">"run a v5 topic discovery bootnode"</span>)</div><div class="line">		verbosity   = flag.<span class="built_in">Int</span>(<span class="string">"verbosity"</span>, <span class="built_in">int</span>(<span class="built_in">log</span>.LvlInfo), <span class="string">"log verbosity (0-9)"</span>)</div><div class="line">		vmodule     = flag.<span class="built_in">String</span>(<span class="string">"vmodule"</span>, <span class="string">""</span>, <span class="string">"log verbosity pattern"</span>)</div><div class="line"></div><div class="line">		nodeKey *ecdsa.PrivateKey</div><div class="line">		<span class="built_in">err</span>     <span class="keyword">error</span></div><div class="line">	)</div><div class="line">	flag.Parse()</div><div class="line"></div><div class="line">	glogger := <span class="built_in">log</span>.NewGlogHandler(<span class="built_in">log</span>.StreamHandler(os.Stderr, <span class="built_in">log</span>.TerminalFormat(<span class="literal">false</span>)))</div><div class="line">	glogger.Verbosity(<span class="built_in">log</span>.Lvl(*verbosity))</div><div class="line">	glogger.Vmodule(*vmodule)</div><div class="line">	<span class="built_in">log</span>.Root().SetHandler(glogger)</div><div class="line"></div><div class="line">	natm, <span class="built_in">err</span> := nat.Parse(*natdesc)</div><div class="line">	<span class="keyword">if</span> <span class="built_in">err</span> != nil &#123;</div><div class="line">		utils.Fatalf(<span class="string">"-nat: %v"</span>, <span class="built_in">err</span>)</div><div class="line">	&#125;</div><div class="line">	switch &#123;</div><div class="line">	<span class="keyword">case</span> *genKey != <span class="string">""</span>:</div><div class="line">		nodeKey, <span class="built_in">err</span> = crypto.GenerateKey()</div><div class="line">		<span class="keyword">if</span> <span class="built_in">err</span> != nil &#123;</div><div class="line">			utils.Fatalf(<span class="string">"could not generate key: %v"</span>, <span class="built_in">err</span>)</div><div class="line">		&#125;</div><div class="line">		<span class="keyword">if</span> <span class="built_in">err</span> = crypto.SaveECDSA(*genKey, nodeKey); <span class="built_in">err</span> != nil &#123;</div><div class="line">			utils.Fatalf(<span class="string">"%v"</span>, <span class="built_in">err</span>)</div><div class="line">		&#125;</div><div class="line">		return</div><div class="line">	<span class="keyword">case</span> *nodeKeyFile == <span class="string">""</span> &amp;&amp; *nodeKeyHex == <span class="string">""</span>:</div><div class="line">		utils.Fatalf(<span class="string">"Use -nodekey or -nodekeyhex to specify a private key"</span>)</div><div class="line">	<span class="keyword">case</span> *nodeKeyFile != <span class="string">""</span> &amp;&amp; *nodeKeyHex != <span class="string">""</span>:</div><div class="line">		utils.Fatalf(<span class="string">"Options -nodekey and -nodekeyhex are mutually exclusive"</span>)</div><div class="line">	<span class="keyword">case</span> *nodeKeyFile != <span class="string">""</span>:</div><div class="line">		<span class="keyword">if</span> nodeKey, <span class="built_in">err</span> = crypto.LoadECDSA(*nodeKeyFile); <span class="built_in">err</span> != nil &#123;</div><div class="line">			utils.Fatalf(<span class="string">"-nodekey: %v"</span>, <span class="built_in">err</span>)</div><div class="line">		&#125;</div><div class="line">	<span class="keyword">case</span> *nodeKeyHex != <span class="string">""</span>:</div><div class="line">		<span class="keyword">if</span> nodeKey, <span class="built_in">err</span> = crypto.HexToECDSA(*nodeKeyHex); <span class="built_in">err</span> != nil &#123;</div><div class="line">			utils.Fatalf(<span class="string">"-nodekeyhex: %v"</span>, <span class="built_in">err</span>)</div><div class="line">		&#125;</div><div class="line">	&#125;</div><div class="line"></div><div class="line">	<span class="keyword">if</span> *writeAddr &#123;</div><div class="line">		fmt.Printf(<span class="string">"%v\n"</span>, discover.PubkeyID(&amp;nodeKey.PublicKey))</div><div class="line">		os.<span class="keyword">Exit</span>(<span class="number">0</span>)</div><div class="line">	&#125;</div><div class="line"></div><div class="line">	var restrictList *netutil.Netlist</div><div class="line">	<span class="keyword">if</span> *netrestrict != <span class="string">""</span> &#123;</div><div class="line">		restrictList, <span class="built_in">err</span> = netutil.ParseNetlist(*netrestrict)</div><div class="line">		<span class="keyword">if</span> <span class="built_in">err</span> != nil &#123;</div><div class="line">			utils.Fatalf(<span class="string">"-netrestrict: %v"</span>, <span class="built_in">err</span>)</div><div class="line">		&#125;</div><div class="line">	&#125;</div><div class="line"></div><div class="line">	addr, <span class="built_in">err</span> := net.ResolveUDPAddr(<span class="string">"udp"</span>, *listenAddr)</div><div class="line">	<span class="keyword">if</span> <span class="built_in">err</span> != nil &#123;</div><div class="line">		utils.Fatalf(<span class="string">"-ResolveUDPAddr: %v"</span>, <span class="built_in">err</span>)</div><div class="line">	&#125;</div><div class="line">	conn, <span class="built_in">err</span> := net.ListenUDP(<span class="string">"udp"</span>, addr)</div><div class="line">	<span class="keyword">if</span> <span class="built_in">err</span> != nil &#123;</div><div class="line">		utils.Fatalf(<span class="string">"-ListenUDP: %v"</span>, <span class="built_in">err</span>)</div><div class="line">	&#125;</div><div class="line"></div><div class="line">	realaddr := conn.LocalAddr().(*net.UDPAddr)</div><div class="line">	<span class="keyword">if</span> natm != nil &#123;</div><div class="line">		<span class="keyword">if</span> !realaddr.IP.IsLoopback() &#123;</div><div class="line">			go nat.Map(natm, nil, <span class="string">"udp"</span>, realaddr.Port, realaddr.Port, <span class="string">"ethereum discovery"</span>)</div><div class="line">		&#125;</div><div class="line">		<span class="keyword">if</span> ext, <span class="built_in">err</span> := natm.ExternalIP(); <span class="built_in">err</span> == nil &#123;</div><div class="line">			realaddr = &amp;net.UDPAddr&#123;IP: ext, Port: realaddr.Port&#125;</div><div class="line">		&#125;</div><div class="line">	&#125;</div><div class="line"></div><div class="line">	<span class="keyword">if</span> *runv5 &#123;</div><div class="line">		<span class="keyword">if</span> _, <span class="built_in">err</span> := discv5.ListenUDP(nodeKey, conn, realaddr, <span class="string">""</span>, restrictList); <span class="built_in">err</span> != nil &#123;</div><div class="line">			utils.Fatalf(<span class="string">"%v"</span>, <span class="built_in">err</span>)</div><div class="line">		&#125;</div><div class="line">	&#125; <span class="keyword">else</span> &#123;</div><div class="line">		cfg := discover.Config&#123;</div><div class="line">			PrivateKey:   nodeKey,</div><div class="line">			AnnounceAddr: realaddr,</div><div class="line">			NetRestrict:  restrictList,</div><div class="line">		&#125;</div><div class="line">		<span class="keyword">if</span> _, <span class="built_in">err</span> := discover.ListenUDP(conn, cfg); <span class="built_in">err</span> != nil &#123;</div><div class="line">			utils.Fatalf(<span class="string">"%v"</span>, <span class="built_in">err</span>)</div><div class="line">		&#125;</div><div class="line">	&#125;</div><div class="line">	<span class="keyword">select</span> &#123;&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>从代码里可以看到，这部分功能主要来自于 p2p 模块。后续我们会深入到该模块。</p>
+<h2 id="clef"><a href="#clef" class="headerlink" title="clef"></a>clef</h2><p>clef 可以用来签署交易和数据，并且可以代替 geth 的账户管理。这部分代码我没有深入研究，看起来像是账户管理的另一种封装，实际的实现在 signer 目录下。</p>
+<p>TODO</p>
+<p>可以参考：<a href="https://github.com/holiman/qtsigner/" target="_blank" rel="external">A Python/QT based graphical user interface for the ethereum signer</a></p>
+<h2 id="ethkey"><a href="#ethkey" class="headerlink" title="ethkey"></a>ethkey</h2><p>ethkey 是一个可以用来操作以太坊 keyfile 的工具。 </p>
+<p>TODO</p>
+<h2 id="evm"><a href="#evm" class="headerlink" title="evm"></a>evm</h2><p>对 evm 进行一些封装</p>
+<p>执行合约前，将 Transaction 类型转化为 message，创建虚拟机（EVM）对象，计算一些 Gas 消耗，执行交易完毕后创建收据（Recipet）对象返回。</p>
+<h2 id="faucet"><a href="#faucet" class="headerlink" title="faucet"></a>faucet</h2><p>faucet 测试网相关代码。</p>
+<p>参考：<a href="https://faucet.rinkeby.io" target="_blank" rel="external">https://faucet.rinkeby.io</a> 和 <a href="https://coincentral.com/ethereum-faucets/" target="_blank" rel="external">https://coincentral.com/ethereum-faucets/</a></p>
+<h2 id="p2psim"><a href="#p2psim" class="headerlink" title="p2psim"></a>p2psim</h2><p>模拟 p2p API 请求的工具</p>
+<h2 id="puppeth"><a href="#puppeth" class="headerlink" title="puppeth"></a>puppeth</h2><p>用于搭建，维护私有链</p>
+<h2 id="rlpdump"><a href="#rlpdump" class="headerlink" title="rlpdump"></a>rlpdump</h2><p>RLP 是 Recursive Length Prefix 的简写。是以太坊中的序列化方法。这个模块的作用是提供 RLP 数据的格式化输出。</p>
+<p>TODO：<a href="https://github.com/wugang33/go-ethereum-code-analysis/blob/master/rlp%E6%BA%90%E7%A0%81%E8%A7%A3%E6%9E%90.md" target="_blank" rel="external">https://github.com/wugang33/go-ethereum-code-analysis/blob/master/rlp%E6%BA%90%E7%A0%81%E8%A7%A3%E6%9E%90.md</a></p>
+<h2 id="swarm"><a href="#swarm" class="headerlink" title="swarm"></a>swarm</h2><p>swarm 是一个去中心化的内容存储和分发服务，这个模块是其命令行客户端。没有细看这部分代码，swarm 看起来很像 ipfs，而且代码还在快速迭代中，就不展开了。</p>
+<p><a href="https://github.com/ethersphere/go-ethereum/wiki/IPFS-&amp;-SWARM" target="_blank" rel="external">IPFS &amp; SWARM</a></p>
+<h2 id="wnode"><a href="#wnode" class="headerlink" title="wnode"></a>wnode</h2><p>这是一个简单的 Whisper 节点。它可以用作独立的引导节点，还可以用于不同的测试和诊断目的</p>
+<figure class="highlight autoit"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span> &#123;</span></div><div class="line">	processArgs()</div><div class="line">	initialize()</div><div class="line">	<span class="built_in">run</span>()</div><div class="line">	<span class="built_in">shutdown</span>()</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>cmd 模块下的其他命令的资料相对于 geth 命令的资料还是很少的，而且有几个工具看起来有个人开发工具的性质，看起来很有用。可能使用的人很少，没法集成到 geth 成为一个子命令，但不集成为一个单独的命令又太可惜；有的工具只是某些功能的一个封装，还有的是项目外的工具的封装，例如 Solidity，Swarm。如果未来对以太坊的功能，代码比较熟悉了，需要自己封装一个工具，这些代码是很有参考价值的。</p>
+<h2 id="References"><a href="#References" class="headerlink" title="References"></a>References</h2><ul>
+<li><a href="https://www.cnblogs.com/baizx/p/7469125.html" target="_blank" rel="external">以太坊系列之十六: 使用golang与智能合约进行交互</a></li>
+<li><a href="https://github.com/ethereum/go-ethereum/wiki/Diagnostic-Tool-wnode" target="_blank" rel="external">Diagnostic Tool wnode</a></li>
+<li><a href="https://solidity.readthedocs.io/en/develop/abi-spec.html#application-binary-interface-specification" target="_blank" rel="external">Application Binary Interface Specification</a></li>
+<li><a href="https://bitshuo.com/topic/594a8c228e822fcb444317ec" target="_blank" rel="external">以太坊源码分析（3）深入解析ABI</a></li>
+<li><a href="https://bitshuo.com/topic/58b41a0408d6a0f32a5bc0b7" target="_blank" rel="external">Ethereum的ABI详解</a></li>
+<li><a href="http://qjpcpu.github.io/blog/2018/02/07/shen-ru-ethereumyuan-ma-whisperxie-yi-jie-du/" target="_blank" rel="external">深入ethereum源码-whisper协议解读</a></li>
+<li><a href="https://zhuanlan.zhihu.com/p/27574253" target="_blank" rel="external">合约的另一种调用方式——IPC</a></li>
+<li><a href="http://8btc.com/thread-31358-1-1.html" target="_blank" rel="external">DAG有向无环图是什么？</a></li>
+<li><a href="https://g2ex.github.io/2017/09/12/ethereum-guidance/" target="_blank" rel="external">以太坊私有链搭建指南</a></li>
+<li><a href="http://blog.csdn.net/DDFFR/article/details/78925410" target="_blank" rel="external">以太坊bootnode测试</a></li>
+</ul>
+
+      
+    </div>
+
+    <div>
+      
+        
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/cryptocurrency/" rel="tag">#cryptocurrency</a>
+          
+            <a href="/tags/Golang/" rel="tag">#Golang</a>
+          
+            <a href="/tags/geth/" rel="tag">#geth</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/03/10/go-ethereum 源码笔记（cmd 模块-geth 命令）/" rel="next" title="go-ethereum 源码笔记（cmd 模块-geth 命令）">
+                <i class="fa fa-chevron-left"></i> go-ethereum 源码笔记（cmd 模块-geth 命令）
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/03/10/go-ethereum 源码笔记（core 模块-区块链操作）/" rel="prev" title="go-ethereum 源码笔记（core 模块-区块链操作）">
+                go-ethereum 源码笔记（core 模块-区块链操作） <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+      <div id="disqus_thread">
+        <noscript>
+          Please enable JavaScript to view the
+          <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a>
+        </noscript>
+      </div>
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel ">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="https://avatars1.githubusercontent.com/u/6964284?v=3&s=460"
+               alt="Frank" />
+          <p class="site-author-name" itemprop="name">Frank</p>
+          <p class="site-description motion-element" itemprop="description"></p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">174</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+          
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">125</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/knarfeh" target="_blank">
+                  
+                    <i class="fa fa-github"></i> GitHub
+                  
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://twitter.com/knarfeh" target="_blank">
+                  
+                    <i class="fa fa-twitter"></i> Twitter
+                  
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://weibo.com/2753500945" target="_blank">
+                  
+                    <i class="fa fa-weibo"></i> Weibo
+                  
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+          <div class="cc-license motion-element" itemprop="license">
+            <a href="http://creativecommons.org/licenses/by-sa/4.0" class="cc-opacity" target="_blank">
+              <img src="/images/cc-by-sa.svg" alt="Creative Commons" />
+            </a>
+          </div>
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+      </section>
+
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc-indicator-top post-toc-indicator">
+            <i class="fa fa-angle-double-up"></i>
+          </div>
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#abigen"><span class="nav-number">1.</span> <span class="nav-text">abigen</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#bootnode"><span class="nav-number">2.</span> <span class="nav-text">bootnode</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#clef"><span class="nav-number">3.</span> <span class="nav-text">clef</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#ethkey"><span class="nav-number">4.</span> <span class="nav-text">ethkey</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#evm"><span class="nav-number">5.</span> <span class="nav-text">evm</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#faucet"><span class="nav-number">6.</span> <span class="nav-text">faucet</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#p2psim"><span class="nav-number">7.</span> <span class="nav-text">p2psim</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#puppeth"><span class="nav-number">8.</span> <span class="nav-text">puppeth</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#rlpdump"><span class="nav-number">9.</span> <span class="nav-text">rlpdump</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#swarm"><span class="nav-number">10.</span> <span class="nav-text">swarm</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#wnode"><span class="nav-number">11.</span> <span class="nav-text">wnode</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#总结"><span class="nav-number">12.</span> <span class="nav-text">总结</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#References"><span class="nav-number">13.</span> <span class="nav-text">References</span></a></li></ol></div>
+            
+          </div>
+          <div class="post-toc-indicator-bottom post-toc-indicator">
+            <i class="fa fa-angle-double-down"></i>
+          </div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy;  2015 - 
+  <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Frank</span>
+</div>
+
+<div class="powered-by">
+  由 <a class="theme-link" href="http://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Muse
+  </a>
+</div>
+
+
+
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+
+  
+
+
+
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+  <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
+
+  <script type="text/javascript" src="/vendors/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  <script type="text/javascript" src="/vendors/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  <script type="text/javascript" src="/vendors/velocity/velocity.min.js"></script>
+
+  <script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js"></script>
+
+  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=0.5.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=0.5.0"></script>
+
+
+
+  
+  
+
+  
+  
+<script type="text/javascript" src="/js/src/scrollspy.js?v=0.5.0"></script>
+
+<script type="text/javascript" id="sidebar.toc.highlight">
+  $(document).ready(function () {
+    var tocSelector = '.post-toc';
+    var $tocSelector = $(tocSelector);
+    var activeCurrentSelector = '.active-current';
+
+    $tocSelector
+      .on('activate.bs.scrollspy', function () {
+        var $currentActiveElement = $(tocSelector + ' .active').last();
+
+        removeCurrentActiveClass();
+        $currentActiveElement.addClass('active-current');
+
+        $tocSelector[0].scrollTop = $currentActiveElement.position().top;
+      })
+      .on('clear.bs.scrollspy', function () {
+        removeCurrentActiveClass();
+      });
+
+    function removeCurrentActiveClass () {
+      $(tocSelector + ' ' + activeCurrentSelector)
+        .removeClass(activeCurrentSelector.substring(1));
+    }
+
+    function processTOC () {
+      getTOCMaxHeight();
+      toggleTOCOverflowIndicators();
+    }
+
+    function getTOCMaxHeight () {
+      var height = $('.sidebar').height() -
+                   $tocSelector.position().top -
+                   $('.post-toc-indicator-bottom').height();
+
+      $tocSelector.css('height', height);
+
+      return height;
+    }
+
+    function toggleTOCOverflowIndicators () {
+      tocOverflowIndicator(
+        '.post-toc-indicator-top',
+        $tocSelector.scrollTop() > 0 ? 'show' : 'hide'
+      );
+
+      tocOverflowIndicator(
+        '.post-toc-indicator-bottom',
+        $tocSelector.scrollTop() >= $tocSelector.find('ol').height() - $tocSelector.height() ? 'hide' : 'show'
+      )
+    }
+
+    $(document).on('sidebar.motion.complete', function () {
+      processTOC();
+    });
+
+    $('body').scrollspy({ target: tocSelector });
+    $(window).on('resize', function () {
+      if ( $('.sidebar').hasClass('sidebar-active') ) {
+        processTOC();
+      }
+    });
+
+    onScroll($tocSelector);
+
+    function onScroll (element) {
+      element.on('mousewheel DOMMouseScroll', function (event) {
+          var oe = event.originalEvent;
+          var delta = oe.wheelDelta || -oe.detail;
+
+          this.scrollTop += ( delta < 0 ? 1 : -1 ) * 30;
+          event.preventDefault();
+
+          toggleTOCOverflowIndicators();
+      });
+    }
+
+    function tocOverflowIndicator (indicator, action) {
+      var $indicator = $(indicator);
+      var opacity = action === 'show' ? 1 : 0;
+      $indicator.velocity ?
+        $indicator.velocity('stop').velocity({
+          opacity: opacity
+        }, { duration: 100 }) :
+        $indicator.stop().animate({
+          opacity: opacity
+        }, 100);
+    }
+
+  });
+</script>
+
+<script type="text/javascript" id="sidebar.nav">
+  $(document).ready(function () {
+    var html = $('html');
+    var TAB_ANIMATE_DURATION = 200;
+    var hasVelocity = $.isFunction(html.velocity);
+
+    $('.sidebar-nav li').on('click', function () {
+      var item = $(this);
+      var activeTabClassName = 'sidebar-nav-active';
+      var activePanelClassName = 'sidebar-panel-active';
+      if (item.hasClass(activeTabClassName)) {
+        return;
+      }
+
+      var currentTarget = $('.' + activePanelClassName);
+      var target = $('.' + item.data('target'));
+
+      hasVelocity ?
+        currentTarget.velocity('transition.slideUpOut', TAB_ANIMATE_DURATION, function () {
+          target
+            .velocity('stop')
+            .velocity('transition.slideDownIn', TAB_ANIMATE_DURATION)
+            .addClass(activePanelClassName);
+        }) :
+        currentTarget.animate({ opacity: 0 }, TAB_ANIMATE_DURATION, function () {
+          currentTarget.hide();
+          target
+            .stop()
+            .css({'opacity': 0, 'display': 'block'})
+            .animate({ opacity: 1 }, TAB_ANIMATE_DURATION, function () {
+              currentTarget.removeClass(activePanelClassName);
+              target.addClass(activePanelClassName);
+            });
+        });
+
+      item.siblings().removeClass(activeTabClassName);
+      item.addClass(activeTabClassName);
+    });
+
+    $('.post-toc a').on('click', function (e) {
+      e.preventDefault();
+      var targetSelector = NexT.utils.escapeSelector(this.getAttribute('href'));
+      var offset = $(targetSelector).offset().top;
+      hasVelocity ?
+        html.velocity('stop').velocity('scroll', {
+          offset: offset  + 'px',
+          mobileHA: false
+        }) :
+        $('html, body').stop().animate({
+          scrollTop: offset
+        }, 500);
+    });
+
+    // Expand sidebar on post detail page by default, when post has a toc.
+    NexT.motion.middleWares.sidebar = function () {
+      var $tocContent = $('.post-toc-content');
+
+      if (CONFIG.scheme !== 'Pisces' && (CONFIG.sidebar.display === 'post' || CONFIG.sidebar.display === 'always')) {
+        if ($tocContent.length > 0 && $tocContent.html().trim().length > 0) {
+          NexT.utils.displaySidebar();
+        }
+      }
+    };
+  });
+</script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=0.5.0"></script>
+
+
+
+  
+
+
+
+  
+
+    <script type="text/javascript">
+      var disqus_shortname = 'knarfeh';
+      var disqus_identifier = '2018/03/10/go-ethereum 源码笔记（cmd 模块-其他命令）/';
+      var disqus_title = 'go-ethereum 源码笔记（cmd 模块-其他命令）';
+      var disqus_url = 'http://knarfeh.github.io/2018/03/10/go-ethereum 源码笔记（cmd 模块-其他命令）/';
+
+      function run_disqus_script(disqus_script){
+        var dsq = document.createElement('script');
+        dsq.type = 'text/javascript';
+        dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/' + disqus_script;
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+      }
+
+      run_disqus_script('count.js');
+      
+        run_disqus_script('embed.js');
+      
+    </script>
+  
+
+
+
+  
+  
+  
+  <script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+      }
+    });
+  </script>
+
+  <script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+      var all = MathJax.Hub.getAllJax(), i;
+      for (i=0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';
+      }
+    });
+  </script>
+
+  
+    <script type="text/javascript" src="http://cdn.staticfile.org/mathjax/2.4.0/MathJax.js"></script>
+    <script type="text/javascript" src="http://cdn.staticfile.org/mathjax/2.4.0/config/TeX-AMS-MML_HTMLorMML.js"></script>
+  
+
+
+  
+
+
+</body>
+</html>

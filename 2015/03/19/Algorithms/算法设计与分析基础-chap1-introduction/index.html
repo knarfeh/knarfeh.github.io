@@ -1,0 +1,896 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  <link href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css"/>
+
+
+
+
+  <link href="//fonts.googleapis.com/css?family=Lato:300,400,700,400italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+
+
+
+<link href="/vendors/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=0.5.0" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="algorithms,note,算法设计与分析基础," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=0.5.0" />
+
+
+
+
+
+
+<meta name="description" content="算法是问题的程序化解决方法。">
+<meta name="keywords" content="algorithms,note,算法设计与分析基础">
+<meta property="og:type" content="article">
+<meta property="og:title" content="算法设计与分析基础 chap1 introduction">
+<meta property="og:url" content="http://knarfeh.github.io/2015/03/19/Algorithms/算法设计与分析基础-chap1-introduction/index.html">
+<meta property="og:site_name" content="Frank&#39;s Notes">
+<meta property="og:description" content="算法是问题的程序化解决方法。">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="http://7xi5vu.com1.z0.glb.clouddn.com/2015-3-19/graph2ds.png">
+<meta property="og:image" content="http://7xi5vu.com1.z0.glb.clouddn.com/2015-3-19/tree_forest.png">
+<meta property="og:image" content="http://7xi5vu.com1.z0.glb.clouddn.com/2015-3-19/rootedTree.png">
+<meta property="og:image" content="http://7xi5vu.com1.z0.glb.clouddn.com/2015-3-19/bsTree.png">
+<meta property="og:updated_time" content="2017-04-04T14:42:05.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="算法设计与分析基础 chap1 introduction">
+<meta name="twitter:description" content="算法是问题的程序化解决方法。">
+<meta name="twitter:image" content="http://7xi5vu.com1.z0.glb.clouddn.com/2015-3-19/graph2ds.png">
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    scheme: 'Muse',
+    sidebar: {"display":"hide"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: 0,
+      author: '博主'
+    }
+  };
+</script>
+
+  <title> 算法设计与分析基础 chap1 introduction | Frank's Notes </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+            (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+          m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-75002639-1', 'auto');
+  ga('send', 'pageview');
+</script>
+
+
+
+
+
+
+
+
+
+  
+  
+
+  <div class="container one-collumn  page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">Frank's Notes</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle"></p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-home fa-fw"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-archive fa-fw"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-tags fa-fw"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-twitter">
+          <a href="/twitter" rel="section">
+            
+              <i class="menu-item-icon fa fa-coffee fa-fw"></i> <br />
+            
+            Twitter
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                算法设计与分析基础 chap1 introduction
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2015-03-19T00:33:34+08:00" content="2015-03-19">
+              2015-03-19
+            </time>
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2015/03/19/Algorithms/算法设计与分析基础-chap1-introduction/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2015/03/19/Algorithms/算法设计与分析基础-chap1-introduction/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>算法是问题的程序化解决方法。</p>
+<a id="more"></a>
+<h4 id="伪代码的基本结构"><a href="#伪代码的基本结构" class="headerlink" title="伪代码的基本结构"></a>伪代码的基本结构</h4><ol>
+<li>表达式   </li>
+<li>标准的数学符号及逻辑运算符号<ol>
+<li>左箭头←属值运算符</li>
+<li>在逻辑表达式中，<code>=</code> 或 <code>==</code> 代表相等关系运算</li>
+</ol>
+</li>
+<li><p>判断结构 </p>
+<pre><code>if (condition is true)  
+   true-actions
+else
+   false-actions 
+</code></pre></li>
+<li><p>循环运算结构  </p>
+<ol>
+<li><p>while-loops  </p>
+ <figure class="highlight actionscript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">while</span> (condition <span class="keyword">is</span> <span class="literal">true</span>)</div><div class="line">    <span class="keyword">do</span></div><div class="line">Actions</div></pre></td></tr></table></figure>
+</li>
+<li><p>repeat-loops</p>
+ <figure class="highlight oxygene"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">repeat</span>/<span class="keyword">do</span></div><div class="line">    Actions</div><div class="line"><span class="keyword">until</span> (condition <span class="keyword">is</span> <span class="keyword">true</span>)</div></pre></td></tr></table></figure>
+</li>
+<li><p>for-loops</p>
+ <figure class="highlight livecodeserver"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">for</span> (v <span class="built_in">from</span> initial <span class="built_in">value</span> <span class="built_in">to</span> <span class="function"><span class="keyword">end</span> <span class="title">value</span>, <span class="title">increase-step</span>)</span></div><div class="line">    <span class="built_in">do</span> </div><div class="line">actions</div></pre></td></tr></table></figure>
+</li>
+</ol>
+</li>
+<li><p>数组下标</p>
+<ol>
+<li>A[i] 表示数组A的第i个元素</li>
+<li>A[0..n] 表示元素为A[0]到A[n]的数组</li>
+</ol>
+</li>
+<li>方法应用<br> object.method(args)</li>
+<li>返回值<br> return value</li>
+</ol>
+<h4 id="重要问题类型"><a href="#重要问题类型" class="headerlink" title="重要问题类型"></a>重要问题类型</h4><ul>
+<li>排序</li>
+<li>查找</li>
+<li>字符串处理</li>
+<li>图问题</li>
+<li>组合问题</li>
+<li>几何问题</li>
+<li>数值问题  </li>
+</ul>
+<h4 id="基本数据结构（C-STL介绍）"><a href="#基本数据结构（C-STL介绍）" class="headerlink" title="基本数据结构（C++ STL介绍）"></a>基本数据结构（C++ STL介绍）</h4><p>C++ STL<br>主要的13个头文件：</p>
+<ul>
+<li>容器： <code>&lt;vector&gt;、&lt;list&gt;、&lt;stack&gt;、&lt;queue&gt;、&lt;deque&gt;、&lt;set&gt;、&lt;map&gt;</code></li>
+<li>算法：<code>&lt;algorithm&gt;、&lt;functional&gt;、&lt;numeric&gt;</code></li>
+<li>迭代器： <code>&lt;iterator&gt;</code>;</li>
+<li>其他：<code>&lt;memory&gt;</code>、<code>&lt;utility&gt;</code>  </li>
+</ul>
+<p>基本数据结构：</p>
+<ul>
+<li>一维数组<br>n个相同数据类型的元素构成的序列，它们连续存储在计算机的存储器中，我们只要指定数组的下标就能够访问这些元素。<br>C++ STL 类：<code>std::array</code><br>C++ STL 类：<code>std::vector</code> (大小可动态变化的数组)<br>std::vector 示例</li>
+</ul>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;vector&gt;</span></span></div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span> <span class="params">()</span>  </span>&#123;   </div><div class="line">   <span class="built_in">vector</span>&lt;<span class="built_in">string</span>&gt; SS;</div><div class="line">   SS.push_back(<span class="string">"The number is 10"</span>);</div><div class="line">   SS.push_back(<span class="string">"The number is 20"</span>);</div><div class="line">   SS.push_back(<span class="string">"The number is 30"</span>);</div><div class="line">   SS.push_back(<span class="string">"The number is 40"</span>);</div><div class="line"></div><div class="line">   SS.pop_back();    <span class="comment">//删除最后一个元素      </span></div><div class="line">   SS.erase ( SS.begin()+<span class="number">1</span>,  SS.begin()+<span class="number">2</span>);    <span class="comment">//删除第二个元素 </span></div><div class="line"></div><div class="line">   <span class="keyword">for</span> (<span class="built_in">vector</span>&lt;<span class="built_in">string</span>&gt;::iterator  it=SS.begin();  it!=SS.end();  ++it)</div><div class="line">        <span class="built_in">std</span>::<span class="built_in">cout</span>  &lt;&lt; *it &lt;&lt; <span class="string">'\n'</span>; </div><div class="line">   <span class="keyword">return</span> <span class="number">0</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<ul>
+<li><p>链表<br>链表（linked list）是0个或者多个称为节点的元素构成的序列，每个节包含两类信息：一些数据，以及一个或多个称为指针的链接，指向链表中其他元素。<br>C++ STL 类：<code>std::forward_list</code><br>另一种扩展结构被称为双链表(double-linked list )，其中除了第一个和最末一个节点，每一个节点都既包含指向前趋的指针又包含指向后继的指针。<br>C++ STL 类：<code>std::list</code>  </p>
+</li>
+<li><p>队列<br>队列（queue）也是一种列表，只是删除元素在列表的队头进行；插入元素在表的队尾进行。因此队列是按照一种『先进先出』（FIFO）方式运行的。<br>C++ STL 类：<code>std::queue</code><br>双向队列（Double-ended queue）是双向开口的连续线性空间，可以高效的在头尾两端插入和删除元素。<br>C++ STL 类：<code>std::deque</code> </p>
+</li>
+<li><p>栈<br>栈 (Stack) 是一种插入和删除操作都只能在尾端进行的列表，这一端被称为栈顶。该结构按照一种『后进先出』（LIFO）的方式运转。<br>C++ STL 类：<code>std::stack</code><br>栈使用的容器是双向队列</p>
+</li>
+</ul>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">template</span>&lt;</div><div class="line">    <span class="keyword">class</span> T, <span class="keyword">class</span> Container = <span class="built_in">std</span>::<span class="built_in">deque</span>&lt;T&gt;</div><div class="line">&gt; <span class="keyword">class</span> <span class="built_in">stack</span>;</div></pre></td></tr></table></figure>
+<p>示例：<br><figure class="highlight cpp"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div></pre></td><td class="code"><pre><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stack&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;vector&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;list&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cstdio&gt;</span></span></div><div class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</div><div class="line">	<span class="comment">//可以使用list或vector作为栈的容器，默认是使用deque的。</span></div><div class="line">	<span class="built_in">stack</span>&lt;<span class="keyword">int</span>, <span class="built_in">list</span>&lt;<span class="keyword">int</span>&gt;&gt;      a;</div><div class="line">	<span class="built_in">stack</span>&lt;<span class="keyword">int</span>, <span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&gt;   b;</div><div class="line">	</div><div class="line">	<span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="number">10</span>; i++)  &#123;</div><div class="line">		a.push(i);</div><div class="line">		b.push(i);</div><div class="line">	&#125;</div><div class="line"></div><div class="line">	<span class="built_in">printf</span>(<span class="string">"%d %d\n"</span>, a.size(), b.size());  <span class="comment">//栈的大小</span></div><div class="line"></div><div class="line">	<span class="comment">//取栈项数据并将数据弹出栈</span></div><div class="line">	<span class="keyword">while</span> ( !a.empty() ) &#123;</div><div class="line">		<span class="built_in">printf</span>(<span class="string">"%d "</span>, a.top());</div><div class="line">		a.pop();</div><div class="line">	&#125;</div><div class="line">	<span class="built_in">putchar</span>(<span class="string">'\n'</span>);</div><div class="line">	<span class="keyword">return</span> <span class="number">0</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<ul>
+<li>优先队列（priority queue）<br>优先队列（priority queue）是一个数据项的集合，这些数据项都来自于一些全序域。对优先队列的主要操作是找到最大元素、删除最大元素和插入一个新元素。其主要优点是能高效的得到最大元素（总在队头）。<br>C++ STL 类：<code>std::priority_queue</code>  (用堆来实现)</li>
+</ul>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">template</span>&lt;</div><div class="line">  <span class="keyword">class</span> T,</div><div class="line">  <span class="keyword">class</span> Container = <span class="built_in">std</span>::<span class="built_in">vector</span>&lt;T&gt;,</div><div class="line">  <span class="keyword">class</span> Compare = <span class="built_in">std</span>::less&lt;<span class="keyword">typename</span> Container::value_type&gt; </div><div class="line">&gt;<span class="keyword">class</span> priority_queue;</div></pre></td></tr></table></figure>
+<p>  示例:<br>  <figure class="highlight cpp"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div></pre></td><td class="code"><pre><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;functional&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;queue&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;vector&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></div><div class="line"><span class="keyword">template</span>&lt;<span class="keyword">typename</span> T&gt; <span class="function"><span class="keyword">void</span> <span class="title">print_queue</span><span class="params">(T&amp; q)</span> </span>&#123;</div><div class="line">    <span class="keyword">while</span>(!q.empty()) &#123;</div><div class="line">        <span class="built_in">std</span>::<span class="built_in">cout</span> &lt;&lt; q.top() &lt;&lt; <span class="string">" "</span>;</div><div class="line">        q.pop();</div><div class="line">    &#125;</div><div class="line">    <span class="built_in">std</span>::<span class="built_in">cout</span> &lt;&lt; <span class="string">'\n'</span>;</div><div class="line">&#125;</div><div class="line">    </div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</div><div class="line">    <span class="built_in">std</span>::priority_queue&lt;<span class="keyword">int</span>&gt; q;</div><div class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> n : &#123;<span class="number">1</span>,<span class="number">8</span>,<span class="number">5</span>,<span class="number">6</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">0</span>,<span class="number">9</span>,<span class="number">3</span>,<span class="number">2</span>&#125;)</div><div class="line">        q.push(n);</div><div class="line">     </div><div class="line">    print_queue(q);</div><div class="line">     </div><div class="line">    <span class="built_in">std</span>::priority_queue&lt;<span class="keyword">int</span>, <span class="built_in">std</span>::<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;, <span class="built_in">std</span>::greater&lt;<span class="keyword">int</span>&gt; &gt; q2;</div><div class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> n : &#123;<span class="number">1</span>,<span class="number">8</span>,<span class="number">5</span>,<span class="number">6</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">0</span>,<span class="number">9</span>,<span class="number">3</span>,<span class="number">2</span>&#125;)</div><div class="line">        q2.push(n);</div><div class="line">     </div><div class="line">    print_queue(q2);</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<ul>
+<li><p>图<br>按照简单定义，一个图<code>G=&lt;V,E&gt;</code>由两个集合来定义：<br>一个有限集合V，它的元素被称为顶点；<br>另一个的限集合E，它的元素是由一对顶点，被称为边。图分为无向图和有向图。<br>任意两个顶点之间都有边相连的图称为完全图。如果完全图具有 <code>|V|</code> 个顶点，它的标准符号是 <code>K|V|</code>。<br>如果图中所缺的边数量相对较少，我们称它为稠密图；如果图中所缺的边数量相对较多，我们称为稀疏图。我们处理的是稀疏图还是稠密图，可能会影响图的表示方式，从而影响我们所设计或使用的算法的运行时间。<br>图主要有两种表示方式：</p>
+<ol>
+<li>邻接矩阵<br>n 个顶点的邻接矩阵是一个<code>n*n</code>的布尔矩阵，图中每个顶点都用一行和一列来表示，如果从第<code>i</code>个顶点到第<code>j</code>个顶点之间有连接边，则矩阵中第<code>i</code>行第<code>j</code>列的元素等于1，如果没有这样的边，则等于0。</li>
+<li>邻接链表<br>图的邻接链表是链表的一个集合，其中每一个顶点用一个链表表示，该链表包含了和这个顶点邻接的所有顶点（即所有和该顶点有边相连的顶点）。通常，这样一个表由一个表头开始，表头指出该链表表示的是哪一个顶点。<br>一图解惑：<br><img src="http://7xi5vu.com1.z0.glb.clouddn.com/2015-3-19/graph2ds.png"></li>
+</ol>
+<p>图有两个特性对于大量的应用是非常重要的：连通性和无环性。两者都基于路径的概念。 </p>
+<p>从顶点u到顶点v的路径可以这样定义：它是图G中始于u止于v的邻接（以一条边连接）顶点序列。<br>如果一条路径上所有顶点都是互不相同的，我们说这条路径是简单路径。<br>有向路径是一个顶点的序列，序列中的每一对连续顶点都被一条边连接起来，边的方向等于从第一个顶点指向下一个顶点的方向。  </p>
+<ul>
+<li>连通性<br>如果对于图中的每一对顶点<code>u</code>和<code>v</code>，都有一条从u到v的路径，我们说该图是连通的。<br>如果图是非连通的，这样一个模型会包含多个自我连通的部分，称为该图的连通分图。</li>
+<li>无环性<br>回路（环）是起点和终点都是同一顶点的简单路径。不包含回路的图称为无环图。</li>
+</ul>
+</li>
+<li><p>树<br>树(tree)就是连通且无回路的图。<br>无回路但不一定连通的图称为森林：它的每一个连通分图都是一棵树。<br>树具有其他图没有的一些重要特性：树的边数总是比它的顶点少一：<code>|E|=|V|-1</code><br><img src="http://7xi5vu.com1.z0.glb.clouddn.com/2015-3-19/tree_forest.png"></p>
+</li>
+<li><p>有根树<br>树的另一个非常重要的特性就是：树的任意两个顶点之间总是恰好存在一条从一个顶点到另一个顶点的简单路径。<br>这个性质使得以下做法成为可能：任选自由树中的一个顶点，将它作为树的根。有根的树称为有根树。</p>
+</li>
+</ul>
+<p><img src="http://7xi5vu.com1.z0.glb.clouddn.com/2015-3-19/rootedTree.png"></p>
+<ul>
+<li><p>有序树<br>有序树是一棵有根树，且树中每一顶点的所有子女都是有序的。<br>方便起见，我们可假设在这种树的示意图中，所有的子女都是从左到右有序排列的。</p>
+</li>
+<li><p>二叉树<br>也可以把二叉树定义为一棵有序树，其中所有顶点的子女个数都不超过两个，并且每个子女不是父母左子女就是父母的右子女。<br>一棵子树的根如果是某顶点的左（右）子女，该子树称为该顶点的左（右）子树。<br>对于高度为h，具有n个顶点的二叉树，我们有以下不等式：<br>$$\lfloor log_2n\rfloor\le h \le n-1$$</p>
+<ul>
+<li>二叉查找树<br>分配给每个父结点的数字都比它左子树中的数字大，比右子树中的数字小。这种树被称为二叉查找树。<br><img src="http://7xi5vu.com1.z0.glb.clouddn.com/2015-3-19/bsTree.png"></li>
+</ul>
+</li>
+<li>集合<br>集合（Set）概念在数学中扮演了一个中心角色。我们可以这样描述集合；它是互不相同的集合元素的无序组合。<br>多重集 （Multiset）和集合类似，只是容许有相同的元素存在。<br>C++ STL 类：<code>std::unordered_set</code>  (用哈希表实现)<br>C++ STL 类：<code>std::unordered_multiset</code>  (用哈希表实现)<br>有序集合（Sorted Set）<br>C++ STL 类：<code>std::set</code> (用红黑树实现平衡二叉查找树)<br>C++ STL 类：<code>std::multiset</code>  (用红黑树实现) </li>
+<li>字典<br>字典是一种包含元素都为（key, value）对的集合，又称为Map。和集合有很类似的性质。<br>C++ STL 类：<code>std::unordered_map</code>  (用哈希表实现)<br>C++ STL 类：<code>std::map</code> (用红黑树实现)<br>C++ STL 类：<code>std::multimap</code>  (用红黑树实现)<br>在计算中，我们对集合或者字典做的最多的操作是<ul>
+<li>查找一个给定元素 find</li>
+<li>增加新元素 insert</li>
+<li>删除一个元素 erase</li>
+</ul>
+</li>
+</ul>
+<p>STL中的集合和字典类都包含上述的三种方法<br>例子：  </p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div></pre></td><td class="code"><pre><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;string&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;map&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;utility&gt;</span></span></div><div class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span>  </span>&#123;</div><div class="line">   <span class="built_in">map</span>&lt;<span class="keyword">int</span>, <span class="built_in">string</span>&gt; Employees;</div><div class="line">   Employees[<span class="number">5234</span>] = <span class="string">"Mike C."</span>;</div><div class="line">   Employees[<span class="number">3374</span>] = <span class="string">"Charlie M."</span>;</div><div class="line">   Employees[<span class="number">1923</span>] = <span class="string">"David D."</span>;</div><div class="line">   Employees[<span class="number">7582</span>] = <span class="string">"John A."</span>;</div><div class="line">   Employees[<span class="number">5328</span>] = <span class="string">"Peter Q."</span>;</div><div class="line"></div><div class="line">   <span class="built_in">cout</span> &lt;&lt; <span class="string">"Employees[3374]="</span> &lt;&lt; Employees[<span class="number">3374</span>] &lt;&lt; <span class="built_in">endl</span>;</div><div class="line"></div><div class="line">   <span class="built_in">cout</span> &lt;&lt; <span class="string">"Map size: "</span> &lt;&lt; Employees.size() &lt;&lt; <span class="built_in">endl</span>;</div><div class="line"></div><div class="line">   <span class="keyword">for</span>( <span class="built_in">map</span>&lt;<span class="keyword">int</span>,<span class="built_in">string</span>&gt;::iterator ii=Employees.begin(); ii!=Employees.end(); ++ii)</div><div class="line">   &#123;</div><div class="line">       <span class="built_in">cout</span> &lt;&lt; (*ii).first &lt;&lt; <span class="string">": "</span> &lt;&lt; (*ii).second &lt;&lt; <span class="built_in">endl</span>;</div><div class="line">   &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p><a href="https://knarfeh.github.io/2015/03/19/C++STL表示邻接链表求简单路径/">课后习题</a></p>
+
+      
+    </div>
+
+    <div>
+      
+        
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/algorithms/" rel="tag">#algorithms</a>
+          
+            <a href="/tags/note/" rel="tag">#note</a>
+          
+            <a href="/tags/算法设计与分析基础/" rel="tag">#算法设计与分析基础</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2015/03/19/C++STL 表示邻接链表求简单路径/" rel="next" title="C++STL表示邻接链表求简单路径">
+                <i class="fa fa-chevron-left"></i> C++STL表示邻接链表求简单路径
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2015/03/19/Algorithms/算法设计与分析基础-chap3-蛮力法/" rel="prev" title="算法设计与分析基础 chap3 蛮力法">
+                算法设计与分析基础 chap3 蛮力法 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+      <div id="disqus_thread">
+        <noscript>
+          Please enable JavaScript to view the
+          <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a>
+        </noscript>
+      </div>
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel ">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="https://avatars1.githubusercontent.com/u/6964284?v=3&s=460"
+               alt="Frank" />
+          <p class="site-author-name" itemprop="name">Frank</p>
+          <p class="site-description motion-element" itemprop="description"></p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">174</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+          
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">125</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/knarfeh" target="_blank">
+                  
+                    <i class="fa fa-github"></i> GitHub
+                  
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://twitter.com/knarfeh" target="_blank">
+                  
+                    <i class="fa fa-twitter"></i> Twitter
+                  
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://weibo.com/2753500945" target="_blank">
+                  
+                    <i class="fa fa-weibo"></i> Weibo
+                  
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+          <div class="cc-license motion-element" itemprop="license">
+            <a href="http://creativecommons.org/licenses/by-sa/4.0" class="cc-opacity" target="_blank">
+              <img src="/images/cc-by-sa.svg" alt="Creative Commons" />
+            </a>
+          </div>
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+      </section>
+
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc-indicator-top post-toc-indicator">
+            <i class="fa fa-angle-double-up"></i>
+          </div>
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#伪代码的基本结构"><span class="nav-number">1.</span> <span class="nav-text">伪代码的基本结构</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#重要问题类型"><span class="nav-number">2.</span> <span class="nav-text">重要问题类型</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#基本数据结构（C-STL介绍）"><span class="nav-number">3.</span> <span class="nav-text">基本数据结构（C++ STL介绍）</span></a></li></ol></div>
+            
+          </div>
+          <div class="post-toc-indicator-bottom post-toc-indicator">
+            <i class="fa fa-angle-double-down"></i>
+          </div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy;  2015 - 
+  <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Frank</span>
+</div>
+
+<div class="powered-by">
+  由 <a class="theme-link" href="http://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Muse
+  </a>
+</div>
+
+
+
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+
+  
+
+
+
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+  <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
+
+  <script type="text/javascript" src="/vendors/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  <script type="text/javascript" src="/vendors/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  <script type="text/javascript" src="/vendors/velocity/velocity.min.js"></script>
+
+  <script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js"></script>
+
+  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=0.5.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=0.5.0"></script>
+
+
+
+  
+  
+
+  
+  
+<script type="text/javascript" src="/js/src/scrollspy.js?v=0.5.0"></script>
+
+<script type="text/javascript" id="sidebar.toc.highlight">
+  $(document).ready(function () {
+    var tocSelector = '.post-toc';
+    var $tocSelector = $(tocSelector);
+    var activeCurrentSelector = '.active-current';
+
+    $tocSelector
+      .on('activate.bs.scrollspy', function () {
+        var $currentActiveElement = $(tocSelector + ' .active').last();
+
+        removeCurrentActiveClass();
+        $currentActiveElement.addClass('active-current');
+
+        $tocSelector[0].scrollTop = $currentActiveElement.position().top;
+      })
+      .on('clear.bs.scrollspy', function () {
+        removeCurrentActiveClass();
+      });
+
+    function removeCurrentActiveClass () {
+      $(tocSelector + ' ' + activeCurrentSelector)
+        .removeClass(activeCurrentSelector.substring(1));
+    }
+
+    function processTOC () {
+      getTOCMaxHeight();
+      toggleTOCOverflowIndicators();
+    }
+
+    function getTOCMaxHeight () {
+      var height = $('.sidebar').height() -
+                   $tocSelector.position().top -
+                   $('.post-toc-indicator-bottom').height();
+
+      $tocSelector.css('height', height);
+
+      return height;
+    }
+
+    function toggleTOCOverflowIndicators () {
+      tocOverflowIndicator(
+        '.post-toc-indicator-top',
+        $tocSelector.scrollTop() > 0 ? 'show' : 'hide'
+      );
+
+      tocOverflowIndicator(
+        '.post-toc-indicator-bottom',
+        $tocSelector.scrollTop() >= $tocSelector.find('ol').height() - $tocSelector.height() ? 'hide' : 'show'
+      )
+    }
+
+    $(document).on('sidebar.motion.complete', function () {
+      processTOC();
+    });
+
+    $('body').scrollspy({ target: tocSelector });
+    $(window).on('resize', function () {
+      if ( $('.sidebar').hasClass('sidebar-active') ) {
+        processTOC();
+      }
+    });
+
+    onScroll($tocSelector);
+
+    function onScroll (element) {
+      element.on('mousewheel DOMMouseScroll', function (event) {
+          var oe = event.originalEvent;
+          var delta = oe.wheelDelta || -oe.detail;
+
+          this.scrollTop += ( delta < 0 ? 1 : -1 ) * 30;
+          event.preventDefault();
+
+          toggleTOCOverflowIndicators();
+      });
+    }
+
+    function tocOverflowIndicator (indicator, action) {
+      var $indicator = $(indicator);
+      var opacity = action === 'show' ? 1 : 0;
+      $indicator.velocity ?
+        $indicator.velocity('stop').velocity({
+          opacity: opacity
+        }, { duration: 100 }) :
+        $indicator.stop().animate({
+          opacity: opacity
+        }, 100);
+    }
+
+  });
+</script>
+
+<script type="text/javascript" id="sidebar.nav">
+  $(document).ready(function () {
+    var html = $('html');
+    var TAB_ANIMATE_DURATION = 200;
+    var hasVelocity = $.isFunction(html.velocity);
+
+    $('.sidebar-nav li').on('click', function () {
+      var item = $(this);
+      var activeTabClassName = 'sidebar-nav-active';
+      var activePanelClassName = 'sidebar-panel-active';
+      if (item.hasClass(activeTabClassName)) {
+        return;
+      }
+
+      var currentTarget = $('.' + activePanelClassName);
+      var target = $('.' + item.data('target'));
+
+      hasVelocity ?
+        currentTarget.velocity('transition.slideUpOut', TAB_ANIMATE_DURATION, function () {
+          target
+            .velocity('stop')
+            .velocity('transition.slideDownIn', TAB_ANIMATE_DURATION)
+            .addClass(activePanelClassName);
+        }) :
+        currentTarget.animate({ opacity: 0 }, TAB_ANIMATE_DURATION, function () {
+          currentTarget.hide();
+          target
+            .stop()
+            .css({'opacity': 0, 'display': 'block'})
+            .animate({ opacity: 1 }, TAB_ANIMATE_DURATION, function () {
+              currentTarget.removeClass(activePanelClassName);
+              target.addClass(activePanelClassName);
+            });
+        });
+
+      item.siblings().removeClass(activeTabClassName);
+      item.addClass(activeTabClassName);
+    });
+
+    $('.post-toc a').on('click', function (e) {
+      e.preventDefault();
+      var targetSelector = NexT.utils.escapeSelector(this.getAttribute('href'));
+      var offset = $(targetSelector).offset().top;
+      hasVelocity ?
+        html.velocity('stop').velocity('scroll', {
+          offset: offset  + 'px',
+          mobileHA: false
+        }) :
+        $('html, body').stop().animate({
+          scrollTop: offset
+        }, 500);
+    });
+
+    // Expand sidebar on post detail page by default, when post has a toc.
+    NexT.motion.middleWares.sidebar = function () {
+      var $tocContent = $('.post-toc-content');
+
+      if (CONFIG.scheme !== 'Pisces' && (CONFIG.sidebar.display === 'post' || CONFIG.sidebar.display === 'always')) {
+        if ($tocContent.length > 0 && $tocContent.html().trim().length > 0) {
+          NexT.utils.displaySidebar();
+        }
+      }
+    };
+  });
+</script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=0.5.0"></script>
+
+
+
+  
+
+
+
+  
+
+    <script type="text/javascript">
+      var disqus_shortname = 'knarfeh';
+      var disqus_identifier = '2015/03/19/Algorithms/算法设计与分析基础-chap1-introduction/';
+      var disqus_title = '算法设计与分析基础 chap1 introduction';
+      var disqus_url = 'http://knarfeh.github.io/2015/03/19/Algorithms/算法设计与分析基础-chap1-introduction/';
+
+      function run_disqus_script(disqus_script){
+        var dsq = document.createElement('script');
+        dsq.type = 'text/javascript';
+        dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/' + disqus_script;
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+      }
+
+      run_disqus_script('count.js');
+      
+        run_disqus_script('embed.js');
+      
+    </script>
+  
+
+
+
+  
+  
+  
+  <script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+      }
+    });
+  </script>
+
+  <script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+      var all = MathJax.Hub.getAllJax(), i;
+      for (i=0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';
+      }
+    });
+  </script>
+
+  
+    <script type="text/javascript" src="http://cdn.staticfile.org/mathjax/2.4.0/MathJax.js"></script>
+    <script type="text/javascript" src="http://cdn.staticfile.org/mathjax/2.4.0/config/TeX-AMS-MML_HTMLorMML.js"></script>
+  
+
+
+  
+
+
+</body>
+</html>

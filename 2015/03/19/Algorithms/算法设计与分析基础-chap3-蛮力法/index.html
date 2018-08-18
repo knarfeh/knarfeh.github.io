@@ -1,0 +1,883 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  <link href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css"/>
+
+
+
+
+  <link href="//fonts.googleapis.com/css?family=Lato:300,400,700,400italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+
+
+
+<link href="/vendors/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=0.5.0" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="algorithms,note,算法设计与分析基础," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=0.5.0" />
+
+
+
+
+
+
+<meta name="description" content="蛮力法（也叫穷举法），是一种直接解决问题的方法，常常直接基于问题的描述和所涉及的概念及定义。显然蛮力法经常不是一个最好的算法选择，但当我们想不出别的更好的办法时，它也是一种有效的解决问题的方法。">
+<meta name="keywords" content="algorithms,note,算法设计与分析基础">
+<meta property="og:type" content="article">
+<meta property="og:title" content="算法设计与分析基础 chap3 蛮力法">
+<meta property="og:url" content="http://knarfeh.github.io/2015/03/19/Algorithms/算法设计与分析基础-chap3-蛮力法/index.html">
+<meta property="og:site_name" content="Frank&#39;s Notes">
+<meta property="og:description" content="蛮力法（也叫穷举法），是一种直接解决问题的方法，常常直接基于问题的描述和所涉及的概念及定义。显然蛮力法经常不是一个最好的算法选择，但当我们想不出别的更好的办法时，它也是一种有效的解决问题的方法。">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="http://7xi5vu.com1.z0.glb.clouddn.com/2015-3-19/selectSort.png">
+<meta property="og:image" content="http://7xi5vu.com1.z0.glb.clouddn.com/2015-3-19/selectSortExample.png">
+<meta property="og:image" content="http://7xi5vu.com1.z0.glb.clouddn.com/2015-3-19/complexRate.png">
+<meta property="og:image" content="http://7xi5vu.com1.z0.glb.clouddn.com/2015-3-19/bubbleSort.png">
+<meta property="og:image" content="http://7xi5vu.com1.z0.glb.clouddn.com/2015-3-19/bubbleexample.png">
+<meta property="og:image" content="http://7xi5vu.com1.z0.glb.clouddn.com/2015-3-19/bubblesortComplexity.png">
+<meta property="og:image" content="http://7xi5vu.com1.z0.glb.clouddn.com/2015-3-19/tptptptptpstring.png">
+<meta property="og:image" content="http://7xi5vu.com1.z0.glb.clouddn.com/2015-3-19/complexityofsearch.png">
+<meta property="og:image" content="http://7xi5vu.com1.z0.glb.clouddn.com/2015-3-19/closePairdescription.png">
+<meta property="og:image" content="http://7xi5vu.com1.z0.glb.clouddn.com/2015-3-19/complexityClosePairs.png">
+<meta property="og:image" content="http://7xi5vu.com1.z0.glb.clouddn.com/2015-3-19/betterBruteforceConvexHull.png">
+<meta property="og:image" content="http://7xi5vu.com1.z0.glb.clouddn.com/2015-3-19/example.jpg">
+<meta property="og:image" content="http://7xi5vu.com1.z0.glb.clouddn.com/2015-3-19/travelProblem.png">
+<meta property="og:image" content="http://7xi5vu.com1.z0.glb.clouddn.com/2015-3-19/分配问题.png">
+<meta property="og:updated_time" content="2017-04-04T14:42:05.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="算法设计与分析基础 chap3 蛮力法">
+<meta name="twitter:description" content="蛮力法（也叫穷举法），是一种直接解决问题的方法，常常直接基于问题的描述和所涉及的概念及定义。显然蛮力法经常不是一个最好的算法选择，但当我们想不出别的更好的办法时，它也是一种有效的解决问题的方法。">
+<meta name="twitter:image" content="http://7xi5vu.com1.z0.glb.clouddn.com/2015-3-19/selectSort.png">
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    scheme: 'Muse',
+    sidebar: {"display":"hide"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: 0,
+      author: '博主'
+    }
+  };
+</script>
+
+  <title> 算法设计与分析基础 chap3 蛮力法 | Frank's Notes </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+            (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+          m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-75002639-1', 'auto');
+  ga('send', 'pageview');
+</script>
+
+
+
+
+
+
+
+
+
+  
+  
+
+  <div class="container one-collumn  page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">Frank's Notes</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle"></p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-home fa-fw"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-archive fa-fw"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-tags fa-fw"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-twitter">
+          <a href="/twitter" rel="section">
+            
+              <i class="menu-item-icon fa fa-coffee fa-fw"></i> <br />
+            
+            Twitter
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                算法设计与分析基础 chap3 蛮力法
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2015-03-19T00:33:34+08:00" content="2015-03-19">
+              2015-03-19
+            </time>
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2015/03/19/Algorithms/算法设计与分析基础-chap3-蛮力法/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2015/03/19/Algorithms/算法设计与分析基础-chap3-蛮力法/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>蛮力法（也叫穷举法），是一种直接解决问题的方法，常常直接基于问题的描述和所涉及的概念及定义。<br>显然蛮力法经常不是一个最好的算法选择，但当我们想不出别的更好的办法时，它也是一种有效的解决问题的方法。</p>
+<a id="more"></a>
+<h3 id="优点："><a href="#优点：" class="headerlink" title="优点："></a>优点：</h3><ul>
+<li>逻辑清晰，相对于高效的、巧妙的算法，实现和构思简单。</li>
+<li>同时蛮力法也是很多高效算法的基础。可以作为其他高效算法的衡量标准。</li>
+<li>可以用来解决广阔领域的多种问题。</li>
+<li>对于一些重要的问题，它可以产生一些合理的算法。</li>
+<li>可以解决一些小规模的问题。它让你花费较少的代价。</li>
+</ul>
+<h3 id="算法介绍："><a href="#算法介绍：" class="headerlink" title="算法介绍："></a>算法介绍：</h3><h4 id="选择排序"><a href="#选择排序" class="headerlink" title="选择排序"></a>选择排序</h4><p><strong>基本思想：</strong>从初始位置开始，依次给每个位置选择当前最小的元素<br><img src="http://7xi5vu.com1.z0.glb.clouddn.com/2015-3-19/selectSort.png"><br><strong>特点：</strong> 已经排好序的元素位于数组开头<br><img src="http://7xi5vu.com1.z0.glb.clouddn.com/2015-3-19/selectSortExample.png"><br><strong>算法：</strong>  </p>
+<pre><code>Algorithm SelectionSort(A[0..n-1])
+for i&lt;-0 to n-2 do
+    min&lt;-i
+for j&lt;-(i+1） to n-1 do
+    if A[j]&lt;A[min]
+        min&lt;-j
+    swap A[i] and A[min]
+</code></pre><p><strong>复杂度分析：</strong><br><img src="http://7xi5vu.com1.z0.glb.clouddn.com/2015-3-19/complexRate.png"> </p>
+<hr>
+<h4 id="冒泡排序"><a href="#冒泡排序" class="headerlink" title="冒泡排序"></a>冒泡排序</h4><p><strong>基本思想：</strong>依次比较相邻元素，利用相邻元素的交换，使得小的元素<br>不断往前换，并且大的元素不断往后换（冒泡）。<br><img src="http://7xi5vu.com1.z0.glb.clouddn.com/2015-3-19/bubbleSort.png"><br><strong>特点：</strong> 已经排好序的元素位于数组末尾<br><img src="http://7xi5vu.com1.z0.glb.clouddn.com/2015-3-19/bubbleexample.png"><br><strong>算法：</strong>  </p>
+<pre><code>Algorithm BubbleSort (A[0..n-1])
+for i←0 to n-2 do
+    for j←0 to n-2-i do
+        if A[j+1]&lt;A[j]
+            swap A[j] and A[j+1]
+</code></pre><p><strong>复杂度分析：</strong><br><img src="http://7xi5vu.com1.z0.glb.clouddn.com/2015-3-19/bubblesortComplexity.png"><br>该表达式与选择排序的表达式几乎相同。冒泡排序的键交换次数取决于特定的输入。最坏的情况下就是遇到降序的数组，这时的键交换次数和键比较次数是相同的。<br>$S_{worst}(n)=C(n)=\frac{(n-1)n}{2}\in\Theta(n^2)$</p>
+<h4 id="顺序查找-Sequential-Search"><a href="#顺序查找-Sequential-Search" class="headerlink" title="顺序查找(Sequential Search)"></a>顺序查找(Sequential Search)</h4><p><strong>基本思想：</strong><br>从第一个元素开始顺序扫描列表，逐个比较关键字与列表中元素的键值。若找到一个键值相等的元素，则查找成功；若扫描结束后，仍未找到，则查找失败。<br><strong>算法：</strong>  </p>
+<p>顺序查找算法1：  </p>
+<pre><code>Algorithm SequentialSearch1(A[0..n], K)
+for i&lt;-0 to n-1 do
+    if A[i]==K
+        return i
+return -1
+</code></pre><p>顺序查找算法2：  </p>
+<pre><code>Algorithm SequentialSearch2 (A[0..n], K)
+A[n]&lt;-K
+i&lt;-0
+while A[i] ≠ K do
+    i &lt;-i+1
+if i&lt;n return i
+else return -1
+</code></pre><p><strong>复杂度分析：</strong><br>最好情况:K排在A的第一位，复杂度:$\Theta(1)$<br>最坏情况：K不在A中，复杂度:$\Theta(n)$<br>平均情况：复杂度$\Theta(n)$</p>
+<h4 id="蛮力字符串匹配"><a href="#蛮力字符串匹配" class="headerlink" title="蛮力字符串匹配"></a>蛮力字符串匹配</h4><p><em>字符串匹配问题：</em></p>
+<p>给定一个n个字符组成的串，称为文本（text）。一个m个字符的串，称为模式（pattern ）。字符串匹配就是从文本中寻找匹配模式的<br>更精确地说，我们找的是 文本中的第一个匹配子串的开始位置 i：使得<br><img src="http://7xi5vu.com1.z0.glb.clouddn.com/2015-3-19/tptptptptpstring.png"></p>
+<p><strong>算法：</strong>  </p>
+<pre><code>Algorithm BruteForceStringMatch (T[0..n-1], P[0..m-1])
+for i&lt;-0 to n-m do
+    j&lt;-0
+    while j&lt;m and P[j]=T[i+j] do
+        j&lt;-j+1
+        if j=m return i
+return -1
+</code></pre><p><strong>复杂度分析：</strong><br>基本操作为j&lt; m and P[j]=T[i+j],最坏情况下，比较次数为:<br><img src="http://7xi5vu.com1.z0.glb.clouddn.com/2015-3-19/complexityofsearch.png"><br>由于n&gt;m，最差复杂度为：$\Theta(nm)$</p>
+<h4 id="最近对问题"><a href="#最近对问题" class="headerlink" title="最近对问题"></a>最近对问题</h4><p>给定平面上N个点的坐标，找出距离最近的两个点。<br><img src="http://7xi5vu.com1.z0.glb.clouddn.com/2015-3-19/closePairdescription.png"></p>
+<p><strong>算法：</strong>  </p>
+<pre><code>Algorithm BruteForceClosestPoints (P)
+dmin &lt;- ∞
+for i←1 to n-1 do
+    for j←i+1 to n do
+        d &lt;- sqrt((x i -x j ) 2 +(y i -y j ) 2 ) //sqrt 是平方根函数,可以优化去掉
+        if d&lt;dmin
+            dmin &lt;- d
+            index1 &lt;- i; index2 &lt;- j
+return index1, index2
+</code></pre><p>复杂度：<img src="http://7xi5vu.com1.z0.glb.clouddn.com/2015-3-19/complexityClosePairs.png"></p>
+<h4 id="凸包问题"><a href="#凸包问题" class="headerlink" title="凸包问题"></a>凸包问题</h4><p><strong>凸集合：</strong> 对于平面上的一个点集合（有限或无限），如果以集合中任意两点P和Q为端点的线段都属于这个集合，则这个集合是凸集合（凸点集合）<br><strong>凸包：</strong> 一个点集合S的凸包是包含S的最小凸集合。 『最小』：S的凸包一定是所有包含S的凸集合的子集<br><strong>凸包问题就是为一个n个点的集合构造凸包的问题</strong><br>定理：任意包含n&gt;2个点（不共线）的集合S的凸包是以S中的某些点为顶点的 凸多边形。<br><strong>极点：</strong>凸包（凸多边形）的顶点<br><strong>极点的性质：</strong>对于任何以集合中的点为端点的线段来说，它们不是这种线段的中点。<br><strong>算法思想：</strong>对于一个n个点集合中的两个点$p_i$和$p_j$，当且仅当该集合中的其他点都位于穿过这两点的直线的同一侧时，它们的连线是该集合凸包边界的一部分 。<br>判断同一侧：$ax+by-c=0,a=y_2-y_1,b=x_1-x_2,c=x_1y_2-y_1x_2$,在同一侧时 ax+by-c的符号相同   </p>
+<pre><code>Algorithm   BruteForceConvexHull(P)
+PointPairs &lt;- ∅
+for i←1 to n-1 do
+    for j&lt;-i+1 to n do
+        currSign &lt;- 0; sameSide &lt;- True
+        a &lt;- y j -y i ; b &lt;- x i -x j ; c &lt;- x i y j -y i x j
+        for k&lt;-1 to n do
+            if k=i OR k=j continue
+            sign k &lt;-sign (ax k +by k -c)
+            if currSign=0 currSign &lt;- sign k ;
+            else if currSign*sign k &lt; 0
+                sameSide &lt;- False; break
+        if sameSide =True Add &lt;i, j&gt; to PointPairs
+return PointPairs
+</code></pre><p>当<code>k</code>和<code>i,j</code>在同一直线时，$sign_k=0$,选取了多余的点对。<br>修正：<br><img src="http://7xi5vu.com1.z0.glb.clouddn.com/2015-3-19/betterBruteforceConvexHull.png"><br>效率分析：<code>i,j</code>的组合有$n(n-1)/2个$，每个组合，最差需要再对<code>n-2</code>个<code>k</code>作判断，所以该算法的复杂度为$O(n^3)$</p>
+<h4 id="穷举查找"><a href="#穷举查找" class="headerlink" title="穷举查找"></a>穷举查找</h4><p><img src="http://7xi5vu.com1.z0.glb.clouddn.com/2015-3-19/example.jpg"></p>
+<ul>
+<li>旅行商问题：一个售货员希望从一个城市出发访问 n 个城市,每个城市只访问一次，开始和结束于同一城市。问题：设计一个算法,找出售货员能采取的最短路径。问题模型：求一个赋权图中最短的哈密尔顿回路。<br><img src="http://7xi5vu.com1.z0.glb.clouddn.com/2015-3-19/travelProblem.png"> </li>
+<li>0-1背包问题</li>
+<li>分配问题：<br>有 n 个任务需要分配给 n 个人执行，一个任务一个人。（每个任务只分配给一个人，每个人只分配一个任务）对于每一对<code>i,j=1,…,n</code>来说，将第<code>j</code>个任务分配给<code>i</code>个人的成本是C[i,j]。该问题要找出总成本最小的分配方案。<br><img src="http://7xi5vu.com1.z0.glb.clouddn.com/2015-3-19/分配问题.png"><br>旅行商问题和背包问题是典型的NP难问题，目前还没有发现有效的多项式时间复杂度的算法</li>
+</ul>
+<p>对于分配问题，有一个匈牙利算法（Hungarian Algorithm or Kuhn–Munkres Algorithm）。二部图（bipartitegraph），其时间复杂度为$O(n^4)$。经过改进后，该算法复杂度可提升为$O(n^3)$。</p>
+
+      
+    </div>
+
+    <div>
+      
+        
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/algorithms/" rel="tag">#algorithms</a>
+          
+            <a href="/tags/note/" rel="tag">#note</a>
+          
+            <a href="/tags/算法设计与分析基础/" rel="tag">#算法设计与分析基础</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2015/03/19/Algorithms/算法设计与分析基础-chap1-introduction/" rel="next" title="算法设计与分析基础 chap1 introduction">
+                <i class="fa fa-chevron-left"></i> 算法设计与分析基础 chap1 introduction
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2015/03/25/局域网内 IP 地址冲突检测-version1/" rel="prev" title="局域网内IP地址冲突检测-version1">
+                局域网内IP地址冲突检测-version1 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+      <div id="disqus_thread">
+        <noscript>
+          Please enable JavaScript to view the
+          <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a>
+        </noscript>
+      </div>
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel ">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="https://avatars1.githubusercontent.com/u/6964284?v=3&s=460"
+               alt="Frank" />
+          <p class="site-author-name" itemprop="name">Frank</p>
+          <p class="site-description motion-element" itemprop="description"></p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">174</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+          
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">125</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/knarfeh" target="_blank">
+                  
+                    <i class="fa fa-github"></i> GitHub
+                  
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://twitter.com/knarfeh" target="_blank">
+                  
+                    <i class="fa fa-twitter"></i> Twitter
+                  
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://weibo.com/2753500945" target="_blank">
+                  
+                    <i class="fa fa-weibo"></i> Weibo
+                  
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+          <div class="cc-license motion-element" itemprop="license">
+            <a href="http://creativecommons.org/licenses/by-sa/4.0" class="cc-opacity" target="_blank">
+              <img src="/images/cc-by-sa.svg" alt="Creative Commons" />
+            </a>
+          </div>
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+      </section>
+
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc-indicator-top post-toc-indicator">
+            <i class="fa fa-angle-double-up"></i>
+          </div>
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#优点："><span class="nav-number">1.</span> <span class="nav-text">优点：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#算法介绍："><span class="nav-number">2.</span> <span class="nav-text">算法介绍：</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#选择排序"><span class="nav-number">2.1.</span> <span class="nav-text">选择排序</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#冒泡排序"><span class="nav-number">2.2.</span> <span class="nav-text">冒泡排序</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#顺序查找-Sequential-Search"><span class="nav-number">2.3.</span> <span class="nav-text">顺序查找(Sequential Search)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#蛮力字符串匹配"><span class="nav-number">2.4.</span> <span class="nav-text">蛮力字符串匹配</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#最近对问题"><span class="nav-number">2.5.</span> <span class="nav-text">最近对问题</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#凸包问题"><span class="nav-number">2.6.</span> <span class="nav-text">凸包问题</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#穷举查找"><span class="nav-number">2.7.</span> <span class="nav-text">穷举查找</span></a></li></ol></li></ol></div>
+            
+          </div>
+          <div class="post-toc-indicator-bottom post-toc-indicator">
+            <i class="fa fa-angle-double-down"></i>
+          </div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy;  2015 - 
+  <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Frank</span>
+</div>
+
+<div class="powered-by">
+  由 <a class="theme-link" href="http://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Muse
+  </a>
+</div>
+
+
+
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+
+  
+
+
+
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+  <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
+
+  <script type="text/javascript" src="/vendors/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  <script type="text/javascript" src="/vendors/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  <script type="text/javascript" src="/vendors/velocity/velocity.min.js"></script>
+
+  <script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js"></script>
+
+  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=0.5.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=0.5.0"></script>
+
+
+
+  
+  
+
+  
+  
+<script type="text/javascript" src="/js/src/scrollspy.js?v=0.5.0"></script>
+
+<script type="text/javascript" id="sidebar.toc.highlight">
+  $(document).ready(function () {
+    var tocSelector = '.post-toc';
+    var $tocSelector = $(tocSelector);
+    var activeCurrentSelector = '.active-current';
+
+    $tocSelector
+      .on('activate.bs.scrollspy', function () {
+        var $currentActiveElement = $(tocSelector + ' .active').last();
+
+        removeCurrentActiveClass();
+        $currentActiveElement.addClass('active-current');
+
+        $tocSelector[0].scrollTop = $currentActiveElement.position().top;
+      })
+      .on('clear.bs.scrollspy', function () {
+        removeCurrentActiveClass();
+      });
+
+    function removeCurrentActiveClass () {
+      $(tocSelector + ' ' + activeCurrentSelector)
+        .removeClass(activeCurrentSelector.substring(1));
+    }
+
+    function processTOC () {
+      getTOCMaxHeight();
+      toggleTOCOverflowIndicators();
+    }
+
+    function getTOCMaxHeight () {
+      var height = $('.sidebar').height() -
+                   $tocSelector.position().top -
+                   $('.post-toc-indicator-bottom').height();
+
+      $tocSelector.css('height', height);
+
+      return height;
+    }
+
+    function toggleTOCOverflowIndicators () {
+      tocOverflowIndicator(
+        '.post-toc-indicator-top',
+        $tocSelector.scrollTop() > 0 ? 'show' : 'hide'
+      );
+
+      tocOverflowIndicator(
+        '.post-toc-indicator-bottom',
+        $tocSelector.scrollTop() >= $tocSelector.find('ol').height() - $tocSelector.height() ? 'hide' : 'show'
+      )
+    }
+
+    $(document).on('sidebar.motion.complete', function () {
+      processTOC();
+    });
+
+    $('body').scrollspy({ target: tocSelector });
+    $(window).on('resize', function () {
+      if ( $('.sidebar').hasClass('sidebar-active') ) {
+        processTOC();
+      }
+    });
+
+    onScroll($tocSelector);
+
+    function onScroll (element) {
+      element.on('mousewheel DOMMouseScroll', function (event) {
+          var oe = event.originalEvent;
+          var delta = oe.wheelDelta || -oe.detail;
+
+          this.scrollTop += ( delta < 0 ? 1 : -1 ) * 30;
+          event.preventDefault();
+
+          toggleTOCOverflowIndicators();
+      });
+    }
+
+    function tocOverflowIndicator (indicator, action) {
+      var $indicator = $(indicator);
+      var opacity = action === 'show' ? 1 : 0;
+      $indicator.velocity ?
+        $indicator.velocity('stop').velocity({
+          opacity: opacity
+        }, { duration: 100 }) :
+        $indicator.stop().animate({
+          opacity: opacity
+        }, 100);
+    }
+
+  });
+</script>
+
+<script type="text/javascript" id="sidebar.nav">
+  $(document).ready(function () {
+    var html = $('html');
+    var TAB_ANIMATE_DURATION = 200;
+    var hasVelocity = $.isFunction(html.velocity);
+
+    $('.sidebar-nav li').on('click', function () {
+      var item = $(this);
+      var activeTabClassName = 'sidebar-nav-active';
+      var activePanelClassName = 'sidebar-panel-active';
+      if (item.hasClass(activeTabClassName)) {
+        return;
+      }
+
+      var currentTarget = $('.' + activePanelClassName);
+      var target = $('.' + item.data('target'));
+
+      hasVelocity ?
+        currentTarget.velocity('transition.slideUpOut', TAB_ANIMATE_DURATION, function () {
+          target
+            .velocity('stop')
+            .velocity('transition.slideDownIn', TAB_ANIMATE_DURATION)
+            .addClass(activePanelClassName);
+        }) :
+        currentTarget.animate({ opacity: 0 }, TAB_ANIMATE_DURATION, function () {
+          currentTarget.hide();
+          target
+            .stop()
+            .css({'opacity': 0, 'display': 'block'})
+            .animate({ opacity: 1 }, TAB_ANIMATE_DURATION, function () {
+              currentTarget.removeClass(activePanelClassName);
+              target.addClass(activePanelClassName);
+            });
+        });
+
+      item.siblings().removeClass(activeTabClassName);
+      item.addClass(activeTabClassName);
+    });
+
+    $('.post-toc a').on('click', function (e) {
+      e.preventDefault();
+      var targetSelector = NexT.utils.escapeSelector(this.getAttribute('href'));
+      var offset = $(targetSelector).offset().top;
+      hasVelocity ?
+        html.velocity('stop').velocity('scroll', {
+          offset: offset  + 'px',
+          mobileHA: false
+        }) :
+        $('html, body').stop().animate({
+          scrollTop: offset
+        }, 500);
+    });
+
+    // Expand sidebar on post detail page by default, when post has a toc.
+    NexT.motion.middleWares.sidebar = function () {
+      var $tocContent = $('.post-toc-content');
+
+      if (CONFIG.scheme !== 'Pisces' && (CONFIG.sidebar.display === 'post' || CONFIG.sidebar.display === 'always')) {
+        if ($tocContent.length > 0 && $tocContent.html().trim().length > 0) {
+          NexT.utils.displaySidebar();
+        }
+      }
+    };
+  });
+</script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=0.5.0"></script>
+
+
+
+  
+
+
+
+  
+
+    <script type="text/javascript">
+      var disqus_shortname = 'knarfeh';
+      var disqus_identifier = '2015/03/19/Algorithms/算法设计与分析基础-chap3-蛮力法/';
+      var disqus_title = '算法设计与分析基础 chap3 蛮力法';
+      var disqus_url = 'http://knarfeh.github.io/2015/03/19/Algorithms/算法设计与分析基础-chap3-蛮力法/';
+
+      function run_disqus_script(disqus_script){
+        var dsq = document.createElement('script');
+        dsq.type = 'text/javascript';
+        dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/' + disqus_script;
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+      }
+
+      run_disqus_script('count.js');
+      
+        run_disqus_script('embed.js');
+      
+    </script>
+  
+
+
+
+  
+  
+  
+  <script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+      }
+    });
+  </script>
+
+  <script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+      var all = MathJax.Hub.getAllJax(), i;
+      for (i=0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';
+      }
+    });
+  </script>
+
+  
+    <script type="text/javascript" src="http://cdn.staticfile.org/mathjax/2.4.0/MathJax.js"></script>
+    <script type="text/javascript" src="http://cdn.staticfile.org/mathjax/2.4.0/config/TeX-AMS-MML_HTMLorMML.js"></script>
+  
+
+
+  
+
+
+</body>
+</html>

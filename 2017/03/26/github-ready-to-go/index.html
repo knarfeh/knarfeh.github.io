@@ -1,0 +1,812 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  <link href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css"/>
+
+
+
+
+  <link href="//fonts.googleapis.com/css?family=Lato:300,400,700,400italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+
+
+
+<link href="/vendors/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=0.5.0" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="golang," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=0.5.0" />
+
+
+
+
+
+
+<meta name="description" content="假期的时候给一个 golang 开源项目 s 贡献了代码，快两个月了，时间也有点久远了😂  我发现给 golang 项目贡献代码的姿势跟给其他语言贡献代码的姿势不太一样，而我当时只是 hack 了一下，也没记录下来，这不，给自己挖坑了，最近又有一位朋友问我怎么给 github 上的 golang 项目贡献代码，为什么会有这样的问题呢，难道 golang 很特殊？听我一一道来。">
+<meta name="keywords" content="golang">
+<meta property="og:type" content="article">
+<meta property="og:title" content="github, ready to go?">
+<meta property="og:url" content="http://knarfeh.github.io/2017/03/26/github-ready-to-go/index.html">
+<meta property="og:site_name" content="Frank&#39;s Notes">
+<meta property="og:description" content="假期的时候给一个 golang 开源项目 s 贡献了代码，快两个月了，时间也有点久远了😂  我发现给 golang 项目贡献代码的姿势跟给其他语言贡献代码的姿势不太一样，而我当时只是 hack 了一下，也没记录下来，这不，给自己挖坑了，最近又有一位朋友问我怎么给 github 上的 golang 项目贡献代码，为什么会有这样的问题呢，难道 golang 很特殊？听我一一道来。">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2017-04-04T14:42:05.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="github, ready to go?">
+<meta name="twitter:description" content="假期的时候给一个 golang 开源项目 s 贡献了代码，快两个月了，时间也有点久远了😂  我发现给 golang 项目贡献代码的姿势跟给其他语言贡献代码的姿势不太一样，而我当时只是 hack 了一下，也没记录下来，这不，给自己挖坑了，最近又有一位朋友问我怎么给 github 上的 golang 项目贡献代码，为什么会有这样的问题呢，难道 golang 很特殊？听我一一道来。">
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    scheme: 'Muse',
+    sidebar: {"display":"hide"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: 0,
+      author: '博主'
+    }
+  };
+</script>
+
+  <title> github, ready to go? | Frank's Notes </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+            (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+          m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-75002639-1', 'auto');
+  ga('send', 'pageview');
+</script>
+
+
+
+
+
+
+
+
+
+  
+  
+
+  <div class="container one-collumn  page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">Frank's Notes</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle"></p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-home fa-fw"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-archive fa-fw"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-tags fa-fw"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-twitter">
+          <a href="/twitter" rel="section">
+            
+              <i class="menu-item-icon fa fa-coffee fa-fw"></i> <br />
+            
+            Twitter
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                github, ready to go?
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2017-03-26T00:04:32+08:00" content="2017-03-26">
+              2017-03-26
+            </time>
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2017/03/26/github-ready-to-go/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2017/03/26/github-ready-to-go/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>假期的时候给一个 golang 开源项目 <a href="https://github.com/zquestz/s" target="_blank" rel="external">s</a> 贡献了代码，快两个月了，时间也有点久远了😂  我发现给 golang 项目贡献代码的姿势跟给其他语言贡献代码的姿势不太一样，而我当时只是 hack 了一下，也没记录下来，这不，给自己挖坑了，最近又有一位朋友问我怎么给 github 上的 golang 项目贡献代码，为什么会有这样的问题呢，难道 golang 很特殊？听我一一道来。<br><a id="more"></a></p>
+<h2 id="问题1：怎么给一个-github-项目贡献代码"><a href="#问题1：怎么给一个-github-项目贡献代码" class="headerlink" title="问题1：怎么给一个 github 项目贡献代码"></a>问题1：怎么给一个 github 项目贡献代码</h2><p>以 <a href="https://github.com/docker/compose/blob/master/CONTRIBUTING.md" target="_blank" rel="external">docker/compose</a> 为例吧，这个项目的 COMTRIBUTING.md 中描述的指导是非常规范的，客官也不必点击链接跳转了，我总结了一下步骤：</p>
+<ol>
+<li>Fork <a href="https://github.com/docker/compose" target="_blank" rel="external">https://github.com/docker/compose</a></li>
+<li>在你的开发机上 <code>git clone git@github.com:username/compose.git</code></li>
+<li>配置源仓库地址，在开发过程中与源仓库同步</li>
+<li>提交代码后，在页面上点击 New pull request</li>
+</ol>
+<p>关于如何与源仓库同步，可以看 github 的文章：<a href="https://help.github.com/articles/syncing-a-fork/" target="_blank" rel="external">https://help.github.com/articles/syncing-a-fork/</a></p>
+<p>简单总结一下就是：</p>
+<h3 id="增加一个源仓库的地址"><a href="#增加一个源仓库的地址" class="headerlink" title="增加一个源仓库的地址"></a>增加一个源仓库的地址</h3><ul>
+<li><code>git remote -v</code></li>
+<li><code>git remote add upstream https://github.com/original_owner/original_repository</code></li>
+</ul>
+<h3 id="保持与源仓库同步"><a href="#保持与源仓库同步" class="headerlink" title="保持与源仓库同步"></a>保持与源仓库同步</h3><ul>
+<li><code>git fetch upstream</code></li>
+<li><code>git checkout master</code></li>
+<li><code>git merge upstream/master</code></li>
+</ul>
+<h2 id="问题2：golang-有什么特别的"><a href="#问题2：golang-有什么特别的" class="headerlink" title="问题2：golang 有什么特别的"></a>问题2：golang 有什么特别的</h2><p>如果按照上面的做法，比如我 fork 了<a href="https://github.com/zquestz/s" target="_blank" rel="external">s</a> 这个项目，然后使用 go get：</p>
+<figure class="highlight vim"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ <span class="keyword">go</span> <span class="built_in">get</span> http<span class="variable">s:</span>//github.<span class="keyword">com</span>/knarfeh/s</div></pre></td></tr></table></figure>
+<p>代码就会放在 <code>$GOPATH/src/github.com/knarfeh/s</code> 路径下，然后就修改这份代码吗？不对。问题出在 go 项目的 import path 上，例如：<a href="https://github.com/zquestz/s" target="_blank" rel="external">s</a>  的 <code>cmd/config.go</code> (commit id：4b6657dfa11462864c527f43a86227def63e03f3)</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> (</div><div class="line">	<span class="string">"encoding/json"</span></div><div class="line">	<span class="string">"os"</span></div><div class="line">	<span class="string">"path/filepath"</span></div><div class="line"></div><div class="line">	<span class="string">"github.com/mitchellh/go-homedir"</span></div><div class="line">	<span class="string">"github.com/zquestz/go-ucl"</span></div><div class="line">	<span class="string">"github.com/zquestz/s/providers"</span></div><div class="line">)</div></pre></td></tr></table></figure>
+<p>这个 import 的路径，指向的是 <code>github.com/zquestz/s/</code>，这就尴尬了，难道把这些指向源仓库的 import 全改了，提 PR 的时候再改回来？也太麻烦了。</p>
+<h2 id="问题3：给-github-的-golang-项目贡献代码，正确的姿势是什么"><a href="#问题3：给-github-的-golang-项目贡献代码，正确的姿势是什么" class="headerlink" title="问题3：给 github 的 golang 项目贡献代码，正确的姿势是什么"></a>问题3：给 github 的 golang 项目贡献代码，正确的姿势是什么</h2><p>其实很简单，我们可以在源仓库添加我们 fork 的仓库的地址。以 <a href="https://github.com/zquestz/s" target="_blank" rel="external">s</a> 为例，具体步骤：</p>
+<ol>
+<li>在 github 上 fork 源仓库</li>
+<li><code>go get https://github.com/zquestz/s</code></li>
+<li>给源仓库加上 fork 的仓库地址，比如：<code>git remote add fork https://github.com/knarfeh/s</code></li>
+<li>修改了代码后，<code>git push fork</code> ，然后就可以在 github 上提交 PR 啦</li>
+</ol>
+<p>回过来一想，也许这才是 github 的正确使用方式呢，这样的话，也不必用 <a href="https://help.github.com/articles/syncing-a-fork/" target="_blank" rel="external">https://help.github.com/articles/syncing-a-fork/</a> 这种方式跟源仓库同步了，直接 pull master，然后在 fork 的分支上 rebase 就好了，呵呵呵呵呵🙃</p>
+<h4 id="参考资料："><a href="#参考资料：" class="headerlink" title="参考资料："></a>参考资料：</h4><ul>
+<li><a href="https://github.com/docker/compose/blob/master/CONTRIBUTING.md" target="_blank" rel="external">docker/compose</a></li>
+<li><a href="https://help.github.com/articles/syncing-a-fork/" target="_blank" rel="external">sync a fork</a></li>
+</ul>
+
+      
+    </div>
+
+    <div>
+      
+        
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/golang/" rel="tag">#golang</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/01/30/【译】PEP333-Python Web Server Gateway Interface v1.0/" rel="next" title="【译】PEP333-Python Web Server Gateway Interface v1.0">
+                <i class="fa fa-chevron-left"></i> 【译】PEP333-Python Web Server Gateway Interface v1.0
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2017/10/20/发布一个-python-包/" rel="prev" title="发布一个-python-包">
+                发布一个-python-包 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+      <div id="disqus_thread">
+        <noscript>
+          Please enable JavaScript to view the
+          <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a>
+        </noscript>
+      </div>
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel ">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="https://avatars1.githubusercontent.com/u/6964284?v=3&s=460"
+               alt="Frank" />
+          <p class="site-author-name" itemprop="name">Frank</p>
+          <p class="site-description motion-element" itemprop="description"></p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">174</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+          
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">125</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/knarfeh" target="_blank">
+                  
+                    <i class="fa fa-github"></i> GitHub
+                  
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://twitter.com/knarfeh" target="_blank">
+                  
+                    <i class="fa fa-twitter"></i> Twitter
+                  
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://weibo.com/2753500945" target="_blank">
+                  
+                    <i class="fa fa-weibo"></i> Weibo
+                  
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+          <div class="cc-license motion-element" itemprop="license">
+            <a href="http://creativecommons.org/licenses/by-sa/4.0" class="cc-opacity" target="_blank">
+              <img src="/images/cc-by-sa.svg" alt="Creative Commons" />
+            </a>
+          </div>
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+      </section>
+
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc-indicator-top post-toc-indicator">
+            <i class="fa fa-angle-double-up"></i>
+          </div>
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#问题1：怎么给一个-github-项目贡献代码"><span class="nav-number">1.</span> <span class="nav-text">问题1：怎么给一个 github 项目贡献代码</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#增加一个源仓库的地址"><span class="nav-number">1.1.</span> <span class="nav-text">增加一个源仓库的地址</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#保持与源仓库同步"><span class="nav-number">1.2.</span> <span class="nav-text">保持与源仓库同步</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#问题2：golang-有什么特别的"><span class="nav-number">2.</span> <span class="nav-text">问题2：golang 有什么特别的</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#问题3：给-github-的-golang-项目贡献代码，正确的姿势是什么"><span class="nav-number">3.</span> <span class="nav-text">问题3：给 github 的 golang 项目贡献代码，正确的姿势是什么</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#参考资料："><span class="nav-number">3.0.1.</span> <span class="nav-text">参考资料：</span></a></li></ol></li></ol></li></ol></div>
+            
+          </div>
+          <div class="post-toc-indicator-bottom post-toc-indicator">
+            <i class="fa fa-angle-double-down"></i>
+          </div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy;  2015 - 
+  <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Frank</span>
+</div>
+
+<div class="powered-by">
+  由 <a class="theme-link" href="http://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Muse
+  </a>
+</div>
+
+
+
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+
+  
+
+
+
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+  <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
+
+  <script type="text/javascript" src="/vendors/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  <script type="text/javascript" src="/vendors/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  <script type="text/javascript" src="/vendors/velocity/velocity.min.js"></script>
+
+  <script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js"></script>
+
+  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=0.5.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=0.5.0"></script>
+
+
+
+  
+  
+
+  
+  
+<script type="text/javascript" src="/js/src/scrollspy.js?v=0.5.0"></script>
+
+<script type="text/javascript" id="sidebar.toc.highlight">
+  $(document).ready(function () {
+    var tocSelector = '.post-toc';
+    var $tocSelector = $(tocSelector);
+    var activeCurrentSelector = '.active-current';
+
+    $tocSelector
+      .on('activate.bs.scrollspy', function () {
+        var $currentActiveElement = $(tocSelector + ' .active').last();
+
+        removeCurrentActiveClass();
+        $currentActiveElement.addClass('active-current');
+
+        $tocSelector[0].scrollTop = $currentActiveElement.position().top;
+      })
+      .on('clear.bs.scrollspy', function () {
+        removeCurrentActiveClass();
+      });
+
+    function removeCurrentActiveClass () {
+      $(tocSelector + ' ' + activeCurrentSelector)
+        .removeClass(activeCurrentSelector.substring(1));
+    }
+
+    function processTOC () {
+      getTOCMaxHeight();
+      toggleTOCOverflowIndicators();
+    }
+
+    function getTOCMaxHeight () {
+      var height = $('.sidebar').height() -
+                   $tocSelector.position().top -
+                   $('.post-toc-indicator-bottom').height();
+
+      $tocSelector.css('height', height);
+
+      return height;
+    }
+
+    function toggleTOCOverflowIndicators () {
+      tocOverflowIndicator(
+        '.post-toc-indicator-top',
+        $tocSelector.scrollTop() > 0 ? 'show' : 'hide'
+      );
+
+      tocOverflowIndicator(
+        '.post-toc-indicator-bottom',
+        $tocSelector.scrollTop() >= $tocSelector.find('ol').height() - $tocSelector.height() ? 'hide' : 'show'
+      )
+    }
+
+    $(document).on('sidebar.motion.complete', function () {
+      processTOC();
+    });
+
+    $('body').scrollspy({ target: tocSelector });
+    $(window).on('resize', function () {
+      if ( $('.sidebar').hasClass('sidebar-active') ) {
+        processTOC();
+      }
+    });
+
+    onScroll($tocSelector);
+
+    function onScroll (element) {
+      element.on('mousewheel DOMMouseScroll', function (event) {
+          var oe = event.originalEvent;
+          var delta = oe.wheelDelta || -oe.detail;
+
+          this.scrollTop += ( delta < 0 ? 1 : -1 ) * 30;
+          event.preventDefault();
+
+          toggleTOCOverflowIndicators();
+      });
+    }
+
+    function tocOverflowIndicator (indicator, action) {
+      var $indicator = $(indicator);
+      var opacity = action === 'show' ? 1 : 0;
+      $indicator.velocity ?
+        $indicator.velocity('stop').velocity({
+          opacity: opacity
+        }, { duration: 100 }) :
+        $indicator.stop().animate({
+          opacity: opacity
+        }, 100);
+    }
+
+  });
+</script>
+
+<script type="text/javascript" id="sidebar.nav">
+  $(document).ready(function () {
+    var html = $('html');
+    var TAB_ANIMATE_DURATION = 200;
+    var hasVelocity = $.isFunction(html.velocity);
+
+    $('.sidebar-nav li').on('click', function () {
+      var item = $(this);
+      var activeTabClassName = 'sidebar-nav-active';
+      var activePanelClassName = 'sidebar-panel-active';
+      if (item.hasClass(activeTabClassName)) {
+        return;
+      }
+
+      var currentTarget = $('.' + activePanelClassName);
+      var target = $('.' + item.data('target'));
+
+      hasVelocity ?
+        currentTarget.velocity('transition.slideUpOut', TAB_ANIMATE_DURATION, function () {
+          target
+            .velocity('stop')
+            .velocity('transition.slideDownIn', TAB_ANIMATE_DURATION)
+            .addClass(activePanelClassName);
+        }) :
+        currentTarget.animate({ opacity: 0 }, TAB_ANIMATE_DURATION, function () {
+          currentTarget.hide();
+          target
+            .stop()
+            .css({'opacity': 0, 'display': 'block'})
+            .animate({ opacity: 1 }, TAB_ANIMATE_DURATION, function () {
+              currentTarget.removeClass(activePanelClassName);
+              target.addClass(activePanelClassName);
+            });
+        });
+
+      item.siblings().removeClass(activeTabClassName);
+      item.addClass(activeTabClassName);
+    });
+
+    $('.post-toc a').on('click', function (e) {
+      e.preventDefault();
+      var targetSelector = NexT.utils.escapeSelector(this.getAttribute('href'));
+      var offset = $(targetSelector).offset().top;
+      hasVelocity ?
+        html.velocity('stop').velocity('scroll', {
+          offset: offset  + 'px',
+          mobileHA: false
+        }) :
+        $('html, body').stop().animate({
+          scrollTop: offset
+        }, 500);
+    });
+
+    // Expand sidebar on post detail page by default, when post has a toc.
+    NexT.motion.middleWares.sidebar = function () {
+      var $tocContent = $('.post-toc-content');
+
+      if (CONFIG.scheme !== 'Pisces' && (CONFIG.sidebar.display === 'post' || CONFIG.sidebar.display === 'always')) {
+        if ($tocContent.length > 0 && $tocContent.html().trim().length > 0) {
+          NexT.utils.displaySidebar();
+        }
+      }
+    };
+  });
+</script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=0.5.0"></script>
+
+
+
+  
+
+
+
+  
+
+    <script type="text/javascript">
+      var disqus_shortname = 'knarfeh';
+      var disqus_identifier = '2017/03/26/github-ready-to-go/';
+      var disqus_title = 'github, ready to go?';
+      var disqus_url = 'http://knarfeh.github.io/2017/03/26/github-ready-to-go/';
+
+      function run_disqus_script(disqus_script){
+        var dsq = document.createElement('script');
+        dsq.type = 'text/javascript';
+        dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/' + disqus_script;
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+      }
+
+      run_disqus_script('count.js');
+      
+        run_disqus_script('embed.js');
+      
+    </script>
+  
+
+
+
+  
+  
+  
+  <script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+      }
+    });
+  </script>
+
+  <script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+      var all = MathJax.Hub.getAllJax(), i;
+      for (i=0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';
+      }
+    });
+  </script>
+
+  
+    <script type="text/javascript" src="http://cdn.staticfile.org/mathjax/2.4.0/MathJax.js"></script>
+    <script type="text/javascript" src="http://cdn.staticfile.org/mathjax/2.4.0/config/TeX-AMS-MML_HTMLorMML.js"></script>
+  
+
+
+  
+
+
+</body>
+</html>

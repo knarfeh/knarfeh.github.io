@@ -1,0 +1,818 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  <link href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css"/>
+
+
+
+
+  <link href="//fonts.googleapis.com/css?family=Lato:300,400,700,400italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+
+
+
+<link href="/vendors/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=0.5.0" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="Life,Blog,Podcast,Ruby,Notes,Javascript," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=0.5.0" />
+
+
+
+
+
+
+<meta name="description" content="不定期更新。 最后更新时间：Tue Jul 24 23:06:06 CST 2018">
+<meta name="keywords" content="Life,Blog,Podcast,Ruby,Notes,Javascript">
+<meta property="og:type" content="article">
+<meta property="og:title" content="【podcast】JS Party">
+<meta property="og:url" content="http://knarfeh.github.io/2017/11/03/【podcast】JS Party/index.html">
+<meta property="og:site_name" content="Frank&#39;s Notes">
+<meta property="og:description" content="不定期更新。 最后更新时间：Tue Jul 24 23:06:06 CST 2018">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2018-08-18T06:29:21.159Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="【podcast】JS Party">
+<meta name="twitter:description" content="不定期更新。 最后更新时间：Tue Jul 24 23:06:06 CST 2018">
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    scheme: 'Muse',
+    sidebar: {"display":"hide"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: 0,
+      author: '博主'
+    }
+  };
+</script>
+
+  <title> 【podcast】JS Party | Frank's Notes </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+            (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+          m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-75002639-1', 'auto');
+  ga('send', 'pageview');
+</script>
+
+
+
+
+
+
+
+
+
+  
+  
+
+  <div class="container one-collumn  page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">Frank's Notes</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle"></p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-home fa-fw"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-archive fa-fw"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-tags fa-fw"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-twitter">
+          <a href="/twitter" rel="section">
+            
+              <i class="menu-item-icon fa fa-coffee fa-fw"></i> <br />
+            
+            Twitter
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                【podcast】JS Party
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2017-11-03T17:40:03+08:00" content="2017-11-03">
+              2017-11-03
+            </time>
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2017/11/03/【podcast】JS Party/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2017/11/03/【podcast】JS Party/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>不定期更新。</p>
+<p>最后更新时间：Tue Jul 24 23:06:06 CST 2018</p>
+<a id="more"></a>
+<p>文稿地址：<a href="https://github.com/thechangelog/transcripts/" target="_blank" rel="external">thechangelog/transcripts</a></p>
+<h2 id="34-JavaScript-eating-the-world-desktop-edition-with-Shelley-Vohr-and-Jeremy-Apthorp-Jul-13-2018，时长：1-02-11"><a href="#34-JavaScript-eating-the-world-desktop-edition-with-Shelley-Vohr-and-Jeremy-Apthorp-Jul-13-2018，时长：1-02-11" class="headerlink" title="#34 JavaScript eating the world, desktop edition with Shelley Vohr and Jeremy Apthorp,  Jul 13, 2018，时长：1:02:11"></a>#34 <a href="https://changelog.com/jsparty/34" target="_blank" rel="external">JavaScript eating the world, desktop edition with Shelley Vohr and Jeremy Apthorp</a>,  Jul 13, 2018，时长：1:02:11</h2><h2 id="33-Enough-string-to-hang-yourself-with-Jerod-Santo-Nick-Nisi-and-Kevin-Ball-Jul-6-2018，时长：58-28"><a href="#33-Enough-string-to-hang-yourself-with-Jerod-Santo-Nick-Nisi-and-Kevin-Ball-Jul-6-2018，时长：58-28" class="headerlink" title="#33 Enough string to hang yourself with Jerod Santo, Nick Nisi, and Kevin Ball,  Jul 6, 2018，时长：58:28"></a>#33 <a href="https://changelog.com/jsparty/33" target="_blank" rel="external">Enough string to hang yourself with Jerod Santo, Nick Nisi, and Kevin Ball</a>,  Jul 6, 2018，时长：58:28</h2><h2 id="32-WASM-is-AWSM-with-Kevin-Ball-Suz-Hinton-and-Jay-Phelps-Jun-29-2018，时长：1-01-57"><a href="#32-WASM-is-AWSM-with-Kevin-Ball-Suz-Hinton-and-Jay-Phelps-Jun-29-2018，时长：1-01-57" class="headerlink" title="#32 WASM is AWSM with Kevin Ball, Suz Hinton, and Jay Phelps,  Jun 29, 2018，时长：1:01:57"></a>#32 <a href="https://changelog.com/jsparty/32" target="_blank" rel="external">WASM is AWSM with Kevin Ball, Suz Hinton, and Jay Phelps</a>,  Jun 29, 2018，时长：1:01:57</h2><h3 id="References"><a href="#References" class="headerlink" title="References"></a>References</h3><ul>
+<li><a href="https://www.ibm.com/developerworks/cn/web/wa-lo-webassembly-status-and-reality/index.html" target="_blank" rel="external">WebAssembly 现状与实战</a></li>
+</ul>
+<h2 id="31-GraphQL-when-to-use-JavaScript-JS-robotics-with-Brian-Douglas-Aimee-Knight-and-Bryan-Hughes-Jun-22-2018，时长：1-06-52"><a href="#31-GraphQL-when-to-use-JavaScript-JS-robotics-with-Brian-Douglas-Aimee-Knight-and-Bryan-Hughes-Jun-22-2018，时长：1-06-52" class="headerlink" title="#31 GraphQL, when to use JavaScript, JS robotics with Brian Douglas, Aimee Knight, and Bryan Hughes,  Jun 22, 2018，时长：1:06:52"></a>#31 <a href="https://changelog.com/jsparty/31" target="_blank" rel="external">GraphQL, when to use JavaScript, JS robotics with Brian Douglas, Aimee Knight, and Bryan Hughes</a>,  Jun 22, 2018，时长：1:06:52</h2><h2 id="30-Do-what-every-developer-does-blame-other-people-with-Nick-Nisi-Suz-Hinton-and-Jerod-Santo-Jun-19-2018，时长：1-11-33"><a href="#30-Do-what-every-developer-does-blame-other-people-with-Nick-Nisi-Suz-Hinton-and-Jerod-Santo-Jun-19-2018，时长：1-11-33" class="headerlink" title="#30 Do what every developer does: blame other people with Nick Nisi, Suz Hinton, and Jerod Santo,  Jun 19, 2018，时长：1:11:33"></a>#30 <a href="https://changelog.com/jsparty/30" target="_blank" rel="external">Do what every developer does: blame other people with Nick Nisi, Suz Hinton, and Jerod Santo</a>,  Jun 19, 2018，时长：1:11:33</h2><h2 id="29-Node’s-survey-Ry’s-regrets-Microsoft’s-GitHub-with-Kevin-Ball-Nick-Nisi-and-Jerod-Santo-Jun-8-2018，时长：1-04-26"><a href="#29-Node’s-survey-Ry’s-regrets-Microsoft’s-GitHub-with-Kevin-Ball-Nick-Nisi-and-Jerod-Santo-Jun-8-2018，时长：1-04-26" class="headerlink" title="#29 Node’s survey, Ry’s regrets, Microsoft’s GitHub with Kevin Ball, Nick Nisi, and Jerod Santo,  Jun 8, 2018，时长：1:04:26"></a>#29 <a href="https://changelog.com/jsparty/29" target="_blank" rel="external">Node’s survey, Ry’s regrets, Microsoft’s GitHub with Kevin Ball, Nick Nisi, and Jerod Santo</a>,  Jun 8, 2018，时长：1:04:26</h2><h2 id="28-ML-in-JS…-well…-yes-with-Suz-Hinton-Jerod-Santo-Kevin-Ball-and-Christopher-Hiller-Jun-1-2018，时长：53-44"><a href="#28-ML-in-JS…-well…-yes-with-Suz-Hinton-Jerod-Santo-Kevin-Ball-and-Christopher-Hiller-Jun-1-2018，时长：53-44" class="headerlink" title="#28 ML in JS… well… yes? with Suz Hinton, Jerod Santo, Kevin Ball, and Christopher Hiller,  Jun 1, 2018，时长：53:44"></a>#28 <a href="https://changelog.com/jsparty/28" target="_blank" rel="external">ML in JS… well… yes? with Suz Hinton, Jerod Santo, Kevin Ball, and Christopher Hiller</a>,  Jun 1, 2018，时长：53:44</h2><h2 id="27-A-tooling-extravaganza-with-Kevin-Ball-Alex-Sexton-Nick-Nisi-and-Christopher-Hiller-May-25-2018，时长：57-58"><a href="#27-A-tooling-extravaganza-with-Kevin-Ball-Alex-Sexton-Nick-Nisi-and-Christopher-Hiller-May-25-2018，时长：57-58" class="headerlink" title="#27 A tooling extravaganza! with Kevin Ball, Alex Sexton, Nick Nisi, and Christopher Hiller,  May 25, 2018，时长：57:58"></a>#27 <a href="https://changelog.com/jsparty/27" target="_blank" rel="external">A tooling extravaganza! with Kevin Ball, Alex Sexton, Nick Nisi, and Christopher Hiller</a>,  May 25, 2018，时长：57:58</h2><h2 id="26-🎊-TS-Party-🎊-with-Jerod-Santo-Nick-Nisi-and-Christopher-Hiller-May-18-2018，时长：59-08"><a href="#26-🎊-TS-Party-🎊-with-Jerod-Santo-Nick-Nisi-and-Christopher-Hiller-May-18-2018，时长：59-08" class="headerlink" title="#26 🎊 TS Party! 🎊 with Jerod Santo, Nick Nisi, and Christopher Hiller,  May 18, 2018，时长：59:08"></a>#26 <a href="https://changelog.com/jsparty/26" target="_blank" rel="external">🎊 TS Party! 🎊 with Jerod Santo, Nick Nisi, and Christopher Hiller</a>,  May 18, 2018，时长：59:08</h2><h2 id="25-Dojo-2-0-with-Dylan-Schiemann-May-11-2018，时长：1-06-24"><a href="#25-Dojo-2-0-with-Dylan-Schiemann-May-11-2018，时长：1-06-24" class="headerlink" title="#25 Dojo 2.0 with Dylan Schiemann,  May 11, 2018，时长：1:06:24"></a>#25 <a href="https://changelog.com/jsparty/25" target="_blank" rel="external">Dojo 2.0 with Dylan Schiemann</a>,  May 11, 2018，时长：1:06:24</h2><h2 id="24-Cool-depending-on-your-definition-of-cool-with-Feross-Aboukhadijeh-Suz-Hinton-Nick-Nisi-and-Alex-Sexton-May-7-2018，时长：54-24"><a href="#24-Cool-depending-on-your-definition-of-cool-with-Feross-Aboukhadijeh-Suz-Hinton-Nick-Nisi-and-Alex-Sexton-May-7-2018，时长：54-24" class="headerlink" title="#24 Cool, depending on your definition of cool with Feross Aboukhadijeh, Suz Hinton, Nick Nisi, and Alex Sexton,  May 7, 2018，时长：54:24"></a>#24 <a href="https://changelog.com/jsparty/24" target="_blank" rel="external">Cool, depending on your definition of cool with Feross Aboukhadijeh, Suz Hinton, Nick Nisi, and Alex Sexton</a>,  May 7, 2018，时长：54:24</h2><h2 id="23-The-state-of-Node-security-with-Suz-Hinton-Christopher-Hiller-Jerod-Santo-and-Adam-Baldwin-Guests-Apr-30-2018，时长：54-51"><a href="#23-The-state-of-Node-security-with-Suz-Hinton-Christopher-Hiller-Jerod-Santo-and-Adam-Baldwin-Guests-Apr-30-2018，时长：54-51" class="headerlink" title="#23 The state of Node security with Suz Hinton, Christopher Hiller, Jerod Santo, and Adam Baldwin Guests,  Apr 30, 2018，时长：54:51"></a>#23 <a href="https://changelog.com/jsparty/23" target="_blank" rel="external">The state of Node security with Suz Hinton, Christopher Hiller, Jerod Santo, and Adam Baldwin Guests</a>,  Apr 30, 2018，时长：54:51</h2><h2 id="22-PWAs-to-eat-the-world-Or-maybe-not-News-at-11-with-Jerod-Santo-Safia-Abdalla-Nick-Nisi-and-Kevin-Ball-Apr-23-2018，时长：56-25"><a href="#22-PWAs-to-eat-the-world-Or-maybe-not-News-at-11-with-Jerod-Santo-Safia-Abdalla-Nick-Nisi-and-Kevin-Ball-Apr-23-2018，时长：56-25" class="headerlink" title="#22 PWAs to eat the world. Or maybe not. News at 11! with Jerod Santo, Safia Abdalla, Nick Nisi, and Kevin Ball,  Apr 23, 2018，时长：56:25"></a>#22 <a href="https://changelog.com/jsparty/22" target="_blank" rel="external">PWAs to eat the world. Or maybe not. News at 11! with Jerod Santo, Safia Abdalla, Nick Nisi, and Kevin Ball</a>,  Apr 23, 2018，时长：56:25</h2><ul>
+<li>Safia Abdalla 正在写一篇关于 Curl 的文章</li>
+<li>PWA 指的是 Progressive Web App，渐进式网络应用程序</li>
+</ul>
+<h2 id="21-Oh-the-places-JS-will-go-with-Jerod-Santo-Suz-Hinton-Feross-Aboukhadijeh-and-Kevin-Ball-Apr-13-2018，时长：54-47"><a href="#21-Oh-the-places-JS-will-go-with-Jerod-Santo-Suz-Hinton-Feross-Aboukhadijeh-and-Kevin-Ball-Apr-13-2018，时长：54-47" class="headerlink" title="#21 Oh, the places JS will go with Jerod Santo, Suz Hinton, Feross Aboukhadijeh, and Kevin Ball,  Apr 13, 2018，时长：54:47"></a>#21 <a href="https://changelog.com/jsparty/21" target="_blank" rel="external">Oh, the places JS will go with Jerod Santo, Suz Hinton, Feross Aboukhadijeh, and Kevin Ball</a>,  Apr 13, 2018，时长：54:47</h2><h2 id="20-JS-Party-is-back-🎉-with-Jerod-Santo-Safia-Abdalla-Nick-Nisi-and-Christopher-Hiller-Apr-6-2018，时长：48-34"><a href="#20-JS-Party-is-back-🎉-with-Jerod-Santo-Safia-Abdalla-Nick-Nisi-and-Christopher-Hiller-Apr-6-2018，时长：48-34" class="headerlink" title="#20 JS Party is back! 🎉 with Jerod Santo, Safia Abdalla, Nick Nisi, and Christopher Hiller,  Apr 6, 2018，时长：48:34"></a>#20 <a href="https://changelog.com/jsparty/20" target="_blank" rel="external">JS Party is back! 🎉 with Jerod Santo, Safia Abdalla, Nick Nisi, and Christopher Hiller</a>,  Apr 6, 2018，时长：48:34</h2><h2 id="19-Web-Audio-API-and-TypeScript-is-Turing-Complete-with-Myles-Borins-Aug-18-2017，时长：41-47"><a href="#19-Web-Audio-API-and-TypeScript-is-Turing-Complete-with-Myles-Borins-Aug-18-2017，时长：41-47" class="headerlink" title="#19 Web Audio API and TypeScript is Turing Complete with Myles Borins,  Aug 18, 2017，时长：41:47"></a>#19 <a href="https://changelog.com/jsparty/19" target="_blank" rel="external">Web Audio API and TypeScript is Turing Complete with Myles Borins</a>,  Aug 18, 2017，时长：41:47</h2><h2 id="18-2017-Node-js-User-Survey-and-Beaker-Browser-with-Paul-Frazee-Aug-18-2017，时长：55-07"><a href="#18-2017-Node-js-User-Survey-and-Beaker-Browser-with-Paul-Frazee-Aug-18-2017，时长：55-07" class="headerlink" title="#18 2017 Node.js User Survey and Beaker Browser with Paul Frazee,  Aug 18, 2017，时长：55:07"></a>#18 <a href="https://changelog.com/jsparty/18" target="_blank" rel="external">2017 Node.js User Survey and Beaker Browser with Paul Frazee</a>,  Aug 18, 2017，时长：55:07</h2><h2 id="17-AMA-—-BasicAttentionToken-Robotics-IDE’s-and-Stuff-with-Adam-Stacoviak-Mikeal-Rogers-and-Rachel-White-Aug-18-2017，时长：55-52"><a href="#17-AMA-—-BasicAttentionToken-Robotics-IDE’s-and-Stuff-with-Adam-Stacoviak-Mikeal-Rogers-and-Rachel-White-Aug-18-2017，时长：55-52" class="headerlink" title="#17 AMA — BasicAttentionToken, Robotics, IDE’s and Stuff with Adam Stacoviak, Mikeal Rogers, and Rachel White,  Aug 18, 2017，时长：55:52"></a>#17 <a href="https://changelog.com/jsparty/17" target="_blank" rel="external">AMA — BasicAttentionToken, Robotics, IDE’s and Stuff with Adam Stacoviak, Mikeal Rogers, and Rachel White</a>,  Aug 18, 2017，时长：55:52</h2><h2 id="16-ES-Modules-and-ESM-Loader-with-John-David-Dalton-Jul-26-2017，时长：1-09-28"><a href="#16-ES-Modules-and-ESM-Loader-with-John-David-Dalton-Jul-26-2017，时长：1-09-28" class="headerlink" title="#16 ES Modules and ESM Loader with John-David Dalton,  Jul 26, 2017，时长：1:09:28"></a>#16 <a href="https://changelog.com/jsparty/3" target="_blank" rel="external">ES Modules and ESM Loader with John-David Dalton</a>,  Jul 26, 2017，时长：1:09:28</h2><h2 id="15-Async-Control-Flow-and-Threats-to-the-Open-Web-with-Kyle-Simpson-Jul-7-2017，时长：1-10-42"><a href="#15-Async-Control-Flow-and-Threats-to-the-Open-Web-with-Kyle-Simpson-Jul-7-2017，时长：1-10-42" class="headerlink" title="#15 Async Control Flow and Threats to the Open Web with Kyle Simpson,  Jul 7, 2017，时长：1:10:42"></a>#15 <a href="https://changelog.com/jsparty/15" target="_blank" rel="external">Async Control Flow and Threats to the Open Web with Kyle Simpson</a>,  Jul 7, 2017，时长：1:10:42</h2><h2 id="14-Inside-Node-8-Glitch-Building-a-Community-Around-Education-Jun-23-2017，时长：46-27"><a href="#14-Inside-Node-8-Glitch-Building-a-Community-Around-Education-Jun-23-2017，时长：46-27" class="headerlink" title="#14 Inside Node 8, Glitch, Building a Community Around Education,  Jun 23, 2017，时长：46:27"></a>#14 <a href="https://changelog.com/jsparty/14" target="_blank" rel="external">Inside Node 8, Glitch, Building a Community Around Education</a>,  Jun 23, 2017，时长：46:27</h2><h2 id="13-Inside-the-Release-of-npm-5-and-Sheetsee-with-Rebecca-Turner-Kat-Marchan-amp-Jessica-Lord-Jun-13-2017，时长：54-54"><a href="#13-Inside-the-Release-of-npm-5-and-Sheetsee-with-Rebecca-Turner-Kat-Marchan-amp-Jessica-Lord-Jun-13-2017，时长：54-54" class="headerlink" title="#13 Inside the Release of npm@5 and Sheetsee with Rebecca Turner, Kat Marchán &amp; Jessica Lord,  Jun 13, 2017，时长：54:54"></a>#13 <a href="https://changelog.com/jsparty/13" target="_blank" rel="external">Inside the Release of npm@5 and Sheetsee with Rebecca Turner, Kat Marchán &amp; Jessica Lord</a>,  Jun 13, 2017，时长：54:54</h2><h2 id="12-Using-ES6-7-create-react-app-and-Electron-with-Mikeal-Rogers-Rachel-White-amp-Alex-Sexton-Jun-1-2017，时长：1-05-05"><a href="#12-Using-ES6-7-create-react-app-and-Electron-with-Mikeal-Rogers-Rachel-White-amp-Alex-Sexton-Jun-1-2017，时长：1-05-05" class="headerlink" title="#12 Using ES6/7, create-react-app, and Electron! with Mikeal Rogers, Rachel White &amp; Alex Sexton, Jun 1, 2017，时长：1:05:05"></a>#12 <a href="https://changelog.com/jsparty/3" target="_blank" rel="external">Using ES6/7, create-react-app, and Electron! with Mikeal Rogers, Rachel White &amp; Alex Sexton</a>, Jun 1, 2017，时长：1:05:05</h2><h2 id="11-Web-Standards-ECMAScript-Modules-in-Browsers-and-Learning-JS-with-Alex-Sexton-and-guest-hosts-Wes-Bos-amp-Mike-Taylor-May-26-2017，时长：1-03-34"><a href="#11-Web-Standards-ECMAScript-Modules-in-Browsers-and-Learning-JS-with-Alex-Sexton-and-guest-hosts-Wes-Bos-amp-Mike-Taylor-May-26-2017，时长：1-03-34" class="headerlink" title="#11 Web Standards, ECMAScript Modules in Browsers, and Learning JS with Alex Sexton and guest hosts Wes Bos &amp; Mike Taylor,  May 26, 2017，时长：1:03:34"></a>#11 <a href="https://changelog.com/jsparty/11" target="_blank" rel="external">Web Standards, ECMAScript Modules in Browsers, and Learning JS with Alex Sexton and guest hosts Wes Bos &amp; Mike Taylor</a>,  May 26, 2017，时长：1:03:34</h2><h2 id="10-yayQuery-Reunion-with-Alex-Sexton-Paul-Irish-Rebecca-Murphey-and-Adam-Sontag-May-2-2017，时长：1-10-25"><a href="#10-yayQuery-Reunion-with-Alex-Sexton-Paul-Irish-Rebecca-Murphey-and-Adam-Sontag-May-2-2017，时长：1-10-25" class="headerlink" title="#10 yayQuery Reunion! with Alex Sexton, Paul Irish, Rebecca Murphey, and Adam Sontag,  May 2, 2017，时长：1:10:25"></a>#10 <a href="https://changelog.com/jsparty/10" target="_blank" rel="external">yayQuery Reunion! with Alex Sexton, Paul Irish, Rebecca Murphey, and Adam Sontag</a>,  May 2, 2017，时长：1:10:25</h2><h2 id="9-P2P-Web-WebRTC-WebTorrent-IPFS-and-React-VR-with-Mikeal-Rogers-Alex-Sexton-amp-Rachel-White-Apr-25-2017，时长：1-01-01"><a href="#9-P2P-Web-WebRTC-WebTorrent-IPFS-and-React-VR-with-Mikeal-Rogers-Alex-Sexton-amp-Rachel-White-Apr-25-2017，时长：1-01-01" class="headerlink" title="#9 P2P Web, WebRTC, WebTorrent, IPFS, and React VR with Mikeal Rogers, Alex Sexton &amp; Rachel White,  Apr 25, 2017，时长：1:01:01"></a>#9 <a href="https://changelog.com/jsparty/9" target="_blank" rel="external">P2P Web, WebRTC, WebTorrent, IPFS, and React VR with Mikeal Rogers, Alex Sexton &amp; Rachel White</a>,  Apr 25, 2017，时长：1:01:01</h2><h2 id="8-Good-Documentation-Non-blocking-UI-Rendering-Node-Community-Updates-with-Tracy-Hinds-Apr-23-2017，时长：53-54"><a href="#8-Good-Documentation-Non-blocking-UI-Rendering-Node-Community-Updates-with-Tracy-Hinds-Apr-23-2017，时长：53-54" class="headerlink" title="#8 Good Documentation, Non-blocking UI Rendering, Node Community Updates with Tracy Hinds,  Apr 23, 2017，时长：53:54"></a>#8 <a href="https://changelog.com/jsparty/8" target="_blank" rel="external">Good Documentation, Non-blocking UI Rendering, Node Community Updates with Tracy Hinds</a>,  Apr 23, 2017，时长：53:54</h2><h2 id="7-VM-Neutrality-in-Node-N-API-Learning-JavaScript-Mastodon-Apr-14-2017，时长：58-30"><a href="#7-VM-Neutrality-in-Node-N-API-Learning-JavaScript-Mastodon-Apr-14-2017，时长：58-30" class="headerlink" title="#7 VM Neutrality in Node (N-API), Learning JavaScript, Mastodon,  Apr 14, 2017，时长：58:30"></a>#7 <a href="https://changelog.com/jsparty/7" target="_blank" rel="external">VM Neutrality in Node (N-API), Learning JavaScript, Mastodon</a>,  Apr 14, 2017，时长：58:30</h2><h2 id="6-Web-Components-and-WTF-is-Shadow-DOM-with-Mikeal-Rogers-Alex-Sexton-amp-Rachel-White-Apr-11-2017，时长："><a href="#6-Web-Components-and-WTF-is-Shadow-DOM-with-Mikeal-Rogers-Alex-Sexton-amp-Rachel-White-Apr-11-2017，时长：" class="headerlink" title="#6 Web Components and WTF is Shadow DOM? with Mikeal Rogers, Alex Sexton &amp; Rachel White,  Apr 11, 2017，时长："></a>#6 <a href="https://changelog.com/jsparty/6" target="_blank" rel="external">Web Components and WTF is Shadow DOM? with Mikeal Rogers, Alex Sexton &amp; Rachel White</a>,  Apr 11, 2017，时长：</h2><h2 id="5-JavaScript-in-Latin-America-with-Juan-Pablo-Buritica-Mar-31-2017，时长：1-01-56"><a href="#5-JavaScript-in-Latin-America-with-Juan-Pablo-Buritica-Mar-31-2017，时长：1-01-56" class="headerlink" title="#5 JavaScript in Latin America with Juan Pablo Buritica,  Mar 31, 2017，时长：1:01:56"></a>#5 <a href="https://changelog.com/jsparty/5" target="_blank" rel="external">JavaScript in Latin America with Juan Pablo Buritica</a>,  Mar 31, 2017，时长：1:01:56</h2><h2 id="4-PWAs-Progressive-Web-Apps-Service-Workers-Time-Glitch-with-special-guest-Jenn-Schiffer-Mar-24-2017，时长：1-01-55"><a href="#4-PWAs-Progressive-Web-Apps-Service-Workers-Time-Glitch-with-special-guest-Jenn-Schiffer-Mar-24-2017，时长：1-01-55" class="headerlink" title="#4 PWAs (Progressive Web Apps), Service Workers, Time, Glitch with special guest Jenn Schiffer,  Mar 24, 2017，时长：1:01:55"></a>#4 <a href="https://changelog.com/jsparty/4" target="_blank" rel="external">PWAs (Progressive Web Apps), Service Workers, Time, Glitch with special guest Jenn Schiffer</a>,  Mar 24, 2017，时长：1:01:55</h2><h2 id="3-JavaScript-Fatigue-AMP-Paths-js-with-Mikeal-Rogers-Alex-Sexton-amp-Rachel-White-Mar-17-2017，时长：58-08"><a href="#3-JavaScript-Fatigue-AMP-Paths-js-with-Mikeal-Rogers-Alex-Sexton-amp-Rachel-White-Mar-17-2017，时长：58-08" class="headerlink" title="#3 JavaScript Fatigue, AMP, Paths.js with Mikeal Rogers, Alex Sexton &amp; Rachel White,  Mar 17, 2017，时长：58:08"></a>#3 <a href="https://changelog.com/jsparty/3" target="_blank" rel="external">JavaScript Fatigue, AMP, Paths.js with Mikeal Rogers, Alex Sexton &amp; Rachel White</a>,  Mar 17, 2017，时长：58:08</h2><h2 id="2-Web-Assembly-Higher-Education-with-JavaScript-JS-Standards-with-Mikeal-Rogers-Alex-Sexton-amp-Rachel-White-Mar-10-2017，时长：55-32"><a href="#2-Web-Assembly-Higher-Education-with-JavaScript-JS-Standards-with-Mikeal-Rogers-Alex-Sexton-amp-Rachel-White-Mar-10-2017，时长：55-32" class="headerlink" title="#2 Web Assembly, Higher Education with JavaScript, JS Standards with Mikeal Rogers, Alex Sexton &amp; Rachel White,  Mar 10, 2017，时长：55:32"></a>#2 <a href="https://changelog.com/jsparty/2" target="_blank" rel="external">Web Assembly, Higher Education with JavaScript, JS Standards with Mikeal Rogers, Alex Sexton &amp; Rachel White</a>,  Mar 10, 2017，时长：55:32</h2><h2 id="1-Security-on-the-Web-Node-async-await-AR-js-with-Mikeal-Rogers-Alex-Sexton-amp-Rachel-White-Mar-3-2017，时长：56-47"><a href="#1-Security-on-the-Web-Node-async-await-AR-js-with-Mikeal-Rogers-Alex-Sexton-amp-Rachel-White-Mar-3-2017，时长：56-47" class="headerlink" title="#1 Security on the Web, Node async/await, AR.js with Mikeal Rogers, Alex Sexton &amp; Rachel White,  Mar 3, 2017，时长：56:47"></a>#1 <a href="https://changelog.com/jsparty/1" target="_blank" rel="external">Security on the Web, Node async/await, AR.js with Mikeal Rogers, Alex Sexton &amp; Rachel White</a>,  Mar 3, 2017，时长：56:47</h2><ul>
+<li>这一期主要是讨论 Web 的安全性问题。</li>
+<li>SHA1 在 git 中被大量使用。</li>
+</ul>
+<p>TODO</p>
+<h2 id="Meet-Rachel-White-Panelist-of-JS-Party-Feb-24-2017，时长：56-47"><a href="#Meet-Rachel-White-Panelist-of-JS-Party-Feb-24-2017，时长：56-47" class="headerlink" title="Meet Rachel White Panelist of JS Party,  Feb 24, 2017，时长：56:47"></a><a href="https://changelog.com/jsparty/meet-rachel-white" target="_blank" rel="external">Meet Rachel White Panelist of JS Party</a>,  Feb 24, 2017，时长：56:47</h2><ul>
+<li>微软 DX 团队的前端工程师，Tech Evangelist 的 Rachel White。曾在 IBM Watson，Adobe Behance 工作。</li>
+<li>Rachel 植入了一个 RFID 芯片到手腕里。目前正在学 React</li>
+</ul>
+<p>TOREVIEW</p>
+<h2 id="Meet-Alex-Sexton-Feb-24-2017，时长：37-46"><a href="#Meet-Alex-Sexton-Feb-24-2017，时长：37-46" class="headerlink" title="Meet Alex Sexton, Feb 24, 2017，时长：37:46"></a><a href="https://changelog.com/jsparty/meet-alex-sexton" target="_blank" rel="external">Meet Alex Sexton</a>, Feb 24, 2017，时长：37:46</h2><ul>
+<li>Alex 写了12年 Javascript。这四年在 Stripe，在德州奥斯丁远程工作。Alex 参与了 jQuery，是董事会成员。在 Modernizr 也做了很多工作。</li>
+</ul>
+<p>TODO</p>
+<h2 id="Meet-Mikeal-Rogers-Feb-24-2017，时长：37-46"><a href="#Meet-Mikeal-Rogers-Feb-24-2017，时长：37-46" class="headerlink" title="Meet Mikeal Rogers,  Feb 24, 2017，时长：37:46"></a><a href="https://changelog.com/jsparty/meet-mikeal-rogers" target="_blank" rel="external">Meet Mikeal Rogers</a>,  Feb 24, 2017，时长：37:46</h2><ul>
+<li>3位主持是 <a href="https://twitter.com/mikeal" target="_blank" rel="external">Mikeal Rogers</a>，<a href="https://twitter.com/adamstac" target="_blank" rel="external">Adam Stacoviak</a>，<a href="https://twitter.com/jerodsanto" target="_blank" rel="external">Jerod Santo</a>。JS Party 的前3期将分别介绍3位主持作为节目的开场。</li>
+<li>这一次将介绍 Mikeal Rogers。之前在 Mozilla 工作，写 Python 和 Javascript，现在已经不写 Python 了。四年在 Windmill 项目上(类似 Selenium)。</li>
+<li>Mideal 是 io.js 的 leader 之一。</li>
+<li>节目末介绍了联系方式。</li>
+</ul>
+<p>TOREVIEW</p>
+
+      
+    </div>
+
+    <div>
+      
+        
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Life/" rel="tag">#Life</a>
+          
+            <a href="/tags/Blog/" rel="tag">#Blog</a>
+          
+            <a href="/tags/Podcast/" rel="tag">#Podcast</a>
+          
+            <a href="/tags/Ruby/" rel="tag">#Ruby</a>
+          
+            <a href="/tags/Notes/" rel="tag">#Notes</a>
+          
+            <a href="/tags/Javascript/" rel="tag">#Javascript</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/10/20/发布一个-python-包/" rel="next" title="发布一个-python-包">
+                <i class="fa fa-chevron-left"></i> 发布一个-python-包
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2017/11/03/【podcast】The Changelog/" rel="prev" title="【podcast】The Changelog">
+                【podcast】The Changelog <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+      <div id="disqus_thread">
+        <noscript>
+          Please enable JavaScript to view the
+          <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a>
+        </noscript>
+      </div>
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel ">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="https://avatars1.githubusercontent.com/u/6964284?v=3&s=460"
+               alt="Frank" />
+          <p class="site-author-name" itemprop="name">Frank</p>
+          <p class="site-description motion-element" itemprop="description"></p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">174</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+          
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">125</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/knarfeh" target="_blank">
+                  
+                    <i class="fa fa-github"></i> GitHub
+                  
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://twitter.com/knarfeh" target="_blank">
+                  
+                    <i class="fa fa-twitter"></i> Twitter
+                  
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://weibo.com/2753500945" target="_blank">
+                  
+                    <i class="fa fa-weibo"></i> Weibo
+                  
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+          <div class="cc-license motion-element" itemprop="license">
+            <a href="http://creativecommons.org/licenses/by-sa/4.0" class="cc-opacity" target="_blank">
+              <img src="/images/cc-by-sa.svg" alt="Creative Commons" />
+            </a>
+          </div>
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+      </section>
+
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc-indicator-top post-toc-indicator">
+            <i class="fa fa-angle-double-up"></i>
+          </div>
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#34-JavaScript-eating-the-world-desktop-edition-with-Shelley-Vohr-and-Jeremy-Apthorp-Jul-13-2018，时长：1-02-11"><span class="nav-number">1.</span> <span class="nav-text">#34 JavaScript eating the world, desktop edition with Shelley Vohr and Jeremy Apthorp,  Jul 13, 2018，时长：1:02:11</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#33-Enough-string-to-hang-yourself-with-Jerod-Santo-Nick-Nisi-and-Kevin-Ball-Jul-6-2018，时长：58-28"><span class="nav-number">2.</span> <span class="nav-text">#33 Enough string to hang yourself with Jerod Santo, Nick Nisi, and Kevin Ball,  Jul 6, 2018，时长：58:28</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#32-WASM-is-AWSM-with-Kevin-Ball-Suz-Hinton-and-Jay-Phelps-Jun-29-2018，时长：1-01-57"><span class="nav-number">3.</span> <span class="nav-text">#32 WASM is AWSM with Kevin Ball, Suz Hinton, and Jay Phelps,  Jun 29, 2018，时长：1:01:57</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#References"><span class="nav-number">3.1.</span> <span class="nav-text">References</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#31-GraphQL-when-to-use-JavaScript-JS-robotics-with-Brian-Douglas-Aimee-Knight-and-Bryan-Hughes-Jun-22-2018，时长：1-06-52"><span class="nav-number">4.</span> <span class="nav-text">#31 GraphQL, when to use JavaScript, JS robotics with Brian Douglas, Aimee Knight, and Bryan Hughes,  Jun 22, 2018，时长：1:06:52</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#30-Do-what-every-developer-does-blame-other-people-with-Nick-Nisi-Suz-Hinton-and-Jerod-Santo-Jun-19-2018，时长：1-11-33"><span class="nav-number">5.</span> <span class="nav-text">#30 Do what every developer does: blame other people with Nick Nisi, Suz Hinton, and Jerod Santo,  Jun 19, 2018，时长：1:11:33</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#29-Node’s-survey-Ry’s-regrets-Microsoft’s-GitHub-with-Kevin-Ball-Nick-Nisi-and-Jerod-Santo-Jun-8-2018，时长：1-04-26"><span class="nav-number">6.</span> <span class="nav-text">#29 Node’s survey, Ry’s regrets, Microsoft’s GitHub with Kevin Ball, Nick Nisi, and Jerod Santo,  Jun 8, 2018，时长：1:04:26</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#28-ML-in-JS…-well…-yes-with-Suz-Hinton-Jerod-Santo-Kevin-Ball-and-Christopher-Hiller-Jun-1-2018，时长：53-44"><span class="nav-number">7.</span> <span class="nav-text">#28 ML in JS… well… yes? with Suz Hinton, Jerod Santo, Kevin Ball, and Christopher Hiller,  Jun 1, 2018，时长：53:44</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#27-A-tooling-extravaganza-with-Kevin-Ball-Alex-Sexton-Nick-Nisi-and-Christopher-Hiller-May-25-2018，时长：57-58"><span class="nav-number">8.</span> <span class="nav-text">#27 A tooling extravaganza! with Kevin Ball, Alex Sexton, Nick Nisi, and Christopher Hiller,  May 25, 2018，时长：57:58</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#26-🎊-TS-Party-🎊-with-Jerod-Santo-Nick-Nisi-and-Christopher-Hiller-May-18-2018，时长：59-08"><span class="nav-number">9.</span> <span class="nav-text">#26 🎊 TS Party! 🎊 with Jerod Santo, Nick Nisi, and Christopher Hiller,  May 18, 2018，时长：59:08</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#25-Dojo-2-0-with-Dylan-Schiemann-May-11-2018，时长：1-06-24"><span class="nav-number">10.</span> <span class="nav-text">#25 Dojo 2.0 with Dylan Schiemann,  May 11, 2018，时长：1:06:24</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#24-Cool-depending-on-your-definition-of-cool-with-Feross-Aboukhadijeh-Suz-Hinton-Nick-Nisi-and-Alex-Sexton-May-7-2018，时长：54-24"><span class="nav-number">11.</span> <span class="nav-text">#24 Cool, depending on your definition of cool with Feross Aboukhadijeh, Suz Hinton, Nick Nisi, and Alex Sexton,  May 7, 2018，时长：54:24</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#23-The-state-of-Node-security-with-Suz-Hinton-Christopher-Hiller-Jerod-Santo-and-Adam-Baldwin-Guests-Apr-30-2018，时长：54-51"><span class="nav-number">12.</span> <span class="nav-text">#23 The state of Node security with Suz Hinton, Christopher Hiller, Jerod Santo, and Adam Baldwin Guests,  Apr 30, 2018，时长：54:51</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#22-PWAs-to-eat-the-world-Or-maybe-not-News-at-11-with-Jerod-Santo-Safia-Abdalla-Nick-Nisi-and-Kevin-Ball-Apr-23-2018，时长：56-25"><span class="nav-number">13.</span> <span class="nav-text">#22 PWAs to eat the world. Or maybe not. News at 11! with Jerod Santo, Safia Abdalla, Nick Nisi, and Kevin Ball,  Apr 23, 2018，时长：56:25</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#21-Oh-the-places-JS-will-go-with-Jerod-Santo-Suz-Hinton-Feross-Aboukhadijeh-and-Kevin-Ball-Apr-13-2018，时长：54-47"><span class="nav-number">14.</span> <span class="nav-text">#21 Oh, the places JS will go with Jerod Santo, Suz Hinton, Feross Aboukhadijeh, and Kevin Ball,  Apr 13, 2018，时长：54:47</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#20-JS-Party-is-back-🎉-with-Jerod-Santo-Safia-Abdalla-Nick-Nisi-and-Christopher-Hiller-Apr-6-2018，时长：48-34"><span class="nav-number">15.</span> <span class="nav-text">#20 JS Party is back! 🎉 with Jerod Santo, Safia Abdalla, Nick Nisi, and Christopher Hiller,  Apr 6, 2018，时长：48:34</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#19-Web-Audio-API-and-TypeScript-is-Turing-Complete-with-Myles-Borins-Aug-18-2017，时长：41-47"><span class="nav-number">16.</span> <span class="nav-text">#19 Web Audio API and TypeScript is Turing Complete with Myles Borins,  Aug 18, 2017，时长：41:47</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#18-2017-Node-js-User-Survey-and-Beaker-Browser-with-Paul-Frazee-Aug-18-2017，时长：55-07"><span class="nav-number">17.</span> <span class="nav-text">#18 2017 Node.js User Survey and Beaker Browser with Paul Frazee,  Aug 18, 2017，时长：55:07</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#17-AMA-—-BasicAttentionToken-Robotics-IDE’s-and-Stuff-with-Adam-Stacoviak-Mikeal-Rogers-and-Rachel-White-Aug-18-2017，时长：55-52"><span class="nav-number">18.</span> <span class="nav-text">#17 AMA — BasicAttentionToken, Robotics, IDE’s and Stuff with Adam Stacoviak, Mikeal Rogers, and Rachel White,  Aug 18, 2017，时长：55:52</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#16-ES-Modules-and-ESM-Loader-with-John-David-Dalton-Jul-26-2017，时长：1-09-28"><span class="nav-number">19.</span> <span class="nav-text">#16 ES Modules and ESM Loader with John-David Dalton,  Jul 26, 2017，时长：1:09:28</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#15-Async-Control-Flow-and-Threats-to-the-Open-Web-with-Kyle-Simpson-Jul-7-2017，时长：1-10-42"><span class="nav-number">20.</span> <span class="nav-text">#15 Async Control Flow and Threats to the Open Web with Kyle Simpson,  Jul 7, 2017，时长：1:10:42</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#14-Inside-Node-8-Glitch-Building-a-Community-Around-Education-Jun-23-2017，时长：46-27"><span class="nav-number">21.</span> <span class="nav-text">#14 Inside Node 8, Glitch, Building a Community Around Education,  Jun 23, 2017，时长：46:27</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#13-Inside-the-Release-of-npm-5-and-Sheetsee-with-Rebecca-Turner-Kat-Marchan-amp-Jessica-Lord-Jun-13-2017，时长：54-54"><span class="nav-number">22.</span> <span class="nav-text">#13 Inside the Release of npm@5 and Sheetsee with Rebecca Turner, Kat Marchán & Jessica Lord,  Jun 13, 2017，时长：54:54</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#12-Using-ES6-7-create-react-app-and-Electron-with-Mikeal-Rogers-Rachel-White-amp-Alex-Sexton-Jun-1-2017，时长：1-05-05"><span class="nav-number">23.</span> <span class="nav-text">#12 Using ES6/7, create-react-app, and Electron! with Mikeal Rogers, Rachel White & Alex Sexton, Jun 1, 2017，时长：1:05:05</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#11-Web-Standards-ECMAScript-Modules-in-Browsers-and-Learning-JS-with-Alex-Sexton-and-guest-hosts-Wes-Bos-amp-Mike-Taylor-May-26-2017，时长：1-03-34"><span class="nav-number">24.</span> <span class="nav-text">#11 Web Standards, ECMAScript Modules in Browsers, and Learning JS with Alex Sexton and guest hosts Wes Bos & Mike Taylor,  May 26, 2017，时长：1:03:34</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#10-yayQuery-Reunion-with-Alex-Sexton-Paul-Irish-Rebecca-Murphey-and-Adam-Sontag-May-2-2017，时长：1-10-25"><span class="nav-number">25.</span> <span class="nav-text">#10 yayQuery Reunion! with Alex Sexton, Paul Irish, Rebecca Murphey, and Adam Sontag,  May 2, 2017，时长：1:10:25</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#9-P2P-Web-WebRTC-WebTorrent-IPFS-and-React-VR-with-Mikeal-Rogers-Alex-Sexton-amp-Rachel-White-Apr-25-2017，时长：1-01-01"><span class="nav-number">26.</span> <span class="nav-text">#9 P2P Web, WebRTC, WebTorrent, IPFS, and React VR with Mikeal Rogers, Alex Sexton & Rachel White,  Apr 25, 2017，时长：1:01:01</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#8-Good-Documentation-Non-blocking-UI-Rendering-Node-Community-Updates-with-Tracy-Hinds-Apr-23-2017，时长：53-54"><span class="nav-number">27.</span> <span class="nav-text">#8 Good Documentation, Non-blocking UI Rendering, Node Community Updates with Tracy Hinds,  Apr 23, 2017，时长：53:54</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#7-VM-Neutrality-in-Node-N-API-Learning-JavaScript-Mastodon-Apr-14-2017，时长：58-30"><span class="nav-number">28.</span> <span class="nav-text">#7 VM Neutrality in Node (N-API), Learning JavaScript, Mastodon,  Apr 14, 2017，时长：58:30</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#6-Web-Components-and-WTF-is-Shadow-DOM-with-Mikeal-Rogers-Alex-Sexton-amp-Rachel-White-Apr-11-2017，时长："><span class="nav-number">29.</span> <span class="nav-text">#6 Web Components and WTF is Shadow DOM? with Mikeal Rogers, Alex Sexton & Rachel White,  Apr 11, 2017，时长：</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#5-JavaScript-in-Latin-America-with-Juan-Pablo-Buritica-Mar-31-2017，时长：1-01-56"><span class="nav-number">30.</span> <span class="nav-text">#5 JavaScript in Latin America with Juan Pablo Buritica,  Mar 31, 2017，时长：1:01:56</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-PWAs-Progressive-Web-Apps-Service-Workers-Time-Glitch-with-special-guest-Jenn-Schiffer-Mar-24-2017，时长：1-01-55"><span class="nav-number">31.</span> <span class="nav-text">#4 PWAs (Progressive Web Apps), Service Workers, Time, Glitch with special guest Jenn Schiffer,  Mar 24, 2017，时长：1:01:55</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-JavaScript-Fatigue-AMP-Paths-js-with-Mikeal-Rogers-Alex-Sexton-amp-Rachel-White-Mar-17-2017，时长：58-08"><span class="nav-number">32.</span> <span class="nav-text">#3 JavaScript Fatigue, AMP, Paths.js with Mikeal Rogers, Alex Sexton & Rachel White,  Mar 17, 2017，时长：58:08</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-Web-Assembly-Higher-Education-with-JavaScript-JS-Standards-with-Mikeal-Rogers-Alex-Sexton-amp-Rachel-White-Mar-10-2017，时长：55-32"><span class="nav-number">33.</span> <span class="nav-text">#2 Web Assembly, Higher Education with JavaScript, JS Standards with Mikeal Rogers, Alex Sexton & Rachel White,  Mar 10, 2017，时长：55:32</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#1-Security-on-the-Web-Node-async-await-AR-js-with-Mikeal-Rogers-Alex-Sexton-amp-Rachel-White-Mar-3-2017，时长：56-47"><span class="nav-number">34.</span> <span class="nav-text">#1 Security on the Web, Node async/await, AR.js with Mikeal Rogers, Alex Sexton & Rachel White,  Mar 3, 2017，时长：56:47</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Meet-Rachel-White-Panelist-of-JS-Party-Feb-24-2017，时长：56-47"><span class="nav-number">35.</span> <span class="nav-text">Meet Rachel White Panelist of JS Party,  Feb 24, 2017，时长：56:47</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Meet-Alex-Sexton-Feb-24-2017，时长：37-46"><span class="nav-number">36.</span> <span class="nav-text">Meet Alex Sexton, Feb 24, 2017，时长：37:46</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Meet-Mikeal-Rogers-Feb-24-2017，时长：37-46"><span class="nav-number">37.</span> <span class="nav-text">Meet Mikeal Rogers,  Feb 24, 2017，时长：37:46</span></a></li></ol></div>
+            
+          </div>
+          <div class="post-toc-indicator-bottom post-toc-indicator">
+            <i class="fa fa-angle-double-down"></i>
+          </div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy;  2015 - 
+  <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Frank</span>
+</div>
+
+<div class="powered-by">
+  由 <a class="theme-link" href="http://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Muse
+  </a>
+</div>
+
+
+
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+
+  
+
+
+
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+  <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
+
+  <script type="text/javascript" src="/vendors/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  <script type="text/javascript" src="/vendors/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  <script type="text/javascript" src="/vendors/velocity/velocity.min.js"></script>
+
+  <script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js"></script>
+
+  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=0.5.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=0.5.0"></script>
+
+
+
+  
+  
+
+  
+  
+<script type="text/javascript" src="/js/src/scrollspy.js?v=0.5.0"></script>
+
+<script type="text/javascript" id="sidebar.toc.highlight">
+  $(document).ready(function () {
+    var tocSelector = '.post-toc';
+    var $tocSelector = $(tocSelector);
+    var activeCurrentSelector = '.active-current';
+
+    $tocSelector
+      .on('activate.bs.scrollspy', function () {
+        var $currentActiveElement = $(tocSelector + ' .active').last();
+
+        removeCurrentActiveClass();
+        $currentActiveElement.addClass('active-current');
+
+        $tocSelector[0].scrollTop = $currentActiveElement.position().top;
+      })
+      .on('clear.bs.scrollspy', function () {
+        removeCurrentActiveClass();
+      });
+
+    function removeCurrentActiveClass () {
+      $(tocSelector + ' ' + activeCurrentSelector)
+        .removeClass(activeCurrentSelector.substring(1));
+    }
+
+    function processTOC () {
+      getTOCMaxHeight();
+      toggleTOCOverflowIndicators();
+    }
+
+    function getTOCMaxHeight () {
+      var height = $('.sidebar').height() -
+                   $tocSelector.position().top -
+                   $('.post-toc-indicator-bottom').height();
+
+      $tocSelector.css('height', height);
+
+      return height;
+    }
+
+    function toggleTOCOverflowIndicators () {
+      tocOverflowIndicator(
+        '.post-toc-indicator-top',
+        $tocSelector.scrollTop() > 0 ? 'show' : 'hide'
+      );
+
+      tocOverflowIndicator(
+        '.post-toc-indicator-bottom',
+        $tocSelector.scrollTop() >= $tocSelector.find('ol').height() - $tocSelector.height() ? 'hide' : 'show'
+      )
+    }
+
+    $(document).on('sidebar.motion.complete', function () {
+      processTOC();
+    });
+
+    $('body').scrollspy({ target: tocSelector });
+    $(window).on('resize', function () {
+      if ( $('.sidebar').hasClass('sidebar-active') ) {
+        processTOC();
+      }
+    });
+
+    onScroll($tocSelector);
+
+    function onScroll (element) {
+      element.on('mousewheel DOMMouseScroll', function (event) {
+          var oe = event.originalEvent;
+          var delta = oe.wheelDelta || -oe.detail;
+
+          this.scrollTop += ( delta < 0 ? 1 : -1 ) * 30;
+          event.preventDefault();
+
+          toggleTOCOverflowIndicators();
+      });
+    }
+
+    function tocOverflowIndicator (indicator, action) {
+      var $indicator = $(indicator);
+      var opacity = action === 'show' ? 1 : 0;
+      $indicator.velocity ?
+        $indicator.velocity('stop').velocity({
+          opacity: opacity
+        }, { duration: 100 }) :
+        $indicator.stop().animate({
+          opacity: opacity
+        }, 100);
+    }
+
+  });
+</script>
+
+<script type="text/javascript" id="sidebar.nav">
+  $(document).ready(function () {
+    var html = $('html');
+    var TAB_ANIMATE_DURATION = 200;
+    var hasVelocity = $.isFunction(html.velocity);
+
+    $('.sidebar-nav li').on('click', function () {
+      var item = $(this);
+      var activeTabClassName = 'sidebar-nav-active';
+      var activePanelClassName = 'sidebar-panel-active';
+      if (item.hasClass(activeTabClassName)) {
+        return;
+      }
+
+      var currentTarget = $('.' + activePanelClassName);
+      var target = $('.' + item.data('target'));
+
+      hasVelocity ?
+        currentTarget.velocity('transition.slideUpOut', TAB_ANIMATE_DURATION, function () {
+          target
+            .velocity('stop')
+            .velocity('transition.slideDownIn', TAB_ANIMATE_DURATION)
+            .addClass(activePanelClassName);
+        }) :
+        currentTarget.animate({ opacity: 0 }, TAB_ANIMATE_DURATION, function () {
+          currentTarget.hide();
+          target
+            .stop()
+            .css({'opacity': 0, 'display': 'block'})
+            .animate({ opacity: 1 }, TAB_ANIMATE_DURATION, function () {
+              currentTarget.removeClass(activePanelClassName);
+              target.addClass(activePanelClassName);
+            });
+        });
+
+      item.siblings().removeClass(activeTabClassName);
+      item.addClass(activeTabClassName);
+    });
+
+    $('.post-toc a').on('click', function (e) {
+      e.preventDefault();
+      var targetSelector = NexT.utils.escapeSelector(this.getAttribute('href'));
+      var offset = $(targetSelector).offset().top;
+      hasVelocity ?
+        html.velocity('stop').velocity('scroll', {
+          offset: offset  + 'px',
+          mobileHA: false
+        }) :
+        $('html, body').stop().animate({
+          scrollTop: offset
+        }, 500);
+    });
+
+    // Expand sidebar on post detail page by default, when post has a toc.
+    NexT.motion.middleWares.sidebar = function () {
+      var $tocContent = $('.post-toc-content');
+
+      if (CONFIG.scheme !== 'Pisces' && (CONFIG.sidebar.display === 'post' || CONFIG.sidebar.display === 'always')) {
+        if ($tocContent.length > 0 && $tocContent.html().trim().length > 0) {
+          NexT.utils.displaySidebar();
+        }
+      }
+    };
+  });
+</script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=0.5.0"></script>
+
+
+
+  
+
+
+
+  
+
+    <script type="text/javascript">
+      var disqus_shortname = 'knarfeh';
+      var disqus_identifier = '2017/11/03/【podcast】JS Party/';
+      var disqus_title = '【podcast】JS Party';
+      var disqus_url = 'http://knarfeh.github.io/2017/11/03/【podcast】JS Party/';
+
+      function run_disqus_script(disqus_script){
+        var dsq = document.createElement('script');
+        dsq.type = 'text/javascript';
+        dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/' + disqus_script;
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+      }
+
+      run_disqus_script('count.js');
+      
+        run_disqus_script('embed.js');
+      
+    </script>
+  
+
+
+
+  
+  
+  
+  <script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+      }
+    });
+  </script>
+
+  <script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+      var all = MathJax.Hub.getAllJax(), i;
+      for (i=0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';
+      }
+    });
+  </script>
+
+  
+    <script type="text/javascript" src="http://cdn.staticfile.org/mathjax/2.4.0/MathJax.js"></script>
+    <script type="text/javascript" src="http://cdn.staticfile.org/mathjax/2.4.0/config/TeX-AMS-MML_HTMLorMML.js"></script>
+  
+
+
+  
+
+
+</body>
+</html>

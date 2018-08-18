@@ -1,0 +1,857 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  <link href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css"/>
+
+
+
+
+  <link href="//fonts.googleapis.com/css?family=Lato:300,400,700,400italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+
+
+
+<link href="/vendors/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=0.5.0" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="hacking," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=0.5.0" />
+
+
+
+
+
+
+<meta name="description" content="前段时间发现了 quora-api 这个项目，当时心想我应该写个知乎的版本试试，正好可以用用flask，然后因为毕业论文和答辩的事情就一直拖着，现在终于开始动手了。">
+<meta name="keywords" content="hacking">
+<meta property="og:type" content="article">
+<meta property="og:title" content="记一次游戏通关">
+<meta property="og:url" content="http://knarfeh.github.io/2016/06/05/记一次游戏通关/index.html">
+<meta property="og:site_name" content="Frank&#39;s Notes">
+<meta property="og:description" content="前段时间发现了 quora-api 这个项目，当时心想我应该写个知乎的版本试试，正好可以用用flask，然后因为毕业论文和答辩的事情就一直拖着，现在终于开始动手了。">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="http://7xi5vu.com1.z0.glb.clouddn.com/movepyquora.png">
+<meta property="og:image" content="http://7xi5vu.com1.z0.glb.clouddn.com/proxy%20setting.png">
+<meta property="og:image" content="http://7xi5vu.com1.z0.glb.clouddn.com/ifconfig%20mac%20ip.png">
+<meta property="og:image" content="http://7xi5vu.com1.z0.glb.clouddn.com/iPhoneproxysetting.jpg">
+<meta property="og:image" content="http://7xi5vu.com1.z0.glb.clouddn.com/ssl%20proxying%20setting.png">
+<meta property="og:image" content="http://7xi5vu.com1.z0.glb.clouddn.com/jvmoptions.png">
+<meta property="og:image" content="http://7xi5vu.com1.z0.glb.clouddn.com/login_https.jpg">
+<meta property="og:image" content="http://7xi5vu.com1.z0.glb.clouddn.com/login_response.jpg">
+<meta property="og:image" content="http://7xi5vu.com1.z0.glb.clouddn.com/zhihu_top_story.png">
+<meta property="og:updated_time" content="2016-09-16T15:31:12.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="记一次游戏通关">
+<meta name="twitter:description" content="前段时间发现了 quora-api 这个项目，当时心想我应该写个知乎的版本试试，正好可以用用flask，然后因为毕业论文和答辩的事情就一直拖着，现在终于开始动手了。">
+<meta name="twitter:image" content="http://7xi5vu.com1.z0.glb.clouddn.com/movepyquora.png">
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    scheme: 'Muse',
+    sidebar: {"display":"hide"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: 0,
+      author: '博主'
+    }
+  };
+</script>
+
+  <title> 记一次游戏通关 | Frank's Notes </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+            (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+          m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-75002639-1', 'auto');
+  ga('send', 'pageview');
+</script>
+
+
+
+
+
+
+
+
+
+  
+  
+
+  <div class="container one-collumn  page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">Frank's Notes</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle"></p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-home fa-fw"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-archive fa-fw"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-tags fa-fw"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-twitter">
+          <a href="/twitter" rel="section">
+            
+              <i class="menu-item-icon fa fa-coffee fa-fw"></i> <br />
+            
+            Twitter
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                记一次游戏通关
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-06-05T23:33:34+08:00" content="2016-06-05">
+              2016-06-05
+            </time>
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2016/06/05/记一次游戏通关/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2016/06/05/记一次游戏通关/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>前段时间发现了 <a href="https://github.com/csu/quora-api" target="_blank" rel="external">quora-api</a> 这个项目，当时心想我应该写个知乎的版本试试，正好可以用用flask，然后因为毕业论文和答辩的事情就一直拖着，现在终于开始动手了。</p>
+<a id="more"></a>
+<p>稍稍瞄了一眼 <a href="https://github.com/csu/quora-api" target="_blank" rel="external">quora-api</a> 这个项目，发现这个项目跟我想的思路是一样的，写爬虫获得数据，再通过 flask 搭建 api 服务即可，从 commit 的记录来看，quora 的爬虫部分最开始是写在 <a href="https://github.com/csu/quora-api" target="_blank" rel="external">quora-api</a> 里面的，后来作者把这部分分离出去:  </p>
+<p><img src="http://7xi5vu.com1.z0.glb.clouddn.com/movepyquora.png" alt="pyquora">  </p>
+<p>单独打了一个包：<a href="https://github.com/csu/pyquora" target="_blank" rel="external">pyquora</a>。  </p>
+<p>我想我也应该如此，毕竟已经写过不少爬虫了，重点在于熟悉flask，就用现成的吧，把爬虫的部分分离出去，也便于维护。比较了几个关于知乎爬虫的repo，找到了 <a href="https://github.com/7sDream/zhihu-oauth" target="_blank" rel="external">zhihu-oauth</a>，其实 <a href="https://github.com/7sDream" target="_blank" rel="external">7sDream</a> 在新建这个 repo 的时候我就 star 了，但并没有仔细看，现在看来这个并不是简单的爬虫。我从这篇游戏攻略开始了旅程：<a href="http://zhihu-oauth.readthedocs.io/zh_CN/latest/for-dev/oauth/game.html" target="_blank" rel="external">zhihu-oauth-doc</a>  </p>
+<p>7sDream 在文档里写着：「本来想的是写一篇博客的，但是果然还是不要太张扬，写在文档里算了」，我却在博客里宣传了，好像不是很道德？嗯，还是不要给自己加那么多束缚吧。我不打算把攻略重写一遍，只是记录一下遇到的坑，反正我的博客基本没人知道，没几个人看，github 对百度搜索引擎做了限制，百度爬取不到，Google 倒是可以，但是用 Google 搜中文资料的也太少了吧？如果影响不好我就删掉这篇。</p>
+<p>我照着这篇攻略开始了。攻略里写的准备工作是：  </p>
+<blockquote>
+<ul>
+<li>一台 Android 设备（我用的是 Nexus 7， 6.0.1，CM 13）</li>
+<li>一台电脑，系统随意，有 Android studio 最好，没有也行</li>
+<li>支持 HTTPS 的抓包工具（我用的是 Android 上的 Packet Capture）</li>
+<li>APK 反编译工具（我用的是 jadx）</li>
+</ul>
+<p>在 Android 设备上安装上知乎客户端，如果已经安装了的话就强行停止， 然后清除数据和缓存。</p>
+</blockquote>
+<p>手边暂时没有 Android 设备，用的是 iPhone ，在 iPhone 上抓包好像挺麻烦？果断用电脑抓包啊，也便于分析，如果不是抓https协议的内容，只抓http协议的内容，用 Wireshark 就够了，有过这样的尝试，见<a href="http://weibo.com/2753500945/DeXd83CZf?from=page_1005052753500945_profile&amp;wvr=6&amp;mod=weibotime&amp;type=comment#_rnd1464658571029" target="_blank" rel="external">这条微博</a>。要保证安全性，APP的数据传输一般会用https，因为可以用ssl层来加密，知乎客户端用的是https。Wireshark 当然可以抓https协议的内容，但抓手机端的就有点麻烦，见<a href="https://imququ.com/post/http2-traffic-in-wireshark.html" target="_blank" rel="external">这篇博客</a>，果断跳过这个坑。我的方案是用 <a href="https://www.charlesproxy.com://www.charlesproxy.com/" target="_blank" rel="external">charles for mac</a> + iPhone。</p>
+<p>用 charles 抓取 APP 网络请求的大致步骤是：  </p>
+<ul>
+<li>手机和电脑连接同一个局域网</li>
+<li>在手机端改 http 代理</li>
+</ul>
+<p>在 Charles的 Proxy Setting 可以看到默认的端口号：  </p>
+<p><img src="http://7xi5vu.com1.z0.glb.clouddn.com/proxy%20setting.png" alt="Charles Proxy Setting">  </p>
+<p>用 ifconfig 查看 mac 的 ip 地址：  </p>
+<p><img src="http://7xi5vu.com1.z0.glb.clouddn.com/ifconfig%20mac%20ip.png" alt="mac ip"></p>
+<p>在手机上改成对应的即可：  </p>
+<p><img src="http://7xi5vu.com1.z0.glb.clouddn.com/iPhoneproxysetting.jpg" alt="iPhoneproxysetting"></p>
+<ul>
+<li><p>在手机上需要打开 <a href="http://www.charlesproxy.com/documentation/additional/legacy-ssl-proxying/" target="_blank" rel="external">legacy-ssl-proxying</a>，安装 SSL 证书</p>
+</li>
+<li><p>在 Charles SSL Proxying 设置界面打开 ssl 的 抓取：  </p>
+</li>
+</ul>
+<p><img src="http://7xi5vu.com1.z0.glb.clouddn.com/ssl%20proxying%20setting.png" alt="SSL Proxying setting"></p>
+<p>与 Wireshark 不同的是，Charles 打开即开始抓包，抓去过程中我遇到一个坑，是编码问题，有不少乱码，搜索了一下，有这样的方案：<a href="http://iam42.iteye.com/blog/2186630" target="_blank" rel="external">使用Charles，在mac环境下对android app抓包</a>，但我的 info.plist 并没有 vmoptions，看来我用的 Charles 比较新，求助 google，最终解决了，info.plist 改动的部分：  </p>
+<p><img src="http://7xi5vu.com1.z0.glb.clouddn.com/jvmoptions.png" alt="jvmoptions">  </p>
+<p>解决了乱码问题。  </p>
+<p>实现了抓包，就可以开始分析知乎的 api 到底怎么用了。</p>
+<p>在手机上重新登陆，抓取登陆时的网络请求，发送的登陆参数如下：  </p>
+<p><img src="http://7xi5vu.com1.z0.glb.clouddn.com/login_https.jpg" alt="login_https"></p>
+<p>逐个解释这些参数：  </p>
+<ul>
+<li><p>第一项是 client_id，这是 OAuth 里需要申请的，表明一个应用的 APPID 值，我申请过 twitter 的 api，貌似这个每个 APPID 都应该不一样才对？攻略里写的是 「Android 知乎客户端的这个值应该都是一样的」，看来目前只有两个，一个表明是 Android 端，一个表明是 iOS 端，以后知乎开放了 api 开发者拿到的 id 应该就是唯一的了。  </p>
+</li>
+<li><p>第二项是授权类型，「password 表示我们通过提供用户账户的密码 来获取用户令牌。其他的方式大概还有 OAuth 登录（就是像微博那样弹个小网页让你登录）， 第三方登录（通过微博，QQ什么的）」</p>
+</li>
+<li><p>第三项 密码</p>
+</li>
+<li><p>第四项 请求签名，这个显然是一种加密措施，这个是最难搞的。7sDream 说 「为了破解这个签名，我费了挺大功夫的，大概一晚上加一早上吧」（啊哈哈哈 我不信）</p>
+</li>
+<li><p>第五项 source，请求来源，目前应该就两种，一个 Android 端，一个 iOS 端</p>
+</li>
+<li><p>第六项 时间戳，请求签名的加密算法会用到</p>
+</li>
+<li><p>第七项 用户名，这里我用的是邮箱账号</p>
+</li>
+</ul>
+<p>除了请求签名，其他都是很容易构造的，所以最关键的就是搞定知乎的加密算法了。  </p>
+<p>（写到这，真的挺佩服7sDream，貌似是天津大学的大三学生？曾跟他聊过几句，非常有极客风范，而且他还比我小，唉真是惭愧，要好好加油。）  </p>
+<p>文档中记录了破解加密算法的过程。总结一下，掌握一定的逆向工程技术是必须的，7sDream 用 jadx 这个工具反编译了知乎的 Android 应用包，找到了 Authorisation.java 中的 createBaseAuthorisation 方法，根据代码尝试，然后推测知乎用的是 Google 推荐的 OAuth 的签名方法，文档在这：<a href="https://developers.google.com/maps/documentation/static-maps/get-api-key#url-" target="_blank" rel="external">get-api-key</a>。思路非常棒，不过他说的「大概一晚上加一早上吧」 我是真的不信。。。。。</p>
+<p>搞定加密算法，用程序模拟客户端发送请求即可，可以收到客户端返回的结果：  </p>
+<p><img src="http://7xi5vu.com1.z0.glb.clouddn.com/login_response.jpg" alt="login_response">  </p>
+<p>接下来请求 api 数据的时候只需要加上 access_token 这个值即可获取，例如请求首页的数据：  </p>
+<p><img src="http://7xi5vu.com1.z0.glb.clouddn.com/zhihu_top_story.png" alt="top_story"></p>
+<p>玩到这，游戏基本就通关了。登陆操作其实还有一个隐含关卡，攻略中写了知乎 OAuth 的验证码策略的6点，不知道作者获悉这6点的思路是什么，其实试错的价值也很大，这里需要自己好好研究一下，暂时还没遇到这种情况，遇到了再 hack 一下。</p>
+<p>好了，搞定了这些，写代码模拟这个过程就行了。<a href="https://github.com/7sDream/zhihu-oauth" target="_blank" rel="external">zhihu-oauth</a> 的代码基本上就是模拟这个过程。源代码也很有研究价值。</p>
+<h2 id="总结一下"><a href="#总结一下" class="headerlink" title="总结一下"></a>总结一下</h2><p>这份攻略干货十足，它完整地记录了如何破解手机应用 api ，我想不仅仅是知乎，对于其他的应用，比如quora 啊，豆瓣等，都可以借鉴这种思路。这里面大概有这么一些技能点：http 传输协议，逆向工程能力，基本加密方法和应用，都值得更进一步学习。  </p>
+<p>说起来，不知道那些快30，快40的老一辈程序员会不会不屑于干这种事情，这种事当然算不上光彩，是破坏商业规则的行为，触碰了商业公司的利益，但我觉得非常有意思，这种探索让我感到兴奋，希望自己在30、40岁的时候仍然可以保持这种钻研精神。  </p>
+<p>接下来的计划是：好好读读 <a href="https://github.com/7sDream/zhihu-oauth" target="_blank" rel="external">zhihu-oauth</a> 的源代码，利用 <a href="https://github.com/7sDream/zhihu-oauth" target="_blank" rel="external">zhihu-oauth</a> 的功能实现与<a href="https://github.com/csu/quora-api" target="_blank" rel="external">quora-api</a> 类似的知乎的版本（repo 地址在<a href="https://github.com/knarfeh/zhihu-api" target="_blank" rel="external">这</a>），再接下来，我大概会把 <a href="http://github.com/knarfeh/EE-Book" target="_blank" rel="external">EE-Book</a> 中知乎爬虫的部分去掉，改用已经破解的知乎api，再接下来，还有什么好玩的事情呢？</p>
+
+      
+    </div>
+
+    <div>
+      
+        
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/hacking/" rel="tag">#hacking</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2016/05/22/编码问题小结/" rel="next" title="编码问题小结">
+                <i class="fa fa-chevron-left"></i> 编码问题小结
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2016/06/08/【译】Python 的下划线/" rel="prev" title="【译】Python 的下划线">
+                【译】Python 的下划线 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+      <div id="disqus_thread">
+        <noscript>
+          Please enable JavaScript to view the
+          <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a>
+        </noscript>
+      </div>
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel ">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="https://avatars1.githubusercontent.com/u/6964284?v=3&s=460"
+               alt="Frank" />
+          <p class="site-author-name" itemprop="name">Frank</p>
+          <p class="site-description motion-element" itemprop="description"></p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">174</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+          
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">125</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/knarfeh" target="_blank">
+                  
+                    <i class="fa fa-github"></i> GitHub
+                  
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://twitter.com/knarfeh" target="_blank">
+                  
+                    <i class="fa fa-twitter"></i> Twitter
+                  
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://weibo.com/2753500945" target="_blank">
+                  
+                    <i class="fa fa-weibo"></i> Weibo
+                  
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+          <div class="cc-license motion-element" itemprop="license">
+            <a href="http://creativecommons.org/licenses/by-sa/4.0" class="cc-opacity" target="_blank">
+              <img src="/images/cc-by-sa.svg" alt="Creative Commons" />
+            </a>
+          </div>
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+      </section>
+
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc-indicator-top post-toc-indicator">
+            <i class="fa fa-angle-double-up"></i>
+          </div>
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#总结一下"><span class="nav-number">1.</span> <span class="nav-text">总结一下</span></a></li></ol></div>
+            
+          </div>
+          <div class="post-toc-indicator-bottom post-toc-indicator">
+            <i class="fa fa-angle-double-down"></i>
+          </div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy;  2015 - 
+  <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Frank</span>
+</div>
+
+<div class="powered-by">
+  由 <a class="theme-link" href="http://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Muse
+  </a>
+</div>
+
+
+
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+
+  
+
+
+
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+  <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
+
+  <script type="text/javascript" src="/vendors/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  <script type="text/javascript" src="/vendors/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  <script type="text/javascript" src="/vendors/velocity/velocity.min.js"></script>
+
+  <script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js"></script>
+
+  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=0.5.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=0.5.0"></script>
+
+
+
+  
+  
+
+  
+  
+<script type="text/javascript" src="/js/src/scrollspy.js?v=0.5.0"></script>
+
+<script type="text/javascript" id="sidebar.toc.highlight">
+  $(document).ready(function () {
+    var tocSelector = '.post-toc';
+    var $tocSelector = $(tocSelector);
+    var activeCurrentSelector = '.active-current';
+
+    $tocSelector
+      .on('activate.bs.scrollspy', function () {
+        var $currentActiveElement = $(tocSelector + ' .active').last();
+
+        removeCurrentActiveClass();
+        $currentActiveElement.addClass('active-current');
+
+        $tocSelector[0].scrollTop = $currentActiveElement.position().top;
+      })
+      .on('clear.bs.scrollspy', function () {
+        removeCurrentActiveClass();
+      });
+
+    function removeCurrentActiveClass () {
+      $(tocSelector + ' ' + activeCurrentSelector)
+        .removeClass(activeCurrentSelector.substring(1));
+    }
+
+    function processTOC () {
+      getTOCMaxHeight();
+      toggleTOCOverflowIndicators();
+    }
+
+    function getTOCMaxHeight () {
+      var height = $('.sidebar').height() -
+                   $tocSelector.position().top -
+                   $('.post-toc-indicator-bottom').height();
+
+      $tocSelector.css('height', height);
+
+      return height;
+    }
+
+    function toggleTOCOverflowIndicators () {
+      tocOverflowIndicator(
+        '.post-toc-indicator-top',
+        $tocSelector.scrollTop() > 0 ? 'show' : 'hide'
+      );
+
+      tocOverflowIndicator(
+        '.post-toc-indicator-bottom',
+        $tocSelector.scrollTop() >= $tocSelector.find('ol').height() - $tocSelector.height() ? 'hide' : 'show'
+      )
+    }
+
+    $(document).on('sidebar.motion.complete', function () {
+      processTOC();
+    });
+
+    $('body').scrollspy({ target: tocSelector });
+    $(window).on('resize', function () {
+      if ( $('.sidebar').hasClass('sidebar-active') ) {
+        processTOC();
+      }
+    });
+
+    onScroll($tocSelector);
+
+    function onScroll (element) {
+      element.on('mousewheel DOMMouseScroll', function (event) {
+          var oe = event.originalEvent;
+          var delta = oe.wheelDelta || -oe.detail;
+
+          this.scrollTop += ( delta < 0 ? 1 : -1 ) * 30;
+          event.preventDefault();
+
+          toggleTOCOverflowIndicators();
+      });
+    }
+
+    function tocOverflowIndicator (indicator, action) {
+      var $indicator = $(indicator);
+      var opacity = action === 'show' ? 1 : 0;
+      $indicator.velocity ?
+        $indicator.velocity('stop').velocity({
+          opacity: opacity
+        }, { duration: 100 }) :
+        $indicator.stop().animate({
+          opacity: opacity
+        }, 100);
+    }
+
+  });
+</script>
+
+<script type="text/javascript" id="sidebar.nav">
+  $(document).ready(function () {
+    var html = $('html');
+    var TAB_ANIMATE_DURATION = 200;
+    var hasVelocity = $.isFunction(html.velocity);
+
+    $('.sidebar-nav li').on('click', function () {
+      var item = $(this);
+      var activeTabClassName = 'sidebar-nav-active';
+      var activePanelClassName = 'sidebar-panel-active';
+      if (item.hasClass(activeTabClassName)) {
+        return;
+      }
+
+      var currentTarget = $('.' + activePanelClassName);
+      var target = $('.' + item.data('target'));
+
+      hasVelocity ?
+        currentTarget.velocity('transition.slideUpOut', TAB_ANIMATE_DURATION, function () {
+          target
+            .velocity('stop')
+            .velocity('transition.slideDownIn', TAB_ANIMATE_DURATION)
+            .addClass(activePanelClassName);
+        }) :
+        currentTarget.animate({ opacity: 0 }, TAB_ANIMATE_DURATION, function () {
+          currentTarget.hide();
+          target
+            .stop()
+            .css({'opacity': 0, 'display': 'block'})
+            .animate({ opacity: 1 }, TAB_ANIMATE_DURATION, function () {
+              currentTarget.removeClass(activePanelClassName);
+              target.addClass(activePanelClassName);
+            });
+        });
+
+      item.siblings().removeClass(activeTabClassName);
+      item.addClass(activeTabClassName);
+    });
+
+    $('.post-toc a').on('click', function (e) {
+      e.preventDefault();
+      var targetSelector = NexT.utils.escapeSelector(this.getAttribute('href'));
+      var offset = $(targetSelector).offset().top;
+      hasVelocity ?
+        html.velocity('stop').velocity('scroll', {
+          offset: offset  + 'px',
+          mobileHA: false
+        }) :
+        $('html, body').stop().animate({
+          scrollTop: offset
+        }, 500);
+    });
+
+    // Expand sidebar on post detail page by default, when post has a toc.
+    NexT.motion.middleWares.sidebar = function () {
+      var $tocContent = $('.post-toc-content');
+
+      if (CONFIG.scheme !== 'Pisces' && (CONFIG.sidebar.display === 'post' || CONFIG.sidebar.display === 'always')) {
+        if ($tocContent.length > 0 && $tocContent.html().trim().length > 0) {
+          NexT.utils.displaySidebar();
+        }
+      }
+    };
+  });
+</script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=0.5.0"></script>
+
+
+
+  
+
+
+
+  
+
+    <script type="text/javascript">
+      var disqus_shortname = 'knarfeh';
+      var disqus_identifier = '2016/06/05/记一次游戏通关/';
+      var disqus_title = '记一次游戏通关';
+      var disqus_url = 'http://knarfeh.github.io/2016/06/05/记一次游戏通关/';
+
+      function run_disqus_script(disqus_script){
+        var dsq = document.createElement('script');
+        dsq.type = 'text/javascript';
+        dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/' + disqus_script;
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+      }
+
+      run_disqus_script('count.js');
+      
+        run_disqus_script('embed.js');
+      
+    </script>
+  
+
+
+
+  
+  
+  
+  <script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+      }
+    });
+  </script>
+
+  <script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+      var all = MathJax.Hub.getAllJax(), i;
+      for (i=0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';
+      }
+    });
+  </script>
+
+  
+    <script type="text/javascript" src="http://cdn.staticfile.org/mathjax/2.4.0/MathJax.js"></script>
+    <script type="text/javascript" src="http://cdn.staticfile.org/mathjax/2.4.0/config/TeX-AMS-MML_HTMLorMML.js"></script>
+  
+
+
+  
+
+
+</body>
+</html>

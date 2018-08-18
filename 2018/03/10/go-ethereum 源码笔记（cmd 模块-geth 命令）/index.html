@@ -1,0 +1,941 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  <link href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css"/>
+
+
+
+
+  <link href="//fonts.googleapis.com/css?family=Lato:300,400,700,400italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+
+
+
+<link href="/vendors/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=0.5.0" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="cryptocurrency,Golang,geth," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=0.5.0" />
+
+
+
+
+
+
+<meta name="description" content="cmd 模块包含了很多子模块，基本上每个子模块表示一个可执行的命令，其中最重要的是 geth 命令，它是以太坊的命令行客户端。 geth 命令是以太坊提供的一个强大的命令行工具，它是使用以太坊的入口。它包括了很多子命令，你可以通过 geth --help 获得更多帮助信息。其运行方法是：geth [选项] 命令 [命令选项][参数…]。">
+<meta name="keywords" content="cryptocurrency,Golang,geth">
+<meta property="og:type" content="article">
+<meta property="og:title" content="go-ethereum 源码笔记（cmd 模块-geth 命令）">
+<meta property="og:url" content="http://knarfeh.github.io/2018/03/10/go-ethereum 源码笔记（cmd 模块-geth 命令）/index.html">
+<meta property="og:site_name" content="Frank&#39;s Notes">
+<meta property="og:description" content="cmd 模块包含了很多子模块，基本上每个子模块表示一个可执行的命令，其中最重要的是 geth 命令，它是以太坊的命令行客户端。 geth 命令是以太坊提供的一个强大的命令行工具，它是使用以太坊的入口。它包括了很多子命令，你可以通过 geth --help 获得更多帮助信息。其运行方法是：geth [选项] 命令 [命令选项][参数…]。">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2018-08-18T04:09:46.753Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="go-ethereum 源码笔记（cmd 模块-geth 命令）">
+<meta name="twitter:description" content="cmd 模块包含了很多子模块，基本上每个子模块表示一个可执行的命令，其中最重要的是 geth 命令，它是以太坊的命令行客户端。 geth 命令是以太坊提供的一个强大的命令行工具，它是使用以太坊的入口。它包括了很多子命令，你可以通过 geth --help 获得更多帮助信息。其运行方法是：geth [选项] 命令 [命令选项][参数…]。">
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    scheme: 'Muse',
+    sidebar: {"display":"hide"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: 0,
+      author: '博主'
+    }
+  };
+</script>
+
+  <title> go-ethereum 源码笔记（cmd 模块-geth 命令） | Frank's Notes </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+            (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+          m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-75002639-1', 'auto');
+  ga('send', 'pageview');
+</script>
+
+
+
+
+
+
+
+
+
+  
+  
+
+  <div class="container one-collumn  page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">Frank's Notes</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle"></p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-home fa-fw"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-archive fa-fw"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-tags fa-fw"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-twitter">
+          <a href="/twitter" rel="section">
+            
+              <i class="menu-item-icon fa fa-coffee fa-fw"></i> <br />
+            
+            Twitter
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                go-ethereum 源码笔记（cmd 模块-geth 命令）
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2018-03-10T22:34:56+08:00" content="2018-03-10">
+              2018-03-10
+            </time>
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2018/03/10/go-ethereum 源码笔记（cmd 模块-geth 命令）/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2018/03/10/go-ethereum 源码笔记（cmd 模块-geth 命令）/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>cmd 模块包含了很多子模块，基本上每个子模块表示一个可执行的命令，其中最重要的是 geth 命令，它是以太坊的命令行客户端。</p>
+<p>geth 命令是以太坊提供的一个强大的命令行工具，它是使用以太坊的入口。它包括了很多子命令，你可以通过 <code>geth --help</code> 获得更多帮助信息。其运行方法是：<code>geth [选项] 命令 [命令选项][参数…]</code>。</p>
+<a id="more"></a>
+<p>以下是 geth 包含的子命令以及对应的简单描述。</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">子命令</th>
+<th style="text-align:center">描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">account</td>
+<td style="text-align:center">管理账户</td>
+</tr>
+<tr>
+<td style="text-align:center">attach</td>
+<td style="text-align:center">启动交互式JavaScript环境（连接到节点）</td>
+</tr>
+<tr>
+<td style="text-align:center">bug</td>
+<td style="text-align:center">给 github 源代码仓库提 issue</td>
+</tr>
+<tr>
+<td style="text-align:center">console</td>
+<td style="text-align:center">启动交互式 JavaScript 环境</td>
+</tr>
+<tr>
+<td style="text-align:center">copydb</td>
+<td style="text-align:center">从文件夹创建本地链</td>
+</tr>
+<tr>
+<td style="text-align:center">dump</td>
+<td style="text-align:center">取出一个特定的区块</td>
+</tr>
+<tr>
+<td style="text-align:center">dumpconfig</td>
+<td style="text-align:center">显示配置值</td>
+</tr>
+<tr>
+<td style="text-align:center">export</td>
+<td style="text-align:center">导出区块链到文件</td>
+</tr>
+<tr>
+<td style="text-align:center">import</td>
+<td style="text-align:center">导入一个区块链文件</td>
+</tr>
+<tr>
+<td style="text-align:center">init</td>
+<td style="text-align:center">启动并初始化一个新的创世纪块</td>
+</tr>
+<tr>
+<td style="text-align:center">js</td>
+<td style="text-align:center">执行指定的JavaScript文件(多个)</td>
+</tr>
+<tr>
+<td style="text-align:center">license</td>
+<td style="text-align:center">显示许可信息</td>
+</tr>
+<tr>
+<td style="text-align:center">makecache</td>
+<td style="text-align:center">生成ethash验证缓存(用于测试)</td>
+</tr>
+<tr>
+<td style="text-align:center">makedag</td>
+<td style="text-align:center">生成ethash 挖矿DAG(用于测试)</td>
+</tr>
+<tr>
+<td style="text-align:center">monitor</td>
+<td style="text-align:center">监控和可视化节点指标</td>
+</tr>
+<tr>
+<td style="text-align:center">removedb</td>
+<td style="text-align:center">删除区块链和状态数据库</td>
+</tr>
+<tr>
+<td style="text-align:center">version</td>
+<td style="text-align:center">打印版本号</td>
+</tr>
+<tr>
+<td style="text-align:center">wallet</td>
+<td style="text-align:center">管理Ethereum预售钱包</td>
+</tr>
+<tr>
+<td style="text-align:center">help</td>
+<td style="text-align:center">显示一个命令或帮助一个命令列表</td>
+</tr>
+</tbody>
+</table>
+<p>本文将逐一分析 geth 模块的源码，了解 geth 命令的实现原理。需要注意的是，这里我们不会深入分析每一个模块，因为这些模块的实现实际上是以太坊每个功能模块的实现，在后续的文章我们会一一分析。这里只分析 geth 命令的实现。</p>
+<p>将涉及到 cmd, node 目录。</p>
+<p>geth 的命令行是通过 <a href="https://github.com/urfave/cli" target="_blank" rel="external">github.com/urfave/cli</a> 这个库实现的，通过这个库，我们可以轻松定义命令行程序的子命令，命令选项，命令参数，描述信息等等，如果想要进一步了解，可以查看该库文档。</p>
+<p>geth 模块的入口在 <code>cmd/geth/main.go</code> 中，它会调用 <code>urfave/cli</code> 的中 app 的 <code>run</code> 方法，而 app 在 <code>init</code> 函数中初始化，在 Golang 中，如果有 <code>init</code> 方法，那么会在 <code>main</code> 函数之前执行 <code>init</code> 函数，它用于程序执行前的初始化工作。在 geth 模块中，<code>init()</code> 函数定义了命令行的入口是 <code>geth</code>，并且定义了 geth 的子命令、全局的命令选项、子命令的命令选项，按照 <code>urfave/cli</code> 的做法，不输入子命令会默认调用 geth，而 geth 方法其实就6行：</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="selector-tag">func</span> <span class="selector-tag">geth</span>(<span class="selector-tag">ctx</span> *<span class="selector-tag">cli</span><span class="selector-class">.Context</span>) <span class="selector-tag">error</span> &#123;</div><div class="line">	<span class="attribute">node </span>:= <span class="built_in">makeFullNode</span>(ctx)</div><div class="line">	<span class="built_in">startNode</span>(ctx, node)</div><div class="line">	node.<span class="built_in">Wait</span>()</div><div class="line">	return nil</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>它会调用 <code>makeFullNode</code> 函数初始化一个全节点，该方法在 <code>geth/config.go</code> 中，接着通过 <code>startNode</code> 函数启动一个全节点，以阻塞的方式运行，等待着节点被终止。</p>
+<p>我们先深入到 <code>makeFullNode</code> 函数中。</p>
+<figure class="highlight lisp"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">func makeFullNode(<span class="name">ctx</span> *cli.Context) *node.Node &#123;</div><div class="line">	stack, cfg <span class="symbol">:=</span> makeConfigNode(<span class="name">ctx</span>)</div><div class="line">	utils.RegisterEthService(<span class="name">stack</span>, <span class="symbol">&amp;cfg</span>.Eth)</div><div class="line">	if ctx.GlobalBool(<span class="name">utils</span>.DashboardEnabledFlag.Name) &#123;</div><div class="line">		utils.RegisterDashboardService(<span class="name">stack</span>, <span class="symbol">&amp;cfg</span>.Dashboard, gitCommit)</div><div class="line">	&#125;</div><div class="line">	// whether enable whisper ...</div><div class="line">	// whether register eth stats ...</div><div class="line">	return stack</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>核心的逻辑是首先通过配置文件和 flag 生成系统级的配置，然后将服务注入到节点。<br>先说 <code>makeConfigNode</code> 方法。</p>
+<figure class="highlight roboconf"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div></pre></td><td class="code"><pre><div class="line">func makeConfigNode(ctx *cli.Context) (*node.Node, gethConfig) &#123;</div><div class="line">	<span class="attribute">cfg</span> := gethConfig&#123;</div><div class="line">		Eth:       eth<span class="variable">.DefaultConfig</span>,</div><div class="line">		Shh:       whisper<span class="variable">.DefaultConfig</span>,</div><div class="line">		Node:      defaultNodeConfig(),</div><div class="line">		Dashboard: dashboard<span class="variable">.DefaultConfig</span>,</div><div class="line">	&#125;</div><div class="line"></div><div class="line">	if file := ctx<span class="variable">.GlobalString</span>(configFileFlag<span class="variable">.Name</span>); <span class="attribute">file != "" &#123;</span></div><div class="line">		if err := loadConfig(file, &amp;cfg); <span class="attribute">err != nil &#123;</span></div><div class="line">			utils.Fatalf("%v", err)</div><div class="line">		&#125;</div><div class="line">	&#125;</div><div class="line"></div><div class="line">	utils.SetNodeConfig(ctx, &amp;cfg.Node)</div><div class="line">	stack, err := node<span class="variable">.New</span>(&amp;cfg<span class="variable">.Node</span>)</div><div class="line">	if err != nil &#123;</div><div class="line">		utils<span class="variable">.Fatalf</span>("Failed to create the protocol stack: %v", err)</div><div class="line">	&#125;</div><div class="line">	utils<span class="variable">.SetEthConfig</span>(ctx, stack, &amp;cfg<span class="variable">.Eth</span>)</div><div class="line">	if ctx<span class="variable">.GlobalIsSet</span>(utils<span class="variable">.EthStatsURLFlag</span><span class="variable">.Name</span>) &#123;</div><div class="line">		cfg<span class="variable">.Ethstats</span><span class="variable">.URL</span> = ctx<span class="variable">.GlobalString</span>(utils<span class="variable">.EthStatsURLFlag</span><span class="variable">.Name</span>)</div><div class="line">	&#125;</div><div class="line"></div><div class="line">	utils<span class="variable">.SetShhConfig</span>(ctx, stack, &amp;cfg<span class="variable">.Shh</span>)</div><div class="line">	utils<span class="variable">.SetDashboardConfig</span>(ctx, &amp;cfg<span class="variable">.Dashboard</span>)</div><div class="line"></div><div class="line">	return stack, cfg</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p><code>makeConfigNode</code> 会先载入默认配置，再载入配置文件中的配置，然后通过上下文的配置(在 <code>cmd/geth/main.go</code> 中的 <code>init</code> 方法中定义)进行设置。我们深入到 <code>RegisterEthService</code> 方法来查看服务是如何注入到节点中的。</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">func</span> <span class="title">RegisterEthService</span><span class="params">(stack *node.Node, cfg *eth.Config)</span></span> &#123;</div><div class="line">	<span class="keyword">var</span> err error</div><div class="line">	<span class="keyword">if</span> cfg.SyncMode == downloader.LightSync &#123;</div><div class="line">		err = stack.Register(<span class="function"><span class="keyword">func</span><span class="params">(ctx *node.ServiceContext)</span> <span class="params">(node.Service, error)</span></span> &#123;</div><div class="line">			<span class="keyword">return</span> les.New(ctx, cfg)</div><div class="line">		&#125;)</div><div class="line">	&#125; <span class="keyword">else</span> &#123;</div><div class="line">		err = stack.Register(<span class="function"><span class="keyword">func</span><span class="params">(ctx *node.ServiceContext)</span> <span class="params">(node.Service, error)</span></span> &#123;</div><div class="line">			fullNode, err := eth.New(ctx, cfg)</div><div class="line">			<span class="keyword">if</span> fullNode != <span class="literal">nil</span> &amp;&amp; cfg.LightServ &gt; <span class="number">0</span> &#123;</div><div class="line">				ls, _ := les.NewLesServer(fullNode, cfg)</div><div class="line">				fullNode.AddLesServer(ls)</div><div class="line">			&#125;</div><div class="line">			<span class="keyword">return</span> fullNode, err</div><div class="line">		&#125;)</div><div class="line">	&#125;</div><div class="line">	<span class="keyword">if</span> err != <span class="literal">nil</span> &#123;</div><div class="line">		Fatalf(<span class="string">"Failed to register the Ethereum service: %v"</span>, err)</div><div class="line">	&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p><code>RegisterEthService</code> 的代码在 <code>cmd/utils/flags.go</code> 中，如果同步模式是轻量级同步模式，启动轻量级客户端，否则启动全节点，实际的注册方法是 <code>stack.Register</code>。注入服务其实就是将新的服务注入到 <code>node</code> 对象的 <code>serviceFuncs</code> 数组中。这些内容将<a href="#TODO">go-ethereum 源码笔记（node 模块）</a> 描述。</p>
+<p>接下来我们继续看 <code>geth/main.go</code> 的 <code>startNode</code> 函数，看看如何启动节点，这个方法在 <code>cmd/geth/main.go</code> 中。</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">func</span> <span class="title">startNode</span><span class="params">(ctx *cli.Context, stack *node.Node)</span></span> &#123;</div><div class="line">	debug.Memsize.Add(<span class="string">"node"</span>, stack)</div><div class="line">	utils.StartNode(stack)</div><div class="line"></div><div class="line">	ks := stack.AccountManager().Backends(keystore.KeyStoreType)[<span class="number">0</span>].(*keystore.KeyStore)</div><div class="line"></div><div class="line">	passwords := utils.MakePasswordList(ctx)</div><div class="line">	unlocks := strings.Split(ctx.GlobalString(utils.UnlockedAccountFlag.Name), <span class="string">","</span>)</div><div class="line">	<span class="keyword">for</span> i, account := <span class="keyword">range</span> unlocks &#123;</div><div class="line">		<span class="keyword">if</span> trimmed := strings.TrimSpace(account); trimmed != <span class="string">""</span> &#123;</div><div class="line">			unlockAccount(ctx, ks, trimmed, i, passwords)</div><div class="line">		&#125;</div><div class="line">	&#125;</div><div class="line">	events := <span class="built_in">make</span>(<span class="keyword">chan</span> accounts.WalletEvent, <span class="number">16</span>)</div><div class="line">	stack.AccountManager().Subscribe(events)</div><div class="line"></div><div class="line">	<span class="keyword">go</span> <span class="function"><span class="keyword">func</span><span class="params">()</span></span> &#123;</div><div class="line">		rpcClient, err := stack.Attach()</div><div class="line">		<span class="keyword">if</span> err != <span class="literal">nil</span> &#123;</div><div class="line">			utils.Fatalf(<span class="string">"Failed to attach to self: %v"</span>, err)</div><div class="line">		&#125;</div><div class="line">		stateReader := ethclient.NewClient(rpcClient)</div><div class="line"></div><div class="line">		<span class="keyword">for</span> _, wallet := <span class="keyword">range</span> stack.AccountManager().Wallets() &#123;</div><div class="line">			<span class="keyword">if</span> err := wallet.Open(<span class="string">""</span>); err != <span class="literal">nil</span> &#123;</div><div class="line">				log.Warn(<span class="string">"Failed to open wallet"</span>, <span class="string">"url"</span>, wallet.URL(), <span class="string">"err"</span>, err)</div><div class="line">			&#125;</div><div class="line">		&#125;</div><div class="line">		<span class="keyword">for</span> event := <span class="keyword">range</span> events &#123;</div><div class="line">			<span class="keyword">switch</span> event.Kind &#123;</div><div class="line">			<span class="keyword">case</span> accounts.WalletArrived:</div><div class="line">				<span class="keyword">if</span> err := event.Wallet.Open(<span class="string">""</span>); err != <span class="literal">nil</span> &#123;</div><div class="line">					log.Warn(<span class="string">"New wallet appeared, failed to open"</span>, <span class="string">"url"</span>, event.Wallet.URL(), <span class="string">"err"</span>, err)</div><div class="line">				&#125;</div><div class="line">			<span class="keyword">case</span> accounts.WalletOpened:</div><div class="line">				status, _ := event.Wallet.Status()</div><div class="line">				log.Info(<span class="string">"New wallet appeared"</span>, <span class="string">"url"</span>, event.Wallet.URL(), <span class="string">"status"</span>, status)</div><div class="line"></div><div class="line">				<span class="keyword">if</span> event.Wallet.URL().Scheme == <span class="string">"ledger"</span> &#123;</div><div class="line">					event.Wallet.SelfDerive(accounts.DefaultLedgerBaseDerivationPath, stateReader)</div><div class="line">				&#125; <span class="keyword">else</span> &#123;</div><div class="line">					event.Wallet.SelfDerive(accounts.DefaultBaseDerivationPath, stateReader)</div><div class="line">				&#125;</div><div class="line"></div><div class="line">			<span class="keyword">case</span> accounts.WalletDropped:</div><div class="line">				log.Info(<span class="string">"Old wallet dropped"</span>, <span class="string">"url"</span>, event.Wallet.URL())</div><div class="line">				event.Wallet.Close()</div><div class="line">			&#125;</div><div class="line">		&#125;</div><div class="line">	&#125;()</div><div class="line">	<span class="keyword">if</span> ctx.GlobalBool(utils.MiningEnabledFlag.Name) || ctx.GlobalBool(utils.DeveloperFlag.Name) &#123;</div><div class="line">		<span class="keyword">if</span> ctx.GlobalBool(utils.LightModeFlag.Name) || ctx.GlobalString(utils.SyncModeFlag.Name) == <span class="string">"light"</span> &#123;</div><div class="line">			utils.Fatalf(<span class="string">"Light clients do not support mining"</span>)</div><div class="line">		&#125;</div><div class="line">		<span class="keyword">var</span> ethereum *eth.Ethereum</div><div class="line">		<span class="keyword">if</span> err := stack.Service(&amp;ethereum); err != <span class="literal">nil</span> &#123;</div><div class="line">			utils.Fatalf(<span class="string">"Ethereum service not running: %v"</span>, err)</div><div class="line">		&#125;</div><div class="line">		<span class="keyword">if</span> threads := ctx.GlobalInt(utils.MinerThreadsFlag.Name); threads &gt; <span class="number">0</span> &#123;</div><div class="line">			<span class="keyword">type</span> threaded <span class="keyword">interface</span> &#123;</div><div class="line">				SetThreads(threads <span class="keyword">int</span>)</div><div class="line">			&#125;</div><div class="line">			<span class="keyword">if</span> th, ok := ethereum.Engine().(threaded); ok &#123;</div><div class="line">				th.SetThreads(threads)</div><div class="line">			&#125;</div><div class="line">		&#125;</div><div class="line">		ethereum.TxPool().SetGasPrice(utils.GlobalBig(ctx, utils.GasPriceFlag.Name))</div><div class="line">		<span class="keyword">if</span> err := ethereum.StartMining(<span class="literal">true</span>); err != <span class="literal">nil</span> &#123;</div><div class="line">			utils.Fatalf(<span class="string">"Failed to start mining: %v"</span>, err)</div><div class="line">		&#125;</div><div class="line">	&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p><code>startNode</code> 方法启动节点，会开启所有已经注册的协议，解锁请求的账户，开启 RPC/IPC 接口，并开始挖矿。这里我们不再深入。</p>
+<p>上述就是直接运行 geth，不输入其他子命令的情况。geth 还有很多子命令，这些子命令在 <code>init()</code> 的 <code>app.Commands</code> 赋值语句中可以看到，接下来会概述这些子命令。</p>
+<h2 id="chaincmd-go"><a href="#chaincmd-go" class="headerlink" title="chaincmd.go"></a>chaincmd.go</h2><h3 id="initCommand-geth-init"><a href="#initCommand-geth-init" class="headerlink" title="initCommand: geth init"></a>initCommand: geth init</h3><p>这个命令会进行初始化，生成创始区块。对应调用的方法是 <code>initGenesis</code>。</p>
+<figure class="highlight stata"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div></pre></td><td class="code"><pre><div class="line">func initGenesis(ctx *<span class="keyword">cli</span>.Context) <span class="keyword">error</span> &#123;</div><div class="line">	genesisPath := ctx.<span class="keyword">Args</span>().First()</div><div class="line">	<span class="keyword">if</span> len(genesisPath) == 0 &#123;</div><div class="line">		utils.Fatalf(<span class="string">"Must supply path to genesis JSON file"</span>)</div><div class="line">	&#125;</div><div class="line">	<span class="keyword">file</span>, <span class="keyword">err</span> := os.<span class="keyword">Open</span>(genesisPath)</div><div class="line">	<span class="keyword">if</span> <span class="keyword">err</span> != nil &#123;</div><div class="line">		utils.Fatalf(<span class="string">"Failed to read genesis file: %v"</span>, <span class="keyword">err</span>)</div><div class="line">	&#125;</div><div class="line">	defer <span class="keyword">file</span>.<span class="keyword">Close</span>()</div><div class="line"></div><div class="line">	genesis := new(core.Genesis)</div><div class="line">	<span class="keyword">if</span> <span class="keyword">err</span> := json.NewDecoder(<span class="keyword">file</span>).<span class="keyword">Decode</span>(genesis); <span class="keyword">err</span> != nil &#123;</div><div class="line">		utils.Fatalf(<span class="string">"invalid genesis file: %v"</span>, <span class="keyword">err</span>)</div><div class="line">	&#125;</div><div class="line">	<span class="keyword">stack</span> := makeFullNode(ctx)</div><div class="line">	<span class="keyword">for</span> _, name := <span class="keyword">range</span> []string&#123;<span class="string">"chaindata"</span>, <span class="string">"lightchaindata"</span>&#125; &#123;</div><div class="line">		chaindb, <span class="keyword">err</span> := <span class="keyword">stack</span>.OpenDatabase(name, 0, 0)</div><div class="line">		<span class="keyword">if</span> <span class="keyword">err</span> != nil &#123;</div><div class="line">			utils.Fatalf(<span class="string">"Failed to open database: %v"</span>, <span class="keyword">err</span>)</div><div class="line">		&#125;</div><div class="line">		_, hash, <span class="keyword">err</span> := core.SetupGenesisBlock(chaindb, genesis)</div><div class="line">		<span class="keyword">if</span> <span class="keyword">err</span> != nil &#123;</div><div class="line">			utils.Fatalf(<span class="string">"Failed to write genesis block: %v"</span>, <span class="keyword">err</span>)</div><div class="line">		&#125;</div><div class="line">		<span class="keyword">log</span>.Info(<span class="string">"Successfully wrote genesis state"</span>, <span class="string">"database"</span>, name, <span class="string">"hash"</span>, hash)</div><div class="line">	&#125;</div><div class="line">	<span class="keyword">return</span> nil</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>最终会调用 <code>core/geth/chaincmd</code> 的 <code>SetupGenesisBlock</code>，这里具体的实现细节我们将在<a href="#TODO">go-ethereum 源码笔记（core 模块-区块链操作）</a> 介绍。</p>
+<h3 id="importCommand-geth-import"><a href="#importCommand-geth-import" class="headerlink" title="importCommand: geth import"></a>importCommand: geth import</h3><p>导入一个区块链文件</p>
+<figure class="highlight stata"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div><div class="line">80</div><div class="line">81</div><div class="line">82</div><div class="line">83</div><div class="line">84</div><div class="line">85</div><div class="line">86</div><div class="line">87</div><div class="line">88</div></pre></td><td class="code"><pre><div class="line">func importChain(ctx *<span class="keyword">cli</span>.Context) <span class="keyword">error</span> &#123;</div><div class="line">	<span class="keyword">if</span> len(ctx.<span class="keyword">Args</span>()) &lt; 1 &#123;</div><div class="line">		utils.Fatalf(<span class="string">"This command requires an argument."</span>)</div><div class="line">	&#125;</div><div class="line">	<span class="keyword">stack</span> := makeFullNode(ctx)</div><div class="line">	chain, chainDb := utils.MakeChain(ctx, <span class="keyword">stack</span>)</div><div class="line">	defer chainDb.<span class="keyword">Close</span>()</div><div class="line"></div><div class="line">	<span class="keyword">var</span> peakMemAlloc, peakMemSys uint64</div><div class="line">	go func() &#123;</div><div class="line">		stats := new(runtime.MemStats)</div><div class="line">		<span class="keyword">for</span> &#123;</div><div class="line">			runtime.ReadMemStats(stats)</div><div class="line">			<span class="keyword">if</span> atomic.LoadUint64(&amp;peakMemAlloc) &lt; stats.Alloc &#123;</div><div class="line">				atomic.StoreUint64(&amp;peakMemAlloc, stats.Alloc)</div><div class="line">			&#125;</div><div class="line">			<span class="keyword">if</span> atomic.LoadUint64(&amp;peakMemSys) &lt; stats.Sys &#123;</div><div class="line">				atomic.StoreUint64(&amp;peakMemSys, stats.Sys)</div><div class="line">			&#125;</div><div class="line">			time.<span class="keyword">Sleep</span>(5 * time.Second)</div><div class="line">		&#125;</div><div class="line">	&#125;()</div><div class="line">	start := time.Now()</div><div class="line"></div><div class="line">	<span class="keyword">if</span> len(ctx.<span class="keyword">Args</span>()) == 1 &#123;</div><div class="line">		<span class="keyword">if</span> <span class="keyword">err</span> := utils.ImportChain(chain, ctx.<span class="keyword">Args</span>().First()); <span class="keyword">err</span> != nil &#123;</div><div class="line">			<span class="keyword">log</span>.<span class="keyword">Error</span>(<span class="string">"Import error"</span>, <span class="string">"err"</span>, <span class="keyword">err</span>)</div><div class="line">		&#125;</div><div class="line">	&#125; <span class="keyword">else</span> &#123;</div><div class="line">		<span class="keyword">for</span> _, arg := <span class="keyword">range</span> ctx.<span class="keyword">Args</span>() &#123;</div><div class="line">			<span class="keyword">if</span> <span class="keyword">err</span> := utils.ImportChain(chain, arg); <span class="keyword">err</span> != nil &#123;</div><div class="line">				<span class="keyword">log</span>.<span class="keyword">Error</span>(<span class="string">"Import error"</span>, <span class="string">"file"</span>, arg, <span class="string">"err"</span>, <span class="keyword">err</span>)</div><div class="line">			&#125;</div><div class="line">		&#125;</div><div class="line">	&#125;</div><div class="line">	chain.Stop()</div><div class="line">	fmt.Printf(<span class="string">"Import done in %v.\n\n"</span>, time.Since(start))</div><div class="line"></div><div class="line">	<span class="keyword">db</span> := chainDb.(*ethdb.LDBDatabase)</div><div class="line"></div><div class="line">	stats, <span class="keyword">err</span> := <span class="keyword">db</span>.LDB().GetProperty(<span class="string">"leveldb.stats"</span>)</div><div class="line">	<span class="keyword">if</span> <span class="keyword">err</span> != nil &#123;</div><div class="line">		utils.Fatalf(<span class="string">"Failed to read database stats: %v"</span>, <span class="keyword">err</span>)</div><div class="line">	&#125;</div><div class="line">	fmt.Println(stats)</div><div class="line"></div><div class="line">	ioStats, <span class="keyword">err</span> := <span class="keyword">db</span>.LDB().GetProperty(<span class="string">"leveldb.iostats"</span>)</div><div class="line">	<span class="keyword">if</span> <span class="keyword">err</span> != nil &#123;</div><div class="line">		utils.Fatalf(<span class="string">"Failed to read database iostats: %v"</span>, <span class="keyword">err</span>)</div><div class="line">	&#125;</div><div class="line">	fmt.Println(ioStats)</div><div class="line"></div><div class="line">	fmt.Printf(<span class="string">"Trie cache misses:  %d\n"</span>, trie.CacheMisses())</div><div class="line">	fmt.Printf(<span class="string">"Trie cache unloads: %d\n\n"</span>, trie.CacheUnloads())</div><div class="line"></div><div class="line">	mem := new(runtime.MemStats)</div><div class="line">	runtime.ReadMemStats(mem)</div><div class="line"></div><div class="line">	fmt.Printf(<span class="string">"Object memory: %.3f MB current, %.3f MB peak\n"</span>, float64(mem.Alloc)/1024/1024, float64(atomic.LoadUint64(&amp;peakMemAlloc))/1024/1024)</div><div class="line">	fmt.Printf(<span class="string">"System memory: %.3f MB current, %.3f MB peak\n"</span>, float64(mem.Sys)/1024/1024, float64(atomic.LoadUint64(&amp;peakMemSys))/1024/1024)</div><div class="line">	fmt.Printf(<span class="string">"Allocations:   %.3f million\n"</span>, float64(mem.Mallocs)/1000000)</div><div class="line">	fmt.Printf(<span class="string">"GC pause:      %v\n\n"</span>, time.Duration(mem.PauseTotalNs))</div><div class="line"></div><div class="line">	<span class="keyword">if</span> ctx.GlobalIsSet(utils.NoCompactionFlag.Name) &#123;</div><div class="line">		<span class="keyword">return</span> nil</div><div class="line">	&#125;</div><div class="line"></div><div class="line">	start = time.Now()</div><div class="line">	fmt.Println(<span class="string">"Compacting entire database..."</span>)</div><div class="line">	<span class="keyword">if</span> <span class="keyword">err</span> = <span class="keyword">db</span>.LDB().CompactRange(util.<span class="keyword">Range</span>&#123;&#125;); <span class="keyword">err</span> != nil &#123;</div><div class="line">		utils.Fatalf(<span class="string">"Compaction failed: %v"</span>, <span class="keyword">err</span>)</div><div class="line">	&#125;</div><div class="line">	fmt.Printf(<span class="string">"Compaction done in %v.\n\n"</span>, time.Since(start))</div><div class="line"></div><div class="line">	stats, <span class="keyword">err</span> = <span class="keyword">db</span>.LDB().GetProperty(<span class="string">"leveldb.stats"</span>)</div><div class="line">	<span class="keyword">if</span> <span class="keyword">err</span> != nil &#123;</div><div class="line">		utils.Fatalf(<span class="string">"Failed to read database stats: %v"</span>, <span class="keyword">err</span>)</div><div class="line">	&#125;</div><div class="line">	fmt.Println(stats)</div><div class="line"></div><div class="line">	ioStats, <span class="keyword">err</span> = <span class="keyword">db</span>.LDB().GetProperty(<span class="string">"leveldb.iostats"</span>)</div><div class="line">	<span class="keyword">if</span> <span class="keyword">err</span> != nil &#123;</div><div class="line">		utils.Fatalf(<span class="string">"Failed to read database iostats: %v"</span>, <span class="keyword">err</span>)</div><div class="line">	&#125;</div><div class="line">	fmt.Println(ioStats)</div><div class="line"></div><div class="line">	<span class="keyword">return</span> nil</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>真正的逻辑在 <code>utils/cmd.go</code> 中的 <code>ImportChain</code>。</p>
+<h3 id="exportCommand-geth-export"><a href="#exportCommand-geth-export" class="headerlink" title="exportCommand: geth export"></a>exportCommand: geth export</h3><p>导出一个区块链文件</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">func</span> <span class="title">exportChain</span><span class="params">(ctx *cli.Context)</span> <span class="title">error</span></span> &#123;</div><div class="line">	<span class="keyword">if</span> <span class="built_in">len</span>(ctx.Args()) &lt; <span class="number">1</span> &#123;</div><div class="line">		utils.Fatalf(<span class="string">"This command requires an argument."</span>)</div><div class="line">	&#125;</div><div class="line">	stack := makeFullNode(ctx)</div><div class="line">	chain, _ := utils.MakeChain(ctx, stack)</div><div class="line">	start := time.Now()</div><div class="line"></div><div class="line">	<span class="keyword">var</span> err error</div><div class="line">	fp := ctx.Args().First()</div><div class="line">	<span class="keyword">if</span> <span class="built_in">len</span>(ctx.Args()) &lt; <span class="number">3</span> &#123;</div><div class="line">		err = utils.ExportChain(chain, fp)</div><div class="line">	&#125; <span class="keyword">else</span> &#123;</div><div class="line">		first, ferr := strconv.ParseInt(ctx.Args().Get(<span class="number">1</span>), <span class="number">10</span>, <span class="number">64</span>)</div><div class="line">		last, lerr := strconv.ParseInt(ctx.Args().Get(<span class="number">2</span>), <span class="number">10</span>, <span class="number">64</span>)</div><div class="line">		<span class="keyword">if</span> ferr != <span class="literal">nil</span> || lerr != <span class="literal">nil</span> &#123;</div><div class="line">			utils.Fatalf(<span class="string">"Export error in parsing parameters: block number not an integer\n"</span>)</div><div class="line">		&#125;</div><div class="line">		<span class="keyword">if</span> first &lt; <span class="number">0</span> || last &lt; <span class="number">0</span> &#123;</div><div class="line">			utils.Fatalf(<span class="string">"Export error: block number must be greater than 0\n"</span>)</div><div class="line">		&#125;</div><div class="line">		err = utils.ExportAppendChain(chain, fp, <span class="keyword">uint64</span>(first), <span class="keyword">uint64</span>(last))</div><div class="line">	&#125;</div><div class="line"></div><div class="line">	<span class="keyword">if</span> err != <span class="literal">nil</span> &#123;</div><div class="line">		utils.Fatalf(<span class="string">"Export error: %v\n"</span>, err)</div><div class="line">	&#125;</div><div class="line">	fmt.Printf(<span class="string">"Export done in %v\n"</span>, time.Since(start))</div><div class="line">	<span class="keyword">return</span> <span class="literal">nil</span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>导出区块链的真正逻辑在 <code>utils/cmd.go</code> 中的 <code>ExportChain</code> 里。将导出一个 gz 文件。</p>
+<h3 id="importPreimagesCommand-geth-import-preimages"><a href="#importPreimagesCommand-geth-import-preimages" class="headerlink" title="importPreimagesCommand: geth import-preimages"></a>importPreimagesCommand: geth import-preimages</h3><p>将一个 preimages 导入当前节点。</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">func</span> <span class="title">importPreimages</span><span class="params">(ctx *cli.Context)</span> <span class="title">error</span></span> &#123;</div><div class="line">	<span class="keyword">if</span> <span class="built_in">len</span>(ctx.Args()) &lt; <span class="number">1</span> &#123;</div><div class="line">		utils.Fatalf(<span class="string">"This command requires an argument."</span>)</div><div class="line">	&#125;</div><div class="line">	stack := makeFullNode(ctx)</div><div class="line">	diskdb := utils.MakeChainDatabase(ctx, stack).(*ethdb.LDBDatabase)</div><div class="line"></div><div class="line">	start := time.Now()</div><div class="line">	<span class="keyword">if</span> err := utils.ImportPreimages(diskdb, ctx.Args().First()); err != <span class="literal">nil</span> &#123;</div><div class="line">		utils.Fatalf(<span class="string">"Export error: %v\n"</span>, err)</div><div class="line">	&#125;</div><div class="line">	fmt.Printf(<span class="string">"Export done in %v\n"</span>, time.Since(start))</div><div class="line">	<span class="keyword">return</span> <span class="literal">nil</span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h3 id="exportPreimagesCommand-geth-export-preimages"><a href="#exportPreimagesCommand-geth-export-preimages" class="headerlink" title="exportPreimagesCommand: geth export-preimages"></a>exportPreimagesCommand: geth export-preimages</h3><p>从当前节点导出一个 image</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">func</span> <span class="title">exportPreimages</span><span class="params">(ctx *cli.Context)</span> <span class="title">error</span></span> &#123;</div><div class="line">	<span class="keyword">if</span> <span class="built_in">len</span>(ctx.Args()) &lt; <span class="number">1</span> &#123;</div><div class="line">		utils.Fatalf(<span class="string">"This command requires an argument."</span>)</div><div class="line">	&#125;</div><div class="line">	stack := makeFullNode(ctx)</div><div class="line">	diskdb := utils.MakeChainDatabase(ctx, stack).(*ethdb.LDBDatabase)</div><div class="line"></div><div class="line">	start := time.Now()</div><div class="line">	<span class="keyword">if</span> err := utils.ExportPreimages(diskdb, ctx.Args().First()); err != <span class="literal">nil</span> &#123;</div><div class="line">		utils.Fatalf(<span class="string">"Export error: %v\n"</span>, err)</div><div class="line">	&#125;</div><div class="line">	fmt.Printf(<span class="string">"Export done in %v\n"</span>, time.Since(start))</div><div class="line">	<span class="keyword">return</span> <span class="literal">nil</span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h3 id="copydbCommand-geth-copydb"><a href="#copydbCommand-geth-copydb" class="headerlink" title="copydbCommand: geth copydb"></a>copydbCommand: <code>geth copydb</code></h3><p>复制一个本地区块文件到文件夹</p>
+<figure class="highlight lisp"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div></pre></td><td class="code"><pre><div class="line">func copyDb(<span class="name">ctx</span> *cli.Context) error &#123;</div><div class="line">	if len(ctx.Args()) != 1 &#123;</div><div class="line">		utils.Fatalf("Source chaindata directory path argument missing")</div><div class="line">	&#125;</div><div class="line">	stack := makeFullNode(ctx)</div><div class="line">	chain, chainDb := utils.MakeChain(ctx, stack)</div><div class="line"></div><div class="line">	syncmode := *utils.GlobalTextMarshaler(<span class="name">ctx</span>, utils.SyncModeFlag.Name).(<span class="name">*downloader</span>.SyncMode)</div><div class="line">	dl <span class="symbol">:=</span> downloader.New(<span class="name">syncmode</span>, chainDb, new(<span class="name">event</span>.TypeMux), chain, <span class="literal">nil</span>, <span class="literal">nil</span>)</div><div class="line"></div><div class="line">	db, err <span class="symbol">:=</span> ethdb.NewLDBDatabase(<span class="name">ctx</span>.Args().First(), ctx.GlobalInt(<span class="name">utils</span>.CacheFlag.Name), <span class="number">256</span>)</div><div class="line">	if err != <span class="literal">nil</span> &#123;</div><div class="line">		return err</div><div class="line">	&#125;</div><div class="line">	hc, err <span class="symbol">:=</span> core.NewHeaderChain(<span class="name">db</span>, chain.Config(), chain.Engine(), func() bool &#123; return false &#125;)</div><div class="line">	if err != <span class="literal">nil</span> &#123;</div><div class="line">		return err</div><div class="line">	&#125;</div><div class="line">	peer <span class="symbol">:=</span> downloader.NewFakePeer(<span class="string">"local"</span>, db, hc, dl)</div><div class="line">	if err = dl.RegisterPeer(<span class="string">"local"</span>, <span class="number">63</span>, peer)<span class="comment">; err != nil &#123;</span></div><div class="line">		return err</div><div class="line">	&#125;</div><div class="line">	start <span class="symbol">:=</span> time.Now()</div><div class="line"></div><div class="line">	currentHeader <span class="symbol">:=</span> hc.CurrentHeader()</div><div class="line">	if err = dl.Synchronise(<span class="string">"local"</span>, currentHeader.Hash(), hc.GetTd(<span class="name">currentHeader</span>.Hash(), currentHeader.Number.Uint64()), syncmode)<span class="comment">; err != nil &#123;</span></div><div class="line">		return err</div><div class="line">	&#125;</div><div class="line">	for dl.Synchronising() &#123;</div><div class="line">		time.Sleep(<span class="number">10</span> * time.Millisecond)</div><div class="line">	&#125;</div><div class="line">	fmt.Printf("Database copy done in %v\n", time.Since(start))</div><div class="line"></div><div class="line">	start = time.Now()</div><div class="line">	fmt.Println("Compacting entire database...")</div><div class="line">	if err = chainDb.(*ethdb.LDBDatabase).LDB().CompactRange(<span class="name">util</span>.Range&#123;&#125;)<span class="comment">; err != nil &#123;</span></div><div class="line">		utils.Fatalf(<span class="string">"Compaction failed: %v"</span>, err)</div><div class="line">	&#125;</div><div class="line">	fmt.Printf(<span class="string">"Compaction done in %v.\n\n"</span>, time.Since(<span class="name">start</span>))</div><div class="line"></div><div class="line">	return <span class="literal">nil</span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>在一个文件夹中创建一个本地区块链。有意思的是这个过程并不是直接复制过去的，而是通过 <code>downloader</code> 模块里的 <code>NewFakePeer</code> 创建一个虚拟对等节点，然后再进行数据同步完成的。</p>
+<h3 id="removedbCommand-geth-removedb"><a href="#removedbCommand-geth-removedb" class="headerlink" title="removedbCommand: geth removedb"></a>removedbCommand: <code>geth removedb</code></h3><p>在当前数据库中移除区块链。</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">func</span> <span class="title">removeDB</span><span class="params">(ctx *cli.Context)</span> <span class="title">error</span></span> &#123;</div><div class="line">	stack, _ := makeConfigNode(ctx)</div><div class="line"></div><div class="line">	<span class="keyword">for</span> _, name := <span class="keyword">range</span> []<span class="keyword">string</span>&#123;<span class="string">"chaindata"</span>, <span class="string">"lightchaindata"</span>&#125; &#123;</div><div class="line">		logger := log.New(<span class="string">"database"</span>, name)</div><div class="line"></div><div class="line">		dbdir := stack.ResolvePath(name)</div><div class="line">		<span class="keyword">if</span> !common.FileExist(dbdir) &#123;</div><div class="line">			logger.Info(<span class="string">"Database doesn't exist, skipping"</span>, <span class="string">"path"</span>, dbdir)</div><div class="line">			<span class="keyword">continue</span></div><div class="line">		&#125;</div><div class="line">		fmt.Println(dbdir)</div><div class="line">		confirm, err := console.Stdin.PromptConfirm(<span class="string">"Remove this database?"</span>)</div><div class="line">		<span class="keyword">switch</span> &#123;</div><div class="line">		<span class="keyword">case</span> err != <span class="literal">nil</span>:</div><div class="line">			utils.Fatalf(<span class="string">"%v"</span>, err)</div><div class="line">		<span class="keyword">case</span> !confirm:</div><div class="line">			logger.Warn(<span class="string">"Database deletion aborted"</span>)</div><div class="line">		<span class="keyword">default</span>:</div><div class="line">			start := time.Now()</div><div class="line">			os.RemoveAll(dbdir)</div><div class="line">			logger.Info(<span class="string">"Database successfully deleted"</span>, <span class="string">"elapsed"</span>, common.PrettyDuration(time.Since(start)))</div><div class="line">		&#125;</div><div class="line">	&#125;</div><div class="line">	<span class="keyword">return</span> <span class="literal">nil</span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>删除数据库的过程倒是比较干脆，直接通过 <code>os</code> 模块移除这个文件夹。</p>
+<h3 id="dumpCommand-geth-dump-lt-blockHash-gt-lt-blockNum-gt"><a href="#dumpCommand-geth-dump-lt-blockHash-gt-lt-blockNum-gt" class="headerlink" title="dumpCommand: geth dump [&lt;blockHash&gt; | &lt;blockNum&gt;]..."></a>dumpCommand: <code>geth dump [&lt;blockHash&gt; | &lt;blockNum&gt;]...</code></h3><p>dump 子命令可以移除一个或多个特定的区块</p>
+<figure class="highlight lisp"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div></pre></td><td class="code"><pre><div class="line">func dump(<span class="name">ctx</span> *cli.Context) error &#123;</div><div class="line">	stack := makeFullNode(ctx)</div><div class="line">	chain, chainDb := utils.MakeChain(ctx, stack)</div><div class="line">	for _, arg := range ctx.Args() &#123;</div><div class="line">		var block *types.Block</div><div class="line">		if hashish(<span class="name">arg</span>) &#123;</div><div class="line">			block = chain.GetBlockByHash(<span class="name">common</span>.HexToHash(<span class="name">arg</span>))</div><div class="line">		&#125; else &#123;</div><div class="line">			num, _ <span class="symbol">:=</span> strconv.Atoi(<span class="name">arg</span>)</div><div class="line">			block = chain.GetBlockByNumber(<span class="name">uint64</span>(<span class="name">num</span>))</div><div class="line">		&#125;</div><div class="line">		if block == <span class="literal">nil</span> &#123;</div><div class="line">			fmt.Println(<span class="string">"&#123;&#125;"</span>)</div><div class="line">			utils.Fatalf(<span class="string">"block not found"</span>)</div><div class="line">		&#125; else &#123;</div><div class="line">			state, err <span class="symbol">:=</span> state.New(<span class="name">block</span>.Root(), state.NewDatabase(<span class="name">chainDb</span>))</div><div class="line">			if err != <span class="literal">nil</span> &#123;</div><div class="line">				utils.Fatalf(<span class="string">"could not create new state: %v"</span>, err)</div><div class="line">			&#125;</div><div class="line">			fmt.Printf(<span class="string">"%s\n"</span>, state.Dump())</div><div class="line">		&#125;</div><div class="line">	&#125;</div><div class="line">	chainDb.Close()</div><div class="line">	return <span class="literal">nil</span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>先根据区块号获取区块，然后调用 state 的 <code>Dump</code> 移除即可，这部分的实现在之后<a href="#TODO">go-ethereum 源码笔记（core 模块-区块链操作）</a>会有描述。</p>
+<h2 id="monitorcmd-go"><a href="#monitorcmd-go" class="headerlink" title="monitorcmd.go"></a>monitorcmd.go</h2><p>这部分代码不是核心内容，只是粗略的看了一下。</p>
+<h3 id="monitorComand-geth-monitor"><a href="#monitorComand-geth-monitor" class="headerlink" title="monitorComand: geth monitor"></a>monitorComand: <code>geth monitor</code></h3><p>监控，图像化节点 metrics 数据</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div><div class="line">80</div><div class="line">81</div><div class="line">82</div><div class="line">83</div><div class="line">84</div><div class="line">85</div><div class="line">86</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">func</span> <span class="title">monitor</span><span class="params">(ctx *cli.Context)</span> <span class="title">error</span></span> &#123;</div><div class="line">	<span class="keyword">var</span> (</div><div class="line">		client *rpc.Client</div><div class="line">		err    error</div><div class="line">	)</div><div class="line">	endpoint := ctx.String(monitorCommandAttachFlag.Name)</div><div class="line">	<span class="keyword">if</span> client, err = dialRPC(endpoint); err != <span class="literal">nil</span> &#123;</div><div class="line">		utils.Fatalf(<span class="string">"Unable to attach to geth node: %v"</span>, err)</div><div class="line">	&#125;</div><div class="line">	<span class="keyword">defer</span> client.Close()</div><div class="line"></div><div class="line">	metrics, err := retrieveMetrics(client)</div><div class="line">	<span class="keyword">if</span> err != <span class="literal">nil</span> &#123;</div><div class="line">		utils.Fatalf(<span class="string">"Failed to retrieve system metrics: %v"</span>, err)</div><div class="line">	&#125;</div><div class="line">	monitored := resolveMetrics(metrics, ctx.Args())</div><div class="line">	<span class="keyword">if</span> <span class="built_in">len</span>(monitored) == <span class="number">0</span> &#123;</div><div class="line">		list := expandMetrics(metrics, <span class="string">""</span>)</div><div class="line">		sort.Strings(list)</div><div class="line"></div><div class="line">		<span class="keyword">if</span> <span class="built_in">len</span>(list) &gt; <span class="number">0</span> &#123;</div><div class="line">			utils.Fatalf(<span class="string">"No metrics specified.\n\nAvailable:\n - %s"</span>, strings.Join(list, <span class="string">"\n - "</span>))</div><div class="line">		&#125; <span class="keyword">else</span> &#123;</div><div class="line">			utils.Fatalf(<span class="string">"No metrics collected by geth (--%s).\n"</span>, utils.MetricsEnabledFlag.Name)</div><div class="line">		&#125;</div><div class="line">	&#125;</div><div class="line">	sort.Strings(monitored)</div><div class="line">	<span class="keyword">if</span> cols := <span class="built_in">len</span>(monitored) / ctx.Int(monitorCommandRowsFlag.Name); cols &gt; <span class="number">6</span> &#123;</div><div class="line">		utils.Fatalf(<span class="string">"Requested metrics (%d) spans more that 6 columns:\n - %s"</span>, <span class="built_in">len</span>(monitored), strings.Join(monitored, <span class="string">"\n - "</span>))</div><div class="line">	&#125;</div><div class="line"></div><div class="line">	<span class="keyword">if</span> err := termui.Init(); err != <span class="literal">nil</span> &#123;</div><div class="line">		utils.Fatalf(<span class="string">"Unable to initialize terminal UI: %v"</span>, err)</div><div class="line">	&#125;</div><div class="line">	<span class="keyword">defer</span> termui.Close()</div><div class="line"></div><div class="line">	rows := <span class="built_in">len</span>(monitored)</div><div class="line">	<span class="keyword">if</span> max := ctx.Int(monitorCommandRowsFlag.Name); rows &gt; max &#123;</div><div class="line">		rows = max</div><div class="line">	&#125;</div><div class="line">	cols := (<span class="built_in">len</span>(monitored) + rows - <span class="number">1</span>) / rows</div><div class="line">	<span class="keyword">for</span> i := <span class="number">0</span>; i &lt; rows; i++ &#123;</div><div class="line">		termui.Body.AddRows(termui.NewRow())</div><div class="line">	&#125;</div><div class="line">	</div><div class="line">	footer := termui.NewPar(<span class="string">""</span>)</div><div class="line">	footer.Block.Border = <span class="literal">true</span></div><div class="line">	footer.Height = <span class="number">3</span></div><div class="line"></div><div class="line">	charts := <span class="built_in">make</span>([]*termui.LineChart, <span class="built_in">len</span>(monitored))</div><div class="line">	units := <span class="built_in">make</span>([]<span class="keyword">int</span>, <span class="built_in">len</span>(monitored))</div><div class="line">	data := <span class="built_in">make</span>([][]<span class="keyword">float64</span>, <span class="built_in">len</span>(monitored))</div><div class="line">	<span class="keyword">for</span> i := <span class="number">0</span>; i &lt; <span class="built_in">len</span>(monitored); i++ &#123;</div><div class="line">		charts[i] = createChart((termui.TermHeight() - footer.Height) / rows)</div><div class="line">		row := termui.Body.Rows[i%rows]</div><div class="line">		row.Cols = <span class="built_in">append</span>(row.Cols, termui.NewCol(<span class="number">12</span>/cols, <span class="number">0</span>, charts[i]))</div><div class="line">	&#125;</div><div class="line">	termui.Body.AddRows(termui.NewRow(termui.NewCol(<span class="number">12</span>, <span class="number">0</span>, footer)))</div><div class="line"></div><div class="line">	refreshCharts(client, monitored, data, units, charts, ctx, footer)</div><div class="line">	termui.Body.Align()</div><div class="line">	termui.Render(termui.Body)</div><div class="line"></div><div class="line">	termui.Handle(<span class="string">"/sys/kbd/C-c"</span>, <span class="function"><span class="keyword">func</span><span class="params">(termui.Event)</span></span> &#123;</div><div class="line">		termui.StopLoop()</div><div class="line">	&#125;)</div><div class="line">	termui.Handle(<span class="string">"/sys/wnd/resize"</span>, <span class="function"><span class="keyword">func</span><span class="params">(termui.Event)</span></span> &#123;</div><div class="line">		termui.Body.Width = termui.TermWidth()</div><div class="line">		<span class="keyword">for</span> _, chart := <span class="keyword">range</span> charts &#123;</div><div class="line">			chart.Height = (termui.TermHeight() - footer.Height) / rows</div><div class="line">		&#125;</div><div class="line">		termui.Body.Align()</div><div class="line">		termui.Render(termui.Body)</div><div class="line">	&#125;)</div><div class="line">	<span class="keyword">go</span> <span class="function"><span class="keyword">func</span><span class="params">()</span></span> &#123;</div><div class="line">		tick := time.NewTicker(time.Duration(ctx.Int(monitorCommandRefreshFlag.Name)) * time.Second)</div><div class="line">		<span class="keyword">for</span> <span class="keyword">range</span> tick.C &#123;</div><div class="line">			<span class="keyword">if</span> refreshCharts(client, monitored, data, units, charts, ctx, footer) &#123;</div><div class="line">				termui.Body.Align()</div><div class="line">			&#125;</div><div class="line">			termui.Render(termui.Body)</div><div class="line">		&#125;</div><div class="line">	&#125;()</div><div class="line">	termui.Loop()</div><div class="line">	<span class="keyword">return</span> <span class="literal">nil</span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h2 id="accountcmd-go"><a href="#accountcmd-go" class="headerlink" title="accountcmd.go"></a>accountcmd.go</h2><h3 id="accountCommand"><a href="#accountCommand" class="headerlink" title="accountCommand"></a>accountCommand</h3><p>管理账户，这部分的实现在之后<a href="#TODO">go-ethereum 源码笔记（accounts, transaction 模块）</a>会有描述。</p>
+<h4 id="list-geth-account-list"><a href="#list-geth-account-list" class="headerlink" title="list: geth account list"></a>list: <code>geth account list</code></h4><figure class="highlight go"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">func</span> <span class="title">accountList</span><span class="params">(ctx *cli.Context)</span> <span class="title">error</span></span> &#123;</div><div class="line">	stack, _ := makeConfigNode(ctx)</div><div class="line">	<span class="keyword">var</span> index <span class="keyword">int</span></div><div class="line">	<span class="keyword">for</span> _, wallet := <span class="keyword">range</span> stack.AccountManager().Wallets() &#123;</div><div class="line">		<span class="keyword">for</span> _, account := <span class="keyword">range</span> wallet.Accounts() &#123;</div><div class="line">			fmt.Printf(<span class="string">"Account #%d: &#123;%x&#125; %s\n"</span>, index, account.Address, &amp;account.URL)</div><div class="line">			index++</div><div class="line">		&#125;</div><div class="line">	&#125;</div><div class="line">	<span class="keyword">return</span> <span class="literal">nil</span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>通过调用 <code>accounts/manager.go</code> 的 <code>Wallets</code> 拿到所有账户。</p>
+<h4 id="new-geth-account-new"><a href="#new-geth-account-new" class="headerlink" title="new: geth account new"></a>new: <code>geth account new</code></h4><figure class="highlight go"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">func</span> <span class="title">accountCreate</span><span class="params">(ctx *cli.Context)</span> <span class="title">error</span></span> &#123;</div><div class="line">	cfg := gethConfig&#123;Node: defaultNodeConfig()&#125;</div><div class="line">	<span class="keyword">if</span> file := ctx.GlobalString(configFileFlag.Name); file != <span class="string">""</span> &#123;</div><div class="line">		<span class="keyword">if</span> err := loadConfig(file, &amp;cfg); err != <span class="literal">nil</span> &#123;</div><div class="line">			utils.Fatalf(<span class="string">"%v"</span>, err)</div><div class="line">		&#125;</div><div class="line">	&#125;</div><div class="line">	utils.SetNodeConfig(ctx, &amp;cfg.Node)</div><div class="line">	scryptN, scryptP, keydir, err := cfg.Node.AccountConfig()</div><div class="line"></div><div class="line">	<span class="keyword">if</span> err != <span class="literal">nil</span> &#123;</div><div class="line">		utils.Fatalf(<span class="string">"Failed to read configuration: %v"</span>, err)</div><div class="line">	&#125;</div><div class="line"></div><div class="line">	password := getPassPhrase(<span class="string">"Your new account is locked with a password. Please give a password. Do not forget this password."</span>, <span class="literal">true</span>, <span class="number">0</span>, utils.MakePasswordList(ctx))</div><div class="line"></div><div class="line">	address, err := keystore.StoreKey(keydir, password, scryptN, scryptP)</div><div class="line"></div><div class="line">	<span class="keyword">if</span> err != <span class="literal">nil</span> &#123;</div><div class="line">		utils.Fatalf(<span class="string">"Failed to create account: %v"</span>, err)</div><div class="line">	&#125;</div><div class="line">	fmt.Printf(<span class="string">"Address: &#123;%x&#125;\n"</span>, address)</div><div class="line">	<span class="keyword">return</span> <span class="literal">nil</span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>创建一个账户，成功后输出地址。通过 <code>accounts</code> 模块实现。</p>
+<h4 id="update：geth-account-update-lt-address-gt"><a href="#update：geth-account-update-lt-address-gt" class="headerlink" title="update：geth account update &lt;address&gt;"></a>update：<code>geth account update &lt;address&gt;</code></h4><figure class="highlight go"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">func</span> <span class="title">accountUpdate</span><span class="params">(ctx *cli.Context)</span> <span class="title">error</span></span> &#123;</div><div class="line">	<span class="keyword">if</span> <span class="built_in">len</span>(ctx.Args()) == <span class="number">0</span> &#123;</div><div class="line">		utils.Fatalf(<span class="string">"No accounts specified to update"</span>)</div><div class="line">	&#125;</div><div class="line">	stack, _ := makeConfigNode(ctx)</div><div class="line">	ks := stack.AccountManager().Backends(keystore.KeyStoreType)[<span class="number">0</span>].(*keystore.KeyStore)</div><div class="line"></div><div class="line">	<span class="keyword">for</span> _, addr := <span class="keyword">range</span> ctx.Args() &#123;</div><div class="line">		account, oldPassword := unlockAccount(ctx, ks, addr, <span class="number">0</span>, <span class="literal">nil</span>)</div><div class="line">		newPassword := getPassPhrase(<span class="string">"Please give a new password. Do not forget this password."</span>, <span class="literal">true</span>, <span class="number">0</span>, <span class="literal">nil</span>)</div><div class="line">		<span class="keyword">if</span> err := ks.Update(account, oldPassword, newPassword); err != <span class="literal">nil</span> &#123;</div><div class="line">			utils.Fatalf(<span class="string">"Could not update the account: %v"</span>, err)</div><div class="line">		&#125;</div><div class="line">	&#125;</div><div class="line">	<span class="keyword">return</span> <span class="literal">nil</span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>先通过 <code>AccountManager</code> 拿到 keystore，然后调用 <code>Update</code> 更新密码</p>
+<h4 id="import-geth-account-import-lt-keyfile-gt"><a href="#import-geth-account-import-lt-keyfile-gt" class="headerlink" title="import: geth account import &lt;keyfile&gt;"></a>import: <code>geth account import &lt;keyfile&gt;</code></h4><figure class="highlight go"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">func</span> <span class="title">accountImport</span><span class="params">(ctx *cli.Context)</span> <span class="title">error</span></span> &#123;</div><div class="line">	keyfile := ctx.Args().First()</div><div class="line">	<span class="keyword">if</span> <span class="built_in">len</span>(keyfile) == <span class="number">0</span> &#123;</div><div class="line">		utils.Fatalf(<span class="string">"keyfile must be given as argument"</span>)</div><div class="line">	&#125;</div><div class="line">	key, err := crypto.LoadECDSA(keyfile)</div><div class="line">	<span class="keyword">if</span> err != <span class="literal">nil</span> &#123;</div><div class="line">		utils.Fatalf(<span class="string">"Failed to load the private key: %v"</span>, err)</div><div class="line">	&#125;</div><div class="line">	stack, _ := makeConfigNode(ctx)</div><div class="line">	passphrase := getPassPhrase(<span class="string">"Your new account is locked with a password. Please give a password. Do not forget this password."</span>, <span class="literal">true</span>, <span class="number">0</span>, utils.MakePasswordList(ctx))</div><div class="line"></div><div class="line">	ks := stack.AccountManager().Backends(keystore.KeyStoreType)[<span class="number">0</span>].(*keystore.KeyStore)</div><div class="line">	acct, err := ks.ImportECDSA(key, passphrase)</div><div class="line">	<span class="keyword">if</span> err != <span class="literal">nil</span> &#123;</div><div class="line">		utils.Fatalf(<span class="string">"Could not create the account: %v"</span>, err)</div><div class="line">	&#125;</div><div class="line">	fmt.Printf(<span class="string">"Address: &#123;%x&#125;\n"</span>, acct.Address)</div><div class="line">	<span class="keyword">return</span> <span class="literal">nil</span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>先通过 <code>AccountManager</code> 拿到 keystore，调用 <code>ImportPreSaleKey</code> 导入账户。</p>
+<h3 id="walletCommand-geth-wallet-import-path-to-my-presale-wallet"><a href="#walletCommand-geth-wallet-import-path-to-my-presale-wallet" class="headerlink" title="walletCommand: geth wallet import /path/to/my/presale.wallet"></a>walletCommand: <code>geth wallet import /path/to/my/presale.wallet</code></h3><figure class="highlight go"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">func</span> <span class="title">importWallet</span><span class="params">(ctx *cli.Context)</span> <span class="title">error</span></span> &#123;</div><div class="line">	keyfile := ctx.Args().First()</div><div class="line">	<span class="keyword">if</span> <span class="built_in">len</span>(keyfile) == <span class="number">0</span> &#123;</div><div class="line">		utils.Fatalf(<span class="string">"keyfile must be given as argument"</span>)</div><div class="line">	&#125;</div><div class="line">	keyJSON, err := ioutil.ReadFile(keyfile)</div><div class="line">	<span class="keyword">if</span> err != <span class="literal">nil</span> &#123;</div><div class="line">		utils.Fatalf(<span class="string">"Could not read wallet file: %v"</span>, err)</div><div class="line">	&#125;</div><div class="line"></div><div class="line">	stack, _ := makeConfigNode(ctx)</div><div class="line">	passphrase := getPassPhrase(<span class="string">""</span>, <span class="literal">false</span>, <span class="number">0</span>, utils.MakePasswordList(ctx))</div><div class="line"></div><div class="line">	ks := stack.AccountManager().Backends(keystore.KeyStoreType)[<span class="number">0</span>].(*keystore.KeyStore)</div><div class="line">	acct, err := ks.ImportPreSaleKey(keyJSON, passphrase)</div><div class="line">	<span class="keyword">if</span> err != <span class="literal">nil</span> &#123;</div><div class="line">		utils.Fatalf(<span class="string">"%v"</span>, err)</div><div class="line">	&#125;</div><div class="line">	fmt.Printf(<span class="string">"Address: &#123;%x&#125;\n"</span>, acct.Address)</div><div class="line">	<span class="keyword">return</span> <span class="literal">nil</span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>通过 <code>AccountManager</code> 管理以太坊预售钱包。</p>
+<h2 id="consolecmd-go"><a href="#consolecmd-go" class="headerlink" title="consolecmd.go"></a>consolecmd.go</h2><h3 id="consoleCommand-geth-console"><a href="#consoleCommand-geth-console" class="headerlink" title="consoleCommand: geth console"></a>consoleCommand: <code>geth console</code></h3><p>启动一个 Javascript 交互式环境</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">func</span> <span class="title">localConsole</span><span class="params">(ctx *cli.Context)</span> <span class="title">error</span></span> &#123;</div><div class="line">	node := makeFullNode(ctx)</div><div class="line">	startNode(ctx, node)</div><div class="line">	<span class="keyword">defer</span> node.Stop()</div><div class="line"></div><div class="line">	client, err := node.Attach()</div><div class="line">	<span class="keyword">if</span> err != <span class="literal">nil</span> &#123;</div><div class="line">		utils.Fatalf(<span class="string">"Failed to attach to the inproc geth: %v"</span>, err)</div><div class="line">	&#125;</div><div class="line">	config := console.Config&#123;</div><div class="line">		DataDir: utils.MakeDataDir(ctx),</div><div class="line">		DocRoot: ctx.GlobalString(utils.JSpathFlag.Name),</div><div class="line">		Client:  client,</div><div class="line">		Preload: utils.MakeConsolePreloads(ctx),</div><div class="line">	&#125;</div><div class="line"></div><div class="line">	console, err := console.New(config)</div><div class="line">	<span class="keyword">if</span> err != <span class="literal">nil</span> &#123;</div><div class="line">		utils.Fatalf(<span class="string">"Failed to start the JavaScript console: %v"</span>, err)</div><div class="line">	&#125;</div><div class="line">	<span class="keyword">defer</span> console.Stop(<span class="literal">false</span>)</div><div class="line"></div><div class="line">	<span class="keyword">if</span> script := ctx.GlobalString(utils.ExecFlag.Name); script != <span class="string">""</span> &#123;</div><div class="line">		console.Evaluate(script)</div><div class="line">		<span class="keyword">return</span> <span class="literal">nil</span></div><div class="line">	&#125;</div><div class="line">	console.Welcome()</div><div class="line">	console.Interactive()</div><div class="line"></div><div class="line">	<span class="keyword">return</span> <span class="literal">nil</span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>启动本地的一个交互式 Javascript 环境，功能是通过 <code>console</code> 模块提供的，而 <code>console</code> 模块是对 <a href="https://github.com/robertkrimen/otto" target="_blank" rel="external">robertkrimen/otto</a> 的一个封装。otto 是一个 Golang 实现的 Javascript 解释器，可以实现在 Golang 中执行 Javascript，并且可以让在虚拟机里的 Javascript 调用 Golang 函数，实现 Golang 和 Javascript 的相互操作。</p>
+<h3 id="attachCommand"><a href="#attachCommand" class="headerlink" title="attachCommand"></a>attachCommand</h3><p>启动一个 JS 交互式环境(连接到节点)</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">func</span> <span class="title">remoteConsole</span><span class="params">(ctx *cli.Context)</span> <span class="title">error</span></span> &#123;</div><div class="line">	endpoint := ctx.Args().First()</div><div class="line">	<span class="keyword">if</span> endpoint == <span class="string">""</span> &#123;</div><div class="line">		path := node.DefaultDataDir()</div><div class="line">		<span class="keyword">if</span> ctx.GlobalIsSet(utils.DataDirFlag.Name) &#123;</div><div class="line">			path = ctx.GlobalString(utils.DataDirFlag.Name)</div><div class="line">		&#125;</div><div class="line">		<span class="keyword">if</span> path != <span class="string">""</span> &#123;</div><div class="line">			<span class="keyword">if</span> ctx.GlobalBool(utils.TestnetFlag.Name) &#123;</div><div class="line">				path = filepath.Join(path, <span class="string">"testnet"</span>)</div><div class="line">			&#125; <span class="keyword">else</span> <span class="keyword">if</span> ctx.GlobalBool(utils.RinkebyFlag.Name) &#123;</div><div class="line">				path = filepath.Join(path, <span class="string">"rinkeby"</span>)</div><div class="line">			&#125;</div><div class="line">		&#125;</div><div class="line">		endpoint = fmt.Sprintf(<span class="string">"%s/geth.ipc"</span>, path)</div><div class="line">	&#125;</div><div class="line">	client, err := dialRPC(endpoint)</div><div class="line">	<span class="keyword">if</span> err != <span class="literal">nil</span> &#123;</div><div class="line">		utils.Fatalf(<span class="string">"Unable to attach to remote geth: %v"</span>, err)</div><div class="line">	&#125;</div><div class="line">	config := console.Config&#123;</div><div class="line">		DataDir: utils.MakeDataDir(ctx),</div><div class="line">		DocRoot: ctx.GlobalString(utils.JSpathFlag.Name),</div><div class="line">		Client:  client,</div><div class="line">		Preload: utils.MakeConsolePreloads(ctx),</div><div class="line">	&#125;</div><div class="line"></div><div class="line">	console, err := console.New(config)</div><div class="line">	<span class="keyword">if</span> err != <span class="literal">nil</span> &#123;</div><div class="line">		utils.Fatalf(<span class="string">"Failed to start the JavaScript console: %v"</span>, err)</div><div class="line">	&#125;</div><div class="line">	<span class="keyword">defer</span> console.Stop(<span class="literal">false</span>)</div><div class="line"></div><div class="line">	<span class="keyword">if</span> script := ctx.GlobalString(utils.ExecFlag.Name); script != <span class="string">""</span> &#123;</div><div class="line">		console.Evaluate(script)</div><div class="line">		<span class="keyword">return</span> <span class="literal">nil</span></div><div class="line">	&#125;</div><div class="line"></div><div class="line">	console.Welcome()</div><div class="line">	console.Interactive()</div><div class="line"></div><div class="line">	<span class="keyword">return</span> <span class="literal">nil</span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>通过指定 endpoint 的方式，连接到某个节点的交互式 Javascript 环境。</p>
+<h3 id="javascriptCommand-geth-js-lt-jsfile-gt-jsfile"><a href="#javascriptCommand-geth-js-lt-jsfile-gt-jsfile" class="headerlink" title="javascriptCommand: geth js &lt;jsfile&gt; [jsfile...]"></a>javascriptCommand: <code>geth js &lt;jsfile&gt; [jsfile...]</code></h3><p>执行 Javascript 文件中的命令(可以为多个文件)</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">func</span> <span class="title">ephemeralConsole</span><span class="params">(ctx *cli.Context)</span> <span class="title">error</span></span> &#123;</div><div class="line">	node := makeFullNode(ctx)</div><div class="line">	startNode(ctx, node)</div><div class="line">	<span class="keyword">defer</span> node.Stop()</div><div class="line"></div><div class="line">	client, err := node.Attach()</div><div class="line">	<span class="keyword">if</span> err != <span class="literal">nil</span> &#123;</div><div class="line">		utils.Fatalf(<span class="string">"Failed to attach to the inproc geth: %v"</span>, err)</div><div class="line">	&#125;</div><div class="line">	config := console.Config&#123;</div><div class="line">		DataDir: utils.MakeDataDir(ctx),</div><div class="line">		DocRoot: ctx.GlobalString(utils.JSpathFlag.Name),</div><div class="line">		Client:  client,</div><div class="line">		Preload: utils.MakeConsolePreloads(ctx),</div><div class="line">	&#125;</div><div class="line"></div><div class="line">	console, err := console.New(config)</div><div class="line">	<span class="keyword">if</span> err != <span class="literal">nil</span> &#123;</div><div class="line">		utils.Fatalf(<span class="string">"Failed to start the JavaScript console: %v"</span>, err)</div><div class="line">	&#125;</div><div class="line">	<span class="keyword">defer</span> console.Stop(<span class="literal">false</span>)</div><div class="line">	<span class="keyword">for</span> _, file := <span class="keyword">range</span> ctx.Args() &#123;</div><div class="line">		<span class="keyword">if</span> err = console.Execute(file); err != <span class="literal">nil</span> &#123;</div><div class="line">			utils.Fatalf(<span class="string">"Failed to execute %s: %v"</span>, file, err)</div><div class="line">		&#125;</div><div class="line">	&#125;</div><div class="line">	abort := <span class="built_in">make</span>(<span class="keyword">chan</span> os.Signal, <span class="number">1</span>)</div><div class="line">	signal.Notify(abort, syscall.SIGINT, syscall.SIGTERM)</div><div class="line"></div><div class="line">	<span class="keyword">go</span> <span class="function"><span class="keyword">func</span><span class="params">()</span></span> &#123;</div><div class="line">		&lt;-abort</div><div class="line">		os.Exit(<span class="number">0</span>)</div><div class="line">	&#125;()</div><div class="line">	console.Stop(<span class="literal">true</span>)</div><div class="line"></div><div class="line">	<span class="keyword">return</span> <span class="literal">nil</span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>通过遍历调用传输的文件路径，执行 <code>console.Execute</code>，执行 js 命令。</p>
+<h2 id="misccmd-go"><a href="#misccmd-go" class="headerlink" title="misccmd.go"></a>misccmd.go</h2><h3 id="makecacheCommand-geth-makecache-lt-block-number-gt-lt-outputdir-gt"><a href="#makecacheCommand-geth-makecache-lt-block-number-gt-lt-outputdir-gt" class="headerlink" title="makecacheCommand: geth makecache &lt;block number&gt; &lt;outputdir&gt;"></a>makecacheCommand: <code>geth makecache &lt;block number&gt; &lt;outputdir&gt;</code></h3><figure class="highlight stata"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">func makecache(ctx *<span class="keyword">cli</span>.Context) <span class="keyword">error</span> &#123;</div><div class="line">	<span class="keyword">args</span> := ctx.<span class="keyword">Args</span>()</div><div class="line">	<span class="keyword">if</span> len(<span class="keyword">args</span>) != 2 &#123;</div><div class="line">		utils.Fatalf(`Usage: geth makecache &lt;block number&gt; &lt;outputdir&gt;`)</div><div class="line">	&#125;</div><div class="line">	block, <span class="keyword">err</span> := strconv.ParseUint(<span class="keyword">args</span>[0], 0, 64)</div><div class="line">	<span class="keyword">if</span> <span class="keyword">err</span> != nil &#123;</div><div class="line">		utils.Fatalf(<span class="string">"Invalid block number: %v"</span>, <span class="keyword">err</span>)</div><div class="line">	&#125;</div><div class="line">	ethash.MakeCache(block, <span class="keyword">args</span>[1])</div><div class="line"></div><div class="line">	<span class="keyword">return</span> nil</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>生成 ethash 的验证缓存。这部分内容将在<a href="#TODO">go-ethereum 源码笔记（miner，consensus 模块）</a>描述。</p>
+<h3 id="makedagCommand-geth-makedag-lt-block-number-gt-lt-outputdir-gt"><a href="#makedagCommand-geth-makedag-lt-block-number-gt-lt-outputdir-gt" class="headerlink" title="makedagCommand: geth makedag &lt;block number&gt; &lt;outputdir&gt;"></a>makedagCommand: <code>geth makedag &lt;block number&gt; &lt;outputdir&gt;</code></h3><figure class="highlight stata"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">func makedag(ctx *<span class="keyword">cli</span>.Context) <span class="keyword">error</span> &#123;</div><div class="line">	<span class="keyword">args</span> := ctx.<span class="keyword">Args</span>()</div><div class="line">	<span class="keyword">if</span> len(<span class="keyword">args</span>) != 2 &#123;</div><div class="line">		utils.Fatalf(`Usage: geth makedag &lt;block number&gt; &lt;outputdir&gt;`)</div><div class="line">	&#125;</div><div class="line">	block, <span class="keyword">err</span> := strconv.ParseUint(<span class="keyword">args</span>[0], 0, 64)</div><div class="line">	<span class="keyword">if</span> <span class="keyword">err</span> != nil &#123;</div><div class="line">		utils.Fatalf(<span class="string">"Invalid block number: %v"</span>, <span class="keyword">err</span>)</div><div class="line">	&#125;</div><div class="line">	ethash.MakeDataset(block, <span class="keyword">args</span>[1])</div><div class="line"></div><div class="line">	<span class="keyword">return</span> nil</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>通过调用 ethash 的 <code>MakeDataset</code>，生成挖矿需要的 DAG 数据集。</p>
+<h3 id="versionCommand-geth-version"><a href="#versionCommand-geth-version" class="headerlink" title="versionCommand: geth version"></a>versionCommand: <code>geth version</code></h3><p>输出版本号。</p>
+<h3 id="bugCommand"><a href="#bugCommand" class="headerlink" title="bugCommand"></a>bugCommand</h3><p>给 <code>https://github.com/ethereum/go-ethereum/issues/new</code> 这个 url 拼接参数，给源代码仓库提一个 issue</p>
+<h3 id="licenseCommand-geth-license"><a href="#licenseCommand-geth-license" class="headerlink" title="licenseCommand: geth license"></a>licenseCommand: <code>geth license</code></h3><p>输出 License 信息。</p>
+<h2 id="config-go"><a href="#config-go" class="headerlink" title="config.go"></a>config.go</h2><h3 id="dumpConfigCommand-geth-dumpconfig"><a href="#dumpConfigCommand-geth-dumpconfig" class="headerlink" title="dumpConfigCommand: geth dumpconfig"></a>dumpConfigCommand: <code>geth dumpconfig</code></h3><figure class="highlight go"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">func</span> <span class="title">dumpConfig</span><span class="params">(ctx *cli.Context)</span> <span class="title">error</span></span> &#123;</div><div class="line">	_, cfg := makeConfigNode(ctx)</div><div class="line">	comment := <span class="string">""</span></div><div class="line"></div><div class="line">	<span class="keyword">if</span> cfg.Eth.Genesis != <span class="literal">nil</span> &#123;</div><div class="line">		cfg.Eth.Genesis = <span class="literal">nil</span></div><div class="line">		comment += <span class="string">"# Note: this config doesn't contain the genesis block.\n\n"</span></div><div class="line">	&#125;</div><div class="line"></div><div class="line">	out, err := tomlSettings.Marshal(&amp;cfg)</div><div class="line">	<span class="keyword">if</span> err != <span class="literal">nil</span> &#123;</div><div class="line">		<span class="keyword">return</span> err</div><div class="line">	&#125;</div><div class="line">	io.WriteString(os.Stdout, comment)</div><div class="line">	os.Stdout.Write(out)</div><div class="line">	<span class="keyword">return</span> <span class="literal">nil</span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p><code>makeConfigNode</code> 前面已经提过，这个方法用来获取当前配置信息，<code>dumpConfig</code> 函数通过 <code>makeConfigNode</code> 获取配置，然后将其输出在屏幕。</p>
+
+      
+    </div>
+
+    <div>
+      
+        
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/cryptocurrency/" rel="tag">#cryptocurrency</a>
+          
+            <a href="/tags/Golang/" rel="tag">#Golang</a>
+          
+            <a href="/tags/geth/" rel="tag">#geth</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/11/03/【podcast】Go Time/" rel="next" title="【podcast】Go Time">
+                <i class="fa fa-chevron-left"></i> 【podcast】Go Time
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/03/10/go-ethereum 源码笔记（cmd 模块-其他命令）/" rel="prev" title="go-ethereum 源码笔记（cmd 模块-其他命令）">
+                go-ethereum 源码笔记（cmd 模块-其他命令） <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+      <div id="disqus_thread">
+        <noscript>
+          Please enable JavaScript to view the
+          <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a>
+        </noscript>
+      </div>
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel ">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="https://avatars1.githubusercontent.com/u/6964284?v=3&s=460"
+               alt="Frank" />
+          <p class="site-author-name" itemprop="name">Frank</p>
+          <p class="site-description motion-element" itemprop="description"></p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">174</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+          
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">125</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/knarfeh" target="_blank">
+                  
+                    <i class="fa fa-github"></i> GitHub
+                  
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://twitter.com/knarfeh" target="_blank">
+                  
+                    <i class="fa fa-twitter"></i> Twitter
+                  
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://weibo.com/2753500945" target="_blank">
+                  
+                    <i class="fa fa-weibo"></i> Weibo
+                  
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+          <div class="cc-license motion-element" itemprop="license">
+            <a href="http://creativecommons.org/licenses/by-sa/4.0" class="cc-opacity" target="_blank">
+              <img src="/images/cc-by-sa.svg" alt="Creative Commons" />
+            </a>
+          </div>
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+      </section>
+
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc-indicator-top post-toc-indicator">
+            <i class="fa fa-angle-double-up"></i>
+          </div>
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#chaincmd-go"><span class="nav-number">1.</span> <span class="nav-text">chaincmd.go</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#initCommand-geth-init"><span class="nav-number">1.1.</span> <span class="nav-text">initCommand: geth init</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#importCommand-geth-import"><span class="nav-number">1.2.</span> <span class="nav-text">importCommand: geth import</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#exportCommand-geth-export"><span class="nav-number">1.3.</span> <span class="nav-text">exportCommand: geth export</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#importPreimagesCommand-geth-import-preimages"><span class="nav-number">1.4.</span> <span class="nav-text">importPreimagesCommand: geth import-preimages</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#exportPreimagesCommand-geth-export-preimages"><span class="nav-number">1.5.</span> <span class="nav-text">exportPreimagesCommand: geth export-preimages</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#copydbCommand-geth-copydb"><span class="nav-number">1.6.</span> <span class="nav-text">copydbCommand: geth copydb</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#removedbCommand-geth-removedb"><span class="nav-number">1.7.</span> <span class="nav-text">removedbCommand: geth removedb</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#dumpCommand-geth-dump-lt-blockHash-gt-lt-blockNum-gt"><span class="nav-number">1.8.</span> <span class="nav-text">dumpCommand: geth dump [<blockHash> | <blockNum>]...</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#monitorcmd-go"><span class="nav-number">2.</span> <span class="nav-text">monitorcmd.go</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#monitorComand-geth-monitor"><span class="nav-number">2.1.</span> <span class="nav-text">monitorComand: geth monitor</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#accountcmd-go"><span class="nav-number">3.</span> <span class="nav-text">accountcmd.go</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#accountCommand"><span class="nav-number">3.1.</span> <span class="nav-text">accountCommand</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#list-geth-account-list"><span class="nav-number">3.1.1.</span> <span class="nav-text">list: geth account list</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#new-geth-account-new"><span class="nav-number">3.1.2.</span> <span class="nav-text">new: geth account new</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#update：geth-account-update-lt-address-gt"><span class="nav-number">3.1.3.</span> <span class="nav-text">update：geth account update <address></span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#import-geth-account-import-lt-keyfile-gt"><span class="nav-number">3.1.4.</span> <span class="nav-text">import: geth account import <keyfile></span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#walletCommand-geth-wallet-import-path-to-my-presale-wallet"><span class="nav-number">3.2.</span> <span class="nav-text">walletCommand: geth wallet import /path/to/my/presale.wallet</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#consolecmd-go"><span class="nav-number">4.</span> <span class="nav-text">consolecmd.go</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#consoleCommand-geth-console"><span class="nav-number">4.1.</span> <span class="nav-text">consoleCommand: geth console</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#attachCommand"><span class="nav-number">4.2.</span> <span class="nav-text">attachCommand</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#javascriptCommand-geth-js-lt-jsfile-gt-jsfile"><span class="nav-number">4.3.</span> <span class="nav-text">javascriptCommand: geth js <jsfile> [jsfile...]</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#misccmd-go"><span class="nav-number">5.</span> <span class="nav-text">misccmd.go</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#makecacheCommand-geth-makecache-lt-block-number-gt-lt-outputdir-gt"><span class="nav-number">5.1.</span> <span class="nav-text">makecacheCommand: geth makecache <block number> <outputdir></span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#makedagCommand-geth-makedag-lt-block-number-gt-lt-outputdir-gt"><span class="nav-number">5.2.</span> <span class="nav-text">makedagCommand: geth makedag <block number> <outputdir></span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#versionCommand-geth-version"><span class="nav-number">5.3.</span> <span class="nav-text">versionCommand: geth version</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#bugCommand"><span class="nav-number">5.4.</span> <span class="nav-text">bugCommand</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#licenseCommand-geth-license"><span class="nav-number">5.5.</span> <span class="nav-text">licenseCommand: geth license</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#config-go"><span class="nav-number">6.</span> <span class="nav-text">config.go</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#dumpConfigCommand-geth-dumpconfig"><span class="nav-number">6.1.</span> <span class="nav-text">dumpConfigCommand: geth dumpconfig</span></a></li></ol></li></ol></div>
+            
+          </div>
+          <div class="post-toc-indicator-bottom post-toc-indicator">
+            <i class="fa fa-angle-double-down"></i>
+          </div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy;  2015 - 
+  <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Frank</span>
+</div>
+
+<div class="powered-by">
+  由 <a class="theme-link" href="http://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Muse
+  </a>
+</div>
+
+
+
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+
+  
+
+
+
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+  <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
+
+  <script type="text/javascript" src="/vendors/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  <script type="text/javascript" src="/vendors/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  <script type="text/javascript" src="/vendors/velocity/velocity.min.js"></script>
+
+  <script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js"></script>
+
+  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=0.5.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=0.5.0"></script>
+
+
+
+  
+  
+
+  
+  
+<script type="text/javascript" src="/js/src/scrollspy.js?v=0.5.0"></script>
+
+<script type="text/javascript" id="sidebar.toc.highlight">
+  $(document).ready(function () {
+    var tocSelector = '.post-toc';
+    var $tocSelector = $(tocSelector);
+    var activeCurrentSelector = '.active-current';
+
+    $tocSelector
+      .on('activate.bs.scrollspy', function () {
+        var $currentActiveElement = $(tocSelector + ' .active').last();
+
+        removeCurrentActiveClass();
+        $currentActiveElement.addClass('active-current');
+
+        $tocSelector[0].scrollTop = $currentActiveElement.position().top;
+      })
+      .on('clear.bs.scrollspy', function () {
+        removeCurrentActiveClass();
+      });
+
+    function removeCurrentActiveClass () {
+      $(tocSelector + ' ' + activeCurrentSelector)
+        .removeClass(activeCurrentSelector.substring(1));
+    }
+
+    function processTOC () {
+      getTOCMaxHeight();
+      toggleTOCOverflowIndicators();
+    }
+
+    function getTOCMaxHeight () {
+      var height = $('.sidebar').height() -
+                   $tocSelector.position().top -
+                   $('.post-toc-indicator-bottom').height();
+
+      $tocSelector.css('height', height);
+
+      return height;
+    }
+
+    function toggleTOCOverflowIndicators () {
+      tocOverflowIndicator(
+        '.post-toc-indicator-top',
+        $tocSelector.scrollTop() > 0 ? 'show' : 'hide'
+      );
+
+      tocOverflowIndicator(
+        '.post-toc-indicator-bottom',
+        $tocSelector.scrollTop() >= $tocSelector.find('ol').height() - $tocSelector.height() ? 'hide' : 'show'
+      )
+    }
+
+    $(document).on('sidebar.motion.complete', function () {
+      processTOC();
+    });
+
+    $('body').scrollspy({ target: tocSelector });
+    $(window).on('resize', function () {
+      if ( $('.sidebar').hasClass('sidebar-active') ) {
+        processTOC();
+      }
+    });
+
+    onScroll($tocSelector);
+
+    function onScroll (element) {
+      element.on('mousewheel DOMMouseScroll', function (event) {
+          var oe = event.originalEvent;
+          var delta = oe.wheelDelta || -oe.detail;
+
+          this.scrollTop += ( delta < 0 ? 1 : -1 ) * 30;
+          event.preventDefault();
+
+          toggleTOCOverflowIndicators();
+      });
+    }
+
+    function tocOverflowIndicator (indicator, action) {
+      var $indicator = $(indicator);
+      var opacity = action === 'show' ? 1 : 0;
+      $indicator.velocity ?
+        $indicator.velocity('stop').velocity({
+          opacity: opacity
+        }, { duration: 100 }) :
+        $indicator.stop().animate({
+          opacity: opacity
+        }, 100);
+    }
+
+  });
+</script>
+
+<script type="text/javascript" id="sidebar.nav">
+  $(document).ready(function () {
+    var html = $('html');
+    var TAB_ANIMATE_DURATION = 200;
+    var hasVelocity = $.isFunction(html.velocity);
+
+    $('.sidebar-nav li').on('click', function () {
+      var item = $(this);
+      var activeTabClassName = 'sidebar-nav-active';
+      var activePanelClassName = 'sidebar-panel-active';
+      if (item.hasClass(activeTabClassName)) {
+        return;
+      }
+
+      var currentTarget = $('.' + activePanelClassName);
+      var target = $('.' + item.data('target'));
+
+      hasVelocity ?
+        currentTarget.velocity('transition.slideUpOut', TAB_ANIMATE_DURATION, function () {
+          target
+            .velocity('stop')
+            .velocity('transition.slideDownIn', TAB_ANIMATE_DURATION)
+            .addClass(activePanelClassName);
+        }) :
+        currentTarget.animate({ opacity: 0 }, TAB_ANIMATE_DURATION, function () {
+          currentTarget.hide();
+          target
+            .stop()
+            .css({'opacity': 0, 'display': 'block'})
+            .animate({ opacity: 1 }, TAB_ANIMATE_DURATION, function () {
+              currentTarget.removeClass(activePanelClassName);
+              target.addClass(activePanelClassName);
+            });
+        });
+
+      item.siblings().removeClass(activeTabClassName);
+      item.addClass(activeTabClassName);
+    });
+
+    $('.post-toc a').on('click', function (e) {
+      e.preventDefault();
+      var targetSelector = NexT.utils.escapeSelector(this.getAttribute('href'));
+      var offset = $(targetSelector).offset().top;
+      hasVelocity ?
+        html.velocity('stop').velocity('scroll', {
+          offset: offset  + 'px',
+          mobileHA: false
+        }) :
+        $('html, body').stop().animate({
+          scrollTop: offset
+        }, 500);
+    });
+
+    // Expand sidebar on post detail page by default, when post has a toc.
+    NexT.motion.middleWares.sidebar = function () {
+      var $tocContent = $('.post-toc-content');
+
+      if (CONFIG.scheme !== 'Pisces' && (CONFIG.sidebar.display === 'post' || CONFIG.sidebar.display === 'always')) {
+        if ($tocContent.length > 0 && $tocContent.html().trim().length > 0) {
+          NexT.utils.displaySidebar();
+        }
+      }
+    };
+  });
+</script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=0.5.0"></script>
+
+
+
+  
+
+
+
+  
+
+    <script type="text/javascript">
+      var disqus_shortname = 'knarfeh';
+      var disqus_identifier = '2018/03/10/go-ethereum 源码笔记（cmd 模块-geth 命令）/';
+      var disqus_title = 'go-ethereum 源码笔记（cmd 模块-geth 命令）';
+      var disqus_url = 'http://knarfeh.github.io/2018/03/10/go-ethereum 源码笔记（cmd 模块-geth 命令）/';
+
+      function run_disqus_script(disqus_script){
+        var dsq = document.createElement('script');
+        dsq.type = 'text/javascript';
+        dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/' + disqus_script;
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+      }
+
+      run_disqus_script('count.js');
+      
+        run_disqus_script('embed.js');
+      
+    </script>
+  
+
+
+
+  
+  
+  
+  <script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+      }
+    });
+  </script>
+
+  <script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+      var all = MathJax.Hub.getAllJax(), i;
+      for (i=0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';
+      }
+    });
+  </script>
+
+  
+    <script type="text/javascript" src="http://cdn.staticfile.org/mathjax/2.4.0/MathJax.js"></script>
+    <script type="text/javascript" src="http://cdn.staticfile.org/mathjax/2.4.0/config/TeX-AMS-MML_HTMLorMML.js"></script>
+  
+
+
+  
+
+
+</body>
+</html>

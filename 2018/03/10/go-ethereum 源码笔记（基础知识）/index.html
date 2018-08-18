@@ -1,0 +1,938 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  <link href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css"/>
+
+
+
+
+  <link href="//fonts.googleapis.com/css?family=Lato:300,400,700,400italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+
+
+
+<link href="/vendors/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=0.5.0" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="cryptocurrency,Golang,geth," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=0.5.0" />
+
+
+
+
+
+
+<meta name="description" content="本篇将梳理以太坊的基本概念，说明一些值得注意的地方，这里不会讲解比特币的原理，代码，但会介绍以太坊与比特币的差异，所以最好看过比特币的论文，对比特币的基本原理、实现有所了解。这一篇将以太坊的白皮书作为重要参考，可以看做是以太坊白皮书的概述。以太坊的白皮书是一个非常好的学习资料，它在介绍以太坊前分析了比特币存在的问题，因此我们可以通过这份白皮书了解整个加密货币的生态。">
+<meta name="keywords" content="cryptocurrency,Golang,geth">
+<meta property="og:type" content="article">
+<meta property="og:title" content="go-ethereum 源码笔记（基础知识）">
+<meta property="og:url" content="http://knarfeh.github.io/2018/03/10/go-ethereum 源码笔记（基础知识）/index.html">
+<meta property="og:site_name" content="Frank&#39;s Notes">
+<meta property="og:description" content="本篇将梳理以太坊的基本概念，说明一些值得注意的地方，这里不会讲解比特币的原理，代码，但会介绍以太坊与比特币的差异，所以最好看过比特币的论文，对比特币的基本原理、实现有所了解。这一篇将以太坊的白皮书作为重要参考，可以看做是以太坊白皮书的概述。以太坊的白皮书是一个非常好的学习资料，它在介绍以太坊前分析了比特币存在的问题，因此我们可以通过这份白皮书了解整个加密货币的生态。">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="http://7xi5vu.com1.z0.glb.clouddn.com/en-transaction-propagation.png">
+<meta property="og:image" content="http://7xi5vu.com1.z0.glb.clouddn.com/bitcoin_block_from_bitcoinpaper.png">
+<meta property="og:updated_time" content="2018-08-18T03:56:57.919Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="go-ethereum 源码笔记（基础知识）">
+<meta name="twitter:description" content="本篇将梳理以太坊的基本概念，说明一些值得注意的地方，这里不会讲解比特币的原理，代码，但会介绍以太坊与比特币的差异，所以最好看过比特币的论文，对比特币的基本原理、实现有所了解。这一篇将以太坊的白皮书作为重要参考，可以看做是以太坊白皮书的概述。以太坊的白皮书是一个非常好的学习资料，它在介绍以太坊前分析了比特币存在的问题，因此我们可以通过这份白皮书了解整个加密货币的生态。">
+<meta name="twitter:image" content="http://7xi5vu.com1.z0.glb.clouddn.com/en-transaction-propagation.png">
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    scheme: 'Muse',
+    sidebar: {"display":"hide"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: 0,
+      author: '博主'
+    }
+  };
+</script>
+
+  <title> go-ethereum 源码笔记（基础知识） | Frank's Notes </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+            (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+          m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-75002639-1', 'auto');
+  ga('send', 'pageview');
+</script>
+
+
+
+
+
+
+
+
+
+  
+  
+
+  <div class="container one-collumn  page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">Frank's Notes</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle"></p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-home fa-fw"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-archive fa-fw"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-tags fa-fw"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-twitter">
+          <a href="/twitter" rel="section">
+            
+              <i class="menu-item-icon fa fa-coffee fa-fw"></i> <br />
+            
+            Twitter
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                go-ethereum 源码笔记（基础知识）
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2018-03-10T22:34:56+08:00" content="2018-03-10">
+              2018-03-10
+            </time>
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2018/03/10/go-ethereum 源码笔记（基础知识）/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2018/03/10/go-ethereum 源码笔记（基础知识）/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>本篇将梳理以太坊的基本概念，说明一些值得注意的地方，这里不会讲解比特币的原理，代码，但会介绍以太坊与比特币的差异，所以最好看过比特币的论文，对比特币的基本原理、实现有所了解。这一篇将以太坊的白皮书作为重要参考，可以看做是以太坊白皮书的概述。以太坊的白皮书是一个非常好的学习资料，它在介绍以太坊前分析了比特币存在的问题，因此我们可以通过这份白皮书了解整个加密货币的生态。</p>
+<a id="more"></a>
+<h2 id="以太坊"><a href="#以太坊" class="headerlink" title="以太坊"></a>以太坊</h2><h3 id="设计理念"><a href="#设计理念" class="headerlink" title="设计理念"></a>设计理念</h3><ul>
+<li>简单性</li>
+<li>普遍性</li>
+<li>模块化</li>
+<li>敏捷性</li>
+<li>不歧视，非审查</li>
+</ul>
+<h2 id="架构"><a href="#架构" class="headerlink" title="架构"></a>架构</h2><p>见上一篇 <a href="#TODO">go-ethereum 源码笔记（概览）</a></p>
+<h2 id="特性"><a href="#特性" class="headerlink" title="特性"></a>特性</h2><h3 id="智能合约"><a href="#智能合约" class="headerlink" title="智能合约"></a>智能合约</h3><p>智能合约是以太坊与比特币最大的不同。智能合约是不可篡改的合同，它运行在由以太坊组成的分布式计算机上，由一段支持图灵完备的程序实现。</p>
+<p><strong>初学</strong>智能合约的最佳资料：<a href="https://cryptozombies.io/" target="_blank" rel="external">cryptozombies</a></p>
+<p>智能合约与一般的程序有些不同：</p>
+<ul>
+<li>Address 类型可以定位用户，定位合约的代码</li>
+<li>语言内嵌框架支持支付，所以提供了一些如 payable 的关键字，在语言层面支持支付</li>
+<li>使用区块链作为存储</li>
+<li>运行环境是去中心化的网络，比较强调合约或函数执行的调用方式。</li>
+<li>一旦出现异常，所有的执行都会回撤，合约的执行具有原子性</li>
+</ul>
+<p>有四种专用语言可以写智能合约，Solidity，Serpent，Mutan，LLL。</p>
+<h4 id="编程语言"><a href="#编程语言" class="headerlink" title="编程语言"></a>编程语言</h4><h5 id="Solidity"><a href="#Solidity" class="headerlink" title="Solidity"></a>Solidity</h5><p>受 Javascript 启发。</p>
+<p>是以太坊的首选语言，语法接近 Javascript，它是一种面向对象的语言，易于被掌握和使用，由于语法与 Javascript 相近，并且学习门栏相对较低，目前是使用人数最多的智能合约开发语言。编译器用 C++ 实现。</p>
+<p>项目主页是：<a href="https://github.com/ethereum/solidity" target="_blank" rel="external">ethereum/solidity</a></p>
+<h5 id="Serpent"><a href="#Serpent" class="headerlink" title="Serpent"></a>Serpent</h5><p>受 Python 启发。兼顾底层语言效率和良好编程风格的同时尽可能追求简洁，加入了一些针对合约编程的特性。编译器用 C++ 实现。</p>
+<p>项目主页是：<a href="https://github.com/ethereum/serpent" target="_blank" rel="external">ethereum/serpent</a></p>
+<h5 id="Mutan"><a href="#Mutan" class="headerlink" title="Mutan"></a>Mutan</h5><p>受 Golang 启发。Golang 实现，2015年就被废弃了。</p>
+<p>项目主页是：<a href="https://github.com/obscuren/mutan" target="_blank" rel="external">obscuren/mutan</a></p>
+<h5 id="LLL-Lisp-Like-Language"><a href="#LLL-Lisp-Like-Language" class="headerlink" title="LLL(Lisp Like Language)"></a>LLL(Lisp Like Language)</h5><p>受 Lisp 启发。</p>
+<h4 id="特征-来自知识星球-区块链学习小组-的讨论"><a href="#特征-来自知识星球-区块链学习小组-的讨论" class="headerlink" title="特征 (来自知识星球 区块链学习小组 的讨论)"></a>特征 (来自知识星球 <a href="https://t.zsxq.com/fiauZZJ" target="_blank" rel="external">区块链学习小组</a> 的讨论)</h4><ul>
+<li>自治 一旦启动，不受干预</li>
+<li>自足 程序自主控制其计算涉及的资源，有权限调配参与者的资金，财产</li>
+<li>去中心化 不依赖某个单独的服务器，由分布式网络的节点共同支持运行</li>
+</ul>
+<h4 id="DApp-的优势"><a href="#DApp-的优势" class="headerlink" title="DApp 的优势"></a>DApp 的优势</h4><ul>
+<li>DApp 大多为开源项目，公开透明</li>
+<li>去中心化</li>
+<li>具有激励机制</li>
+<li>具有共识协议</li>
+</ul>
+<h4 id="应用"><a href="#应用" class="headerlink" title="应用"></a>应用</h4><ul>
+<li>信用卡的定期扣款(按月订阅的自动扣款)</li>
+<li>飞机延误险(各类保险)</li>
+<li>ICO</li>
+<li>…</li>
+</ul>
+<h4 id="TODO：存在的问题"><a href="#TODO：存在的问题" class="headerlink" title="TODO：存在的问题"></a>TODO：存在的问题</h4><h3 id="EVM-高级语言"><a href="#EVM-高级语言" class="headerlink" title="EVM 高级语言"></a>EVM 高级语言</h3><p>以太坊实现了一个叫做 Ethereum Virtual Machine 的运行时环境，类似于 JVM，它的主要工作是执行智能合约的字节码。</p>
+<h3 id="账户系统"><a href="#账户系统" class="headerlink" title="账户系统"></a>账户系统</h3><p>以太坊中有两类账户，外部账户和合约账户，两类账户对于 EVM 来说没有区别，每个账户都有一个与之关联的账户状态和一个20字节的地址，都可以存储以太币。</p>
+<p>外部账户：由私钥控制，没有代码与之关联，地址由公钥决定。私钥可用于对交易签名从而主动向其他账户发起交易（transaction）进行消息传递，TODO</p>
+<p>合约账户：由合约代码控制，有代码与之关联，其地址由合约创建者的地址和该地址发出过的交易数量 nonce 共同决定。不能主动向其他账户发起交易，但可以『响应』其他账户进行消息调用（message call）。</p>
+<p>外部账户之间的消息传递是价值转移的过程，外部账户到合约账户的交易或合约账户到合约账户的消息会激发合约账户代码的执行，允许它执行如转移代币，写入内部存储，执行运算，创建合约等各种操作。</p>
+<p>不论账户类型，账户状态都包含以下四个字段：</p>
+<ul>
+<li>nonce：由账户发出的交易数及创建的合约数量决定。</li>
+<li>Balance：余额，账户拥有以太币数量，单位为 Wei，1Ether=10^18Wei。</li>
+<li>storageRoot：存储根节点，账户内容的 Merkle Patricia 树根节点的哈希编码。</li>
+<li>codeHash：代码哈希，与账户关联的 EVM 代码的哈希值，外部账户的 codeHash 为一个空字符串的哈希，创建后不可更改。状态数据库中包含所有代码片段哈希, 以便后续使用。</li>
+</ul>
+<h3 id="Gas-的设计"><a href="#Gas-的设计" class="headerlink" title="Gas 的设计"></a>Gas 的设计</h3><p>以太坊是一个能够运行智能合约的去中心化平台，它提供了一个以太坊虚拟机，简称 EVM，开发者可以在上面开发各种应用，而且它是图灵完备的，这意味着我们写的智能合约是可以运行死循环的。要知道，『不存在这样一个程序，它能够检测任何程序在给定输入上是否会结束』，这称为图灵停机问题。以太坊用一个很精彩的设计来解决这个问题，这就是 Gas。Gas 的设计基于这样一个想法：执行程序应该是消耗资源的，每一步操作，ADD 也好，DIV 也好，都应该消耗不同程度的资源，资源提前消耗完了，就强行终止程序。总的来说，Gas 是以太坊中对所有活动进行消耗资源计量的单位，包括但不限于：转账，合约创建，合约指令执行，扩展内存。Gas 是一个浮动的量，每一笔交易可以自行指定 Gas 价格(以以太币计算)，价格越高，矿工将你的交易打包进区块的优先级就越高。最终，Gas 的消耗等于消耗的 Gas 数量乘以 Gas 价格，这笔钱将奖励给矿工。交易完成后，剩余的 Gas 以购买时的价格退回到交易发送者账户，若交易过程中发生 Gas 不足异常(out-of-gas, OOG)，交易会被当做无效交易，已消耗 Gas 不会退回，仍作为矿工贡献计算资源的奖励。</p>
+<p>更多细节请查阅：<a href="https://github.com/ethereum/wiki/wiki/Design-Rationale#gas-and-fees" target="_blank" rel="external">wiki/Design-Rationale#gas-and-fees</a></p>
+<h3 id="世界状态"><a href="#世界状态" class="headerlink" title="世界状态"></a>世界状态</h3><p>世界状态是地址(160位标示符)和账户状态(序列化为 RLP 的数据结构)间的映射，区块链不直接存储世界状态，而是在区块头中存储相关 Merkle Patricia 树根节点的哈希值。</p>
+<h3 id="日志"><a href="#日志" class="headerlink" title="日志"></a>日志</h3><p>日志是 EVM 提供的一项功能。开发者可以在合约代码里记录各种事件产生的日志，这些日志可以帮助开发者调试代码，或者作为在区块链上发生交易的证据。</p>
+<h3 id="各版本特性"><a href="#各版本特性" class="headerlink" title="各版本特性"></a>各版本特性</h3><ul>
+<li>Frontier（边境）2015年7月发布，以太坊的第一个版本，只有命令行界面，主要使用者是开发者</li>
+<li>Homestead（家园）2016年3月发布，第一个生产环境版本，加快了交易速度，增加图形界面，让普通用户也可以使用以太坊的功能</li>
+<li>Metropolis（大都会）2017年10月发布，这个阶段分两个版本，先是拜占庭，2017年10月发布，然后是君士坦丁堡，预计2018年发布，增加浏览器，应用商店的特性，使用更方便，可以安装插件实现更多功能。更轻量、更快速、更安全。</li>
+<li>Serenity（宁静）时间待定，使用 PoS，使用 Casper 共识算法。</li>
+</ul>
+<h2 id="以太坊和比特币的差异"><a href="#以太坊和比特币的差异" class="headerlink" title="以太坊和比特币的差异"></a>以太坊和比特币的差异</h2><h3 id="理念不同"><a href="#理念不同" class="headerlink" title="理念不同"></a>理念不同</h3><p>比特币想要实现的是电子现金系统，而以太坊想要实现的是图灵完备的智能合约平台。</p>
+<h3 id="智能合约-VS-Script"><a href="#智能合约-VS-Script" class="headerlink" title="智能合约 VS Script"></a>智能合约 VS Script</h3><p>比特币协议本身也是可以实现智能协议的。在比特币中，有一个交易脚本语言，它是一种基于栈的执行语言，包含基本算数计算、基本逻辑（if 等）、报错及返回结果和一些加密指令，但不支持循环。</p>
+<p>根据比特币协议的实现，在花费 UTXO 前，必须满足脚本的要求，即满足解锁 UTXO脚本，用私钥匹配解锁脚本（Signature script），以保证交易只能花费自己的比特币，即交易的输入，交易的输入指向的是锁定脚本（PubKey script），它确保签名能匹配输出地址。显然我们可以应用更复杂的脚本实现智能合约，没有循环也可以用重复的代码实现，显然这样的方法太糟糕了。</p>
+<p>比特币的脚本语言存在的几处限制在 Vitalik 最初发布的白皮书里也有描述：</p>
+<ul>
+<li>缺乏图灵完整性，不支持循环语句</li>
+<li>价值盲区，无法对 UTXO 进行精细化控制</li>
+<li>不能保存状态，UTXO 只有用完和没用两种状态，没法实现多阶段期权合约</li>
+<li>区块链盲区，UTXO 中没有区块链数据(随机数，时间戳，前一个区块哈希)，不能挖掘随机性的潜在价值</li>
+</ul>
+<p>更具体的描述可以查看<a href="https://github.com/knarfeh/papers/blob/master/Blockchain/Ethereum/Ethereum_white_paper-a_next_generation_smart_contract_and_decentralized_application_platform-vitalik-buterin.pdf" target="_blank" rel="external">这个地址</a>。</p>
+<p>我们知道区块链的本质是一个分布式的公共数据库，它最早用来包括数字交易记录，这也是它到目前为止最为广泛的应用，区块链的特别之处在于，它不需要任何中央权威机构来维护，它是一个不需要第三方的 p2p 的框架。以太坊的智能合约让它与比特币又有了本质的不同，把区块链看做分布式数据库，那么以太坊就是一个能够能够在数据库上运行分布式应用的超级计算机，是智能合约让以太坊和比特币有了本质的不同，它是代码和数据（状态）的集合。</p>
+<p>比特币的脚本有诸多限制，能够编写的程序有限，而以太坊的智能合约是图灵完备的，它非常适合于对信任、安全和持久性要求较高的应用场景，如：数字货币、数字资产、投票，保险、金融应用、预测市场，产权所有权管理、物联网等等。目前来说，除了数字货币之外，真正落地的应用还不多，因为区块链还存在诸多问题，比如亟需解决的交易性能问题，因此隔离见证，闪电网络，侧链等技术飞速发展，各种公链也针对某些问题提出自己的方案，这些既是挑战，也是机遇。</p>
+<h3 id="Accounts-VS-UTXO"><a href="#Accounts-VS-UTXO" class="headerlink" title="Accounts VS UTXO"></a>Accounts VS UTXO</h3><p>比特币用 UTXO 方法计算某账户的余额，UTXO 即 Unspent Transaction Outputs。这个概念稍稍有点复杂，这里只做简单介绍。比特币整个系统的状态由未花费交易输出组成。每个 UTXO 都有拥有者和自身的价值属性，一笔交易会消费若干个 UTXO，同时也会生成若干个新的 UTXO，UTXO 有下面几点约束：</p>
+<ol>
+<li>每个被引用的输入必须有效，且未被使用过</li>
+<li>交易的签名必须与每笔输入的所有者签名匹配</li>
+<li>输入的总值必须等于或大于输出的总值</li>
+</ol>
+<p><img src="http://7xi5vu.com1.z0.glb.clouddn.com/en-transaction-propagation.png" alt="transaction of bitcoin, https://bitcoin.org/img/dev/en-transaction-propagation.svg"></p>
+<p>个人认为理解 UTXO 的最佳方式是读这个<a href="https://github.com/Jeiwan/blockchain_go" target="_blank" rel="external">仓库</a>的源代码，这个作者写了7篇文章，实现了一个比特币的原型，Bitcoin Core 的代码是 C++ 写的，且代码复杂，年代久远，这个仓库使用 Golang，简单易懂，UTXO 的实现在 <a href="https://github.com/Jeiwan/blockchain_go/compare/part_3...part_4#files_bucket" target="_blank" rel="external">Transactions 1</a>。感兴趣的朋友可以进一步阅读。</p>
+<p>UTXO 的好处是（来自以太坊的维基）：</p>
+<ol>
+<li>匿名性更好，一个用户接收到一笔转账，这些转账的输入可以有多个私钥形成，但其实这些输入可以是同一个人的，这样能保证一定程度的匿名性。</li>
+<li>UTXO 是无状态的，更具扩展性。</li>
+</ol>
+<p>以太坊没有采用 UTXO 的方式进行记账，而是采用了传统金融的记账方式–使用账户，每笔交易只有一个输入，一个输出，一个签名。使用单独的账户系统的好处是（来自以太坊维基）：</p>
+<ol>
+<li>节省大量存储空间。每笔交易只有一个输入和一个输出。</li>
+<li>可替换性。可操控性可能更好一些，使用账户模型可以更轻松地实现黑名单这样的模式。</li>
+<li>编码上更简单。获取账户余额时，只需要一个查询，而比特币需要整合指定地址所拥有的所有 UTXO 的总值。</li>
+<li>可以更轻松地实现轻客户端。</li>
+</ol>
+<p>Vitalik 在一篇<a href="https://medium.com/@ConsenSys/thoughts-on-utxo-by-vitalik-buterin-2bb782c67e53" target="_blank" rel="external">博客</a>中还谈到 UTXO 可能引发拒绝服务漏洞。而且基于 UTXO 的模型与有状态的智能合约不太契合。以太坊最终选择使用账户模型。</p>
+<p>以太坊使用状态（state）的概念来存储一系列账户，每个账户有自己的余额以及特定数据（代码或内部存储），如果交易发起方有足够余额支付交易费用，则交易有效，发起方账户扣除相应金额，接收账户增加余额。账户还用于智能合约的创建和执行，可以通过转账来触发接收账户对应的代码的执行，该账户的内部存储可能会发生变化，同时也可以创建额外信息发给其他账户，触发新的交易。从这一点可以看到，dapp 需要跟用户状态进行复杂的交互，通过 UTXO 实现会比较难满足需求。</p>
+<h3 id="区块链设计的不同"><a href="#区块链设计的不同" class="headerlink" title="区块链设计的不同"></a>区块链设计的不同</h3><h4 id="比特币"><a href="#比特币" class="headerlink" title="比特币"></a>比特币</h4><p>比特币的区块包括区块头和区块体两部分，区块头封装了前一个区块的哈希值、时间戳，随机数，默克尔树根值和当前区块的哈希值，区块体中包括交易计数和交易详情。区块结构如下图（摘自 Bitcoin 白皮书）：</p>
+<p><img src="http://7xi5vu.com1.z0.glb.clouddn.com/bitcoin_block_from_bitcoinpaper.png" alt="bitcoin_block"></p>
+<h4 id="以太坊-1"><a href="#以太坊-1" class="headerlink" title="以太坊"></a>以太坊</h4><p>以太坊在比特币区块链基础上做了一些调整，区块主要由区块头、交易列表和叔区块头三部分组成。区块头包括父区块的哈希值、叔区块的哈希值、状态树根哈希值、交易树根哈希值、收据树根哈希值、时间戳、随机数。</p>
+<p>TODO：增加区块结构图</p>
+<h3 id="PoW-机制的不同"><a href="#PoW-机制的不同" class="headerlink" title="PoW 机制的不同"></a>PoW 机制的不同</h3><p>PoW，Proof of Work 的缩写，即工作量证明，又称挖矿，目前比特币，以太坊都基于 PoW 算法实现共识机制，即根据挖矿的贡献决定货币的分配。</p>
+<h4 id="比特币-1"><a href="#比特币-1" class="headerlink" title="比特币"></a>比特币</h4><p>比特币的 PoW 的过程，需要不断调整 Nonce 值，对区块头做双重 SHA256 哈希运算，使得结果满足给定数量前导0的哈希值的过程。其中前导0的个数，取决于挖矿难度，前导 0 的个数越多，挖矿难度越大。</p>
+<h4 id="以太坊-2"><a href="#以太坊-2" class="headerlink" title="以太坊"></a>以太坊</h4><p>以太坊的 PoW 算法可以表示为如下公式：$RAND(h, n) &lt;= M/d$<br>其中 $RAND()$ 表示一个概念函数，代表一系列的复杂运算，h 和 n 为输入，即区块 Header 的哈希、以及 Header 中的 Nonce。M 表示一个极大的数，此处使用 $2^{256}-1$。d 为区块难度，即Header 中的 Difficulty。在 h 和 n 确定的情况下，d 越大，挖矿难度越大。需不断变更 Nonce，使$RAND(h, n)$ 满足 $RAND(h, n) &lt;= M / d$ 完成 PoW。</p>
+<p>需要注意的是以太坊目前的 PoW 只是临时的，未来将会是 PoS 的形式，到时候不会再需要耗费大量电力进行挖矿。</p>
+<h3 id="挖矿难度更新"><a href="#挖矿难度更新" class="headerlink" title="挖矿难度更新"></a>挖矿难度更新</h3><h4 id="比特币-2"><a href="#比特币-2" class="headerlink" title="比特币"></a>比特币</h4><p>比特币每创建2016个块后将计算新的难度，此后的2016个块使用新的难度。计算步骤如下：</p>
+<ol>
+<li>找到前2016个块的第一个块，计算生成这2016个块花费的时间。<br>即最后一个块的时间与第一个块的时间差。时间差不小于3.5天，不大于56天。</li>
+<li>计算前2016个块的难度总和，即单个块的难度x总时间。</li>
+<li>计算新的难度，即2016个块的难度总和/14天的秒数，得到每秒的难度值。</li>
+<li>要求新的难度，难度不低于参数定义的最小难度。</li>
+</ol>
+<h4 id="以太坊-3"><a href="#以太坊-3" class="headerlink" title="以太坊"></a>以太坊</h4><p>以太坊每次挖矿都需计算当前区块难度。按版本不同有三种计算难度的规则，分别为：<code>calcDifficultyByzantium</code>（Byzantium 版本）、<code>calcDifficultyHomestead</code>（Homestead 版本）、<code>calcDifficultyFrontier</code>（Frontier 版本）。以 <code>calcDifficultyHomestead</code> 为例。</p>
+<figure class="highlight armasm"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">block_diff </span>= parent_diff + 难度调整 + 难度炸弹</div><div class="line">难度调整 = parent_diff // <span class="number">2048</span> * MAX(<span class="number">1</span> - (<span class="keyword">block_timestamp </span>- parent_timestamp) // <span class="number">10</span>, -<span class="number">99</span>)</div><div class="line">难度炸弹 = INT(<span class="number">2</span>**((<span class="keyword">block_number </span>// <span class="number">100000</span>) - <span class="number">2</span>))</div></pre></td></tr></table></figure>
+<p>以太坊的区块难度以单个区块为单位进行调整，所以可以比较快地适应算力变化，难度炸弹也是一个很有意思的设计，难度炸弹是指数级增长的，到某个阶段矿工会因为无利可图自动退场，这时 PoS 也应该成熟了，这对于矿工来说是一个预防针。</p>
+<h3 id="奖励机制"><a href="#奖励机制" class="headerlink" title="奖励机制"></a>奖励机制</h3><h4 id="比特币-3"><a href="#比特币-3" class="headerlink" title="比特币"></a>比特币</h4><p>在比特币的设计中，最初每挖出一个区块会奖励50个 BTC，每挖出21万个，奖励就会减半，第1-210000个区块，每块奖励50btc，第210001-420000个区块，每块奖励25btc……以此类推。</p>
+<p>因此 BTC 的总量为：210000×50(1+0.5+0.25+0.125+……)=2100万</p>
+<h4 id="以太坊-4"><a href="#以太坊-4" class="headerlink" title="以太坊"></a>以太坊</h4><p>以太坊提出了一个叔块的概念。叔块是指没能成为主链的，但在后面的区块放入了 uncles 字段中的区块。</p>
+<p>相比于比特币，以太坊对叔块也有奖励，为什么这么做呢，我们知道以太坊的出块时间是15秒左右，相比于比特币，以太坊更容易出现临时分叉和孤块，因为出块时间比较短，区块在整个网络中也比较难传播，对于网速比较慢的矿工就不占优势了，因此挖矿的时候，对于叔块也是有奖励的。</p>
+<p>我们知道以太坊是一个运行智能合约的去中心化的平台，它有一个以太坊虚拟机（Ethereum Virtual Machine，常用缩写 EVM）的概念，EVM 是就像一个超级计算机，它是图灵完备的，写程序的时候可能会出现死循环，而智能合约应该避免这种情况，这引出一个<a href="https://zh.wikipedia.org/zh-hans/%E5%81%9C%E6%9C%BA%E9%97%AE%E9%A2%98" target="_blank" rel="external">停机问题</a>，简单来说就是不存在能够检测程序进入了死循环的方法，以太坊提出了一种设计解决这个问题，EVM 规定了每条指令都会消耗一定的 Gas，指令越复杂，消耗的 Gas 越多，程序运行前是有一个消耗 Gas 的上限的，运行过程中 Gas 消耗完了，无论程序有没有执行完都会被强行终止。智能合约运行时花费的 Gas 最终会奖励给矿工。</p>
+<p>综上，以太坊的挖矿奖励包括两部分：</p>
+<h5 id="普通区块奖励"><a href="#普通区块奖励" class="headerlink" title="普通区块奖励"></a>普通区块奖励</h5><ul>
+<li>固定奖励5ETH</li>
+<li>花费的 Gas</li>
+<li>如果区块中包括叔块，每包含一个可以得到5ETH的1/32</li>
+</ul>
+<h5 id="叔块奖励"><a href="#叔块奖励" class="headerlink" title="叔块奖励"></a>叔块奖励</h5><p>叔块奖励 = ( 叔块高度 + 8 - 包含叔块的区块的高度 ) * 普通区块奖励 / 8</p>
+<h3 id="其他一些细节上的差异"><a href="#其他一些细节上的差异" class="headerlink" title="其他一些细节上的差异"></a>其他一些细节上的差异</h3><ul>
+<li>出块时间，比特币的出块时间是平均10分钟，以太坊的平均出块时间是15秒。以太坊相对于比特币有更大的系统吞吐量和更小的交易确认间隔，尽管从长远来看，这远远不够。</li>
+<li>区块奖励，比特币诞生于2009年1月，刚开始时区块奖励是50 BTC，每四年减半一次，2012年11月到2016年7月是25 BTC，目前是12.5 BTC，到2020年的2月将变成6.25 BTC；以太坊的挖矿奖励5个以太币，大都会版本后改成3个以太币。</li>
+<li>以太币最多可以显示小数点后18位，比特币最多是小数点后8位。</li>
+<li>…</li>
+</ul>
+<h2 id="References"><a href="#References" class="headerlink" title="References"></a>References</h2><ul>
+<li><a href="https://en.bitcoin.it/wiki/Script" target="_blank" rel="external">Script</a></li>
+<li><a href="https://github.com/ethereum/wiki/wiki/White-Paper" target="_blank" rel="external">ethereum white paper</a></li>
+<li><a href="https://github.com/ethereum/wiki/wiki/Design-Rationale#gas-and-fees" target="_blank" rel="external">wiki/Design-Rationale#gas-and-fees</a></li>
+<li><a href="https://medium.com/@ConsenSys/thoughts-on-utxo-by-vitalik-buterin-2bb782c67e53" target="_blank" rel="external">Thoughts on UTXOs by Vitalik Buterin, Co-Founder of Ethereum</a></li>
+<li><a href="https://ethfans.org/posts/thoughts-on-utxo" target="_blank" rel="external">关于 UTXO 的思考</a></li>
+<li><a href="https://steemit.com/ethereum/@alexma/2-utxo-vs" target="_blank" rel="external">浅谈以太坊（2）——以太坊的不同之处之UTXO vs 账户余额</a></li>
+<li><a href="https://learnblockchain.cn/2017/11/10/bitcoin-script/" target="_blank" rel="external">比特币脚本及交易分析 - 智能合约雏形</a></li>
+<li><a href="https://zhuanlan.zhihu.com/p/28830859" target="_blank" rel="external">以太坊(Ethereum ETH)是如何计算难度的</a></li>
+<li><a href="https://cryptozombies.io/" target="_blank" rel="external">cryptozombies</a></li>
+<li><a href="https://eips.ethereum.org/EIPS" target="_blank" rel="external">EIPs</a></li>
+<li><a href="https://github.com/EthFans/wiki/wiki/%E6%99%BA%E8%83%BD%E5%90%88%E7%BA%A6" target="_blank" rel="external">EthFans/wiki/智能合约</a></li>
+<li><a href="https://dbarobin.com/2018/01/24/blockchain-smart-contract/" target="_blank" rel="external">理解智能合约</a></li>
+<li><a href="http://www.8btc.com/the-beginners-guide-to-ethereum-s-2020-roadmap" target="_blank" rel="external">以太坊路线图入门指南</a></li>
+<li><a href="https://zhuanlan.zhihu.com/ethereum" target="_blank" rel="external">以太坊技术专栏</a></li>
+</ul>
+
+      
+    </div>
+
+    <div>
+      
+        
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/cryptocurrency/" rel="tag">#cryptocurrency</a>
+          
+            <a href="/tags/Golang/" rel="tag">#Golang</a>
+          
+            <a href="/tags/geth/" rel="tag">#geth</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/03/10/go-ethereum 源码笔记（core 模块-区块链操作）/" rel="next" title="go-ethereum 源码笔记（core 模块-区块链操作）">
+                <i class="fa fa-chevron-left"></i> go-ethereum 源码笔记（core 模块-区块链操作）
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/03/10/go-ethereum 源码笔记（概览）/" rel="prev" title="go-ethereum 源码笔记（概览）">
+                go-ethereum 源码笔记（概览） <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+      <div id="disqus_thread">
+        <noscript>
+          Please enable JavaScript to view the
+          <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a>
+        </noscript>
+      </div>
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel ">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="https://avatars1.githubusercontent.com/u/6964284?v=3&s=460"
+               alt="Frank" />
+          <p class="site-author-name" itemprop="name">Frank</p>
+          <p class="site-description motion-element" itemprop="description"></p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">174</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+          
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">125</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/knarfeh" target="_blank">
+                  
+                    <i class="fa fa-github"></i> GitHub
+                  
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://twitter.com/knarfeh" target="_blank">
+                  
+                    <i class="fa fa-twitter"></i> Twitter
+                  
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://weibo.com/2753500945" target="_blank">
+                  
+                    <i class="fa fa-weibo"></i> Weibo
+                  
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+          <div class="cc-license motion-element" itemprop="license">
+            <a href="http://creativecommons.org/licenses/by-sa/4.0" class="cc-opacity" target="_blank">
+              <img src="/images/cc-by-sa.svg" alt="Creative Commons" />
+            </a>
+          </div>
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+      </section>
+
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc-indicator-top post-toc-indicator">
+            <i class="fa fa-angle-double-up"></i>
+          </div>
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#以太坊"><span class="nav-number">1.</span> <span class="nav-text">以太坊</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#设计理念"><span class="nav-number">1.1.</span> <span class="nav-text">设计理念</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#架构"><span class="nav-number">2.</span> <span class="nav-text">架构</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#特性"><span class="nav-number">3.</span> <span class="nav-text">特性</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#智能合约"><span class="nav-number">3.1.</span> <span class="nav-text">智能合约</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#编程语言"><span class="nav-number">3.1.1.</span> <span class="nav-text">编程语言</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#Solidity"><span class="nav-number">3.1.1.1.</span> <span class="nav-text">Solidity</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#Serpent"><span class="nav-number">3.1.1.2.</span> <span class="nav-text">Serpent</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#Mutan"><span class="nav-number">3.1.1.3.</span> <span class="nav-text">Mutan</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#LLL-Lisp-Like-Language"><span class="nav-number">3.1.1.4.</span> <span class="nav-text">LLL(Lisp Like Language)</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#特征-来自知识星球-区块链学习小组-的讨论"><span class="nav-number">3.1.2.</span> <span class="nav-text">特征 (来自知识星球 区块链学习小组 的讨论)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#DApp-的优势"><span class="nav-number">3.1.3.</span> <span class="nav-text">DApp 的优势</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#应用"><span class="nav-number">3.1.4.</span> <span class="nav-text">应用</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#TODO：存在的问题"><span class="nav-number">3.1.5.</span> <span class="nav-text">TODO：存在的问题</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#EVM-高级语言"><span class="nav-number">3.2.</span> <span class="nav-text">EVM 高级语言</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#账户系统"><span class="nav-number">3.3.</span> <span class="nav-text">账户系统</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Gas-的设计"><span class="nav-number">3.4.</span> <span class="nav-text">Gas 的设计</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#世界状态"><span class="nav-number">3.5.</span> <span class="nav-text">世界状态</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#日志"><span class="nav-number">3.6.</span> <span class="nav-text">日志</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#各版本特性"><span class="nav-number">3.7.</span> <span class="nav-text">各版本特性</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#以太坊和比特币的差异"><span class="nav-number">4.</span> <span class="nav-text">以太坊和比特币的差异</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#理念不同"><span class="nav-number">4.1.</span> <span class="nav-text">理念不同</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#智能合约-VS-Script"><span class="nav-number">4.2.</span> <span class="nav-text">智能合约 VS Script</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Accounts-VS-UTXO"><span class="nav-number">4.3.</span> <span class="nav-text">Accounts VS UTXO</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#区块链设计的不同"><span class="nav-number">4.4.</span> <span class="nav-text">区块链设计的不同</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#比特币"><span class="nav-number">4.4.1.</span> <span class="nav-text">比特币</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#以太坊-1"><span class="nav-number">4.4.2.</span> <span class="nav-text">以太坊</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#PoW-机制的不同"><span class="nav-number">4.5.</span> <span class="nav-text">PoW 机制的不同</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#比特币-1"><span class="nav-number">4.5.1.</span> <span class="nav-text">比特币</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#以太坊-2"><span class="nav-number">4.5.2.</span> <span class="nav-text">以太坊</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#挖矿难度更新"><span class="nav-number">4.6.</span> <span class="nav-text">挖矿难度更新</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#比特币-2"><span class="nav-number">4.6.1.</span> <span class="nav-text">比特币</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#以太坊-3"><span class="nav-number">4.6.2.</span> <span class="nav-text">以太坊</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#奖励机制"><span class="nav-number">4.7.</span> <span class="nav-text">奖励机制</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#比特币-3"><span class="nav-number">4.7.1.</span> <span class="nav-text">比特币</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#以太坊-4"><span class="nav-number">4.7.2.</span> <span class="nav-text">以太坊</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#普通区块奖励"><span class="nav-number">4.7.2.1.</span> <span class="nav-text">普通区块奖励</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#叔块奖励"><span class="nav-number">4.7.2.2.</span> <span class="nav-text">叔块奖励</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#其他一些细节上的差异"><span class="nav-number">4.8.</span> <span class="nav-text">其他一些细节上的差异</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#References"><span class="nav-number">5.</span> <span class="nav-text">References</span></a></li></ol></div>
+            
+          </div>
+          <div class="post-toc-indicator-bottom post-toc-indicator">
+            <i class="fa fa-angle-double-down"></i>
+          </div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy;  2015 - 
+  <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Frank</span>
+</div>
+
+<div class="powered-by">
+  由 <a class="theme-link" href="http://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Muse
+  </a>
+</div>
+
+
+
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+
+  
+
+
+
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+  <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
+
+  <script type="text/javascript" src="/vendors/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  <script type="text/javascript" src="/vendors/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  <script type="text/javascript" src="/vendors/velocity/velocity.min.js"></script>
+
+  <script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js"></script>
+
+  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=0.5.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=0.5.0"></script>
+
+
+
+  
+  
+
+  
+  
+<script type="text/javascript" src="/js/src/scrollspy.js?v=0.5.0"></script>
+
+<script type="text/javascript" id="sidebar.toc.highlight">
+  $(document).ready(function () {
+    var tocSelector = '.post-toc';
+    var $tocSelector = $(tocSelector);
+    var activeCurrentSelector = '.active-current';
+
+    $tocSelector
+      .on('activate.bs.scrollspy', function () {
+        var $currentActiveElement = $(tocSelector + ' .active').last();
+
+        removeCurrentActiveClass();
+        $currentActiveElement.addClass('active-current');
+
+        $tocSelector[0].scrollTop = $currentActiveElement.position().top;
+      })
+      .on('clear.bs.scrollspy', function () {
+        removeCurrentActiveClass();
+      });
+
+    function removeCurrentActiveClass () {
+      $(tocSelector + ' ' + activeCurrentSelector)
+        .removeClass(activeCurrentSelector.substring(1));
+    }
+
+    function processTOC () {
+      getTOCMaxHeight();
+      toggleTOCOverflowIndicators();
+    }
+
+    function getTOCMaxHeight () {
+      var height = $('.sidebar').height() -
+                   $tocSelector.position().top -
+                   $('.post-toc-indicator-bottom').height();
+
+      $tocSelector.css('height', height);
+
+      return height;
+    }
+
+    function toggleTOCOverflowIndicators () {
+      tocOverflowIndicator(
+        '.post-toc-indicator-top',
+        $tocSelector.scrollTop() > 0 ? 'show' : 'hide'
+      );
+
+      tocOverflowIndicator(
+        '.post-toc-indicator-bottom',
+        $tocSelector.scrollTop() >= $tocSelector.find('ol').height() - $tocSelector.height() ? 'hide' : 'show'
+      )
+    }
+
+    $(document).on('sidebar.motion.complete', function () {
+      processTOC();
+    });
+
+    $('body').scrollspy({ target: tocSelector });
+    $(window).on('resize', function () {
+      if ( $('.sidebar').hasClass('sidebar-active') ) {
+        processTOC();
+      }
+    });
+
+    onScroll($tocSelector);
+
+    function onScroll (element) {
+      element.on('mousewheel DOMMouseScroll', function (event) {
+          var oe = event.originalEvent;
+          var delta = oe.wheelDelta || -oe.detail;
+
+          this.scrollTop += ( delta < 0 ? 1 : -1 ) * 30;
+          event.preventDefault();
+
+          toggleTOCOverflowIndicators();
+      });
+    }
+
+    function tocOverflowIndicator (indicator, action) {
+      var $indicator = $(indicator);
+      var opacity = action === 'show' ? 1 : 0;
+      $indicator.velocity ?
+        $indicator.velocity('stop').velocity({
+          opacity: opacity
+        }, { duration: 100 }) :
+        $indicator.stop().animate({
+          opacity: opacity
+        }, 100);
+    }
+
+  });
+</script>
+
+<script type="text/javascript" id="sidebar.nav">
+  $(document).ready(function () {
+    var html = $('html');
+    var TAB_ANIMATE_DURATION = 200;
+    var hasVelocity = $.isFunction(html.velocity);
+
+    $('.sidebar-nav li').on('click', function () {
+      var item = $(this);
+      var activeTabClassName = 'sidebar-nav-active';
+      var activePanelClassName = 'sidebar-panel-active';
+      if (item.hasClass(activeTabClassName)) {
+        return;
+      }
+
+      var currentTarget = $('.' + activePanelClassName);
+      var target = $('.' + item.data('target'));
+
+      hasVelocity ?
+        currentTarget.velocity('transition.slideUpOut', TAB_ANIMATE_DURATION, function () {
+          target
+            .velocity('stop')
+            .velocity('transition.slideDownIn', TAB_ANIMATE_DURATION)
+            .addClass(activePanelClassName);
+        }) :
+        currentTarget.animate({ opacity: 0 }, TAB_ANIMATE_DURATION, function () {
+          currentTarget.hide();
+          target
+            .stop()
+            .css({'opacity': 0, 'display': 'block'})
+            .animate({ opacity: 1 }, TAB_ANIMATE_DURATION, function () {
+              currentTarget.removeClass(activePanelClassName);
+              target.addClass(activePanelClassName);
+            });
+        });
+
+      item.siblings().removeClass(activeTabClassName);
+      item.addClass(activeTabClassName);
+    });
+
+    $('.post-toc a').on('click', function (e) {
+      e.preventDefault();
+      var targetSelector = NexT.utils.escapeSelector(this.getAttribute('href'));
+      var offset = $(targetSelector).offset().top;
+      hasVelocity ?
+        html.velocity('stop').velocity('scroll', {
+          offset: offset  + 'px',
+          mobileHA: false
+        }) :
+        $('html, body').stop().animate({
+          scrollTop: offset
+        }, 500);
+    });
+
+    // Expand sidebar on post detail page by default, when post has a toc.
+    NexT.motion.middleWares.sidebar = function () {
+      var $tocContent = $('.post-toc-content');
+
+      if (CONFIG.scheme !== 'Pisces' && (CONFIG.sidebar.display === 'post' || CONFIG.sidebar.display === 'always')) {
+        if ($tocContent.length > 0 && $tocContent.html().trim().length > 0) {
+          NexT.utils.displaySidebar();
+        }
+      }
+    };
+  });
+</script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=0.5.0"></script>
+
+
+
+  
+
+
+
+  
+
+    <script type="text/javascript">
+      var disqus_shortname = 'knarfeh';
+      var disqus_identifier = '2018/03/10/go-ethereum 源码笔记（基础知识）/';
+      var disqus_title = 'go-ethereum 源码笔记（基础知识）';
+      var disqus_url = 'http://knarfeh.github.io/2018/03/10/go-ethereum 源码笔记（基础知识）/';
+
+      function run_disqus_script(disqus_script){
+        var dsq = document.createElement('script');
+        dsq.type = 'text/javascript';
+        dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/' + disqus_script;
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+      }
+
+      run_disqus_script('count.js');
+      
+        run_disqus_script('embed.js');
+      
+    </script>
+  
+
+
+
+  
+  
+  
+  <script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+      }
+    });
+  </script>
+
+  <script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+      var all = MathJax.Hub.getAllJax(), i;
+      for (i=0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';
+      }
+    });
+  </script>
+
+  
+    <script type="text/javascript" src="http://cdn.staticfile.org/mathjax/2.4.0/MathJax.js"></script>
+    <script type="text/javascript" src="http://cdn.staticfile.org/mathjax/2.4.0/config/TeX-AMS-MML_HTMLorMML.js"></script>
+  
+
+
+  
+
+
+</body>
+</html>
