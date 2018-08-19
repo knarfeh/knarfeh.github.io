@@ -731,6 +731,109 @@
             
               
                 
+                <a class="post-title-link" href="/2014/03/11/leetcode/Shell/leetcode-195-Tenth-Line/" itemprop="url">
+                  leetcode-195-Tenth-Line
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2014-03-11T00:33:34+08:00" content="2014-03-11">
+              2014-03-11
+            </time>
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2014/03/11/leetcode/Shell/leetcode-195-Tenth-Line/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2014/03/11/leetcode/Shell/leetcode-195-Tenth-Line/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h3 id="描述"><a href="#描述" class="headerlink" title="描述"></a>描述</h3><hr>
+<p>How would you print just the 10th line of a file?</p>
+<p>For example, assume that file.txt has the following content:</p>
+<figure class="highlight gauss"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">Line</span> <span class="number">1</span></div><div class="line"><span class="keyword">Line</span> <span class="number">2</span></div><div class="line"><span class="keyword">Line</span> <span class="number">3</span></div><div class="line"><span class="keyword">Line</span> <span class="number">4</span></div><div class="line"><span class="keyword">Line</span> <span class="number">5</span></div><div class="line"><span class="keyword">Line</span> <span class="number">6</span></div><div class="line"><span class="keyword">Line</span> <span class="number">7</span></div><div class="line"><span class="keyword">Line</span> <span class="number">8</span></div><div class="line"><span class="keyword">Line</span> <span class="number">9</span></div><div class="line"><span class="keyword">Line</span> <span class="number">10</span></div></pre></td></tr></table></figure>
+<p>Your script should output the tenth line, which is:</p>
+<figure class="highlight gauss"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">Line</span> <span class="number">10</span></div></pre></td></tr></table></figure>
+<h3 id="解决方案"><a href="#解决方案" class="headerlink" title="解决方案"></a>解决方案</h3><hr>
+<figure class="highlight vhdl"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"># Read from the <span class="keyword">file</span> <span class="keyword">file</span>.txt <span class="keyword">and</span> output the tenth <span class="literal">line</span> <span class="keyword">to</span> stdout.</div><div class="line">awk <span class="string">"NR==10"</span> <span class="keyword">file</span>.txt</div></pre></td></tr></table></figure>
+<h3 id="题目来源"><a href="#题目来源" class="headerlink" title="题目来源"></a><a href="https://leetcode.com/problems/tenth-line/" target="_blank" rel="external">题目来源</a></h3>
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
                 <a class="post-title-link" href="/2014/03/11/leetcode/Shell/leetcode-194-Transpose-File/" itemprop="url">
                   leetcode-194-Transpose-File
                 </a>
@@ -792,109 +895,6 @@
 <p>依旧是强大的 Awk。NR 是 Awk 的内建变量，表明目前读到的行号，NF 也是 Awk 的内建变量，记录当前行的字段数量。</p>
 <figure class="highlight stata"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"># <span class="keyword">Read</span> from the <span class="keyword">file</span> <span class="keyword">file</span>.txt and <span class="keyword">print</span> its transposed content to stdout.</div><div class="line">awk '</div><div class="line">NR == 1 &#123; <span class="keyword">for</span> (i = 1; i &lt;= NF; i++) &#123; <span class="keyword">line</span>[i] = <span class="variable">$i</span> &#125; &#125;</div><div class="line">NR &gt; 1 &#123; <span class="keyword">for</span> (i = 1; i &lt;= NF; i++) &#123; <span class="keyword">line</span>[i] = <span class="keyword">line</span>[i] <span class="string">" "</span> <span class="variable">$i</span> &#125; &#125;</div><div class="line">END &#123; <span class="keyword">for</span> (i = 1; i &lt;= NF; i++) &#123; <span class="keyword">print</span> <span class="keyword">line</span>[i] &#125; &#125;</div><div class="line">' <span class="keyword">file</span>.txt</div></pre></td></tr></table></figure>
 <h3 id="题目来源"><a href="#题目来源" class="headerlink" title="题目来源"></a><a href="https://leetcode.com/problems/transpose-file/" target="_blank" rel="external">题目来源</a></h3>
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2014/03/11/leetcode/Shell/leetcode-195-Tenth-Line/" itemprop="url">
-                  leetcode-195-Tenth-Line
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2014-03-11T00:33:34+08:00" content="2014-03-11">
-              2014-03-11
-            </time>
-          </span>
-
-          
-
-          
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2014/03/11/leetcode/Shell/leetcode-195-Tenth-Line/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2014/03/11/leetcode/Shell/leetcode-195-Tenth-Line/" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h3 id="描述"><a href="#描述" class="headerlink" title="描述"></a>描述</h3><hr>
-<p>How would you print just the 10th line of a file?</p>
-<p>For example, assume that file.txt has the following content:</p>
-<figure class="highlight gauss"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">Line</span> <span class="number">1</span></div><div class="line"><span class="keyword">Line</span> <span class="number">2</span></div><div class="line"><span class="keyword">Line</span> <span class="number">3</span></div><div class="line"><span class="keyword">Line</span> <span class="number">4</span></div><div class="line"><span class="keyword">Line</span> <span class="number">5</span></div><div class="line"><span class="keyword">Line</span> <span class="number">6</span></div><div class="line"><span class="keyword">Line</span> <span class="number">7</span></div><div class="line"><span class="keyword">Line</span> <span class="number">8</span></div><div class="line"><span class="keyword">Line</span> <span class="number">9</span></div><div class="line"><span class="keyword">Line</span> <span class="number">10</span></div></pre></td></tr></table></figure>
-<p>Your script should output the tenth line, which is:</p>
-<figure class="highlight gauss"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">Line</span> <span class="number">10</span></div></pre></td></tr></table></figure>
-<h3 id="解决方案"><a href="#解决方案" class="headerlink" title="解决方案"></a>解决方案</h3><hr>
-<figure class="highlight vhdl"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"># Read from the <span class="keyword">file</span> <span class="keyword">file</span>.txt <span class="keyword">and</span> output the tenth <span class="literal">line</span> <span class="keyword">to</span> stdout.</div><div class="line">awk <span class="string">"NR==10"</span> <span class="keyword">file</span>.txt</div></pre></td></tr></table></figure>
-<h3 id="题目来源"><a href="#题目来源" class="headerlink" title="题目来源"></a><a href="https://leetcode.com/problems/tenth-line/" target="_blank" rel="external">题目来源</a></h3>
           
         
       
@@ -1144,8 +1144,8 @@
             
               
                 
-                <a class="post-title-link" href="/2014/03/11/leetcode/Database/leetcode-177-Nth-Highest-Salary/" itemprop="url">
-                  leetcode-177-Nth-Highest-Salary
+                <a class="post-title-link" href="/2014/03/11/leetcode/Database/leetcode-180-Consecutive-Numbers/" itemprop="url">
+                  leetcode-180-Consecutive-Numbers
                 </a>
               
             
@@ -1169,8 +1169,8 @@
             
               <span class="post-comments-count">
                 &nbsp; | &nbsp;
-                <a href="/2014/03/11/leetcode/Database/leetcode-177-Nth-Highest-Salary/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2014/03/11/leetcode/Database/leetcode-177-Nth-Highest-Salary/" itemprop="commentsCount"></span>
+                <a href="/2014/03/11/leetcode/Database/leetcode-180-Consecutive-Numbers/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2014/03/11/leetcode/Database/leetcode-180-Consecutive-Numbers/" itemprop="commentsCount"></span>
                 </a>
               </span>
             
@@ -1194,11 +1194,11 @@
       
         
           <h3 id="描述"><a href="#描述" class="headerlink" title="描述"></a>描述</h3><hr>
-<p>Write a SQL query to get the second highest salary from the <code>Employee</code> table.</p>
-<figure class="highlight asciidoc"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="code">+----+</span>--------+</div><div class="line"><span class="section">| Id | Salary |</span></div><div class="line">+----+--------+</div><div class="line">| 1  | 100    |</div><div class="line">| 2  | 200    |</div><div class="line"><span class="section">| 3  | 300    |</span></div><div class="line">+----+--------+</div></pre></td></tr></table></figure>
-<p>For example, given the above Employee table, the $n^{th}$ highest salary where n = 2 is <strong>200</strong>. If there is no $n{th}$ highest salary, then the query should return <strong>null</strong>.<br>
+<p>Write a SQL query to find all numbers that appear at least three times consecutively.</p>
+<figure class="highlight gherkin"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">+----+-----+</div><div class="line">|<span class="string"> Id </span>|<span class="string"> Num </span>|</div><div class="line">+----+-----+</div><div class="line">|<span class="string"> 1  </span>|<span class="string">  1  </span>|</div><div class="line">|<span class="string"> 2  </span>|<span class="string">  1  </span>|</div><div class="line">|<span class="string"> 3  </span>|<span class="string">  1  </span>|</div><div class="line">|<span class="string"> 4  </span>|<span class="string">  2  </span>|</div><div class="line">|<span class="string"> 5  </span>|<span class="string">  1  </span>|</div><div class="line">|<span class="string"> 6  </span>|<span class="string">  2  </span>|</div><div class="line">|<span class="string"> 7  </span>|<span class="string">  2  </span>|</div><div class="line">+----+-----+</div></pre></td></tr></table></figure>
+<p>For example, given the above Logs table, 1 is the only number that appears consecutively for at least three times.<br>
           <div class="post-more-link text-center">
-            <a class="btn" href="/2014/03/11/leetcode/Database/leetcode-177-Nth-Highest-Salary/#more" rel="contents">
+            <a class="btn" href="/2014/03/11/leetcode/Database/leetcode-180-Consecutive-Numbers/#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
