@@ -221,8 +221,8 @@
             
               
                 
-                <a class="post-title-link" href="/2014/03/11/leetcode/Shell/leetcode-193-Valid-Phone-Numbers/" itemprop="url">
-                  leetcode-193-Valid-Phone-Numbers
+                <a class="post-title-link" href="/2014/03/11/leetcode/Algorithms/leetcode-95-Unique-Binary-Search-Trees-II/" itemprop="url">
+                  leetcode-95-Unique-Binary-Search-Trees-II
                 </a>
               
             
@@ -246,8 +246,8 @@
             
               <span class="post-comments-count">
                 &nbsp; | &nbsp;
-                <a href="/2014/03/11/leetcode/Shell/leetcode-193-Valid-Phone-Numbers/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2014/03/11/leetcode/Shell/leetcode-193-Valid-Phone-Numbers/" itemprop="commentsCount"></span>
+                <a href="/2014/03/11/leetcode/Algorithms/leetcode-95-Unique-Binary-Search-Trees-II/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2014/03/11/leetcode/Algorithms/leetcode-95-Unique-Binary-Search-Trees-II/" itemprop="commentsCount"></span>
                 </a>
               </span>
             
@@ -270,18 +270,14 @@
 
       
         
-          
-            <h3 id="描述"><a href="#描述" class="headerlink" title="描述"></a>描述</h3><hr>
-<p>Given a text file <strong>file.txt</strong> that contains list of phone numbers (one per line), write a one liner bash script to print all valid phone numbers.</p>
-<p>You may assume that a valid phone number must appear in one of the following two formats: (xxx) xxx-xxxx or xxx-xxx-xxxx. (x means a digit)</p>
-<p>You may also assume each line in the text file must not contain leading or trailing white spaces.</p>
-<p>For example, assume that <strong>file.txt</strong> has the following content:</p>
-<figure class="highlight lsl"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="number">987</span><span class="number">-123</span><span class="number">-4567</span></div><div class="line"><span class="number">123</span> <span class="number">456</span> <span class="number">7890</span></div><div class="line">(<span class="number">123</span>) <span class="number">456</span><span class="number">-7890</span></div></pre></td></tr></table></figure>
-<h3 id="解决方案"><a href="#解决方案" class="headerlink" title="解决方案"></a>解决方案</h3><hr>
-<p>一个正则表达式解决</p>
-<figure class="highlight lsl"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"># Read from the file file.txt and output all valid phone numbers to stdout.</div><div class="line">awk '/^(\([<span class="number">0</span><span class="number">-9</span>]&#123;<span class="number">3</span>&#125;\) |[<span class="number">0</span><span class="number">-9</span>]&#123;<span class="number">3</span>&#125;-)[<span class="number">0</span><span class="number">-9</span>]&#123;<span class="number">3</span>&#125;-[<span class="number">0</span><span class="number">-9</span>]&#123;<span class="number">4</span>&#125;$/' file.txt</div></pre></td></tr></table></figure>
-<h3 id="题目来源"><a href="#题目来源" class="headerlink" title="题目来源"></a><a href="https://leetcode.com/problems/valid-phone-numbers/" target="_blank" rel="external">题目来源</a></h3>
-          
+          <h3 id="描述"><a href="#描述" class="headerlink" title="描述"></a>描述</h3><hr>
+<p>Given n, generate all structurally unique BST’s (binary search trees) that store values 1…n.</p>
+<p>For example,<br>Given n = 3, your program should return all 5 unique BST’s shown below. </p>
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2014/03/11/leetcode/Algorithms/leetcode-95-Unique-Binary-Search-Trees-II/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
         
       
     </div>
@@ -426,8 +422,8 @@
             
               
                 
-                <a class="post-title-link" href="/2014/03/11/leetcode/Shell/leetcode-194-Transpose-File/" itemprop="url">
-                  leetcode-194-Transpose-File
+                <a class="post-title-link" href="/2014/03/11/leetcode/Algorithms/leetcode-89-Gray-Code/" itemprop="url">
+                  leetcode-89-Gray-Code
                 </a>
               
             
@@ -451,8 +447,8 @@
             
               <span class="post-comments-count">
                 &nbsp; | &nbsp;
-                <a href="/2014/03/11/leetcode/Shell/leetcode-194-Transpose-File/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2014/03/11/leetcode/Shell/leetcode-194-Transpose-File/" itemprop="commentsCount"></span>
+                <a href="/2014/03/11/leetcode/Algorithms/leetcode-89-Gray-Code/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2014/03/11/leetcode/Algorithms/leetcode-89-Gray-Code/" itemprop="commentsCount"></span>
                 </a>
               </span>
             
@@ -475,19 +471,16 @@
 
       
         
-          
-            <h3 id="描述"><a href="#描述" class="headerlink" title="描述"></a>描述</h3><hr>
-<p>Given a text file <code>file.txt</code>, transpose its content.</p>
-<p>You may assume that each row has the same number of columns and each field is separated by the ‘ ‘ character.</p>
-<p>For example, if <code>file.txt</code> has the following content:</p>
-<figure class="highlight lsl"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">name age</div><div class="line">alice <span class="number">21</span></div><div class="line">ryan <span class="number">30</span></div></pre></td></tr></table></figure>
-<p>Output the following:</p>
-<figure class="highlight lsl"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">name alice ryan</div><div class="line">age <span class="number">21</span> <span class="number">30</span></div></pre></td></tr></table></figure>
-<h3 id="解决方案"><a href="#解决方案" class="headerlink" title="解决方案"></a>解决方案</h3><hr>
-<p>依旧是强大的 Awk。NR 是 Awk 的内建变量，表明目前读到的行号，NF 也是 Awk 的内建变量，记录当前行的字段数量。</p>
-<figure class="highlight stata"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"># <span class="keyword">Read</span> from the <span class="keyword">file</span> <span class="keyword">file</span>.txt and <span class="keyword">print</span> its transposed content to stdout.</div><div class="line">awk '</div><div class="line">NR == 1 &#123; <span class="keyword">for</span> (i = 1; i &lt;= NF; i++) &#123; <span class="keyword">line</span>[i] = <span class="variable">$i</span> &#125; &#125;</div><div class="line">NR &gt; 1 &#123; <span class="keyword">for</span> (i = 1; i &lt;= NF; i++) &#123; <span class="keyword">line</span>[i] = <span class="keyword">line</span>[i] <span class="string">" "</span> <span class="variable">$i</span> &#125; &#125;</div><div class="line">END &#123; <span class="keyword">for</span> (i = 1; i &lt;= NF; i++) &#123; <span class="keyword">print</span> <span class="keyword">line</span>[i] &#125; &#125;</div><div class="line">' <span class="keyword">file</span>.txt</div></pre></td></tr></table></figure>
-<h3 id="题目来源"><a href="#题目来源" class="headerlink" title="题目来源"></a><a href="https://leetcode.com/problems/transpose-file/" target="_blank" rel="external">题目来源</a></h3>
-          
+          <h3 id="描述"><a href="#描述" class="headerlink" title="描述"></a>描述</h3><hr>
+<p>The gray code is a binary numeral system where two successive values differ in only one bit.</p>
+<p>Given a non-negative integer n representing the total number of bits in the code, print the sequence of gray code. A gray code sequence must begin with 0.</p>
+<p>For example, given n = 2, return [0,1,3,2]. Its gray code sequence is:</p>
+<figure class="highlight basic"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="symbol">00 </span>- <span class="number">0</span></div><div class="line"><span class="symbol">01 </span>- <span class="number">1</span></div><div class="line"><span class="symbol">11 </span>- <span class="number">3</span></div><div class="line"><span class="symbol">10 </span>- <span class="number">2</span></div></pre></td></tr></table></figure>
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2014/03/11/leetcode/Algorithms/leetcode-89-Gray-Code/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
         
       
     </div>
@@ -531,8 +524,8 @@
             
               
                 
-                <a class="post-title-link" href="/2014/03/11/leetcode/Algorithms/leetcode-168-Excel-Sheet-Column-Title/" itemprop="url">
-                  leetcode-168-Excel-Sheet-Column-Title
+                <a class="post-title-link" href="/2014/03/11/leetcode/Algorithms/leetcode-153-Find-Minimum-in-Rotated-Sorted-Array/" itemprop="url">
+                  leetcode-153-Find-Minimum-in-Rotated-Sorted-Array
                 </a>
               
             
@@ -556,8 +549,8 @@
             
               <span class="post-comments-count">
                 &nbsp; | &nbsp;
-                <a href="/2014/03/11/leetcode/Algorithms/leetcode-168-Excel-Sheet-Column-Title/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2014/03/11/leetcode/Algorithms/leetcode-168-Excel-Sheet-Column-Title/" itemprop="commentsCount"></span>
+                <a href="/2014/03/11/leetcode/Algorithms/leetcode-153-Find-Minimum-in-Rotated-Sorted-Array/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2014/03/11/leetcode/Algorithms/leetcode-153-Find-Minimum-in-Rotated-Sorted-Array/" itemprop="commentsCount"></span>
                 </a>
               </span>
             
@@ -581,11 +574,12 @@
       
         
           <h3 id="描述"><a href="#描述" class="headerlink" title="描述"></a>描述</h3><hr>
-<p>Given a positive integer, return its corresponding column title as appear in an Excel sheet.</p>
-<p>For example:</p>
-<figure class="highlight coq"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="number">1</span> -&gt; A</div><div class="line">   <span class="number">2</span> -&gt; B</div><div class="line">   <span class="number">3</span> -&gt; C</div><div class="line">   ...</div><div class="line">   <span class="number">26</span> -&gt; Z</div><div class="line">   <span class="number">27</span> -&gt; AA</div><div class="line">   <span class="number">28</span> -&gt; AB</div></pre></td></tr></table></figure>
+<p>Suppose a sorted array is rotated at some pivot unknown to you beforehand.</p>
+<p>(i.e., <code>0 1 2 4 5 6 7</code> might become <code>4 5 6 7 0 1 2</code>).</p>
+<p>Find the minimum element.</p>
+<p>You may assume no duplicate exists in the array.</p>
           <div class="post-more-link text-center">
-            <a class="btn" href="/2014/03/11/leetcode/Algorithms/leetcode-168-Excel-Sheet-Column-Title/#more" rel="contents">
+            <a class="btn" href="/2014/03/11/leetcode/Algorithms/leetcode-153-Find-Minimum-in-Rotated-Sorted-Array/#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
