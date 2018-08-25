@@ -221,8 +221,8 @@
             
               
                 
-                <a class="post-title-link" href="/2014/03/11/leetcode/Algorithms/leetcode-98-Validate-Binary-Search-Tree/" itemprop="url">
-                  leetcode-98-Validate-Binary-Search-Tree
+                <a class="post-title-link" href="/2014/03/11/leetcode/Algorithms/leetcode-384-Shuffle-an-Array/" itemprop="url">
+                  leetcode-384-Shuffle-an-Array
                 </a>
               
             
@@ -246,8 +246,8 @@
             
               <span class="post-comments-count">
                 &nbsp; | &nbsp;
-                <a href="/2014/03/11/leetcode/Algorithms/leetcode-98-Validate-Binary-Search-Tree/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2014/03/11/leetcode/Algorithms/leetcode-98-Validate-Binary-Search-Tree/" itemprop="commentsCount"></span>
+                <a href="/2014/03/11/leetcode/Algorithms/leetcode-384-Shuffle-an-Array/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2014/03/11/leetcode/Algorithms/leetcode-384-Shuffle-an-Array/" itemprop="commentsCount"></span>
                 </a>
               </span>
             
@@ -271,15 +271,121 @@
       
         
           <h3 id="描述"><a href="#描述" class="headerlink" title="描述"></a>描述</h3><hr>
-<p>Given a binary tree, determine if it is a valid binary search tree (BST).</p>
-<p>Assume a BST is defined as follows:</p>
+<p>Shuffle a set of numbers without duplicates.</p>
+<p><strong>Example:</strong></p>
+<figure class="highlight smali"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">// Init an<span class="built_in"> array </span>with set 1, 2,<span class="built_in"> and </span>3.</div><div class="line">int[] nums = &#123;1,2,3&#125;;</div><div class="line">Solution solution =<span class="built_in"> new </span>Solution(nums);</div><div class="line"></div><div class="line">// Shuffle the<span class="built_in"> array </span>[1,2,3]<span class="built_in"> and </span>return its result. Any permutation of [1,2,3] must equally likely to be returned.</div><div class="line">solution.shuffle();</div><div class="line"></div><div class="line">// Resets the<span class="built_in"> array </span>back to its original configuration [1,2,3].</div><div class="line">solution.reset();</div><div class="line"></div><div class="line">// Returns the random shuffling of<span class="built_in"> array </span>[1,2,3].</div><div class="line">solution.shuffle();</div></pre></td></tr></table></figure>
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2014/03/11/leetcode/Algorithms/leetcode-384-Shuffle-an-Array/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2014/03/11/leetcode/Algorithms/leetcode-39-Combination-Sum/" itemprop="url">
+                  leetcode-39-Combination-Sum
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2014-03-11T00:33:34+08:00" content="2014-03-11">
+              2014-03-11
+            </time>
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2014/03/11/leetcode/Algorithms/leetcode-39-Combination-Sum/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2014/03/11/leetcode/Algorithms/leetcode-39-Combination-Sum/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <h3 id="描述"><a href="#描述" class="headerlink" title="描述"></a>描述</h3><hr>
+<p>Given a set of candidate numbers (<strong>C</strong>) and a target number (<strong>T</strong>), find all unique combinations in <strong>C</strong> where the candidate numbers sums to <strong>T</strong>.</p>
+<p>The same repeated number may be chosen from <strong>C</strong> unlimited number of times.</p>
+<p><strong>Note</strong>:</p>
 <ul>
-<li>The left subtree of a node contains only nodes with keys less than the node’s key.</li>
-<li>The right subtree of a node contains only nodes with keys greater than the node’s key.</li>
-<li>Both the left and right subtrees must also be binary search trees.</li>
+<li><p>All numbers (including target) will be positive integers.</p>
+</li>
+<li><p>The solution set must not contain duplicate combinations.</p>
+</li>
 </ul>
+<p>For example, given candidate set <code>[2, 3, 6, 7]</code> and target <code>7</code>,</p>
+<p>A solution set is: </p>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">[</div><div class="line">  [<span class="number">7</span>],</div><div class="line">  [<span class="number">2</span>, <span class="number">2</span>, <span class="number">3</span>]</div><div class="line">]</div></pre></td></tr></table></figure>
           <div class="post-more-link text-center">
-            <a class="btn" href="/2014/03/11/leetcode/Algorithms/leetcode-98-Validate-Binary-Search-Tree/#more" rel="contents">
+            <a class="btn" href="/2014/03/11/leetcode/Algorithms/leetcode-39-Combination-Sum/#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
@@ -326,8 +432,8 @@
             
               
                 
-                <a class="post-title-link" href="/2014/03/11/leetcode/Database/leetcode-175-Combine-Two-Tables/" itemprop="url">
-                  leetcode-175-Combine-Two-Tables
+                <a class="post-title-link" href="/2014/03/11/leetcode/Algorithms/leetcode-40-Combination-Sum-II/" itemprop="url">
+                  leetcode-40-Combination-Sum-II
                 </a>
               
             
@@ -351,8 +457,148 @@
             
               <span class="post-comments-count">
                 &nbsp; | &nbsp;
-                <a href="/2014/03/11/leetcode/Database/leetcode-175-Combine-Two-Tables/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2014/03/11/leetcode/Database/leetcode-175-Combine-Two-Tables/" itemprop="commentsCount"></span>
+                <a href="/2014/03/11/leetcode/Algorithms/leetcode-40-Combination-Sum-II/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2014/03/11/leetcode/Algorithms/leetcode-40-Combination-Sum-II/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h3 id="描述"><a href="#描述" class="headerlink" title="描述"></a>描述</h3><hr>
+<p>Given a collection of candidate numbers (<strong>C</strong>) and a target number (<strong>T</strong>), find all unique combinations in <strong>C</strong> where the candidate numbers sums to <strong>T</strong>.</p>
+<p>Each number in <strong>C</strong> may only be used once in the combination.</p>
+<p><strong>Note</strong> :</p>
+<ul>
+<li><p>All numbers (including target) will be positive integers.</p>
+</li>
+<li><p>The solution set must not contain duplicate combinations.</p>
+</li>
+</ul>
+<p>For example, given candidate set [10, 1, 2, 7, 6, 1, 5] and target 8,</p>
+<p>A solution set is:</p>
+<figure class="highlight asciidoc"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line">[</div><div class="line"><span class="code">  [1, 7],</span></div><div class="line"><span class="code">  [1, 2, 5],</span></div><div class="line"><span class="code">  [2, 6],</span></div><div class="line"><span class="code">  [1, 1, 6]</span></div><div class="line">]</div><div class="line"><span class="code">```</span> </div><div class="line">&lt;!--more--&gt;</div><div class="line"></div><div class="line"><span class="section">### 分析</span></div><div class="line">---</div><div class="line"></div><div class="line">这道题和 [leetcode-39-Combination-Sum]()基本是一样的，只是这一题要求 candidates 中的内容不能重复出现，只需要修改两处代码。</div><div class="line"></div><div class="line"><span class="section">### 解决方案1(C++)</span></div><div class="line">---</div></pre></td></tr></table></figure>
+<p>class Solution {<br>public:<br>    vector<vector<int>&gt; combinationSum2(vector<int>&amp; candidates, int target) {<br>        sort(candidates.begin(), candidates.end());<br>        vector<vector<int>&gt; result;<br>        vector<int> path;<br>        dfs(candidates, path, result, target, 0);<br>        return result;<br>    }</int></vector<int></int></vector<int></p>
+<p>private:<br>    void dfs(vector<int>&amp; candidates, vector<int>&amp; path, vector<vector<int>&gt;&amp; result, int target, int start) {<br>        if(target == 0) {<br>            result.push_back(path);<br>            return;<br>        }</vector<int></int></int></p>
+<pre><code>    for(int i = start; i &lt; candidates.size(); i++) {
+        if(i&gt;start &amp;&amp; candidates[i] == candidates[i-1]) {
+            continue;
+        }
+        if(candidates[i] &gt; target) {
+            return;
+        }
+        path.push_back(candidates[i]);
+        dfs(candidates, path, result, target-candidates[i], i+1);
+        path.pop_back();
+    }
+}
+</code></pre><p>};<br><figure class="highlight yaml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"></div><div class="line"><span class="comment">### 解决方案2(Python)</span></div><div class="line"><span class="meta">---</span></div></pre></td></tr></table></figure></p>
+<p>class Solution(object):<br>    def combinationSum2(self, candidates, target):<br>        “””<br>        :type candidates: List[int]<br>        :type target: int<br>        :rtype: List[List[int]]<br>        “””<br>        candidates.sort()<br>        result = []<br>        path = []<br>        self.dfs(candidates, path, result, target)<br>        return result</p>
+<pre><code>def dfs(self, candidates, path, result, target):
+    if target == 0:
+        result.append(path[:])
+        return
+    pre = None 
+    for item, value in enumerate(candidates):
+        if pre is None or pre != value:
+            if target &lt; value:
+                return 
+            path.append(value)
+            self.dfs(candidates[item+1:], path, result, target-value)
+            path.pop()
+        pre = value
+</code></pre><p>```</p>
+<h3 id="相关问题"><a href="#相关问题" class="headerlink" title="相关问题"></a>相关问题</h3><hr>
+<p><a href="https://leetcode.com/problems/combination-sum/" target="_blank" rel="external">(M) Combination Sum</a>   </p>
+<h3 id="题目来源"><a href="#题目来源" class="headerlink" title="题目来源"></a><a href="https://leetcode.com/problems/combination-sum-ii/" target="_blank" rel="external">题目来源</a></h3>
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2014/03/11/leetcode/Algorithms/leetcode-50-Pow(x,-n)/" itemprop="url">
+                  leetcode-50-Pow(x,-n)
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2014-03-11T00:33:34+08:00" content="2014-03-11">
+              2014-03-11
+            </time>
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2014/03/11/leetcode/Algorithms/leetcode-50-Pow(x,-n)/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2014/03/11/leetcode/Algorithms/leetcode-50-Pow(x,-n)/" itemprop="commentsCount"></span>
                 </a>
               </span>
             
@@ -376,14 +622,9 @@
       
         
           <h3 id="描述"><a href="#描述" class="headerlink" title="描述"></a>描述</h3><hr>
-<p>Table: <code>Person</code></p>
-<figure class="highlight asciidoc"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="code">+-------------+</span>---------+</div><div class="line"><span class="section">| Column Name | Type    |</span></div><div class="line">+-------------+---------+</div><div class="line">| PersonId    | int     |</div><div class="line">| FirstName   | varchar |</div><div class="line"><span class="section">| LastName    | varchar |</span></div><div class="line">+-------------+---------+</div><div class="line">PersonId is the primary key column for this table.</div></pre></td></tr></table></figure>
-<p>Table: <code>Address</code></p>
-<figure class="highlight asciidoc"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="code">+-------------+</span>---------+</div><div class="line"><span class="section">| Column Name | Type    |</span></div><div class="line">+-------------+---------+</div><div class="line">| AddressId   | int     |</div><div class="line">| PersonId    | int     |</div><div class="line">| City        | varchar |</div><div class="line"><span class="section">| State       | varchar |</span></div><div class="line">+-------------+---------+</div><div class="line">AddressId is the primary key column for this table.</div></pre></td></tr></table></figure>
-<p>Write a SQL query for a report that provides the following information for each person in the Person table, regardless if there is an address for each of those people:</p>
-<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">FirstName, LastName, City, State</div></pre></td></tr></table></figure>
+<p>Implement pow(x, n). </p>
           <div class="post-more-link text-center">
-            <a class="btn" href="/2014/03/11/leetcode/Database/leetcode-175-Combine-Two-Tables/#more" rel="contents">
+            <a class="btn" href="/2014/03/11/leetcode/Algorithms/leetcode-50-Pow(x,-n)/#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
@@ -430,8 +671,8 @@
             
               
                 
-                <a class="post-title-link" href="/2014/03/11/leetcode/Algorithms/leetcode-99-Recover-Binary-Search-Tree/" itemprop="url">
-                  leetcode-99-Recover-Binary-Search-Tree
+                <a class="post-title-link" href="/2014/03/11/leetcode/Algorithms/leetcode-461-Hamming-Distance/" itemprop="url">
+                  leetcode-461-Hamming-Distance
                 </a>
               
             
@@ -455,8 +696,8 @@
             
               <span class="post-comments-count">
                 &nbsp; | &nbsp;
-                <a href="/2014/03/11/leetcode/Algorithms/leetcode-99-Recover-Binary-Search-Tree/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2014/03/11/leetcode/Algorithms/leetcode-99-Recover-Binary-Search-Tree/" itemprop="commentsCount"></span>
+                <a href="/2014/03/11/leetcode/Algorithms/leetcode-461-Hamming-Distance/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2014/03/11/leetcode/Algorithms/leetcode-461-Hamming-Distance/" itemprop="commentsCount"></span>
                 </a>
               </span>
             
@@ -480,11 +721,13 @@
       
         
           <h3 id="描述"><a href="#描述" class="headerlink" title="描述"></a>描述</h3><hr>
-<p>Two elements of a binary search tree (BST) are swapped by mistake.</p>
-<p>Recover the tree without changing its structure. </p>
-<p><strong>Note:</strong><br>A solution using O(n) space is pretty straight forward. Could you devise a constant space solution? </p>
+<p>The Hamming distance between two integers is the number of positions at which the corresponding bits are different.</p>
+<p>Given two integers x and y, calculate the Hamming distance.</p>
+<p>Note:<br>$0 ≤ x, y &lt; 2^{31}.$</p>
+<p>Example:</p>
+<figure class="highlight http"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="attribute">Input</span>: x = 1, y = 4</div><div class="line"></div><div class="line"><span class="http"><span class="attribute">Output</span>: 2</span></div><div class="line"></div><div class="line"><span class="applescript">Explanation:</span></div><div class="line"><span class="number">1</span>   (<span class="number">0</span> <span class="number">0</span> <span class="number">0</span> <span class="number">1</span>)</div><div class="line"><span class="number">4</span>   (<span class="number">0</span> <span class="number">1</span> <span class="number">0</span> <span class="number">0</span>)</div><div class="line">       ↑   ↑</div><div class="line"></div><div class="line">The <span class="keyword">above</span> arrows point <span class="keyword">to</span> positions <span class="keyword">where</span> <span class="keyword">the</span> corresponding bits are different.</div></pre></td></tr></table></figure>
           <div class="post-more-link text-center">
-            <a class="btn" href="/2014/03/11/leetcode/Algorithms/leetcode-99-Recover-Binary-Search-Tree/#more" rel="contents">
+            <a class="btn" href="/2014/03/11/leetcode/Algorithms/leetcode-461-Hamming-Distance/#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
@@ -531,8 +774,8 @@
             
               
                 
-                <a class="post-title-link" href="/2014/03/11/leetcode/Database/leetcode-177-Nth-Highest-Salary/" itemprop="url">
-                  leetcode-177-Nth-Highest-Salary
+                <a class="post-title-link" href="/2014/03/11/leetcode/Algorithms/leetcode-56-Merge-Intervals/" itemprop="url">
+                  leetcode-56-Merge-Intervals
                 </a>
               
             
@@ -556,8 +799,8 @@
             
               <span class="post-comments-count">
                 &nbsp; | &nbsp;
-                <a href="/2014/03/11/leetcode/Database/leetcode-177-Nth-Highest-Salary/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2014/03/11/leetcode/Database/leetcode-177-Nth-Highest-Salary/" itemprop="commentsCount"></span>
+                <a href="/2014/03/11/leetcode/Algorithms/leetcode-56-Merge-Intervals/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2014/03/11/leetcode/Algorithms/leetcode-56-Merge-Intervals/" itemprop="commentsCount"></span>
                 </a>
               </span>
             
@@ -581,11 +824,10 @@
       
         
           <h3 id="描述"><a href="#描述" class="headerlink" title="描述"></a>描述</h3><hr>
-<p>Write a SQL query to get the second highest salary from the <code>Employee</code> table.</p>
-<figure class="highlight asciidoc"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="code">+----+</span>--------+</div><div class="line"><span class="section">| Id | Salary |</span></div><div class="line">+----+--------+</div><div class="line">| 1  | 100    |</div><div class="line">| 2  | 200    |</div><div class="line"><span class="section">| 3  | 300    |</span></div><div class="line">+----+--------+</div></pre></td></tr></table></figure>
-<p>For example, given the above Employee table, the $n^{th}$ highest salary where n = 2 is <strong>200</strong>. If there is no $n{th}$ highest salary, then the query should return <strong>null</strong>.<br>
+<p>Given a collection of intervals, merge all overlapping intervals.</p>
+<p>For example,<br>Given <code>[1,3],[2,6],[8,10],[15,18],</code><br>return <code>[1,6],[8,10],[15,18].</code></p>
           <div class="post-more-link text-center">
-            <a class="btn" href="/2014/03/11/leetcode/Database/leetcode-177-Nth-Highest-Salary/#more" rel="contents">
+            <a class="btn" href="/2014/03/11/leetcode/Algorithms/leetcode-56-Merge-Intervals/#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
@@ -632,8 +874,8 @@
             
               
                 
-                <a class="post-title-link" href="/2014/03/11/leetcode/Database/leetcode-176-Second-Highest-Salary/" itemprop="url">
-                  leetcode-176-Second-Highest-Salary
+                <a class="post-title-link" href="/2014/03/11/leetcode/Algorithms/leetcode-504-Base-7/" itemprop="url">
+                  leetcode-504-Base-7
                 </a>
               
             
@@ -657,8 +899,8 @@
             
               <span class="post-comments-count">
                 &nbsp; | &nbsp;
-                <a href="/2014/03/11/leetcode/Database/leetcode-176-Second-Highest-Salary/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2014/03/11/leetcode/Database/leetcode-176-Second-Highest-Salary/" itemprop="commentsCount"></span>
+                <a href="/2014/03/11/leetcode/Algorithms/leetcode-504-Base-7/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2014/03/11/leetcode/Algorithms/leetcode-504-Base-7/" itemprop="commentsCount"></span>
                 </a>
               </span>
             
@@ -682,11 +924,14 @@
       
         
           <h3 id="描述"><a href="#描述" class="headerlink" title="描述"></a>描述</h3><hr>
-<p>Write a SQL query to get the second highest salary from the <code>Employee</code> table.</p>
-<figure class="highlight asciidoc"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="code">+----+</span>--------+</div><div class="line"><span class="section">| Id | Salary |</span></div><div class="line">+----+--------+</div><div class="line">| 1  | 100    |</div><div class="line">| 2  | 200    |</div><div class="line"><span class="section">| 3  | 300    |</span></div><div class="line">+----+--------+</div></pre></td></tr></table></figure>
-<p>For example, given the above Employee table, the second highest salary is 200. If there is no second highest salary, then the query should return null.<br>
+<p>Given an integer, return its base 7 string representation.</p>
+<p><strong> Example 1: </strong></p>
+<figure class="highlight avrasm"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="symbol">Input:</span> <span class="number">100</span></div><div class="line"><span class="symbol">Output:</span> <span class="string">"202"</span></div></pre></td></tr></table></figure>
+<p><strong> Example 2: </strong></p>
+<figure class="highlight avrasm"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="symbol">Input:</span> <span class="number">100</span></div><div class="line"><span class="symbol">Output:</span> <span class="string">"202"</span></div></pre></td></tr></table></figure>
+<p><strong> Note </strong>: The input will be in range of [-1e7, 1e7].</p>
           <div class="post-more-link text-center">
-            <a class="btn" href="/2014/03/11/leetcode/Database/leetcode-176-Second-Highest-Salary/#more" rel="contents">
+            <a class="btn" href="/2014/03/11/leetcode/Algorithms/leetcode-504-Base-7/#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
@@ -733,8 +978,8 @@
             
               
                 
-                <a class="post-title-link" href="/2014/03/11/leetcode/Database/leetcode-178-Rank-Scores/" itemprop="url">
-                  leetcode-178-Rank-Scores
+                <a class="post-title-link" href="/2014/03/11/leetcode/Algorithms/leetcode-53-Maximum-Subarray/" itemprop="url">
+                  leetcode-53-Maximum-Subarray
                 </a>
               
             
@@ -758,8 +1003,8 @@
             
               <span class="post-comments-count">
                 &nbsp; | &nbsp;
-                <a href="/2014/03/11/leetcode/Database/leetcode-178-Rank-Scores/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2014/03/11/leetcode/Database/leetcode-178-Rank-Scores/" itemprop="commentsCount"></span>
+                <a href="/2014/03/11/leetcode/Algorithms/leetcode-53-Maximum-Subarray/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2014/03/11/leetcode/Algorithms/leetcode-53-Maximum-Subarray/" itemprop="commentsCount"></span>
                 </a>
               </span>
             
@@ -783,12 +1028,10 @@
       
         
           <h3 id="描述"><a href="#描述" class="headerlink" title="描述"></a>描述</h3><hr>
-<p>Write a SQL query to rank scores. If there is a tie between two scores, both should have the same ranking. Note that after a tie, the next ranking number should be the next consecutive integer value. In other words, there should be no “holes” between ranks.</p>
-<figure class="highlight gherkin"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">+----+-------+</div><div class="line">|<span class="string"> Id </span>|<span class="string"> Score </span>|</div><div class="line">+----+-------+</div><div class="line">|<span class="string"> 1  </span>|<span class="string"> 3.50  </span>|</div><div class="line">|<span class="string"> 2  </span>|<span class="string"> 3.65  </span>|</div><div class="line">|<span class="string"> 3  </span>|<span class="string"> 4.00  </span>|</div><div class="line">|<span class="string"> 4  </span>|<span class="string"> 3.85  </span>|</div><div class="line">|<span class="string"> 5  </span>|<span class="string"> 4.00  </span>|</div><div class="line">|<span class="string"> 6  </span>|<span class="string"> 3.65  </span>|</div><div class="line">+----+-------+</div></pre></td></tr></table></figure>
-<p>For example, given the above Scores table, your query should generate the following report (order by highest score):</p>
-<figure class="highlight gherkin"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">+-------+------+</div><div class="line">|<span class="string"> Score </span>|<span class="string"> Rank </span>|</div><div class="line">+-------+------+</div><div class="line">|<span class="string"> 4.00  </span>|<span class="string"> 1    </span>|</div><div class="line">|<span class="string"> 4.00  </span>|<span class="string"> 1    </span>|</div><div class="line">|<span class="string"> 3.85  </span>|<span class="string"> 2    </span>|</div><div class="line">|<span class="string"> 3.65  </span>|<span class="string"> 3    </span>|</div><div class="line">|<span class="string"> 3.65  </span>|<span class="string"> 3    </span>|</div><div class="line">|<span class="string"> 3.50  </span>|<span class="string"> 4    </span>|</div><div class="line">+-------+------+</div></pre></td></tr></table></figure>
+<p>Find the contiguous subarray within an array (containing at least one number) which has the largest sum.</p>
+<p>For example, given the array <code>[-2,1,-3,4,-1,2,1,-5,4]</code>,<br>the contiguous subarray <code>[4,-1,2,1]</code> has the largest sum = <code>6</code>.</p>
           <div class="post-more-link text-center">
-            <a class="btn" href="/2014/03/11/leetcode/Database/leetcode-178-Rank-Scores/#more" rel="contents">
+            <a class="btn" href="/2014/03/11/leetcode/Algorithms/leetcode-53-Maximum-Subarray/#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
@@ -835,8 +1078,8 @@
             
               
                 
-                <a class="post-title-link" href="/2014/03/11/leetcode/Database/leetcode-180-Consecutive-Numbers/" itemprop="url">
-                  leetcode-180-Consecutive-Numbers
+                <a class="post-title-link" href="/2014/03/11/leetcode/Algorithms/leetcode-561-Array-Partition-I/" itemprop="url">
+                  leetcode-561-Array-Partition-I
                 </a>
               
             
@@ -860,8 +1103,8 @@
             
               <span class="post-comments-count">
                 &nbsp; | &nbsp;
-                <a href="/2014/03/11/leetcode/Database/leetcode-180-Consecutive-Numbers/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2014/03/11/leetcode/Database/leetcode-180-Consecutive-Numbers/" itemprop="commentsCount"></span>
+                <a href="/2014/03/11/leetcode/Algorithms/leetcode-561-Array-Partition-I/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2014/03/11/leetcode/Algorithms/leetcode-561-Array-Partition-I/" itemprop="commentsCount"></span>
                 </a>
               </span>
             
@@ -885,11 +1128,13 @@
       
         
           <h3 id="描述"><a href="#描述" class="headerlink" title="描述"></a>描述</h3><hr>
-<p>Write a SQL query to find all numbers that appear at least three times consecutively.</p>
-<figure class="highlight gherkin"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">+----+-----+</div><div class="line">|<span class="string"> Id </span>|<span class="string"> Num </span>|</div><div class="line">+----+-----+</div><div class="line">|<span class="string"> 1  </span>|<span class="string">  1  </span>|</div><div class="line">|<span class="string"> 2  </span>|<span class="string">  1  </span>|</div><div class="line">|<span class="string"> 3  </span>|<span class="string">  1  </span>|</div><div class="line">|<span class="string"> 4  </span>|<span class="string">  2  </span>|</div><div class="line">|<span class="string"> 5  </span>|<span class="string">  1  </span>|</div><div class="line">|<span class="string"> 6  </span>|<span class="string">  2  </span>|</div><div class="line">|<span class="string"> 7  </span>|<span class="string">  2  </span>|</div><div class="line">+----+-----+</div></pre></td></tr></table></figure>
-<p>For example, given the above Logs table, 1 is the only number that appears consecutively for at least three times.<br>
+<p>Given an array of <strong>2n</strong> integers, your task is to group these integers into n pairs of integer, say (a1, b1), (a2, b2), …, (an, bn) which makes sum of min(ai, bi) for all i from 1 to n as large as possible.</p>
+<p><strong>Example1</strong>:</p>
+<figure class="highlight http"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="attribute">Input</span>: [1,4,3,2]</div><div class="line"></div><div class="line"><span class="ada">Output: <span class="number">4</span></span></div><div class="line">Explanation: n <span class="keyword">is</span> <span class="number">2</span>, <span class="keyword">and</span> the maximum sum <span class="keyword">of</span> pairs <span class="keyword">is</span> <span class="number">4</span>.</div></pre></td></tr></table></figure>
+<p><strong>Note:</strong></p>
+<figure class="highlight vhdl"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="number">1</span>. n <span class="keyword">is</span> a <span class="built_in">positive</span> <span class="built_in">integer</span>, which <span class="keyword">is</span> <span class="keyword">in</span> the <span class="keyword">range</span> <span class="keyword">of</span> [<span class="number">1</span>, <span class="number">10000</span>].</div><div class="line"><span class="number">2</span>. <span class="keyword">All</span> the integers <span class="keyword">in</span> the <span class="keyword">array</span> will be <span class="keyword">in</span> the <span class="keyword">range</span> <span class="keyword">of</span> [-<span class="number">10000</span>, <span class="number">10000</span>].</div></pre></td></tr></table></figure>
           <div class="post-more-link text-center">
-            <a class="btn" href="/2014/03/11/leetcode/Database/leetcode-180-Consecutive-Numbers/#more" rel="contents">
+            <a class="btn" href="/2014/03/11/leetcode/Algorithms/leetcode-561-Array-Partition-I/#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
@@ -936,8 +1181,8 @@
             
               
                 
-                <a class="post-title-link" href="/2014/03/11/leetcode/Database/leetcode-181-Employees-Earning-More-Than-Their-Managers/" itemprop="url">
-                  leetcode-181-Employees-Earning-More-Than-Their-Managers
+                <a class="post-title-link" href="/2014/03/11/leetcode/Algorithms/leetcode-67-Add-Binary/" itemprop="url">
+                  leetcode-67-Add-Binary
                 </a>
               
             
@@ -961,8 +1206,8 @@
             
               <span class="post-comments-count">
                 &nbsp; | &nbsp;
-                <a href="/2014/03/11/leetcode/Database/leetcode-181-Employees-Earning-More-Than-Their-Managers/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2014/03/11/leetcode/Database/leetcode-181-Employees-Earning-More-Than-Their-Managers/" itemprop="commentsCount"></span>
+                <a href="/2014/03/11/leetcode/Algorithms/leetcode-67-Add-Binary/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2014/03/11/leetcode/Algorithms/leetcode-67-Add-Binary/" itemprop="commentsCount"></span>
                 </a>
               </span>
             
@@ -986,219 +1231,10 @@
       
         
           <h3 id="描述"><a href="#描述" class="headerlink" title="描述"></a>描述</h3><hr>
-<p>The <code>Employee</code> table holds all employees including their managers. Every employee has an Id, and there is also a column for the manager Id.</p>
-<figure class="highlight gherkin"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">+----+-------+--------+-----------+</div><div class="line">|<span class="string"> Id </span>|<span class="string"> Name  </span>|<span class="string"> Salary </span>|<span class="string"> ManagerId </span>|</div><div class="line">+----+-------+--------+-----------+</div><div class="line">|<span class="string"> 1  </span>|<span class="string"> Joe   </span>|<span class="string"> 70000  </span>|<span class="string"> 3         </span>|</div><div class="line">|<span class="string"> 2  </span>|<span class="string"> Henry </span>|<span class="string"> 80000  </span>|<span class="string"> 4         </span>|</div><div class="line">|<span class="string"> 3  </span>|<span class="string"> Sam   </span>|<span class="string"> 60000  </span>|<span class="string"> NULL      </span>|</div><div class="line">|<span class="string"> 4  </span>|<span class="string"> Max   </span>|<span class="string"> 90000  </span>|<span class="string"> NULL      </span>|</div><div class="line">+----+-------+--------+-----------+</div></pre></td></tr></table></figure>
-<p>Given the <code>Employee</code> table, write a SQL query that finds out employees who earn more than their managers. For the above table, Joe is the only employee who earns more than his manager.</p>
-<figure class="highlight asciidoc"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="code">+----------+</span></div><div class="line"><span class="section">| Employee |</span></div><div class="line">+----------+</div><div class="line"><span class="section">| Joe      |</span></div><div class="line">+----------+</div></pre></td></tr></table></figure>
+<p>Given two binary strings, return their sum (also a binary string).</p>
+<p>For example,<br>a = “11”<br>b = “1”<br>Return “100”. </p>
           <div class="post-more-link text-center">
-            <a class="btn" href="/2014/03/11/leetcode/Database/leetcode-181-Employees-Earning-More-Than-Their-Managers/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2014/03/11/leetcode/Database/leetcode-182-Duplicate-Emails/" itemprop="url">
-                  leetcode-182-Duplicate-Emails
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2014-03-11T00:33:34+08:00" content="2014-03-11">
-              2014-03-11
-            </time>
-          </span>
-
-          
-
-          
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2014/03/11/leetcode/Database/leetcode-182-Duplicate-Emails/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2014/03/11/leetcode/Database/leetcode-182-Duplicate-Emails/" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <h3 id="描述"><a href="#描述" class="headerlink" title="描述"></a>描述</h3><hr>
-<p>Write a SQL query to find all duplicate emails in a table named <code>Person</code>.</p>
-<figure class="highlight asciidoc"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="code">+----+</span>---------+</div><div class="line"><span class="section">| Id | Email   |</span></div><div class="line">+----+---------+</div><div class="line">| 1  | a@b.com |</div><div class="line">| 2  | c@d.com |</div><div class="line"><span class="section">| 3  | a@b.com |</span></div><div class="line">+----+---------+</div></pre></td></tr></table></figure>
-<p>For example, your query should return the following for the above table:</p>
-<figure class="highlight asciidoc"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="code">+---------+</span></div><div class="line"><span class="section">| Email   |</span></div><div class="line">+---------+</div><div class="line"><span class="section">| a@b.com |</span></div><div class="line">+---------+</div></pre></td></tr></table></figure>
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2014/03/11/leetcode/Database/leetcode-182-Duplicate-Emails/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2014/03/11/leetcode/Database/leetcode-183-Customers-Who-Never-Order/" itemprop="url">
-                  leetcode-183-Customers-Who-Never-Order
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2014-03-11T00:33:34+08:00" content="2014-03-11">
-              2014-03-11
-            </time>
-          </span>
-
-          
-
-          
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2014/03/11/leetcode/Database/leetcode-183-Customers-Who-Never-Order/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2014/03/11/leetcode/Database/leetcode-183-Customers-Who-Never-Order/" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <h3 id="描述"><a href="#描述" class="headerlink" title="描述"></a>描述</h3><hr>
-<p>Suppose that a website contains two tables, the <code>Customers</code> table and the <code>Orders</code> table. Write a SQL query to find all customers who never order anything.</p>
-<p>Table: <code>Customers</code>.</p>
-<figure class="highlight asciidoc"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="code">+----+</span>-------+</div><div class="line"><span class="section">| Id | Name  |</span></div><div class="line">+----+-------+</div><div class="line">| 1  | Joe   |</div><div class="line">| 2  | Henry |</div><div class="line">| 3  | Sam   |</div><div class="line"><span class="section">| 4  | Max   |</span></div><div class="line">+----+-------+</div></pre></td></tr></table></figure>
-<p>Table: Orders.</p>
-<figure class="highlight asciidoc"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="code">+----+</span>------------+</div><div class="line"><span class="section">| Id | CustomerId |</span></div><div class="line">+----+------------+</div><div class="line">| 1  | 3          |</div><div class="line"><span class="section">| 2  | 1          |</span></div><div class="line">+----+------------+</div></pre></td></tr></table></figure>
-<p>Using the above tables as example, return the following:</p>
-<figure class="highlight asciidoc"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="code">+-----------+</span></div><div class="line"><span class="section">| Customers |</span></div><div class="line">+-----------+</div><div class="line">| Henry     |</div><div class="line"><span class="section">| Max       |</span></div><div class="line">+-----------+</div></pre></td></tr></table></figure>
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2014/03/11/leetcode/Database/leetcode-183-Customers-Who-Never-Order/#more" rel="contents">
+            <a class="btn" href="/2014/03/11/leetcode/Algorithms/leetcode-67-Add-Binary/#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
@@ -1269,7 +1305,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">174</span>
+              <span class="site-state-item-count">175</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>

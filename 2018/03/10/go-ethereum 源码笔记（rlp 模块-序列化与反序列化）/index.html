@@ -1,0 +1,849 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  <link href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css"/>
+
+
+
+
+  <link href="//fonts.googleapis.com/css?family=Lato:300,400,700,400italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+
+
+
+<link href="/vendors/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=0.5.0" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="cryptocurrency,Golang,geth," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=0.5.0" />
+
+
+
+
+
+
+<meta name="description" content="RLP 的定义，作用，用法在 wiki 文档中有文字说明，这部分我们只做简单描述。 在黄皮书里有 RLP 的形式化说明，这里我会总结一下，然后侧重于分析源码，讲解实现原理。">
+<meta name="keywords" content="cryptocurrency,Golang,geth">
+<meta property="og:type" content="article">
+<meta property="og:title" content="go-ethereum 源码笔记（rlp 模块-序列化与反序列化）">
+<meta property="og:url" content="http://knarfeh.github.io/2018/03/10/go-ethereum 源码笔记（rlp 模块-序列化与反序列化）/index.html">
+<meta property="og:site_name" content="Frank&#39;s Notes">
+<meta property="og:description" content="RLP 的定义，作用，用法在 wiki 文档中有文字说明，这部分我们只做简单描述。 在黄皮书里有 RLP 的形式化说明，这里我会总结一下，然后侧重于分析源码，讲解实现原理。">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="http://7xi5vu.com1.z0.glb.clouddn.com/RLP%20structures%20T.png?imageView2/0/w/400/h/400">
+<meta property="og:image" content="http://7xi5vu.com1.z0.glb.clouddn.com/RLP%20structure%20sub-functions.png?imageView2/0/w/400/h/400">
+<meta property="og:image" content="http://7xi5vu.com1.z0.glb.clouddn.com/RLP%20structure%20Rbx.png?imageView2/0/w/600/h/600">
+<meta property="og:image" content="http://7xi5vu.com1.z0.glb.clouddn.com/RLP%20structure%20Rlx.png?imageView2/0/w/500/h/500">
+<meta property="og:updated_time" content="2018-08-25T06:10:33.654Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="go-ethereum 源码笔记（rlp 模块-序列化与反序列化）">
+<meta name="twitter:description" content="RLP 的定义，作用，用法在 wiki 文档中有文字说明，这部分我们只做简单描述。 在黄皮书里有 RLP 的形式化说明，这里我会总结一下，然后侧重于分析源码，讲解实现原理。">
+<meta name="twitter:image" content="http://7xi5vu.com1.z0.glb.clouddn.com/RLP%20structures%20T.png?imageView2/0/w/400/h/400">
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    scheme: 'Muse',
+    sidebar: {"display":"hide"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: 0,
+      author: '博主'
+    }
+  };
+</script>
+
+  <title> go-ethereum 源码笔记（rlp 模块-序列化与反序列化） | Frank's Notes </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+            (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+          m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-75002639-1', 'auto');
+  ga('send', 'pageview');
+</script>
+
+
+
+
+
+
+
+
+
+  
+  
+
+  <div class="container one-collumn  page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">Frank's Notes</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle"></p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-home fa-fw"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-archive fa-fw"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-tags fa-fw"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-twitter">
+          <a href="/twitter" rel="section">
+            
+              <i class="menu-item-icon fa fa-coffee fa-fw"></i> <br />
+            
+            Twitter
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                go-ethereum 源码笔记（rlp 模块-序列化与反序列化）
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2018-03-10T22:35:01+08:00" content="2018-03-10">
+              2018-03-10
+            </time>
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2018/03/10/go-ethereum 源码笔记（rlp 模块-序列化与反序列化）/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2018/03/10/go-ethereum 源码笔记（rlp 模块-序列化与反序列化）/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>RLP 的定义，作用，用法在 <a href="https://github.com/ethereum/wiki/wiki/%5BEnglish%5D-RLP" target="_blank" rel="external">wiki</a> 文档中有文字说明，这部分我们只做简单描述。</p>
+<p>在<a href="https://github.com/ethereum/yellowpaper" target="_blank" rel="external">黄皮书</a>里有 RLP 的形式化说明，这里我会总结一下，然后侧重于分析源码，讲解实现原理。</p>
+<a id="more"></a>
+<h2 id="定义"><a href="#定义" class="headerlink" title="定义"></a>定义</h2><p>RLP（Recursive Length Prefix）递归长度前缀是一种编码算法，用于编码任意嵌套结构的二进制数据，它是以太坊中数据序列化和反序列化的主要方法，区块、交易等数据结构在持久化时会先经过 RLP 编码再存储到数据库，p2p 网络中节点之间的数据传输也需要 RLP 的编码。</p>
+<p>RLP 有两个特点：一个是递归，被编码的数据是递归的结构，编码算法也是递归进行处理的；二是长度前缀，RLP 编码都带有一个前缀，这个前缀与被编码数据长度相关。</p>
+<p>根据定义，RLP 编码只处理两类数据：一类是字符串（例如字节数组），一类是列表。字符串指的是一串二进制数据，列表是一个嵌套递归的结构，里面可以包含字符串和列表，例如<code>[&quot;cat&quot;,[&quot;puppy&quot;,&quot;cow&quot;],&quot;horse&quot;,[[]],&quot;pig&quot;,[&quot;&quot;],&quot;sheep&quot;]</code>就是一个复杂的列表。其他类型的数据需要转成以上的两类。</p>
+<h2 id="规则和例子"><a href="#规则和例子" class="headerlink" title="规则和例子"></a>规则和例子</h2><p>在 <a href="https://github.com/ethereum/wiki/wiki/%5BEnglish%5D-RLP#definition" target="_blank" rel="external">wiki</a> 中有详细定义，这里不赘述。</p>
+<h2 id="黄皮书里的形式化方法"><a href="#黄皮书里的形式化方法" class="headerlink" title="黄皮书里的形式化方法"></a>黄皮书里的形式化方法</h2><p>在<a href="https://github.com/ethereum/yellowpaper" target="_blank" rel="external">黄皮书</a>中有 RLP 的形式化定义，形式化的描述比大白话更直观，这里我们做一下简单总结:</p>
+<p>首先定义集合 T：</p>
+<p><img src="http://7xi5vu.com1.z0.glb.clouddn.com/RLP%20structures%20T.png?imageView2/0/w/400/h/400" alt="rlp-structure-t"></p>
+<p>$\mathbb{T}$ 表示所有的字节数组和树形结构的组合，$\mathbb{L}$ 表示不止单一节点的树形结构，如结构体，树节点的分支节点，非叶子节点。 $\mathbb{O}$ 表示所有 byte 的集合，$\mathbb{B}$ 表示所有可能的字节数组，</p>
+<p>$\mathbb{T}$ 和 $\mathbb{L}$ 是 RLP 需要处理的两种结构。</p>
+<p>RLP 可以用两个子函数描述：</p>
+<p><img src="http://7xi5vu.com1.z0.glb.clouddn.com/RLP%20structure%20sub-functions.png?imageView2/0/w/400/h/400" alt="rlp-structure-rlp"></p>
+<p>其中：</p>
+<p><img src="http://7xi5vu.com1.z0.glb.clouddn.com/RLP%20structure%20Rbx.png?imageView2/0/w/600/h/600" alt="rlp-structure-rbx"></p>
+<p><img src="http://7xi5vu.com1.z0.glb.clouddn.com/RLP%20structure%20Rlx.png?imageView2/0/w/500/h/500" alt="rlp-structure-rlx"></p>
+<p>对于 $\mathbb{B}$ 类型的字节数组，处理规则是：</p>
+<ul>
+<li>如果字节数组只有一个字节，并且字节大小小于 128，编码结果就是它本身。</li>
+<li>如果字节数组（字符串）长度小于56，编码结果是128加上字节数组长度的和作为前缀，再加上原始数据。由于被编码的字符串长度是<code>55=0x37</code>，因此单字节前缀的最大值是 <code>0x80+0x37=0xb7</code>，即编码的第一个字节的取值范围是 <code>[0x80, 0xb7]</code>。</li>
+<li>如果字节数组长度大于等于56，编码结果是: 以183加上原始数据的长度的大端表示的长度作为前缀，加上原始数据长度的大端表示，再加上原始数据。</li>
+</ul>
+<p>其中 $\mathtt{\tiny BE}$ 实际上表示去掉前导0的大端模式。</p>
+<p>对于 $\mathtt{T} $类型（树形结构），处理规则是：</p>
+<ul>
+<li>首先对树形结构里面的每一个元素使用 RLP 处理，然后将结果连接起来，记为 s。</li>
+<li>如果连接后的字节长度小于56，编码结果是：以192加上连接后的长度作为前缀，加上连接后的结果，即 <code>0xc0</code> 加上列表的总长度，编码的第一个字节的取值范围是 <code>[0xc0, 0xf7]</code>。</li>
+<li>如果连接后的字节长度大于56字节，编码结果是：以247加上连接后的长度的大端模式的长度的结果作为前缀，加上连接后的长度的大端模式，再加上列表中各元素项 RLP 编码的结果。即 <code>0xf7</code> 加上列表总长度的二进制形式的字节长度。编码的第一个字节的取值范围是 <code>[0xf8, 0xff]</code>。</li>
+</ul>
+<h2 id="源码解析"><a href="#源码解析" class="headerlink" title="源码解析"></a>源码解析</h2><p>RLP 包的源码在 rlp 目录下：</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">├── decode.<span class="keyword">go</span>                         # 解码器，反序列化的过程，将 RLP 数据解码为 Golang 数据结构</div><div class="line">├── decode_tail_test.<span class="keyword">go</span></div><div class="line">├── decode_test.<span class="keyword">go</span></div><div class="line">├── doc.<span class="keyword">go</span>                            # 包的文档</div><div class="line">├── encode.<span class="keyword">go</span>                         # 编码器，序列化的过程，将 Golang 数据编码为 RLP 结构数据</div><div class="line">├── encode_test.<span class="keyword">go</span></div><div class="line">├── encoder_example_test.<span class="keyword">go</span></div><div class="line">├── raw.<span class="keyword">go</span>                            # 没有解码的原生数据</div><div class="line">├── raw_test.<span class="keyword">go</span></div><div class="line">└── typecache.<span class="keyword">go</span>                      # 类型缓存，记录了类型 -&gt;（编码器|解码器）的内容</div></pre></td></tr></table></figure>
+<p>测试代码也是很好的参考文档，有时候甚至比注释还好懂，可以好好看看。这里我们开始讲解序列化和反序列化的代码实现。</p>
+<h3 id="typeinfo"><a href="#typeinfo" class="headerlink" title="typeinfo"></a>typeinfo</h3><p>上面提到，对于不同的类型，有不同的编码方式，在 C++ 这样的语言中，可以通过相同函数名，不同类型，也就是重载来实现不同类型的编码器的分派，也可以通过泛型实现分派。</p>
+<p>Go 不支持这些语言级别的特性，为了实现函数分派，引入了 <code>typeinfo</code> 结构，可以根据类型快速找到编码器和解码器函数，这部分内容在 <code>rlp/typecache.go</code> 中。</p>
+<figure class="highlight rust"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line">var (</div><div class="line">	typeCacheMutex sync.RWMutex</div><div class="line">	typeCache      = make(map[typekey]*typeinfo)</div><div class="line">)</div><div class="line"></div><div class="line"><span class="class"><span class="keyword">type</span> <span class="title">typeinfo</span></span> <span class="class"><span class="keyword">struct</span> &#123;</span></div><div class="line">	decoder</div><div class="line">	writer</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="class"><span class="keyword">type</span> <span class="title">tags</span></span> <span class="class"><span class="keyword">struct</span> &#123;</span></div><div class="line">	tail <span class="keyword">bool</span></div><div class="line">	ignored <span class="keyword">bool</span></div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="class"><span class="keyword">type</span> <span class="title">typekey</span></span> <span class="class"><span class="keyword">struct</span> &#123;</span></div><div class="line">	reflect.Type</div><div class="line">	tags</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>其中 <code>typeCacheMutex</code> 是读写锁，在多线程的使用过程中保护 <code>typeCache</code>，<code>typeCache</code> 的作用是记录类型和编码器函数的对应关系。</p>
+<h4 id="获取编码器，解码器"><a href="#获取编码器，解码器" class="headerlink" title="获取编码器，解码器"></a>获取编码器，解码器</h4><figure class="highlight go"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">func</span> <span class="title">cachedTypeInfo</span><span class="params">(typ reflect.Type, tags tags)</span> <span class="params">(*typeinfo, error)</span></span> &#123;</div><div class="line">	typeCacheMutex.RLock()</div><div class="line">	info := typeCache[typekey&#123;typ, tags&#125;]</div><div class="line">	typeCacheMutex.RUnlock()</div><div class="line">	<span class="keyword">if</span> info != <span class="literal">nil</span> &#123;</div><div class="line">		<span class="keyword">return</span> info, <span class="literal">nil</span></div><div class="line">	&#125;</div><div class="line">	typeCacheMutex.Lock()</div><div class="line">	<span class="keyword">defer</span> typeCacheMutex.Unlock()</div><div class="line">	<span class="keyword">return</span> cachedTypeInfo1(typ, tags)</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">func</span> <span class="title">cachedTypeInfo1</span><span class="params">(typ reflect.Type, tags tags)</span> <span class="params">(*typeinfo, error)</span></span> &#123;</div><div class="line">	key := typekey&#123;typ, tags&#125;</div><div class="line">	info := typeCache[key]</div><div class="line">	<span class="keyword">if</span> info != <span class="literal">nil</span> &#123;</div><div class="line">		<span class="keyword">return</span> info, <span class="literal">nil</span></div><div class="line">	&#125;</div><div class="line">	typeCache[key] = <span class="built_in">new</span>(typeinfo)</div><div class="line">	info, err := genTypeInfo(typ, tags)</div><div class="line">	<span class="keyword">if</span> err != <span class="literal">nil</span> &#123;</div><div class="line">		<span class="built_in">delete</span>(typeCache, key)</div><div class="line">		<span class="keyword">return</span> <span class="literal">nil</span>, err</div><div class="line">	&#125;</div><div class="line">	*typeCache[key] = *info</div><div class="line">	<span class="keyword">return</span> typeCache[key], err</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>没能明白 <code>cachedTypeInfo</code> 和 <code>cachedTypeInfo1</code> 的真正区别是什么，有熟悉这块代码的朋友可以赐教一下。</p>
+<p>获取编码器，解码器时，首先会从缓存中请求，如果没有命中的话再调用 <code>genTypeInfo</code>。</p>
+<figure class="highlight stata"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">func genTypeInfo(<span class="keyword">typ</span> reflect.<span class="keyword">Type</span>, tags tags) (info *typeinfo, <span class="keyword">err</span> <span class="keyword">error</span>) &#123;</div><div class="line">	info = new(typeinfo)</div><div class="line">	<span class="keyword">if</span> info.decoder, <span class="keyword">err</span> = makeDecoder(<span class="keyword">typ</span>, tags); <span class="keyword">err</span> != nil &#123;</div><div class="line">		<span class="keyword">return</span> nil, <span class="keyword">err</span></div><div class="line">	&#125;</div><div class="line">	<span class="keyword">if</span> info.writer, <span class="keyword">err</span> = makeWriter(<span class="keyword">typ</span>, tags); <span class="keyword">err</span> != nil &#123;</div><div class="line">		<span class="keyword">return</span> nil, <span class="keyword">err</span></div><div class="line">	&#125;</div><div class="line">	<span class="keyword">return</span> info, nil</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>编码器和解码器大同小异，只是方向不同，这里我们以编码器为例：</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">func</span> <span class="title">makeWriter</span><span class="params">(typ <span class="built_in">reflect</span>.<span class="keyword">Type</span>, ts tags)</span></span> (writer, error) &#123;</div><div class="line">	kind := typ.<span class="type">Kind</span>()</div><div class="line">	<span class="keyword">switch</span> &#123;</div><div class="line">	<span class="keyword">case</span> typ == rawValueType:</div><div class="line">		<span class="keyword">return</span> writeRawValue, <span class="literal">nil</span></div><div class="line">	<span class="keyword">case</span> typ.<span class="type">Implements</span>(encoderInterface):</div><div class="line">		<span class="keyword">return</span> writeEncoder, <span class="literal">nil</span></div><div class="line">	<span class="keyword">case</span> kind != <span class="built_in">reflect</span>.<span class="type">Ptr</span> &amp;&amp; <span class="built_in">reflect</span>.<span class="type">PtrTo</span>(typ).<span class="type">Implements</span>(encoderInterface):</div><div class="line">		<span class="keyword">return</span> writeEncoderNoPtr, <span class="literal">nil</span></div><div class="line">	<span class="keyword">case</span> kind == <span class="built_in">reflect</span>.<span class="type">Interface</span>:</div><div class="line">		<span class="keyword">return</span> writeInterface, <span class="literal">nil</span></div><div class="line">	<span class="keyword">case</span> typ.<span class="type">AssignableTo</span>(<span class="built_in">reflect</span>.<span class="type">PtrTo</span>(bigInt)):</div><div class="line">		<span class="keyword">return</span> writeBigIntPtr, <span class="literal">nil</span></div><div class="line">	<span class="keyword">case</span> typ.<span class="type">AssignableTo</span>(bigInt):</div><div class="line">		<span class="keyword">return</span> writeBigIntNoPtr, <span class="literal">nil</span></div><div class="line">	<span class="keyword">case</span> isUint(kind):</div><div class="line">		<span class="keyword">return</span> writeUint, <span class="literal">nil</span></div><div class="line">	<span class="keyword">case</span> kind == <span class="built_in">reflect</span>.<span class="type">Bool</span>:</div><div class="line">		<span class="keyword">return</span> writeBool, <span class="literal">nil</span></div><div class="line">	<span class="keyword">case</span> kind == <span class="built_in">reflect</span>.<span class="type">String</span>:</div><div class="line">		<span class="keyword">return</span> writeString, <span class="literal">nil</span></div><div class="line">	<span class="keyword">case</span> kind == <span class="built_in">reflect</span>.<span class="type">Slice</span> &amp;&amp; isByte(typ.<span class="type">Elem</span>()):</div><div class="line">		<span class="keyword">return</span> writeBytes, <span class="literal">nil</span></div><div class="line">	<span class="keyword">case</span> kind == <span class="built_in">reflect</span>.<span class="type">Array</span> &amp;&amp; isByte(typ.<span class="type">Elem</span>()):</div><div class="line">		<span class="keyword">return</span> writeByteArray, <span class="literal">nil</span></div><div class="line">	<span class="keyword">case</span> kind == <span class="built_in">reflect</span>.<span class="type">Slice</span> || kind == <span class="built_in">reflect</span>.<span class="type">Array</span>:</div><div class="line">		<span class="keyword">return</span> makeSliceWriter(typ, ts)</div><div class="line">	<span class="keyword">case</span> kind == <span class="built_in">reflect</span>.<span class="type">Struct</span>:</div><div class="line">		<span class="keyword">return</span> makeStructWriter(typ)</div><div class="line">	<span class="keyword">case</span> kind == <span class="built_in">reflect</span>.<span class="type">Ptr</span>:</div><div class="line">		<span class="keyword">return</span> makePtrWriter(typ)</div><div class="line">	<span class="keyword">default</span>:</div><div class="line">		<span class="keyword">return</span> <span class="literal">nil</span>, fmt.<span class="type">Errorf</span>(<span class="string">"rlp: type %v is not RLP-serializable"</span>, typ)</div><div class="line">	&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>可以看到 <code>makeWriter</code> 实际上就是一堆 switch 分支，根据不同的类型，调用不同的编码方法。接下来我们会挑取几个典型方法来看。</p>
+<h3 id="序列化"><a href="#序列化" class="headerlink" title="序列化"></a>序列化</h3><p>首先看字符串的编码方法。</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">func</span> <span class="title">writeString</span><span class="params">(val reflect.Value, w *encbuf)</span> <span class="title">error</span></span> &#123;</div><div class="line">	s := val.String()</div><div class="line">	<span class="keyword">if</span> <span class="built_in">len</span>(s) == <span class="number">1</span> &amp;&amp; s[<span class="number">0</span>] &lt;= <span class="number">0x7f</span> &#123;</div><div class="line">		w.str = <span class="built_in">append</span>(w.str, s[<span class="number">0</span>])</div><div class="line">	&#125; <span class="keyword">else</span> &#123;</div><div class="line">		w.encodeStringHeader(<span class="built_in">len</span>(s))</div><div class="line">		w.str = <span class="built_in">append</span>(w.str, s...)</div><div class="line">	&#125;</div><div class="line">	<span class="keyword">return</span> <span class="literal">nil</span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>对于字符串，如果只有一个字节，并且字节大小小于128，编码结果是其本身，这对应规则一的第1点。对于第2，第3种情况，调用 <code>encodeStringHeader</code>。</p>
+<figure class="highlight stylus"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">func (w *encbuf) encodeStringHeader(size int) &#123;</div><div class="line">	<span class="keyword">if</span> size &lt; <span class="number">56</span> &#123;</div><div class="line">		w<span class="selector-class">.str</span> = append(w<span class="selector-class">.str</span>, <span class="number">0</span>x80+byte(size))</div><div class="line">	&#125; <span class="keyword">else</span> &#123;</div><div class="line">		sizesize := putint(w<span class="selector-class">.sizebuf</span>[<span class="number">1</span>:], uint64(size))</div><div class="line">		w<span class="selector-class">.sizebuf</span>[<span class="number">0</span>] = <span class="number">0</span>xB7 + byte(sizesize)</div><div class="line">		w<span class="selector-class">.str</span> = append(w<span class="selector-class">.str</span>, w<span class="selector-class">.sizebuf</span>[:sizesize+<span class="number">1</span>]...)</div><div class="line">	&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>如果长度小于56，编码结果是128加上字节数组长度的和作为前缀再加上原始数据，这对应的是第2种情况，如果长度大于等于56，则编码结果是0x87加上原始数据长度的大端表示的长度作为前缀，再加上原始数据长度的大端表示，再加上原始数据，这对应的是第3种情况。</p>
+<p>再看树形结构的编码方法。</p>
+<p>实际上这里所指的树形结构就是结构体数据。对于普通的类型，例如字符串，整形，布尔型，我们可以直接调用对应的编码方法，往 encbuf 里填充数据，对于结构体类型，我们没法确定其具体结构，但每种类型都实现了 writer 这一类型，即 <code>type writer func(reflect.Value, *encbuf) error</code>，注意到 writer 类型与 <code>func writeString(val reflect.Value, w *encbuf) error</code> 这些编码方法的类型是一致的。因此我们可以用递归的方式解决结构体类型的编码。</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">func</span> <span class="title">makeStructWriter</span><span class="params">(typ reflect.Type)</span> <span class="params">(writer, error)</span></span> &#123;</div><div class="line">	fields, err := structFields(typ)</div><div class="line">	<span class="keyword">if</span> err != <span class="literal">nil</span> &#123;</div><div class="line">		<span class="keyword">return</span> <span class="literal">nil</span>, err</div><div class="line">	&#125;</div><div class="line">	writer := <span class="function"><span class="keyword">func</span><span class="params">(val reflect.Value, w *encbuf)</span> <span class="title">error</span></span> &#123;</div><div class="line">		lh := w.list()</div><div class="line">		<span class="keyword">for</span> _, f := <span class="keyword">range</span> fields &#123;</div><div class="line">			<span class="keyword">if</span> err := f.info.writer(val.Field(f.index), w); err != <span class="literal">nil</span> &#123;</div><div class="line">				<span class="keyword">return</span> err</div><div class="line">			&#125;</div><div class="line">		&#125;</div><div class="line">		w.listEnd(lh)</div><div class="line">		<span class="keyword">return</span> <span class="literal">nil</span></div><div class="line">	&#125;</div><div class="line">	<span class="keyword">return</span> writer, <span class="literal">nil</span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>首先拿到该结构体的所有字段，然后定义一个 <code>writer</code> 的匿名方法，即 <code>writer func(reflect.Value, *encbuf) error</code> 类型，这个方法可能会被递归调用，在这个方法中，遍历之前通过 <code>structFields</code> 拿到的所有字段，调用对应的 writer 方法，这些结果都会加入到 <code>w</code>(encbuf 类型)中，根据 RLP 编码的定义，需要根据树形结构的长度确定前缀的大小，这是通过 <code>list</code>, <code>listEnd</code>, <code>size</code>, <code>toBytes</code> 等方法实现的。</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">func</span> <span class="params">(w *encbuf)</span> <span class="title">list</span><span class="params">()</span> *<span class="title">listhead</span></span> &#123;</div><div class="line">	lh := &amp;listhead&#123;offset: <span class="built_in">len</span>(w.str), size: w.lhsize&#125;</div><div class="line">	w.lheads = <span class="built_in">append</span>(w.lheads, lh)</div><div class="line">	<span class="keyword">return</span> lh</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">func</span> <span class="params">(w *encbuf)</span> <span class="title">listEnd</span><span class="params">(lh *listhead)</span></span> &#123;</div><div class="line">	lh.size = w.size() - lh.offset - lh.size</div><div class="line">	<span class="keyword">if</span> lh.size &lt; <span class="number">56</span> &#123;</div><div class="line">		w.lhsize += <span class="number">1</span></div><div class="line">	&#125; <span class="keyword">else</span> &#123;</div><div class="line">		w.lhsize += <span class="number">1</span> + intsize(<span class="keyword">uint64</span>(lh.size))</div><div class="line">	&#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">func</span> <span class="params">(w *encbuf)</span> <span class="title">size</span><span class="params">()</span> <span class="title">int</span></span> &#123;</div><div class="line">	<span class="keyword">return</span> <span class="built_in">len</span>(w.str) + w.lhsize</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">func</span> <span class="params">(w *encbuf)</span> <span class="title">toBytes</span><span class="params">()</span> []<span class="title">byte</span></span> &#123;</div><div class="line">	out := <span class="built_in">make</span>([]<span class="keyword">byte</span>, w.size())</div><div class="line">	strpos := <span class="number">0</span></div><div class="line">	pos := <span class="number">0</span></div><div class="line">	<span class="keyword">for</span> _, head := <span class="keyword">range</span> w.lheads &#123;</div><div class="line">		n := <span class="built_in">copy</span>(out[pos:], w.str[strpos:head.offset])</div><div class="line">		pos += n</div><div class="line">		strpos += n</div><div class="line">		enc := head.encode(out[pos:])</div><div class="line">		pos += <span class="built_in">len</span>(enc)</div><div class="line">	&#125;</div><div class="line">	<span class="built_in">copy</span>(out[pos:], w.str[strpos:])</div><div class="line">	<span class="keyword">return</span> out</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>其中 <code>toBytes()</code> 是 <code>encbuf</code> 最后的处理逻辑，返回最终的 RLP 数据。</p>
+<p>编码即序列化的整个流程就是这样，解码的过程就不赘述了，相反流程而已，最后看一下 encode 模块暴露的外部方法。<br><figure class="highlight go"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">func</span> <span class="title">Encode</span><span class="params">(w io.Writer, val <span class="keyword">interface</span>&#123;&#125;)</span> <span class="title">error</span></span> &#123;</div><div class="line">	<span class="keyword">if</span> outer, ok := w.(*encbuf); ok &#123;</div><div class="line">		<span class="keyword">return</span> outer.encode(val)</div><div class="line">	&#125;</div><div class="line">	eb := encbufPool.Get().(*encbuf)</div><div class="line">	<span class="keyword">defer</span> encbufPool.Put(eb)</div><div class="line">	eb.reset()</div><div class="line">	<span class="keyword">if</span> err := eb.encode(val); err != <span class="literal">nil</span> &#123;</div><div class="line">		<span class="keyword">return</span> err</div><div class="line">	&#125;</div><div class="line">	<span class="keyword">return</span> eb.toWriter(w)</div><div class="line">&#125;</div><div class="line"></div><div class="line"></div><div class="line"><span class="function"><span class="keyword">func</span> <span class="title">EncodeToBytes</span><span class="params">(val <span class="keyword">interface</span>&#123;&#125;)</span> <span class="params">([]<span class="keyword">byte</span>, error)</span></span> &#123;</div><div class="line">	eb := encbufPool.Get().(*encbuf)</div><div class="line">	<span class="keyword">defer</span> encbufPool.Put(eb)</div><div class="line">	eb.reset()</div><div class="line">	<span class="keyword">if</span> err := eb.encode(val); err != <span class="literal">nil</span> &#123;</div><div class="line">		<span class="keyword">return</span> <span class="literal">nil</span>, err</div><div class="line">	&#125;</div><div class="line">	<span class="keyword">return</span> eb.toBytes(), <span class="literal">nil</span></div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">func</span> <span class="title">EncodeToReader</span><span class="params">(val <span class="keyword">interface</span>&#123;&#125;)</span> <span class="params">(size <span class="keyword">int</span>, r io.Reader, err error)</span></span> &#123;</div><div class="line">	eb := encbufPool.Get().(*encbuf)</div><div class="line">	eb.reset()</div><div class="line">	<span class="keyword">if</span> err := eb.encode(val); err != <span class="literal">nil</span> &#123;</div><div class="line">		<span class="keyword">return</span> <span class="number">0</span>, <span class="literal">nil</span>, err</div><div class="line">	&#125;</div><div class="line">	<span class="keyword">return</span> eb.size(), &amp;encReader&#123;buf: eb&#125;, <span class="literal">nil</span></div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p><code>Encode</code>， <code>EncodeToBytes</code>，<code>EncodeToReader</code> 等方法将值编码到 <code>io.Writer</code>, <code>Bytes</code>, <code>reader</code> 等等，它们有一个共同点，都调用了 encode 这个内部方法。</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">func</span> <span class="params">(w *encbuf)</span> <span class="title">encode</span><span class="params">(val <span class="keyword">interface</span>&#123;&#125;)</span> <span class="title">error</span></span> &#123;</div><div class="line">	rval := reflect.ValueOf(val)</div><div class="line">	ti, err := cachedTypeInfo(rval.Type(), tags&#123;&#125;)</div><div class="line">	<span class="keyword">if</span> err != <span class="literal">nil</span> &#123;</div><div class="line">		<span class="keyword">return</span> err</div><div class="line">	&#125;</div><div class="line">	<span class="keyword">return</span> ti.writer(rval, w)</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p><code>encode</code> 方法会从 <code>cachedTypeInfo</code> 中获得某类型对应的编码器，然后调用 <code>writer</code> 方法，结果就能写到 <code>encbuf</code> 类型中。<code>EncodeToBytes</code>，<code>EncodeToReader</code> 等只是最后调用的方法不一致，如果是调用 <code>toBytes</code>，则返回经过 RLP 编码的字节码数据。</p>
+<h2 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h2><ul>
+<li><a href="https://github.com/ethereum/wiki/wiki/%5BEnglish%5D-RLP" target="_blank" rel="external">ethereum/wiki RLP</a></li>
+<li><a href="https://github.com/ethereum/yellowpaper" target="_blank" rel="external">ethereum yellowpaper</a></li>
+<li><a href="http://qjpcpu.github.io/blog/2018/01/29/shen-ru-ethereumyuan-ma-p2pmo-kuai-ji-chu-jie-gou/#rlp" target="_blank" rel="external">深入ethereum源码-p2p模块基础结构</a></li>
+</ul>
+
+      
+    </div>
+
+    <div>
+      
+        
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/cryptocurrency/" rel="tag">#cryptocurrency</a>
+          
+            <a href="/tags/Golang/" rel="tag">#Golang</a>
+          
+            <a href="/tags/geth/" rel="tag">#geth</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/03/10/go-ethereum 源码笔记（core 模块-区块链操作）/" rel="next" title="go-ethereum 源码笔记（core 模块-区块链操作）">
+                <i class="fa fa-chevron-left"></i> go-ethereum 源码笔记（core 模块-区块链操作）
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/03/20/Telegram Bot 的长轮询 VS Webhook/" rel="prev" title="Telegram Bot 的长轮询 VS Webhook">
+                Telegram Bot 的长轮询 VS Webhook <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+      <div id="disqus_thread">
+        <noscript>
+          Please enable JavaScript to view the
+          <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a>
+        </noscript>
+      </div>
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel ">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="https://avatars1.githubusercontent.com/u/6964284?v=3&s=460"
+               alt="Frank" />
+          <p class="site-author-name" itemprop="name">Frank</p>
+          <p class="site-description motion-element" itemprop="description"></p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">175</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+          
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">125</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/knarfeh" target="_blank">
+                  
+                    <i class="fa fa-github"></i> GitHub
+                  
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://twitter.com/knarfeh" target="_blank">
+                  
+                    <i class="fa fa-twitter"></i> Twitter
+                  
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://weibo.com/2753500945" target="_blank">
+                  
+                    <i class="fa fa-weibo"></i> Weibo
+                  
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+          <div class="cc-license motion-element" itemprop="license">
+            <a href="http://creativecommons.org/licenses/by-sa/4.0" class="cc-opacity" target="_blank">
+              <img src="/images/cc-by-sa.svg" alt="Creative Commons" />
+            </a>
+          </div>
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+      </section>
+
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc-indicator-top post-toc-indicator">
+            <i class="fa fa-angle-double-up"></i>
+          </div>
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#定义"><span class="nav-number">1.</span> <span class="nav-text">定义</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#规则和例子"><span class="nav-number">2.</span> <span class="nav-text">规则和例子</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#黄皮书里的形式化方法"><span class="nav-number">3.</span> <span class="nav-text">黄皮书里的形式化方法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#源码解析"><span class="nav-number">4.</span> <span class="nav-text">源码解析</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#typeinfo"><span class="nav-number">4.1.</span> <span class="nav-text">typeinfo</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#获取编码器，解码器"><span class="nav-number">4.1.1.</span> <span class="nav-text">获取编码器，解码器</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#序列化"><span class="nav-number">4.2.</span> <span class="nav-text">序列化</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#参考资料"><span class="nav-number">5.</span> <span class="nav-text">参考资料</span></a></li></ol></div>
+            
+          </div>
+          <div class="post-toc-indicator-bottom post-toc-indicator">
+            <i class="fa fa-angle-double-down"></i>
+          </div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy;  2015 - 
+  <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Frank</span>
+</div>
+
+<div class="powered-by">
+  由 <a class="theme-link" href="http://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Muse
+  </a>
+</div>
+
+
+
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+
+  
+
+
+
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+  <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
+
+  <script type="text/javascript" src="/vendors/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  <script type="text/javascript" src="/vendors/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  <script type="text/javascript" src="/vendors/velocity/velocity.min.js"></script>
+
+  <script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js"></script>
+
+  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=0.5.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=0.5.0"></script>
+
+
+
+  
+  
+
+  
+  
+<script type="text/javascript" src="/js/src/scrollspy.js?v=0.5.0"></script>
+
+<script type="text/javascript" id="sidebar.toc.highlight">
+  $(document).ready(function () {
+    var tocSelector = '.post-toc';
+    var $tocSelector = $(tocSelector);
+    var activeCurrentSelector = '.active-current';
+
+    $tocSelector
+      .on('activate.bs.scrollspy', function () {
+        var $currentActiveElement = $(tocSelector + ' .active').last();
+
+        removeCurrentActiveClass();
+        $currentActiveElement.addClass('active-current');
+
+        $tocSelector[0].scrollTop = $currentActiveElement.position().top;
+      })
+      .on('clear.bs.scrollspy', function () {
+        removeCurrentActiveClass();
+      });
+
+    function removeCurrentActiveClass () {
+      $(tocSelector + ' ' + activeCurrentSelector)
+        .removeClass(activeCurrentSelector.substring(1));
+    }
+
+    function processTOC () {
+      getTOCMaxHeight();
+      toggleTOCOverflowIndicators();
+    }
+
+    function getTOCMaxHeight () {
+      var height = $('.sidebar').height() -
+                   $tocSelector.position().top -
+                   $('.post-toc-indicator-bottom').height();
+
+      $tocSelector.css('height', height);
+
+      return height;
+    }
+
+    function toggleTOCOverflowIndicators () {
+      tocOverflowIndicator(
+        '.post-toc-indicator-top',
+        $tocSelector.scrollTop() > 0 ? 'show' : 'hide'
+      );
+
+      tocOverflowIndicator(
+        '.post-toc-indicator-bottom',
+        $tocSelector.scrollTop() >= $tocSelector.find('ol').height() - $tocSelector.height() ? 'hide' : 'show'
+      )
+    }
+
+    $(document).on('sidebar.motion.complete', function () {
+      processTOC();
+    });
+
+    $('body').scrollspy({ target: tocSelector });
+    $(window).on('resize', function () {
+      if ( $('.sidebar').hasClass('sidebar-active') ) {
+        processTOC();
+      }
+    });
+
+    onScroll($tocSelector);
+
+    function onScroll (element) {
+      element.on('mousewheel DOMMouseScroll', function (event) {
+          var oe = event.originalEvent;
+          var delta = oe.wheelDelta || -oe.detail;
+
+          this.scrollTop += ( delta < 0 ? 1 : -1 ) * 30;
+          event.preventDefault();
+
+          toggleTOCOverflowIndicators();
+      });
+    }
+
+    function tocOverflowIndicator (indicator, action) {
+      var $indicator = $(indicator);
+      var opacity = action === 'show' ? 1 : 0;
+      $indicator.velocity ?
+        $indicator.velocity('stop').velocity({
+          opacity: opacity
+        }, { duration: 100 }) :
+        $indicator.stop().animate({
+          opacity: opacity
+        }, 100);
+    }
+
+  });
+</script>
+
+<script type="text/javascript" id="sidebar.nav">
+  $(document).ready(function () {
+    var html = $('html');
+    var TAB_ANIMATE_DURATION = 200;
+    var hasVelocity = $.isFunction(html.velocity);
+
+    $('.sidebar-nav li').on('click', function () {
+      var item = $(this);
+      var activeTabClassName = 'sidebar-nav-active';
+      var activePanelClassName = 'sidebar-panel-active';
+      if (item.hasClass(activeTabClassName)) {
+        return;
+      }
+
+      var currentTarget = $('.' + activePanelClassName);
+      var target = $('.' + item.data('target'));
+
+      hasVelocity ?
+        currentTarget.velocity('transition.slideUpOut', TAB_ANIMATE_DURATION, function () {
+          target
+            .velocity('stop')
+            .velocity('transition.slideDownIn', TAB_ANIMATE_DURATION)
+            .addClass(activePanelClassName);
+        }) :
+        currentTarget.animate({ opacity: 0 }, TAB_ANIMATE_DURATION, function () {
+          currentTarget.hide();
+          target
+            .stop()
+            .css({'opacity': 0, 'display': 'block'})
+            .animate({ opacity: 1 }, TAB_ANIMATE_DURATION, function () {
+              currentTarget.removeClass(activePanelClassName);
+              target.addClass(activePanelClassName);
+            });
+        });
+
+      item.siblings().removeClass(activeTabClassName);
+      item.addClass(activeTabClassName);
+    });
+
+    $('.post-toc a').on('click', function (e) {
+      e.preventDefault();
+      var targetSelector = NexT.utils.escapeSelector(this.getAttribute('href'));
+      var offset = $(targetSelector).offset().top;
+      hasVelocity ?
+        html.velocity('stop').velocity('scroll', {
+          offset: offset  + 'px',
+          mobileHA: false
+        }) :
+        $('html, body').stop().animate({
+          scrollTop: offset
+        }, 500);
+    });
+
+    // Expand sidebar on post detail page by default, when post has a toc.
+    NexT.motion.middleWares.sidebar = function () {
+      var $tocContent = $('.post-toc-content');
+
+      if (CONFIG.scheme !== 'Pisces' && (CONFIG.sidebar.display === 'post' || CONFIG.sidebar.display === 'always')) {
+        if ($tocContent.length > 0 && $tocContent.html().trim().length > 0) {
+          NexT.utils.displaySidebar();
+        }
+      }
+    };
+  });
+</script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=0.5.0"></script>
+
+
+
+  
+
+
+
+  
+
+    <script type="text/javascript">
+      var disqus_shortname = 'knarfeh';
+      var disqus_identifier = '2018/03/10/go-ethereum 源码笔记（rlp 模块-序列化与反序列化）/';
+      var disqus_title = 'go-ethereum 源码笔记（rlp 模块-序列化与反序列化）';
+      var disqus_url = 'http://knarfeh.github.io/2018/03/10/go-ethereum 源码笔记（rlp 模块-序列化与反序列化）/';
+
+      function run_disqus_script(disqus_script){
+        var dsq = document.createElement('script');
+        dsq.type = 'text/javascript';
+        dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/' + disqus_script;
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+      }
+
+      run_disqus_script('count.js');
+      
+        run_disqus_script('embed.js');
+      
+    </script>
+  
+
+
+
+  
+  
+  
+  <script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+      }
+    });
+  </script>
+
+  <script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+      var all = MathJax.Hub.getAllJax(), i;
+      for (i=0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';
+      }
+    });
+  </script>
+
+  
+    <script type="text/javascript" src="http://cdn.staticfile.org/mathjax/2.4.0/MathJax.js"></script>
+    <script type="text/javascript" src="http://cdn.staticfile.org/mathjax/2.4.0/config/TeX-AMS-MML_HTMLorMML.js"></script>
+  
+
+
+  
+
+
+</body>
+</html>
