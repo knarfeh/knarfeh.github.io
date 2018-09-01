@@ -67,7 +67,8 @@
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="http://7xi5vu.com1.z0.glb.clouddn.com/en-transaction-propagation.png">
 <meta property="og:image" content="http://7xi5vu.com1.z0.glb.clouddn.com/bitcoin_block_from_bitcoinpaper.png">
-<meta property="og:updated_time" content="2018-08-18T07:33:20.075Z">
+<meta property="og:image" content="http://7xi5vu.com1.z0.glb.clouddn.com/ethblockchain_full.png">
+<meta property="og:updated_time" content="2018-08-29T07:57:02.466Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="go-ethereum 源码笔记（基础知识）">
 <meta name="twitter:description" content="本篇将梳理以太坊的基本概念，说明一些值得注意的地方，这里不会讲解比特币的原理，代码，但会介绍以太坊与比特币的差异，所以最好看过比特币的论文，对比特币的基本原理、实现有所了解。这一篇将以太坊的白皮书作为重要参考，可以看做是以太坊白皮书的概述。以太坊的白皮书是一个非常好的学习资料，它在介绍以太坊前分析了比特币存在的问题，因此我们可以通过这份白皮书了解整个加密货币的生态。">
@@ -377,7 +378,8 @@
 <p>以太坊使用状态（state）的概念来存储一系列账户，每个账户有自己的余额以及特定数据（代码或内部存储），如果交易发起方有足够余额支付交易费用，则交易有效，发起方账户扣除相应金额，接收账户增加余额。账户还用于智能合约的创建和执行，可以通过转账来触发接收账户对应的代码的执行，该账户的内部存储可能会发生变化，同时也可以创建额外信息发给其他账户，触发新的交易。从这一点可以看到，dapp 需要跟用户状态进行复杂的交互，通过 UTXO 实现会比较难满足需求。</p>
 <h3 id="区块链设计的不同"><a href="#区块链设计的不同" class="headerlink" title="区块链设计的不同"></a>区块链设计的不同</h3><h4 id="比特币"><a href="#比特币" class="headerlink" title="比特币"></a>比特币</h4><p>比特币的区块包括区块头和区块体两部分，区块头封装了前一个区块的哈希值、时间戳，随机数，默克尔树根值和当前区块的哈希值，区块体中包括交易计数和交易详情。区块结构如下图（摘自 Bitcoin 白皮书）：</p>
 <p><img src="http://7xi5vu.com1.z0.glb.clouddn.com/bitcoin_block_from_bitcoinpaper.png" alt="bitcoin_block"></p>
-<h4 id="以太坊-1"><a href="#以太坊-1" class="headerlink" title="以太坊"></a>以太坊</h4><p>以太坊在比特币区块链基础上做了一些调整，区块主要由区块头、交易列表和叔区块头三部分组成。区块头包括父区块的哈希值、叔区块的哈希值、状态树根哈希值、交易树根哈希值、收据树根哈希值、时间戳、随机数。</p>
+<h4 id="以太坊-1"><a href="#以太坊-1" class="headerlink" title="以太坊"></a>以太坊</h4><p>以太坊在比特币区块链基础上做了一些调整，区块主要由区块头、交易列表和叔区块头三部分组成。区块头包括父区块的哈希值、叔区块的哈希值、状态树根哈希值、交易树根哈希值、收据树根哈希值、时间戳、随机数，比较特别的是采用了改进的默克尔树，压缩前缀树的结构 MPT，这部分在 <a href="https://knarfeh.com/2018/03/10/go-ethereum%20%E6%BA%90%E7%A0%81%E7%AC%94%E8%AE%B0%EF%BC%88trie%20%E6%A8%A1%E5%9D%97-MPT%20%E7%9A%84%E5%AE%9E%E7%8E%B0%EF%BC%89/" target="_blank" rel="external">go-ethereum 源码笔记（trie 模块-MPT 的实现）</a> 会进一步探讨。区块结构如下图（摘自 <a href="https://blog.ethereum.org/2015/11/15/merkling-in-ethereum/" target="_blank" rel="external">Ethereum 博客</a>）：</p>
+<p><img src="http://7xi5vu.com1.z0.glb.clouddn.com/ethblockchain_full.png" alt="ethereum_block"></p>
 <h3 id="PoW-机制的不同"><a href="#PoW-机制的不同" class="headerlink" title="PoW 机制的不同"></a>PoW 机制的不同</h3><p>PoW，Proof of Work 的缩写，即工作量证明，又称挖矿，目前比特币，以太坊都基于 PoW 算法实现共识机制，即根据挖矿的贡献决定货币的分配。</p>
 <h4 id="比特币-1"><a href="#比特币-1" class="headerlink" title="比特币"></a>比特币</h4><p>比特币的 PoW 的过程，需要不断调整 Nonce 值，对区块头做双重 SHA256 哈希运算，使得结果满足给定数量前导0的哈希值的过程。其中前导0的个数，取决于挖矿难度，前导 0 的个数越多，挖矿难度越大。</p>
 <h4 id="以太坊-2"><a href="#以太坊-2" class="headerlink" title="以太坊"></a>以太坊</h4><p>以太坊的 PoW 算法可以表示为如下公式：$RAND(h, n) &lt;= M/d$<br>其中 $RAND()$ 表示一个概念函数，代表一系列的复杂运算，h 和 n 为输入，即区块 Header 的哈希、以及 Header 中的 Nonce。M 表示一个极大的数，此处使用 $2^{256}-1$。d 为区块难度，即Header 中的 Difficulty。在 h 和 n 确定的情况下，d 越大，挖矿难度越大。需不断变更 Nonce，使$RAND(h, n)$ 满足 $RAND(h, n) &lt;= M / d$ 完成 PoW。</p>

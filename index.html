@@ -348,6 +348,104 @@
             
               
                 
+                <a class="post-title-link" href="/2018/03/10/go-ethereum 源码笔记（trie 模块-MPT 的实现）/" itemprop="url">
+                  go-ethereum 源码笔记（trie 模块-MPT 的实现）
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2018-03-10T22:35:02+08:00" content="2018-03-10">
+              2018-03-10
+            </time>
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2018/03/10/go-ethereum 源码笔记（trie 模块-MPT 的实现）/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2018/03/10/go-ethereum 源码笔记（trie 模块-MPT 的实现）/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <p>默克尔树是区块链的基础结构，在比特币里它用来存放区块内的所有交易，用一个数字指纹（hash）来表示整个交易集合，在以太坊中，提出了一种新的数据结构叫做 Merkle Patricia Tree（常用翻译：默克尔帕特里夏树，缩写是 MPT），在以太坊中它用来组织管理账户，交易，收据等数据。从名字或许可以看出来它是一个组合名字，它实际上是默克尔树和帕特里夏树两种数据结构的结合，在阅读 trie 模块之前，读者应该对默克尔树，帕特里夏树这两个数据结构有一定了解，这些是阅读源代码的基础知识，这里只做概述。下面我们先分别介绍这两种数据结构。</p>
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2018/03/10/go-ethereum 源码笔记（trie 模块-MPT 的实现）/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
                 <a class="post-title-link" href="/2018/03/10/go-ethereum 源码笔记（rlp 模块-序列化与反序列化）/" itemprop="url">
                   go-ethereum 源码笔记（rlp 模块-序列化与反序列化）
                 </a>
@@ -894,104 +992,6 @@
 <p>geth 版本：master 分支，a1eb9c7d13240fd250866219a502d0cdc9924e06</p>
           <div class="post-more-link text-center">
             <a class="btn" href="/2018/03/10/go-ethereum 源码笔记（概览）/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2018/03/10/go-ethereum 源码笔记（trie 模块-MPT 的实现）/" itemprop="url">
-                  go-ethereum 源码笔记（trie 模块-MPT 的实现）
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2018-03-10T22:34:56+08:00" content="2018-03-10">
-              2018-03-10
-            </time>
-          </span>
-
-          
-
-          
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2018/03/10/go-ethereum 源码笔记（trie 模块-MPT 的实现）/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2018/03/10/go-ethereum 源码笔记（trie 模块-MPT 的实现）/" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <p>默克尔树是区块链的基础结构，在比特币里它用来存放区块内的所有交易，用一个数字指纹（hash）来表示整个交易集合，在以太坊中，提出了一种新的数据结构叫做 Merkle Patricia Tree（常用翻译：默克尔帕特里夏树，缩写是 MPT），在以太坊中它用来组织管理账户，交易，收据等数据。从名字或许可以看出来它是一个组合名字，它实际上是默克尔树和帕特里夏树两种数据结构的结合，在阅读 trie 模块之前，读者应该对默克尔树，帕特里夏树这两个数据结构有一定了解，这些是阅读源代码的基础知识，这里只做概述。下面我们先分别介绍这两种数据结构。</p>
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2018/03/10/go-ethereum 源码笔记（trie 模块-MPT 的实现）/#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
