@@ -65,7 +65,7 @@
 <meta property="og:site_name" content="Frank&#39;s Notes">
 <meta property="og:description" content="长轮询（long polling） Webhook     简述 API 中的 getUpdates 方法， 如果 Bot 上次标记完成后 没有收到信息，或消息已保存超过24小时，该方法会保持等待直到超时，在等待期间收到信息将会立刻返回结果；反之，该方法会返回一组包含了24小时内所有未标记信息的 Updates。利用 offset 参数可以将部分消息标记为已处理。 利用  setWebho">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-08-30T11:59:27.052Z">
+<meta property="og:updated_time" content="2018-09-03T09:55:22.893Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Telegram Bot 的长轮询 VS Webhook">
 <meta name="twitter:description" content="长轮询（long polling） Webhook     简述 API 中的 getUpdates 方法， 如果 Bot 上次标记完成后 没有收到信息，或消息已保存超过24小时，该方法会保持等待直到超时，在等待期间收到信息将会立刻返回结果；反之，该方法会返回一组包含了24小时内所有未标记信息的 Updates。利用 offset 参数可以将部分消息标记为已处理。 利用  setWebho">
@@ -300,7 +300,7 @@
 </tr>
 </tbody>
 </table>
-<p>结论：如果追求开发速度，并且不需要考虑服务的高可用性，在可预知用户量不会增长过快的情况下，建议使用长轮询的方式，未来用户增长比较多再改也来得及，否则用 Webhook 的方式。如果对交互体验要求高的话，最好采用 webhook 的方式。</p>
+<p>结论：如果追求开发速度，并且不需要考虑服务的高可用性，在可预知用户量不会增长过快的情况下，建议使用长轮询的方式，未来用户增长比较多再改也来得及，否则用 Webhook 的方式。如果对交互体验要求高的话，最好采用 Webhook 的方式。</p>
 
       
     </div>
