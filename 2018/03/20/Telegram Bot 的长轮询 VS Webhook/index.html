@@ -57,18 +57,18 @@
 
 
 
-<meta name="description" content="长轮询（long polling） Webhook     简述 API 中的 getUpdates 方法， 如果 Bot 上次标记完成后 没有收到信息，或消息已保存超过24小时，该方法会保持等待直到超时，在等待期间收到信息将会立刻返回结果；反之，该方法会返回一组包含了24小时内所有未标记信息的 Updates。利用 offset 参数可以将部分消息标记为已处理。 利用  setWebho">
+<meta name="description" content="长轮询（long polling） Webhook     简述 利用 API 中的 getUpdates 方法， 如果 Bot 上次标记完成后没有收到信息，或消息已保存超过24小时，该方法会保持等待直到超时，在等待期间收到信息将会立刻返回结果；反之，该方法会返回一组包含了24小时内所有未标记信息的 Updates。利用 offset 参数可以将部分消息标记为已处理。 利用  setWeb">
 <meta name="keywords" content="Telegram,robot">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Telegram Bot 的长轮询 VS Webhook">
 <meta property="og:url" content="http://knarfeh.github.io/2018/03/20/Telegram Bot 的长轮询 VS Webhook/index.html">
 <meta property="og:site_name" content="Frank&#39;s Notes">
-<meta property="og:description" content="长轮询（long polling） Webhook     简述 API 中的 getUpdates 方法， 如果 Bot 上次标记完成后 没有收到信息，或消息已保存超过24小时，该方法会保持等待直到超时，在等待期间收到信息将会立刻返回结果；反之，该方法会返回一组包含了24小时内所有未标记信息的 Updates。利用 offset 参数可以将部分消息标记为已处理。 利用  setWebho">
+<meta property="og:description" content="长轮询（long polling） Webhook     简述 利用 API 中的 getUpdates 方法， 如果 Bot 上次标记完成后没有收到信息，或消息已保存超过24小时，该方法会保持等待直到超时，在等待期间收到信息将会立刻返回结果；反之，该方法会返回一组包含了24小时内所有未标记信息的 Updates。利用 offset 参数可以将部分消息标记为已处理。 利用  setWeb">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-09-03T09:55:22.893Z">
+<meta property="og:updated_time" content="2018-09-04T16:58:36.856Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Telegram Bot 的长轮询 VS Webhook">
-<meta name="twitter:description" content="长轮询（long polling） Webhook     简述 API 中的 getUpdates 方法， 如果 Bot 上次标记完成后 没有收到信息，或消息已保存超过24小时，该方法会保持等待直到超时，在等待期间收到信息将会立刻返回结果；反之，该方法会返回一组包含了24小时内所有未标记信息的 Updates。利用 offset 参数可以将部分消息标记为已处理。 利用  setWebho">
+<meta name="twitter:description" content="长轮询（long polling） Webhook     简述 利用 API 中的 getUpdates 方法， 如果 Bot 上次标记完成后没有收到信息，或消息已保存超过24小时，该方法会保持等待直到超时，在等待期间收到信息将会立刻返回结果；反之，该方法会返回一组包含了24小时内所有未标记信息的 Updates。利用 offset 参数可以将部分消息标记为已处理。 利用  setWeb">
 
 
 
@@ -280,7 +280,7 @@
 <tbody>
 <tr>
 <td>简述</td>
-<td>API 中的 getUpdates 方法， 如果 Bot <strong>上次标记完成后</strong> 没有收到信息，或消息已保存超过24小时，该方法会保持等待直到超时，在等待期间收到信息将会立刻返回结果；反之，该方法会返回一组包含了24小时内所有未标记信息的 Updates。利用 offset 参数可以将部分消息标记为已处理。</td>
+<td>利用 API 中的 getUpdates 方法， 如果 Bot <strong>上次标记完成后</strong>没有收到信息，或消息已保存超过24小时，该方法会保持等待直到超时，在等待期间收到信息将会立刻返回结果；反之，该方法会返回一组包含了24小时内所有未标记信息的 Updates。利用 offset 参数可以将部分消息标记为已处理。</td>
 <td>利用  setWebhook 方法告知服务器一个 url， 服务器将会在收到新消息时，通过 POST 方法将 json 格式的 Update 对象发送到指定的 url 地址。如果发送失败，Telegram 会重试一定次数。这个 url 必须是 https 的。</td>
 </tr>
 <tr>
@@ -290,7 +290,7 @@
 </tr>
 <tr>
 <td>开发效率</td>
-<td>不需要搭建服务器，处理 https 证书，有一个机器人的 token 就可以在本地开发</td>
+<td>不需要搭建服务器，不需要处理 https 证书，有一个机器人的 token 就可以在本地开发</td>
 <td>在不搭建服务器的情况下，可以用 google script 开发，但只能用类 Javascript 语言。如果要用其他语言开发，需搭建服务器，需 https</td>
 </tr>
 <tr>
@@ -326,8 +326,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2018/03/10/go-ethereum 源码笔记（trie 模块-MPT 的实现）/" rel="next" title="go-ethereum 源码笔记（trie 模块-MPT 的实现）">
-                <i class="fa fa-chevron-left"></i> go-ethereum 源码笔记（trie 模块-MPT 的实现）
+              <a href="/2018/03/10/go-ethereum 源码笔记（accounts, transaction 模块）/" rel="next" title="go-ethereum 源码笔记（accounts, transaction 模块）">
+                <i class="fa fa-chevron-left"></i> go-ethereum 源码笔记（accounts, transaction 模块）
               </a>
             
           </div>
@@ -407,7 +407,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">176</span>
+              <span class="site-state-item-count">177</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
