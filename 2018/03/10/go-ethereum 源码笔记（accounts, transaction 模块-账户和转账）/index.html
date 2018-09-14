@@ -1,0 +1,967 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  <link href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css"/>
+
+
+
+
+  <link href="//fonts.googleapis.com/css?family=Lato:300,400,700,400italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+
+
+
+<link href="/vendors/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=0.5.0" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="cryptocurrency,Golang,geth," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=0.5.0" />
+
+
+
+
+
+
+<meta name="description" content="这一篇分析 geth 中与账户和转账相关的源代码。 交易是以太坊里的一个很核心的概念，它不仅仅体现在价值的转移上。我们知道智能合约是以太坊的一个重大创新，而智能合约的执行是依靠交易来触发的，可以这么说，在以太坊中，大部分场景的状态转换都依靠交易实现，而交易又与账户紧密相关，所以这一篇我们将账户，转账这两个模块结合在一起来探讨。">
+<meta name="keywords" content="cryptocurrency,Golang,geth">
+<meta property="og:type" content="article">
+<meta property="og:title" content="go-ethereum 源码笔记（accounts, transaction 模块-账户和转账）">
+<meta property="og:url" content="http://knarfeh.github.io/2018/03/10/go-ethereum 源码笔记（accounts, transaction 模块-账户和转账）/index.html">
+<meta property="og:site_name" content="Frank&#39;s Notes">
+<meta property="og:description" content="这一篇分析 geth 中与账户和转账相关的源代码。 交易是以太坊里的一个很核心的概念，它不仅仅体现在价值的转移上。我们知道智能合约是以太坊的一个重大创新，而智能合约的执行是依靠交易来触发的，可以这么说，在以太坊中，大部分场景的状态转换都依靠交易实现，而交易又与账户紧密相关，所以这一篇我们将账户，转账这两个模块结合在一起来探讨。">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2018-09-10T00:38:48.143Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="go-ethereum 源码笔记（accounts, transaction 模块-账户和转账）">
+<meta name="twitter:description" content="这一篇分析 geth 中与账户和转账相关的源代码。 交易是以太坊里的一个很核心的概念，它不仅仅体现在价值的转移上。我们知道智能合约是以太坊的一个重大创新，而智能合约的执行是依靠交易来触发的，可以这么说，在以太坊中，大部分场景的状态转换都依靠交易实现，而交易又与账户紧密相关，所以这一篇我们将账户，转账这两个模块结合在一起来探讨。">
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    scheme: 'Muse',
+    sidebar: {"display":"hide"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: 0,
+      author: '博主'
+    }
+  };
+</script>
+
+  <title> go-ethereum 源码笔记（accounts, transaction 模块-账户和转账） | Frank's Notes </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+            (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+          m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-75002639-1', 'auto');
+  ga('send', 'pageview');
+</script>
+
+
+
+
+
+
+
+
+
+  
+  
+
+  <div class="container one-collumn  page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">Frank's Notes</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle"></p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-home fa-fw"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-archive fa-fw"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-tags fa-fw"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-twitter">
+          <a href="/twitter" rel="section">
+            
+              <i class="menu-item-icon fa fa-coffee fa-fw"></i> <br />
+            
+            Twitter
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                go-ethereum 源码笔记（accounts, transaction 模块-账户和转账）
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2018-03-10T22:35:03+08:00" content="2018-03-10">
+              2018-03-10
+            </time>
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2018/03/10/go-ethereum 源码笔记（accounts, transaction 模块-账户和转账）/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2018/03/10/go-ethereum 源码笔记（accounts, transaction 模块-账户和转账）/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>这一篇分析 <code>geth</code> 中与账户和转账相关的源代码。</p>
+<p>交易是以太坊里的一个很核心的概念，它不仅仅体现在价值的转移上。我们知道智能合约是以太坊的一个重大创新，而智能合约的执行是依靠交易来触发的，可以这么说，在以太坊中，大部分场景的状态转换都依靠交易实现，而交易又与账户紧密相关，所以这一篇我们将账户，转账这两个模块结合在一起来探讨。<br><a id="more"></a></p>
+<h2 id="基本概念"><a href="#基本概念" class="headerlink" title="基本概念"></a>基本概念</h2><p>以太坊引入账户状态概念取代比特币 UTXO 模型。账户以地址为索引，地址是公钥的最后20字节。</p>
+<p>以太坊中有两类账户，一类是外部账户，一类是合约账户。每个账户都有一个与之关联的账户状态和一个10字节地址，都可以用来存储以太币。</p>
+<ul>
+<li>外部账户（EOA）：由人创建，用私钥控制，没有代码与之关联，地址由公钥决定。私钥可用于对交易签名从而主动向其他账户发起交易进行消息传递。</li>
+<li>合约账户：外部账户创建，由合约代码控制，有代码与之关联，其地址由合约创造者地址和该地址发出过的交易数量 nonce 共同决定。不能主动向其他账户发起交易，但可以『响应』其他账户进行消息调用。</li>
+</ul>
+<h3 id="生成外部账户"><a href="#生成外部账户" class="headerlink" title="生成外部账户"></a>生成外部账户</h3><p>生成一个账户地址大致是3步：</p>
+<ol>
+<li>设置账户秘钥（根据用户密码等信息）</li>
+<li>通过 secp256k1 椭圆曲线密码算法，由私钥生成对应的公钥</li>
+<li>根据公钥得到相应的账户地址</li>
+</ol>
+<h3 id="私钥的三种形态"><a href="#私钥的三种形态" class="headerlink" title="私钥的三种形态"></a>私钥的三种形态</h3><ul>
+<li>Private Key，随机生成的256位二进制数字</li>
+<li>Keystore &amp; Password，私钥和公钥以加密的方式保存一份 JSON 文件，存在 keystore 子目录下，这份 JSON 文件就是 Keystore，用户需要保存 Keystore，以及创建钱包时设置的密码。</li>
+<li>Memonic code，由 <a href="https://github.com/bitcoin/bips/blob/master/bip-0039.mediawiki" target="_blank" rel="external">bip 39</a> 提出，随机生成12~24个比较容易记住的单词，通过 PBKDF2 和 HMAC-SHA512 函数创建随机种子，再生成钱包。</li>
+</ul>
+<h3 id="外部账户和合约账户的区别"><a href="#外部账户和合约账户的区别" class="headerlink" title="外部账户和合约账户的区别"></a>外部账户和合约账户的区别</h3><p>外部账户可以通过创建以及用自己的私钥对交易进行签名，来发送消息给另一个外部账户或合约账户，在两个外部账户之间传送的消息只是一个简单的价值转移，但从外部账户到合约账户的消息会激活合约账户的代码，允许它执行各种动作(包括转移代币，写入内部存储，挖出新代币，执行运算，创建一个新合约等)。合约账户不能自己发起交易，它只能在接收到一个消息（可以来自外部账户或合约账户）之后，为响应该消息触发一个交易。</p>
+<h3 id="交易相关的基本概念"><a href="#交易相关的基本概念" class="headerlink" title="交易相关的基本概念"></a>交易相关的基本概念</h3><p>交易是指存储一条从外部账户发送到区块链上另一个账户的消息的签名数据包，它可以是以太币的转账，也可以是包含智能合约代码的消息。</p>
+<p>交易有3种类型。</p>
+<ol>
+<li>转账交易，从一个账户向另一个账户发送以太币</li>
+<li>创建智能合约的交易，将合约部署到区块链上。</li>
+<li>执行智能合约，执行已经部署在区块链上的智能合约。</li>
+</ol>
+<h3 id="转账流程"><a href="#转账流程" class="headerlink" title="转账流程"></a>转账流程</h3><ul>
+<li>用户输入转出的地址，转入的地址和转出的金额</li>
+<li>系统通过转出地址私钥对转账信息进行签名，以确保这笔交易是本人进行的</li>
+<li>系统对交易信息进行确认</li>
+<li>将交易加入到本地交易池</li>
+<li>将交易信息广播到其他节点</li>
+</ul>
+<h2 id="数据结构"><a href="#数据结构" class="headerlink" title="数据结构"></a>数据结构</h2><h3 id="账户（在-accounts-accounts-go-中定义）"><a href="#账户（在-accounts-accounts-go-中定义）" class="headerlink" title="账户（在 accounts/accounts.go 中定义）"></a>账户（在 accounts/accounts.go 中定义）</h3><figure class="highlight elm"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">type</span> <span class="type">Account</span> struct &#123;</div><div class="line">	<span class="type">Address</span> common.<span class="type">Address</span> `json:"address"`</div><div class="line">	<span class="type">URL</span>     <span class="type">URL</span>            `json:"url"`</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h3 id="交易相关的数据结构"><a href="#交易相关的数据结构" class="headerlink" title="交易相关的数据结构"></a>交易相关的数据结构</h3><p>交易的数据结构在 <code>core/types/transaction.go</code> 中定义。</p>
+<figure class="highlight groovy"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line">type Transaction struct &#123;</div><div class="line">	data txdata</div><div class="line">	hash atomic.Value</div><div class="line">	size atomic.Value</div><div class="line">	from atomic.Value</div><div class="line">&#125;</div><div class="line"></div><div class="line">type txdata struct &#123;</div><div class="line">	AccountNonce uint64          `<span class="string">json:</span><span class="string">"nonce"</span>    <span class="string">gencodec:</span><span class="string">"required"</span>`</div><div class="line">	Price        *big.Int        `<span class="string">json:</span><span class="string">"gasPrice"</span> <span class="string">gencodec:</span><span class="string">"required"</span>`</div><div class="line">	GasLimit     uint64          `<span class="string">json:</span><span class="string">"gas"</span>      <span class="string">gencodec:</span><span class="string">"required"</span>`</div><div class="line">	Recipient    *common.Address `<span class="string">json:</span><span class="string">"to"</span>       <span class="string">rlp:</span><span class="string">"nil"</span>`</div><div class="line">	Amount       *big.Int        `<span class="string">json:</span><span class="string">"value"</span>    <span class="string">gencodec:</span><span class="string">"required"</span>`</div><div class="line">	Payload      []<span class="keyword">byte</span>          `<span class="string">json:</span><span class="string">"input"</span>    <span class="string">gencodec:</span><span class="string">"required"</span>`</div><div class="line">	V *big.Int `<span class="string">json:</span><span class="string">"v"</span> <span class="string">gencodec:</span><span class="string">"required"</span>`</div><div class="line">	R *big.Int `<span class="string">json:</span><span class="string">"r"</span> <span class="string">gencodec:</span><span class="string">"required"</span>`</div><div class="line">	S *big.Int `<span class="string">json:</span><span class="string">"s"</span> <span class="string">gencodec:</span><span class="string">"required"</span>`</div><div class="line">	Hash *common.Hash `<span class="string">json:</span><span class="string">"hash"</span> <span class="string">rlp:</span><span class="string">"-"</span>`</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p><code>Transaction</code> 结构体中，实际上只有一个 <code>data</code> 是有效字段，另外3个 <code>hash</code>, <code>size</code>, <code>from</code> 是用做缓存的。<code>txdata</code> 结构体中没有交易发送者，因为发起者可以通过签名数据获得。<code>txdata</code> 结构体其他字段的含义可以在下表中查看：</p>
+<table>
+<thead>
+<tr>
+<th><strong>字段</strong></th>
+<th><strong>描述</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>AccountNonce</td>
+<td>交易发送者已经发送交易的次数</td>
+</tr>
+<tr>
+<td>Price</td>
+<td>该交易的 gas 费用</td>
+</tr>
+<tr>
+<td>GasLimit</td>
+<td>本次交易允许消耗 gas 的最大数量</td>
+</tr>
+<tr>
+<td>Recipient</td>
+<td>交易接收者</td>
+</tr>
+<tr>
+<td>Amount</td>
+<td>交易的以太坊数量</td>
+</tr>
+<tr>
+<td>Payload</td>
+<td>交易携带的数据</td>
+</tr>
+<tr>
+<td>V, R, S</td>
+<td>交易的签名数据</td>
+</tr>
+</tbody>
+</table>
+<h2 id="代码分析"><a href="#代码分析" class="headerlink" title="代码分析"></a>代码分析</h2><h3 id="接口定义"><a href="#接口定义" class="headerlink" title="接口定义"></a>接口定义</h3><p><code>accounts</code> 模块实现以太坊客户端钱包，账户管理。智能合约的 ABI 代码也在 <code>accounts/abi</code> 目录下。钱包的接口在 <code>accounts/accounts.go</code> 中定义，目前有两种该接口实现，一个是 keyStore，一个是 usbwallet。</p>
+<figure class="highlight elm"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">type</span> <span class="type">Wallet</span> interface &#123;</div><div class="line">	<span class="type">URL</span>() <span class="type">URL</span></div><div class="line">	<span class="type">Status</span>() (string, error)</div><div class="line">	<span class="type">Open</span>(passphrase string) error</div><div class="line">	<span class="type">Close</span>() error</div><div class="line">	<span class="type">Accounts</span>() []<span class="type">Account</span></div><div class="line">	<span class="type">Contains</span>(account <span class="type">Account</span>) bool</div><div class="line">	<span class="type">Derive</span>(path <span class="type">DerivationPath</span>, pin bool) (<span class="type">Account</span>, error)</div><div class="line">	<span class="type">SelfDerive</span>(base <span class="type">DerivationPath</span>, chain ethereum.<span class="type">ChainStateReader</span>)</div><div class="line">	<span class="type">SignHash</span>(account <span class="type">Account</span>, hash []byte) ([]byte, error)</div><div class="line">	<span class="type">SignTx</span>(account <span class="type">Account</span>, tx *types.<span class="type">Transaction</span>, chainID *big.<span class="type">Int</span>) (*types.<span class="type">Transaction</span>, error)</div><div class="line">	<span class="type">SignHashWithPassphrase</span>(account <span class="type">Account</span>, passphrase string, hash []byte) ([]byte, error)</div><div class="line">	<span class="type">SignTxWithPassphrase</span>(account <span class="type">Account</span>, passphrase string, tx *types.<span class="type">Transaction</span>, chainID *big.<span class="type">Int</span>) (*types.<span class="type">Transaction</span>, error)</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<table>
+<thead>
+<tr>
+<th>接口</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>URL()</td>
+<td>获取钱包可以访问的规范路径。它会被用来给所有的后端钱包进行排序</td>
+</tr>
+<tr>
+<td>Status() (string, error)</td>
+<td>返回一个文本值标识当前钱包状态，同时返回一个 error 标识钱包遇到的任何错误。</td>
+</tr>
+<tr>
+<td>Open(passphrase string) error</td>
+<td>初始化对钱包实例的访问。</td>
+</tr>
+<tr>
+<td>Close() error</td>
+<td>释放由 Open 方法占用的任何资源</td>
+</tr>
+<tr>
+<td>Accounts() []Account</td>
+<td>获取钱包中签名的账户</td>
+</tr>
+<tr>
+<td>Contains(account Account) bool</td>
+<td>判断一个账户是否属于本钱包</td>
+</tr>
+<tr>
+<td>Derive(path DerivationPath, pin bool) (Account, error)</td>
+<td>尝试在指定派生路径上派生出分层确定性账户，如果 pin 为 true，派生账户添加到钱包的跟踪账户列表中。</td>
+</tr>
+<tr>
+<td>SelfDerive(base DerivationPath, chain ethereum.ChainStateReader)</td>
+<td>设置一个基本账户导出路径，从中钱包尝试发现非零账户，自动将其添加到跟踪账户列表中。</td>
+</tr>
+<tr>
+<td>SignHash(account Account, hash []byte) ([]byte, error)</td>
+<td>钱包需要额外验证才能签名时使用这个接口。</td>
+</tr>
+<tr>
+<td>SignTx(account Account, tx <em>types.Transaction, chainID </em>big.Int) (*types.Transaction, error)</td>
+<td>请求钱包对指定交易进行签名。</td>
+</tr>
+<tr>
+<td>SignHashWithPassphrase(account Account, passphrase string, hash []byte) ([]byte, error)</td>
+<td>请求钱包使用指定的 passphrase 给给定 hash 签名</td>
+</tr>
+<tr>
+<td>SignTxWithPassphrase(account Account, passphrase string, tx <em>types.Transaction, chainID </em>big.Int) (*types.Transaction, error)</td>
+<td>请求钱包使用给定 passphrase 给给定 transaction 签名。</td>
+</tr>
+</tbody>
+</table>
+<figure class="highlight elm"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">type</span> <span class="type">Backend</span> interface &#123;</div><div class="line">	<span class="type">Wallets</span>() []<span class="type">Wallet</span></div><div class="line">	<span class="type">Subscribe</span>(sink chan&lt;- <span class="type">WalletEvent</span>) event.<span class="type">Subscription</span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p><code>Backend</code> 接口是一个钱包 provider，它包含一个钱包列表，在检测到钱包开启或关闭时可以接收到通知，可以用来请求签名交易。其中 <code>Wallets()</code> 返回当前可用的钱包，按字母顺序排序，<code>Subscribe()</code> 创建异步订阅的方法，当钱包发生变动时通过 chan 接收消息。</p>
+<p>在 <code>accounts/manager.go</code> 中，定义了 <code>Manager</code> 结构体。</p>
+<figure class="highlight elm"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">type</span> <span class="type">Manager</span> struct &#123;</div><div class="line">	backends map[reflect.<span class="type">Type</span>][]<span class="type">Backend</span></div><div class="line">	updaters []event.<span class="type">Subscription</span></div><div class="line">	updates  chan <span class="type">WalletEvent</span></div><div class="line">	wallets  []<span class="type">Wallet</span></div><div class="line">	feed event.<span class="type">Feed</span></div><div class="line">	quit chan chan error</div><div class="line">	lock sync.<span class="type">RWMutex</span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p><code>Manager</code> 是管理账户的入口，可以与各种 <code>backends</code> 进行通信。</p>
+<p>其中 <code>backends</code> 是当前已注册的所有 <code>Backend</code>，<code>updaters</code> 是所有 <code>Backend</code> 的更新订阅器，<code>updates</code> 是 <code>Backend</code> 对应 <code>wallet</code> 事件更新的 chan，<code>wallets</code> 是所有已经注册的 <code>Backends</code> 的钱包的缓存，<code>feed</code> 用于钱包事件的通知，<code>quit</code> 用于退出的事件。<code>manager.go</code> 的代码没有什么很特别的地方，有兴趣的话可以自行查看源代码，这里只做概述。这里只挑几个典型的，下面讲解业务实例时会用到的方法。</p>
+<h3 id="NewManager"><a href="#NewManager" class="headerlink" title="NewManager"></a><code>NewManager</code></h3><figure class="highlight go"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">func</span> <span class="title">NewManager</span><span class="params">(backends ...Backend)</span> *<span class="title">Manager</span></span> &#123;</div><div class="line">	<span class="keyword">var</span> wallets []Wallet</div><div class="line">	<span class="keyword">for</span> _, backend := <span class="keyword">range</span> backends &#123;</div><div class="line">		wallets = merge(wallets, backend.Wallets()...)</div><div class="line">	&#125;</div><div class="line">	updates := <span class="built_in">make</span>(<span class="keyword">chan</span> WalletEvent, <span class="number">4</span>*<span class="built_in">len</span>(backends))</div><div class="line"></div><div class="line">	subs := <span class="built_in">make</span>([]event.Subscription, <span class="built_in">len</span>(backends))</div><div class="line">	<span class="keyword">for</span> i, backend := <span class="keyword">range</span> backends &#123;</div><div class="line">		subs[i] = backend.Subscribe(updates)</div><div class="line">	&#125;</div><div class="line">	am := &amp;Manager&#123;</div><div class="line">		backends: <span class="built_in">make</span>(<span class="keyword">map</span>[reflect.Type][]Backend),</div><div class="line">		updaters: subs,</div><div class="line">		updates:  updates,</div><div class="line">		wallets:  wallets,</div><div class="line">		quit:     <span class="built_in">make</span>(<span class="keyword">chan</span> <span class="keyword">chan</span> error),</div><div class="line">	&#125;</div><div class="line">	<span class="keyword">for</span> _, backend := <span class="keyword">range</span> backends &#123;</div><div class="line">		kind := reflect.TypeOf(backend)</div><div class="line">		am.backends[kind] = <span class="built_in">append</span>(am.backends[kind], backend)</div><div class="line">	&#125;</div><div class="line">	<span class="keyword">go</span> am.update()</div><div class="line">	<span class="keyword">return</span> am</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p><code>NewManager</code> 会将所有 <code>backends</code> 的 wallets 收集起来，获取所有的 <code>backends</code> 的时间订阅，然后根据这些参数创建新的 <code>manager</code>。</p>
+<h3 id="update"><a href="#update" class="headerlink" title="update()"></a><code>update()</code></h3><figure class="highlight stylus"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div></pre></td><td class="code"><pre><div class="line">func (am *Manager) update() &#123;</div><div class="line">	defer func() &#123;</div><div class="line">		am<span class="selector-class">.lock</span><span class="selector-class">.Lock</span>()</div><div class="line">		<span class="keyword">for</span> _, sub := range am<span class="selector-class">.updaters</span> &#123;</div><div class="line">			sub.Unsubscribe()</div><div class="line">		&#125;</div><div class="line">		am<span class="selector-class">.updaters</span> = nil</div><div class="line">		am<span class="selector-class">.lock</span><span class="selector-class">.Unlock</span>()</div><div class="line">	&#125;()</div><div class="line">	<span class="keyword">for</span> &#123;</div><div class="line">		select &#123;</div><div class="line">		case event := &lt;-am<span class="selector-class">.updates</span>:</div><div class="line">			am<span class="selector-class">.lock</span><span class="selector-class">.Lock</span>()</div><div class="line">			switch event<span class="selector-class">.Kind</span> &#123;</div><div class="line">			case WalletArrived:</div><div class="line">				am<span class="selector-class">.wallets</span> = merge(am<span class="selector-class">.wallets</span>, event.Wallet)</div><div class="line">			case WalletDropped:</div><div class="line">				am<span class="selector-class">.wallets</span> = drop(am<span class="selector-class">.wallets</span>, event.Wallet)</div><div class="line">			&#125;</div><div class="line">			am<span class="selector-class">.lock</span><span class="selector-class">.Unlock</span>()</div><div class="line"></div><div class="line">			am<span class="selector-class">.feed</span><span class="selector-class">.Send</span>(event)</div><div class="line"></div><div class="line">		case errc := &lt;-am<span class="selector-class">.quit</span>:</div><div class="line">			errc &lt;- nil</div><div class="line">			return</div><div class="line">		&#125;</div><div class="line">	&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p><code>update</code>在 <code>NewManager</code> 作为一个 <code>goroutine</code> 被调用，一直运行，监控所有 backend 触发的更新消息，发给 feed 用来进行进一步的处理。</p>
+<h3 id="Subscribe-sink-chan-lt-WalletEvent-event-Subscription"><a href="#Subscribe-sink-chan-lt-WalletEvent-event-Subscription" class="headerlink" title="Subscribe(sink chan&lt;- WalletEvent) event.Subscription"></a><code>Subscribe(sink chan&lt;- WalletEvent) event.Subscription</code></h3><figure class="highlight go"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">func</span> <span class="params">(am *Manager)</span> <span class="title">Subscribe</span><span class="params">(sink <span class="keyword">chan</span>&lt;- WalletEvent)</span> <span class="title">event</span>.<span class="title">Subscription</span></span> &#123;</div><div class="line">	<span class="keyword">return</span> am.feed.Subscribe(sink)</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>返回一个异步的消息订阅对象，当钱包发生变动时可以收到信息。</p>
+<h3 id="Find-account-Account-Wallet-error"><a href="#Find-account-Account-Wallet-error" class="headerlink" title="Find(account Account) (Wallet, error)"></a><code>Find(account Account) (Wallet, error)</code></h3><figure class="highlight go"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">func</span> <span class="params">(am *Manager)</span> <span class="title">Find</span><span class="params">(account Account)</span> <span class="params">(Wallet, error)</span></span> &#123;</div><div class="line">	am.lock.RLock()</div><div class="line">	<span class="keyword">defer</span> am.lock.RUnlock()</div><div class="line"></div><div class="line">	<span class="keyword">for</span> _, wallet := <span class="keyword">range</span> am.wallets &#123;</div><div class="line">		<span class="keyword">if</span> wallet.Contains(account) &#123;</div><div class="line">			<span class="keyword">return</span> wallet, <span class="literal">nil</span></div><div class="line">		&#125;</div><div class="line">	&#125;</div><div class="line">	<span class="keyword">return</span> <span class="literal">nil</span>, ErrUnknownAccount</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p><code>Find</code> 方法会对钱包进行遍历，找到某个账户的钱包，由于钱包中的账户是动态的增加或删除的，所以我们需要加锁。</p>
+<h3 id="创建账户"><a href="#创建账户" class="headerlink" title="创建账户"></a>创建账户</h3><p>如果是通过命令行创建账户，可以使用 <code>geth account new</code> 命令。</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">func</span> <span class="title">accountCreate</span><span class="params">(ctx *cli.Context)</span> <span class="title">error</span></span> &#123;</div><div class="line">	cfg := gethConfig&#123;Node: defaultNodeConfig()&#125;</div><div class="line">	<span class="keyword">if</span> file := ctx.GlobalString(configFileFlag.Name); file != <span class="string">""</span> &#123;</div><div class="line">		<span class="keyword">if</span> err := loadConfig(file, &amp;cfg); err != <span class="literal">nil</span> &#123;</div><div class="line">			utils.Fatalf(<span class="string">"%v"</span>, err)</div><div class="line">		&#125;</div><div class="line">	&#125;</div><div class="line">	utils.SetNodeConfig(ctx, &amp;cfg.Node)</div><div class="line">	scryptN, scryptP, keydir, err := cfg.Node.AccountConfig()</div><div class="line">	<span class="keyword">if</span> err != <span class="literal">nil</span> &#123;</div><div class="line">		utils.Fatalf(<span class="string">"Failed to read configuration: %v"</span>, err)</div><div class="line">	&#125;</div><div class="line">	password := getPassPhrase(<span class="string">"Your new account is locked with a password. Please give a password. Do not forget this password."</span>, <span class="literal">true</span>, <span class="number">0</span>, utils.MakePasswordList(ctx))</div><div class="line">	address, err := keystore.StoreKey(keydir, password, scryptN, scryptP)</div><div class="line">	<span class="keyword">if</span> err != <span class="literal">nil</span> &#123;</div><div class="line">		utils.Fatalf(<span class="string">"Failed to create account: %v"</span>, err)</div><div class="line">	&#125;</div><div class="line">	fmt.Printf(<span class="string">"Address: &#123;%x&#125;\n"</span>, address)</div><div class="line">	<span class="keyword">return</span> <span class="literal">nil</span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>逻辑很简单。首先获取配置信息，通过 <code>getPassPhrase</code> 获取密码后，通过 <code>keystore.StoreKey</code> 获得账户地址。</p>
+<p>在 <code>internal/ethapi/api.go</code> 中，也可以通过 <code>NewAccount</code> 获取新账户，这个 api 可以通过交互式命令行或 rpc 接口调用。</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">func</span> <span class="params">(s *PrivateAccountAPI)</span> <span class="title">NewAccount</span><span class="params">(password <span class="keyword">string</span>)</span> <span class="params">(common.Address, error)</span></span> &#123;</div><div class="line">	acc, err := fetchKeystore(s.am).NewAccount(password)</div><div class="line">	<span class="keyword">if</span> err == <span class="literal">nil</span> &#123;</div><div class="line">		<span class="keyword">return</span> acc.Address, <span class="literal">nil</span></div><div class="line">	&#125;</div><div class="line">	<span class="keyword">return</span> common.Address&#123;&#125;, err</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>首先调用 <code>fetchKeystore</code>，通过 <code>backends</code> 获得 <code>KeyStore</code> 对象，最后通过调用 <code>keystore.go</code> 中的 <code>NewAccount</code> 获得新账户。</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">func</span> <span class="params">(ks *KeyStore)</span> <span class="title">NewAccount</span><span class="params">(passphrase <span class="keyword">string</span>)</span> <span class="params">(accounts.Account, error)</span></span> &#123;</div><div class="line">	_, account, err := storeNewKey(ks.storage, crand.Reader, passphrase)</div><div class="line">	<span class="keyword">if</span> err != <span class="literal">nil</span> &#123;</div><div class="line">		<span class="keyword">return</span> accounts.Account&#123;&#125;, err</div><div class="line">	&#125;</div><div class="line">	ks.cache.add(account)</div><div class="line">	ks.refreshWallets()</div><div class="line">	<span class="keyword">return</span> account, <span class="literal">nil</span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p><code>NewAccount</code> 会调用 <code>storeNewKey</code>。</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">func</span> <span class="title">storeNewKey</span><span class="params">(ks keyStore, rand io.Reader, auth <span class="keyword">string</span>)</span> <span class="params">(*Key, accounts.Account, error)</span></span> &#123;</div><div class="line">	key, err := newKey(rand)</div><div class="line">	<span class="keyword">if</span> err != <span class="literal">nil</span> &#123;</div><div class="line">		<span class="keyword">return</span> <span class="literal">nil</span>, accounts.Account&#123;&#125;, err</div><div class="line">	&#125;</div><div class="line">	a := accounts.Account&#123;Address: key.Address, URL: accounts.URL&#123;Scheme: KeyStoreScheme, Path: ks.JoinPath(keyFileName(key.Address))&#125;&#125;</div><div class="line">	<span class="keyword">if</span> err := ks.StoreKey(a.URL.Path, key, auth); err != <span class="literal">nil</span> &#123;</div><div class="line">		zeroKey(key.PrivateKey)</div><div class="line">		<span class="keyword">return</span> <span class="literal">nil</span>, a, err</div><div class="line">	&#125;</div><div class="line">	<span class="keyword">return</span> key, a, err</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>注意第一个参数是 <code>keyStore</code>，这是一个接口类型。</p>
+<figure class="highlight gauss"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">type</span> keyStore interface &#123;</div><div class="line">	GetKey(addr common.Address, filename <span class="keyword">string</span>, auth <span class="keyword">string</span>) (*<span class="built_in">Key</span>, <span class="built_in">error</span>)</div><div class="line">	StoreKey(filename <span class="keyword">string</span>, k *<span class="built_in">Key</span>, auth <span class="keyword">string</span>) <span class="built_in">error</span></div><div class="line">	JoinPath(filename <span class="keyword">string</span>) <span class="keyword">string</span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p><code>storeNewKey</code> 首先调用 <code>newKey</code>，通过椭圆曲线加密算法获取公私钥对。</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">func</span> <span class="title">newKey</span><span class="params">(rand io.Reader)</span> <span class="params">(*Key, error)</span></span> &#123;</div><div class="line">	privateKeyECDSA, err := ecdsa.GenerateKey(crypto.S256(), rand)</div><div class="line">	<span class="keyword">if</span> err != <span class="literal">nil</span> &#123;</div><div class="line">		<span class="keyword">return</span> <span class="literal">nil</span>, err</div><div class="line">	&#125;</div><div class="line">	<span class="keyword">return</span> newKeyFromECDSA(privateKeyECDSA), <span class="literal">nil</span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>然后会根据参数 ks 的类型调用对应的实现，通过 <code>geth account new</code> 命令创建新账户，调用的就是 <code>accounts/keystore/keystore_passphrase.go</code> 中的实现。即 </p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">func</span> <span class="params">(ks keyStorePassphrase)</span> <span class="title">StoreKey</span><span class="params">(filename <span class="keyword">string</span>, key *Key, auth <span class="keyword">string</span>)</span> <span class="title">error</span></span> &#123;</div><div class="line">	keyjson, err := EncryptKey(key, auth, ks.scryptN, ks.scryptP)</div><div class="line">	<span class="keyword">if</span> err != <span class="literal">nil</span> &#123;</div><div class="line">		<span class="keyword">return</span> err</div><div class="line">	&#125;</div><div class="line">	<span class="keyword">return</span> writeKeyFile(filename, keyjson)</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>我们可以深入到 <code>EncryptKey</code> 中</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">func</span> <span class="title">EncryptKey</span><span class="params">(key *Key, auth <span class="keyword">string</span>, scryptN, scryptP <span class="keyword">int</span>)</span> <span class="params">([]<span class="keyword">byte</span>, error)</span></span> &#123;</div><div class="line">	authArray := []<span class="keyword">byte</span>(auth)</div><div class="line">	salt := randentropy.GetEntropyCSPRNG(<span class="number">32</span>)</div><div class="line">	derivedKey, err := scrypt.Key(authArray, salt, scryptN, scryptR, scryptP, scryptDKLen)</div><div class="line">	<span class="keyword">if</span> err != <span class="literal">nil</span> &#123;</div><div class="line">		<span class="keyword">return</span> <span class="literal">nil</span>, err</div><div class="line">	&#125;</div><div class="line">	encryptKey := derivedKey[:<span class="number">16</span>]</div><div class="line">	keyBytes := math.PaddedBigBytes(key.PrivateKey.D, <span class="number">32</span>)</div><div class="line"></div><div class="line">	iv := randentropy.GetEntropyCSPRNG(aes.BlockSize) <span class="comment">// 16</span></div><div class="line">	cipherText, err := aesCTRXOR(encryptKey, keyBytes, iv)</div><div class="line">	<span class="keyword">if</span> err != <span class="literal">nil</span> &#123;</div><div class="line">		<span class="keyword">return</span> <span class="literal">nil</span>, err</div><div class="line">	&#125;</div><div class="line">	mac := crypto.Keccak256(derivedKey[<span class="number">16</span>:<span class="number">32</span>], cipherText)</div><div class="line"></div><div class="line">	scryptParamsJSON := <span class="built_in">make</span>(<span class="keyword">map</span>[<span class="keyword">string</span>]<span class="keyword">interface</span>&#123;&#125;, <span class="number">5</span>)</div><div class="line">	scryptParamsJSON[<span class="string">"n"</span>] = scryptN</div><div class="line">	scryptParamsJSON[<span class="string">"r"</span>] = scryptR</div><div class="line">	scryptParamsJSON[<span class="string">"p"</span>] = scryptP</div><div class="line">	scryptParamsJSON[<span class="string">"dklen"</span>] = scryptDKLen</div><div class="line">	scryptParamsJSON[<span class="string">"salt"</span>] = hex.EncodeToString(salt)</div><div class="line"></div><div class="line">	cipherParamsJSON := cipherparamsJSON&#123;</div><div class="line">		IV: hex.EncodeToString(iv),</div><div class="line">	&#125;</div><div class="line"></div><div class="line">	cryptoStruct := cryptoJSON&#123;</div><div class="line">		Cipher:       <span class="string">"aes-128-ctr"</span>,</div><div class="line">		CipherText:   hex.EncodeToString(cipherText),</div><div class="line">		CipherParams: cipherParamsJSON,</div><div class="line">		KDF:          keyHeaderKDF,</div><div class="line">		KDFParams:    scryptParamsJSON,</div><div class="line">		MAC:          hex.EncodeToString(mac),</div><div class="line">	&#125;</div><div class="line">	encryptedKeyJSONV3 := encryptedKeyJSONV3&#123;</div><div class="line">		hex.EncodeToString(key.Address[:]),</div><div class="line">		cryptoStruct,</div><div class="line">		key.Id.String(),</div><div class="line">		version,</div><div class="line">	&#125;</div><div class="line">	<span class="keyword">return</span> json.Marshal(encryptedKeyJSONV3)</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p><code>EncryptKey</code> 的 key 参数是加密的账户，包括 ID，公私钥，地址，auth 参数是用户输入的密码，<code>scryptN</code> 参数是 scrypt 算法中的 N，<code>scryptP</code> 参数是 scrypt 算法中的 P。整个过程，首先对密码使用 scrypt 算法加密，得到加密后的密码 derivedKey，然后用 derivedKey 对私钥使用 AES-CTR 算法加密，得到密文 cipherText，再对 derivedKey 和 cipherText 进行哈希运算得到 mac，mac 起到签名的作用，在解密的时候可以验证合法性，防止别人篡改。<code>EncryptKey</code> 最终返回 json 字符串，Storekey 方法接下来会将其保存在文件中。</p>
+<h3 id="列出所有账户"><a href="#列出所有账户" class="headerlink" title="列出所有账户"></a>列出所有账户</h3><p>列出所有账户的入口也在 <code>internal/ethapi/api.go</code> 里。</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="selector-tag">func</span> (<span class="selector-tag">s</span> *<span class="selector-tag">PrivateAccountAPI</span>) <span class="selector-tag">ListAccounts</span>() <span class="selector-attr">[]</span><span class="selector-tag">common</span><span class="selector-class">.Address</span> &#123;</div><div class="line">	<span class="attribute">addresses </span>:= <span class="built_in">make</span>([]common.Address, 0) // return [] instead of nil if empty</div><div class="line">	for _, wallet := range s.am.<span class="built_in">Wallets</span>() &#123;</div><div class="line">		for _, account := range wallet.<span class="built_in">Accounts</span>() &#123;</div><div class="line">			addresses = <span class="built_in">append</span>(addresses, account.Address)</div><div class="line">		&#125;</div><div class="line">	&#125;</div><div class="line">	<span class="selector-tag">return</span> <span class="selector-tag">addresses</span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>该方法会从 <code>Account Manager</code> 中读取所有钱包信息，获取其对应的所有地址信息。</p>
+<p>如果读者对 geth account 命令还有印象的话，geth account 命令还有 <code>update</code>，<code>import</code> 等方法，这里就不再讨论了。</p>
+<h3 id="发起转账"><a href="#发起转账" class="headerlink" title="发起转账"></a>发起转账</h3><p>发起一笔转账的函数入口在 <code>internal/ethapi/api.go</code> 中。</p>
+<figure class="highlight stata"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div></pre></td><td class="code"><pre><div class="line">func (s *PublicTransactionPoolAPI) SendTransaction(ctx context.Context, <span class="keyword">args</span> SendTxArgs) (common.Hash, <span class="keyword">error</span>) &#123;</div><div class="line">	account := accounts.Account&#123;Address: <span class="keyword">args</span>.From&#125;</div><div class="line">	wallet, <span class="keyword">err</span> := s.b.AccountManager().Find(account)</div><div class="line">	<span class="keyword">if</span> <span class="keyword">err</span> != nil &#123;</div><div class="line">		<span class="keyword">return</span> common.Hash&#123;&#125;, <span class="keyword">err</span></div><div class="line">	&#125;</div><div class="line">	<span class="keyword">if</span> <span class="keyword">args</span>.Nonce == nil &#123;</div><div class="line">		s.nonceLock.LockAddr(<span class="keyword">args</span>.From)</div><div class="line">		defer s.nonceLock.UnlockAddr(<span class="keyword">args</span>.From)</div><div class="line">	&#125;</div><div class="line">	<span class="keyword">if</span> <span class="keyword">err</span> := <span class="keyword">args</span>.setDefaults(ctx, s.b); <span class="keyword">err</span> != nil &#123;</div><div class="line">		<span class="keyword">return</span> common.Hash&#123;&#125;, <span class="keyword">err</span></div><div class="line">	&#125;</div><div class="line">	tx := <span class="keyword">args</span>.toTransaction()</div><div class="line"></div><div class="line">	<span class="keyword">var</span> chainID *big.Int</div><div class="line">	<span class="keyword">if</span> config := s.b.ChainConfig(); config.IsEIP155(s.b.CurrentBlock().Number()) &#123;</div><div class="line">		chainID = config.ChainId</div><div class="line">	&#125;</div><div class="line">	signed, <span class="keyword">err</span> := wallet.SignTx(account, tx, chainID)</div><div class="line">	<span class="keyword">if</span> <span class="keyword">err</span> != nil &#123;</div><div class="line">		<span class="keyword">return</span> common.Hash&#123;&#125;, <span class="keyword">err</span></div><div class="line">	&#125;</div><div class="line">	<span class="keyword">return</span> submitTransaction(ctx, s.b, signed)</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>转账时，首先利用传入的参数 <code>from</code> 构造一个 <code>account</code>，表示转出方。然后通过 <code>accountMananger</code> 的 <code>Find</code> 方法获得这个账户的钱包(<code>Find</code> 方法在上面有介绍)，接下来有一个稍特别的地方。我们知道以太坊采用的是账户余额的体系，对于 UTXO 的方式来说，防止双花的方式很直观，一个输出不能同时被两个输入而引用，这种方式自然而然地就防止了发起转账时可能出现的双花，采用账户系统的以太坊没有这种便利，以太坊的做法是，每个账户有一个 nonce 值，它等于账户累计发起的交易数量，账户发起交易时，交易数据里必须包含 nonce，而且该值必须大于账户的 nonce 值，否则为非法，如果交易的 nonce 值减去账户的 nonce 值大于1，这个交易也不能打包到区块中，这确保了交易是按照一定的顺序执行的。如果有两笔交易有相同 nonce，那么其中只有一笔交易能够成功，通过给  nonce 加锁就是用来防止双花的问题。接着调用 <code>args.setDefaults(ctx, s.b)</code> 方法设置一些交易默认值。最后调用 <code>toTransaction</code> 方法创建交易：</p>
+<figure class="highlight elm"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"><span class="title">func</span> (args *<span class="type">SendTxArgs</span>) toTransaction() *types.<span class="type">Transaction</span> &#123;</div><div class="line">	var input []byte</div><div class="line">	if args.<span class="type">Data</span> != nil &#123;</div><div class="line">		input = *args.<span class="type">Data</span></div><div class="line">	&#125; else if args.<span class="type">Input</span> != nil &#123;</div><div class="line">		input = *args.<span class="type">Input</span></div><div class="line">	&#125;</div><div class="line">	<span class="keyword">if</span> args.<span class="type">To</span> == nil &#123;</div><div class="line">		return types.<span class="type">NewContractCreation</span>(uint64(*args.<span class="type">Nonce</span>), (*big.<span class="type">Int</span>)(args.<span class="type">Value</span>), uint64(*args.<span class="type">Gas</span>), (*big.<span class="type">Int</span>)(args.<span class="type">GasPrice</span>), input)</div><div class="line">	&#125;</div><div class="line">	return types.<span class="type">NewTransaction</span>(uint64(*args.<span class="type">Nonce</span>), *args.<span class="type">To</span>, (*big.<span class="type">Int</span>)(args.<span class="type">Value</span>), uint64(*args.<span class="type">Gas</span>), (*big.<span class="type">Int</span>)(args.<span class="type">GasPrice</span>), input)</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>这里有两个分支，如果传入的交易的 <code>to</code> 参数不存在，那就表明这是一笔合约转账；如果有 <code>to</code> 参数，就是一笔普通的转账，深入后你会发现这两种转账最终调用的都是 <code>newTransaction</code></p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">func</span> <span class="title">NewTransaction</span><span class="params">(nonce <span class="keyword">uint64</span>, to common.Address, amount *big.Int, gasLimit <span class="keyword">uint64</span>, gasPrice *big.Int, data []<span class="keyword">byte</span>)</span> *<span class="title">Transaction</span></span> &#123;</div><div class="line">	<span class="keyword">return</span> newTransaction(nonce, &amp;to, amount, gasLimit, gasPrice, data)</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">func</span> <span class="title">NewContractCreation</span><span class="params">(nonce <span class="keyword">uint64</span>, amount *big.Int, gasLimit <span class="keyword">uint64</span>, gasPrice *big.Int, data []<span class="keyword">byte</span>)</span> *<span class="title">Transaction</span></span> &#123;</div><div class="line">	<span class="keyword">return</span> newTransaction(nonce, <span class="literal">nil</span>, amount, gasLimit, gasPrice, data)</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p><code>newTransaction</code> 的功能很简单，实际上就是返回一个 <code>Transaction</code> 实例。我们接着看 <code>SendTransaction</code> 方法接下来的部分。创建好一笔交易，接着我们通过 <code>ChainConfig</code> 方法获得区块链的配置信息，如果是 EIP155 里描述的配置，需要做特殊处理（待深入），然后调用 <code>SignTx</code> 对交易签名来确保这笔交易是真实有效的。<code>SignTx</code> 的接口定义在 <code>accounts/accounts.go</code> 中，这里我们看 keystore 的实现。</p>
+<figure class="highlight stylus"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">func (ks *KeyStore) SignTx(<span class="selector-tag">a</span> accounts<span class="selector-class">.Account</span>, tx *types<span class="selector-class">.Transaction</span>, chainID *big.Int) (*types<span class="selector-class">.Transaction</span>, error) &#123;</div><div class="line">	ks<span class="selector-class">.mu</span><span class="selector-class">.RLock</span>()</div><div class="line">	defer ks<span class="selector-class">.mu</span><span class="selector-class">.RUnlock</span>()</div><div class="line"></div><div class="line">	unlockedKey, found := ks<span class="selector-class">.unlocked</span>[<span class="selector-tag">a</span>.Address]</div><div class="line">	<span class="keyword">if</span> !found &#123;</div><div class="line">		return nil, ErrLocked</div><div class="line">	&#125;</div><div class="line">	<span class="keyword">if</span> chainID != nil &#123;</div><div class="line">		return types.SignTx(tx, types.NewEIP155Signer(chainID), unlockedKey.PrivateKey)</div><div class="line">	&#125;</div><div class="line">	return types.SignTx(tx, types.HomesteadSigner&#123;&#125;, unlockedKey.PrivateKey)</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>首先验证账户是否已解锁，若没有解锁，直接报异常退出。接着根据 <code>chainID</code> 判断使用哪一种签名方式，调用相应 <code>SignTx</code> 方法进行签名。</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="selector-tag">func</span> <span class="selector-tag">SignTx</span>(<span class="selector-tag">tx</span> *<span class="selector-tag">Transaction</span>, <span class="selector-tag">s</span> <span class="selector-tag">Signer</span>, <span class="selector-tag">prv</span> *<span class="selector-tag">ecdsa</span><span class="selector-class">.PrivateKey</span>) (*<span class="selector-tag">Transaction</span>, <span class="selector-tag">error</span>) &#123;</div><div class="line">	<span class="attribute">h </span>:= s.<span class="built_in">Hash</span>(tx)</div><div class="line">	sig, err := crypto.<span class="built_in">Sign</span>(h[:], prv)</div><div class="line">	if err != nil &#123;</div><div class="line">		return nil, err</div><div class="line">	&#125;</div><div class="line">	<span class="selector-tag">return</span> <span class="selector-tag">tx</span><span class="selector-class">.WithSignature</span>(<span class="selector-tag">s</span>, <span class="selector-tag">sig</span>)</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p><code>SignTx</code> 的功能是调用椭圆加密函数获得签名，得到带签名的交易后，通过 <code>SubmitTrasaction</code> 提交交易。</p>
+<figure class="highlight aspectj"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line">func submitTransaction(ctx context.Context, b Backend, tx *types.Transaction) (common.Hash, <span class="keyword">error</span>) &#123;</div><div class="line">	<span class="keyword">if</span> err := b.SendTx(ctx, tx); err != nil &#123;</div><div class="line">		<span class="keyword">return</span> common.Hash&#123;&#125;, err</div><div class="line">	&#125;</div><div class="line">	<span class="keyword">if</span> tx.To() == nil &#123;</div><div class="line">		signer := types.MakeSigner(b.ChainConfig(), b.CurrentBlock().Number())</div><div class="line">		from, err := types.Sender(signer, tx)</div><div class="line">		<span class="keyword">if</span> err != nil &#123;</div><div class="line">			<span class="keyword">return</span> common.Hash&#123;&#125;, err</div><div class="line">		&#125;</div><div class="line">		addr := crypto.CreateAddress(from, tx.Nonce())</div><div class="line">		log.Info(<span class="string">"Submitted contract creation"</span>, <span class="string">"fullhash"</span>, tx.Hash().Hex(), <span class="string">"contract"</span>, addr.Hex())</div><div class="line">	&#125; <span class="keyword">else</span> &#123;</div><div class="line">		log.Info(<span class="string">"Submitted transaction"</span>, <span class="string">"fullhash"</span>, tx.Hash().Hex(), <span class="string">"recipient"</span>, tx.To())</div><div class="line">	&#125;</div><div class="line">	<span class="keyword">return</span> tx.Hash(), nil</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p><code>submitTransaction</code> 首先调用 <code>SendTx</code>，这个接口在 <code>internal/ethapi/backend.go</code> 中定义，而实现在 <code>eth/api_backend.go</code> 中，这部分代码涉及到交易池，我们在单独的交易池章节进行探讨，这里就此打住。</p>
+<p>将交易写入交易池后，如果没有因错误退出，<code>submitTransaction</code> 会完成提交交易，返回交易哈希值。发起交易的这个过程就结束了，剩下的就交给矿工将交易上链。挖矿相关的代码会在之后的博客中进行介绍。</p>
+
+      
+    </div>
+
+    <div>
+      
+        
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/cryptocurrency/" rel="tag">#cryptocurrency</a>
+          
+            <a href="/tags/Golang/" rel="tag">#Golang</a>
+          
+            <a href="/tags/geth/" rel="tag">#geth</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/03/10/go-ethereum 源码笔记（trie 模块-MPT 的实现）/" rel="next" title="go-ethereum 源码笔记（trie 模块-MPT 的实现）">
+                <i class="fa fa-chevron-left"></i> go-ethereum 源码笔记（trie 模块-MPT 的实现）
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/03/20/Telegram Bot 的长轮询 VS Webhook/" rel="prev" title="Telegram Bot 的长轮询 VS Webhook">
+                Telegram Bot 的长轮询 VS Webhook <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+      <div id="disqus_thread">
+        <noscript>
+          Please enable JavaScript to view the
+          <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a>
+        </noscript>
+      </div>
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel ">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="https://avatars1.githubusercontent.com/u/6964284?v=3&s=460"
+               alt="Frank" />
+          <p class="site-author-name" itemprop="name">Frank</p>
+          <p class="site-description motion-element" itemprop="description"></p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">177</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+          
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">126</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/knarfeh" target="_blank">
+                  
+                    <i class="fa fa-github"></i> GitHub
+                  
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://twitter.com/knarfeh" target="_blank">
+                  
+                    <i class="fa fa-twitter"></i> Twitter
+                  
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://weibo.com/2753500945" target="_blank">
+                  
+                    <i class="fa fa-weibo"></i> Weibo
+                  
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+          <div class="cc-license motion-element" itemprop="license">
+            <a href="http://creativecommons.org/licenses/by-sa/4.0" class="cc-opacity" target="_blank">
+              <img src="/images/cc-by-sa.svg" alt="Creative Commons" />
+            </a>
+          </div>
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+      </section>
+
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc-indicator-top post-toc-indicator">
+            <i class="fa fa-angle-double-up"></i>
+          </div>
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#基本概念"><span class="nav-number">1.</span> <span class="nav-text">基本概念</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#生成外部账户"><span class="nav-number">1.1.</span> <span class="nav-text">生成外部账户</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#私钥的三种形态"><span class="nav-number">1.2.</span> <span class="nav-text">私钥的三种形态</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#外部账户和合约账户的区别"><span class="nav-number">1.3.</span> <span class="nav-text">外部账户和合约账户的区别</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#交易相关的基本概念"><span class="nav-number">1.4.</span> <span class="nav-text">交易相关的基本概念</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#转账流程"><span class="nav-number">1.5.</span> <span class="nav-text">转账流程</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#数据结构"><span class="nav-number">2.</span> <span class="nav-text">数据结构</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#账户（在-accounts-accounts-go-中定义）"><span class="nav-number">2.1.</span> <span class="nav-text">账户（在 accounts/accounts.go 中定义）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#交易相关的数据结构"><span class="nav-number">2.2.</span> <span class="nav-text">交易相关的数据结构</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#代码分析"><span class="nav-number">3.</span> <span class="nav-text">代码分析</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#接口定义"><span class="nav-number">3.1.</span> <span class="nav-text">接口定义</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#NewManager"><span class="nav-number">3.2.</span> <span class="nav-text">NewManager</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#update"><span class="nav-number">3.3.</span> <span class="nav-text">update()</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Subscribe-sink-chan-lt-WalletEvent-event-Subscription"><span class="nav-number">3.4.</span> <span class="nav-text">Subscribe(sink chan<- WalletEvent) event.Subscription</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Find-account-Account-Wallet-error"><span class="nav-number">3.5.</span> <span class="nav-text">Find(account Account) (Wallet, error)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#创建账户"><span class="nav-number">3.6.</span> <span class="nav-text">创建账户</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#列出所有账户"><span class="nav-number">3.7.</span> <span class="nav-text">列出所有账户</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#发起转账"><span class="nav-number">3.8.</span> <span class="nav-text">发起转账</span></a></li></ol></li></ol></div>
+            
+          </div>
+          <div class="post-toc-indicator-bottom post-toc-indicator">
+            <i class="fa fa-angle-double-down"></i>
+          </div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy;  2015 - 
+  <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Frank</span>
+</div>
+
+<div class="powered-by">
+  由 <a class="theme-link" href="http://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Muse
+  </a>
+</div>
+
+
+
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+
+  
+
+
+
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+  <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
+
+  <script type="text/javascript" src="/vendors/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  <script type="text/javascript" src="/vendors/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  <script type="text/javascript" src="/vendors/velocity/velocity.min.js"></script>
+
+  <script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js"></script>
+
+  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=0.5.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=0.5.0"></script>
+
+
+
+  
+  
+
+  
+  
+<script type="text/javascript" src="/js/src/scrollspy.js?v=0.5.0"></script>
+
+<script type="text/javascript" id="sidebar.toc.highlight">
+  $(document).ready(function () {
+    var tocSelector = '.post-toc';
+    var $tocSelector = $(tocSelector);
+    var activeCurrentSelector = '.active-current';
+
+    $tocSelector
+      .on('activate.bs.scrollspy', function () {
+        var $currentActiveElement = $(tocSelector + ' .active').last();
+
+        removeCurrentActiveClass();
+        $currentActiveElement.addClass('active-current');
+
+        $tocSelector[0].scrollTop = $currentActiveElement.position().top;
+      })
+      .on('clear.bs.scrollspy', function () {
+        removeCurrentActiveClass();
+      });
+
+    function removeCurrentActiveClass () {
+      $(tocSelector + ' ' + activeCurrentSelector)
+        .removeClass(activeCurrentSelector.substring(1));
+    }
+
+    function processTOC () {
+      getTOCMaxHeight();
+      toggleTOCOverflowIndicators();
+    }
+
+    function getTOCMaxHeight () {
+      var height = $('.sidebar').height() -
+                   $tocSelector.position().top -
+                   $('.post-toc-indicator-bottom').height();
+
+      $tocSelector.css('height', height);
+
+      return height;
+    }
+
+    function toggleTOCOverflowIndicators () {
+      tocOverflowIndicator(
+        '.post-toc-indicator-top',
+        $tocSelector.scrollTop() > 0 ? 'show' : 'hide'
+      );
+
+      tocOverflowIndicator(
+        '.post-toc-indicator-bottom',
+        $tocSelector.scrollTop() >= $tocSelector.find('ol').height() - $tocSelector.height() ? 'hide' : 'show'
+      )
+    }
+
+    $(document).on('sidebar.motion.complete', function () {
+      processTOC();
+    });
+
+    $('body').scrollspy({ target: tocSelector });
+    $(window).on('resize', function () {
+      if ( $('.sidebar').hasClass('sidebar-active') ) {
+        processTOC();
+      }
+    });
+
+    onScroll($tocSelector);
+
+    function onScroll (element) {
+      element.on('mousewheel DOMMouseScroll', function (event) {
+          var oe = event.originalEvent;
+          var delta = oe.wheelDelta || -oe.detail;
+
+          this.scrollTop += ( delta < 0 ? 1 : -1 ) * 30;
+          event.preventDefault();
+
+          toggleTOCOverflowIndicators();
+      });
+    }
+
+    function tocOverflowIndicator (indicator, action) {
+      var $indicator = $(indicator);
+      var opacity = action === 'show' ? 1 : 0;
+      $indicator.velocity ?
+        $indicator.velocity('stop').velocity({
+          opacity: opacity
+        }, { duration: 100 }) :
+        $indicator.stop().animate({
+          opacity: opacity
+        }, 100);
+    }
+
+  });
+</script>
+
+<script type="text/javascript" id="sidebar.nav">
+  $(document).ready(function () {
+    var html = $('html');
+    var TAB_ANIMATE_DURATION = 200;
+    var hasVelocity = $.isFunction(html.velocity);
+
+    $('.sidebar-nav li').on('click', function () {
+      var item = $(this);
+      var activeTabClassName = 'sidebar-nav-active';
+      var activePanelClassName = 'sidebar-panel-active';
+      if (item.hasClass(activeTabClassName)) {
+        return;
+      }
+
+      var currentTarget = $('.' + activePanelClassName);
+      var target = $('.' + item.data('target'));
+
+      hasVelocity ?
+        currentTarget.velocity('transition.slideUpOut', TAB_ANIMATE_DURATION, function () {
+          target
+            .velocity('stop')
+            .velocity('transition.slideDownIn', TAB_ANIMATE_DURATION)
+            .addClass(activePanelClassName);
+        }) :
+        currentTarget.animate({ opacity: 0 }, TAB_ANIMATE_DURATION, function () {
+          currentTarget.hide();
+          target
+            .stop()
+            .css({'opacity': 0, 'display': 'block'})
+            .animate({ opacity: 1 }, TAB_ANIMATE_DURATION, function () {
+              currentTarget.removeClass(activePanelClassName);
+              target.addClass(activePanelClassName);
+            });
+        });
+
+      item.siblings().removeClass(activeTabClassName);
+      item.addClass(activeTabClassName);
+    });
+
+    $('.post-toc a').on('click', function (e) {
+      e.preventDefault();
+      var targetSelector = NexT.utils.escapeSelector(this.getAttribute('href'));
+      var offset = $(targetSelector).offset().top;
+      hasVelocity ?
+        html.velocity('stop').velocity('scroll', {
+          offset: offset  + 'px',
+          mobileHA: false
+        }) :
+        $('html, body').stop().animate({
+          scrollTop: offset
+        }, 500);
+    });
+
+    // Expand sidebar on post detail page by default, when post has a toc.
+    NexT.motion.middleWares.sidebar = function () {
+      var $tocContent = $('.post-toc-content');
+
+      if (CONFIG.scheme !== 'Pisces' && (CONFIG.sidebar.display === 'post' || CONFIG.sidebar.display === 'always')) {
+        if ($tocContent.length > 0 && $tocContent.html().trim().length > 0) {
+          NexT.utils.displaySidebar();
+        }
+      }
+    };
+  });
+</script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=0.5.0"></script>
+
+
+
+  
+
+
+
+  
+
+    <script type="text/javascript">
+      var disqus_shortname = 'knarfeh';
+      var disqus_identifier = '2018/03/10/go-ethereum 源码笔记（accounts, transaction 模块-账户和转账）/';
+      var disqus_title = 'go-ethereum 源码笔记（accounts, transaction 模块-账户和转账）';
+      var disqus_url = 'http://knarfeh.github.io/2018/03/10/go-ethereum 源码笔记（accounts, transaction 模块-账户和转账）/';
+
+      function run_disqus_script(disqus_script){
+        var dsq = document.createElement('script');
+        dsq.type = 'text/javascript';
+        dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/' + disqus_script;
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+      }
+
+      run_disqus_script('count.js');
+      
+        run_disqus_script('embed.js');
+      
+    </script>
+  
+
+
+
+  
+  
+  
+  <script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+      }
+    });
+  </script>
+
+  <script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+      var all = MathJax.Hub.getAllJax(), i;
+      for (i=0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';
+      }
+    });
+  </script>
+
+  
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js"></script>
+    <script type="text/javascript" async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML">
+</script>
+  
+
+
+  
+
+  <script type="text/javascript" src="/js/src/custom.js"></script>
+</body>
+</html>
