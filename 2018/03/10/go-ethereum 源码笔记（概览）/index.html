@@ -67,7 +67,7 @@
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="http://7xi5vu.com1.z0.glb.clouddn.com/stackexchange-ethereum-block-architecture.jpg">
 <meta property="og:image" content="http://7xi5vu.com1.z0.glb.clouddn.com/ethereum-leveld-architecture.png">
-<meta property="og:updated_time" content="2018-09-08T02:02:15.077Z">
+<meta property="og:updated_time" content="2018-09-15T02:38:31.712Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="go-ethereum 源码笔记（概览）">
 <meta name="twitter:description" content="花了一点时间读以太坊的源代码，内容太多，所以一边看一边写，没想到越写越多，于是想着把笔记整理出来。 源码解读是一件费力不讨好的事情，因为看代码的时候我们看到的是最终解决方案，虽然可以看到 commit 的历史，但我们看不到作者的思路，踩过的坑，而且 geth 的设计文档，功能的相关讨论等信息不像 Kubernetes 那么规范透明，所以我看这些代码的时候很多地方也只是一知半解，欢迎有更多经验的朋友">
@@ -285,6 +285,8 @@
 <li><a href="https://knarfeh.com/2018/03/10/go-ethereum%20%E6%BA%90%E7%A0%81%E7%AC%94%E8%AE%B0%EF%BC%88core%20%E6%A8%A1%E5%9D%97-%E5%8C%BA%E5%9D%97%E9%93%BE%E6%93%8D%E4%BD%9C%EF%BC%89/" target="_blank" rel="external">go-ethereum 源码笔记（core 模块-区块链操作）</a></li>
 <li><a href="https://knarfeh.com/2018/03/10/go-ethereum%20%E6%BA%90%E7%A0%81%E7%AC%94%E8%AE%B0%EF%BC%88rlp%20%E6%A8%A1%E5%9D%97-%E5%BA%8F%E5%88%97%E5%8C%96%E4%B8%8E%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96%EF%BC%89/" target="_blank" rel="external">go-ethereum 源码笔记（rlp 模块-序列化与反序列化）</a></li>
 <li><a href="https://knarfeh.com/2018/03/10/go-ethereum%20%E6%BA%90%E7%A0%81%E7%AC%94%E8%AE%B0%EF%BC%88trie%20%E6%A8%A1%E5%9D%97-MPT%20%E7%9A%84%E5%AE%9E%E7%8E%B0%EF%BC%89/" target="_blank" rel="external">go-ethereum 源码笔记（trie 模块-MPT的实现）</a></li>
+<li><a href="https://knarfeh.com/2018/03/10/go-ethereum%20%E6%BA%90%E7%A0%81%E7%AC%94%E8%AE%B0%EF%BC%88accounts,%20transaction%20%E6%A8%A1%E5%9D%97-%E8%B4%A6%E6%88%B7%E5%92%8C%E8%BD%AC%E8%B4%A6%EF%BC%89/" target="_blank" rel="external">go-ethereum 源码笔记（accounts, transaction 模块-账户和转账）</a></li>
+<li><a href="https://knarfeh.com/2018/03/10/go-ethereum%20%E6%BA%90%E7%A0%81%E7%AC%94%E8%AE%B0%EF%BC%88core%20%E6%A8%A1%E5%9D%97-%E4%BA%A4%E6%98%93%E6%B1%A0%EF%BC%89/" target="_blank" rel="external">go-ethereum 源码笔记（core 模块-交易池）</a></li>
 </ul>
 <h2 id="涉及到的计算机专业知识"><a href="#涉及到的计算机专业知识" class="headerlink" title="涉及到的计算机专业知识"></a>涉及到的计算机专业知识</h2><ul>
 <li>网络知识，p2p 网络（Kad 算法） ，rpc 等等</li>
@@ -565,7 +567,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">177</span>
+              <span class="site-state-item-count">178</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -575,7 +577,7 @@
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">126</span>
+                <span class="site-state-item-count">125</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
