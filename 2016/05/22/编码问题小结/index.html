@@ -65,13 +65,13 @@
 <meta property="og:site_name" content="Frank&#39;s Notes">
 <meta property="og:description" content="0x00 前言">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="http://7xi5vu.com1.z0.glb.clouddn.com/asc%C4%B1%C4%B1.png">
-<meta property="og:image" content="http://7xi5vu.com1.z0.glb.clouddn.com/python-str-unicode.png">
-<meta property="og:updated_time" content="2017-08-08T02:35:59.000Z">
+<meta property="og:image" content="https://knarfeh-1254074221.cos.na-siliconvalley.myqcloud.com/asc%C4%B1%C4%B1.png">
+<meta property="og:image" content="https://knarfeh-1254074221.cos.na-siliconvalley.myqcloud.com/python-str-unicode.png">
+<meta property="og:updated_time" content="2018-09-18T18:24:57.397Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="编码问题小结">
 <meta name="twitter:description" content="0x00 前言">
-<meta name="twitter:image" content="http://7xi5vu.com1.z0.glb.clouddn.com/asc%C4%B1%C4%B1.png">
+<meta name="twitter:image" content="https://knarfeh-1254074221.cos.na-siliconvalley.myqcloud.com/asc%C4%B1%C4%B1.png">
 
 
 
@@ -288,7 +288,7 @@
 <p>感觉膝盖上中了无数箭。Python2 的这个让人头疼的编码问题，其实已经足够成为换 python3 的理由了，然而 python2 在很长一段时间内还是会继续<a href="http://pythonclock.org/" target="_blank" rel="external">发挥余热</a>。不仅仅是python，我们在 C/C++，Java 中都遇到过编码问题，就算不用 Python2 了，如果不懂得原理，迁移到 python3 或其他语言的时候遇到编码问题还是会抓瞎。我不想遇到编码问题时就玩「打地鼠」的游戏，我也不想避过这个问题不谈，10年后再总结这个问题写一篇「完全攻略」，我要依据仅有的一点经验和资料从原理到策略写一篇关于 python2 编码问题的小结。如有谬误，欢迎指正；如有疑问，欢迎讨论。</p>
 <h2 id="0x01-背景"><a href="#0x01-背景" class="headerlink" title="0x01 背景"></a>0x01 背景</h2><p>要搞明白这个问题，我们首先得知道编码是什么？我们知道数据在计算机中是以二进制存储的，而我们在现实世界使用的是人类可读的字符，比如「1, 2, 3, … A, B, C, 」, 「一，二，三，四」这些，我们需要把字符集的字符与二进制数对应起来，以便文本在计算机中存储、在交互界面显示、在通信网络中传输，这个就是编码。</p>
 <h3 id="ASCII-码"><a href="#ASCII-码" class="headerlink" title="ASCII 码"></a>ASCII 码</h3><p>ASCII码是美国制定的一套字符编码。1967年，美国发布了 ASCII 的标准，在1986年进行了最后一次更新，下图是 ASCII 编码表：</p>
-<p><img src="http://7xi5vu.com1.z0.glb.clouddn.com/asc%C4%B1%C4%B1.png" alt="ASCII"></p>
+<p><img src="https://knarfeh-1254074221.cos.na-siliconvalley.myqcloud.com/asc%C4%B1%C4%B1.png" alt="ASCII"></p>
 <p>ASCII 定义了128个字符的编码。利用1个字节，也就是8个二进制位，ASCII 编码只规定了128个字符的编码，最高位始终是0。</p>
 <h3 id="非-ASCII-码"><a href="#非-ASCII-码" class="headerlink" title="非 ASCII 码"></a>非 ASCII 码</h3><p>ASCII 显然是有局限性的，除去32个不能显示的控制字符，只能显示26个拉丁字母，10个阿拉伯数字以及一些英文标点符号，不说非英语系国家的感受，就是英语系国家在使用带注音符号的外来词时都得妥协。后来一些欧洲国家陆续采用新的编码方式，基于 ASCII，但把闲置的最高位利用起来，可以多表示一些字符。这些编码方式中，0-127表示的符号一样，与 ASCII 兼容，128-255这一段是不同的。在亚洲国家，比如中文，日文，不用拉丁字母，用128个比特表示字符肯定是不够的，于是使用多个字节表示一个字符，中国广泛使用的编码是GB 2312，每个汉字及符号以两个字节表示，共收录6763个汉字，但对于一些罕用字和繁体字，GB 2312并不能处理，因此后来相继出现GBK及GB 18030汉字字符集。可以想象，在那个阶段，各种编码方式是蓬勃发展的。</p>
 <h3 id="Unicode-编码"><a href="#Unicode-编码" class="headerlink" title="Unicode 编码"></a>Unicode 编码</h3><p>编码方式越来越多，世界的交流越来越频繁，没有统一的编码方式给我们造成了很多麻烦，比如发一份电子邮件，如果写信的客户端和收信的客户端没有采用同样的编码就会产生乱码，一个文本文件，在不同平台上编辑也会产生乱码，Unicode（又称万国码、国际码、统一码、单一码）应运而成，这是一种可以容纳世界上所有文字和符号的方案，通过这个字符集，世界上的所有字符都可以拥有一个唯一的二进制表示方法。需要注意的是，Unicode 只规定了编码方式，并没有规定实现方式，怎么理解呢，要知道 Unicode 能表示那么多字符，要占的字节可比 ASCII 编码方式多多了，这当然就不实际了，毕竟在 ASCII 中英文字母只需要一个字节表示，如果 Unicode 的实现方式规定所有字符所占字节相同，那就太浪费硬盘和流量了。以往大家都是把字符集和编码方案混淆在一起的，从 Unicode 开始，人们意识到这两个东西完全是可以分开的，这个时候慢慢出现了 Unicoode 的各种<strong>实现方式</strong>，其中 utf-8(Unicode/UCS Transformation Format) 是最常用的，它是一种变长的编码方式，一个字符的字节数可能是1至6个字节，现在已经标准化为 <a href="https://tools.ietf.org/html/rfc3629" target="_blank" rel="external">RFC 3629</a>。它有两个特点：  </p>
@@ -395,7 +395,7 @@
 <p>另一种是 Unicode (unicode string) 类型，存储的是 code points，str 和 Unicode 有什么关系呢？它们都是 basestring 的子类，但我们必须好好区分，这是解决乱码问题的关键，它们是可以相互转换的，如：  </p>
 <figure class="highlight awk"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">In [<span class="number">4</span>]: my_unicode = <span class="string">u'Hello, 这是中文'</span></div><div class="line"></div><div class="line">In [<span class="number">5</span>]: my_unicode</div><div class="line">Out[<span class="number">5</span>]: <span class="string">u'Hello, \u8fd9\u662f\u4e2d\u6587'</span></div><div class="line"></div><div class="line">In [<span class="number">6</span>]: my_unicode.encode(<span class="string">'utf-8'</span>)</div><div class="line">Out[<span class="number">6</span>]: <span class="string">'Hello, \xe8\xbf\x99\xe6\x98\xaf\xe4\xb8\xad\xe6\x96\x87'</span></div><div class="line"></div><div class="line">In [<span class="number">7</span>]: my_str.decode(<span class="string">'utf-8'</span>)</div><div class="line">Out[<span class="number">7</span>]: <span class="string">u'Hello, \u8fd9\u662f\u4e2d\u6587'</span></div></pre></td></tr></table></figure>
 <p>用一张图可以说明它们的转换方法：  </p>
-<p><img src="http://7xi5vu.com1.z0.glb.clouddn.com/python-str-unicode.png" alt="str-unicode"></p>
+<p><img src="https://knarfeh-1254074221.cos.na-siliconvalley.myqcloud.com/python-str-unicode.png" alt="str-unicode"></p>
 <center>图1</center>  
 
 <p>unicode 转换成 str 类型，用 encode() 方法，用参数指定编码类型，str 转换为 unicode，根据 str 的编码类型指定解码类型，通过 decode() 函数解码。（吐槽一句，有的博客写 python 编码问题，连 encode， decode 的中文翻译都写错，唉）</p>

@@ -65,19 +65,19 @@
 <meta property="og:site_name" content="Frank&#39;s Notes">
 <meta property="og:description" content="前言这篇文章是团队内部分享 Introduction-to-Redis 之后的总结。不是完整的演讲稿，与演讲的内容有一定出入。">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="http://7xi5vu.com1.z0.glb.clouddn.com/2016-12-18/redis_memcached_mysql.png">
-<meta property="og:image" content="http://7xi5vu.com1.z0.glb.clouddn.com/redis-master-slave.jpg">
-<meta property="og:image" content="http://7xi5vu.com1.z0.glb.clouddn.com/twemproxy.jpg">
-<meta property="og:image" content="http://7xi5vu.com1.z0.glb.clouddn.com/redis-cluster-workflow.jpg">
-<meta property="og:image" content="http://7xi5vu.com1.z0.glb.clouddn.com/2016-12-13/lizi.jpg">
+<meta property="og:image" content="https://knarfeh-1254074221.cos.na-siliconvalley.myqcloud.com/redis_memcached_mysql.png">
+<meta property="og:image" content="https://knarfeh-1254074221.cos.na-siliconvalley.myqcloud.com/redis-master-slave.jpg">
+<meta property="og:image" content="https://knarfeh-1254074221.cos.na-siliconvalley.myqcloud.com/twemproxy.jpg">
+<meta property="og:image" content="https://knarfeh-1254074221.cos.na-siliconvalley.myqcloud.com/redis-cluster-workflow.jpg">
+<meta property="og:image" content="https://knarfeh-1254074221.cos.na-siliconvalley.myqcloud.com/2016-12-13/lizi.jpg">
 <meta property="og:image" content="https://img3.doubanio.com/lpic/s28104066.jpg">
 <meta property="og:image" content="https://img3.doubanio.com/lpic/s28296984.jpg">
 <meta property="og:image" content="https://img1.doubanio.com/lpic/s27297117.jpg">
-<meta property="og:updated_time" content="2018-08-18T04:17:16.924Z">
+<meta property="og:updated_time" content="2018-09-18T18:00:06.700Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Redis 入门指北">
 <meta name="twitter:description" content="前言这篇文章是团队内部分享 Introduction-to-Redis 之后的总结。不是完整的演讲稿，与演讲的内容有一定出入。">
-<meta name="twitter:image" content="http://7xi5vu.com1.z0.glb.clouddn.com/2016-12-18/redis_memcached_mysql.png">
+<meta name="twitter:image" content="https://knarfeh-1254074221.cos.na-siliconvalley.myqcloud.com/redis_memcached_mysql.png">
 
 
 
@@ -328,7 +328,7 @@
 </ul>
 <p>为什么那么多公司都在使用 Redis 呢，实际上和 redis 的功能类似的软件也不少，比如 Memcached，一句话来概括，因为 redis 简单而且强大，Redis 是单线程的模型，而 Memcached 支持多线程，所以对于多核的单例来说，Memecached 的性能会好一点，但是 Redis 的性能已经足够好了，在绝大多数情况下不会有性能瓶颈，除非是数据量太大，IO 会花费一些时间，如果出现瓶颈，一般来自机器内存或网络带宽，而不会来自 CPU。而 Redis 3.0 推出之后，Memcached 几乎所以的功能都成了 Redis 的子集，而且 Redis 自带了集群功能，虽然还不够成熟。基本上 Redis 的性能是非常好的，大多数操作的时间复杂度是常数，支持原子操作，支持事务，发布/订阅的功能，几乎所以流行的语言都有客户端，支持用 lua 做脚本。</p>
 <p>Redis 与其他数据库的对比：</p>
-<p><img src="http://7xi5vu.com1.z0.glb.clouddn.com/2016-12-18/redis_memcached_mysql.png" alt="compare"></p>
+<p><img src="https://knarfeh-1254074221.cos.na-siliconvalley.myqcloud.com/redis_memcached_mysql.png" alt="compare"></p>
 <h2 id="Redis-初体验"><a href="#Redis-初体验" class="headerlink" title="Redis 初体验"></a>Redis 初体验</h2><p>先简单地尝试一下 Redis</p>
 <p>上面有谈到，Redis 有5种基本类型，字符串，列表，集合，散列，有序集合。Redis 可以存储键和5种不同数据类型之间的映射。最简单的，也最基本的是字符串：</p>
 <p>Redis 中最基础的概念是键值对：你可以获得符合符合规则类型的键名列表，判断一个键是否存在，删除键，获得键值的数据类型等等</p>
@@ -426,12 +426,12 @@
 <li>自动故障迁移， 当一个主服务器不能正常工作时， Sentinel 会开始一次自动故障迁移操作， 它会将失效主服务器的其中一个从服务器升级为新的主服务器， 并让失效主服务器的其他从服务器改为复制新的主服务器。   </li>
 <li>提供配置信息，哨兵可以用作客户端的服务发现，他可以高速客户端 master 的地址。Redis Sentinel  也是一个分布式的系统，可以单独起一个哨兵程序，也可以启动一个运行在 sentinel 模式下的 Redis 服务器。即使是使用哨兵的功能，这时的 redis 集群的每个数据库仍然存有集群中的所有数据，从而导致集群的总数据存储量受限于可用存储内存最小的数据库节点，因为 redis 中的所有数据都是基于内存的，所以这个问题会比较突出。 因此 Redis 在3.0版本正式推出了官方支持的集群模式</li>
 </ol>
-<h3 id="复制"><a href="#复制" class="headerlink" title="复制"></a>复制</h3><p><img src="http://7xi5vu.com1.z0.glb.clouddn.com/redis-master-slave.jpg" alt="redis-master-slave"></p>
+<h3 id="复制"><a href="#复制" class="headerlink" title="复制"></a>复制</h3><p><img src="https://knarfeh-1254074221.cos.na-siliconvalley.myqcloud.com/redis-master-slave.jpg" alt="redis-master-slave"></p>
 <p>Redis 提供了复制（replication）的功能，可以实现当一台数据库中的数据更新后，自动将更新的数据同步到其他数据库上。 master 数据库可以进行读写操作，当写操作导致数据发生变化的时候，自动将数据同步给从数据库， slave 数据库一般是只读的。一个主数据库可以有多个从数据库，从数据库只能有一个主数据库。从数据库不仅可以接收主数据库的同步数据，自己也可以作为主数据库。需要特别注意的是：开启了复制功能，并且主数据库关闭持久化功能时，一定不要用 Supervisor 以及类似的进程工具自动重启主数据库，否则一旦进行了同步，所有的数据都会被清空。为了提高性能，一般从数据库会启用持久化，主数据库会禁用持久化，从数据库崩溃重启了，主数据库会把数据同步过来。主数据库崩溃了，如果是手工通过从数据库恢复，需要严格按照两个步骤进行:  </p>
 <p>1 在从数据库中使用 slaveof no one 把从数据库提升为主数据库<br>2 启动崩溃的主数据库，用 slaveof 把主数据库变为主数据库的从数据库，数据就可以恢复回来。 所以说手工恢复是比较麻烦的，我们可以用 redis 提供的哨兵功能来实现这个过程。</p>
 <h3 id="Redis-集群"><a href="#Redis-集群" class="headerlink" title="Redis 集群"></a>Redis 集群</h3><p>上面的复制模式，Redis 集群的每个数据库存有集群中的所有数据，集群的总数据存储量受限于可用存储内存最小的数据库节点，形成木桶效应。</p>
 <p>以往的 redis 集群，我们可以通过客户端分片来解决，有多个数据库节点的时候，由客户端决定每个键交由哪个数据库节点存储。这样就实现了整个数据库分布在 N 个数据库节点中，每个节点只存放总数据量的1/N。这样你需要扩容的时候，得对数据做手工的迁移，为了保证数据的一致性，还有可能让集群暂时下线，相对比较复杂。客户端分片有很多缺点，维护成本高，增加，移除节点比较繁琐，而且维护相同的分片逻辑成本很大，比如系统中有一个 redis 集群，一套业务系统是 Python 写的，一套的 golang 写的，为了保证分片逻辑的一致性，分片逻辑在两套系统中都得实现，开发成本比较大。于是在 redis cluster 模式推出之前，有一些公司做了 redis 集群的代理模式，比较有名的是 twitter 的 Twemproxy：</p>
-<p><img src="http://7xi5vu.com1.z0.glb.clouddn.com/twemproxy.jpg" alt="twemproxy"></p>
+<p><img src="https://knarfeh-1254074221.cos.na-siliconvalley.myqcloud.com/twemproxy.jpg" alt="twemproxy"></p>
 <p>Twemproxy 的优点是：  </p>
 <ol>
 <li>客户端像连接 Redis 实例一样连接 Twemproxy，不需要改任何的代码逻辑。   </li>
@@ -446,7 +446,7 @@
 </ol>
 <p>但这是很长一段时间内最被广泛使用，稳定性最高的 redis 代理。Codis 可以解决 Twemproxy 的不足，可以平滑增加 redis 实例，这里我就不赘述了，目前没有太多研究，也没有什么经验。</p>
 <p>Redis 推出了官方的集群功能，采用 P2P 的模式，完全去中心化。</p>
-<p><img src="http://7xi5vu.com1.z0.glb.clouddn.com/redis-cluster-workflow.jpg" alt="redis-cluster-workflow"></p>
+<p><img src="https://knarfeh-1254074221.cos.na-siliconvalley.myqcloud.com/redis-cluster-workflow.jpg" alt="redis-cluster-workflow"></p>
 <p>Redis 的工作模式如上图，Redis 集群使用数据分片（sharding）而非一致性哈希（consistency hashing）来实现： 一个 Redis 集群包含 16384 个哈希槽（hash slot）， 数据库中的每个键都属于这 16384 个哈希槽的其中一个， 集群使用公式 CRC16(key) % 16384 来计算键 key 属于哪个槽， 其中 CRC16(key) 语句用于计算键 key 的 CRC16 校验和 。如果用户将新节点 D 添加到集群中， 那么集群只需要将节点 A 、B 、 C 中的某些槽移动到节点 D 就可以了。因为将一个哈希槽从一个节点移动到另一个节点不会造成节点阻塞， 所以无论是添加新节点还是移除已存在节点， 又或者改变某个节点包含的哈希槽数量， 都不会造成集群下线。 我们这里假设1负责处理 0 号至 5500 号哈希槽，2负责处理 5501 号至 11000 号哈希槽，3负责处理 11001 号至 16384 号哈希槽。如果节点 2 下线了， 那么集群将无法正常运行， 因为集群找不到节点来处理 5501 号至 11000 号的哈希槽。另一方面， Redis 集群对节点使用了主从复制功能，我们可以给2号设置一个从节点，这种情况就跟 replication 的情况一样了，如果节点 2号的 master 和 slave 都下线，Redis 集群还是会停止工作。 </p>
 <p>目前 Redis 3.0 的集群方案有以下两个问题：</p>
 <ul>
@@ -456,7 +456,7 @@
 </li>
 </ul>
 <h3 id="如何使用好-Redis"><a href="#如何使用好-Redis" class="headerlink" title="如何使用好 Redis"></a>如何使用好 Redis</h3><p>最后，抛砖引玉，说说我们可以怎么最大程度地利用好 Redis？</p>
-<p><img src="http://7xi5vu.com1.z0.glb.clouddn.com/2016-12-13/lizi.jpg" alt="example"></p>
+<p><img src="https://knarfeh-1254074221.cos.na-siliconvalley.myqcloud.com/2016-12-13/lizi.jpg" alt="example"></p>
 <h4 id="在首页列出最新的评论"><a href="#在首页列出最新的评论" class="headerlink" title="在首页列出最新的评论"></a>在首页列出最新的评论</h4><p>没有 Redis<br><figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">SELECT</span> * <span class="keyword">FROM</span> foo <span class="keyword">WHERE</span> ... <span class="keyword">ORDER</span> <span class="keyword">BY</span> <span class="keyword">time</span> <span class="keyword">DESC</span> <span class="keyword">LIMIT</span> <span class="number">10</span></div></pre></td></tr></table></figure></p>
 <p>使用 Redis<br><figure class="highlight tcl"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">FUNCTION get_latest_comments(start,num_items):</div><div class="line">    id_list = redis.<span class="keyword">lrange</span>(<span class="string">"latest.comments"</span>,start,start+num_items<span class="number">-1</span>)</div><div class="line">    IF id_list.length &lt; num_items</div><div class="line">        id_list = SQL_DB(<span class="string">"SELECT ... ORDER BY time LIMIT ..."</span>)</div><div class="line">    END</div><div class="line">    RETURN id_list</div><div class="line">END</div></pre></td></tr></table></figure></p>
 <p>比如有这样一类问题，我们需要查询最新的10条数据，这里就抽象为最新的10条评论吧，如果没有 Redis，我们每次都需要从数据库里面查询数据，如果我们用 Redis 的话，可以将最新的评论保存在 Redis 的列表里，有新的评论就 push 进入，当然 push 进 Redis 的列表后也需要写数据库，取最新评论的时候从 Redis 去取就行了。</p>

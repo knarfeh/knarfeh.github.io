@@ -435,7 +435,7 @@
     <link href="http://knarfeh.github.io/2018/03/10/go-ethereum%20%E6%BA%90%E7%A0%81%E7%AC%94%E8%AE%B0%EF%BC%88trie%20%E6%A8%A1%E5%9D%97-MPT%20%E7%9A%84%E5%AE%9E%E7%8E%B0%EF%BC%89/"/>
     <id>http://knarfeh.github.io/2018/03/10/go-ethereum 源码笔记（trie 模块-MPT 的实现）/</id>
     <published>2018-03-10T14:35:02.000Z</published>
-    <updated>2018-09-03T10:00:51.596Z</updated>
+    <updated>2018-09-18T18:23:30.552Z</updated>
     
     <content type="html"><![CDATA[<p>默克尔树是区块链的基础结构，在比特币里它用来存放区块内的所有交易，用一个数字指纹（hash）来表示整个交易集合，在以太坊中，提出了一种新的数据结构叫做 Merkle Patricia Tree（常用翻译：默克尔帕特里夏树，缩写是 MPT），在以太坊中它用来组织管理账户，交易，收据等数据。从名字或许可以看出来它是一个组合名字，它实际上是默克尔树和帕特里夏树两种数据结构的结合，在阅读 trie 模块之前，读者应该对默克尔树，帕特里夏树这两个数据结构有一定了解，这些是阅读源代码的基础知识，这里只做概述。下面我们先分别介绍这两种数据结构。</p>
 <a id="more"></a>
@@ -459,7 +459,7 @@
 <h2 id="Patricia-帕特里夏树"><a href="#Patricia-帕特里夏树" class="headerlink" title="Patricia 帕特里夏树"></a>Patricia 帕特里夏树</h2><p>要搞懂帕特里夏树，首先要先搞懂字典树。</p>
 <h3 id="trie-字典树"><a href="#trie-字典树" class="headerlink" title="trie 字典树"></a><a href="https://zh.wikipedia.org/wiki/Trie" target="_blank" rel="external">trie 字典树</a></h3><p>也称前缀树，单词查找树，键树。它用来保存关联数组，其中的键通常是字符串，键不直接保存在节点中，而是由节点在树中的位置决定。一个节点的所有子孙都有相同的前缀，也就是这个节点对应的字符串。并不是所有节点都有对应的值，只有叶子节点和部分内部节点所对应的键才有相关的值。</p>
 <p>trie 的思想是用空间换时间，利用字符串的公共前缀来减少无谓的字符串比较以达到提高查询效率的目的。如下图就是一个 trie 树。</p>
-<p><img src="http://7xi5vu.com1.z0.glb.clouddn.com/trie_example.png" alt="trie"></p>
+<p><img src="https://knarfeh-1254074221.cos.na-siliconvalley.myqcloud.com/trie_example.png" alt="trie"></p>
 <h4 id="应用范围"><a href="#应用范围" class="headerlink" title="应用范围"></a>应用范围</h4><ul>
 <li>字符串检索</li>
 </ul>
@@ -518,7 +518,7 @@
 <p>这些是黄皮书中的定义，在 geth 的实现中，上述概念有不同的结构与之对应。</p>
 <figure class="highlight crmsh"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">type</span> <span class="keyword">node</span> <span class="title">interface</span> &#123;</div><div class="line">	fstring(<span class="keyword">string</span>) <span class="keyword">string</span></div><div class="line">	cache() (hashNode, bool)</div><div class="line">	canUnload(cachegen, cachelimit uint16) bool</div><div class="line">&#125;</div><div class="line"><span class="keyword">type</span> (</div><div class="line">	fullNode struct &#123;</div><div class="line">		Children [<span class="number">17</span>]<span class="keyword">node</span></div><div class="line">		<span class="title">flags</span>    nodeFlag</div><div class="line">	&#125;</div><div class="line">	shortNode struct &#123;</div><div class="line">		Key   []byte</div><div class="line">		Val   <span class="keyword">node</span></div><div class="line">		<span class="title">flags</span> nodeFlag</div><div class="line">	&#125;</div><div class="line">	hashNode  []byte</div><div class="line">	valueNode []byte</div><div class="line">)</div><div class="line">...</div><div class="line"><span class="keyword">type</span> nodeFlag struct &#123;</div><div class="line">	hash  hashNode</div><div class="line">	gen   uint16</div><div class="line">	dirty bool</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <p>下图是一个世界状态的例子（摘自 <a href="https://ethereum.stackexchange.com/questions/268/ethereum-block-architecture" target="_blank" rel="external">Ethereum block architecture</a>）：</p>
-<p><img src="http://7xi5vu.com1.z0.glb.clouddn.com/worldstatetrie.png" alt="worldstatetrie"></p>
+<p><img src="https://knarfeh-1254074221.cos.na-siliconvalley.myqcloud.com/worldstatetrie.png" alt="worldstatetrie"></p>
 <h4 id="fullNode"><a href="#fullNode" class="headerlink" title="fullNode"></a>fullNode</h4><p>fullNode 是一个可以携带多个子节点的节点。它有一个 node 数组类型的成员变量 Children，数组的前16个空位分别对应十六进制的0-9a-f，对于每个子节点，根据其 key 值的十六进制表示一一对应，Children 数组的第17位，fullNode 用来存储数据。</p>
 <p>对应黄皮书中的分支节点。</p>
 <h4 id="shortNode"><a href="#shortNode" class="headerlink" title="shortNode"></a>shortNode</h4><p>shortNode 是一个仅有一个子节点的节点。成员变量 Val 指向一个子节点，成员变量 Key 是一个由任意长度的字符串，这体现了压缩前缀树的特点，通过合并只有一个子节点的父节点和其子节点来缩短 Trie 的深度。</p>
@@ -614,7 +614,7 @@
     <link href="http://knarfeh.github.io/2018/03/10/go-ethereum%20%E6%BA%90%E7%A0%81%E7%AC%94%E8%AE%B0%EF%BC%88rlp%20%E6%A8%A1%E5%9D%97-%E5%BA%8F%E5%88%97%E5%8C%96%E4%B8%8E%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96%EF%BC%89/"/>
     <id>http://knarfeh.github.io/2018/03/10/go-ethereum 源码笔记（rlp 模块-序列化与反序列化）/</id>
     <published>2018-03-10T14:35:01.000Z</published>
-    <updated>2018-08-25T06:41:19.925Z</updated>
+    <updated>2018-09-18T18:23:04.643Z</updated>
     
     <content type="html"><![CDATA[<p>RLP 的定义，作用，用法在 <a href="https://github.com/ethereum/wiki/wiki/%5BEnglish%5D-RLP" target="_blank" rel="external">wiki</a> 文档中有文字说明，这部分我们只做简单描述。</p>
 <p>在<a href="https://github.com/ethereum/yellowpaper" target="_blank" rel="external">黄皮书</a>里有 RLP 的形式化说明，这里我会总结一下，然后侧重于分析源码，讲解实现原理。</p>
@@ -625,14 +625,14 @@
 <h2 id="规则和例子"><a href="#规则和例子" class="headerlink" title="规则和例子"></a>规则和例子</h2><p>在 <a href="https://github.com/ethereum/wiki/wiki/%5BEnglish%5D-RLP#definition" target="_blank" rel="external">wiki</a> 中有详细定义，这里不赘述。</p>
 <h2 id="黄皮书里的形式化方法"><a href="#黄皮书里的形式化方法" class="headerlink" title="黄皮书里的形式化方法"></a>黄皮书里的形式化方法</h2><p>在<a href="https://github.com/ethereum/yellowpaper" target="_blank" rel="external">黄皮书</a>中有 RLP 的形式化定义，形式化的描述比大白话更直观，这里我们做一下简单总结:</p>
 <p>首先定义集合 T：</p>
-<p><img src="http://7xi5vu.com1.z0.glb.clouddn.com/RLP%20structures%20T.png?imageView2/0/w/400/h/400" alt="rlp-structure-t"></p>
+<p><img src="https://knarfeh-1254074221.cos.na-siliconvalley.myqcloud.com/RLP%20structures%20T.png" alt="rlp-structure-t"></p>
 <p>$\mathbb{T}$ 表示所有的字节数组和树形结构的组合，$\mathbb{L}$ 表示不止单一节点的树形结构，如结构体，树节点的分支节点，非叶子节点。 $\mathbb{O}$ 表示所有 byte 的集合，$\mathbb{B}$ 表示所有可能的字节数组，</p>
 <p>$\mathbb{T}$ 和 $\mathbb{L}$ 是 RLP 需要处理的两种结构。</p>
 <p>RLP 可以用两个子函数描述：</p>
-<p><img src="http://7xi5vu.com1.z0.glb.clouddn.com/RLP%20structure%20sub-functions.png?imageView2/0/w/400/h/400" alt="rlp-structure-rlp"></p>
+<p><img src="https://knarfeh-1254074221.cos.na-siliconvalley.myqcloud.com/RLP%20structure%20sub-functions.png" alt="rlp-structure-rlp"></p>
 <p>其中：</p>
-<p><img src="http://7xi5vu.com1.z0.glb.clouddn.com/RLP%20structure%20Rbx.png?imageView2/0/w/600/h/600" alt="rlp-structure-rbx"></p>
-<p><img src="http://7xi5vu.com1.z0.glb.clouddn.com/RLP%20structure%20Rlx.png?imageView2/0/w/500/h/500" alt="rlp-structure-rlx"></p>
+<p><img src="https://knarfeh-1254074221.cos.na-siliconvalley.myqcloud.com/RLP%20structure%20Rbx.png" alt="rlp-structure-rbx"></p>
+<p><img src="https://knarfeh-1254074221.cos.na-siliconvalley.myqcloud.com/RLP%20structure%20Rlx.png" alt="rlp-structure-rlx"></p>
 <p>对于 $\mathbb{B}$ 类型的字节数组，处理规则是：</p>
 <ul>
 <li>如果字节数组只有一个字节，并且字节大小小于 128，编码结果就是它本身。</li>
@@ -1025,7 +1025,7 @@
     <link href="http://knarfeh.github.io/2018/03/10/go-ethereum%20%E6%BA%90%E7%A0%81%E7%AC%94%E8%AE%B0%EF%BC%88%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%EF%BC%89/"/>
     <id>http://knarfeh.github.io/2018/03/10/go-ethereum 源码笔记（基础知识）/</id>
     <published>2018-03-10T14:34:57.000Z</published>
-    <updated>2018-09-17T14:40:25.135Z</updated>
+    <updated>2018-09-18T18:23:48.885Z</updated>
     
     <content type="html"><![CDATA[<p>本篇将梳理以太坊的基本概念，说明一些值得注意的地方，这里不会讲解比特币的原理，代码，但会介绍以太坊与比特币的差异，所以最好看过比特币的论文，对比特币的基本原理、实现有所了解。这一篇将以太坊的白皮书作为重要参考，可以看做是以太坊白皮书的概述。以太坊的白皮书是一个非常好的学习资料，它在介绍以太坊前分析了比特币存在的问题，因此我们可以通过这份白皮书了解整个加密货币的生态。</p>
 <a id="more"></a>
@@ -1114,7 +1114,7 @@
 <li>交易的签名必须与每笔输入的所有者签名匹配</li>
 <li>输入的总值必须等于或大于输出的总值</li>
 </ol>
-<p><img src="http://7xi5vu.com1.z0.glb.clouddn.com/en-transaction-propagation.png" alt="transaction of bitcoin, https://bitcoin.org/img/dev/en-transaction-propagation.svg"></p>
+<p><img src="https://knarfeh-1254074221.cos.na-siliconvalley.myqcloud.com/en-transaction-propagation.png" alt="transaction of bitcoin, https://bitcoin.org/img/dev/en-transaction-propagation.svg"></p>
 <p>个人认为理解 UTXO 的最佳方式是读这个<a href="https://github.com/Jeiwan/blockchain_go" target="_blank" rel="external">仓库</a>的源代码，这个作者写了7篇文章，实现了一个比特币的原型，Bitcoin Core 的代码是 C++ 写的，且代码复杂，年代久远，这个仓库使用 Golang，简单易懂，UTXO 的实现在 <a href="https://github.com/Jeiwan/blockchain_go/compare/part_3...part_4#files_bucket" target="_blank" rel="external">Transactions 1</a>。感兴趣的朋友可以进一步阅读。</p>
 <p>UTXO 的好处是（来自以太坊的维基）：</p>
 <ol>
@@ -1131,9 +1131,9 @@
 <p>Vitalik 在一篇<a href="https://medium.com/@ConsenSys/thoughts-on-utxo-by-vitalik-buterin-2bb782c67e53" target="_blank" rel="external">博客</a>中还谈到 UTXO 可能引发拒绝服务漏洞。而且基于 UTXO 的模型与有状态的智能合约不太契合。以太坊最终选择使用账户模型。</p>
 <p>以太坊使用状态（state）的概念来存储一系列账户，每个账户有自己的余额以及特定数据（代码或内部存储），如果交易发起方有足够余额支付交易费用，则交易有效，发起方账户扣除相应金额，接收账户增加余额。账户还用于智能合约的创建和执行，可以通过转账来触发接收账户对应的代码的执行，该账户的内部存储可能会发生变化，同时也可以创建额外信息发给其他账户，触发新的交易。从这一点可以看到，dapp 需要跟用户状态进行复杂的交互，通过 UTXO 实现会比较难满足需求。</p>
 <h3 id="区块链设计的不同"><a href="#区块链设计的不同" class="headerlink" title="区块链设计的不同"></a>区块链设计的不同</h3><h4 id="比特币"><a href="#比特币" class="headerlink" title="比特币"></a>比特币</h4><p>比特币的区块包括区块头和区块体两部分，区块头封装了前一个区块的哈希值、时间戳，随机数，默克尔树根值和当前区块的哈希值，区块体中包括交易计数和交易详情。区块结构如下图（摘自 Bitcoin 白皮书）：</p>
-<p><img src="http://7xi5vu.com1.z0.glb.clouddn.com/bitcoin_block_from_bitcoinpaper.png" alt="bitcoin_block"></p>
+<p><img src="https://knarfeh-1254074221.cos.na-siliconvalley.myqcloud.com/bitcoin_block_from_bitcoinpaper.png" alt="bitcoin_block"></p>
 <h4 id="以太坊-1"><a href="#以太坊-1" class="headerlink" title="以太坊"></a>以太坊</h4><p>以太坊在比特币区块链基础上做了一些调整，区块主要由区块头、交易列表和叔区块头三部分组成。区块头包括父区块的哈希值、叔区块的哈希值、状态树根哈希值、交易树根哈希值、收据树根哈希值、时间戳、随机数，比较特别的是采用了改进的默克尔树，压缩前缀树的结构 MPT，这部分在 <a href="https://knarfeh.com/2018/03/10/go-ethereum%20%E6%BA%90%E7%A0%81%E7%AC%94%E8%AE%B0%EF%BC%88trie%20%E6%A8%A1%E5%9D%97-MPT%20%E7%9A%84%E5%AE%9E%E7%8E%B0%EF%BC%89/" target="_blank" rel="external">go-ethereum 源码笔记（trie 模块-MPT 的实现）</a> 会进一步探讨。区块结构如下图（摘自 <a href="https://blog.ethereum.org/2015/11/15/merkling-in-ethereum/" target="_blank" rel="external">Ethereum 博客</a>）：</p>
-<p><img src="http://7xi5vu.com1.z0.glb.clouddn.com/ethblockchain_full.png" alt="ethereum_block"></p>
+<p><img src="https://knarfeh-1254074221.cos.na-siliconvalley.myqcloud.com/ethblockchain_full.png" alt="ethereum_block"></p>
 <h3 id="PoW-机制的不同"><a href="#PoW-机制的不同" class="headerlink" title="PoW 机制的不同"></a>PoW 机制的不同</h3><p>PoW，Proof of Work 的缩写，即工作量证明，又称挖矿，目前比特币，以太坊都基于 PoW 算法实现共识机制，即根据挖矿的贡献决定货币的分配。</p>
 <h4 id="比特币-1"><a href="#比特币-1" class="headerlink" title="比特币"></a>比特币</h4><p>比特币的 PoW 的过程，需要不断调整 Nonce 值，对区块头做双重 SHA256 哈希运算，使得结果满足给定数量前导0的哈希值的过程。其中前导0的个数，取决于挖矿难度，前导 0 的个数越多，挖矿难度越大。</p>
 <h4 id="以太坊-2"><a href="#以太坊-2" class="headerlink" title="以太坊"></a>以太坊</h4><p>以太坊的 PoW 算法可以表示为如下公式：$RAND(h, n) &lt;= M/d$<br>其中 $RAND()$ 表示一个概念函数，代表一系列的复杂运算，h 和 n 为输入，即区块 Header 的哈希、以及 Header 中的 Nonce。M 表示一个极大的数，此处使用 $2^{256}-1$。d 为区块难度，即Header 中的 Difficulty。在 h 和 n 确定的情况下，d 越大，挖矿难度越大。需不断变更 Nonce，使$RAND(h, n)$ 满足 $RAND(h, n) &lt;= M / d$ 完成 PoW。</p>
@@ -1204,7 +1204,7 @@
     <link href="http://knarfeh.github.io/2018/03/10/go-ethereum%20%E6%BA%90%E7%A0%81%E7%AC%94%E8%AE%B0%EF%BC%88%E6%A6%82%E8%A7%88%EF%BC%89/"/>
     <id>http://knarfeh.github.io/2018/03/10/go-ethereum 源码笔记（概览）/</id>
     <published>2018-03-10T14:34:56.000Z</published>
-    <updated>2018-09-15T02:38:31.712Z</updated>
+    <updated>2018-09-18T18:24:02.037Z</updated>
     
     <content type="html"><![CDATA[<p>花了一点时间读以太坊的源代码，内容太多，所以一边看一边写，没想到越写越多，于是想着把笔记整理出来。</p>
 <p>源码解读是一件费力不讨好的事情，因为看代码的时候我们看到的是最终解决方案，虽然可以看到 commit 的历史，但我们看不到作者的思路，踩过的坑，而且 geth 的设计文档，功能的相关讨论等信息不像 Kubernetes 那么规范透明，所以我看这些代码的时候很多地方也只是一知半解，欢迎有更多经验的朋友批评指正，不吝赐教，也欢迎有价值的讨论。看了一些书和文章，所以我这也算不上多原创，基本上所有看过的链接都记在 reference 里面了。有的代码暂时看不懂就只能靠猜了，等待之后的实践中验证想法。尽管如此，对于同样想要阅读 geth 的源代码的人来说总还是有些作用，对于我个人来说整理出来这些文章也是一个总结知识，把点连成面的过程，希望同时能帮到其他人。</p>
@@ -1238,9 +1238,9 @@
 </li>
 </ul>
 <p>写完了这个系列可能会加个思维导图。</p>
-<h2 id="架构"><a href="#架构" class="headerlink" title="架构"></a>架构</h2><h3 id="总体架构图（来自-Ethereum-block-architecture）"><a href="#总体架构图（来自-Ethereum-block-architecture）" class="headerlink" title="总体架构图（来自 Ethereum block architecture）"></a>总体架构图（来自 <a href="https://ethereum.stackexchange.com/questions/268/ethereum-block-architecture" target="_blank" rel="external">Ethereum block architecture</a>）</h3><p><img src="http://7xi5vu.com1.z0.glb.clouddn.com/stackexchange-ethereum-block-architecture.jpg" alt="https://i.stack.imgur.com/afWDt.jpg"></p>
+<h2 id="架构"><a href="#架构" class="headerlink" title="架构"></a>架构</h2><h3 id="总体架构图（来自-Ethereum-block-architecture）"><a href="#总体架构图（来自-Ethereum-block-architecture）" class="headerlink" title="总体架构图（来自 Ethereum block architecture）"></a>总体架构图（来自 <a href="https://ethereum.stackexchange.com/questions/268/ethereum-block-architecture" target="_blank" rel="external">Ethereum block architecture</a>）</h3><p><img src="https://knarfeh-1254074221.cos.na-siliconvalley.myqcloud.com/stackexchange-ethereum-block-architecture.jpg" alt="https://i.stack.imgur.com/afWDt.jpg"></p>
 <h3 id="分层架构"><a href="#分层架构" class="headerlink" title="分层架构"></a>分层架构</h3><p><a href="https://book.douban.com/subject/30199891/" target="_blank" rel="external">以太坊技术详解与实战</a>这本书里介绍了以太坊的分层架构，其中的图片还挺有参考价值的，网络上没有找到原图，所以我自己画了一下：</p>
-<p><img src="http://7xi5vu.com1.z0.glb.clouddn.com/ethereum-leveld-architecture.png" alt="ethereum-leveld-architecture"></p>
+<p><img src="https://knarfeh-1254074221.cos.na-siliconvalley.myqcloud.com/ethereum-leveld-architecture.png" alt="ethereum-leveld-architecture"></p>
 <h4 id="底层服务"><a href="#底层服务" class="headerlink" title="底层服务"></a>底层服务</h4><p>底层服务包括 P2P 网络、LevelDB 数据库、密码学算法和分片优化等基础服务。</p>
 <h4 id="核心层"><a href="#核心层" class="headerlink" title="核心层"></a>核心层</h4><p>核心层包括区块链、共识算法和以太坊虚拟机等。</p>
 <h4 id="顶层应用"><a href="#顶层应用" class="headerlink" title="顶层应用"></a>顶层应用</h4><p>这一层包括 API 接口、智能合约以及去中心化应用。</p>
@@ -2208,9 +2208,9 @@
     </summary>
     
     
-      <category term="Web" scheme="http://knarfeh.github.io/tags/Web/"/>
-    
       <category term="Python" scheme="http://knarfeh.github.io/tags/Python/"/>
+    
+      <category term="Web" scheme="http://knarfeh.github.io/tags/Web/"/>
     
   </entry>
   
@@ -2219,7 +2219,7 @@
     <link href="http://knarfeh.github.io/2016/12/04/Redis%20%E5%85%A5%E9%97%A8%E6%8C%87%E5%8C%97/"/>
     <id>http://knarfeh.github.io/2016/12/04/Redis 入门指北/</id>
     <published>2016-12-04T03:26:27.000Z</published>
-    <updated>2018-08-18T04:17:16.924Z</updated>
+    <updated>2018-09-18T18:00:06.700Z</updated>
     
     <content type="html"><![CDATA[<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>这篇文章是团队内部分享 <a href="http://knarfeh.com/Introduction-to-Redis/#/" target="_blank" rel="external">Introduction-to-Redis</a> 之后的总结。不是完整的演讲稿，与演讲的内容有一定出入。</p>
 <a id="more"></a>
@@ -2271,7 +2271,7 @@
 </ul>
 <p>为什么那么多公司都在使用 Redis 呢，实际上和 redis 的功能类似的软件也不少，比如 Memcached，一句话来概括，因为 redis 简单而且强大，Redis 是单线程的模型，而 Memcached 支持多线程，所以对于多核的单例来说，Memecached 的性能会好一点，但是 Redis 的性能已经足够好了，在绝大多数情况下不会有性能瓶颈，除非是数据量太大，IO 会花费一些时间，如果出现瓶颈，一般来自机器内存或网络带宽，而不会来自 CPU。而 Redis 3.0 推出之后，Memcached 几乎所以的功能都成了 Redis 的子集，而且 Redis 自带了集群功能，虽然还不够成熟。基本上 Redis 的性能是非常好的，大多数操作的时间复杂度是常数，支持原子操作，支持事务，发布/订阅的功能，几乎所以流行的语言都有客户端，支持用 lua 做脚本。</p>
 <p>Redis 与其他数据库的对比：</p>
-<p><img src="http://7xi5vu.com1.z0.glb.clouddn.com/2016-12-18/redis_memcached_mysql.png" alt="compare"></p>
+<p><img src="https://knarfeh-1254074221.cos.na-siliconvalley.myqcloud.com/redis_memcached_mysql.png" alt="compare"></p>
 <h2 id="Redis-初体验"><a href="#Redis-初体验" class="headerlink" title="Redis 初体验"></a>Redis 初体验</h2><p>先简单地尝试一下 Redis</p>
 <p>上面有谈到，Redis 有5种基本类型，字符串，列表，集合，散列，有序集合。Redis 可以存储键和5种不同数据类型之间的映射。最简单的，也最基本的是字符串：</p>
 <p>Redis 中最基础的概念是键值对：你可以获得符合符合规则类型的键名列表，判断一个键是否存在，删除键，获得键值的数据类型等等</p>
@@ -2369,12 +2369,12 @@
 <li>自动故障迁移， 当一个主服务器不能正常工作时， Sentinel 会开始一次自动故障迁移操作， 它会将失效主服务器的其中一个从服务器升级为新的主服务器， 并让失效主服务器的其他从服务器改为复制新的主服务器。   </li>
 <li>提供配置信息，哨兵可以用作客户端的服务发现，他可以高速客户端 master 的地址。Redis Sentinel  也是一个分布式的系统，可以单独起一个哨兵程序，也可以启动一个运行在 sentinel 模式下的 Redis 服务器。即使是使用哨兵的功能，这时的 redis 集群的每个数据库仍然存有集群中的所有数据，从而导致集群的总数据存储量受限于可用存储内存最小的数据库节点，因为 redis 中的所有数据都是基于内存的，所以这个问题会比较突出。 因此 Redis 在3.0版本正式推出了官方支持的集群模式</li>
 </ol>
-<h3 id="复制"><a href="#复制" class="headerlink" title="复制"></a>复制</h3><p><img src="http://7xi5vu.com1.z0.glb.clouddn.com/redis-master-slave.jpg" alt="redis-master-slave"></p>
+<h3 id="复制"><a href="#复制" class="headerlink" title="复制"></a>复制</h3><p><img src="https://knarfeh-1254074221.cos.na-siliconvalley.myqcloud.com/redis-master-slave.jpg" alt="redis-master-slave"></p>
 <p>Redis 提供了复制（replication）的功能，可以实现当一台数据库中的数据更新后，自动将更新的数据同步到其他数据库上。 master 数据库可以进行读写操作，当写操作导致数据发生变化的时候，自动将数据同步给从数据库， slave 数据库一般是只读的。一个主数据库可以有多个从数据库，从数据库只能有一个主数据库。从数据库不仅可以接收主数据库的同步数据，自己也可以作为主数据库。需要特别注意的是：开启了复制功能，并且主数据库关闭持久化功能时，一定不要用 Supervisor 以及类似的进程工具自动重启主数据库，否则一旦进行了同步，所有的数据都会被清空。为了提高性能，一般从数据库会启用持久化，主数据库会禁用持久化，从数据库崩溃重启了，主数据库会把数据同步过来。主数据库崩溃了，如果是手工通过从数据库恢复，需要严格按照两个步骤进行:  </p>
 <p>1 在从数据库中使用 slaveof no one 把从数据库提升为主数据库<br>2 启动崩溃的主数据库，用 slaveof 把主数据库变为主数据库的从数据库，数据就可以恢复回来。 所以说手工恢复是比较麻烦的，我们可以用 redis 提供的哨兵功能来实现这个过程。</p>
 <h3 id="Redis-集群"><a href="#Redis-集群" class="headerlink" title="Redis 集群"></a>Redis 集群</h3><p>上面的复制模式，Redis 集群的每个数据库存有集群中的所有数据，集群的总数据存储量受限于可用存储内存最小的数据库节点，形成木桶效应。</p>
 <p>以往的 redis 集群，我们可以通过客户端分片来解决，有多个数据库节点的时候，由客户端决定每个键交由哪个数据库节点存储。这样就实现了整个数据库分布在 N 个数据库节点中，每个节点只存放总数据量的1/N。这样你需要扩容的时候，得对数据做手工的迁移，为了保证数据的一致性，还有可能让集群暂时下线，相对比较复杂。客户端分片有很多缺点，维护成本高，增加，移除节点比较繁琐，而且维护相同的分片逻辑成本很大，比如系统中有一个 redis 集群，一套业务系统是 Python 写的，一套的 golang 写的，为了保证分片逻辑的一致性，分片逻辑在两套系统中都得实现，开发成本比较大。于是在 redis cluster 模式推出之前，有一些公司做了 redis 集群的代理模式，比较有名的是 twitter 的 Twemproxy：</p>
-<p><img src="http://7xi5vu.com1.z0.glb.clouddn.com/twemproxy.jpg" alt="twemproxy"></p>
+<p><img src="https://knarfeh-1254074221.cos.na-siliconvalley.myqcloud.com/twemproxy.jpg" alt="twemproxy"></p>
 <p>Twemproxy 的优点是：  </p>
 <ol>
 <li>客户端像连接 Redis 实例一样连接 Twemproxy，不需要改任何的代码逻辑。   </li>
@@ -2389,7 +2389,7 @@
 </ol>
 <p>但这是很长一段时间内最被广泛使用，稳定性最高的 redis 代理。Codis 可以解决 Twemproxy 的不足，可以平滑增加 redis 实例，这里我就不赘述了，目前没有太多研究，也没有什么经验。</p>
 <p>Redis 推出了官方的集群功能，采用 P2P 的模式，完全去中心化。</p>
-<p><img src="http://7xi5vu.com1.z0.glb.clouddn.com/redis-cluster-workflow.jpg" alt="redis-cluster-workflow"></p>
+<p><img src="https://knarfeh-1254074221.cos.na-siliconvalley.myqcloud.com/redis-cluster-workflow.jpg" alt="redis-cluster-workflow"></p>
 <p>Redis 的工作模式如上图，Redis 集群使用数据分片（sharding）而非一致性哈希（consistency hashing）来实现： 一个 Redis 集群包含 16384 个哈希槽（hash slot）， 数据库中的每个键都属于这 16384 个哈希槽的其中一个， 集群使用公式 CRC16(key) % 16384 来计算键 key 属于哪个槽， 其中 CRC16(key) 语句用于计算键 key 的 CRC16 校验和 。如果用户将新节点 D 添加到集群中， 那么集群只需要将节点 A 、B 、 C 中的某些槽移动到节点 D 就可以了。因为将一个哈希槽从一个节点移动到另一个节点不会造成节点阻塞， 所以无论是添加新节点还是移除已存在节点， 又或者改变某个节点包含的哈希槽数量， 都不会造成集群下线。 我们这里假设1负责处理 0 号至 5500 号哈希槽，2负责处理 5501 号至 11000 号哈希槽，3负责处理 11001 号至 16384 号哈希槽。如果节点 2 下线了， 那么集群将无法正常运行， 因为集群找不到节点来处理 5501 号至 11000 号的哈希槽。另一方面， Redis 集群对节点使用了主从复制功能，我们可以给2号设置一个从节点，这种情况就跟 replication 的情况一样了，如果节点 2号的 master 和 slave 都下线，Redis 集群还是会停止工作。 </p>
 <p>目前 Redis 3.0 的集群方案有以下两个问题：</p>
 <ul>
@@ -2399,7 +2399,7 @@
 </li>
 </ul>
 <h3 id="如何使用好-Redis"><a href="#如何使用好-Redis" class="headerlink" title="如何使用好 Redis"></a>如何使用好 Redis</h3><p>最后，抛砖引玉，说说我们可以怎么最大程度地利用好 Redis？</p>
-<p><img src="http://7xi5vu.com1.z0.glb.clouddn.com/2016-12-13/lizi.jpg" alt="example"></p>
+<p><img src="https://knarfeh-1254074221.cos.na-siliconvalley.myqcloud.com/2016-12-13/lizi.jpg" alt="example"></p>
 <h4 id="在首页列出最新的评论"><a href="#在首页列出最新的评论" class="headerlink" title="在首页列出最新的评论"></a>在首页列出最新的评论</h4><p>没有 Redis<br><figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">SELECT</span> * <span class="keyword">FROM</span> foo <span class="keyword">WHERE</span> ... <span class="keyword">ORDER</span> <span class="keyword">BY</span> <span class="keyword">time</span> <span class="keyword">DESC</span> <span class="keyword">LIMIT</span> <span class="number">10</span></div></pre></td></tr></table></figure></p>
 <p>使用 Redis<br><figure class="highlight tcl"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">FUNCTION get_latest_comments(start,num_items):</div><div class="line">    id_list = redis.<span class="keyword">lrange</span>(<span class="string">"latest.comments"</span>,start,start+num_items<span class="number">-1</span>)</div><div class="line">    IF id_list.length &lt; num_items</div><div class="line">        id_list = SQL_DB(<span class="string">"SELECT ... ORDER BY time LIMIT ..."</span>)</div><div class="line">    END</div><div class="line">    RETURN id_list</div><div class="line">END</div></pre></td></tr></table></figure></p>
 <p>比如有这样一类问题，我们需要查询最新的10条数据，这里就抽象为最新的10条评论吧，如果没有 Redis，我们每次都需要从数据库里面查询数据，如果我们用 Redis 的话，可以将最新的评论保存在 Redis 的列表里，有新的评论就 push 进入，当然 push 进 Redis 的列表后也需要写数据库，取最新评论的时候从 Redis 去取就行了。</p>
@@ -2565,9 +2565,9 @@
     </summary>
     
     
-      <category term="Web" scheme="http://knarfeh.github.io/tags/Web/"/>
-    
       <category term="Python" scheme="http://knarfeh.github.io/tags/Python/"/>
+    
+      <category term="Web" scheme="http://knarfeh.github.io/tags/Web/"/>
     
   </entry>
   
@@ -2576,7 +2576,7 @@
     <link href="http://knarfeh.github.io/2016/06/11/%E5%86%99%E7%BB%99%E6%96%B0%E6%89%8B%E7%9C%8B%E7%9A%84%20Flask+uwsgi+Nginx+Ubuntu%20%E9%83%A8%E7%BD%B2%E6%95%99%E7%A8%8B/"/>
     <id>http://knarfeh.github.io/2016/06/11/写给新手看的 Flask+uwsgi+Nginx+Ubuntu 部署教程/</id>
     <published>2016-06-11T13:40:38.000Z</published>
-    <updated>2017-02-05T15:34:54.000Z</updated>
+    <updated>2018-09-18T18:25:54.821Z</updated>
     
     <content type="html"><![CDATA[<p>学习 Flask，写了一个 Flask 应用需要部署的时候，就想着折腾自己的服务器。根据搜索的教程照做，对于原理一知半解，磕磕碰碰，只要运行起来了，谢天谢地然后不再折腾了，到下一次还需要部署时，这样的过程就会重复一次。不知道多少人的膝盖中箭了呢？我也这样干过，这么做确实很蠢，所以我决定写一篇 Flask+uwsgi+Nginx+Ubuntu 的部署教程，解答一些我自己在这个过程中的疑问，从原理到方案，以一个小白的角度，总结一下部署、运维这件事，应该对初学 Flask (或其他 Python Web 框架)，从未接触过部署，运维的同学有些帮助。<br><a id="more"></a></p>
 <h2 id="环境简介"><a href="#环境简介" class="headerlink" title="环境简介"></a>环境简介</h2><h3 id="Ubuntu"><a href="#Ubuntu" class="headerlink" title="Ubuntu"></a>Ubuntu</h3><p>我使用的 Ubuntu 系统版本是 14.04，用过几个 Linux 发行版，现在挑选系统的第一选择基本就是 Ubuntu 了，因为 Ubuntu 有商业公司 <a href="https://en.wikipedia.org/wiki/Canonical_%28company%29" target="_blank" rel="external">Canonical</a> 做开发维护；使用的人多，有庞大的社区支持；遇到问题容易解决。我折腾过很长时间的 Linux 系统，我对新手的建议是，不要把时间浪费在这上面，应该以解决实际问题为导向，踏实点提高编程能力。装系统、优化系统、记各种酷炫的命令对于提高编程能力并没有实际帮助。所以你问我资瓷不资瓷 Ubuntu，我当然是资瓷的啦，用 Ubuntu 当然也会遇到坑，但相比于其他系统会少一些，也会容易解决一点。事实上，Ubuntu 已经成为了服务器的首选，AWS 上被选择最多的 Linux 发行版就是 Ubuntu。Quora 用的 Linux 发行版也是 Ubuntu，创始人 Adam D’Angelo 在这个<a href="https://www.quora.com/Which-Linux-flavor-does-Quora-use-Why" target="_blank" rel="external">回答</a>里解释了原因。总的来说，没有特别的理由的话，Ubuntu 理应是首选，经验多一些之后，如果对某个发行版感兴趣，或者想要做一些特别的尝试，跳出舒适区，试试其他系统也无妨。</p>
@@ -2624,7 +2624,7 @@
 <p>启动 nginx ：</p>
 <figure class="highlight awk"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ sudo <span class="regexp">/etc/i</span>nit.d<span class="regexp">/nginx start</span></div></pre></td></tr></table></figure>
 <p>这时候在浏览器地址栏输入服务器的 ip 地址，看到下面的页面就表明 Nginx 已经启动了：  </p>
-<p><img src="http://7xi5vu.com1.z0.glb.clouddn.com/etc_init_d_nginx_start.png" alt="etc_init_d_nginx_start"></p>
+<p><img src="https://knarfeh-1254074221.cos.na-siliconvalley.myqcloud.com/etc_init_d_nginx_start.png" alt="etc_init_d_nginx_start"></p>
 <h3 id="安装-uWSGI"><a href="#安装-uWSGI" class="headerlink" title="安装 uWSGI"></a>安装 uWSGI</h3><p>在安装 uWSGI 前，需要解决 uWSGI 的依赖问题，因为 uWSGI 是一个 C 语言写的应用，所以我们需要 C 编译环境，以及 python 开发相关组件：  </p>
 <figure class="highlight mipsasm"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">$ sudo apt-get <span class="keyword">install </span><span class="keyword">build-essential </span>python-dev</div><div class="line">$ sudo pip <span class="keyword">install </span>uwsgi</div></pre></td></tr></table></figure>
 <p>到这，我们就安装好了 uWSGI，</p>
@@ -2683,9 +2683,9 @@
     
       <category term="Life" scheme="http://knarfeh.github.io/tags/Life/"/>
     
-      <category term="Flask" scheme="http://knarfeh.github.io/tags/Flask/"/>
-    
       <category term="code" scheme="http://knarfeh.github.io/tags/code/"/>
+    
+      <category term="Flask" scheme="http://knarfeh.github.io/tags/Flask/"/>
     
       <category term="uwsgi" scheme="http://knarfeh.github.io/tags/uwsgi/"/>
     

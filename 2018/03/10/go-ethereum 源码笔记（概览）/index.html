@@ -65,13 +65,13 @@
 <meta property="og:site_name" content="Frank&#39;s Notes">
 <meta property="og:description" content="花了一点时间读以太坊的源代码，内容太多，所以一边看一边写，没想到越写越多，于是想着把笔记整理出来。 源码解读是一件费力不讨好的事情，因为看代码的时候我们看到的是最终解决方案，虽然可以看到 commit 的历史，但我们看不到作者的思路，踩过的坑，而且 geth 的设计文档，功能的相关讨论等信息不像 Kubernetes 那么规范透明，所以我看这些代码的时候很多地方也只是一知半解，欢迎有更多经验的朋友">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="http://7xi5vu.com1.z0.glb.clouddn.com/stackexchange-ethereum-block-architecture.jpg">
-<meta property="og:image" content="http://7xi5vu.com1.z0.glb.clouddn.com/ethereum-leveld-architecture.png">
-<meta property="og:updated_time" content="2018-09-15T02:38:31.712Z">
+<meta property="og:image" content="https://knarfeh-1254074221.cos.na-siliconvalley.myqcloud.com/stackexchange-ethereum-block-architecture.jpg">
+<meta property="og:image" content="https://knarfeh-1254074221.cos.na-siliconvalley.myqcloud.com/ethereum-leveld-architecture.png">
+<meta property="og:updated_time" content="2018-09-18T18:24:02.037Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="go-ethereum 源码笔记（概览）">
 <meta name="twitter:description" content="花了一点时间读以太坊的源代码，内容太多，所以一边看一边写，没想到越写越多，于是想着把笔记整理出来。 源码解读是一件费力不讨好的事情，因为看代码的时候我们看到的是最终解决方案，虽然可以看到 commit 的历史，但我们看不到作者的思路，踩过的坑，而且 geth 的设计文档，功能的相关讨论等信息不像 Kubernetes 那么规范透明，所以我看这些代码的时候很多地方也只是一知半解，欢迎有更多经验的朋友">
-<meta name="twitter:image" content="http://7xi5vu.com1.z0.glb.clouddn.com/stackexchange-ethereum-block-architecture.jpg">
+<meta name="twitter:image" content="https://knarfeh-1254074221.cos.na-siliconvalley.myqcloud.com/stackexchange-ethereum-block-architecture.jpg">
 
 
 
@@ -304,9 +304,9 @@
 </li>
 </ul>
 <p>写完了这个系列可能会加个思维导图。</p>
-<h2 id="架构"><a href="#架构" class="headerlink" title="架构"></a>架构</h2><h3 id="总体架构图（来自-Ethereum-block-architecture）"><a href="#总体架构图（来自-Ethereum-block-architecture）" class="headerlink" title="总体架构图（来自 Ethereum block architecture）"></a>总体架构图（来自 <a href="https://ethereum.stackexchange.com/questions/268/ethereum-block-architecture" target="_blank" rel="external">Ethereum block architecture</a>）</h3><p><img src="http://7xi5vu.com1.z0.glb.clouddn.com/stackexchange-ethereum-block-architecture.jpg" alt="https://i.stack.imgur.com/afWDt.jpg"></p>
+<h2 id="架构"><a href="#架构" class="headerlink" title="架构"></a>架构</h2><h3 id="总体架构图（来自-Ethereum-block-architecture）"><a href="#总体架构图（来自-Ethereum-block-architecture）" class="headerlink" title="总体架构图（来自 Ethereum block architecture）"></a>总体架构图（来自 <a href="https://ethereum.stackexchange.com/questions/268/ethereum-block-architecture" target="_blank" rel="external">Ethereum block architecture</a>）</h3><p><img src="https://knarfeh-1254074221.cos.na-siliconvalley.myqcloud.com/stackexchange-ethereum-block-architecture.jpg" alt="https://i.stack.imgur.com/afWDt.jpg"></p>
 <h3 id="分层架构"><a href="#分层架构" class="headerlink" title="分层架构"></a>分层架构</h3><p><a href="https://book.douban.com/subject/30199891/" target="_blank" rel="external">以太坊技术详解与实战</a>这本书里介绍了以太坊的分层架构，其中的图片还挺有参考价值的，网络上没有找到原图，所以我自己画了一下：</p>
-<p><img src="http://7xi5vu.com1.z0.glb.clouddn.com/ethereum-leveld-architecture.png" alt="ethereum-leveld-architecture"></p>
+<p><img src="https://knarfeh-1254074221.cos.na-siliconvalley.myqcloud.com/ethereum-leveld-architecture.png" alt="ethereum-leveld-architecture"></p>
 <h4 id="底层服务"><a href="#底层服务" class="headerlink" title="底层服务"></a>底层服务</h4><p>底层服务包括 P2P 网络、LevelDB 数据库、密码学算法和分片优化等基础服务。</p>
 <h4 id="核心层"><a href="#核心层" class="headerlink" title="核心层"></a>核心层</h4><p>核心层包括区块链、共识算法和以太坊虚拟机等。</p>
 <h4 id="顶层应用"><a href="#顶层应用" class="headerlink" title="顶层应用"></a>顶层应用</h4><p>这一层包括 API 接口、智能合约以及去中心化应用。</p>

@@ -41,7 +41,7 @@
 <link href="/css/main.css?v=0.5.0" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="Life,Python," />
+  <meta name="keywords" content="Python,Life," />
 
 
 
@@ -58,21 +58,21 @@
 
 
 <meta name="description" content="premature optimization is the root of all evil">
-<meta name="keywords" content="Life,Python">
+<meta name="keywords" content="Python,Life">
 <meta property="og:type" content="article">
 <meta property="og:title" content="PyCallGraph一览">
 <meta property="og:url" content="http://knarfeh.github.io/2016/04/26/PyCallGraph 一览/index.html">
 <meta property="og:site_name" content="Frank&#39;s Notes">
 <meta property="og:description" content="premature optimization is the root of all evil">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="http://7xi5vu.com1.z0.glb.clouddn.com/pyreverse_pkgdiagram.png">
-<meta property="og:image" content="http://7xi5vu.com1.z0.glb.clouddn.com/filter_none.png">
-<meta property="og:image" content="http://7xi5vu.com1.z0.glb.clouddn.com/filter_exclude_jianshu.png">
-<meta property="og:updated_time" content="2016-09-16T15:31:12.000Z">
+<meta property="og:image" content="https://knarfeh-1254074221.cos.na-siliconvalley.myqcloud.com/pyreverse_pkgdiagram.png">
+<meta property="og:image" content="https://knarfeh-1254074221.cos.na-siliconvalley.myqcloud.com/filter_none.png">
+<meta property="og:image" content="https://knarfeh-1254074221.cos.na-siliconvalley.myqcloud.com/filter_exclude_jianshu.png">
+<meta property="og:updated_time" content="2018-09-18T18:24:47.226Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="PyCallGraph一览">
 <meta name="twitter:description" content="premature optimization is the root of all evil">
-<meta name="twitter:image" content="http://7xi5vu.com1.z0.glb.clouddn.com/pyreverse_pkgdiagram.png">
+<meta name="twitter:image" content="https://knarfeh-1254074221.cos.na-siliconvalley.myqcloud.com/pyreverse_pkgdiagram.png">
 
 
 
@@ -280,17 +280,17 @@
 <p>by Donald Knuth</p>
 <p>最近在尝试重构<a href="http://www.github.com/knarfeh/EE-Book" target="_blank" rel="external">EE-Book</a>，每过一段时间看以前写的代码是一件很有意思的事情，这是跟愚蠢的自己沟通的过程，显然这也是进步的过程。</p>
 <p>扯远了，这一篇是要总结+介绍一款分析源代码的工具。在分析<a href="http://www.github.com/knarfeh/EE-Book" target="_blank" rel="external">EE-Book</a>代码的过程中，我发现了两款工具，一款是<a href="https://www.logilab.org/blogentry/6883" target="_blank" rel="external">Pyreverse</a>，另一款是PyCallGraph。<a href="https://www.logilab.org/blogentry/6883" target="_blank" rel="external">Pyreverse</a>可以生成UML类图，它已集成到<a href="www.pylint.org">pylint</a>中，它的作用是分析项目代码生成像这样的UML图：  </p>
-<p><img src="http://7xi5vu.com1.z0.glb.clouddn.com/pyreverse_pkgdiagram.png" alt="pyreverse"> <center>来自<a href="www.pylint.org">pylint</a></center></p>
+<p><img src="https://knarfeh-1254074221.cos.na-siliconvalley.myqcloud.com/pyreverse_pkgdiagram.png" alt="pyreverse"> <center>来自<a href="www.pylint.org">pylint</a></center></p>
 <p>显然，这个工具能够帮助我们很快地理解一个Python项目的结构，有了这样的UML类图再去看源代码就会清晰很多。但目前我想要分析的是自己的代码，虽然Pyreverse很屌，但用不上啊，所以，这个工具暂且放一放，以后需要再学习一个，多说一句，如果想画UML也可以用<a href="http://plantuml.com/" target="_blank" rel="external">plantuml</a>。</p>
 <p>今天的主角是强大的<a href="https://github.com/gak/pycallgraph" target="_blank" rel="external">PyCallGraph</a>，一句话简介：PyCallGraph可以动态生成python程序的调用图。它能告诉你各函数调用次数、调用时间。先拿官方的说明举例吧。</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div></pre></td><td class="code"><pre><div class="line"><span class="comment">#!/usr/bin/env python2</span></div><div class="line"><span class="comment"># -*- coding: utf-8 -*-</span></div><div class="line"></div><div class="line"><span class="keyword">import</span> time</div><div class="line"></div><div class="line"><span class="keyword">from</span> pycallgraph <span class="keyword">import</span> PyCallGraph</div><div class="line"><span class="keyword">from</span> pycallgraph.output <span class="keyword">import</span> GraphvizOutput</div><div class="line"></div><div class="line"></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Banana</span>:</span></div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self)</span>:</span></div><div class="line">        <span class="keyword">pass</span></div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">eat</span><span class="params">(self)</span>:</span></div><div class="line">        self.secret_function()</div><div class="line">        self.chew()</div><div class="line">        self.swallow()</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">secret_function</span><span class="params">(self)</span>:</span></div><div class="line">        time.sleep(<span class="number">0.2</span>)</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">chew</span><span class="params">(self)</span>:</span></div><div class="line">        <span class="keyword">pass</span></div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">swallow</span><span class="params">(self)</span>:</span></div><div class="line">        <span class="keyword">pass</span></div><div class="line"></div><div class="line"></div><div class="line">graphviz = GraphvizOutput(output_file=<span class="string">'filter_none.png'</span>)</div><div class="line"></div><div class="line"><span class="keyword">with</span> PyCallGraph(output=graphviz):</div><div class="line">    banana = Banana()</div><div class="line">    banana.eat()</div></pre></td></tr></table></figure>
-<p>现在有一个Banana类，我想要生成eat方法的调用关系，看看时间都用在哪里。只需要通过GraphvizOutput指定output文件，进行初始化，通过Python的with关键字，将运行的代码放入with代码块即可生成调用关系图：<br><img src="http://7xi5vu.com1.z0.glb.clouddn.com/filter_none.png" alt="filter_none"></p>
+<p>现在有一个Banana类，我想要生成eat方法的调用关系，看看时间都用在哪里。只需要通过GraphvizOutput指定output文件，进行初始化，通过Python的with关键字，将运行的代码放入with代码块即可生成调用关系图：<br><img src="https://knarfeh-1254074221.cos.na-siliconvalley.myqcloud.com/filter_none.png" alt="filter_none"></p>
 <p>可以看到，secret_funcition这部分是红色的，运行时间是最长的，如果是优化实际项目，我们就应该从这入手了。</p>
-<p>是不是非常简单，非常优雅？就这么一张图，告诉了我们程序的运行路径，经过的每个函数、每个模块、运行的时间、调用的次数，简简单单就了解了程序的整个调用过程，其实坑还是有的，比如我生成EE-Book爬取简书某博主的文章的调用关系图：  <center><a href="http://7xi5vu.com1.z0.glb.clouddn.com/filter_no_exclude.png" target="_blank" rel="external">图片太大，请点击查看</a></center>    </p>
+<p>是不是非常简单，非常优雅？就这么一张图，告诉了我们程序的运行路径，经过的每个函数、每个模块、运行的时间、调用的次数，简简单单就了解了程序的整个调用过程，其实坑还是有的，比如我生成EE-Book爬取简书某博主的文章的调用关系图：  <center><a href="https://knarfeh-1254074221.cos.na-siliconvalley.myqcloud.com/filter_no_exclude.png" target="_blank" rel="external">图片太大，请点击查看</a></center>    </p>
 <p>完全没法分析是不是，对的，我们和PyCallGraph的作者想到一起去了，稍微大点的项目，有的函数是不需要分析的，不然生成的图太复杂了，得有个过滤机制才行，暂时不分析一些函数，对调用的深度也得加个限制，写一个过滤函数的配置：  </p>
 <figure class="highlight arduino"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">config</span> = Config(max_depth=<span class="number">9</span>)</div><div class="line"><span class="built_in">config</span>.trace_filter = GlobbingFilter(exclude=[</div><div class="line">    <span class="string">'bs4.*'</span>,</div><div class="line">    <span class="string">'BeautifulSoup.*'</span>,</div><div class="line">    # <span class="string">'.epub.*'</span>,</div><div class="line">    # <span class="string">'__main__'</span>,</div><div class="line">    <span class="string">'pycallgraph.*'</span>,</div><div class="line">    <span class="string">'*.closeEvent'</span>,</div><div class="line">    <span class="string">'*.&lt;module&gt;'</span>,</div><div class="line">    <span class="string">'src.tools.match.*'</span>,</div><div class="line">    <span class="string">'*.EEBook.__init__'</span>,</div><div class="line">    <span class="string">'src.main.init_database'</span>,</div><div class="line">    <span class="string">'src.tools.config_load'</span>,</div><div class="line">    <span class="string">'src.utils.log.*'</span>,</div><div class="line">    <span class="string">'src.tools.path.*'</span>,</div><div class="line">    <span class="string">'src.tools.db.*'</span>,</div><div class="line">    <span class="string">'src.book.*'</span>,</div><div class="line">    <span class="string">'src.container.*'</span>,</div><div class="line">    <span class="string">'src.url_parser.*'</span>,</div><div class="line">    <span class="string">'src.tools.config.*'</span>,</div><div class="line">    <span class="string">'src.lib.epub.*'</span>,</div><div class="line">    <span class="string">'src.tools.html_creator.*'</span>,</div><div class="line">    <span class="string">'*.JianshuAuthorWorker.__init__'</span>,</div><div class="line">    <span class="string">'*.start_create_work_list'</span>,</div><div class="line">    <span class="string">'*.JianshuAuthorWorker.save'</span>,</div><div class="line">    <span class="string">'*.JianshuAuthorWorker.add_property'</span>,</div><div class="line">    <span class="string">'*.JianshuAuthorWorker.clear_index'</span>,</div><div class="line">    <span class="string">'*.JianshuAuthorWorker.create_save_config'</span>,</div><div class="line">    <span class="string">'*.JianshuAuthorWorker.clear_work_set'</span>,</div><div class="line">    <span class="string">'*.print_in_single_line'</span>,</div><div class="line">    <span class="string">'*.http.set_cookie'</span>,</div><div class="line">    <span class="string">'*.html5lib.constants.*'</span>,</div><div class="line">])</div></pre></td></tr></table></figure>
 <p>再看看生成的图：  </p>
-<p><img src="http://7xi5vu.com1.z0.glb.clouddn.com/filter_exclude_jianshu.png" alt="filter_exclude_jianshu"></p>
+<p><img src="https://knarfeh-1254074221.cos.na-siliconvalley.myqcloud.com/filter_exclude_jianshu.png" alt="filter_exclude_jianshu"></p>
 <p>这下就要清晰多了吧，接下来就可以继续修改过滤机制，庖丁解牛般查找问题所在。</p>
 <p>利用PyCallGraph我们能够很快找到程序需要优化的地方，接下来选择合适的方案即可。比如如果时间大多花在I/O上，应该试试Python的多线程模块，如果解析字符串花的时间比较多，可能我们得放弃bs4库，改成正则表达式？再或者，计算密集型，尝试用C语言扩展重写？其实说到底还是要有一针见血找到问题所在的能力（体现思考深度），找到问题所在再用对应方案尝试解决（体现思考广度）。要优化代码，有PyCallGraph这样的可视化工具帮助我们剖析代码，难道还不够么？  </p>
 <p>还不够么  </p>
@@ -312,9 +312,9 @@
       
         <div class="post-tags">
           
-            <a href="/tags/Life/" rel="tag">#Life</a>
-          
             <a href="/tags/Python/" rel="tag">#Python</a>
+          
+            <a href="/tags/Life/" rel="tag">#Life</a>
           
         </div>
       

@@ -65,20 +65,20 @@
 <meta property="og:site_name" content="Frank&#39;s Notes">
 <meta property="og:description" content="前段时间发现了 quora-api 这个项目，当时心想我应该写个知乎的版本试试，正好可以用用flask，然后因为毕业论文和答辩的事情就一直拖着，现在终于开始动手了。">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="http://7xi5vu.com1.z0.glb.clouddn.com/movepyquora.png">
-<meta property="og:image" content="http://7xi5vu.com1.z0.glb.clouddn.com/proxy%20setting.png">
-<meta property="og:image" content="http://7xi5vu.com1.z0.glb.clouddn.com/ifconfig%20mac%20ip.png">
-<meta property="og:image" content="http://7xi5vu.com1.z0.glb.clouddn.com/iPhoneproxysetting.jpg">
-<meta property="og:image" content="http://7xi5vu.com1.z0.glb.clouddn.com/ssl%20proxying%20setting.png">
-<meta property="og:image" content="http://7xi5vu.com1.z0.glb.clouddn.com/jvmoptions.png">
-<meta property="og:image" content="http://7xi5vu.com1.z0.glb.clouddn.com/login_https.jpg">
-<meta property="og:image" content="http://7xi5vu.com1.z0.glb.clouddn.com/login_response.jpg">
-<meta property="og:image" content="http://7xi5vu.com1.z0.glb.clouddn.com/zhihu_top_story.png">
-<meta property="og:updated_time" content="2016-09-16T15:31:12.000Z">
+<meta property="og:image" content="https://knarfeh-1254074221.cos.na-siliconvalley.myqcloud.com/movepyquora.png">
+<meta property="og:image" content="https://knarfeh-1254074221.cos.na-siliconvalley.myqcloud.com/proxy%20setting.png">
+<meta property="og:image" content="https://knarfeh-1254074221.cos.na-siliconvalley.myqcloud.com/ifconfig%20mac%20ip.png">
+<meta property="og:image" content="https://knarfeh-1254074221.cos.na-siliconvalley.myqcloud.com/iPhoneproxysetting.jpg">
+<meta property="og:image" content="https://knarfeh-1254074221.cos.na-siliconvalley.myqcloud.com/ssl%20proxying%20setting.png">
+<meta property="og:image" content="https://knarfeh-1254074221.cos.na-siliconvalley.myqcloud.com/jvmoptions.png">
+<meta property="og:image" content="https://knarfeh-1254074221.cos.na-siliconvalley.myqcloud.com/login_https.jpg">
+<meta property="og:image" content="https://knarfeh-1254074221.cos.na-siliconvalley.myqcloud.com/login_response.jpg">
+<meta property="og:image" content="https://knarfeh-1254074221.cos.na-siliconvalley.myqcloud.com/zhihu_top_story.png">
+<meta property="og:updated_time" content="2018-09-18T18:10:30.316Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="记一次游戏通关">
 <meta name="twitter:description" content="前段时间发现了 quora-api 这个项目，当时心想我应该写个知乎的版本试试，正好可以用用flask，然后因为毕业论文和答辩的事情就一直拖着，现在终于开始动手了。">
-<meta name="twitter:image" content="http://7xi5vu.com1.z0.glb.clouddn.com/movepyquora.png">
+<meta name="twitter:image" content="https://knarfeh-1254074221.cos.na-siliconvalley.myqcloud.com/movepyquora.png">
 
 
 
@@ -282,7 +282,7 @@
         <p>前段时间发现了 <a href="https://github.com/csu/quora-api" target="_blank" rel="external">quora-api</a> 这个项目，当时心想我应该写个知乎的版本试试，正好可以用用flask，然后因为毕业论文和答辩的事情就一直拖着，现在终于开始动手了。</p>
 <a id="more"></a>
 <p>稍稍瞄了一眼 <a href="https://github.com/csu/quora-api" target="_blank" rel="external">quora-api</a> 这个项目，发现这个项目跟我想的思路是一样的，写爬虫获得数据，再通过 flask 搭建 api 服务即可，从 commit 的记录来看，quora 的爬虫部分最开始是写在 <a href="https://github.com/csu/quora-api" target="_blank" rel="external">quora-api</a> 里面的，后来作者把这部分分离出去:  </p>
-<p><img src="http://7xi5vu.com1.z0.glb.clouddn.com/movepyquora.png" alt="pyquora">  </p>
+<p><img src="https://knarfeh-1254074221.cos.na-siliconvalley.myqcloud.com/movepyquora.png" alt="pyquora">  </p>
 <p>单独打了一个包：<a href="https://github.com/csu/pyquora" target="_blank" rel="external">pyquora</a>。  </p>
 <p>我想我也应该如此，毕竟已经写过不少爬虫了，重点在于熟悉flask，就用现成的吧，把爬虫的部分分离出去，也便于维护。比较了几个关于知乎爬虫的repo，找到了 <a href="https://github.com/7sDream/zhihu-oauth" target="_blank" rel="external">zhihu-oauth</a>，其实 <a href="https://github.com/7sDream" target="_blank" rel="external">7sDream</a> 在新建这个 repo 的时候我就 star 了，但并没有仔细看，现在看来这个并不是简单的爬虫。我从这篇游戏攻略开始了旅程：<a href="http://zhihu-oauth.readthedocs.io/zh_CN/latest/for-dev/oauth/game.html" target="_blank" rel="external">zhihu-oauth-doc</a>  </p>
 <p>7sDream 在文档里写着：「本来想的是写一篇博客的，但是果然还是不要太张扬，写在文档里算了」，我却在博客里宣传了，好像不是很道德？嗯，还是不要给自己加那么多束缚吧。我不打算把攻略重写一遍，只是记录一下遇到的坑，反正我的博客基本没人知道，没几个人看，github 对百度搜索引擎做了限制，百度爬取不到，Google 倒是可以，但是用 Google 搜中文资料的也太少了吧？如果影响不好我就删掉这篇。</p>
@@ -303,24 +303,24 @@
 <li>在手机端改 http 代理</li>
 </ul>
 <p>在 Charles的 Proxy Setting 可以看到默认的端口号：  </p>
-<p><img src="http://7xi5vu.com1.z0.glb.clouddn.com/proxy%20setting.png" alt="Charles Proxy Setting">  </p>
+<p><img src="https://knarfeh-1254074221.cos.na-siliconvalley.myqcloud.com/proxy%20setting.png" alt="Charles Proxy Setting">  </p>
 <p>用 ifconfig 查看 mac 的 ip 地址：  </p>
-<p><img src="http://7xi5vu.com1.z0.glb.clouddn.com/ifconfig%20mac%20ip.png" alt="mac ip"></p>
+<p><img src="https://knarfeh-1254074221.cos.na-siliconvalley.myqcloud.com/ifconfig%20mac%20ip.png" alt="mac ip"></p>
 <p>在手机上改成对应的即可：  </p>
-<p><img src="http://7xi5vu.com1.z0.glb.clouddn.com/iPhoneproxysetting.jpg" alt="iPhoneproxysetting"></p>
+<p><img src="https://knarfeh-1254074221.cos.na-siliconvalley.myqcloud.com/iPhoneproxysetting.jpg" alt="iPhoneproxysetting"></p>
 <ul>
 <li><p>在手机上需要打开 <a href="http://www.charlesproxy.com/documentation/additional/legacy-ssl-proxying/" target="_blank" rel="external">legacy-ssl-proxying</a>，安装 SSL 证书</p>
 </li>
 <li><p>在 Charles SSL Proxying 设置界面打开 ssl 的 抓取：  </p>
 </li>
 </ul>
-<p><img src="http://7xi5vu.com1.z0.glb.clouddn.com/ssl%20proxying%20setting.png" alt="SSL Proxying setting"></p>
+<p><img src="https://knarfeh-1254074221.cos.na-siliconvalley.myqcloud.com/ssl%20proxying%20setting.png" alt="SSL Proxying setting"></p>
 <p>与 Wireshark 不同的是，Charles 打开即开始抓包，抓去过程中我遇到一个坑，是编码问题，有不少乱码，搜索了一下，有这样的方案：<a href="http://iam42.iteye.com/blog/2186630" target="_blank" rel="external">使用Charles，在mac环境下对android app抓包</a>，但我的 info.plist 并没有 vmoptions，看来我用的 Charles 比较新，求助 google，最终解决了，info.plist 改动的部分：  </p>
-<p><img src="http://7xi5vu.com1.z0.glb.clouddn.com/jvmoptions.png" alt="jvmoptions">  </p>
+<p><img src="https://knarfeh-1254074221.cos.na-siliconvalley.myqcloud.com/jvmoptions.png" alt="jvmoptions">  </p>
 <p>解决了乱码问题。  </p>
 <p>实现了抓包，就可以开始分析知乎的 api 到底怎么用了。</p>
 <p>在手机上重新登陆，抓取登陆时的网络请求，发送的登陆参数如下：  </p>
-<p><img src="http://7xi5vu.com1.z0.glb.clouddn.com/login_https.jpg" alt="login_https"></p>
+<p><img src="https://knarfeh-1254074221.cos.na-siliconvalley.myqcloud.com/login_https.jpg" alt="login_https"></p>
 <p>逐个解释这些参数：  </p>
 <ul>
 <li><p>第一项是 client_id，这是 OAuth 里需要申请的，表明一个应用的 APPID 值，我申请过 twitter 的 api，貌似这个每个 APPID 都应该不一样才对？攻略里写的是 「Android 知乎客户端的这个值应该都是一样的」，看来目前只有两个，一个表明是 Android 端，一个表明是 iOS 端，以后知乎开放了 api 开发者拿到的 id 应该就是唯一的了。  </p>
@@ -342,9 +342,9 @@
 <p>（写到这，真的挺佩服7sDream，貌似是天津大学的大三学生？曾跟他聊过几句，非常有极客风范，而且他还比我小，唉真是惭愧，要好好加油。）  </p>
 <p>文档中记录了破解加密算法的过程。总结一下，掌握一定的逆向工程技术是必须的，7sDream 用 jadx 这个工具反编译了知乎的 Android 应用包，找到了 Authorisation.java 中的 createBaseAuthorisation 方法，根据代码尝试，然后推测知乎用的是 Google 推荐的 OAuth 的签名方法，文档在这：<a href="https://developers.google.com/maps/documentation/static-maps/get-api-key#url-" target="_blank" rel="external">get-api-key</a>。思路非常棒，不过他说的「大概一晚上加一早上吧」 我是真的不信。。。。。</p>
 <p>搞定加密算法，用程序模拟客户端发送请求即可，可以收到客户端返回的结果：  </p>
-<p><img src="http://7xi5vu.com1.z0.glb.clouddn.com/login_response.jpg" alt="login_response">  </p>
+<p><img src="https://knarfeh-1254074221.cos.na-siliconvalley.myqcloud.com/login_response.jpg" alt="login_response">  </p>
 <p>接下来请求 api 数据的时候只需要加上 access_token 这个值即可获取，例如请求首页的数据：  </p>
-<p><img src="http://7xi5vu.com1.z0.glb.clouddn.com/zhihu_top_story.png" alt="top_story"></p>
+<p><img src="https://knarfeh-1254074221.cos.na-siliconvalley.myqcloud.com/zhihu_top_story.png" alt="top_story"></p>
 <p>玩到这，游戏基本就通关了。登陆操作其实还有一个隐含关卡，攻略中写了知乎 OAuth 的验证码策略的6点，不知道作者获悉这6点的思路是什么，其实试错的价值也很大，这里需要自己好好研究一下，暂时还没遇到这种情况，遇到了再 hack 一下。</p>
 <p>好了，搞定了这些，写代码模拟这个过程就行了。<a href="https://github.com/7sDream/zhihu-oauth" target="_blank" rel="external">zhihu-oauth</a> 的代码基本上就是模拟这个过程。源代码也很有研究价值。</p>
 <h2 id="总结一下"><a href="#总结一下" class="headerlink" title="总结一下"></a>总结一下</h2><p>这份攻略干货十足，它完整地记录了如何破解手机应用 api ，我想不仅仅是知乎，对于其他的应用，比如quora 啊，豆瓣等，都可以借鉴这种思路。这里面大概有这么一些技能点：http 传输协议，逆向工程能力，基本加密方法和应用，都值得更进一步学习。  </p>

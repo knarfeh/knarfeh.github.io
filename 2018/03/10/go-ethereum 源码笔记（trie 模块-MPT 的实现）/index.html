@@ -65,13 +65,13 @@
 <meta property="og:site_name" content="Frank&#39;s Notes">
 <meta property="og:description" content="默克尔树是区块链的基础结构，在比特币里它用来存放区块内的所有交易，用一个数字指纹（hash）来表示整个交易集合，在以太坊中，提出了一种新的数据结构叫做 Merkle Patricia Tree（常用翻译：默克尔帕特里夏树，缩写是 MPT），在以太坊中它用来组织管理账户，交易，收据等数据。从名字或许可以看出来它是一个组合名字，它实际上是默克尔树和帕特里夏树两种数据结构的结合，在阅读 trie 模块之">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="http://7xi5vu.com1.z0.glb.clouddn.com/trie_example.png">
-<meta property="og:image" content="http://7xi5vu.com1.z0.glb.clouddn.com/worldstatetrie.png">
-<meta property="og:updated_time" content="2018-09-03T10:00:51.596Z">
+<meta property="og:image" content="https://knarfeh-1254074221.cos.na-siliconvalley.myqcloud.com/trie_example.png">
+<meta property="og:image" content="https://knarfeh-1254074221.cos.na-siliconvalley.myqcloud.com/worldstatetrie.png">
+<meta property="og:updated_time" content="2018-09-18T18:23:30.552Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="go-ethereum 源码笔记（trie 模块-MPT 的实现）">
 <meta name="twitter:description" content="默克尔树是区块链的基础结构，在比特币里它用来存放区块内的所有交易，用一个数字指纹（hash）来表示整个交易集合，在以太坊中，提出了一种新的数据结构叫做 Merkle Patricia Tree（常用翻译：默克尔帕特里夏树，缩写是 MPT），在以太坊中它用来组织管理账户，交易，收据等数据。从名字或许可以看出来它是一个组合名字，它实际上是默克尔树和帕特里夏树两种数据结构的结合，在阅读 trie 模块之">
-<meta name="twitter:image" content="http://7xi5vu.com1.z0.glb.clouddn.com/trie_example.png">
+<meta name="twitter:image" content="https://knarfeh-1254074221.cos.na-siliconvalley.myqcloud.com/trie_example.png">
 
 
 
@@ -294,7 +294,7 @@
 <h2 id="Patricia-帕特里夏树"><a href="#Patricia-帕特里夏树" class="headerlink" title="Patricia 帕特里夏树"></a>Patricia 帕特里夏树</h2><p>要搞懂帕特里夏树，首先要先搞懂字典树。</p>
 <h3 id="trie-字典树"><a href="#trie-字典树" class="headerlink" title="trie 字典树"></a><a href="https://zh.wikipedia.org/wiki/Trie" target="_blank" rel="external">trie 字典树</a></h3><p>也称前缀树，单词查找树，键树。它用来保存关联数组，其中的键通常是字符串，键不直接保存在节点中，而是由节点在树中的位置决定。一个节点的所有子孙都有相同的前缀，也就是这个节点对应的字符串。并不是所有节点都有对应的值，只有叶子节点和部分内部节点所对应的键才有相关的值。</p>
 <p>trie 的思想是用空间换时间，利用字符串的公共前缀来减少无谓的字符串比较以达到提高查询效率的目的。如下图就是一个 trie 树。</p>
-<p><img src="http://7xi5vu.com1.z0.glb.clouddn.com/trie_example.png" alt="trie"></p>
+<p><img src="https://knarfeh-1254074221.cos.na-siliconvalley.myqcloud.com/trie_example.png" alt="trie"></p>
 <h4 id="应用范围"><a href="#应用范围" class="headerlink" title="应用范围"></a>应用范围</h4><ul>
 <li>字符串检索</li>
 </ul>
@@ -353,7 +353,7 @@
 <p>这些是黄皮书中的定义，在 geth 的实现中，上述概念有不同的结构与之对应。</p>
 <figure class="highlight crmsh"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">type</span> <span class="keyword">node</span> <span class="title">interface</span> &#123;</div><div class="line">	fstring(<span class="keyword">string</span>) <span class="keyword">string</span></div><div class="line">	cache() (hashNode, bool)</div><div class="line">	canUnload(cachegen, cachelimit uint16) bool</div><div class="line">&#125;</div><div class="line"><span class="keyword">type</span> (</div><div class="line">	fullNode struct &#123;</div><div class="line">		Children [<span class="number">17</span>]<span class="keyword">node</span></div><div class="line">		<span class="title">flags</span>    nodeFlag</div><div class="line">	&#125;</div><div class="line">	shortNode struct &#123;</div><div class="line">		Key   []byte</div><div class="line">		Val   <span class="keyword">node</span></div><div class="line">		<span class="title">flags</span> nodeFlag</div><div class="line">	&#125;</div><div class="line">	hashNode  []byte</div><div class="line">	valueNode []byte</div><div class="line">)</div><div class="line">...</div><div class="line"><span class="keyword">type</span> nodeFlag struct &#123;</div><div class="line">	hash  hashNode</div><div class="line">	gen   uint16</div><div class="line">	dirty bool</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <p>下图是一个世界状态的例子（摘自 <a href="https://ethereum.stackexchange.com/questions/268/ethereum-block-architecture" target="_blank" rel="external">Ethereum block architecture</a>）：</p>
-<p><img src="http://7xi5vu.com1.z0.glb.clouddn.com/worldstatetrie.png" alt="worldstatetrie"></p>
+<p><img src="https://knarfeh-1254074221.cos.na-siliconvalley.myqcloud.com/worldstatetrie.png" alt="worldstatetrie"></p>
 <h4 id="fullNode"><a href="#fullNode" class="headerlink" title="fullNode"></a>fullNode</h4><p>fullNode 是一个可以携带多个子节点的节点。它有一个 node 数组类型的成员变量 Children，数组的前16个空位分别对应十六进制的0-9a-f，对于每个子节点，根据其 key 值的十六进制表示一一对应，Children 数组的第17位，fullNode 用来存储数据。</p>
 <p>对应黄皮书中的分支节点。</p>
 <h4 id="shortNode"><a href="#shortNode" class="headerlink" title="shortNode"></a>shortNode</h4><p>shortNode 是一个仅有一个子节点的节点。成员变量 Val 指向一个子节点，成员变量 Key 是一个由任意长度的字符串，这体现了压缩前缀树的特点，通过合并只有一个子节点的父节点和其子节点来缩短 Trie 的深度。</p>

@@ -41,7 +41,7 @@
 <link href="/css/main.css?v=0.5.0" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="Python,EPub," />
+  <meta name="keywords" content="EPub,Python," />
 
 
 
@@ -58,21 +58,21 @@
 
 
 <meta name="description" content="最近在写的一个项目涉及到epub格式电子书的制作，借这个机会总结一下epub这个电子图书标准，并利用Python语言生成一本简单的epub格式电子书。">
-<meta name="keywords" content="Python,EPub">
+<meta name="keywords" content="EPub,Python">
 <meta property="og:type" content="article">
 <meta property="og:title" content="EPub格式电子书的制作">
 <meta property="og:url" content="http://knarfeh.github.io/2016/02/27/EPub 格式电子书的制作/index.html">
 <meta property="og:site_name" content="Frank&#39;s Notes">
 <meta property="og:description" content="最近在写的一个项目涉及到epub格式电子书的制作，借这个机会总结一下epub这个电子图书标准，并利用Python语言生成一本简单的epub格式电子书。">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="http://7xi5vu.com1.z0.glb.clouddn.com/2016-02-28-bill.JPEG">
-<meta property="og:image" content="http://7xi5vu.com1.z0.glb.clouddn.com/2016-02-28-ibmepub.png">
-<meta property="og:image" content="http://7xi5vu.com1.z0.glb.clouddn.com/2016-02-28-treeepub.png">
-<meta property="og:updated_time" content="2016-09-16T15:31:12.000Z">
+<meta property="og:image" content="https://knarfeh-1254074221.cos.na-siliconvalley.myqcloud.com/2016-02-28-bill.JPEG">
+<meta property="og:image" content="https://knarfeh-1254074221.cos.na-siliconvalley.myqcloud.com/2016-02-28-ibmepub.png">
+<meta property="og:image" content="https://knarfeh-1254074221.cos.na-siliconvalley.myqcloud.com/2016-02-28-treeepub.png">
+<meta property="og:updated_time" content="2018-09-18T18:22:20.268Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="EPub格式电子书的制作">
 <meta name="twitter:description" content="最近在写的一个项目涉及到epub格式电子书的制作，借这个机会总结一下epub这个电子图书标准，并利用Python语言生成一本简单的epub格式电子书。">
-<meta name="twitter:image" content="http://7xi5vu.com1.z0.glb.clouddn.com/2016-02-28-bill.JPEG">
+<meta name="twitter:image" content="https://knarfeh-1254074221.cos.na-siliconvalley.myqcloud.com/2016-02-28-bill.JPEG">
 
 
 
@@ -276,7 +276,7 @@
         <p>最近在写的一个项目涉及到epub格式电子书的制作，借这个机会总结一下epub这个电子图书标准，并利用Python语言生成一本简单的epub格式电子书。  </p>
 <a id="more"></a>
 <h3 id="EPub的前世今生"><a href="#EPub的前世今生" class="headerlink" title="EPub的前世今生"></a>EPub的前世今生</h3><h4 id="为什么会有EPub"><a href="#为什么会有EPub" class="headerlink" title="为什么会有EPub"></a>为什么会有EPub</h4><p>我曾说过，电子书的阅读越来越流行是未来阅读发展的不可避免的趋势。纸质书籍是否会在历史长河中消失我们无从知晓，但可以确定的是，数字化阅读在未来至少十年中，会润物细无声般成为更多人的一种生活方式。  </p>
-<p>或许很多人都没有察觉到，我们这一代经历的正是一场关于人类获取信息，生产内容方式的巨变。从因特网诞生，电子邮件、超链接、富文本的广泛使用，再到现在所谓的”互联网2.0”，人们从“下载者”转变为“上传者”，这场转变的发展也不过是数十年而已，说到这，想起一张著名的图片：<br><img src="http://7xi5vu.com1.z0.glb.clouddn.com/2016-02-28-bill.JPEG" alt="比尔盖茨拿着光盘">  </p>
+<p>或许很多人都没有察觉到，我们这一代经历的正是一场关于人类获取信息，生产内容方式的巨变。从因特网诞生，电子邮件、超链接、富文本的广泛使用，再到现在所谓的”互联网2.0”，人们从“下载者”转变为“上传者”，这场转变的发展也不过是数十年而已，说到这，想起一张著名的图片：<br><img src="https://knarfeh-1254074221.cos.na-siliconvalley.myqcloud.com/2016-02-28-bill.JPEG" alt="比尔盖茨拿着光盘">  </p>
 <blockquote>
 <p>这张光盘能装下的信息比下面所有纸能记录下的都多</p>
 </blockquote>
@@ -288,8 +288,8 @@
 <p>来自epubzone上的一篇<a href="http://epubzone.org/epub-3-overview/understanding-epub-3" target="_blank" rel="external">文章</a></p>
 <h4 id="所以，EPub是什么"><a href="#所以，EPub是什么" class="headerlink" title="所以，EPub是什么"></a>所以，EPub是什么</h4><p>简单来说， EPub格式是一种电子书的标准，事实上几乎成为了行业标准，注意观察的话，几乎所有的电子书阅读器，从硬件到软件，都支持EPub格式的电子书（Kindle是一朵奇葩，原生系统不支持EPub，因为它要推自己的Mobi格式）。更具体的内容可以查<a href="https://en.wikipedia.org/wiki/EPUB" target="_blank" rel="external">wikipedia-EPUB</a>， 这里说个好玩的吧，EPub格式电子书采用zip压缩格式来包裹书籍内容以及格式控制的文件（因为遵循IDPF推出的OCF规范，而OCF规范遵循ZIP压缩技术），所以我们可以把.epub改成.zip，然后解压缩，直接阅读书籍的内容，这样一来，在PC | Mac上，没有EPub阅读器，照样可以打开EPub阅读。</p>
 <h3 id="怎么构建一本EPub格式的电子书"><a href="#怎么构建一本EPub格式的电子书" class="headerlink" title="怎么构建一本EPub格式的电子书"></a>怎么构建一本EPub格式的电子书</h3><p>上面提到，EPub格式的电子书其实是一个压缩包文件，里面有几个按照规范定义的文件，所谓标准，就是规范EPub文件中某些文件的格式、内容和位置等等。因此，如果我们想要自己制作一本EPub格式的电子书，首先要了解要制作的内容压缩为zip文件前的文件结构是什么，一个典型的EPub的文件结构是这样的：</p>
-<p><img src="http://7xi5vu.com1.z0.glb.clouddn.com/2016-02-28-ibmepub.png" alt="IBM epub"></p>
-<p>其实结构可以更简单，下面给出我用Python语言构建的EPub文件的文件结构：<br><img src="http://7xi5vu.com1.z0.glb.clouddn.com/2016-02-28-treeepub.png" alt="my epub"></p>
+<p><img src="https://knarfeh-1254074221.cos.na-siliconvalley.myqcloud.com/2016-02-28-ibmepub.png" alt="IBM epub"></p>
+<p>其实结构可以更简单，下面给出我用Python语言构建的EPub文件的文件结构：<br><img src="https://knarfeh-1254074221.cos.na-siliconvalley.myqcloud.com/2016-02-28-treeepub.png" alt="my epub"></p>
 <p>对比一下可以看出来有些文件并不是必须的，下面简单介绍一下EPub文件的目录结构：  </p>
 <h4 id="mimetype文件"><a href="#mimetype文件" class="headerlink" title="mimetype文件"></a>mimetype文件</h4><p>这个内容是固定的，就一行<br><code>application/epub+zip</code></p>
 <p>表明可以被EPub工具打开或zip工具打开</p>
@@ -345,9 +345,9 @@
       
         <div class="post-tags">
           
-            <a href="/tags/Python/" rel="tag">#Python</a>
-          
             <a href="/tags/EPub/" rel="tag">#EPub</a>
+          
+            <a href="/tags/Python/" rel="tag">#Python</a>
           
         </div>
       

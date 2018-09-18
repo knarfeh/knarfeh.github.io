@@ -65,15 +65,15 @@
 <meta property="og:site_name" content="Frank&#39;s Notes">
 <meta property="og:description" content="算法是问题的程序化解决方法。">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="http://7xi5vu.com1.z0.glb.clouddn.com/2015-3-19/graph2ds.png">
-<meta property="og:image" content="http://7xi5vu.com1.z0.glb.clouddn.com/2015-3-19/tree_forest.png">
-<meta property="og:image" content="http://7xi5vu.com1.z0.glb.clouddn.com/2015-3-19/rootedTree.png">
-<meta property="og:image" content="http://7xi5vu.com1.z0.glb.clouddn.com/2015-3-19/bsTree.png">
-<meta property="og:updated_time" content="2017-04-04T14:42:05.000Z">
+<meta property="og:image" content="https://knarfeh-1254074221.cos.na-siliconvalley.myqcloud.com/2015-3-19/graph2ds.png">
+<meta property="og:image" content="https://knarfeh-1254074221.cos.na-siliconvalley.myqcloud.com/2015-3-19/tree_forest.png">
+<meta property="og:image" content="https://knarfeh-1254074221.cos.na-siliconvalley.myqcloud.com/2015-3-19/rootedTree.png">
+<meta property="og:image" content="https://knarfeh-1254074221.cos.na-siliconvalley.myqcloud.com/2015-3-19/bsTree.png">
+<meta property="og:updated_time" content="2018-09-18T18:19:22.150Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="算法设计与分析基础 chap1 introduction">
 <meta name="twitter:description" content="算法是问题的程序化解决方法。">
-<meta name="twitter:image" content="http://7xi5vu.com1.z0.glb.clouddn.com/2015-3-19/graph2ds.png">
+<meta name="twitter:image" content="https://knarfeh-1254074221.cos.na-siliconvalley.myqcloud.com/2015-3-19/graph2ds.png">
 
 
 
@@ -351,7 +351,7 @@ else
 <li><p>图<br>按照简单定义，一个图<code>G=&lt;V,E&gt;</code>由两个集合来定义：<br>一个有限集合V，它的元素被称为顶点；<br>另一个的限集合E，它的元素是由一对顶点，被称为边。图分为无向图和有向图。<br>任意两个顶点之间都有边相连的图称为完全图。如果完全图具有 <code>|V|</code> 个顶点，它的标准符号是 <code>K|V|</code>。<br>如果图中所缺的边数量相对较少，我们称它为稠密图；如果图中所缺的边数量相对较多，我们称为稀疏图。我们处理的是稀疏图还是稠密图，可能会影响图的表示方式，从而影响我们所设计或使用的算法的运行时间。<br>图主要有两种表示方式：</p>
 <ol>
 <li>邻接矩阵<br>n 个顶点的邻接矩阵是一个<code>n*n</code>的布尔矩阵，图中每个顶点都用一行和一列来表示，如果从第<code>i</code>个顶点到第<code>j</code>个顶点之间有连接边，则矩阵中第<code>i</code>行第<code>j</code>列的元素等于1，如果没有这样的边，则等于0。</li>
-<li>邻接链表<br>图的邻接链表是链表的一个集合，其中每一个顶点用一个链表表示，该链表包含了和这个顶点邻接的所有顶点（即所有和该顶点有边相连的顶点）。通常，这样一个表由一个表头开始，表头指出该链表表示的是哪一个顶点。<br>一图解惑：<br><img src="http://7xi5vu.com1.z0.glb.clouddn.com/2015-3-19/graph2ds.png"></li>
+<li>邻接链表<br>图的邻接链表是链表的一个集合，其中每一个顶点用一个链表表示，该链表包含了和这个顶点邻接的所有顶点（即所有和该顶点有边相连的顶点）。通常，这样一个表由一个表头开始，表头指出该链表表示的是哪一个顶点。<br>一图解惑：<br><img src="https://knarfeh-1254074221.cos.na-siliconvalley.myqcloud.com/2015-3-19/graph2ds.png"></li>
 </ol>
 <p>图有两个特性对于大量的应用是非常重要的：连通性和无环性。两者都基于路径的概念。 </p>
 <p>从顶点u到顶点v的路径可以这样定义：它是图G中始于u止于v的邻接（以一条边连接）顶点序列。<br>如果一条路径上所有顶点都是互不相同的，我们说这条路径是简单路径。<br>有向路径是一个顶点的序列，序列中的每一对连续顶点都被一条边连接起来，边的方向等于从第一个顶点指向下一个顶点的方向。  </p>
@@ -360,18 +360,18 @@ else
 <li>无环性<br>回路（环）是起点和终点都是同一顶点的简单路径。不包含回路的图称为无环图。</li>
 </ul>
 </li>
-<li><p>树<br>树(tree)就是连通且无回路的图。<br>无回路但不一定连通的图称为森林：它的每一个连通分图都是一棵树。<br>树具有其他图没有的一些重要特性：树的边数总是比它的顶点少一：<code>|E|=|V|-1</code><br><img src="http://7xi5vu.com1.z0.glb.clouddn.com/2015-3-19/tree_forest.png"></p>
+<li><p>树<br>树(tree)就是连通且无回路的图。<br>无回路但不一定连通的图称为森林：它的每一个连通分图都是一棵树。<br>树具有其他图没有的一些重要特性：树的边数总是比它的顶点少一：<code>|E|=|V|-1</code><br><img src="https://knarfeh-1254074221.cos.na-siliconvalley.myqcloud.com/2015-3-19/tree_forest.png"></p>
 </li>
 <li><p>有根树<br>树的另一个非常重要的特性就是：树的任意两个顶点之间总是恰好存在一条从一个顶点到另一个顶点的简单路径。<br>这个性质使得以下做法成为可能：任选自由树中的一个顶点，将它作为树的根。有根的树称为有根树。</p>
 </li>
 </ul>
-<p><img src="http://7xi5vu.com1.z0.glb.clouddn.com/2015-3-19/rootedTree.png"></p>
+<p><img src="https://knarfeh-1254074221.cos.na-siliconvalley.myqcloud.com/2015-3-19/rootedTree.png"></p>
 <ul>
 <li><p>有序树<br>有序树是一棵有根树，且树中每一顶点的所有子女都是有序的。<br>方便起见，我们可假设在这种树的示意图中，所有的子女都是从左到右有序排列的。</p>
 </li>
 <li><p>二叉树<br>也可以把二叉树定义为一棵有序树，其中所有顶点的子女个数都不超过两个，并且每个子女不是父母左子女就是父母的右子女。<br>一棵子树的根如果是某顶点的左（右）子女，该子树称为该顶点的左（右）子树。<br>对于高度为h，具有n个顶点的二叉树，我们有以下不等式：<br>$$\lfloor log_2n\rfloor\le h \le n-1$$</p>
 <ul>
-<li>二叉查找树<br>分配给每个父结点的数字都比它左子树中的数字大，比右子树中的数字小。这种树被称为二叉查找树。<br><img src="http://7xi5vu.com1.z0.glb.clouddn.com/2015-3-19/bsTree.png"></li>
+<li>二叉查找树<br>分配给每个父结点的数字都比它左子树中的数字大，比右子树中的数字小。这种树被称为二叉查找树。<br><img src="https://knarfeh-1254074221.cos.na-siliconvalley.myqcloud.com/2015-3-19/bsTree.png"></li>
 </ul>
 </li>
 <li>集合<br>集合（Set）概念在数学中扮演了一个中心角色。我们可以这样描述集合；它是互不相同的集合元素的无序组合。<br>多重集 （Multiset）和集合类似，只是容许有相同的元素存在。<br>C++ STL 类：<code>std::unordered_set</code>  (用哈希表实现)<br>C++ STL 类：<code>std::unordered_multiset</code>  (用哈希表实现)<br>有序集合（Sorted Set）<br>C++ STL 类：<code>std::set</code> (用红黑树实现平衡二叉查找树)<br>C++ STL 类：<code>std::multiset</code>  (用红黑树实现) </li>

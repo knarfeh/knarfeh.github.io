@@ -41,7 +41,7 @@
 <link href="/css/main.css?v=0.5.0" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="Python,EPub,PyQt," />
+  <meta name="keywords" content="EPub,Python,PyQt," />
 
 
 
@@ -58,20 +58,20 @@
 
 
 <meta name="description" content="最后一篇，这次我们加上几个函数，使得这个阅读器能够按照章节阅读电子书，前两篇我们将完成了Book模块，实现了电子书的数据抽象，然后写了GUI，完成了一个简单的功能，在仓库中插入图书，把LibraryTableWidget刷新，使得图书在library呈现，可以看到书名，作者。接下来我们完善这个程序。">
-<meta name="keywords" content="Python,EPub,PyQt">
+<meta name="keywords" content="EPub,Python,PyQt">
 <meta property="og:type" content="article">
 <meta property="og:title" content="用PyQt4+Python写一个简单的EPub阅读器(3&#x2F;3)">
 <meta property="og:url" content="http://knarfeh.github.io/2016/02/29/用 PyQt4+Python 写一个简单的 EPub 阅读器(3:3)/index.html">
 <meta property="og:site_name" content="Frank&#39;s Notes">
 <meta property="og:description" content="最后一篇，这次我们加上几个函数，使得这个阅读器能够按照章节阅读电子书，前两篇我们将完成了Book模块，实现了电子书的数据抽象，然后写了GUI，完成了一个简单的功能，在仓库中插入图书，把LibraryTableWidget刷新，使得图书在library呈现，可以看到书名，作者。接下来我们完善这个程序。">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="http://7xi5vu.com1.z0.glb.clouddn.com/2016-02-29-2016-03-02_click2chapter.gif">
-<meta property="og:image" content="http://7xi5vu.com1.z0.glb.clouddn.com/2016-02-29-2016-03-02chapter2web_view.gif">
-<meta property="og:updated_time" content="2016-09-16T15:31:12.000Z">
+<meta property="og:image" content="https://knarfeh-1254074221.cos.na-siliconvalley.myqcloud.com/2016-02-29-2016-03-02_click2chapter.gif">
+<meta property="og:image" content="https://knarfeh-1254074221.cos.na-siliconvalley.myqcloud.com/2016-02-29-2016-03-02chapter2web_view.gif">
+<meta property="og:updated_time" content="2018-09-18T18:25:11.649Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="用PyQt4+Python写一个简单的EPub阅读器(3&#x2F;3)">
 <meta name="twitter:description" content="最后一篇，这次我们加上几个函数，使得这个阅读器能够按照章节阅读电子书，前两篇我们将完成了Book模块，实现了电子书的数据抽象，然后写了GUI，完成了一个简单的功能，在仓库中插入图书，把LibraryTableWidget刷新，使得图书在library呈现，可以看到书名，作者。接下来我们完善这个程序。">
-<meta name="twitter:image" content="http://7xi5vu.com1.z0.glb.clouddn.com/2016-02-29-2016-03-02_click2chapter.gif">
+<meta name="twitter:image" content="https://knarfeh-1254074221.cos.na-siliconvalley.myqcloud.com/2016-02-29-2016-03-02_click2chapter.gif">
 
 
 
@@ -274,7 +274,7 @@
       
         <p>最后一篇，这次我们加上几个函数，使得这个阅读器能够按照章节阅读电子书，前两篇我们将完成了Book模块，实现了电子书的数据抽象，然后写了GUI，完成了一个简单的功能，在仓库中插入图书，把LibraryTableWidget刷新，使得图书在library呈现，可以看到书名，作者。接下来我们完善这个程序。<br><a id="more"></a>  </p>
 <ul>
-<li>载入书籍的章节<br>效果是这样的：<br>  <img src="http://7xi5vu.com1.z0.glb.clouddn.com/2016-02-29-2016-03-02_click2chapter.gif" class="full-image"></li>
+<li>载入书籍的章节<br>效果是这样的：<br>  <img src="https://knarfeh-1254074221.cos.na-siliconvalley.myqcloud.com/2016-02-29-2016-03-02_click2chapter.gif" class="full-image"></li>
 </ul>
 <p>首先，我们在BookView模块中加入这样一个函数：    </p>
 <pre><code>def load_book(self, book_id):
@@ -333,7 +333,7 @@ def view_book(self):
     page.setLinkDelegationPolicy(QWebPage.DelegateAllLinks)
     self.connect(page, SIGNAL(&quot;linkClicked(const QUrl&amp;)&quot;),
                  self.link_clicked)
-</code></pre><p>最终的效果：<br><img src="http://7xi5vu.com1.z0.glb.clouddn.com/2016-02-29-2016-03-02chapter2web_view.gif" class="full-image"></p>
+</code></pre><p>最终的效果：<br><img src="https://knarfeh-1254074221.cos.na-siliconvalley.myqcloud.com/2016-02-29-2016-03-02chapter2web_view.gif" class="full-image"></p>
 <p>最后，给出<a href="https://github.com/knarfeh/Simple_EReader" target="_blank" rel="external">源代码地址</a></p>
 
       
@@ -349,9 +349,9 @@ def view_book(self):
       
         <div class="post-tags">
           
-            <a href="/tags/Python/" rel="tag">#Python</a>
-          
             <a href="/tags/EPub/" rel="tag">#EPub</a>
+          
+            <a href="/tags/Python/" rel="tag">#Python</a>
           
             <a href="/tags/PyQt/" rel="tag">#PyQt</a>
           
