@@ -68,7 +68,7 @@
 <meta property="og:image" content="http://7xi5vu.com1.z0.glb.clouddn.com/en-transaction-propagation.png">
 <meta property="og:image" content="http://7xi5vu.com1.z0.glb.clouddn.com/bitcoin_block_from_bitcoinpaper.png">
 <meta property="og:image" content="http://7xi5vu.com1.z0.glb.clouddn.com/ethblockchain_full.png">
-<meta property="og:updated_time" content="2018-08-29T07:57:02.466Z">
+<meta property="og:updated_time" content="2018-09-17T14:40:25.135Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="go-ethereum 源码笔记（基础知识）">
 <meta name="twitter:description" content="本篇将梳理以太坊的基本概念，说明一些值得注意的地方，这里不会讲解比特币的原理，代码，但会介绍以太坊与比特币的差异，所以最好看过比特币的论文，对比特币的基本原理、实现有所了解。这一篇将以太坊的白皮书作为重要参考，可以看做是以太坊白皮书的概述。以太坊的白皮书是一个非常好的学习资料，它在介绍以太坊前分析了比特币存在的问题，因此我们可以通过这份白皮书了解整个加密货币的生态。">
@@ -392,7 +392,7 @@
 <li>要求新的难度，难度不低于参数定义的最小难度。</li>
 </ol>
 <h4 id="以太坊-3"><a href="#以太坊-3" class="headerlink" title="以太坊"></a>以太坊</h4><p>以太坊每次挖矿都需计算当前区块难度。按版本不同有三种计算难度的规则，分别为：<code>calcDifficultyByzantium</code>（Byzantium 版本）、<code>calcDifficultyHomestead</code>（Homestead 版本）、<code>calcDifficultyFrontier</code>（Frontier 版本）。以 <code>calcDifficultyHomestead</code> 为例。</p>
-<figure class="highlight armasm"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">block_diff </span>= parent_diff + 难度调整 + 难度炸弹</div><div class="line">难度调整 = parent_diff // <span class="number">2048</span> * MAX(<span class="number">1</span> - (<span class="keyword">block_timestamp </span>- parent_timestamp) // <span class="number">10</span>, -<span class="number">99</span>)</div><div class="line">难度炸弹 = INT(<span class="number">2</span>**((<span class="keyword">block_number </span>// <span class="number">100000</span>) - <span class="number">2</span>))</div></pre></td></tr></table></figure>
+<figure class="highlight awk"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">本区块难度 = 父区块难度 + 难度调整 + 难度炸弹</div><div class="line">难度调整 = 父区块难度 <span class="regexp">//</span> <span class="number">2048</span> * MAX(<span class="number">1</span> - (block_timestamp - parent_timestamp) <span class="regexp">//</span> <span class="number">10</span>, -<span class="number">99</span>)</div><div class="line">难度炸弹 = INT(<span class="number">2</span>**((block_number <span class="regexp">//</span> <span class="number">100000</span>) - <span class="number">2</span>))</div></pre></td></tr></table></figure>
 <p>以太坊的区块难度以单个区块为单位进行调整，所以可以比较快地适应算力变化，难度炸弹也是一个很有意思的设计，难度炸弹是指数级增长的，到某个阶段矿工会因为无利可图自动退场，这时 PoS 也应该成熟了，这对于矿工来说是一个预防针。</p>
 <h3 id="奖励机制"><a href="#奖励机制" class="headerlink" title="奖励机制"></a>奖励机制</h3><h4 id="比特币-3"><a href="#比特币-3" class="headerlink" title="比特币"></a>比特币</h4><p>在比特币的设计中，最初每挖出一个区块会奖励50个 BTC，每挖出21万个，奖励就会减半，第1-210000个区块，每块奖励50btc，第210001-420000个区块，每块奖励25btc……以此类推。</p>
 <p>因此 BTC 的总量为：210000×50(1+0.5+0.25+0.125+……)=2100万</p>
