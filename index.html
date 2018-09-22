@@ -348,6 +348,104 @@
             
               
                 
+                <a class="post-title-link" href="/2018/03/10/go-ethereum 源码笔记（miner, consensus 模块-挖矿和共识算法）/" itemprop="url">
+                  go-ethereum 源码笔记（miner,consensus 模块-挖矿和共识算法）
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2018-03-10T22:35:05+08:00" content="2018-03-10">
+              2018-03-10
+            </time>
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2018/03/10/go-ethereum 源码笔记（miner, consensus 模块-挖矿和共识算法）/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2018/03/10/go-ethereum 源码笔记（miner, consensus 模块-挖矿和共识算法）/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <p>前面的章节 <a href="https://knarfeh.com/2018/03/10/go-ethereum%20%E6%BA%90%E7%A0%81%E7%AC%94%E8%AE%B0%EF%BC%88core%20%E6%A8%A1%E5%9D%97-%E5%8C%BA%E5%9D%97%E9%93%BE%E6%93%8D%E4%BD%9C%EF%BC%89/" target="_blank" rel="external">go-ethereum 源码笔记（core 模块-区块链操作）</a> 描述了区块链世界的核心：区块，区块链。我们已经知道区块链可以用来存储交易的数据，也知道了如何在区块链里发起一笔交易，而问题是，往区块链中增加数据应该是一个较困难的操作，按照比特币论文里的说法，即需要一个 PoW（Proof of Work，工作量证明），否则每个人都能轻易往区块链中增加数据，安全性和一致性无法保证。这一点上，以太坊法和比特币类似，尽管略有不同，但大致都需要矿工的角色贡献计算力，完成一个复杂的计算，即找到一个区块的哈希值，验证正确之后才能加入到区块链中。这个过程就叫做挖矿。矿工们去做这件事当然是有一定利益驱使的，每完成一次挖矿，他们就能获得一些以太币奖励。</p>
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2018/03/10/go-ethereum 源码笔记（miner, consensus 模块-挖矿和共识算法）/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
                 <a class="post-title-link" href="/2018/03/10/go-ethereum 源码笔记（core 模块-交易池）/" itemprop="url">
                   go-ethereum 源码笔记（core 模块-交易池）
                 </a>
@@ -1114,106 +1212,6 @@
 
 
     
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2018/03/10/go-ethereum 源码笔记（概览）/" itemprop="url">
-                  go-ethereum 源码笔记（概览）
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2018-03-10T22:34:56+08:00" content="2018-03-10">
-              2018-03-10
-            </time>
-          </span>
-
-          
-
-          
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2018/03/10/go-ethereum 源码笔记（概览）/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2018/03/10/go-ethereum 源码笔记（概览）/" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <p>花了一点时间读以太坊的源代码，内容太多，所以一边看一边写，没想到越写越多，于是想着把笔记整理出来。</p>
-<p>源码解读是一件费力不讨好的事情，因为看代码的时候我们看到的是最终解决方案，虽然可以看到 commit 的历史，但我们看不到作者的思路，踩过的坑，而且 geth 的设计文档，功能的相关讨论等信息不像 Kubernetes 那么规范透明，所以我看这些代码的时候很多地方也只是一知半解，欢迎有更多经验的朋友批评指正，不吝赐教，也欢迎有价值的讨论。看了一些书和文章，所以我这也算不上多原创，基本上所有看过的链接都记在 reference 里面了。有的代码暂时看不懂就只能靠猜了，等待之后的实践中验证想法。尽管如此，对于同样想要阅读 geth 的源代码的人来说总还是有些作用，对于我个人来说整理出来这些文章也是一个总结知识，把点连成面的过程，希望同时能帮到其他人。</p>
-<p>geth 版本：master 分支，a1eb9c7d13240fd250866219a502d0cdc9924e06</p>
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2018/03/10/go-ethereum 源码笔记（概览）/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
@@ -1259,7 +1257,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">178</span>
+              <span class="site-state-item-count">179</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -1269,7 +1267,7 @@
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">125</span>
+                <span class="site-state-item-count">126</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
