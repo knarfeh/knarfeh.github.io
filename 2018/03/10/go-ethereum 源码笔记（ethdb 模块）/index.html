@@ -1,0 +1,870 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  <link href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css"/>
+
+
+
+
+  <link href="//fonts.googleapis.com/css?family=Lato:300,400,700,400italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+
+
+
+<link href="/vendors/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=0.5.0" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="cryptocurrency,Golang,geth," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=0.5.0" />
+
+
+
+
+
+
+<meta name="description" content="通过前面的文章，我们知道了有工作量证明的区块链是怎么构建的，然而区块链一直在内存中当然是不行的，我们需要将区块链持久化到数据库中。">
+<meta name="keywords" content="cryptocurrency,Golang,geth">
+<meta property="og:type" content="article">
+<meta property="og:title" content="go-ethereum 源码笔记（ethdb 模块）">
+<meta property="og:url" content="http://knarfeh.github.io/2018/03/10/go-ethereum 源码笔记（ethdb 模块）/index.html">
+<meta property="og:site_name" content="Frank&#39;s Notes">
+<meta property="og:description" content="通过前面的文章，我们知道了有工作量证明的区块链是怎么构建的，然而区块链一直在内存中当然是不行的，我们需要将区块链持久化到数据库中。">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2018-09-29T13:47:43.914Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="go-ethereum 源码笔记（ethdb 模块）">
+<meta name="twitter:description" content="通过前面的文章，我们知道了有工作量证明的区块链是怎么构建的，然而区块链一直在内存中当然是不行的，我们需要将区块链持久化到数据库中。">
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    scheme: 'Muse',
+    sidebar: {"display":"hide"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: 0,
+      author: '博主'
+    }
+  };
+</script>
+
+  <title> go-ethereum 源码笔记（ethdb 模块） | Frank's Notes </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+            (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+          m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-75002639-1', 'auto');
+  ga('send', 'pageview');
+</script>
+
+
+
+
+
+
+
+
+
+  
+  
+
+  <div class="container one-collumn  page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">Frank's Notes</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle"></p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-home fa-fw"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-archive fa-fw"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-tags fa-fw"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-twitter">
+          <a href="/twitter" rel="section">
+            
+              <i class="menu-item-icon fa fa-coffee fa-fw"></i> <br />
+            
+            Twitter
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                go-ethereum 源码笔记（ethdb 模块）
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2018-03-10T22:35:06+08:00" content="2018-03-10">
+              2018-03-10
+            </time>
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2018/03/10/go-ethereum 源码笔记（ethdb 模块）/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2018/03/10/go-ethereum 源码笔记（ethdb 模块）/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>通过前面的文章，我们知道了有工作量证明的区块链是怎么构建的，然而区块链一直在内存中当然是不行的，我们需要将区块链持久化到数据库中。<br><a id="more"></a></p>
+<p>区块链的本质是一个分布式数据库，尽管如此，底层使用的数据库并没有太大要求，不需要分布式，分片等等特性，这些特性是在数据库的上层做的。所有的节点都是一个完整的实例，是它们组成了一个分布式系统。就实现业务来说，我们只需要一个简单的 k-v 数据库就够了。</p>
+<p>geth 采用的是 LevelDB，回头来看这个选择还是有很多可以反思的地方，LevelDB 在顺序读写的场景下性能很好，但 geth 在运行智能合约时，面临的更多的场景是大量时间耗费在世界状态的读写上，通过前面对 MPT 的分析我们知道，这些 IO 大多是离散随机的，这导致了 geth 的性能瓶颈，特别是在合约里的数据大量分布在 Storage Trie 的情况下，因为树的高度可能很高，而每加载一个节点都需要进行一次 IO。这一点在<a href="https://zhuanlan.zhihu.com/p/39262324" target="_blank" rel="external">以太坊(Ethereum) 的执行交易性能瓶颈</a>这篇文章中有论述。<a href="https://www.weibo.com/dcaoyuan" target="_blank" rel="external">邓草原</a> 正在开发的 Kesque 也可以关注一下。这不是本文重点，就不展开了。</p>
+<p>中本聪的最初论文并没有提具体要用什么数据库，尽管如此，社区使用最多的参考实现 Bitcoin Core 最初使用的是 Berkeley DB，后来转而使用 levelDB 存区块链索引，而以太坊区块链的数据一直都存储在 LevelDB 数据库中。</p>
+<p>go-ethereum 对 levelDB 的增删改查是通过 ethdb 这个模块来交互的。ethdb 实际上是对 github.com/syndtr/goleveldb/leveldb 这个库的封装，其中增加了收集 metric 的功能。</p>
+<p>如果想要对 levelDB 有更深层次的了解可以自行查询相关资料。</p>
+<p>ethdb 模块的功能比较单一，就4个文件：</p>
+<ul>
+<li>interface.go 定义数据库增删改查的接口</li>
+<li>database.go 封装 levelDB 的代码</li>
+<li>memory_database.go 基于内存的数据库，不会持久化到文件，只在测试时使用</li>
+<li>database_test.go 测试用例</li>
+</ul>
+<h2 id="interface-go"><a href="#interface-go" class="headerlink" title="interface.go"></a>interface.go</h2><figure class="highlight elm"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">type</span> <span class="type">Database</span> interface &#123;</div><div class="line">	<span class="type">Putter</span></div><div class="line">	<span class="type">Get</span>(key []byte) ([]byte, error)</div><div class="line">	<span class="type">Has</span>(key []byte) (bool, error)</div><div class="line">	<span class="type">Delete</span>(key []byte) error</div><div class="line">	<span class="type">Close</span>()</div><div class="line">	<span class="type">NewBatch</span>() <span class="type">Batch</span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>Database 接口定义了所有数据库操作，Putter 接口定义批量操作和普通操作的接口。批量操作不能多线程同时使用。</p>
+<h2 id="memory-database-go"><a href="#memory-database-go" class="headerlink" title="memory_database.go"></a>memory_database.go</h2><figure class="highlight go"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">type</span> MemDatabase <span class="keyword">struct</span> &#123;</div><div class="line">	db   <span class="keyword">map</span>[<span class="keyword">string</span>][]<span class="keyword">byte</span></div><div class="line">	lock sync.RWMutex</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>这个文件跟 LevelDB 没什么关系，它只是封装了内存里的 key-value 结构，暴露的增删改查的接口(Put，Has，Get，Keys，Delete 等等)跟对 LevelDB 的封装基本一致。加了锁以在多线程的情况下对资源进行保护。</p>
+<h2 id="database-go"><a href="#database-go" class="headerlink" title="database.go"></a>database.go</h2><p>封装了 levelDB 接口，在 go-ethereum 中大量使用。</p>
+<figure class="highlight stylus"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line">type LDBDatabase struct &#123;</div><div class="line">	fn string</div><div class="line">	db *leveldb<span class="selector-class">.DB</span></div><div class="line"></div><div class="line">	compTimeMeter  metrics<span class="selector-class">.Meter</span></div><div class="line">	compReadMeter  metrics<span class="selector-class">.Meter</span></div><div class="line">	compWriteMeter metrics<span class="selector-class">.Meter</span></div><div class="line">	diskReadMeter  metrics<span class="selector-class">.Meter</span></div><div class="line">	diskWriteMeter metrics<span class="selector-class">.Meter</span></div><div class="line"></div><div class="line">	quitLock sync<span class="selector-class">.Mutex</span></div><div class="line">	quitChan chan chan error</div><div class="line"></div><div class="line">	log log<span class="selector-class">.Logger</span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>Path, Put, Has, Get 等方法是对 levelDB 的封装，没有什么特别的，也不需要用锁，因为 github.com/syndtr/goleveldb/leveldb 支持多线程访问。</p>
+<h3 id="Path"><a href="#Path" class="headerlink" title="Path"></a>Path</h3><figure class="highlight autoit"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">func</span> <span class="params">(db *LDBDatabase)</span> <span class="title">Path</span><span class="params">()</span> <span class="title">string</span> &#123;</span></div><div class="line">	<span class="keyword">return</span> db.fn</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h3 id="Put"><a href="#Put" class="headerlink" title="Put"></a>Put</h3><figure class="highlight go"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">func</span> <span class="params">(db *LDBDatabase)</span> <span class="title">Put</span><span class="params">(key []<span class="keyword">byte</span>, value []<span class="keyword">byte</span>)</span> <span class="title">error</span></span> &#123;</div><div class="line">	<span class="keyword">return</span> db.db.Put(key, value, <span class="literal">nil</span>)</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h3 id="Has"><a href="#Has" class="headerlink" title="Has"></a>Has</h3><figure class="highlight go"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">func</span> <span class="params">(db *LDBDatabase)</span> <span class="title">Has</span><span class="params">(key []<span class="keyword">byte</span>)</span> <span class="params">(<span class="keyword">bool</span>, error)</span></span> &#123;</div><div class="line">	<span class="keyword">return</span> db.db.Has(key, <span class="literal">nil</span>)</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h3 id="Get"><a href="#Get" class="headerlink" title="Get"></a>Get</h3><figure class="highlight go"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">func</span> <span class="params">(db *LDBDatabase)</span> <span class="title">Get</span><span class="params">(key []<span class="keyword">byte</span>)</span> <span class="params">([]<span class="keyword">byte</span>, error)</span></span> &#123;</div><div class="line">	dat, err := db.db.Get(key, <span class="literal">nil</span>)</div><div class="line">	<span class="keyword">if</span> err != <span class="literal">nil</span> &#123;</div><div class="line">		<span class="keyword">return</span> <span class="literal">nil</span>, err</div><div class="line">	&#125;</div><div class="line">	<span class="keyword">return</span> dat, <span class="literal">nil</span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h3 id="Delete"><a href="#Delete" class="headerlink" title="Delete"></a>Delete</h3><figure class="highlight go"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">func</span> <span class="params">(db *LDBDatabase)</span> <span class="title">Delete</span><span class="params">(key []<span class="keyword">byte</span>)</span> <span class="title">error</span></span> &#123;</div><div class="line">	<span class="keyword">return</span> db.db.Delete(key, <span class="literal">nil</span>)</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h3 id="Metrics"><a href="#Metrics" class="headerlink" title="Metrics"></a>Metrics</h3><p><code>compTimeMeter</code>, <code>compReadMeter</code>, <code>compWriteMeter</code>, <code>diskReadMeter</code>, <code>diskWriteMeter</code> 这几个方法都通过 <code>metrics.NewRegisteredMeter</code> 注册得到。</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">func</span> <span class="params">(db *LDBDatabase)</span> <span class="title">Meter</span><span class="params">(prefix <span class="keyword">string</span>)</span></span> &#123;</div><div class="line">	<span class="keyword">if</span> !metrics.Enabled &#123;</div><div class="line">		<span class="keyword">return</span></div><div class="line">	&#125;</div><div class="line">	db.compTimeMeter = metrics.NewRegisteredMeter(prefix+<span class="string">"compact/time"</span>, <span class="literal">nil</span>)</div><div class="line">	db.compReadMeter = metrics.NewRegisteredMeter(prefix+<span class="string">"compact/input"</span>, <span class="literal">nil</span>)</div><div class="line">	db.compWriteMeter = metrics.NewRegisteredMeter(prefix+<span class="string">"compact/output"</span>, <span class="literal">nil</span>)</div><div class="line">	db.diskReadMeter = metrics.NewRegisteredMeter(prefix+<span class="string">"disk/read"</span>, <span class="literal">nil</span>)</div><div class="line">	db.diskWriteMeter = metrics.NewRegisteredMeter(prefix+<span class="string">"disk/write"</span>, <span class="literal">nil</span>)</div><div class="line"></div><div class="line">	db.quitLock.Lock()</div><div class="line">	db.quitChan = <span class="built_in">make</span>(<span class="keyword">chan</span> <span class="keyword">chan</span> error)</div><div class="line">	db.quitLock.Unlock()</div><div class="line"></div><div class="line">	<span class="keyword">go</span> db.meter(<span class="number">3</span> * time.Second)</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>最后通过一个 goroutine 调用 db.meter。</p>
+<p>该方法是一个死循环，过三秒钟就通过 <code>db.db.GetProperty(&quot;leveldb.iostats&quot;)</code> 获取一次 leveldb 的 stats，然后发到 metrics 系统。如果收到 quitChan 的信号就退出死循环。</p>
+<h2 id="业务相关代码"><a href="#业务相关代码" class="headerlink" title="业务相关代码"></a>业务相关代码</h2><p>与业务直接相关的代码在 <code>core/rawdb</code> 目录下，基本上所有与底层数据库交互的代码都在这里，没有很复杂的内容，不过了解这些底层的数据结构对于理解业务很有帮助，可以自行浏览。</p>
+<h2 id="key-gt-value"><a href="#key-gt-value" class="headerlink" title="key-&gt;value"></a>key-&gt;value</h2><p>以下是一些 geth 中常见的 key-value 对（在 <code>core/rawdb/schema.go</code> 中定义）。</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">key</th>
+<th style="text-align:center">value</th>
+<th style="text-align:center">描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">“h” + num + hash</td>
+<td style="text-align:center">区块头的数据</td>
+<td style="text-align:center">根据区块高度和区块哈希找到区块头数据（RLP 编码）</td>
+</tr>
+<tr>
+<td style="text-align:center">“h” + num + hash + “t”</td>
+<td style="text-align:center">区块总难度</td>
+<td style="text-align:center">根据区块高度，区块哈希找到 totalDifficulty，即累计的区块难度的和</td>
+</tr>
+<tr>
+<td style="text-align:center">“h” + num + “n”</td>
+<td style="text-align:center">区块头哈希值</td>
+<td style="text-align:center">根据存储的规范区块链高度找到区块头哈希值</td>
+</tr>
+<tr>
+<td style="text-align:center">“H” + hash</td>
+<td style="text-align:center">区块高度</td>
+<td style="text-align:center">根据哈希值找到区块高度</td>
+</tr>
+<tr>
+<td style="text-align:center">“b” + num + hash</td>
+<td style="text-align:center">区块体的数据</td>
+<td style="text-align:center">根据区块高度，区块哈希找到区块体的数据（RLP 编码）</td>
+</tr>
+<tr>
+<td style="text-align:center">“r” + num + hash</td>
+<td style="text-align:center">收据的数据</td>
+<td style="text-align:center">根据区块高度，区块哈希找到收据的数据（RLP 编码）</td>
+</tr>
+<tr>
+<td style="text-align:center">“l” + hash</td>
+<td style="text-align:center">交易，收据查找的 metadata</td>
+<td style="text-align:center">根据哈希值找到交易，收据查找的 metadata</td>
+</tr>
+<tr>
+<td style="text-align:center">“B” + bit + section + hash</td>
+<td style="text-align:center">布隆过滤器的结果</td>
+<td style="text-align:center">用于日志的过滤</td>
+</tr>
+</tbody>
+</table>
+<h2 id="References"><a href="#References" class="headerlink" title="References"></a>References</h2><ul>
+<li><a href="https://github.com/syndtr/goleveldb" target="_blank" rel="external">LevelDB 的 Golang 实现</a></li>
+<li><a href="https://github.com/google/leveldb" target="_blank" rel="external">LevelDB 的 C++ 实现</a></li>
+<li><a href="https://www.zhihu.com/question/19887265/answer/78839142" target="_blank" rel="external">LSM 算法的原理是什么？</a></li>
+<li><a href="http://www.benstopford.com/2015/02/14/log-structured-merge-trees/" target="_blank" rel="external">Log Structured Merge Trees</a></li>
+<li><a href="https://zhuanlan.zhihu.com/p/39262324" target="_blank" rel="external">以太坊(Ethereum) 的执行交易性能瓶颈</a></li>
+</ul>
+
+      
+    </div>
+
+    <div>
+      
+        
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/cryptocurrency/" rel="tag">#cryptocurrency</a>
+          
+            <a href="/tags/Golang/" rel="tag">#Golang</a>
+          
+            <a href="/tags/geth/" rel="tag">#geth</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/03/10/go-ethereum 源码笔记（miner, consensus 模块-挖矿和共识算法）/" rel="next" title="go-ethereum 源码笔记（miner,consensus 模块-挖矿和共识算法）">
+                <i class="fa fa-chevron-left"></i> go-ethereum 源码笔记（miner,consensus 模块-挖矿和共识算法）
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/03/20/Telegram Bot 的长轮询 VS Webhook/" rel="prev" title="Telegram Bot 的长轮询 VS Webhook">
+                Telegram Bot 的长轮询 VS Webhook <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+      <div id="disqus_thread">
+        <noscript>
+          Please enable JavaScript to view the
+          <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a>
+        </noscript>
+      </div>
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel ">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="https://avatars1.githubusercontent.com/u/6964284?v=3&s=460"
+               alt="Frank" />
+          <p class="site-author-name" itemprop="name">Frank</p>
+          <p class="site-description motion-element" itemprop="description"></p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">180</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+          
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">127</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/knarfeh" target="_blank">
+                  
+                    <i class="fa fa-github"></i> GitHub
+                  
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://twitter.com/knarfeh" target="_blank">
+                  
+                    <i class="fa fa-twitter"></i> Twitter
+                  
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://weibo.com/2753500945" target="_blank">
+                  
+                    <i class="fa fa-weibo"></i> Weibo
+                  
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+          <div class="cc-license motion-element" itemprop="license">
+            <a href="http://creativecommons.org/licenses/by-sa/4.0" class="cc-opacity" target="_blank">
+              <img src="/images/cc-by-sa.svg" alt="Creative Commons" />
+            </a>
+          </div>
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+      </section>
+
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc-indicator-top post-toc-indicator">
+            <i class="fa fa-angle-double-up"></i>
+          </div>
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#interface-go"><span class="nav-number">1.</span> <span class="nav-text">interface.go</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#memory-database-go"><span class="nav-number">2.</span> <span class="nav-text">memory_database.go</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#database-go"><span class="nav-number">3.</span> <span class="nav-text">database.go</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Path"><span class="nav-number">3.1.</span> <span class="nav-text">Path</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Put"><span class="nav-number">3.2.</span> <span class="nav-text">Put</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Has"><span class="nav-number">3.3.</span> <span class="nav-text">Has</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Get"><span class="nav-number">3.4.</span> <span class="nav-text">Get</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Delete"><span class="nav-number">3.5.</span> <span class="nav-text">Delete</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Metrics"><span class="nav-number">3.6.</span> <span class="nav-text">Metrics</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#业务相关代码"><span class="nav-number">4.</span> <span class="nav-text">业务相关代码</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#key-gt-value"><span class="nav-number">5.</span> <span class="nav-text">key->value</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#References"><span class="nav-number">6.</span> <span class="nav-text">References</span></a></li></ol></div>
+            
+          </div>
+          <div class="post-toc-indicator-bottom post-toc-indicator">
+            <i class="fa fa-angle-double-down"></i>
+          </div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy;  2015 - 
+  <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Frank</span>
+</div>
+
+<div class="powered-by">
+  由 <a class="theme-link" href="http://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Muse
+  </a>
+</div>
+
+
+
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+
+  
+
+
+
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+  <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
+
+  <script type="text/javascript" src="/vendors/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  <script type="text/javascript" src="/vendors/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  <script type="text/javascript" src="/vendors/velocity/velocity.min.js"></script>
+
+  <script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js"></script>
+
+  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=0.5.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=0.5.0"></script>
+
+
+
+  
+  
+
+  
+  
+<script type="text/javascript" src="/js/src/scrollspy.js?v=0.5.0"></script>
+
+<script type="text/javascript" id="sidebar.toc.highlight">
+  $(document).ready(function () {
+    var tocSelector = '.post-toc';
+    var $tocSelector = $(tocSelector);
+    var activeCurrentSelector = '.active-current';
+
+    $tocSelector
+      .on('activate.bs.scrollspy', function () {
+        var $currentActiveElement = $(tocSelector + ' .active').last();
+
+        removeCurrentActiveClass();
+        $currentActiveElement.addClass('active-current');
+
+        $tocSelector[0].scrollTop = $currentActiveElement.position().top;
+      })
+      .on('clear.bs.scrollspy', function () {
+        removeCurrentActiveClass();
+      });
+
+    function removeCurrentActiveClass () {
+      $(tocSelector + ' ' + activeCurrentSelector)
+        .removeClass(activeCurrentSelector.substring(1));
+    }
+
+    function processTOC () {
+      getTOCMaxHeight();
+      toggleTOCOverflowIndicators();
+    }
+
+    function getTOCMaxHeight () {
+      var height = $('.sidebar').height() -
+                   $tocSelector.position().top -
+                   $('.post-toc-indicator-bottom').height();
+
+      $tocSelector.css('height', height);
+
+      return height;
+    }
+
+    function toggleTOCOverflowIndicators () {
+      tocOverflowIndicator(
+        '.post-toc-indicator-top',
+        $tocSelector.scrollTop() > 0 ? 'show' : 'hide'
+      );
+
+      tocOverflowIndicator(
+        '.post-toc-indicator-bottom',
+        $tocSelector.scrollTop() >= $tocSelector.find('ol').height() - $tocSelector.height() ? 'hide' : 'show'
+      )
+    }
+
+    $(document).on('sidebar.motion.complete', function () {
+      processTOC();
+    });
+
+    $('body').scrollspy({ target: tocSelector });
+    $(window).on('resize', function () {
+      if ( $('.sidebar').hasClass('sidebar-active') ) {
+        processTOC();
+      }
+    });
+
+    onScroll($tocSelector);
+
+    function onScroll (element) {
+      element.on('mousewheel DOMMouseScroll', function (event) {
+          var oe = event.originalEvent;
+          var delta = oe.wheelDelta || -oe.detail;
+
+          this.scrollTop += ( delta < 0 ? 1 : -1 ) * 30;
+          event.preventDefault();
+
+          toggleTOCOverflowIndicators();
+      });
+    }
+
+    function tocOverflowIndicator (indicator, action) {
+      var $indicator = $(indicator);
+      var opacity = action === 'show' ? 1 : 0;
+      $indicator.velocity ?
+        $indicator.velocity('stop').velocity({
+          opacity: opacity
+        }, { duration: 100 }) :
+        $indicator.stop().animate({
+          opacity: opacity
+        }, 100);
+    }
+
+  });
+</script>
+
+<script type="text/javascript" id="sidebar.nav">
+  $(document).ready(function () {
+    var html = $('html');
+    var TAB_ANIMATE_DURATION = 200;
+    var hasVelocity = $.isFunction(html.velocity);
+
+    $('.sidebar-nav li').on('click', function () {
+      var item = $(this);
+      var activeTabClassName = 'sidebar-nav-active';
+      var activePanelClassName = 'sidebar-panel-active';
+      if (item.hasClass(activeTabClassName)) {
+        return;
+      }
+
+      var currentTarget = $('.' + activePanelClassName);
+      var target = $('.' + item.data('target'));
+
+      hasVelocity ?
+        currentTarget.velocity('transition.slideUpOut', TAB_ANIMATE_DURATION, function () {
+          target
+            .velocity('stop')
+            .velocity('transition.slideDownIn', TAB_ANIMATE_DURATION)
+            .addClass(activePanelClassName);
+        }) :
+        currentTarget.animate({ opacity: 0 }, TAB_ANIMATE_DURATION, function () {
+          currentTarget.hide();
+          target
+            .stop()
+            .css({'opacity': 0, 'display': 'block'})
+            .animate({ opacity: 1 }, TAB_ANIMATE_DURATION, function () {
+              currentTarget.removeClass(activePanelClassName);
+              target.addClass(activePanelClassName);
+            });
+        });
+
+      item.siblings().removeClass(activeTabClassName);
+      item.addClass(activeTabClassName);
+    });
+
+    $('.post-toc a').on('click', function (e) {
+      e.preventDefault();
+      var targetSelector = NexT.utils.escapeSelector(this.getAttribute('href'));
+      var offset = $(targetSelector).offset().top;
+      hasVelocity ?
+        html.velocity('stop').velocity('scroll', {
+          offset: offset  + 'px',
+          mobileHA: false
+        }) :
+        $('html, body').stop().animate({
+          scrollTop: offset
+        }, 500);
+    });
+
+    // Expand sidebar on post detail page by default, when post has a toc.
+    NexT.motion.middleWares.sidebar = function () {
+      var $tocContent = $('.post-toc-content');
+
+      if (CONFIG.scheme !== 'Pisces' && (CONFIG.sidebar.display === 'post' || CONFIG.sidebar.display === 'always')) {
+        if ($tocContent.length > 0 && $tocContent.html().trim().length > 0) {
+          NexT.utils.displaySidebar();
+        }
+      }
+    };
+  });
+</script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=0.5.0"></script>
+
+
+
+  
+
+
+
+  
+
+    <script type="text/javascript">
+      var disqus_shortname = 'knarfeh';
+      var disqus_identifier = '2018/03/10/go-ethereum 源码笔记（ethdb 模块）/';
+      var disqus_title = 'go-ethereum 源码笔记（ethdb 模块）';
+      var disqus_url = 'http://knarfeh.github.io/2018/03/10/go-ethereum 源码笔记（ethdb 模块）/';
+
+      function run_disqus_script(disqus_script){
+        var dsq = document.createElement('script');
+        dsq.type = 'text/javascript';
+        dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/' + disqus_script;
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+      }
+
+      run_disqus_script('count.js');
+      
+        run_disqus_script('embed.js');
+      
+    </script>
+  
+
+
+
+  
+  
+  
+  <script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+      }
+    });
+  </script>
+
+  <script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+      var all = MathJax.Hub.getAllJax(), i;
+      for (i=0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';
+      }
+    });
+  </script>
+
+  
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js"></script>
+    <script type="text/javascript" async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML">
+</script>
+  
+
+
+  
+
+  <script type="text/javascript" src="/js/src/custom.js"></script>
+</body>
+</html>
