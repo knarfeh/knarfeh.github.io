@@ -221,8 +221,8 @@
             
               
                 
-                <a class="post-title-link" href="/2014/03/11/leetcode/Algorithms/leetcode-137-Single-Number-II/" itemprop="url">
-                  leetcode-137-Single-Number-II
+                <a class="post-title-link" href="/2014/03/11/leetcode/Shell/leetcode-195-Tenth-Line/" itemprop="url">
+                  leetcode-195-Tenth-Line
                 </a>
               
             
@@ -246,8 +246,111 @@
             
               <span class="post-comments-count">
                 &nbsp; | &nbsp;
-                <a href="/2014/03/11/leetcode/Algorithms/leetcode-137-Single-Number-II/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2014/03/11/leetcode/Algorithms/leetcode-137-Single-Number-II/" itemprop="commentsCount"></span>
+                <a href="/2014/03/11/leetcode/Shell/leetcode-195-Tenth-Line/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2014/03/11/leetcode/Shell/leetcode-195-Tenth-Line/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h3 id="描述"><a href="#描述" class="headerlink" title="描述"></a>描述</h3><hr>
+<p>How would you print just the 10th line of a file?</p>
+<p>For example, assume that file.txt has the following content:</p>
+<figure class="highlight gauss"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">Line</span> <span class="number">1</span></div><div class="line"><span class="keyword">Line</span> <span class="number">2</span></div><div class="line"><span class="keyword">Line</span> <span class="number">3</span></div><div class="line"><span class="keyword">Line</span> <span class="number">4</span></div><div class="line"><span class="keyword">Line</span> <span class="number">5</span></div><div class="line"><span class="keyword">Line</span> <span class="number">6</span></div><div class="line"><span class="keyword">Line</span> <span class="number">7</span></div><div class="line"><span class="keyword">Line</span> <span class="number">8</span></div><div class="line"><span class="keyword">Line</span> <span class="number">9</span></div><div class="line"><span class="keyword">Line</span> <span class="number">10</span></div></pre></td></tr></table></figure>
+<p>Your script should output the tenth line, which is:</p>
+<figure class="highlight gauss"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">Line</span> <span class="number">10</span></div></pre></td></tr></table></figure>
+<h3 id="解决方案"><a href="#解决方案" class="headerlink" title="解决方案"></a>解决方案</h3><hr>
+<figure class="highlight vhdl"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"># Read from the <span class="keyword">file</span> <span class="keyword">file</span>.txt <span class="keyword">and</span> output the tenth <span class="literal">line</span> <span class="keyword">to</span> stdout.</div><div class="line">awk <span class="string">"NR==10"</span> <span class="keyword">file</span>.txt</div></pre></td></tr></table></figure>
+<h3 id="题目来源"><a href="#题目来源" class="headerlink" title="题目来源"></a><a href="https://leetcode.com/problems/tenth-line/" target="_blank" rel="external">题目来源</a></h3>
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2014/03/11/leetcode/Algorithms/leetcode-283-Move-Zeroes/" itemprop="url">
+                  leetcode-283-Move-Zeroes
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2014-03-11T00:33:34+08:00" content="2014-03-11">
+              2014-03-11
+            </time>
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2014/03/11/leetcode/Algorithms/leetcode-283-Move-Zeroes/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2014/03/11/leetcode/Algorithms/leetcode-283-Move-Zeroes/" itemprop="commentsCount"></span>
                 </a>
               </span>
             
@@ -271,11 +374,10 @@
       
         
           <h3 id="描述"><a href="#描述" class="headerlink" title="描述"></a>描述</h3><hr>
-<p>Given an array of integers, every element appears three times except for one. Find that single one.  </p>
-<p><strong>Note</strong>:  </p>
-<p>Your algorithm should have a linear runtime complexity. Could you implement it without using extra memory?<br>
+<p>Given an array nums, write a function to move all 0’s to the end of it while maintaining the relative order of the non-zero elements.</p>
+<p>For example, given nums = [0, 1, 0, 3, 12], after calling your function, nums should be [1, 3, 12, 0, 0].<br>
           <div class="post-more-link text-center">
-            <a class="btn" href="/2014/03/11/leetcode/Algorithms/leetcode-137-Single-Number-II/#more" rel="contents">
+            <a class="btn" href="/2014/03/11/leetcode/Algorithms/leetcode-283-Move-Zeroes/#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
@@ -346,7 +448,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">181</span>
+              <span class="site-state-item-count">182</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -356,7 +458,7 @@
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">129</span>
+                <span class="site-state-item-count">131</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
