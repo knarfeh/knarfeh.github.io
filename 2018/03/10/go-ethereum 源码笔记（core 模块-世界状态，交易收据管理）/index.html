@@ -66,7 +66,7 @@
 <meta property="og:description" content="通过前面的文章，我们了解了 geth 的大致原理，知道了区块链是怎么组织构成的，有了 rlp，MPT 这些数据结构的基础，也知道了账户是怎么组织的，交易是如何管理的，挖矿是一个什么样的流程，这一篇我们将深入到交易的具体处理过程，看看交易过程中是如何修改世界状态，生成交易收据的。 这篇文章将涉及到 core/types/transaction.go, core/state 模块，需要对交易池，账户等">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="https://knarfeh-1254074221.cos.na-siliconvalley.myqcloud.com/stackexchange-ethereum-block-architecture.jpg">
-<meta property="og:updated_time" content="2018-10-12T03:47:40.895Z">
+<meta property="og:updated_time" content="2018-10-13T03:47:12.627Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="go-ethereum 源码笔记（core 模块-世界状态，交易收据管理）">
 <meta name="twitter:description" content="通过前面的文章，我们了解了 geth 的大致原理，知道了区块链是怎么组织构成的，有了 rlp，MPT 这些数据结构的基础，也知道了账户是怎么组织的，交易是如何管理的，挖矿是一个什么样的流程，这一篇我们将深入到交易的具体处理过程，看看交易过程中是如何修改世界状态，生成交易收据的。 这篇文章将涉及到 core/types/transaction.go, core/state 模块，需要对交易池，账户等">
@@ -273,9 +273,9 @@
       
         <p>通过前面的文章，我们了解了 geth 的大致原理，知道了区块链是怎么组织构成的，有了 rlp，MPT 这些数据结构的基础，也知道了账户是怎么组织的，交易是如何管理的，挖矿是一个什么样的流程，这一篇我们将深入到交易的具体处理过程，看看交易过程中是如何修改世界状态，生成交易收据的。</p>
 <p>这篇文章将涉及到 <code>core/types/transaction.go</code>, <code>core/state</code> 模块，需要对交易池，账户等基本概念有所了解。</p>
+<a id="more"></a>
 <p><code>core/state</code> 包提供了用户和合约的状态管理的功能。包括 trie，数据库，cache，日志和回滚相关功能。还记得<a href="https://knarfeh.com/2018/03/10/go-ethereum%20%E6%BA%90%E7%A0%81%E7%AC%94%E8%AE%B0%EF%BC%88%E6%A6%82%E8%A7%88%EF%BC%89/" target="_blank" rel="external">go-ethereum 源码笔记（概览）</a> 中曾给出的总体架构图吗？</p>
 <p><img src="https://knarfeh-1254074221.cos.na-siliconvalley.myqcloud.com/stackexchange-ethereum-block-architecture.jpg" alt="https://i.stack.imgur.com/afWDt.jpg"> 按照定义，日志应该属于交易树的部分，但 <code>core/state</code> 中的 <code>journal.go</code> 却提供了日志的管理，这里有点不符合逻辑，可以稍稍注意一下。</p>
-<a id="more"></a>
 <p>前面的文章中有提过，在 geth 中存在三棵主要的 MPT 树，状态树，交易树，收据树。在交易上链的过程中，状态树，收据树会不断改变，</p>
 <p>世界状态其实是一个账户地址和账户状态的映射，不管是外部账户还是合约账户，账户状态都包括：</p>
 <ul>
@@ -373,16 +373,16 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2018/03/10/go-ethereum 源码笔记（ethdb 模块）/" rel="next" title="go-ethereum 源码笔记（ethdb 模块）">
-                <i class="fa fa-chevron-left"></i> go-ethereum 源码笔记（ethdb 模块）
+              <a href="/2018/03/10/go-ethereum 源码笔记（miner, consensus 模块-挖矿和共识算法）/" rel="next" title="go-ethereum 源码笔记（miner,consensus 模块-挖矿和共识算法）">
+                <i class="fa fa-chevron-left"></i> go-ethereum 源码笔记（miner,consensus 模块-挖矿和共识算法）
               </a>
             
           </div>
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2018/03/20/Telegram Bot 的长轮询 VS Webhook/" rel="prev" title="Telegram Bot 的长轮询 VS Webhook">
-                Telegram Bot 的长轮询 VS Webhook <i class="fa fa-chevron-right"></i>
+              <a href="/2018/03/10/go-ethereum 源码笔记（ethdb 模块）/" rel="prev" title="go-ethereum 源码笔记（ethdb 模块）">
+                go-ethereum 源码笔记（ethdb 模块） <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>

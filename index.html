@@ -447,107 +447,6 @@
             
               
                 
-                <a class="post-title-link" href="/2018/03/10/go-ethereum 源码笔记（core 模块-世界状态，交易收据管理）/" itemprop="url">
-                  go-ethereum 源码笔记（core 模块-世界状态，交易收据管理）
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2018-03-10T22:35:06+08:00" content="2018-03-10">
-              2018-03-10
-            </time>
-          </span>
-
-          
-
-          
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2018/03/10/go-ethereum 源码笔记（core 模块-世界状态，交易收据管理）/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2018/03/10/go-ethereum 源码笔记（core 模块-世界状态，交易收据管理）/" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <p>通过前面的文章，我们了解了 geth 的大致原理，知道了区块链是怎么组织构成的，有了 rlp，MPT 这些数据结构的基础，也知道了账户是怎么组织的，交易是如何管理的，挖矿是一个什么样的流程，这一篇我们将深入到交易的具体处理过程，看看交易过程中是如何修改世界状态，生成交易收据的。</p>
-<p>这篇文章将涉及到 <code>core/types/transaction.go</code>, <code>core/state</code> 模块，需要对交易池，账户等基本概念有所了解。</p>
-<p><code>core/state</code> 包提供了用户和合约的状态管理的功能。包括 trie，数据库，cache，日志和回滚相关功能。还记得<a href="https://knarfeh.com/2018/03/10/go-ethereum%20%E6%BA%90%E7%A0%81%E7%AC%94%E8%AE%B0%EF%BC%88%E6%A6%82%E8%A7%88%EF%BC%89/" target="_blank" rel="external">go-ethereum 源码笔记（概览）</a> 中曾给出的总体架构图吗？</p>
-<p><img src="https://knarfeh-1254074221.cos.na-siliconvalley.myqcloud.com/stackexchange-ethereum-block-architecture.jpg" alt="https://i.stack.imgur.com/afWDt.jpg"> 按照定义，日志应该属于交易树的部分，但 <code>core/state</code> 中的 <code>journal.go</code> 却提供了日志的管理，这里有点不符合逻辑，可以稍稍注意一下。</p>
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2018/03/10/go-ethereum 源码笔记（core 模块-世界状态，交易收据管理）/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
                 <a class="post-title-link" href="/2018/03/10/go-ethereum 源码笔记（ethdb 模块）/" itemprop="url">
                   go-ethereum 源码笔记（ethdb 模块）
                 </a>
@@ -600,6 +499,105 @@
           <p>通过前面的文章，我们知道了有工作量证明的区块链是怎么构建的，然而区块链一直在内存中当然是不行的，我们需要将区块链持久化到数据库中。<br>
           <div class="post-more-link text-center">
             <a class="btn" href="/2018/03/10/go-ethereum 源码笔记（ethdb 模块）/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2018/03/10/go-ethereum 源码笔记（core 模块-世界状态，交易收据管理）/" itemprop="url">
+                  go-ethereum 源码笔记（core 模块-世界状态，交易收据管理）
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2018-03-10T22:35:06+08:00" content="2018-03-10">
+              2018-03-10
+            </time>
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2018/03/10/go-ethereum 源码笔记（core 模块-世界状态，交易收据管理）/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2018/03/10/go-ethereum 源码笔记（core 模块-世界状态，交易收据管理）/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <p>通过前面的文章，我们了解了 geth 的大致原理，知道了区块链是怎么组织构成的，有了 rlp，MPT 这些数据结构的基础，也知道了账户是怎么组织的，交易是如何管理的，挖矿是一个什么样的流程，这一篇我们将深入到交易的具体处理过程，看看交易过程中是如何修改世界状态，生成交易收据的。</p>
+<p>这篇文章将涉及到 <code>core/types/transaction.go</code>, <code>core/state</code> 模块，需要对交易池，账户等基本概念有所了解。</p>
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2018/03/10/go-ethereum 源码笔记（core 模块-世界状态，交易收据管理）/#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
