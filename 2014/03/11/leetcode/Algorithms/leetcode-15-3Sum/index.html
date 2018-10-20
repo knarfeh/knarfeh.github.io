@@ -41,7 +41,7 @@
 <link href="/css/main.css?v=0.5.0" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="algorithms,leetcode,Array,review,Two-Pointers," />
+  <meta name="keywords" content="algorithms,leetcode,Array,Two-Pointers,review," />
 
 
 
@@ -58,14 +58,14 @@
 
 
 <meta name="description" content="描述 Given an array S of n integers, are there elements a, b, c in S such that a + b + c = 0? Find all unique triplets in the array which gives the sum of zero. Note:     Elements in a triplet (a,b,c) m">
-<meta name="keywords" content="algorithms,leetcode,Array,review,Two-Pointers">
+<meta name="keywords" content="algorithms,leetcode,Array,Two-Pointers,review">
 <meta property="og:type" content="article">
 <meta property="og:title" content="leetcode-15-3Sum">
 <meta property="og:url" content="http://knarfeh.github.io/2014/03/11/leetcode/Algorithms/leetcode-15-3Sum/index.html">
 <meta property="og:site_name" content="Frank&#39;s Notes">
 <meta property="og:description" content="描述 Given an array S of n integers, are there elements a, b, c in S such that a + b + c = 0? Find all unique triplets in the array which gives the sum of zero. Note:     Elements in a triplet (a,b,c) m">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2016-10-28T15:40:40.000Z">
+<meta property="og:updated_time" content="2018-10-14T09:46:58.958Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="leetcode-15-3Sum">
 <meta name="twitter:description" content="描述 Given an array S of n integers, are there elements a, b, c in S such that a + b + c = 0? Find all unique triplets in the array which gives the sum of zero. Note:     Elements in a triplet (a,b,c) m">
@@ -278,7 +278,7 @@
 </ul>
 <a id="more"></a>
 <h3 id="分析"><a href="#分析" class="headerlink" title="分析"></a>分析</h3><hr>
-<p>思路：先给数组排序，按从左至右从小到大得顺序排列，通过第一层循环确定第一个数，其他两个在第一个数的右边（都比第一个数大）取，两个数从两侧向中间靠拢，如果三数相加大于0，第三个数向左移动（减小），三数相加小于0第二个数向右移动。跳过相同的数字。时间复杂度$O(n^2)$，空间复杂度是$O(1)$</p>
+<p>思路：先给数组排序，按从左至右从小到大得顺序排列，通过第一层循环确定第一个数，其他两个在第一个数的右边（都比第一个数大）取，两个数从两侧向中间靠拢，如果三数相加大于0，第三个数向左移动（减小），三数相加小于0，第二个数向右移动。跳过相同的数字。时间复杂度$O(n^2)$，空间复杂度是$O(1)$</p>
 <h3 id="解决方案1-C"><a href="#解决方案1-C" class="headerlink" title="解决方案1(C++)"></a>解决方案1(C++)</h3><hr>
 <figure class="highlight cpp"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">class</span> Solution &#123;</div><div class="line"><span class="keyword">public</span>:</div><div class="line">    <span class="built_in">vector</span>&lt;<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&gt; threeSum(<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&amp; nums) &#123;</div><div class="line">        <span class="built_in">vector</span>&lt;<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&gt; result;</div><div class="line">    </div><div class="line">        <span class="keyword">int</span> size = nums.size();</div><div class="line">        sort(nums.begin(), nums.end());</div><div class="line">    </div><div class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; size; i++) &#123;</div><div class="line">            <span class="keyword">while</span>(i &gt; <span class="number">0</span> &amp;&amp; i &lt; size &amp;&amp; nums[i] == nums[i<span class="number">-1</span>]) &#123;</div><div class="line">                i++;</div><div class="line">            &#125;</div><div class="line">    </div><div class="line">            <span class="keyword">int</span> j = i + <span class="number">1</span>;</div><div class="line">            <span class="keyword">int</span> k = size<span class="number">-1</span>;</div><div class="line">    </div><div class="line">            <span class="keyword">while</span>(j &lt; k) &#123;</div><div class="line">                <span class="keyword">int</span> sum = nums[i] + nums[j] + nums[k];</div><div class="line">                <span class="keyword">if</span>(sum == <span class="number">0</span>) &#123;</div><div class="line">                    <span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; now(<span class="number">3</span>);</div><div class="line">                    now[<span class="number">0</span>] = nums[i];</div><div class="line">                    now[<span class="number">1</span>] = nums[j];</div><div class="line">                    now[<span class="number">2</span>] = nums[k];</div><div class="line">    </div><div class="line">                    result.push_back(now);</div><div class="line">                    j++;</div><div class="line">                    k--;</div><div class="line">                    <span class="keyword">while</span>(j &lt; k &amp;&amp; nums[j] == nums[j<span class="number">-1</span>]) &#123;</div><div class="line">                        j++;</div><div class="line">                    &#125;</div><div class="line">                    <span class="keyword">while</span>(j &lt; k &amp;&amp; nums[k] == nums[k+<span class="number">1</span>]) &#123;</div><div class="line">                        k--;</div><div class="line">                    &#125;</div><div class="line">                &#125;<span class="keyword">else</span> <span class="keyword">if</span>(sum &gt; <span class="number">0</span>)&#123;</div><div class="line">                    k--;</div><div class="line">                &#125;<span class="keyword">else</span> &#123;</div><div class="line">                    j++;</div><div class="line">                &#125;</div><div class="line">            &#125;</div><div class="line">    </div><div class="line">        &#125;</div><div class="line">        <span class="keyword">return</span> result;</div><div class="line">    &#125;</div><div class="line">&#125;;</div></pre></td></tr></table></figure>
 <h3 id="解决方案2-Python"><a href="#解决方案2-Python" class="headerlink" title="解决方案2(Python)"></a>解决方案2(Python)</h3><hr>
@@ -306,9 +306,9 @@
           
             <a href="/tags/Array/" rel="tag">#Array</a>
           
-            <a href="/tags/review/" rel="tag">#review</a>
-          
             <a href="/tags/Two-Pointers/" rel="tag">#Two-Pointers</a>
+          
+            <a href="/tags/review/" rel="tag">#review</a>
           
         </div>
       
@@ -317,16 +317,16 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2014/03/11/leetcode/Algorithms/leetcode-141-Linked-List-Cycle/" rel="next" title="leetcode-141-Linked-List-Cycle">
-                <i class="fa fa-chevron-left"></i> leetcode-141-Linked-List-Cycle
+              <a href="/2014/03/11/leetcode/Algorithms/leetcode-16-3Sum-Closest/" rel="next" title="leetcode-16-3Sum-Closest">
+                <i class="fa fa-chevron-left"></i> leetcode-16-3Sum-Closest
               </a>
             
           </div>
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2014/03/11/leetcode/Algorithms/leetcode-137-Single-Number-II/" rel="prev" title="leetcode-137-Single-Number-II">
-                leetcode-137-Single-Number-II <i class="fa fa-chevron-right"></i>
+              <a href="/2014/03/11/leetcode/Algorithms/leetcode-122-Best-Time-to-Buy-and-Sell-Stock-II/" rel="prev" title="leetcode-122-Best-Time-to-Buy-and-Sell-Stock-II">
+                leetcode-122-Best-Time-to-Buy-and-Sell-Stock-II <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -402,7 +402,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">182</span>
+              <span class="site-state-item-count">184</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>

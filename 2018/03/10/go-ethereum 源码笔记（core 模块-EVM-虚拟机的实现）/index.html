@@ -1,0 +1,855 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  <link href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css"/>
+
+
+
+
+  <link href="//fonts.googleapis.com/css?family=Lato:300,400,700,400italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+
+
+
+<link href="/vendors/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=0.5.0" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="cryptocurrency,Golang,geth," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=0.5.0" />
+
+
+
+
+
+
+<meta name="description" content="前面的文章 go-ethereum 源码笔记（core 模块-世界状态，交易收据管理） 讨论了 geth 中对交易的处理，其中有一个阶段需要通过 EVM 执行，如果交易转入方地址为空，则调用 EVM 的 Create 函数创建合约；如果不为空，则为普通转账，调用 Call() 函数。这一篇我们将深入以太坊的虚拟机看看具体的过程。 这一篇需要对智能合约， ERC-20 标准，编译原理（了解编译器，解">
+<meta name="keywords" content="cryptocurrency,Golang,geth">
+<meta property="og:type" content="article">
+<meta property="og:title" content="go-ethereum 源码笔记（core 模块-EVM-虚拟机的实现）">
+<meta property="og:url" content="http://knarfeh.github.io/2018/03/10/go-ethereum 源码笔记（core 模块-EVM-虚拟机的实现）/index.html">
+<meta property="og:site_name" content="Frank&#39;s Notes">
+<meta property="og:description" content="前面的文章 go-ethereum 源码笔记（core 模块-世界状态，交易收据管理） 讨论了 geth 中对交易的处理，其中有一个阶段需要通过 EVM 执行，如果交易转入方地址为空，则调用 EVM 的 Create 函数创建合约；如果不为空，则为普通转账，调用 Call() 函数。这一篇我们将深入以太坊的虚拟机看看具体的过程。 这一篇需要对智能合约， ERC-20 标准，编译原理（了解编译器，解">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="https://knarfeh-1254074221.cos.na-siliconvalley.myqcloud.com/evm_process.jpg">
+<meta property="og:image" content="https://knarfeh-1254074221.cos.na-siliconvalley.myqcloud.com/evm_code_executed.png">
+<meta property="og:updated_time" content="2018-10-20T06:56:31.927Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="go-ethereum 源码笔记（core 模块-EVM-虚拟机的实现）">
+<meta name="twitter:description" content="前面的文章 go-ethereum 源码笔记（core 模块-世界状态，交易收据管理） 讨论了 geth 中对交易的处理，其中有一个阶段需要通过 EVM 执行，如果交易转入方地址为空，则调用 EVM 的 Create 函数创建合约；如果不为空，则为普通转账，调用 Call() 函数。这一篇我们将深入以太坊的虚拟机看看具体的过程。 这一篇需要对智能合约， ERC-20 标准，编译原理（了解编译器，解">
+<meta name="twitter:image" content="https://knarfeh-1254074221.cos.na-siliconvalley.myqcloud.com/evm_process.jpg">
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    scheme: 'Muse',
+    sidebar: {"display":"hide"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: 0,
+      author: '博主'
+    }
+  };
+</script>
+
+  <title> go-ethereum 源码笔记（core 模块-EVM-虚拟机的实现） | Frank's Notes </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+            (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+          m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-75002639-1', 'auto');
+  ga('send', 'pageview');
+</script>
+
+
+
+
+
+
+
+
+
+  
+  
+
+  <div class="container one-collumn  page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">Frank's Notes</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle"></p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-home fa-fw"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-archive fa-fw"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-tags fa-fw"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-twitter">
+          <a href="/twitter" rel="section">
+            
+              <i class="menu-item-icon fa fa-coffee fa-fw"></i> <br />
+            
+            Twitter
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                go-ethereum 源码笔记（core 模块-EVM-虚拟机的实现）
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2018-03-10T22:35:08+08:00" content="2018-03-10">
+              2018-03-10
+            </time>
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2018/03/10/go-ethereum 源码笔记（core 模块-EVM-虚拟机的实现）/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2018/03/10/go-ethereum 源码笔记（core 模块-EVM-虚拟机的实现）/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>前面的文章 <a href="https://knarfeh.com/2018/03/10/go-ethereum%20%E6%BA%90%E7%A0%81%E7%AC%94%E8%AE%B0%EF%BC%88core%20%E6%A8%A1%E5%9D%97-%E4%B8%96%E7%95%8C%E7%8A%B6%E6%80%81%EF%BC%8C%E4%BA%A4%E6%98%93%E6%94%B6%E6%8D%AE%E7%AE%A1%E7%90%86%EF%BC%89/" target="_blank" rel="external">go-ethereum 源码笔记（core 模块-世界状态，交易收据管理）</a> 讨论了 geth 中对交易的处理，其中有一个阶段需要通过 EVM 执行，如果交易转入方地址为空，则调用 EVM 的 Create 函数创建合约；如果不为空，则为普通转账，调用 Call() 函数。这一篇我们将深入以太坊的虚拟机看看具体的过程。</p>
+<p>这一篇需要对智能合约， ERC-20 标准，编译原理（了解编译器，解释器，虚拟机等概念），计算机组成原理（了解基于栈的虚拟机与基于寄存器的虚拟机的区别）有所了解。</p>
+<a id="more"></a>
+<p>以太坊与比特币最大的不同是以太坊设计了图灵完备的虚拟机用于执行合约代码，geth 中的 EVM 本质上就是一个字节码执行引擎。</p>
+<h2 id="设计目标"><a href="#设计目标" class="headerlink" title="设计目标"></a>设计目标</h2><p>在以太坊的<a href="https://github.com/ethereum/wiki/wiki/Design-Rationale#virtual-machine" target="_blank" rel="external">设计原理</a>中描述了 EVM 的设计目标:</p>
+<ul>
+<li><strong>简单</strong>：操作码尽可能的简单，低级，数据类型尽可能少，虚拟机结构尽可能少。</li>
+<li><strong>结果明确</strong>：在 VM 规范里，没有任何可能产生歧义的空间，结果应该是完全确定的，此外，计算步骤应该是精确的，以便可以计量 gas 消耗量。</li>
+<li><strong>节约空间</strong>：EVM 汇编码应该尽可能紧凑。</li>
+<li><strong>预期应用应具备专业化能力</strong>：在 VM 上构建的应用能够处理20字节的地址，以及32位的自定义加密值，拥有用于自定义加密的模数运算、读取区块和交易数据和状态交互等能力。</li>
+<li><strong>简单安全</strong>：能够容易地建立一套操作的 gas 消耗成本模型，让 VM 不被利用。</li>
+<li><strong>优化友好</strong>：应该易于优化，以便即时编译(JIT)和 VM 的加速版本能够构建出来。</li>
+</ul>
+<p>特点：</p>
+<ul>
+<li>区分临时存储（Memory，存在于每个 VM 实例中，并在 VM 执行结束后消失）和永久存储（Storage，存在于区块链的状态层）。</li>
+<li>采用基于栈（stack）的架构。</li>
+<li>机器码长度为32字节。</li>
+<li>没有重用 Java，或其他一些 Lisp 方言，Lua 的虚拟机，自定义虚拟机。</li>
+<li>使用可变的可扩展内存大小。</li>
+<li>限制调用深度为 1024。</li>
+<li>没有类型。</li>
+</ul>
+<h2 id="原理"><a href="#原理" class="headerlink" title="原理"></a>原理</h2><p>通常智能合约的开发流程是使用 solidity 编写逻辑代码，通过编译器编译成 bytecode，然后发布到以太坊上，以太坊底层通过 EVM 模块支持合约的执行和调用，调用时根据合约地址获取到代码，即合约的字节码，生成环境后载入到 EVM 执行。</p>
+<p>大致流程如下图1，指令的执行过程如下图2，从 EVM code 中不断取出指令执行，利用 Gas 来实现限制循环，利用栈来进行操作，内存存储临时变量，账户状态中的 storage 用来存储数据。</p>
+<p><img src="https://knarfeh-1254074221.cos.na-siliconvalley.myqcloud.com/evm_process.jpg" alt="evm_process"></p>
+<p><img src="https://knarfeh-1254074221.cos.na-siliconvalley.myqcloud.com/evm_code_executed.png" alt="evm_code_executed"></p>
+<h2 id="源码"><a href="#源码" class="headerlink" title="源码"></a>源码</h2><h3 id="代码结构"><a href="#代码结构" class="headerlink" title="代码结构"></a>代码结构</h3><p>EVM 模块的文件比较多，这里先给出每个文件的简述，先对每个文件提供的功能有个简单的了解。</p>
+<figure class="highlight stylus"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div></pre></td><td class="code"><pre><div class="line">.</div><div class="line">├── analysis<span class="selector-class">.go</span>            <span class="comment">// 跳转目标判定</span></div><div class="line">├── common<span class="selector-class">.go</span></div><div class="line">├── contract<span class="selector-class">.go</span>            <span class="comment">// 合约的数据结构</span></div><div class="line">├── contracts<span class="selector-class">.go</span>           <span class="comment">// 预编译好的合约</span></div><div class="line">├── errors<span class="selector-class">.go</span></div><div class="line">├── evm<span class="selector-class">.go</span>                 <span class="comment">// 对外提供的接口   </span></div><div class="line">├── gas<span class="selector-class">.go</span>                 <span class="comment">// 用来计算指令耗费的 gas</span></div><div class="line">├── gas_table<span class="selector-class">.go</span>           <span class="comment">// 指令耗费计算函数表</span></div><div class="line">├── gen_structlog<span class="selector-class">.go</span>       </div><div class="line">├── instructions<span class="selector-class">.go</span>        <span class="comment">// 指令操作</span></div><div class="line">├── interface<span class="selector-class">.go</span>           <span class="comment">// 定义 StateDB 的接口</span></div><div class="line">├── interpreter<span class="selector-class">.go</span>         <span class="comment">// 解释器</span></div><div class="line">├── intpool<span class="selector-class">.go</span>             <span class="comment">// 存放大整数</span></div><div class="line">├── int_pool_verifier_empty<span class="selector-class">.go</span></div><div class="line">├── int_pool_verifier<span class="selector-class">.go</span></div><div class="line">├── jump_table<span class="selector-class">.go</span>           <span class="comment">// 指令和指令操作（操作，花费，验证）对应表</span></div><div class="line">├── logger<span class="selector-class">.go</span>               <span class="comment">// 状态日志</span></div><div class="line">├── memory<span class="selector-class">.go</span>               <span class="comment">// EVM 内存</span></div><div class="line">├── memory_table<span class="selector-class">.go</span>         <span class="comment">// EVM 内存操作表，用来衡量操作所需内存大小</span></div><div class="line">├── noop<span class="selector-class">.go</span></div><div class="line">├── opcodes<span class="selector-class">.go</span>              <span class="comment">// 指令以及一些对应关系     </span></div><div class="line">├── runtime</div><div class="line">│   ├── env<span class="selector-class">.go</span>              <span class="comment">// 执行环境 </span></div><div class="line">│   ├── fuzz<span class="selector-class">.go</span></div><div class="line">│   └── runtime<span class="selector-class">.go</span>          <span class="comment">// 运行接口，测试使用</span></div><div class="line">├── stack<span class="selector-class">.go</span>                <span class="comment">// 栈</span></div><div class="line">└── stack_table<span class="selector-class">.go</span>          <span class="comment">// 栈验证</span></div></pre></td></tr></table></figure>
+<h3 id="数据结构"><a href="#数据结构" class="headerlink" title="数据结构"></a>数据结构</h3><p>在 EVM 模块中，有两个高层次的结构体，分别是 Context，EVM。</p>
+<figure class="highlight elm"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">type</span> <span class="type">Context</span> struct &#123;</div><div class="line">	<span class="type">CanTransfer</span> <span class="type">CanTransferFunc</span></div><div class="line">	<span class="type">Transfer</span> <span class="type">TransferFunc</span></div><div class="line">	<span class="type">GetHash</span> <span class="type">GetHashFunc</span></div><div class="line">	<span class="type">Origin</span>   common.<span class="type">Address</span></div><div class="line">	<span class="type">GasPrice</span> *big.<span class="type">Int</span></div><div class="line">	<span class="type">Coinbase</span>    common.<span class="type">Address</span></div><div class="line">	<span class="type">GasLimit</span>    uint64</div><div class="line">	<span class="type">BlockNumber</span> *big.<span class="type">Int</span></div><div class="line">	<span class="type">Time</span>        *big.<span class="type">Int</span></div><div class="line">	<span class="type">Difficulty</span>  *big.<span class="type">Int</span></div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="keyword">type</span> <span class="type">EVM</span> struct &#123;</div><div class="line">	<span class="type">Context</span></div><div class="line">	<span class="type">StateDB</span> <span class="type">StateDB</span></div><div class="line">	depth int</div><div class="line">	chainConfig *params.<span class="type">ChainConfig</span></div><div class="line">	chainRules params.<span class="type">Rules</span></div><div class="line">	vmConfig <span class="type">Config</span></div><div class="line">	interpreter *<span class="type">Interpreter</span></div><div class="line">	abort int32</div><div class="line">	callGasTemp uint64</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>Context 给 EVM 提供运行合约的上下文信息，其中 <code>CanTransfer</code> 是返回账户是否有足够余额的函数，<code>Transfer</code> 可以用来完成转账操作，<code>GetHash</code> 返回第 n 个区块的哈希值。其他的属性在之前文章有过描述，代码中也有注释，这里不再赘述。EVM 结构体中稍值得一提的是 interpreter，它根据代码以及 jump_table 中对应的指令逐条执行合约，这部分我们将在稍后看到。</p>
+<p>我们先从<a href="https://knarfeh.com/2018/03/10/go-ethereum%20%E6%BA%90%E7%A0%81%E7%AC%94%E8%AE%B0%EF%BC%88core%20%E6%A8%A1%E5%9D%97-%E4%B8%96%E7%95%8C%E7%8A%B6%E6%80%81%EF%BC%8C%E4%BA%A4%E6%98%93%E6%94%B6%E6%8D%AE%E7%AE%A1%E7%90%86%EF%BC%89/" target="_blank" rel="external">go-ethereum 源码笔记（core 模块-世界状态，交易收据管理）</a> 中谈到的 Create，Call 方法谈起。</p>
+<h3 id="Create"><a href="#Create" class="headerlink" title="Create"></a>Create</h3><p>Create 方法可以用来创建一个新合约。</p>
+<figure class="highlight roboconf"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div></pre></td><td class="code"><pre><div class="line">func (evm *EVM) create(caller ContractRef, code []byte, gas uint64, value *big.Int, address common.Address) ([]byte, common.Address, uint64, error) &#123;</div><div class="line">	<span class="attribute">if evm.depth &gt; int(params.CallCreateDepth) &#123;</span></div><div class="line">		return nil, common.Address&#123;&#125;, gas, ErrDepth</div><div class="line">	&#125;</div><div class="line">	if !evm.CanTransfer(evm.StateDB, caller.Address(), value) &#123;</div><div class="line">		return nil, common.Address&#123;&#125;, gas, ErrInsufficientBalance</div><div class="line">	&#125;</div><div class="line">	nonce := evm<span class="variable">.StateDB</span><span class="variable">.GetNonce</span>(caller<span class="variable">.Address</span>())</div><div class="line">	evm<span class="variable">.StateDB</span><span class="variable">.SetNonce</span>(caller<span class="variable">.Address</span>(), nonce+1)</div><div class="line"></div><div class="line">	contractHash := evm<span class="variable">.StateDB</span><span class="variable">.GetCodeHash</span>(address)</div><div class="line">	if evm<span class="variable">.StateDB</span><span class="variable">.GetNonce</span>(address) != 0 || (contractHash != (common<span class="variable">.Hash</span>&#123;&#125;) &amp;&amp; contractHash != emptyCodeHash) &#123;</div><div class="line">		return nil, common<span class="variable">.Address</span>&#123;&#125;, 0, ErrContractAddressCollision</div><div class="line">	&#125;</div><div class="line"></div><div class="line">	snapshot := evm<span class="variable">.StateDB</span><span class="variable">.Snapshot</span>()</div><div class="line">	evm<span class="variable">.StateDB</span><span class="variable">.CreateAccount</span>(address)</div><div class="line">	if evm<span class="variable">.ChainConfig</span>()<span class="variable">.IsEIP</span>158(evm<span class="variable">.BlockNumber</span>) &#123;</div><div class="line">		evm<span class="variable">.StateDB</span><span class="variable">.SetNonce</span>(address, 1)</div><div class="line">	&#125;</div><div class="line">	evm<span class="variable">.Transfer</span>(evm<span class="variable">.StateDB</span>, caller<span class="variable">.Address</span>(), address, value)</div><div class="line"></div><div class="line">	contract := NewContract(caller, AccountRef(address), value, gas)</div><div class="line">	contract<span class="variable">.SetCallCode</span>(&amp;address, crypto<span class="variable">.Keccak</span>256Hash(code), code)</div><div class="line"></div><div class="line">	if evm<span class="variable">.vmConfig</span><span class="variable">.NoRecursion</span> &amp;&amp; evm<span class="variable">.depth</span> &gt; 0 &#123;</div><div class="line">		return nil, address, gas, nil</div><div class="line">	&#125;</div><div class="line"></div><div class="line">	if evm<span class="variable">.vmConfig</span><span class="variable">.Debug</span> &amp;&amp; evm<span class="variable">.depth</span> == 0 &#123;</div><div class="line">		evm<span class="variable">.vmConfig</span><span class="variable">.Tracer</span><span class="variable">.CaptureStart</span>(caller<span class="variable">.Address</span>(), address, true, code, gas, value)</div><div class="line">	&#125;</div><div class="line">	start := time<span class="variable">.Now</span>()</div><div class="line"></div><div class="line">	ret, err := run(evm, contract, nil)</div><div class="line"></div><div class="line">	maxCodeSizeExceeded := evm<span class="variable">.ChainConfig</span>()<span class="variable">.IsEIP</span>158(evm<span class="variable">.BlockNumber</span>) &amp;&amp; len(ret) &gt; params<span class="variable">.MaxCodeSize</span></div><div class="line"></div><div class="line">	if err == nil &amp;&amp; !maxCodeSizeExceeded &#123;</div><div class="line">		createDataGas := uint64(len(ret)) * params<span class="variable">.CreateDataGas</span></div><div class="line">		if contract<span class="variable">.UseGas</span>(createDataGas) &#123;</div><div class="line">			evm<span class="variable">.StateDB</span><span class="variable">.SetCode</span>(address, ret)</div><div class="line">		&#125; else &#123;</div><div class="line">			err = ErrCodeStoreOutOfGas</div><div class="line">		&#125;</div><div class="line">	&#125;</div><div class="line"></div><div class="line">	if maxCodeSizeExceeded || (err != nil &amp;&amp; (evm<span class="variable">.ChainConfig</span>()<span class="variable">.IsHomestead</span>(evm<span class="variable">.BlockNumber</span>) || err != ErrCodeStoreOutOfGas)) &#123;</div><div class="line">		evm<span class="variable">.StateDB</span><span class="variable">.RevertToSnapshot</span>(snapshot)</div><div class="line">		if err != errExecutionReverted &#123;</div><div class="line">			contract<span class="variable">.UseGas</span>(contract<span class="variable">.Gas</span>)</div><div class="line">		&#125;</div><div class="line">	&#125;</div><div class="line"></div><div class="line">	if maxCodeSizeExceeded &amp;&amp; err == nil &#123;</div><div class="line">		err = errMaxCodeSizeExceeded</div><div class="line">	&#125;</div><div class="line">	if evm<span class="variable">.vmConfig</span><span class="variable">.Debug</span> &amp;&amp; evm<span class="variable">.depth</span> == 0 &#123;</div><div class="line">		evm<span class="variable">.vmConfig</span><span class="variable">.Tracer</span><span class="variable">.CaptureEnd</span>(ret, gas-contract<span class="variable">.Gas</span>, time<span class="variable">.Since</span>(start), err)</div><div class="line">	&#125;</div><div class="line">	return ret, address, contract<span class="variable">.Gas</span>, err</div><div class="line"></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>首先会进行一系列验证，调用栈的深度不能超过 1024；调用的账户有足够多的余额；对调用者地址的 nonce+1，通过地址和 nonce 生成合约地址，通过合约地址获取合约哈希值，确保调用的地址不能已经存在合约。接着利用 StateDB 创建一个快照，如果之后的调用出现问题可以回滚。在进行了这一系列初始化之后，发起一笔转账操作，发送方地址余额减 value 值，合约账户的余额加 value 值，接着通过调用 contract 的 <code>SetCallCode</code> ，根据发送方地址，合约地址，金额 value，gas，合约代码，代码哈希初始化合约对象，然后调用 <code>run(evm, contract, nil)</code>执行合约的初始化代码，这个生成的代码有一定的长度限制，当合约创建成功，没有错误返回，则计算存储代码所需的 gas，如果没有足够 gas 则进行报错。之后就是错误处理了，如果存在错误，需要回滚到之前创建的状态快照，没有错误则返回创建成功。可以看到，合约代码通过 state 模块的 SetCode，保存在账户中 codehash 指向的存储区域，这部分的代码都属于对世界状态的修改。</p>
+<h3 id="Call"><a href="#Call" class="headerlink" title="Call"></a>Call</h3><p>当进行转账或执行合约代码，会调用 Call 方法，合约里的 call 指令也会调用这个方法。</p>
+<figure class="highlight stylus"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div></pre></td><td class="code"><pre><div class="line">func (evm *EVM) Call(caller ContractRef, addr common<span class="selector-class">.Address</span>, <span class="selector-tag">input</span> []byte, gas uint64, value *big.Int) (ret []byte, leftOverGas uint64, err error) &#123;</div><div class="line">	<span class="keyword">if</span> evm<span class="selector-class">.vmConfig</span><span class="selector-class">.NoRecursion</span> &amp;&amp; evm<span class="selector-class">.depth</span> &gt; <span class="number">0</span> &#123;</div><div class="line">		return nil, gas, nil</div><div class="line">	&#125;</div><div class="line"></div><div class="line">	<span class="keyword">if</span> evm<span class="selector-class">.depth</span> &gt; int(params.CallCreateDepth) &#123;</div><div class="line">		return nil, gas, ErrDepth</div><div class="line">	&#125;</div><div class="line">	<span class="keyword">if</span> !evm<span class="selector-class">.Context</span><span class="selector-class">.CanTransfer</span>(evm<span class="selector-class">.StateDB</span>, caller.Address(), value) &#123;</div><div class="line">		return nil, gas, ErrInsufficientBalance</div><div class="line">	&#125;</div><div class="line"></div><div class="line">	<span class="selector-tag">var</span> (</div><div class="line">		to       = AccountRef(addr)</div><div class="line">		snapshot = evm<span class="selector-class">.StateDB</span><span class="selector-class">.Snapshot</span>()</div><div class="line">	)</div><div class="line">	<span class="keyword">if</span> !evm<span class="selector-class">.StateDB</span><span class="selector-class">.Exist</span>(addr) &#123;</div><div class="line">		precompiles := PrecompiledContractsHomestead</div><div class="line">		<span class="keyword">if</span> evm.ChainConfig().IsByzantium(evm.BlockNumber) &#123;</div><div class="line">			precompiles = PrecompiledContractsByzantium</div><div class="line">		&#125;</div><div class="line">		<span class="keyword">if</span> precompiles[addr] == nil &amp;&amp; evm.ChainConfig().IsEIP158(evm.BlockNumber) &amp;&amp; value.Sign() == <span class="number">0</span> &#123;</div><div class="line">			<span class="keyword">if</span> evm<span class="selector-class">.vmConfig</span><span class="selector-class">.Debug</span> &amp;&amp; evm<span class="selector-class">.depth</span> == <span class="number">0</span> &#123;</div><div class="line">				evm<span class="selector-class">.vmConfig</span><span class="selector-class">.Tracer</span><span class="selector-class">.CaptureStart</span>(caller.Address(), addr, false, <span class="selector-tag">input</span>, gas, value)</div><div class="line">				evm<span class="selector-class">.vmConfig</span><span class="selector-class">.Tracer</span><span class="selector-class">.CaptureEnd</span>(ret, <span class="number">0</span>, <span class="number">0</span>, nil)</div><div class="line">			&#125;</div><div class="line">			return nil, gas, nil</div><div class="line">		&#125;</div><div class="line">		evm<span class="selector-class">.StateDB</span><span class="selector-class">.CreateAccount</span>(addr)</div><div class="line">	&#125;</div><div class="line">	evm.Transfer(evm<span class="selector-class">.StateDB</span>, caller.Address(), to.Address(), value)</div><div class="line"></div><div class="line">	contract := NewContract(caller, to, value, gas)</div><div class="line">	contract.SetCallCode(&amp;addr, evm<span class="selector-class">.StateDB</span><span class="selector-class">.GetCodeHash</span>(addr), evm<span class="selector-class">.StateDB</span><span class="selector-class">.GetCode</span>(addr))</div><div class="line"></div><div class="line">	start := <span class="selector-tag">time</span>.Now()</div><div class="line"></div><div class="line">	<span class="keyword">if</span> evm<span class="selector-class">.vmConfig</span><span class="selector-class">.Debug</span> &amp;&amp; evm<span class="selector-class">.depth</span> == <span class="number">0</span> &#123;</div><div class="line">		evm<span class="selector-class">.vmConfig</span><span class="selector-class">.Tracer</span><span class="selector-class">.CaptureStart</span>(caller.Address(), addr, false, <span class="selector-tag">input</span>, gas, value)</div><div class="line"></div><div class="line">		defer func() &#123;</div><div class="line">			evm<span class="selector-class">.vmConfig</span><span class="selector-class">.Tracer</span><span class="selector-class">.CaptureEnd</span>(ret, gas-contract<span class="selector-class">.Gas</span>, <span class="selector-tag">time</span>.Since(start), err)</div><div class="line">		&#125;()</div><div class="line">	&#125;</div><div class="line">	ret, err = run(evm, contract, input)</div><div class="line"></div><div class="line">	<span class="keyword">if</span> err != nil &#123;</div><div class="line">		evm<span class="selector-class">.StateDB</span><span class="selector-class">.RevertToSnapshot</span>(snapshot)</div><div class="line">		<span class="keyword">if</span> err != errExecutionReverted &#123;</div><div class="line">			contract.UseGas(contract.Gas)</div><div class="line">		&#125;</div><div class="line">	&#125;</div><div class="line">	return ret, contract<span class="selector-class">.Gas</span>, err</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>和 Create 方法类似，不过 Create 方法的资金转移发生在创建合约用户账户和合约账户之间，而 Call 方法的资金转移发生在合约发送方和合约接收方之间。Call 方法需要先检查合约调用深度；确保账户有足够余额；调用 Call 方法的可能是一个转账操作，也可能是一个运行合约的操作，所以接下来会通过 StateDB 查看指定的地址是否存在，如果不存在的话，接着查看该地址是否为内置合约，这些预编译的合约在 <code>core/vm/constracts.go</code> 中定义，主要是用于加密操作，如果本地确实没有合约接收方的账户，创建一个接收方的账户，更新本地的状态数据库。接着 evm 会调用 Transfer 方法（即 Context 里的 TransferFunc）进行转账。最后，通过 StateDB 的 <code>GetCode</code> 拿到该地址对应的代码，通过 <code>run(evm, contract, input)</code> 运行合约，如果是单纯的转账，通过 <code>GetCode</code> 拿到的代码是空，自然也没有合约的运行。这一步完成后，就可以返回执行结果了。合约产生的 gas 总数会加入到矿工账户，作为矿工收入。</p>
+<h4 id="解释器执行合约指令"><a href="#解释器执行合约指令" class="headerlink" title="解释器执行合约指令"></a>解释器执行合约指令</h4><p>我们已经大致了解了合约是怎么创建和执行的，执行合约的关键在于 Call 方法的最后通过 <code>run(evm, contract, input)</code> 运行合约，接下来我们就深入到 <code>run</code> 函数，看看 evm 中解释器执行合约的过程。</p>
+<figure class="highlight stata"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">func <span class="keyword">run</span>(evm *EVM, <span class="keyword">contract</span> *<span class="keyword">Contract</span>, <span class="keyword">input</span> []byte) ([]byte, <span class="keyword">error</span>) &#123;</div><div class="line">	<span class="keyword">if</span> <span class="keyword">contract</span>.CodeAddr != nil &#123;</div><div class="line">		precompiles := PrecompiledContractsHomestead</div><div class="line">		<span class="keyword">if</span> evm.ChainConfig().IsByzantium(evm.BlockNumber) &#123;</div><div class="line">			precompiles = PrecompiledContractsByzantium</div><div class="line">		&#125;</div><div class="line">		<span class="keyword">if</span> p := precompiles[*<span class="keyword">contract</span>.CodeAddr]; p != nil &#123;</div><div class="line">			<span class="keyword">return</span> RunPrecompiledContract(p, <span class="keyword">input</span>, <span class="keyword">contract</span>)</div><div class="line">		&#125;</div><div class="line">	&#125;</div><div class="line">	<span class="keyword">return</span> evm.interpreter.<span class="keyword">Run</span>(<span class="keyword">contract</span>, <span class="keyword">input</span>)</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>在 run 方法中，首先检查调用的是否是之前编译好的原生合约，如果是原生合约则调用原生合约，否则调用解释器执行合约。解释器的代码在 <code>core/vm/interpreter.go</code> 中。</p>
+<p>要理解虚拟机中解释器的的执行过程，首先需要知道该解释器的初始化过程：</p>
+<figure class="highlight lisp"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div></pre></td><td class="code"><pre><div class="line">func NewInterpreter(<span class="name">evm</span> *EVM, cfg Config) *Interpreter &#123;</div><div class="line">	if !cfg.JumpTable[STOP].valid &#123;</div><div class="line">		switch &#123;</div><div class="line">		case evm.ChainConfig().IsConstantinople(<span class="name">evm</span>.BlockNumber):</div><div class="line">			cfg.JumpTable = constantinopleInstructionSet</div><div class="line">		case evm.ChainConfig().IsByzantium(<span class="name">evm</span>.BlockNumber):</div><div class="line">			cfg.JumpTable = byzantiumInstructionSet</div><div class="line">		case evm.ChainConfig().IsHomestead(<span class="name">evm</span>.BlockNumber):</div><div class="line">			cfg.JumpTable = homesteadInstructionSet</div><div class="line">		default:</div><div class="line">			cfg.JumpTable = frontierInstructionSet</div><div class="line">		&#125;</div><div class="line">	&#125;</div><div class="line"></div><div class="line">	return <span class="symbol">&amp;Interpreter</span>&#123;</div><div class="line">		evm:      evm,</div><div class="line">		cfg:      cfg,</div><div class="line">		gasTable: evm.ChainConfig().GasTable(<span class="name">evm</span>.BlockNumber),</div><div class="line">		intPool:  newIntPool(),</div><div class="line">	&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>Interpreter 中很重要的一个配置是 Jumptable，它保存的是指令集，在不同的以太坊版本有不同的指令集。查看 <code>core/vm/jump_table.go</code> 中的 <code>newFrontierInstructionSet</code>, <code>newHomesteadInstructionSet</code>, <code>newByzantiumInstructionSet</code>, <code>newConstantinopleInstructionSet</code> 方法，你会发现指令集是向前兼容的。</p>
+<p>这里以 ADD 指令为例：</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="selector-tag">ADD</span>: &#123;</div><div class="line">	<span class="attribute">execute</span>:       opAdd,</div><div class="line">	gasCost:       <span class="built_in">constGasFunc</span>(GasFastestStep),</div><div class="line">	validateStack: <span class="built_in">makeStackFunc</span>(2, 1),</div><div class="line">	valid:         true,</div><div class="line">&#125;,</div></pre></td></tr></table></figure>
+<p>ADD 指令对应的方法 <code>opAdd</code> 在 <code>core/vm/instructions.go</code> 中。其中 <code>execute</code> 指的是对应的操作函数，<code>gasCost</code> 对应的是 gas 消耗，<code>validateStack</code> 用来验证栈深度，<code>valid</code> 指明操作是否有效。</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">func</span> <span class="title">opAdd</span><span class="params">(pc *<span class="keyword">uint64</span>, evm *EVM, contract *Contract, memory *Memory, stack *Stack)</span> <span class="params">([]<span class="keyword">byte</span>, error)</span></span> &#123;</div><div class="line">	x, y := stack.pop(), stack.peek()</div><div class="line">	math.U256(y.Add(x, y))</div><div class="line"></div><div class="line">	evm.interpreter.intPool.put(x)</div><div class="line">	<span class="keyword">return</span> <span class="literal">nil</span>, <span class="literal">nil</span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>通过栈拿到需要进行运算的 x, y 值（弹出一个值，取一个值，进行运算后这个值就变成结果值），在进行加法运算后，该结果会被缓存。不同的指令的实现自然不同，指令不多，但这里也不一一介绍了。还需要了解的一点是，这些指令都对应了一个编码，这些是在 <code>core/vm/opcodes.go</code> 中定义的，这个编码是一个 byte，合约编译出来的 bytecode，一个 OpCode 就对应其中的一位(可以参考<a href="https://github.com/trailofbits/evm-opcodes" target="_blank" rel="external">EVM指令集</a>)。</p>
+<p>了解了指令集后，我们再看 <code>Run</code> 方法。</p>
+<figure class="highlight stata"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div><div class="line">80</div><div class="line">81</div><div class="line">82</div><div class="line">83</div><div class="line">84</div><div class="line">85</div><div class="line">86</div><div class="line">87</div><div class="line">88</div><div class="line">89</div><div class="line">90</div><div class="line">91</div><div class="line">92</div><div class="line">93</div><div class="line">94</div></pre></td><td class="code"><pre><div class="line">func (<span class="keyword">in</span> *Interpreter) <span class="keyword">Run</span>(<span class="keyword">contract</span> *<span class="keyword">Contract</span>, <span class="keyword">input</span> []byte) (<span class="keyword">ret</span> []byte, <span class="keyword">err</span> <span class="keyword">error</span>) &#123;</div><div class="line">	<span class="keyword">in</span>.evm.depth++</div><div class="line">	defer func() &#123; <span class="keyword">in</span>.evm.depth-- &#125;()</div><div class="line"></div><div class="line">	<span class="keyword">in</span>.returnData = nil</div><div class="line"></div><div class="line">	<span class="keyword">if</span> len(<span class="keyword">contract</span>.Code) == 0 &#123;</div><div class="line">		<span class="keyword">return</span> nil, nil</div><div class="line">	&#125;</div><div class="line"></div><div class="line">	<span class="keyword">var</span> (</div><div class="line">		op    OpCode</div><div class="line">		mem   = NewMemory()</div><div class="line">		<span class="keyword">stack</span> = newstack()</div><div class="line">		pc   = uint64(0)</div><div class="line">		cost uint64</div><div class="line">		pcCopy  uint64</div><div class="line">		gasCopy uint64</div><div class="line">		logged  bool</div><div class="line">	)</div><div class="line">	<span class="keyword">contract</span>.<span class="keyword">Input</span> = <span class="keyword">input</span></div><div class="line"></div><div class="line">	<span class="keyword">if</span> <span class="keyword">in</span>.cfg.Debug &#123;</div><div class="line">		defer func() &#123;</div><div class="line">			<span class="keyword">if</span> <span class="keyword">err</span> != nil &#123;</div><div class="line">				<span class="keyword">if</span> !logged &#123;</div><div class="line">					<span class="keyword">in</span>.cfg.Tracer.CaptureState(<span class="keyword">in</span>.evm, pcCopy, op, gasCopy, cost, mem, <span class="keyword">stack</span>, <span class="keyword">contract</span>, <span class="keyword">in</span>.evm.depth, <span class="keyword">err</span>)</div><div class="line">				&#125; <span class="keyword">else</span> &#123;</div><div class="line">					<span class="keyword">in</span>.cfg.Tracer.CaptureFault(<span class="keyword">in</span>.evm, pcCopy, op, gasCopy, cost, mem, <span class="keyword">stack</span>, <span class="keyword">contract</span>, <span class="keyword">in</span>.evm.depth, <span class="keyword">err</span>)</div><div class="line">				&#125;</div><div class="line">			&#125;</div><div class="line">		&#125;()</div><div class="line">	&#125;</div><div class="line">	<span class="keyword">for</span> atomic.LoadInt32(&amp;<span class="keyword">in</span>.evm.abort) == 0 &#123;</div><div class="line">		<span class="keyword">if</span> <span class="keyword">in</span>.cfg.Debug &#123;</div><div class="line">			logged, pcCopy, gasCopy = false, pc, <span class="keyword">contract</span>.Gas</div><div class="line">		&#125;</div><div class="line">		</div><div class="line">		op = <span class="keyword">contract</span>.GetOp(pc)</div><div class="line">		operation := <span class="keyword">in</span>.cfg.JumpTable[op]</div><div class="line">		<span class="keyword">if</span> !operation.valid &#123;</div><div class="line">			<span class="keyword">return</span> nil, fmt.Errorf(<span class="string">"invalid opcode 0x%x"</span>, int(op))</div><div class="line">		&#125;</div><div class="line">		<span class="keyword">if</span> <span class="keyword">err</span> := operation.validateStack(<span class="keyword">stack</span>); <span class="keyword">err</span> != nil &#123;</div><div class="line">			<span class="keyword">return</span> nil, <span class="keyword">err</span></div><div class="line">		&#125;</div><div class="line">		<span class="keyword">if</span> <span class="keyword">err</span> := <span class="keyword">in</span>.enforceRestrictions(op, operation, <span class="keyword">stack</span>); <span class="keyword">err</span> != nil &#123;</div><div class="line">			<span class="keyword">return</span> nil, <span class="keyword">err</span></div><div class="line">		&#125;</div><div class="line"></div><div class="line">		<span class="keyword">var</span> memorySize uint64</div><div class="line">		<span class="keyword">if</span> operation.memorySize != nil &#123;</div><div class="line">			<span class="keyword">memSize</span>, overflow := bigUint64(operation.memorySize(<span class="keyword">stack</span>))</div><div class="line">			<span class="keyword">if</span> overflow &#123;</div><div class="line">				<span class="keyword">return</span> nil, errGasUintOverflow</div><div class="line">			&#125;</div><div class="line">			<span class="keyword">if</span> memorySize, overflow = math.SafeMul(toWordSize(<span class="keyword">memSize</span>), 32); overflow &#123;</div><div class="line">				<span class="keyword">return</span> nil, errGasUintOverflow</div><div class="line">			&#125;</div><div class="line">		&#125;</div><div class="line">		cost, <span class="keyword">err</span> = operation.gasCost(<span class="keyword">in</span>.gasTable, <span class="keyword">in</span>.evm, <span class="keyword">contract</span>, <span class="keyword">stack</span>, mem, memorySize)</div><div class="line">		<span class="keyword">if</span> <span class="keyword">err</span> != nil || !<span class="keyword">contract</span>.UseGas(cost) &#123;</div><div class="line">			<span class="keyword">return</span> nil, ErrOutOfGas</div><div class="line">		&#125;</div><div class="line">		<span class="keyword">if</span> memorySize &gt; 0 &#123;</div><div class="line">			mem.Resize(memorySize)</div><div class="line">		&#125;</div><div class="line"></div><div class="line">		<span class="keyword">if</span> <span class="keyword">in</span>.cfg.Debug &#123;</div><div class="line">			<span class="keyword">in</span>.cfg.Tracer.CaptureState(<span class="keyword">in</span>.evm, pc, op, gasCopy, cost, mem, <span class="keyword">stack</span>, <span class="keyword">contract</span>, <span class="keyword">in</span>.evm.depth, <span class="keyword">err</span>)</div><div class="line">			logged = true</div><div class="line">		&#125;</div><div class="line"></div><div class="line">		res, <span class="keyword">err</span> := operation.execute(&amp;pc, <span class="keyword">in</span>.evm, <span class="keyword">contract</span>, mem, <span class="keyword">stack</span>)</div><div class="line">		<span class="keyword">if</span> verifyPool &#123;</div><div class="line">			verifyIntegerPool(<span class="keyword">in</span>.intPool)</div><div class="line">		&#125;</div><div class="line">		<span class="keyword">if</span> operation.returns &#123;</div><div class="line">			<span class="keyword">in</span>.returnData = res</div><div class="line">		&#125;</div><div class="line"></div><div class="line">		switch &#123;</div><div class="line">		case <span class="keyword">err</span> != nil:</div><div class="line">			<span class="keyword">return</span> nil, <span class="keyword">err</span></div><div class="line">		case operation.reverts:</div><div class="line">			<span class="keyword">return</span> res, errExecutionReverted</div><div class="line">		case operation.halts:</div><div class="line">			<span class="keyword">return</span> res, nil</div><div class="line">		case !operation.jumps:</div><div class="line">			pc++</div><div class="line">		&#125;</div><div class="line">	&#125;</div><div class="line">	<span class="keyword">return</span> nil, nil</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>Run 方法会循环执行合约的代码，主要逻辑在 for 循环中，直到遇到 STOP，RETURN，SELFDESTRUCT 指令被执行，或者是遇到任意错误，或者说 done 标志被父 context 设置。这个循环才会结束。大致的执行过程是首先通过 <code>op = contract.GetOp(pc)</code> 拿到下一个需要执行的指令，接着通过 <code>operation := in.cfg.JumpTable[op]</code> 拿到对应的 operation，operation 的类型在 <code>core/vm/jump_table.go</code> 中定义，其中包括指令对应的方法，计算 gas 的方法，验证栈溢出的方法，计算内存的方法等。进行一系列检查后再通过 <code>operation.execute</code> 执行指令。最后一个指令的执行结果会决定整个合约代码的执行结果。到这一步，我们就完整地过了一遍以太坊虚拟机的执行过程。</p>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><ul>
+<li>EVM 是一个256位的机器，以32字节来处理数据最佳</li>
+<li>EVM 选择基于栈的虚拟机的原因其实不难理解，基于栈的虚拟机代码尺寸更小（因为可以用更小的空间放更多的指令），而且移植性更好（不需要通用寄存器），代码生成也更简单，不需要考虑为临时变量分配空间的问题。但从速度上来说，基于寄存器的架构更占优势。</li>
+<li>在以太坊中部署的智能合约是完全不可修改的，只能通过部署新的合约来部署新的合约</li>
+<li>Solidity 等编译器的优化一般以减少 gas 的使用为目标</li>
+</ul>
+<h2 id="References"><a href="#References" class="headerlink" title="References"></a>References</h2><ul>
+<li><a href="https://ethereum.gitbooks.io/frontier-guide/content/contracts_and_transactions_intro.html" target="_blank" rel="external">contracts_and_transactions_intro</a></li>
+<li><a href="https://eips.ethereum.org/EIPS/eip-20" target="_blank" rel="external">EIP 20: ERC-20 Token Standard</a></li>
+<li><a href="https://eips.ethereum.org/EIPS/eip-158" target="_blank" rel="external">EIP 158: State clearing</a></li>
+<li><a href="https://github.com/ethereum/wiki/wiki/Ethereum-Virtual-Machine-(EVM" target="_blank" rel="external">Ethereum Virtual Machine (EVM) Awesome List</a>-Awesome-List)</li>
+<li><a href="https://ethereum.stackexchange.com/questions/3667/difference-between-call-callcode-and-delegatecall" target="_blank" rel="external">Difference between CALL, CALLCODE and DELEGATECALL</a></li>
+<li><a href="https://blog.qtum.org/diving-into-the-ethereum-vm-6e8d5d2f3c30" target="_blank" rel="external">Diving Into The Ethereum VM</a></li>
+<li><a href="https://github.com/ethereum/wiki/wiki/Design-Rationale" target="_blank" rel="external">Design-Rationale</a></li>
+<li><a href="https://github.com/takenobu-hs/ethereum-evm-illustrated" target="_blank" rel="external">takenobu-hs/ethereum-evm-illustrated</a></li>
+<li><a href="https://paper.seebug.org/640/" target="_blank" rel="external">以太坊智能合约 OPCODE 逆向之理论基础篇</a></li>
+<li><a href="https://www.usenix.org/legacy/events/vee05/full_papers/p153-yunhe.pdf" target="_blank" rel="external">Virtual Machine Showdown: Stack Versus Registers</a></li>
+</ul>
+
+      
+    </div>
+
+    <div>
+      
+        
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/cryptocurrency/" rel="tag">#cryptocurrency</a>
+          
+            <a href="/tags/Golang/" rel="tag">#Golang</a>
+          
+            <a href="/tags/geth/" rel="tag">#geth</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/03/10/go-ethereum 源码笔记（core 模块-世界状态，交易收据管理）/" rel="next" title="go-ethereum 源码笔记（core 模块-世界状态，交易收据管理）">
+                <i class="fa fa-chevron-left"></i> go-ethereum 源码笔记（core 模块-世界状态，交易收据管理）
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/03/20/Telegram Bot 的长轮询 VS Webhook/" rel="prev" title="Telegram Bot 的长轮询 VS Webhook">
+                Telegram Bot 的长轮询 VS Webhook <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+      <div id="disqus_thread">
+        <noscript>
+          Please enable JavaScript to view the
+          <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a>
+        </noscript>
+      </div>
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel ">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="https://avatars1.githubusercontent.com/u/6964284?v=3&s=460"
+               alt="Frank" />
+          <p class="site-author-name" itemprop="name">Frank</p>
+          <p class="site-description motion-element" itemprop="description"></p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">184</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+          
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">131</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/knarfeh" target="_blank">
+                  
+                    <i class="fa fa-github"></i> GitHub
+                  
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://twitter.com/knarfeh" target="_blank">
+                  
+                    <i class="fa fa-twitter"></i> Twitter
+                  
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://weibo.com/2753500945" target="_blank">
+                  
+                    <i class="fa fa-weibo"></i> Weibo
+                  
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+          <div class="cc-license motion-element" itemprop="license">
+            <a href="http://creativecommons.org/licenses/by-sa/4.0" class="cc-opacity" target="_blank">
+              <img src="/images/cc-by-sa.svg" alt="Creative Commons" />
+            </a>
+          </div>
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+      </section>
+
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc-indicator-top post-toc-indicator">
+            <i class="fa fa-angle-double-up"></i>
+          </div>
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#设计目标"><span class="nav-number">1.</span> <span class="nav-text">设计目标</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#原理"><span class="nav-number">2.</span> <span class="nav-text">原理</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#源码"><span class="nav-number">3.</span> <span class="nav-text">源码</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#代码结构"><span class="nav-number">3.1.</span> <span class="nav-text">代码结构</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#数据结构"><span class="nav-number">3.2.</span> <span class="nav-text">数据结构</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Create"><span class="nav-number">3.3.</span> <span class="nav-text">Create</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Call"><span class="nav-number">3.4.</span> <span class="nav-text">Call</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#解释器执行合约指令"><span class="nav-number">3.4.1.</span> <span class="nav-text">解释器执行合约指令</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#总结"><span class="nav-number">4.</span> <span class="nav-text">总结</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#References"><span class="nav-number">5.</span> <span class="nav-text">References</span></a></li></ol></div>
+            
+          </div>
+          <div class="post-toc-indicator-bottom post-toc-indicator">
+            <i class="fa fa-angle-double-down"></i>
+          </div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy;  2015 - 
+  <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Frank</span>
+</div>
+
+<div class="powered-by">
+  由 <a class="theme-link" href="http://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Muse
+  </a>
+</div>
+
+
+
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+
+  
+
+
+
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+  <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
+
+  <script type="text/javascript" src="/vendors/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  <script type="text/javascript" src="/vendors/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  <script type="text/javascript" src="/vendors/velocity/velocity.min.js"></script>
+
+  <script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js"></script>
+
+  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=0.5.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=0.5.0"></script>
+
+
+
+  
+  
+
+  
+  
+<script type="text/javascript" src="/js/src/scrollspy.js?v=0.5.0"></script>
+
+<script type="text/javascript" id="sidebar.toc.highlight">
+  $(document).ready(function () {
+    var tocSelector = '.post-toc';
+    var $tocSelector = $(tocSelector);
+    var activeCurrentSelector = '.active-current';
+
+    $tocSelector
+      .on('activate.bs.scrollspy', function () {
+        var $currentActiveElement = $(tocSelector + ' .active').last();
+
+        removeCurrentActiveClass();
+        $currentActiveElement.addClass('active-current');
+
+        $tocSelector[0].scrollTop = $currentActiveElement.position().top;
+      })
+      .on('clear.bs.scrollspy', function () {
+        removeCurrentActiveClass();
+      });
+
+    function removeCurrentActiveClass () {
+      $(tocSelector + ' ' + activeCurrentSelector)
+        .removeClass(activeCurrentSelector.substring(1));
+    }
+
+    function processTOC () {
+      getTOCMaxHeight();
+      toggleTOCOverflowIndicators();
+    }
+
+    function getTOCMaxHeight () {
+      var height = $('.sidebar').height() -
+                   $tocSelector.position().top -
+                   $('.post-toc-indicator-bottom').height();
+
+      $tocSelector.css('height', height);
+
+      return height;
+    }
+
+    function toggleTOCOverflowIndicators () {
+      tocOverflowIndicator(
+        '.post-toc-indicator-top',
+        $tocSelector.scrollTop() > 0 ? 'show' : 'hide'
+      );
+
+      tocOverflowIndicator(
+        '.post-toc-indicator-bottom',
+        $tocSelector.scrollTop() >= $tocSelector.find('ol').height() - $tocSelector.height() ? 'hide' : 'show'
+      )
+    }
+
+    $(document).on('sidebar.motion.complete', function () {
+      processTOC();
+    });
+
+    $('body').scrollspy({ target: tocSelector });
+    $(window).on('resize', function () {
+      if ( $('.sidebar').hasClass('sidebar-active') ) {
+        processTOC();
+      }
+    });
+
+    onScroll($tocSelector);
+
+    function onScroll (element) {
+      element.on('mousewheel DOMMouseScroll', function (event) {
+          var oe = event.originalEvent;
+          var delta = oe.wheelDelta || -oe.detail;
+
+          this.scrollTop += ( delta < 0 ? 1 : -1 ) * 30;
+          event.preventDefault();
+
+          toggleTOCOverflowIndicators();
+      });
+    }
+
+    function tocOverflowIndicator (indicator, action) {
+      var $indicator = $(indicator);
+      var opacity = action === 'show' ? 1 : 0;
+      $indicator.velocity ?
+        $indicator.velocity('stop').velocity({
+          opacity: opacity
+        }, { duration: 100 }) :
+        $indicator.stop().animate({
+          opacity: opacity
+        }, 100);
+    }
+
+  });
+</script>
+
+<script type="text/javascript" id="sidebar.nav">
+  $(document).ready(function () {
+    var html = $('html');
+    var TAB_ANIMATE_DURATION = 200;
+    var hasVelocity = $.isFunction(html.velocity);
+
+    $('.sidebar-nav li').on('click', function () {
+      var item = $(this);
+      var activeTabClassName = 'sidebar-nav-active';
+      var activePanelClassName = 'sidebar-panel-active';
+      if (item.hasClass(activeTabClassName)) {
+        return;
+      }
+
+      var currentTarget = $('.' + activePanelClassName);
+      var target = $('.' + item.data('target'));
+
+      hasVelocity ?
+        currentTarget.velocity('transition.slideUpOut', TAB_ANIMATE_DURATION, function () {
+          target
+            .velocity('stop')
+            .velocity('transition.slideDownIn', TAB_ANIMATE_DURATION)
+            .addClass(activePanelClassName);
+        }) :
+        currentTarget.animate({ opacity: 0 }, TAB_ANIMATE_DURATION, function () {
+          currentTarget.hide();
+          target
+            .stop()
+            .css({'opacity': 0, 'display': 'block'})
+            .animate({ opacity: 1 }, TAB_ANIMATE_DURATION, function () {
+              currentTarget.removeClass(activePanelClassName);
+              target.addClass(activePanelClassName);
+            });
+        });
+
+      item.siblings().removeClass(activeTabClassName);
+      item.addClass(activeTabClassName);
+    });
+
+    $('.post-toc a').on('click', function (e) {
+      e.preventDefault();
+      var targetSelector = NexT.utils.escapeSelector(this.getAttribute('href'));
+      var offset = $(targetSelector).offset().top;
+      hasVelocity ?
+        html.velocity('stop').velocity('scroll', {
+          offset: offset  + 'px',
+          mobileHA: false
+        }) :
+        $('html, body').stop().animate({
+          scrollTop: offset
+        }, 500);
+    });
+
+    // Expand sidebar on post detail page by default, when post has a toc.
+    NexT.motion.middleWares.sidebar = function () {
+      var $tocContent = $('.post-toc-content');
+
+      if (CONFIG.scheme !== 'Pisces' && (CONFIG.sidebar.display === 'post' || CONFIG.sidebar.display === 'always')) {
+        if ($tocContent.length > 0 && $tocContent.html().trim().length > 0) {
+          NexT.utils.displaySidebar();
+        }
+      }
+    };
+  });
+</script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=0.5.0"></script>
+
+
+
+  
+
+
+
+  
+
+    <script type="text/javascript">
+      var disqus_shortname = 'knarfeh';
+      var disqus_identifier = '2018/03/10/go-ethereum 源码笔记（core 模块-EVM-虚拟机的实现）/';
+      var disqus_title = 'go-ethereum 源码笔记（core 模块-EVM-虚拟机的实现）';
+      var disqus_url = 'http://knarfeh.github.io/2018/03/10/go-ethereum 源码笔记（core 模块-EVM-虚拟机的实现）/';
+
+      function run_disqus_script(disqus_script){
+        var dsq = document.createElement('script');
+        dsq.type = 'text/javascript';
+        dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/' + disqus_script;
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+      }
+
+      run_disqus_script('count.js');
+      
+        run_disqus_script('embed.js');
+      
+    </script>
+  
+
+
+
+  
+  
+  
+  <script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+      }
+    });
+  </script>
+
+  <script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+      var all = MathJax.Hub.getAllJax(), i;
+      for (i=0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';
+      }
+    });
+  </script>
+
+  
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js"></script>
+    <script type="text/javascript" async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML">
+</script>
+  
+
+
+  
+
+  <script type="text/javascript" src="/js/src/custom.js"></script>
+</body>
+</html>

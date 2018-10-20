@@ -65,7 +65,7 @@
 <meta property="og:site_name" content="Frank&#39;s Notes">
 <meta property="og:description" content="通过前面的文章，我们知道了有工作量证明的区块链是怎么构建的，然而区块链一直在内存中当然是不行的，我们需要将区块链持久化到数据库中。">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-09-29T13:47:43.914Z">
+<meta property="og:updated_time" content="2018-10-19T15:35:12.469Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="go-ethereum 源码笔记（ethdb 模块）">
 <meta name="twitter:description" content="通过前面的文章，我们知道了有工作量证明的区块链是怎么构建的，然而区块链一直在内存中当然是不行的，我们需要将区块链持久化到数据库中。">
@@ -272,9 +272,9 @@
         <p>通过前面的文章，我们知道了有工作量证明的区块链是怎么构建的，然而区块链一直在内存中当然是不行的，我们需要将区块链持久化到数据库中。<br><a id="more"></a></p>
 <p>区块链的本质是一个分布式数据库，尽管如此，底层使用的数据库并没有太大要求，不需要分布式，分片等等特性，这些特性是在数据库的上层做的。所有的节点都是一个完整的实例，是它们组成了一个分布式系统。就实现业务来说，我们只需要一个简单的 k-v 数据库就够了。</p>
 <p>geth 采用的是 LevelDB，回头来看这个选择还是有很多可以反思的地方，LevelDB 在顺序读写的场景下性能很好，但 geth 在运行智能合约时，面临的更多的场景是大量时间耗费在世界状态的读写上，通过前面对 MPT 的分析我们知道，这些 IO 大多是离散随机的，这导致了 geth 的性能瓶颈，特别是在合约里的数据大量分布在 Storage Trie 的情况下，因为树的高度可能很高，而每加载一个节点都需要进行一次 IO。这一点在<a href="https://zhuanlan.zhihu.com/p/39262324" target="_blank" rel="external">以太坊(Ethereum) 的执行交易性能瓶颈</a>这篇文章中有论述。<a href="https://www.weibo.com/dcaoyuan" target="_blank" rel="external">邓草原</a> 正在开发的 Kesque 也可以关注一下。这不是本文重点，就不展开了。</p>
-<p>中本聪的最初论文并没有提具体要用什么数据库，尽管如此，社区使用最多的参考实现 Bitcoin Core 最初使用的是 Berkeley DB，后来转而使用 levelDB 存区块链索引，而以太坊区块链的数据一直都存储在 LevelDB 数据库中。</p>
-<p>go-ethereum 对 levelDB 的增删改查是通过 ethdb 这个模块来交互的。ethdb 实际上是对 github.com/syndtr/goleveldb/leveldb 这个库的封装，其中增加了收集 metric 的功能。</p>
-<p>如果想要对 levelDB 有更深层次的了解可以自行查询相关资料。</p>
+<p>中本聪的最初论文并没有提具体要用什么数据库，尽管如此，社区使用最多的参考实现 Bitcoin Core 最初使用的是 Berkeley DB，后来转而使用 levelDB 存区块链索引，以太坊的 Go，C++, Python 实现的客户端使用的是 LevelDB 数据库，Rust 客户端 Parity 使用的是 RocksDB。</p>
+<p>go-ethereum 对 LevelDB 的增删改查是通过 ethdb 这个模块来交互的。ethdb 实际上是对 github.com/syndtr/goleveldb/leveldb 这个库的封装，其中增加了收集 metric 的功能。</p>
+<p>如果想要对 LevelDB 有更深层次的了解可以自行查询相关资料。</p>
 <p>ethdb 模块的功能比较单一，就4个文件：</p>
 <ul>
 <li>interface.go 定义数据库增删改查的接口</li>
@@ -385,16 +385,16 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2018/03/10/go-ethereum 源码笔记（core 模块-世界状态，交易收据管理）/" rel="next" title="go-ethereum 源码笔记（core 模块-世界状态，交易收据管理）">
-                <i class="fa fa-chevron-left"></i> go-ethereum 源码笔记（core 模块-世界状态，交易收据管理）
+              <a href="/2018/03/10/go-ethereum 源码笔记（miner, consensus 模块-挖矿和共识算法）/" rel="next" title="go-ethereum 源码笔记（miner,consensus 模块-挖矿和共识算法）">
+                <i class="fa fa-chevron-left"></i> go-ethereum 源码笔记（miner,consensus 模块-挖矿和共识算法）
               </a>
             
           </div>
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2018/03/20/Telegram Bot 的长轮询 VS Webhook/" rel="prev" title="Telegram Bot 的长轮询 VS Webhook">
-                Telegram Bot 的长轮询 VS Webhook <i class="fa fa-chevron-right"></i>
+              <a href="/2018/03/10/go-ethereum 源码笔记（core 模块-世界状态，交易收据管理）/" rel="prev" title="go-ethereum 源码笔记（core 模块-世界状态，交易收据管理）">
+                go-ethereum 源码笔记（core 模块-世界状态，交易收据管理） <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -470,7 +470,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">182</span>
+              <span class="site-state-item-count">184</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>

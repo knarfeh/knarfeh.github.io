@@ -41,7 +41,7 @@
 <link href="/css/main.css?v=0.5.0" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="algorithms,leetcode,Array,Backtracking," />
+  <meta name="keywords" content="algorithms,leetcode,Backtracking,Array," />
 
 
 
@@ -58,14 +58,14 @@
 
 
 <meta name="description" content="描述 Given a collection of candidate numbers (C) and a target number (T), find all unique combinations in C where the candidate numbers sums to T. Each number in C may only be used once in the combinati">
-<meta name="keywords" content="algorithms,leetcode,Array,Backtracking">
+<meta name="keywords" content="algorithms,leetcode,Backtracking,Array">
 <meta property="og:type" content="article">
 <meta property="og:title" content="leetcode-40-Combination-Sum-II">
 <meta property="og:url" content="http://knarfeh.github.io/2014/03/11/leetcode/Algorithms/leetcode-40-Combination-Sum-II/index.html">
 <meta property="og:site_name" content="Frank&#39;s Notes">
 <meta property="og:description" content="描述 Given a collection of candidate numbers (C) and a target number (T), find all unique combinations in C where the candidate numbers sums to T. Each number in C may only be used once in the combinati">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2016-10-28T15:40:40.000Z">
+<meta property="og:updated_time" content="2018-10-15T03:56:37.538Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="leetcode-40-Combination-Sum-II">
 <meta name="twitter:description" content="描述 Given a collection of candidate numbers (C) and a target number (T), find all unique combinations in C where the candidate numbers sums to T. Each number in C may only be used once in the combinati">
@@ -274,46 +274,23 @@
 <p>Each number in <strong>C</strong> may only be used once in the combination.</p>
 <p><strong>Note</strong> :</p>
 <ul>
-<li><p>All numbers (including target) will be positive integers.</p>
-</li>
-<li><p>The solution set must not contain duplicate combinations.</p>
-</li>
+<li>All numbers (including target) will be positive integers.</li>
+<li>The solution set must not contain duplicate combinations.</li>
 </ul>
 <p>For example, given candidate set [10, 1, 2, 7, 6, 1, 5] and target 8,</p>
 <p>A solution set is:</p>
-<figure class="highlight asciidoc"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line">[</div><div class="line"><span class="code">  [1, 7],</span></div><div class="line"><span class="code">  [1, 2, 5],</span></div><div class="line"><span class="code">  [2, 6],</span></div><div class="line"><span class="code">  [1, 1, 6]</span></div><div class="line">]</div><div class="line"><span class="code">```</span> </div><div class="line">&lt;!--more--&gt;</div><div class="line"></div><div class="line"><span class="section">### 分析</span></div><div class="line">---</div><div class="line"></div><div class="line">这道题和 [leetcode-39-Combination-Sum]()基本是一样的，只是这一题要求 candidates 中的内容不能重复出现，只需要修改两处代码。</div><div class="line"></div><div class="line"><span class="section">### 解决方案1(C++)</span></div><div class="line">---</div></pre></td></tr></table></figure>
-<p>class Solution {<br>public:<br>    vector<vector<int>&gt; combinationSum2(vector<int>&amp; candidates, int target) {<br>        sort(candidates.begin(), candidates.end());<br>        vector<vector<int>&gt; result;<br>        vector<int> path;<br>        dfs(candidates, path, result, target, 0);<br>        return result;<br>    }</int></vector<int></int></vector<int></p>
-<p>private:<br>    void dfs(vector<int>&amp; candidates, vector<int>&amp; path, vector<vector<int>&gt;&amp; result, int target, int start) {<br>        if(target == 0) {<br>            result.push_back(path);<br>            return;<br>        }</vector<int></int></int></p>
-<pre><code>    for(int i = start; i &lt; candidates.size(); i++) {
-        if(i&gt;start &amp;&amp; candidates[i] == candidates[i-1]) {
-            continue;
-        }
-        if(candidates[i] &gt; target) {
-            return;
-        }
-        path.push_back(candidates[i]);
-        dfs(candidates, path, result, target-candidates[i], i+1);
-        path.pop_back();
-    }
-}
-</code></pre><p>};<br><figure class="highlight yaml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"></div><div class="line"><span class="comment">### 解决方案2(Python)</span></div><div class="line"><span class="meta">---</span></div></pre></td></tr></table></figure></p>
-<p>class Solution(object):<br>    def combinationSum2(self, candidates, target):<br>        “””<br>        :type candidates: List[int]<br>        :type target: int<br>        :rtype: List[List[int]]<br>        “””<br>        candidates.sort()<br>        result = []<br>        path = []<br>        self.dfs(candidates, path, result, target)<br>        return result</p>
-<pre><code>def dfs(self, candidates, path, result, target):
-    if target == 0:
-        result.append(path[:])
-        return
-    pre = None 
-    for item, value in enumerate(candidates):
-        if pre is None or pre != value:
-            if target &lt; value:
-                return 
-            path.append(value)
-            self.dfs(candidates[item+1:], path, result, target-value)
-            path.pop()
-        pre = value
-</code></pre><p>```</p>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">[</div><div class="line">  [<span class="number">1</span>, <span class="number">7</span>],</div><div class="line">  [<span class="number">1</span>, <span class="number">2</span>, <span class="number">5</span>],</div><div class="line">  [<span class="number">2</span>, <span class="number">6</span>],</div><div class="line">  [<span class="number">1</span>, <span class="number">1</span>, <span class="number">6</span>]</div><div class="line">]</div></pre></td></tr></table></figure>
+<a id="more"></a>
+<h3 id="分析"><a href="#分析" class="headerlink" title="分析"></a>分析</h3><hr>
+<p>这道题和 <a href="">leetcode-39-Combination-Sum</a>基本是一样的，只是这一题要求 candidates 中的内容不能重复出现，只需要修改两处代码。</p>
+<h3 id="解决方案1-C"><a href="#解决方案1-C" class="headerlink" title="解决方案1(C++)"></a>解决方案1(C++)</h3><hr>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">class</span> Solution &#123;</div><div class="line"><span class="keyword">public</span>:</div><div class="line">    <span class="built_in">vector</span>&lt;<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&gt; combinationSum2(<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&amp; candidates, <span class="keyword">int</span> target) &#123;</div><div class="line">        sort(candidates.begin(), candidates.end());</div><div class="line">        <span class="built_in">vector</span>&lt;<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&gt; result;</div><div class="line">        <span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; path;</div><div class="line">        dfs(candidates, path, result, target, <span class="number">0</span>);</div><div class="line">        <span class="keyword">return</span> result;</div><div class="line">    &#125;</div><div class="line">    </div><div class="line"><span class="keyword">private</span>:</div><div class="line">    <span class="function"><span class="keyword">void</span> <span class="title">dfs</span><span class="params">(<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&amp; candidates, <span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&amp; path, <span class="built_in">vector</span>&lt;<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&gt;&amp; result, <span class="keyword">int</span> target, <span class="keyword">int</span> start)</span> </span>&#123;</div><div class="line">        <span class="keyword">if</span>(target == <span class="number">0</span>) &#123;</div><div class="line">            result.push_back(path);</div><div class="line">            <span class="keyword">return</span>;</div><div class="line">        &#125;</div><div class="line">        </div><div class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = start; i &lt; candidates.size(); i++) &#123;</div><div class="line">            <span class="keyword">if</span>(i&gt;start &amp;&amp; candidates[i] == candidates[i<span class="number">-1</span>]) &#123;</div><div class="line">                <span class="keyword">continue</span>;</div><div class="line">            &#125;</div><div class="line">            <span class="keyword">if</span>(candidates[i] &gt; target) &#123;</div><div class="line">                <span class="keyword">return</span>;</div><div class="line">            &#125;</div><div class="line">            path.push_back(candidates[i]);</div><div class="line">            dfs(candidates, path, result, target-candidates[i], i+<span class="number">1</span>);</div><div class="line">            path.pop_back();</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">&#125;;</div></pre></td></tr></table></figure>
+<h3 id="解决方案2-Python"><a href="#解决方案2-Python" class="headerlink" title="解决方案2(Python)"></a>解决方案2(Python)</h3><hr>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span><span class="params">(object)</span>:</span></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">combinationSum2</span><span class="params">(self, candidates, target)</span>:</span></div><div class="line">        <span class="string">"""</span></div><div class="line">        :type candidates: List[int]</div><div class="line">        :type target: int</div><div class="line">        :rtype: List[List[int]]</div><div class="line">        """</div><div class="line">        candidates.sort()</div><div class="line">        result = []</div><div class="line">        path = []</div><div class="line">        self.dfs(candidates, path, result, target)</div><div class="line">        <span class="keyword">return</span> result</div><div class="line">        </div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">dfs</span><span class="params">(self, candidates, path, result, target)</span>:</span></div><div class="line">        <span class="keyword">if</span> target == <span class="number">0</span>:</div><div class="line">            result.append(path[:])</div><div class="line">            <span class="keyword">return</span></div><div class="line">        pre = <span class="keyword">None</span> </div><div class="line">        <span class="keyword">for</span> item, value <span class="keyword">in</span> enumerate(candidates):</div><div class="line">            <span class="keyword">if</span> pre <span class="keyword">is</span> <span class="keyword">None</span> <span class="keyword">or</span> pre != value:</div><div class="line">                <span class="keyword">if</span> target &lt; value:</div><div class="line">                    <span class="keyword">return</span> </div><div class="line">                path.append(value)</div><div class="line">                self.dfs(candidates[item+<span class="number">1</span>:], path, result, target-value)</div><div class="line">                path.pop()</div><div class="line">            pre = value</div></pre></td></tr></table></figure>
 <h3 id="相关问题"><a href="#相关问题" class="headerlink" title="相关问题"></a>相关问题</h3><hr>
-<p><a href="https://leetcode.com/problems/combination-sum/" target="_blank" rel="external">(M) Combination Sum</a>   </p>
+<ul>
+<li><a href="https://leetcode.com/problems/combination-sum/" target="_blank" rel="external">(M) Combination Sum</a>   </li>
+</ul>
 <h3 id="题目来源"><a href="#题目来源" class="headerlink" title="题目来源"></a><a href="https://leetcode.com/problems/combination-sum-ii/" target="_blank" rel="external">题目来源</a></h3>
       
     </div>
@@ -332,9 +309,9 @@
           
             <a href="/tags/leetcode/" rel="tag">#leetcode</a>
           
-            <a href="/tags/Array/" rel="tag">#Array</a>
-          
             <a href="/tags/Backtracking/" rel="tag">#Backtracking</a>
+          
+            <a href="/tags/Array/" rel="tag">#Array</a>
           
         </div>
       
@@ -343,8 +320,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2014/03/11/leetcode/Algorithms/leetcode-38-Count-and-Say/" rel="next" title="leetcode-38-Count-and-Say">
-                <i class="fa fa-chevron-left"></i> leetcode-38-Count-and-Say
+              <a href="/2014/03/11/leetcode/Algorithms/leetcode-461-Hamming-Distance/" rel="next" title="leetcode-461-Hamming-Distance">
+                <i class="fa fa-chevron-left"></i> leetcode-461-Hamming-Distance
               </a>
             
           </div>
@@ -428,7 +405,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">182</span>
+              <span class="site-state-item-count">184</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -503,7 +480,7 @@
               
             
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#描述"><span class="nav-number">1.</span> <span class="nav-text">描述</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#相关问题"><span class="nav-number">2.</span> <span class="nav-text">相关问题</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#题目来源"><span class="nav-number">3.</span> <span class="nav-text">题目来源</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#描述"><span class="nav-number">1.</span> <span class="nav-text">描述</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#分析"><span class="nav-number">2.</span> <span class="nav-text">分析</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#解决方案1-C"><span class="nav-number">3.</span> <span class="nav-text">解决方案1(C++)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#解决方案2-Python"><span class="nav-number">4.</span> <span class="nav-text">解决方案2(Python)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#相关问题"><span class="nav-number">5.</span> <span class="nav-text">相关问题</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#题目来源"><span class="nav-number">6.</span> <span class="nav-text">题目来源</span></a></li></ol></div>
             
           </div>
           <div class="post-toc-indicator-bottom post-toc-indicator">
