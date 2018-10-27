@@ -65,7 +65,7 @@
 <meta property="og:site_name" content="Frank&#39;s Notes">
 <meta property="og:description" content="阅读这部分代码之前需要对 Solidity 里的事件，以太坊的日志有所了解。">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-10-26T04:35:19.707Z">
+<meta property="og:updated_time" content="2018-10-27T03:49:03.940Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="go-ethereum 源码笔记（core, eth 模块-链的索引，搜索）">
 <meta name="twitter:description" content="阅读这部分代码之前需要对 Solidity 里的事件，以太坊的日志有所了解。">
@@ -445,17 +445,6 @@
 <p><code>scheduleDelivers</code> 接收到 <code>response[section].done</code> 信息后，<code>response[section].cached</code> 会发送到 <code>done</code> 这个channel，至此，一次检索的调度就结束了。</p>
 <p>在下面的 Matcher 中，distributor 就有调用 schedule 的 deliver 方法的例子。</p>
 <h4 id="Matcher"><a href="#Matcher" class="headerlink" title="Matcher"></a>Matcher</h4><p>Matcher 完成真正的匹配工作，对 filter 进行二进制的与/或操作。</p>
-<p>大致流程（下面的语句需转换为流程图，文字用到代码的描述里了）：</p>
-<p>/*</p>
-<ol>
-<li>Matcher 根据传入的 filter 个数，创建对应个数 subMatch，每个 subMatch 对应一个 filter 对象，每个 subMatch 会把自己的查找结果和上一个查找结果按照与的方式得到新的结果。这样可以实现短路算法。</li>
-<li>Matcher 根据 filters 的布隆过滤器组合下标个数启动对应个数的 schedule，subMatch 会把请求发送给对应的 schedule。</li>
-<li>schedule 调度请求，通过 dist 发送给 disrupter，在 disrupter 中管理起来</li>
-<li>启动多个 Multiplex 线程，从 distributor 中获取请求，然后把请求发送给 bloomRequests 队列，startBloomHandlers 会访问数据库，拿到数据后返回给 Multiplex</li>
-<li>Multiplex 通过 deliveries 通过将回答告诉 distributor</li>
-<li>distributor 调用 schedule 的 deliver 方法，将结果发送给 schedule，schedule 把结果返回给 subMatch</li>
-<li>subMatch 把结果计算后发送给下一个 subMatch 进行处理。如果是最后一个 subMatch，那么结果会进行处理后发送给 results channel。<br>*/</li>
-</ol>
 <h5 id="数据结构-3"><a href="#数据结构-3" class="headerlink" title="数据结构"></a>数据结构</h5><figure class="highlight golang"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">type</span> partialMatches <span class="keyword">struct</span> &#123;</div><div class="line">	section <span class="keyword">uint64</span></div><div class="line">	bitset  []<span class="keyword">byte</span></div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="keyword">type</span> Retrieval <span class="keyword">struct</span> &#123;</div><div class="line">	Bit      <span class="keyword">uint</span></div><div class="line">	Sections []<span class="keyword">uint64</span></div><div class="line">	Bitsets  [][]<span class="keyword">byte</span></div><div class="line"></div><div class="line">	Context context.Context</div><div class="line">	Error   error</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="keyword">type</span> Matcher <span class="keyword">struct</span> &#123;</div><div class="line">	sectionSize <span class="keyword">uint64</span></div><div class="line">	filters    [][]bloomIndexes</div><div class="line">	schedulers <span class="keyword">map</span>[<span class="keyword">uint</span>]*scheduler</div><div class="line"></div><div class="line">	retrievers <span class="keyword">chan</span> <span class="keyword">chan</span> <span class="keyword">uint</span></div><div class="line">	counters   <span class="keyword">chan</span> <span class="keyword">chan</span> <span class="keyword">uint</span></div><div class="line">	retrievals <span class="keyword">chan</span> <span class="keyword">chan</span> *Retrieval</div><div class="line">	deliveries <span class="keyword">chan</span> *Retrieval</div><div class="line">	running <span class="keyword">uint32</span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <p><code>partialMatches</code> 表示部分匹配的结果，<code>Retrieval</code> 表示一次区块布隆过滤器的检索工作，在使用过程中，该对象会被发送给 <code>eth/bloombits.go</code> 中的 <code>startBloomHandlers</code> 来处理，该方法从数据库中加载布隆过滤器索引，然后放在 Bitsets 里返回（待确认）。Matcher 是一个操作调度器（scheduler）和匹配器（matcher）的流水线系统，它会对比特流进行二进制的与/或操作，对数据内容进行检索，创建可能的区块。</p>
 <p>构造 Matcher：</p>

@@ -221,8 +221,8 @@
             
               
                 
-                <a class="post-title-link" href="/2014/03/11/leetcode/Shell/leetcode-192-Word-Frequency/" itemprop="url">
-                  leetcode-175-Combine-Two-Tables
+                <a class="post-title-link" href="/2014/03/11/leetcode/Algorithms/leetcode-137-Single-Number-II/" itemprop="url">
+                  leetcode-137-Single-Number-II
                 </a>
               
             
@@ -246,121 +246,8 @@
             
               <span class="post-comments-count">
                 &nbsp; | &nbsp;
-                <a href="/2014/03/11/leetcode/Shell/leetcode-192-Word-Frequency/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2014/03/11/leetcode/Shell/leetcode-192-Word-Frequency/" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h3 id="描述"><a href="#描述" class="headerlink" title="描述"></a>描述</h3><hr>
-<p>Write a bash script to calculate the frequency of each word in a text file words.txt.</p>
-<p>For simplicity sake, you may assume:</p>
-<ul>
-<li>words.txt contains only lowercase characters and space ‘ ‘ characters.  </li>
-<li>Each word must consist of lowercase characters only.   </li>
-<li>Words are separated by one or more whitespace characters.   </li>
-</ul>
-<p>For example, assume that words.txt has the following content:</p>
-<figure class="highlight applescript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">the</span> <span class="built_in">day</span> <span class="keyword">is</span> sunny <span class="keyword">the</span> <span class="keyword">the</span></div><div class="line"><span class="keyword">the</span> sunny <span class="keyword">is</span> <span class="keyword">is</span></div></pre></td></tr></table></figure>
-<p>Your script should output the following, sorted by descending frequency:</p>
-<figure class="highlight lsl"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">the <span class="number">4</span></div><div class="line">is <span class="number">3</span></div><div class="line">sunny <span class="number">2</span></div><div class="line">day <span class="number">1</span></div></pre></td></tr></table></figure>
-<p><strong>Note</strong>:</p>
-<p>Don’t worry about handling ties, it is guaranteed that each word’s frequency count is unique.</p>
-<h3 id="解决方案"><a href="#解决方案" class="headerlink" title="解决方案"></a>解决方案</h3><hr>
-<p>这种需求是有很多方法解决的，但思路大致都一样：去重，排序，格式化输出。不得不说，类 Unix 系统的管道真是一个伟大的想法：）</p>
-<figure class="highlight vim"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">cat</span> words.txt | <span class="keyword">tr</span> -s <span class="string">' '</span> <span class="string">'\n'</span> | <span class="keyword">sort</span> | uniq -<span class="keyword">c</span> | <span class="keyword">sort</span> -r |awk <span class="string">'&#123;print $2, $1&#125;'</span></div></pre></td></tr></table></figure>
-<p>先通过 cat 命令得到 words.txt 文件的内容，利用 tr 命令将空格符合替换成换行符，进行一次排序，这样就可以通过 uniq 命令统计重复行出现的次数，再排序一次，通过 -r 参数获得一个倒叙的排序，再通过 awk 命令格式化输出。</p>
-<h3 id="题目来源"><a href="#题目来源" class="headerlink" title="题目来源"></a><a href="https://leetcode.com/problems/combine-two-tables/" target="_blank" rel="external">题目来源</a></h3>
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2014/03/11/leetcode/Database/leetcode-627-Swap-Salary/" itemprop="url">
-                  leetcode-627-Swap-Salary
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2014-03-11T00:33:34+08:00" content="2014-03-11">
-              2014-03-11
-            </time>
-          </span>
-
-          
-
-          
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2014/03/11/leetcode/Database/leetcode-627-Swap-Salary/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2014/03/11/leetcode/Database/leetcode-627-Swap-Salary/" itemprop="commentsCount"></span>
+                <a href="/2014/03/11/leetcode/Algorithms/leetcode-137-Single-Number-II/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2014/03/11/leetcode/Algorithms/leetcode-137-Single-Number-II/" itemprop="commentsCount"></span>
                 </a>
               </span>
             
@@ -384,13 +271,11 @@
       
         
           <h3 id="描述"><a href="#描述" class="headerlink" title="描述"></a>描述</h3><hr>
-<p>Given a table <code>salary</code>, such as the one below, that has m=male and f=female values. Swap all f and m values (i.e., change all f values to m and vice versa) with a single update query and no intermediate temp table.</p>
-<p>For example:</p>
-<figure class="highlight gherkin"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">|<span class="string"> id </span>|<span class="string"> name </span>|<span class="string"> sex </span>|<span class="string"> salary </span>|</div><div class="line">|<span class="string">----</span>|<span class="string">------</span>|<span class="string">-----</span>|<span class="string">--------</span>|</div><div class="line">|<span class="string"> 1  </span>|<span class="string"> A    </span>|<span class="string"> m   </span>|<span class="string"> 2500   </span>|</div><div class="line">|<span class="string"> 2  </span>|<span class="string"> B    </span>|<span class="string"> f   </span>|<span class="string"> 1500   </span>|</div><div class="line">|<span class="string"> 3  </span>|<span class="string"> C    </span>|<span class="string"> m   </span>|<span class="string"> 5500   </span>|</div><div class="line">|<span class="string"> 4  </span>|<span class="string"> D    </span>|<span class="string"> f   </span>|<span class="string"> 500    </span>|</div></pre></td></tr></table></figure>
-<p>After running your query, the above salary table should have the following rows:</p>
-<figure class="highlight gherkin"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">|<span class="string"> id </span>|<span class="string"> name </span>|<span class="string"> sex </span>|<span class="string"> salary </span>|</div><div class="line">|<span class="string">----</span>|<span class="string">------</span>|<span class="string">-----</span>|<span class="string">--------</span>|</div><div class="line">|<span class="string"> 1  </span>|<span class="string"> A    </span>|<span class="string"> f   </span>|<span class="string"> 2500   </span>|</div><div class="line">|<span class="string"> 2  </span>|<span class="string"> B    </span>|<span class="string"> m   </span>|<span class="string"> 1500   </span>|</div><div class="line">|<span class="string"> 3  </span>|<span class="string"> C    </span>|<span class="string"> f   </span>|<span class="string"> 5500   </span>|</div><div class="line">|<span class="string"> 4  </span>|<span class="string"> D    </span>|<span class="string"> m   </span>|<span class="string"> 500    </span>|</div></pre></td></tr></table></figure>
+<p>Given an array of integers, every element appears three times except for one. Find that single one.  </p>
+<p><strong>Note</strong>:  </p>
+<p>Your algorithm should have a linear runtime complexity. Could you implement it without using extra memory?<br>
           <div class="post-more-link text-center">
-            <a class="btn" href="/2014/03/11/leetcode/Database/leetcode-627-Swap-Salary/#more" rel="contents">
+            <a class="btn" href="/2014/03/11/leetcode/Algorithms/leetcode-137-Single-Number-II/#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
@@ -437,8 +322,8 @@
             
               
                 
-                <a class="post-title-link" href="/2014/03/11/leetcode/Shell/leetcode-194-Transpose-File/" itemprop="url">
-                  leetcode-194-Transpose-File
+                <a class="post-title-link" href="/2014/03/11/leetcode/Algorithms/leetcode-122-Best-Time-to-Buy-and-Sell-Stock-II/" itemprop="url">
+                  leetcode-122-Best-Time-to-Buy-and-Sell-Stock-II
                 </a>
               
             
@@ -462,217 +347,8 @@
             
               <span class="post-comments-count">
                 &nbsp; | &nbsp;
-                <a href="/2014/03/11/leetcode/Shell/leetcode-194-Transpose-File/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2014/03/11/leetcode/Shell/leetcode-194-Transpose-File/" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h3 id="描述"><a href="#描述" class="headerlink" title="描述"></a>描述</h3><hr>
-<p>Given a text file <code>file.txt</code>, transpose its content.</p>
-<p>You may assume that each row has the same number of columns and each field is separated by the ‘ ‘ character.</p>
-<p>For example, if <code>file.txt</code> has the following content:</p>
-<figure class="highlight lsl"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">name age</div><div class="line">alice <span class="number">21</span></div><div class="line">ryan <span class="number">30</span></div></pre></td></tr></table></figure>
-<p>Output the following:</p>
-<figure class="highlight lsl"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">name alice ryan</div><div class="line">age <span class="number">21</span> <span class="number">30</span></div></pre></td></tr></table></figure>
-<h3 id="解决方案"><a href="#解决方案" class="headerlink" title="解决方案"></a>解决方案</h3><hr>
-<p>依旧是强大的 Awk。NR 是 Awk 的内建变量，表明目前读到的行号，NF 也是 Awk 的内建变量，记录当前行的字段数量。</p>
-<figure class="highlight stata"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"># <span class="keyword">Read</span> from the <span class="keyword">file</span> <span class="keyword">file</span>.txt and <span class="keyword">print</span> its transposed content to stdout.</div><div class="line">awk '</div><div class="line">NR == 1 &#123; <span class="keyword">for</span> (i = 1; i &lt;= NF; i++) &#123; <span class="keyword">line</span>[i] = <span class="variable">$i</span> &#125; &#125;</div><div class="line">NR &gt; 1 &#123; <span class="keyword">for</span> (i = 1; i &lt;= NF; i++) &#123; <span class="keyword">line</span>[i] = <span class="keyword">line</span>[i] <span class="string">" "</span> <span class="variable">$i</span> &#125; &#125;</div><div class="line">END &#123; <span class="keyword">for</span> (i = 1; i &lt;= NF; i++) &#123; <span class="keyword">print</span> <span class="keyword">line</span>[i] &#125; &#125;</div><div class="line">' <span class="keyword">file</span>.txt</div></pre></td></tr></table></figure>
-<h3 id="题目来源"><a href="#题目来源" class="headerlink" title="题目来源"></a><a href="https://leetcode.com/problems/transpose-file/" target="_blank" rel="external">题目来源</a></h3>
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2014/03/11/leetcode/Shell/leetcode-193-Valid-Phone-Numbers/" itemprop="url">
-                  leetcode-193-Valid-Phone-Numbers
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2014-03-11T00:33:34+08:00" content="2014-03-11">
-              2014-03-11
-            </time>
-          </span>
-
-          
-
-          
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2014/03/11/leetcode/Shell/leetcode-193-Valid-Phone-Numbers/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2014/03/11/leetcode/Shell/leetcode-193-Valid-Phone-Numbers/" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h3 id="描述"><a href="#描述" class="headerlink" title="描述"></a>描述</h3><hr>
-<p>Given a text file <strong>file.txt</strong> that contains list of phone numbers (one per line), write a one liner bash script to print all valid phone numbers.</p>
-<p>You may assume that a valid phone number must appear in one of the following two formats: (xxx) xxx-xxxx or xxx-xxx-xxxx. (x means a digit)</p>
-<p>You may also assume each line in the text file must not contain leading or trailing white spaces.</p>
-<p>For example, assume that <strong>file.txt</strong> has the following content:</p>
-<figure class="highlight lsl"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="number">987</span><span class="number">-123</span><span class="number">-4567</span></div><div class="line"><span class="number">123</span> <span class="number">456</span> <span class="number">7890</span></div><div class="line">(<span class="number">123</span>) <span class="number">456</span><span class="number">-7890</span></div></pre></td></tr></table></figure>
-<h3 id="解决方案"><a href="#解决方案" class="headerlink" title="解决方案"></a>解决方案</h3><hr>
-<p>一个正则表达式解决</p>
-<figure class="highlight lsl"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"># Read from the file file.txt and output all valid phone numbers to stdout.</div><div class="line">awk '/^(\([<span class="number">0</span><span class="number">-9</span>]&#123;<span class="number">3</span>&#125;\) |[<span class="number">0</span><span class="number">-9</span>]&#123;<span class="number">3</span>&#125;-)[<span class="number">0</span><span class="number">-9</span>]&#123;<span class="number">3</span>&#125;-[<span class="number">0</span><span class="number">-9</span>]&#123;<span class="number">4</span>&#125;$/' file.txt</div></pre></td></tr></table></figure>
-<h3 id="题目来源"><a href="#题目来源" class="headerlink" title="题目来源"></a><a href="https://leetcode.com/problems/valid-phone-numbers/" target="_blank" rel="external">题目来源</a></h3>
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2014/03/11/leetcode/Algorithms/leetcode-1-Two-Sum/" itemprop="url">
-                  leetcode-1-Two-Sum
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2014-03-11T00:33:34+08:00" content="2014-03-11">
-              2014-03-11
-            </time>
-          </span>
-
-          
-
-          
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2014/03/11/leetcode/Algorithms/leetcode-1-Two-Sum/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2014/03/11/leetcode/Algorithms/leetcode-1-Two-Sum/" itemprop="commentsCount"></span>
+                <a href="/2014/03/11/leetcode/Algorithms/leetcode-122-Best-Time-to-Buy-and-Sell-Stock-II/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2014/03/11/leetcode/Algorithms/leetcode-122-Best-Time-to-Buy-and-Sell-Stock-II/" itemprop="commentsCount"></span>
                 </a>
               </span>
             
@@ -696,12 +372,612 @@
       
         
           <h3 id="描述"><a href="#描述" class="headerlink" title="描述"></a>描述</h3><hr>
-<p>Given an array of integers, return indices of the two numbers such that they add up to a specific target.</p>
+<p>Say you have an array for which the $i^{th}$ element is the price of a given stock on day i.</p>
+<p>If you were only permitted to complete at most one transaction (ie, buy one and sell one share of the stock), design an algorithm to find the maximum profit.</p>
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2014/03/11/leetcode/Algorithms/leetcode-122-Best-Time-to-Buy-and-Sell-Stock-II/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2014/03/11/leetcode/Algorithms/leetcode-14-Longest-Common-Prefix/" itemprop="url">
+                  leetcode-14-Longest-Common-Prefix
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2014-03-11T00:33:34+08:00" content="2014-03-11">
+              2014-03-11
+            </time>
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2014/03/11/leetcode/Algorithms/leetcode-14-Longest-Common-Prefix/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2014/03/11/leetcode/Algorithms/leetcode-14-Longest-Common-Prefix/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <h3 id="描述"><a href="#描述" class="headerlink" title="描述"></a>描述</h3><hr>
+<figure class="highlight smali"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">Write a function to find the longest common prefix string amongst an<span class="built_in"> array </span>of strings.</div></pre></td></tr></table></figure>
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2014/03/11/leetcode/Algorithms/leetcode-14-Longest-Common-Prefix/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2014/03/11/leetcode/Algorithms/leetcode-136-Single-Number/" itemprop="url">
+                  leetcode-136-Single-Number
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2014-03-11T00:33:34+08:00" content="2014-03-11">
+              2014-03-11
+            </time>
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2014/03/11/leetcode/Algorithms/leetcode-136-Single-Number/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2014/03/11/leetcode/Algorithms/leetcode-136-Single-Number/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <h3 id="描述"><a href="#描述" class="headerlink" title="描述"></a>描述</h3><hr>
+<p>Given an array of integers, every element appears twice except for one. Find that single one.</p>
+<p><strong>Note</strong>:<br>Your algorithm should have a linear runtime complexity. Could you implement it without using extra memory? </p>
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2014/03/11/leetcode/Algorithms/leetcode-136-Single-Number/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2014/03/11/leetcode/Algorithms/leetcode-13-Roman-to-Integer/" itemprop="url">
+                  leetcode-13-Roman-to-Integer
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2014-03-11T00:33:34+08:00" content="2014-03-11">
+              2014-03-11
+            </time>
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2014/03/11/leetcode/Algorithms/leetcode-13-Roman-to-Integer/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2014/03/11/leetcode/Algorithms/leetcode-13-Roman-to-Integer/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <h3 id="描述"><a href="#描述" class="headerlink" title="描述"></a>描述</h3><hr>
+<p>Given a roman numeral, convert it to an integer.</p>
+<p>Input is guaranteed to be within the range from 1 to 3999.<br>
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2014/03/11/leetcode/Algorithms/leetcode-13-Roman-to-Integer/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2014/03/11/leetcode/Algorithms/leetcode-153-Find-Minimum-in-Rotated-Sorted-Array/" itemprop="url">
+                  leetcode-153-Find-Minimum-in-Rotated-Sorted-Array
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2014-03-11T00:33:34+08:00" content="2014-03-11">
+              2014-03-11
+            </time>
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2014/03/11/leetcode/Algorithms/leetcode-153-Find-Minimum-in-Rotated-Sorted-Array/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2014/03/11/leetcode/Algorithms/leetcode-153-Find-Minimum-in-Rotated-Sorted-Array/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <h3 id="描述"><a href="#描述" class="headerlink" title="描述"></a>描述</h3><hr>
+<p>Suppose a sorted array is rotated at some pivot unknown to you beforehand.</p>
+<p>(i.e., <code>0 1 2 4 5 6 7</code> might become <code>4 5 6 7 0 1 2</code>).</p>
+<p>Find the minimum element.</p>
+<p>You may assume no duplicate exists in the array.</p>
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2014/03/11/leetcode/Algorithms/leetcode-153-Find-Minimum-in-Rotated-Sorted-Array/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2014/03/11/leetcode/Algorithms/leetcode-16-3Sum-Closest/" itemprop="url">
+                  leetcode-16-3Sum-Closest
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2014-03-11T00:33:34+08:00" content="2014-03-11">
+              2014-03-11
+            </time>
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2014/03/11/leetcode/Algorithms/leetcode-16-3Sum-Closest/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2014/03/11/leetcode/Algorithms/leetcode-16-3Sum-Closest/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <h3 id="描述"><a href="#描述" class="headerlink" title="描述"></a>描述</h3><p>Given an array S of n integers, find three integers in S such that the sum is closest to a given number, target. Return the sum of the three integers. You may assume that each input would have exactly one solution.</p>
+<figure class="highlight smali"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">For example, given<span class="built_in"> array </span>S = &#123;-1 2 1 -4&#125;,<span class="built_in"> and </span>target = 1.</div><div class="line">The sum that is closest to the target is 2. (-1 + 2 + 1 = 2).</div></pre></td></tr></table></figure>
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2014/03/11/leetcode/Algorithms/leetcode-16-3Sum-Closest/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2014/03/11/leetcode/Algorithms/leetcode-167-Two-Sum-II---Input-array-is-sorted/" itemprop="url">
+                  leetcode-167-Two-Sum-II---Input-array-is-sorted
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2014-03-11T00:33:34+08:00" content="2014-03-11">
+              2014-03-11
+            </time>
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2014/03/11/leetcode/Algorithms/leetcode-167-Two-Sum-II---Input-array-is-sorted/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2014/03/11/leetcode/Algorithms/leetcode-167-Two-Sum-II---Input-array-is-sorted/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <h3 id="描述"><a href="#描述" class="headerlink" title="描述"></a>描述</h3><hr>
+<p>Given an array of integers that is already sorted in ascending order, find two numbers such that they add up to a specific target number.</p>
+<p>The function twoSum should return indices of the two numbers such that they add up to the target, where index1 must be less than index2. Please note that your returned answers (both index1 and index2) are not zero-based.</p>
 <p>You may assume that each input would have exactly one solution.</p>
-<p><strong>Example:</strong></p>
-<figure class="highlight lsl"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">Given nums = [<span class="number">2</span>, <span class="number">7</span>, <span class="number">11</span>, <span class="number">15</span>], target = <span class="number">9</span>,</div><div class="line"></div><div class="line">Because nums[<span class="number">0</span>] + nums[<span class="number">1</span>] = <span class="number">2</span> + <span class="number">7</span> = <span class="number">9</span>,</div><div class="line">return [<span class="number">0</span>, <span class="number">1</span>].</div></pre></td></tr></table></figure>
+<p><strong>Input</strong>: numbers={2, 7, 11, 15}, target=9<br><strong>Outputi</strong>: index1=1, index2=2 </p>
           <div class="post-more-link text-center">
-            <a class="btn" href="/2014/03/11/leetcode/Algorithms/leetcode-1-Two-Sum/#more" rel="contents">
+            <a class="btn" href="/2014/03/11/leetcode/Algorithms/leetcode-167-Two-Sum-II---Input-array-is-sorted/#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
@@ -748,8 +1024,8 @@
             
               
                 
-                <a class="post-title-link" href="/2014/03/11/leetcode/Algorithms/leetcode-100-Same-Tree/" itemprop="url">
-                  leetcode-100-Same-Tree
+                <a class="post-title-link" href="/2014/03/11/leetcode/Algorithms/leetcode-168-Excel-Sheet-Column-Title/" itemprop="url">
+                  leetcode-168-Excel-Sheet-Column-Title
                 </a>
               
             
@@ -773,8 +1049,8 @@
             
               <span class="post-comments-count">
                 &nbsp; | &nbsp;
-                <a href="/2014/03/11/leetcode/Algorithms/leetcode-100-Same-Tree/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2014/03/11/leetcode/Algorithms/leetcode-100-Same-Tree/" itemprop="commentsCount"></span>
+                <a href="/2014/03/11/leetcode/Algorithms/leetcode-168-Excel-Sheet-Column-Title/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2014/03/11/leetcode/Algorithms/leetcode-168-Excel-Sheet-Column-Title/" itemprop="commentsCount"></span>
                 </a>
               </span>
             
@@ -798,10 +1074,11 @@
       
         
           <h3 id="描述"><a href="#描述" class="headerlink" title="描述"></a>描述</h3><hr>
-<p>Given two binary trees, write a function to check if they are equal or not.</p>
-<p>Two binary trees are considered equal if they are structurally identical and the nodes have the same value.<br>
+<p>Given a positive integer, return its corresponding column title as appear in an Excel sheet.</p>
+<p>For example:</p>
+<figure class="highlight coq"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="number">1</span> -&gt; A</div><div class="line">   <span class="number">2</span> -&gt; B</div><div class="line">   <span class="number">3</span> -&gt; C</div><div class="line">   ...</div><div class="line">   <span class="number">26</span> -&gt; Z</div><div class="line">   <span class="number">27</span> -&gt; AA</div><div class="line">   <span class="number">28</span> -&gt; AB</div></pre></td></tr></table></figure>
           <div class="post-more-link text-center">
-            <a class="btn" href="/2014/03/11/leetcode/Algorithms/leetcode-100-Same-Tree/#more" rel="contents">
+            <a class="btn" href="/2014/03/11/leetcode/Algorithms/leetcode-168-Excel-Sheet-Column-Title/#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
@@ -848,8 +1125,8 @@
             
               
                 
-                <a class="post-title-link" href="/2014/03/11/leetcode/Algorithms/leetcode-101-Symmetric-Tree/" itemprop="url">
-                  leetcode-101-Symmetric-Tree
+                <a class="post-title-link" href="/2014/03/11/leetcode/Algorithms/leetcode-146-LRU-Cache/" itemprop="url">
+                  leetcode-146-LRU-Cache
                 </a>
               
             
@@ -873,8 +1150,8 @@
             
               <span class="post-comments-count">
                 &nbsp; | &nbsp;
-                <a href="/2014/03/11/leetcode/Algorithms/leetcode-101-Symmetric-Tree/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2014/03/11/leetcode/Algorithms/leetcode-101-Symmetric-Tree/" itemprop="commentsCount"></span>
+                <a href="/2014/03/11/leetcode/Algorithms/leetcode-146-LRU-Cache/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2014/03/11/leetcode/Algorithms/leetcode-146-LRU-Cache/" itemprop="commentsCount"></span>
                 </a>
               </span>
             
@@ -898,319 +1175,12 @@
       
         
           <h3 id="描述"><a href="#描述" class="headerlink" title="描述"></a>描述</h3><hr>
-<p>Given a binary tree, check whether it is a mirror of itself (ie, symmetric around its center).</p>
-<p>For example, this binary tree is symmetric:</p>
-<figure class="highlight lsl"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">    <span class="number">1</span></div><div class="line">   / \</div><div class="line">  <span class="number">2</span>   <span class="number">2</span></div><div class="line"> / \ / \</div><div class="line"><span class="number">3</span>  <span class="number">4</span> <span class="number">4</span>  <span class="number">3</span></div></pre></td></tr></table></figure>
-<p>But the following is not:</p>
-<figure class="highlight lsl"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">  <span class="number">1</span></div><div class="line"> / \</div><div class="line"><span class="number">2</span>   <span class="number">2</span></div><div class="line"> \   \</div><div class="line"> <span class="number">3</span>    <span class="number">3</span></div></pre></td></tr></table></figure>
+<p>Design and implement a data structure for <a href="https://en.wikipedia.org/wiki/Cache_replacement_policies#LRU" target="_blank" rel="external">Least Recently Used (LRU) cache</a>. It should support the following operations: <code>get</code> and <code>put</code>.</p>
+<p><code>get(key)</code> - Get the value (will always be positive) of the key if the key exists in the cache, otherwise return -1.<br><code>put(key, value)</code> - Set or insert the value if the key is not already present. When the cache reached its capacity, it should invalidate the least recently used item before inserting a new item.</p>
+<p><strong>Follow up</strong>:<br>Could you do both operations in <strong>O(1)</strong> time complexity?</p>
+<p><strong>Example</strong>:<br><figure class="highlight lsl"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">LRUCache cache = new LRUCache( <span class="number">2</span> <span class="comment">/* capacity */</span> );</div><div class="line"></div><div class="line">cache.put(<span class="number">1</span>, <span class="number">1</span>);</div><div class="line">cache.put(<span class="number">2</span>, <span class="number">2</span>);</div><div class="line">cache.get(<span class="number">1</span>);       <span class="comment">// returns 1</span></div><div class="line">cache.put(<span class="number">3</span>, <span class="number">3</span>);    <span class="comment">// evicts key 2</span></div><div class="line">cache.get(<span class="number">2</span>);       <span class="comment">// returns -1 (not found)</span></div><div class="line">cache.put(<span class="number">4</span>, <span class="number">4</span>);    <span class="comment">// evicts key 1</span></div><div class="line">cache.get(<span class="number">1</span>);       <span class="comment">// returns -1 (not found)</span></div><div class="line">cache.get(<span class="number">3</span>);       <span class="comment">// returns 3</span></div><div class="line">cache.get(<span class="number">4</span>);       <span class="comment">// returns 4</span></div></pre></td></tr></table></figure></p>
           <div class="post-more-link text-center">
-            <a class="btn" href="/2014/03/11/leetcode/Algorithms/leetcode-101-Symmetric-Tree/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2014/03/11/leetcode/Shell/leetcode-195-Tenth-Line/" itemprop="url">
-                  leetcode-195-Tenth-Line
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2014-03-11T00:33:34+08:00" content="2014-03-11">
-              2014-03-11
-            </time>
-          </span>
-
-          
-
-          
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2014/03/11/leetcode/Shell/leetcode-195-Tenth-Line/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2014/03/11/leetcode/Shell/leetcode-195-Tenth-Line/" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h3 id="描述"><a href="#描述" class="headerlink" title="描述"></a>描述</h3><hr>
-<p>How would you print just the 10th line of a file?</p>
-<p>For example, assume that file.txt has the following content:</p>
-<figure class="highlight gauss"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">Line</span> <span class="number">1</span></div><div class="line"><span class="keyword">Line</span> <span class="number">2</span></div><div class="line"><span class="keyword">Line</span> <span class="number">3</span></div><div class="line"><span class="keyword">Line</span> <span class="number">4</span></div><div class="line"><span class="keyword">Line</span> <span class="number">5</span></div><div class="line"><span class="keyword">Line</span> <span class="number">6</span></div><div class="line"><span class="keyword">Line</span> <span class="number">7</span></div><div class="line"><span class="keyword">Line</span> <span class="number">8</span></div><div class="line"><span class="keyword">Line</span> <span class="number">9</span></div><div class="line"><span class="keyword">Line</span> <span class="number">10</span></div></pre></td></tr></table></figure>
-<p>Your script should output the tenth line, which is:</p>
-<figure class="highlight gauss"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">Line</span> <span class="number">10</span></div></pre></td></tr></table></figure>
-<h3 id="解决方案"><a href="#解决方案" class="headerlink" title="解决方案"></a>解决方案</h3><hr>
-<figure class="highlight vhdl"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"># Read from the <span class="keyword">file</span> <span class="keyword">file</span>.txt <span class="keyword">and</span> output the tenth <span class="literal">line</span> <span class="keyword">to</span> stdout.</div><div class="line">awk <span class="string">"NR==10"</span> <span class="keyword">file</span>.txt</div></pre></td></tr></table></figure>
-<h3 id="题目来源"><a href="#题目来源" class="headerlink" title="题目来源"></a><a href="https://leetcode.com/problems/tenth-line/" target="_blank" rel="external">题目来源</a></h3>
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2014/03/11/leetcode/Algorithms/leetcode-102-Binary-Tree-Level-Order-Traversal/" itemprop="url">
-                  leetcode-102-Binary-Tree-Level-Order-Traversal
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2014-03-11T00:33:34+08:00" content="2014-03-11">
-              2014-03-11
-            </time>
-          </span>
-
-          
-
-          
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2014/03/11/leetcode/Algorithms/leetcode-102-Binary-Tree-Level-Order-Traversal/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2014/03/11/leetcode/Algorithms/leetcode-102-Binary-Tree-Level-Order-Traversal/" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <h3 id="描述"><a href="#描述" class="headerlink" title="描述"></a>描述</h3><hr>
-<p>Given a binary tree, return the level order traversal of its nodes’ values. (ie, from left to right, level by level).</p>
-<p>For example:<br>Given binary tree {3,9,20,#,#,15,7},</p>
-<figure class="highlight lsl"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">  <span class="number">3</span></div><div class="line"> / \</div><div class="line"><span class="number">9</span>  <span class="number">20</span></div><div class="line">  /  \</div><div class="line"> <span class="number">15</span>   <span class="number">7</span></div></pre></td></tr></table></figure>
-<p>return its level order traversal as:</p>
-<figure class="highlight json"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">[</div><div class="line">  [<span class="number">3</span>],</div><div class="line">  [<span class="number">9</span>,<span class="number">20</span>],</div><div class="line">  [<span class="number">15</span>,<span class="number">7</span>]</div><div class="line">]</div></pre></td></tr></table></figure>
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2014/03/11/leetcode/Algorithms/leetcode-102-Binary-Tree-Level-Order-Traversal/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2014/03/11/leetcode/Algorithms/leetcode-104-Maximum-Depth-of-Binary-Tree/" itemprop="url">
-                  leetcode-104-Maximum-Depth-of-Binary-Tree
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2014-03-11T00:33:34+08:00" content="2014-03-11">
-              2014-03-11
-            </time>
-          </span>
-
-          
-
-          
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2014/03/11/leetcode/Algorithms/leetcode-104-Maximum-Depth-of-Binary-Tree/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2014/03/11/leetcode/Algorithms/leetcode-104-Maximum-Depth-of-Binary-Tree/" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <h3 id="描述"><a href="#描述" class="headerlink" title="描述"></a>描述</h3><hr>
-<p>Given a binary tree, find its maximum depth.</p>
-<p>The maximum depth is the number of nodes along the longest path from the root node down to the farthest leaf node.</p>
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2014/03/11/leetcode/Algorithms/leetcode-104-Maximum-Depth-of-Binary-Tree/#more" rel="contents">
+            <a class="btn" href="/2014/03/11/leetcode/Algorithms/leetcode-146-LRU-Cache/#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
