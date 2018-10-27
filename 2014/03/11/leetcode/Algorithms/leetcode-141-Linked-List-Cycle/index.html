@@ -65,7 +65,7 @@
 <meta property="og:site_name" content="Frank&#39;s Notes">
 <meta property="og:description" content="描述 Given a linked list, determine if it has a cycle in it. Follow up:Can you solve it without using extra space?">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2016-10-28T15:40:40.000Z">
+<meta property="og:updated_time" content="2018-10-23T03:29:37.879Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="leetcode-141-Linked-List-Cycle">
 <meta name="twitter:description" content="描述 Given a linked list, determine if it has a cycle in it. Follow up:Can you solve it without using extra space?">
@@ -274,11 +274,16 @@
 <p>Follow up:<br>Can you solve it without using extra space? </p>
 <a id="more"></a>
 <h3 id="分析"><a href="#分析" class="headerlink" title="分析"></a>分析</h3><hr>
-<p>题意是判断一个链表是否有环，这道题我见过的。。。。<br>设置前后两个指针，一个指针每次移动两个元素，一个指针每次移动一个，若链表是有环的，两指针最终会相遇，时间复杂度是O(n)</p>
+<p>题意是判断一个链表是否有环，这道题我见过的。。。。<br>设置前后两个指针，一个指针每次移动两个元素，一个指针每次移动一个，若链表是有环的，两指针最终会相遇，时间复杂度是 $O(n)$</p>
 <h3 id="解决方案1-C"><a href="#解决方案1-C" class="headerlink" title="解决方案1(C++)"></a>解决方案1(C++)</h3><hr>
 <figure class="highlight vbscript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div></pre></td><td class="code"><pre><div class="line">/**</div><div class="line"> * Definition <span class="keyword">for</span> singly-linked list.</div><div class="line"> * struct ListNode &#123;</div><div class="line"> *     <span class="built_in">int</span> val;</div><div class="line"> *     ListNode *<span class="keyword">next</span>;</div><div class="line"> *     ListNode(<span class="built_in">int</span> x) : val(x), <span class="keyword">next</span>(<span class="literal">NULL</span>) &#123;&#125;</div><div class="line"> * &#125;;</div><div class="line"> */</div><div class="line"><span class="keyword">class</span> Solution &#123;</div><div class="line"><span class="keyword">public</span>:</div><div class="line">    bool hasCycle(ListNode *head) &#123;</div><div class="line">        <span class="keyword">if</span>(head == <span class="literal">NULL</span> || head-&gt;<span class="keyword">next</span> == <span class="literal">NULL</span>) &#123;</div><div class="line">            return <span class="literal">false</span>;</div><div class="line">        &#125;</div><div class="line">        ListNode *fast = head;</div><div class="line">        ListNode *slow = head;</div><div class="line">        </div><div class="line">        <span class="keyword">while</span>(slow != <span class="literal">NULL</span> &amp;&amp; slow-&gt;<span class="keyword">next</span> != <span class="literal">NULL</span>) &#123;</div><div class="line">            slow = slow-&gt;<span class="keyword">next</span>-&gt;<span class="keyword">next</span>;</div><div class="line">            fast = fast-&gt;<span class="keyword">next</span>;</div><div class="line">            <span class="keyword">if</span>(slow == fast) &#123;</div><div class="line">                return <span class="literal">true</span>;</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">        return <span class="literal">false</span>;</div><div class="line">    &#125;</div><div class="line">&#125;;</div></pre></td></tr></table></figure>
+<h3 id="解决方案2-Java"><a href="#解决方案2-Java" class="headerlink" title="解决方案2(Java)"></a>解决方案2(Java)</h3><hr>
+<figure class="highlight vbscript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div></pre></td><td class="code"><pre><div class="line">/**</div><div class="line"> * Definition <span class="keyword">for</span> singly-linked list.</div><div class="line"> * <span class="keyword">class</span> ListNode &#123;</div><div class="line"> *     <span class="built_in">int</span> val;</div><div class="line"> *     ListNode <span class="keyword">next</span>;</div><div class="line"> *     ListNode(<span class="built_in">int</span> x) &#123;</div><div class="line"> *         val = x;</div><div class="line"> *         <span class="keyword">next</span> = <span class="literal">null</span>;</div><div class="line"> *     &#125;</div><div class="line"> * &#125;</div><div class="line"> */</div><div class="line"><span class="keyword">public</span> <span class="keyword">class</span> Solution &#123;</div><div class="line">    <span class="keyword">public</span> boolean hasCycle(ListNode head) &#123;</div><div class="line">        ListNode fast = head, slow = head;</div><div class="line">        <span class="keyword">while</span> (fast != <span class="literal">null</span> &amp;&amp; fast.<span class="keyword">next</span> != <span class="literal">null</span>) &#123;</div><div class="line">            fast = fast.<span class="keyword">next</span>.<span class="keyword">next</span>;</div><div class="line">            slow = slow.<span class="keyword">next</span>;</div><div class="line">            <span class="keyword">if</span> (fast == slow) &#123;</div><div class="line">                return <span class="literal">true</span>;</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">        return <span class="literal">false</span>;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <h3 id="相关问题"><a href="#相关问题" class="headerlink" title="相关问题"></a>相关问题</h3><hr>
-<p><a href="https://leetcode.com/problems/linked-list-cycle-ii/" target="_blank" rel="external">(M) Linked List Cycle II</a>   </p>
+<ul>
+<li><a href="https://leetcode.com/problems/linked-list-cycle-ii/" target="_blank" rel="external">(M) Linked List Cycle II</a>   </li>
+<li><a href="https://leetcode.com/problems/happy-number" target="_blank" rel="external">(E) Happy Number</a></li>
+</ul>
 <h3 id="题目来源"><a href="#题目来源" class="headerlink" title="题目来源"></a><a href="https://leetcode.com/problems/linked-list-cycle/" target="_blank" rel="external">题目来源</a></h3>
       
     </div>
@@ -308,16 +313,16 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2014/03/11/leetcode/Algorithms/leetcode-122-Best-Time-to-Buy-and-Sell-Stock-II/" rel="next" title="leetcode-122-Best-Time-to-Buy-and-Sell-Stock-II">
-                <i class="fa fa-chevron-left"></i> leetcode-122-Best-Time-to-Buy-and-Sell-Stock-II
+              <a href="/2014/03/11/leetcode/Algorithms/leetcode-14-Longest-Common-Prefix/" rel="next" title="leetcode-14-Longest-Common-Prefix">
+                <i class="fa fa-chevron-left"></i> leetcode-14-Longest-Common-Prefix
               </a>
             
           </div>
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2014/03/11/leetcode/Database/leetcode-175-Combine-Two-Tables/" rel="prev" title="leetcode-175-Combine-Two-Tables">
-                leetcode-175-Combine-Two-Tables <i class="fa fa-chevron-right"></i>
+              <a href="/2014/03/11/leetcode/Algorithms/leetcode-137-Single-Number-II/" rel="prev" title="leetcode-137-Single-Number-II">
+                leetcode-137-Single-Number-II <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -393,7 +398,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">184</span>
+              <span class="site-state-item-count">186</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -403,7 +408,7 @@
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">131</span>
+                <span class="site-state-item-count">133</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
@@ -468,7 +473,7 @@
               
             
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#描述"><span class="nav-number">1.</span> <span class="nav-text">描述</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#分析"><span class="nav-number">2.</span> <span class="nav-text">分析</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#解决方案1-C"><span class="nav-number">3.</span> <span class="nav-text">解决方案1(C++)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#相关问题"><span class="nav-number">4.</span> <span class="nav-text">相关问题</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#题目来源"><span class="nav-number">5.</span> <span class="nav-text">题目来源</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#描述"><span class="nav-number">1.</span> <span class="nav-text">描述</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#分析"><span class="nav-number">2.</span> <span class="nav-text">分析</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#解决方案1-C"><span class="nav-number">3.</span> <span class="nav-text">解决方案1(C++)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#解决方案2-Java"><span class="nav-number">4.</span> <span class="nav-text">解决方案2(Java)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#相关问题"><span class="nav-number">5.</span> <span class="nav-text">相关问题</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#题目来源"><span class="nav-number">6.</span> <span class="nav-text">题目来源</span></a></li></ol></div>
             
           </div>
           <div class="post-toc-indicator-bottom post-toc-indicator">
