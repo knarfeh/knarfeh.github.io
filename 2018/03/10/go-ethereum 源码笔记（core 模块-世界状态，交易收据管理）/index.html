@@ -62,7 +62,7 @@
 <meta property="og:type" content="article">
 <meta property="og:title" content="go-ethereum 源码笔记（core 模块-世界状态，交易收据管理）">
 <meta property="og:url" content="http://knarfeh.github.io/2018/03/10/go-ethereum 源码笔记（core 模块-世界状态，交易收据管理）/index.html">
-<meta property="og:site_name" content="Frank&#39;s Notes">
+<meta property="og:site_name" content="knarfeh&#39;s logbook">
 <meta property="og:description" content="通过前面的文章，我们了解了 geth 的大致原理，知道了区块链是怎么组织构成的，有了 rlp，MPT 这些数据结构的基础，也知道了账户是怎么组织的，交易是如何管理的，挖矿是一个什么样的流程，这一篇我们将深入到交易的具体处理过程，看看交易过程中是如何修改世界状态，生成交易收据的。 这篇文章将涉及到 core/types/transaction.go, core/state 模块，需要对交易池，账户等">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="https://knarfeh-1254074221.cos.na-siliconvalley.myqcloud.com/stackexchange-ethereum-block-architecture.jpg">
@@ -88,7 +88,7 @@
   };
 </script>
 
-  <title> go-ethereum 源码笔记（core 模块-世界状态，交易收据管理） | Frank's Notes </title>
+  <title> go-ethereum 源码笔记（core 模块-世界状态，交易收据管理） | knarfeh's logbook </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -126,7 +126,7 @@
   <div class="custom-logo-site-title">
     <a href="/"  class="brand" rel="start">
       <span class="logo-line-before"><i></i></span>
-      <span class="site-title">Frank's Notes</span>
+      <span class="site-title">knarfeh's logbook</span>
       <span class="logo-line-after"><i></i></span>
     </a>
   </div>
@@ -468,7 +468,7 @@
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">133</span>
+                <span class="site-state-item-count">134</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>

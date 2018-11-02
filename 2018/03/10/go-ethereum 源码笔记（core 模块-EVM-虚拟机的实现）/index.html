@@ -62,7 +62,7 @@
 <meta property="og:type" content="article">
 <meta property="og:title" content="go-ethereum 源码笔记（core 模块-EVM-虚拟机的实现）">
 <meta property="og:url" content="http://knarfeh.github.io/2018/03/10/go-ethereum 源码笔记（core 模块-EVM-虚拟机的实现）/index.html">
-<meta property="og:site_name" content="Frank&#39;s Notes">
+<meta property="og:site_name" content="knarfeh&#39;s logbook">
 <meta property="og:description" content="前面的文章 go-ethereum 源码笔记（core 模块-世界状态，交易收据管理） 讨论了 geth 中对交易的处理，其中有一个阶段需要通过 EVM 执行，如果交易转入方地址为空，则调用 EVM 的 Create 函数创建合约；如果不为空，则为普通转账，调用 Call() 函数。这一篇我们将深入以太坊的虚拟机看看具体的过程。 这一篇需要对智能合约， ERC-20 标准，编译原理（了解编译器，解">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="https://knarfeh-1254074221.cos.na-siliconvalley.myqcloud.com/evm_process.jpg">
@@ -89,7 +89,7 @@
   };
 </script>
 
-  <title> go-ethereum 源码笔记（core 模块-EVM-虚拟机的实现） | Frank's Notes </title>
+  <title> go-ethereum 源码笔记（core 模块-EVM-虚拟机的实现） | knarfeh's logbook </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -127,7 +127,7 @@
   <div class="custom-logo-site-title">
     <a href="/"  class="brand" rel="start">
       <span class="logo-line-before"><i></i></span>
-      <span class="site-title">Frank's Notes</span>
+      <span class="site-title">knarfeh's logbook</span>
       <span class="logo-line-after"><i></i></span>
     </a>
   </div>
@@ -465,7 +465,7 @@
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">133</span>
+                <span class="site-state-item-count">134</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>

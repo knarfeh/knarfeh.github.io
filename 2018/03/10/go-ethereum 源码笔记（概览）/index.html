@@ -62,12 +62,12 @@
 <meta property="og:type" content="article">
 <meta property="og:title" content="go-ethereum 源码笔记（概览）">
 <meta property="og:url" content="http://knarfeh.github.io/2018/03/10/go-ethereum 源码笔记（概览）/index.html">
-<meta property="og:site_name" content="Frank&#39;s Notes">
+<meta property="og:site_name" content="knarfeh&#39;s logbook">
 <meta property="og:description" content="花了一点时间读以太坊的源代码，内容太多，所以一边看一边写，没想到越写越多，于是想着把笔记整理出来。 源码解读是一件费力不讨好的事情，因为看代码的时候我们看到的是最终解决方案，虽然可以看到 commit 的历史，但我们看不到作者的思路，踩过的坑，而且 geth 的设计文档，功能的相关讨论等信息不像 Kubernetes 那么规范透明，所以我看这些代码的时候很多地方也只是一知半解，欢迎有更多经验的朋友">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="https://knarfeh-1254074221.cos.na-siliconvalley.myqcloud.com/stackexchange-ethereum-block-architecture.jpg">
 <meta property="og:image" content="https://knarfeh-1254074221.cos.na-siliconvalley.myqcloud.com/ethereum-leveld-architecture.png">
-<meta property="og:updated_time" content="2018-10-13T03:43:41.261Z">
+<meta property="og:updated_time" content="2018-10-27T09:27:54.303Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="go-ethereum 源码笔记（概览）">
 <meta name="twitter:description" content="花了一点时间读以太坊的源代码，内容太多，所以一边看一边写，没想到越写越多，于是想着把笔记整理出来。 源码解读是一件费力不讨好的事情，因为看代码的时候我们看到的是最终解决方案，虽然可以看到 commit 的历史，但我们看不到作者的思路，踩过的坑，而且 geth 的设计文档，功能的相关讨论等信息不像 Kubernetes 那么规范透明，所以我看这些代码的时候很多地方也只是一知半解，欢迎有更多经验的朋友">
@@ -89,7 +89,7 @@
   };
 </script>
 
-  <title> go-ethereum 源码笔记（概览） | Frank's Notes </title>
+  <title> go-ethereum 源码笔记（概览） | knarfeh's logbook </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -127,7 +127,7 @@
   <div class="custom-logo-site-title">
     <a href="/"  class="brand" rel="start">
       <span class="logo-line-before"><i></i></span>
-      <span class="site-title">Frank's Notes</span>
+      <span class="site-title">knarfeh's logbook</span>
       <span class="logo-line-after"><i></i></span>
     </a>
   </div>
@@ -290,6 +290,8 @@
 <li><a href="https://knarfeh.com/2018/03/10/go-ethereum%20%E6%BA%90%E7%A0%81%E7%AC%94%E8%AE%B0%EF%BC%88miner,%20consensus%20%E6%A8%A1%E5%9D%97-%E6%8C%96%E7%9F%BF%E5%92%8C%E5%85%B1%E8%AF%86%E7%AE%97%E6%B3%95%EF%BC%89/" target="_blank" rel="external">go-ethereum 源码笔记（miner,consensus 模块-挖矿和共识算法)</a></li>
 <li><a href="https://knarfeh.com/2018/03/10/go-ethereum%20%E6%BA%90%E7%A0%81%E7%AC%94%E8%AE%B0%EF%BC%88ethdb%20%E6%A8%A1%E5%9D%97%EF%BC%89/" target="_blank" rel="external">go-ethereum 源码笔记（ethdb 模块）</a></li>
 <li><a href="https://knarfeh.com/2018/03/10/go-ethereum%20%E6%BA%90%E7%A0%81%E7%AC%94%E8%AE%B0%EF%BC%88core%20%E6%A8%A1%E5%9D%97-%E4%B8%96%E7%95%8C%E7%8A%B6%E6%80%81%EF%BC%8C%E4%BA%A4%E6%98%93%E6%94%B6%E6%8D%AE%E7%AE%A1%E7%90%86%EF%BC%89/" target="_blank" rel="external">go-ethereum 源码笔记（core 模块-世界状态，交易收据管理）</a></li>
+<li><a href="https://knarfeh.com/2018/03/10/go-ethereum%20%E6%BA%90%E7%A0%81%E7%AC%94%E8%AE%B0%EF%BC%88core%20%E6%A8%A1%E5%9D%97-EVM-%E8%99%9A%E6%8B%9F%E6%9C%BA%E7%9A%84%E5%AE%9E%E7%8E%B0%EF%BC%89/" target="_blank" rel="external">go-ethereum 源码笔记（core 模块-EVM-虚拟机的实现）</a></li>
+<li><a href="https://knarfeh.com/2018/03/10/go-ethereum%20%E6%BA%90%E7%A0%81%E7%AC%94%E8%AE%B0%EF%BC%88core,%20eth%20%E6%A8%A1%E5%9D%97-%E9%93%BE%E7%9A%84%E7%B4%A2%E5%BC%95%EF%BC%8C%E6%90%9C%E7%B4%A2%EF%BC%89/" target="_blank" rel="external">go-ethereum 源码笔记（core, eth 模块-链的索引，搜索）</a></li>
 </ul>
 <h2 id="涉及到的计算机专业知识"><a href="#涉及到的计算机专业知识" class="headerlink" title="涉及到的计算机专业知识"></a>涉及到的计算机专业知识</h2><ul>
 <li>网络知识，p2p 网络（Kad 算法） ，rpc 等等</li>
@@ -580,7 +582,7 @@
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">133</span>
+                <span class="site-state-item-count">134</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
