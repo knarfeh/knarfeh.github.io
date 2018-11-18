@@ -41,7 +41,7 @@
 <link href="/css/main.css?v=0.5.0" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="algorithms,leetcode,golang,Array,Hash-Table,cpp,python," />
+  <meta name="keywords" content="algorithms,golang,leetcode,Array,Hash-Table,cpp,python," />
 
 
 
@@ -58,14 +58,14 @@
 
 
 <meta name="description" content="描述 Given an array of integers, return indices of the two numbers such that they add up to a specific target. You may assume that each input would have exactly one solution. Example: 1234Given nums = [">
-<meta name="keywords" content="algorithms,leetcode,golang,Array,Hash-Table,cpp,python">
+<meta name="keywords" content="algorithms,golang,leetcode,Array,Hash-Table,cpp,python">
 <meta property="og:type" content="article">
 <meta property="og:title" content="leetcode-1-Two-Sum">
 <meta property="og:url" content="http://knarfeh.github.io/2014/03/11/leetcode/Algorithms/leetcode-1-Two-Sum/index.html">
 <meta property="og:site_name" content="knarfeh&#39;s logbook">
 <meta property="og:description" content="描述 Given an array of integers, return indices of the two numbers such that they add up to a specific target. You may assume that each input would have exactly one solution. Example: 1234Given nums = [">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2017-06-13T13:10:17.000Z">
+<meta property="og:updated_time" content="2018-11-11T15:42:37.992Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="leetcode-1-Two-Sum">
 <meta name="twitter:description" content="描述 Given an array of integers, return indices of the two numbers such that they add up to a specific target. You may assume that each input would have exactly one solution. Example: 1234Given nums = [">
@@ -281,10 +281,12 @@
 <figure class="highlight cpp"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">class</span> Solution &#123;</div><div class="line"><span class="keyword">public</span>:</div><div class="line">    <span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; twoSum(<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&amp; nums, <span class="keyword">int</span> target) &#123;</div><div class="line">        <span class="built_in">unordered_map</span>&lt;<span class="keyword">int</span>, <span class="keyword">int</span>&gt; value_index_map;</div><div class="line">        <span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; result;</div><div class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; nums.size(); i++) &#123;</div><div class="line">            value_index_map[nums[i]] = i;</div><div class="line">        &#125;</div><div class="line">        </div><div class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; nums.size(); i++) &#123;</div><div class="line">            <span class="keyword">int</span> now_pair = target - nums[i];</div><div class="line">            <span class="keyword">if</span>(value_index_map.find(now_pair) != value_index_map.end() &amp;&amp; value_index_map[now_pair] &gt; i) &#123;</div><div class="line">                result.push_back(i);</div><div class="line">                result.push_back(value_index_map[now_pair]);</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">return</span> result;</div><div class="line">    &#125;</div><div class="line">&#125;;</div></pre></td></tr></table></figure>
 <h3 id="解决方案2-Python"><a href="#解决方案2-Python" class="headerlink" title="解决方案2(Python)"></a>解决方案2(Python)</h3><hr>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span><span class="params">(object)</span>:</span></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">twoSum</span><span class="params">(self, nums, target)</span>:</span></div><div class="line">        <span class="string">"""</span></div><div class="line">        :type nums: List[int]</div><div class="line">        :type target: int</div><div class="line">        :rtype: List[int]</div><div class="line">        """</div><div class="line">        value_index_map = &#123;&#125;</div><div class="line">        <span class="keyword">for</span> index, value <span class="keyword">in</span> enumerate(nums):</div><div class="line">            value_index_map[value] = index</div><div class="line">            </div><div class="line">        <span class="keyword">for</span> index, value <span class="keyword">in</span> enumerate(nums):</div><div class="line">            <span class="keyword">if</span> target-value <span class="keyword">in</span> value_index_map:</div><div class="line">                index2 = value_index_map[target-value]</div><div class="line">                <span class="keyword">if</span> index != index2:</div><div class="line">                    <span class="keyword">return</span> index, index2</div></pre></td></tr></table></figure>
-<h3 id="解决方案3-golang"><a href="#解决方案3-golang" class="headerlink" title="解决方案3(golang)"></a>解决方案3(golang)</h3><hr>
+<h3 id="解决方案3-Golang"><a href="#解决方案3-Golang" class="headerlink" title="解决方案3(Golang)"></a>解决方案3(Golang)</h3><hr>
 <figure class="highlight go"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">func</span> <span class="title">twoSum</span><span class="params">(nums []<span class="keyword">int</span>, target <span class="keyword">int</span>)</span> []<span class="title">int</span></span> &#123;</div><div class="line">    mapping := <span class="built_in">make</span>(<span class="keyword">map</span>[<span class="keyword">int</span>]<span class="keyword">int</span>)</div><div class="line">    <span class="keyword">for</span> index_i, value := <span class="keyword">range</span> nums &#123;</div><div class="line">        <span class="keyword">if</span> index_j, got_it := mapping[value]; got_it &#123;</div><div class="line">            <span class="keyword">return</span> []<span class="keyword">int</span>&#123;index_i, index_j&#125;</div><div class="line">        &#125;</div><div class="line">        mapping[target-nums[index_i]] = index_i</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">return</span> <span class="literal">nil</span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<h3 id="解决方案4-ruby-2017-05-27"><a href="#解决方案4-ruby-2017-05-27" class="headerlink" title="解决方案4(ruby) 2017-05-27"></a>解决方案4(ruby) 2017-05-27</h3><hr>
+<h3 id="解决方案4-Ruby-2017-05-27"><a href="#解决方案4-Ruby-2017-05-27" class="headerlink" title="解决方案4(Ruby) 2017-05-27"></a>解决方案4(Ruby) 2017-05-27</h3><hr>
 <figure class="highlight ruby"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># <span class="doctag">@param</span> &#123;Integer[]&#125; nums</span></div><div class="line"><span class="comment"># <span class="doctag">@param</span> &#123;Integer&#125; target</span></div><div class="line"><span class="comment"># <span class="doctag">@return</span> &#123;Integer[]&#125;</span></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">two_sum</span><span class="params">(nums, target)</span></span></div><div class="line">    map = &#123;&#125;</div><div class="line">    </div><div class="line">    nums.each_with_index <span class="keyword">do</span> <span class="params">|num, idx|</span></div><div class="line">        i = map[num]</div><div class="line">        <span class="keyword">return</span> [i, idx] <span class="keyword">if</span> i</div><div class="line">        map[target-num] = idx</div><div class="line">    <span class="keyword">end</span></div><div class="line"><span class="keyword">end</span></div></pre></td></tr></table></figure>
+<h3 id="解决方案5-Javascript-2018-11-11"><a href="#解决方案5-Javascript-2018-11-11" class="headerlink" title="解决方案5(Javascript) 2018-11-11"></a>解决方案5(Javascript) 2018-11-11</h3><hr>
+<figure class="highlight golo"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line">/**</div><div class="line"> * <span class="meta">@param</span> &#123;number[]&#125; nums</div><div class="line"> * <span class="meta">@param</span> &#123;number&#125; target</div><div class="line"> * <span class="meta">@return</span> &#123;number[]&#125;</div><div class="line"> */</div><div class="line"><span class="keyword">var</span> twoSum = <span class="keyword">function</span>(nums, target) &#123;</div><div class="line">    <span class="keyword">var</span> result = [];</div><div class="line">    <span class="keyword">var</span> <span class="keyword">map</span> = &#123;&#125;;</div><div class="line">    <span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="number">0</span>; i &lt; nums.length; i++) &#123;</div><div class="line">        <span class="keyword">if</span> (typeof(<span class="keyword">map</span>[target-nums[i]]) !== 'undefined') &#123;</div><div class="line">            result.push(<span class="keyword">map</span>[target-nums[i]]);</div><div class="line">            result.push(i);</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">map</span>[nums[i]] = i;</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">return</span> result;</div><div class="line">&#125;;</div></pre></td></tr></table></figure>
 <h3 id="相关问题"><a href="#相关问题" class="headerlink" title="相关问题"></a>相关问题</h3><hr>
 <p><a href="https://leetcode.com/problems/4sum/" target="_blank" rel="external">(M) 4Sum</a><br><a href="https://leetcode.com/problems/two-sum-ii-input-array-is-sorted/" target="_blank" rel="external">(M) Two Sum II - Input array is sorted</a><br><a href="https://leetcode.com/problems/3sum/" target="_blank" rel="external">(M) 3Sum</a><br><a href="https://leetcode.com/problems/two-sum-iii-data-structure-design/" target="_blank" rel="external">(E) Two Sum III - Data structure design</a>   </p>
 <h3 id="题目来源"><a href="#题目来源" class="headerlink" title="题目来源"></a><a href="https://leetcode.com/problems/two-sum/" target="_blank" rel="external">题目来源</a></h3>
@@ -303,9 +305,9 @@
           
             <a href="/tags/algorithms/" rel="tag">#algorithms</a>
           
-            <a href="/tags/leetcode/" rel="tag">#leetcode</a>
-          
             <a href="/tags/golang/" rel="tag">#golang</a>
+          
+            <a href="/tags/leetcode/" rel="tag">#leetcode</a>
           
             <a href="/tags/Array/" rel="tag">#Array</a>
           
@@ -322,16 +324,16 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2014/03/11/leetcode/Algorithms/leetcode-102-Binary-Tree-Level-Order-Traversal/" rel="next" title="leetcode-102-Binary-Tree-Level-Order-Traversal">
-                <i class="fa fa-chevron-left"></i> leetcode-102-Binary-Tree-Level-Order-Traversal
+              <a href="/2014/03/11/leetcode/Algorithms/leetcode-101-Symmetric-Tree/" rel="next" title="leetcode-101-Symmetric-Tree">
+                <i class="fa fa-chevron-left"></i> leetcode-101-Symmetric-Tree
               </a>
             
           </div>
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2014/03/11/leetcode/Algorithms/leetcode-100-Same-Tree/" rel="prev" title="leetcode-100-Same-Tree">
-                leetcode-100-Same-Tree <i class="fa fa-chevron-right"></i>
+              <a href="/2014/03/11/leetcode/Shell/leetcode-195-Tenth-Line/" rel="prev" title="leetcode-195-Tenth-Line">
+                leetcode-195-Tenth-Line <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -407,7 +409,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">186</span>
+              <span class="site-state-item-count">362</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -482,7 +484,7 @@
               
             
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#描述"><span class="nav-number">1.</span> <span class="nav-text">描述</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#分析"><span class="nav-number">2.</span> <span class="nav-text">分析</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#解决方案1-C"><span class="nav-number">3.</span> <span class="nav-text">解决方案1(C++)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#解决方案2-Python"><span class="nav-number">4.</span> <span class="nav-text">解决方案2(Python)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#解决方案3-golang"><span class="nav-number">5.</span> <span class="nav-text">解决方案3(golang)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#解决方案4-ruby-2017-05-27"><span class="nav-number">6.</span> <span class="nav-text">解决方案4(ruby) 2017-05-27</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#相关问题"><span class="nav-number">7.</span> <span class="nav-text">相关问题</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#题目来源"><span class="nav-number">8.</span> <span class="nav-text">题目来源</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#描述"><span class="nav-number">1.</span> <span class="nav-text">描述</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#分析"><span class="nav-number">2.</span> <span class="nav-text">分析</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#解决方案1-C"><span class="nav-number">3.</span> <span class="nav-text">解决方案1(C++)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#解决方案2-Python"><span class="nav-number">4.</span> <span class="nav-text">解决方案2(Python)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#解决方案3-Golang"><span class="nav-number">5.</span> <span class="nav-text">解决方案3(Golang)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#解决方案4-Ruby-2017-05-27"><span class="nav-number">6.</span> <span class="nav-text">解决方案4(Ruby) 2017-05-27</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#解决方案5-Javascript-2018-11-11"><span class="nav-number">7.</span> <span class="nav-text">解决方案5(Javascript) 2018-11-11</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#相关问题"><span class="nav-number">8.</span> <span class="nav-text">相关问题</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#题目来源"><span class="nav-number">9.</span> <span class="nav-text">题目来源</span></a></li></ol></div>
             
           </div>
           <div class="post-toc-indicator-bottom post-toc-indicator">

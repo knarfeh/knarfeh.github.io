@@ -65,7 +65,7 @@
 <meta property="og:site_name" content="knarfeh&#39;s logbook">
 <meta property="og:description" content="描述 Reverse digits of an integer. Example1: x = 123, return 321Example2: x = -123, return -321">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2016-10-28T15:40:40.000Z">
+<meta property="og:updated_time" content="2018-11-13T03:31:48.991Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="leetcode-7-Reverse-Integer">
 <meta name="twitter:description" content="描述 Reverse digits of an integer. Example1: x = 123, return 321Example2: x = -123, return -321">
@@ -277,7 +277,9 @@
 <h3 id="解决方案1-C"><a href="#解决方案1-C" class="headerlink" title="解决方案1(C++)"></a>解决方案1(C++)</h3><hr>
 <figure class="highlight axapta"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</div><div class="line"><span class="keyword">public</span>:</div><div class="line">    <span class="keyword">int</span> <span class="keyword">reverse</span>(<span class="keyword">int</span> x) &#123;</div><div class="line">        <span class="keyword">long</span> <span class="keyword">long</span> result = <span class="number">0</span>;</div><div class="line">        </div><div class="line">        <span class="keyword">while</span>(x != <span class="number">0</span>) &#123;</div><div class="line">            <span class="keyword">int</span> now = x % <span class="number">10</span>;</div><div class="line">            result = result * <span class="number">10</span> + now;</div><div class="line">            <span class="keyword">if</span>(result &gt; INT_MAX || result &lt; INT_MIN) &#123;</div><div class="line">                <span class="keyword">return</span> <span class="number">0</span>;</div><div class="line">            &#125;</div><div class="line">            x = x / <span class="number">10</span>;</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">return</span> result;</div><div class="line">    &#125;</div><div class="line">&#125;;</div></pre></td></tr></table></figure>
 <h3 id="相关问题"><a href="#相关问题" class="headerlink" title="相关问题"></a>相关问题</h3><hr>
-<p><a href="https://leetcode.com/problems/string-to-integer-atoi/" target="_blank" rel="external">(E) String to Integer (atoi)</a>   </p>
+<ul>
+<li><a href="https://leetcode.com/problems/string-to-integer-atoi/" target="_blank" rel="external">(E) String to Integer (atoi)</a>   </li>
+</ul>
 <h3 id="题目来源"><a href="#题目来源" class="headerlink" title="题目来源"></a><a href="https://leetcode.com/problems/reverse-integer/" target="_blank" rel="external">题目来源</a></h3>
       
     </div>
@@ -305,16 +307,16 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2014/03/11/leetcode/Algorithms/leetcode-70-Climbing-Stairs/" rel="next" title="leetcode-70-Climbing-Stairs">
-                <i class="fa fa-chevron-left"></i> leetcode-70-Climbing-Stairs
+              <a href="/2014/03/11/leetcode/Algorithms/leetcode-58-Length-of-Last-Word/" rel="next" title="leetcode-58-Length-of-Last-Word">
+                <i class="fa fa-chevron-left"></i> leetcode-58-Length-of-Last-Word
               </a>
             
           </div>
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2014/03/11/leetcode/Algorithms/leetcode-69-Sqrt(x)/" rel="prev" title="leetcode-69-Sqrt(x)">
-                leetcode-69-Sqrt(x) <i class="fa fa-chevron-right"></i>
+              <a href="/2014/03/11/leetcode/Algorithms/leetcode-67-Add-Binary/" rel="prev" title="leetcode-67-Add-Binary">
+                leetcode-67-Add-Binary <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -390,7 +392,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">186</span>
+              <span class="site-state-item-count">362</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>

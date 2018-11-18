@@ -1,0 +1,897 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  <link href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css"/>
+
+
+
+
+  <link href="//fonts.googleapis.com/css?family=Lato:300,400,700,400italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+
+
+
+<link href="/vendors/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=0.5.0" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="k8s,Golang," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=0.5.0" />
+
+
+
+
+
+
+<meta name="description" content="kube-proxy 运行在 Kubernetes 集群的计算节点上，负责 Service 的负载均衡及服务代理。">
+<meta name="keywords" content="k8s,Golang">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Kubernetes 源码笔记（kube-proxy）">
+<meta property="og:url" content="http://knarfeh.github.io/2018/07/28/Kubernetes 源码笔记（kube-proxy）/index.html">
+<meta property="og:site_name" content="knarfeh&#39;s logbook">
+<meta property="og:description" content="kube-proxy 运行在 Kubernetes 集群的计算节点上，负责 Service 的负载均衡及服务代理。">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="https://knarfeh-1254074221.cos.na-siliconvalley.myqcloud.com/kube-proxy-userspace-mode.png">
+<meta property="og:image" content="https://knarfeh-1254074221.cos.na-siliconvalley.myqcloud.com/kube-proxy-iptables-mode.png">
+<meta property="og:image" content="https://knarfeh-1254074221.cos.na-siliconvalley.myqcloud.com/ipvs_vs_iptables.png">
+<meta property="og:image" content="https://knarfeh-1254074221.cos.na-siliconvalley.myqcloud.com/lvs-nat.jpg">
+<meta property="og:image" content="https://knarfeh-1254074221.cos.na-siliconvalley.myqcloud.com/lvs-tun.jpg">
+<meta property="og:image" content="https://knarfeh-1254074221.cos.na-siliconvalley.myqcloud.com/lvs-dr.jpg">
+<meta property="og:updated_time" content="2018-11-18T14:54:20.042Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Kubernetes 源码笔记（kube-proxy）">
+<meta name="twitter:description" content="kube-proxy 运行在 Kubernetes 集群的计算节点上，负责 Service 的负载均衡及服务代理。">
+<meta name="twitter:image" content="https://knarfeh-1254074221.cos.na-siliconvalley.myqcloud.com/kube-proxy-userspace-mode.png">
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    scheme: 'Muse',
+    sidebar: {"display":"hide"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: 0,
+      author: '博主'
+    }
+  };
+</script>
+
+  <title> Kubernetes 源码笔记（kube-proxy） | knarfeh's logbook </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+            (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+          m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-75002639-1', 'auto');
+  ga('send', 'pageview');
+</script>
+
+
+
+
+
+
+
+
+
+  
+  
+
+  <div class="container one-collumn  page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">knarfeh's logbook</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle"></p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-home fa-fw"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-archive fa-fw"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-tags fa-fw"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-twitter">
+          <a href="/twitter" rel="section">
+            
+              <i class="menu-item-icon fa fa-coffee fa-fw"></i> <br />
+            
+            Twitter
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                Kubernetes 源码笔记（kube-proxy）
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2018-07-28T00:15:06+08:00" content="2018-07-28">
+              2018-07-28
+            </time>
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2018/07/28/Kubernetes 源码笔记（kube-proxy）/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2018/07/28/Kubernetes 源码笔记（kube-proxy）/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>kube-proxy 运行在 Kubernetes 集群的计算节点上，负责 Service 的负载均衡及服务代理。</p>
+<a id="more"></a>
+<h2 id="原理"><a href="#原理" class="headerlink" title="原理"></a>原理</h2><p>kube-proxy 工作的核心的流程是从 kube-apiserver 同步 service 和 endpoint 的信息，然后将其更新到 iptables。从 1.11 版本开始，基于 IPVS 的负载均衡已经 GA 了，可以预见的是未来 k8s 会主推 IPVS 模式。</p>
+<p>kube-proxy 目前有3种常见的 proxyMode，分别是 userspace，iptables，ipvs，还有一种是 Windows 平台的 kernelspace。其中 userspace mode 是 v1.0 及以前版本的默认模式。从 v1.1 版本开始，增加了 iptables mode，在 v1.3版本中正式替代了 userspace 模式成为默认模式（需要 iptables 的版本&gt;= 1.4.11）。在实践中，社区发现 iptables 的扩展性和性能都不佳，毕竟 iptables 是为防火墙设计的，它的特性并不适合当做大规模服务的负载均衡，华为贡献了基于 IPVS 实现 kube-proxy 的特性。IPVS 是 LVS 的负载均衡模块，同样基于 netfilter，但比 iptables 性能更好，具备更好的可扩展性，鉴于 IPVS 是 kube-proxy 的未来趋势，在阅读 kube-proxy 源码的时候可以着重看这部分。</p>
+<p>下面我们分别来看 kube-proxy 的三种模式的实现。对于 userspace，iptables 这两种模式，本文只做简述，对于 ipvs 模式，会结合其设计文档，代码进行分析。</p>
+<h3 id="userspace-mode"><a href="#userspace-mode" class="headerlink" title="userspace mode"></a>userspace mode</h3><p>基于用户态的 proxy，service 的请求会先从用户空间进入内核 iptables，然后再回到用户空间，由 kube-proxy 完成后端 endpoints 的选择和代理工作，这种方式流量从用户空间进出内核带来的性能损耗比较大。原理如下图：</p>
+<p><img src="https://knarfeh-1254074221.cos.na-siliconvalley.myqcloud.com/kube-proxy-userspace-mode.png" alt="kube-proxy-userspace-mode"></p>
+<h4 id="实例（该例摘自-kubernetes入门之kube-proxy实现原理）："><a href="#实例（该例摘自-kubernetes入门之kube-proxy实现原理）：" class="headerlink" title="实例（该例摘自 kubernetes入门之kube-proxy实现原理）："></a>实例（该例摘自 <a href="https://xuxinkun.github.io/2016/07/22/kubernetes-proxy/" target="_blank" rel="external">kubernetes入门之kube-proxy实现原理</a>）：</h4><p>现在有一个 service</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">$ kubectl get service</div><div class="line">NAME             LABELS                                    SELECTOR              IP(S)            PORT(S)</div><div class="line">kubernetes       component=apiserver,provider=kubernetes   &lt;none&gt;                10.254.0.1       443/TCP</div><div class="line">ssh-service1     name=ssh,role=service                     ssh-service=true      10.254.132.107   2222/TCP</div></pre></td></tr></table></figure>
+<p>这个 service 的 cluster ip 是 10.254.132.107。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">$ kubectl describe service ssh-service1 </div><div class="line">Name:           ssh-service1</div><div class="line">Namespace:      default</div><div class="line">Labels:         name=ssh,role=service</div><div class="line">Selector:       ssh-service=true</div><div class="line">Type:           LoadBalancer</div><div class="line">IP:         10.254.132.107</div><div class="line">Port:           &lt;unnamed&gt;   2222/TCP</div><div class="line">NodePort:       &lt;unnamed&gt;   30239/TCP</div><div class="line">Endpoints:      &lt;none&gt;</div><div class="line">Session Affinity:   None</div><div class="line">No events.</div></pre></td></tr></table></figure>
+<p>这时候 iptables 的规则是这样的：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">$ sudo iptables -S -t nat</div><div class="line">...</div><div class="line">-A KUBE-NODEPORT-CONTAINER -p tcp -m comment --comment &quot;default/ssh-service1:&quot; -m tcp --dport 30239 -j REDIRECT --to-ports 36463</div><div class="line">-A KUBE-NODEPORT-HOST -p tcp -m comment --comment &quot;default/ssh-service1:&quot; -m tcp --dport 30239 -j DNAT --to-destination 10.0.0.5:36463</div><div class="line">-A KUBE-PORTALS-CONTAINER -d 10.254.132.107/32 -p tcp -m comment --comment &quot;default/ssh-service1:&quot; -m tcp --dport 2222 -j REDIRECT --to-ports 36463</div><div class="line">-A KUBE-PORTALS-HOST -d 10.254.132.107/32 -p tcp -m comment --comment &quot;default/ssh-service1:&quot; -m tcp --dport 2222 -j DNAT --to-destination 10.0.0.5:36463</div></pre></td></tr></table></figure>
+<p>这个 node 的 ip 是 10.0.0.5，那么访问 10.0.0.5:30239 就会被转发到本机的 36463 端口，在访问 10.254.132.107:2222 时，也会转发到 36463 端口，36463 端口是由 kube-proxy 监听的，流量接着会被导到后端的 pod 上。</p>
+<h3 id="iptables-mode"><a href="#iptables-mode" class="headerlink" title="iptables mode"></a>iptables mode</h3><p>iptables 的方式是完全通过内核的 iptables 实现 service 的代理和 LB，这是 v1.2 及以后版本的默认模式，原理如下图：</p>
+<p><img src="https://knarfeh-1254074221.cos.na-siliconvalley.myqcloud.com/kube-proxy-iptables-mode.png" alt="kube-proxy-iptables-mode"></p>
+<p>这种方式通过 iptable NAT 完成转发，也有一定的性能损耗；此外，iptables 没有增量更新的功能，如果更新一条规则需要整体刷新，时间长，而且对服务的稳定性也有影响；iptable 是串行的，一个 node 上如果有很多的 iptables 规则，流量需要经过所有的匹配再进行转发，在服务规模比较大的情况下对时间、CPU、内存都有比较大的消耗。这导致的一个结果是，大型企业将 k8s 用于生产时，不会直接 kube-proxy 作为服务代理，而是使用 NodePort 或使用 externalIP（比如这篇<a href="https://jishu.io/kubernetes/ipvs-loadbalancer-for-kubernetes/" target="_blank" rel="external">文章中的例子</a>），或自己开发，配置负载均衡代替 kube-proxy。</p>
+<h4 id="示例（该例摘自-kubernetes入门之kube-proxy实现原理）"><a href="#示例（该例摘自-kubernetes入门之kube-proxy实现原理）" class="headerlink" title="示例（该例摘自 kubernetes入门之kube-proxy实现原理）"></a>示例（该例摘自 <a href="https://xuxinkun.github.io/2016/07/22/kubernetes-proxy/" target="_blank" rel="external">kubernetes入门之kube-proxy实现原理</a>）</h4><p>创建 mysql-service 的 service：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line">apiVersion: v1</div><div class="line">kind: Service</div><div class="line">metadata:</div><div class="line">  labels:</div><div class="line">    name: mysql</div><div class="line">    role: service</div><div class="line">  name: mysql-service</div><div class="line">spec:</div><div class="line">  ports:</div><div class="line">    - port: 3306</div><div class="line">      targetPort: 3306</div><div class="line">      nodePort: 30964</div><div class="line">  type: NodePort</div><div class="line">  selector:</div><div class="line">    mysql-service: &quot;true&quot;</div></pre></td></tr></table></figure>
+<p>这个服务的 cluster ip 是 10.254.162.44，代理的两个 pod 的 ip 是 192.168.125.129 和192.168.125.131，再看  iptables</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line">$ iptables -S -t nat</div><div class="line">...</div><div class="line">-A PREROUTING -m comment --comment &quot;kubernetes service portals&quot; -j KUBE-SERVICES</div><div class="line">-A OUTPUT -m comment --comment &quot;kubernetes service portals&quot; -j KUBE-SERVICES</div><div class="line">-A POSTROUTING -m comment --comment &quot;kubernetes postrouting rules&quot; -j KUBE-POSTROUTING</div><div class="line">-A KUBE-MARK-MASQ -j MARK --set-xmark 0x4000/0x4000</div><div class="line">-A KUBE-NODEPORTS -p tcp -m comment --comment &quot;default/mysql-service:&quot; -m tcp --dport 30964 -j KUBE-MARK-MASQ</div><div class="line">-A KUBE-NODEPORTS -p tcp -m comment --comment &quot;default/mysql-service:&quot; -m tcp --dport 30964 -j KUBE-SVC-67RL4FN6JRUPOJYM</div><div class="line">-A KUBE-SEP-ID6YWIT3F6WNZ47P -s 192.168.125.129/32 -m comment --comment &quot;default/mysql-service:&quot; -j KUBE-MARK-MASQ</div><div class="line">-A KUBE-SEP-ID6YWIT3F6WNZ47P -p tcp -m comment --comment &quot;default/mysql-service:&quot; -m tcp -j DNAT --to-destination 192.168.125.129:3306</div><div class="line">-A KUBE-SEP-IN2YML2VIFH5RO2T -s 192.168.125.131/32 -m comment --comment &quot;default/mysql-service:&quot; -j KUBE-MARK-MASQ</div><div class="line">-A KUBE-SEP-IN2YML2VIFH5RO2T -p tcp -m comment --comment &quot;default/mysql-service:&quot; -m tcp -j DNAT --to-destination 192.168.125.131:3306</div><div class="line">-A KUBE-SERVICES -d 10.254.162.44/32 -p tcp -m comment --comment &quot;default/mysql-service: cluster IP&quot; -m tcp --dport 3306 -j KUBE-SVC-67RL4FN6JRUPOJYM</div><div class="line">-A KUBE-SERVICES -m comment --comment &quot;kubernetes service nodeports; NOTE: this must be the last rule in this chain&quot; -m addrtype --dst-type LOCAL -j KUBE-NODEPORTS</div><div class="line">-A KUBE-SVC-67RL4FN6JRUPOJYM -m comment --comment &quot;default/mysql-service:&quot; -m statistic --mode random --probability 0.50000000000 -j KUBE-SEP-ID6YWIT3F6WNZ47P</div><div class="line">-A KUBE-SVC-67RL4FN6JRUPOJYM -m comment --comment &quot;default/mysql-service:&quot; -j KUBE-SEP-IN2YML2VIFH5RO2T</div></pre></td></tr></table></figure>
+<p>如果通过 node 的 30964 端口访问，匹配的是下面两条链：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">-A KUBE-NODEPORTS -p tcp -m comment --comment &quot;default/mysql-service:&quot; -m tcp --dport 30964 -j KUBE-MARK-MASQ</div><div class="line">-A KUBE-NODEPORTS -p tcp -m comment --comment &quot;default/mysql-service:&quot; -m tcp --dport 30964 -j KUBE-SVC-67RL4FN6JRUPOJYM</div></pre></td></tr></table></figure>
+<p>如果直接访问 cluster ip (10.254.162.44)，匹配的是下面的规则：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">-A KUBE-SERVICES -d 10.254.162.44/32 -p tcp -m comment --comment &quot;default/mysql-service: cluster IP&quot; -m tcp --dport 3306 -j KUBE-SVC-67RL4FN6JRUPOJYM</div></pre></td></tr></table></figure>
+<p>上述的两种匹配都会跳转到 KUBE-SVC-67RL4FN6JRUPOJYM 的链。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">-A KUBE-SVC-67RL4FN6JRUPOJYM -m comment --comment &quot;default/mysql-service:&quot; -m statistic --mode random --probability 0.50000000000 -j KUBE-SEP-ID6YWIT3F6WNZ47P</div><div class="line">-A KUBE-SVC-67RL4FN6JRUPOJYM -m comment --comment &quot;default/mysql-service:&quot; -j KUBE-SEP-IN2YML2VIFH5RO2T</div></pre></td></tr></table></figure>
+<p>50% 的概率匹配 KUBE-SEP-ID6YWIT3F6WNZ47P，50% 的概率匹配 KUBE-SEP-IN2YML2VIFH5RO2T。</p>
+<p>KUBE-SEP-ID6YWIT3F6WNZ47P 的作用是通过 DNAT 发送到192.168.125.129的3306端口，KUBE-SEP-IN2YML2VIFH5RO2T 同理，发送的是192.168.125.131的3306端口。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">-A KUBE-SEP-ID6YWIT3F6WNZ47P -s 192.168.125.129/32 -m comment --comment &quot;default/mysql-service:&quot; -j KUBE-MARK-MASQ</div><div class="line">-A KUBE-SEP-ID6YWIT3F6WNZ47P -p tcp -m comment --comment &quot;default/mysql-service:&quot; -m tcp -j DNAT --to-destination 192.168.125.129:3306</div><div class="line">-A KUBE-SEP-IN2YML2VIFH5RO2T -s 192.168.125.131/32 -m comment --comment &quot;default/mysql-service:&quot; -j KUBE-MARK-MASQ</div><div class="line">-A KUBE-SEP-IN2YML2VIFH5RO2T -p tcp -m comment --comment &quot;default/mysql-service:&quot; -m tcp -j DNAT --to-destination 192.168.125.131:3306</div></pre></td></tr></table></figure>
+<h3 id="IPVS"><a href="#IPVS" class="headerlink" title="IPVS"></a>IPVS</h3><p>如果是使用 Kubernetes 1.8 或更高版本，可以使用 ipvs 模式，它是对 iptables 的替换。ipvs 模式下增加规则是增量式的，不会强制全量刷新，匹配服务时也不会进行串行匹配，而是通过一定规则进行哈希匹配，以找到相应的规则。</p>
+<p>相比于 iptables，它具备更高的性能和稳定性。下图是华为云提供的压测数据：</p>
+<p><img src="https://knarfeh-1254074221.cos.na-siliconvalley.myqcloud.com/ipvs_vs_iptables.png" alt="ipvs_vs_iptables"></p>
+<p>IPVS 是 LVS 的一个核心软件模块，所以我们先介绍 LVS。LVS 是 Linux VIrtual Server 的缩写，这是由<a href="https://baike.baidu.com/item/%E7%AB%A0%E6%96%87%E5%B5%A9" target="_blank" rel="external">章文嵩博士</a>发起的项目，目前已经合并到了 Linux 内核中。</p>
+<p>IPVS 是 LVS 的 IP 负载均衡模块，安装在 LVS 集群作为负载均衡的主节点。</p>
+<p>LVS 集群中有 Director 和 Real Server 两个角色，有三种类型的 IP 地址：</p>
+<ul>
+<li>Director Virtual IP，调度器用于与客户端通信的 IP 地址，简称为 VIP</li>
+<li>Director IP，调度器用于与 Real Server 通信的 IP 地址，简称为 DIP</li>
+<li>Real IP，后端主机与调度器通信的 IP 地址，简称为 RIP</li>
+</ul>
+<p>LVS 有三种调度模式：</p>
+<h4 id="LVS-NAT-Network-Address-Transform"><a href="#LVS-NAT-Network-Address-Transform" class="headerlink" title="LVS-NAT Network Address Transform"></a>LVS-NAT Network Address Transform</h4><p><img src="https://knarfeh-1254074221.cos.na-siliconvalley.myqcloud.com/lvs-nat.jpg" alt="lvs-nat"></p>
+<h4 id="LVS-TUN-IPTuneling"><a href="#LVS-TUN-IPTuneling" class="headerlink" title="LVS-TUN IPTuneling"></a>LVS-TUN IPTuneling</h4><p><img src="https://knarfeh-1254074221.cos.na-siliconvalley.myqcloud.com/lvs-tun.jpg" alt="lvs-tun"></p>
+<h4 id="LVS-DR-Direct-Routing"><a href="#LVS-DR-Direct-Routing" class="headerlink" title="LVS-DR Direct Routing"></a>LVS-DR Direct Routing</h4><p><img src="https://knarfeh-1254074221.cos.na-siliconvalley.myqcloud.com/lvs-dr.jpg" alt="lvs-dr"></p>
+<p>目前 kube-proxy 的实现选择的是 NAT 模式。</p>
+<p>LVS 有十种调度算法：</p>
+<h4 id="静态方法，根据算法本身进行轮询调度"><a href="#静态方法，根据算法本身进行轮询调度" class="headerlink" title="静态方法，根据算法本身进行轮询调度"></a>静态方法，根据算法本身进行轮询调度</h4><ul>
+<li>RR, Round Robin</li>
+<li>WRR，Wrighted RR</li>
+<li>SH，SourceIP Hash</li>
+<li>DH，Destination Hash</li>
+</ul>
+<h4 id="动态方法，根据算法以及-RS-的当前负载状态进行调度"><a href="#动态方法，根据算法以及-RS-的当前负载状态进行调度" class="headerlink" title="动态方法，根据算法以及 RS 的当前负载状态进行调度"></a>动态方法，根据算法以及 RS 的当前负载状态进行调度</h4><ul>
+<li>LC，least connections</li>
+<li>WLC，Weighted Least Connection</li>
+<li>SED，Shortest Expection Delay</li>
+<li>NQ，Never Queue</li>
+<li>LBLC，Locality-Based Least Connection</li>
+<li>LBLCR，Locality-Based Least Connections withReplication</li>
+</ul>
+<p>kube-proxy 可以通过 <code>--ipvs-scheduler</code> 参数选择调度算法，默认情况下是 Round Robin 算法。</p>
+<p>关于 LVS 的详细介绍，可以查阅 <a href="http://www.linuxvirtualserver.org/zh/lvs1.html" target="_blank" rel="external">Linux服务器集群系统（一）</a>。</p>
+<p>创建一个 service 后，k8s 会在每个节点上创建一个网卡，同时绑定在 Service IP（VIP）上，这是内核会认为 VIP 就是本机 IP，通过 socket 调用，创建 IPVS 的 virtual server 和 real server，分别对应 k8s 的 Service 和 Endpoints。socket 的调用由 docker 公司的 <a href="https://github.com/docker/libnetwork/blob/master/ipvs/ipvs.go" target="_blank" rel="external">libnetwork</a> 库完成。</p>
+<h2 id="代码解析"><a href="#代码解析" class="headerlink" title="代码解析"></a>代码解析</h2><p>了解了 kube-proxy 的原理，再阅读代码就很容易理解了。代码版本是 v1.12.2-beta.0。</p>
+<h3 id="Run"><a href="#Run" class="headerlink" title="Run()"></a>Run()</h3><p><code>Run</code> 方法在 <code>cmd/kube-proxy/proxy.go</code> 中。</p>
+<figure class="highlight golang"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">func</span> <span class="params">(o *Options)</span> <span class="title">Run</span><span class="params">()</span> <span class="title">error</span></span> &#123;</div><div class="line">	<span class="keyword">if</span> <span class="built_in">len</span>(o.WriteConfigTo) &gt; <span class="number">0</span> &#123;</div><div class="line">		<span class="keyword">return</span> o.writeConfigFile()</div><div class="line">	&#125;</div><div class="line"></div><div class="line">	proxyServer, err := NewProxyServer(o)</div><div class="line">	<span class="keyword">if</span> err != <span class="literal">nil</span> &#123;</div><div class="line">		<span class="keyword">return</span> err</div><div class="line">	&#125;</div><div class="line"></div><div class="line">	<span class="keyword">return</span> proxyServer.Run()</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>逻辑很简单。首先通过 <code>NewProxyServer</code> 构造一个 <code>ProxyServer</code>，然后调用它的 <code>Run</code> 方法来运行。</p>
+<h3 id="初始化-ProxyServer"><a href="#初始化-ProxyServer" class="headerlink" title="初始化 ProxyServer"></a>初始化 ProxyServer</h3><figure class="highlight golang"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div><div class="line">80</div><div class="line">81</div><div class="line">82</div><div class="line">83</div><div class="line">84</div><div class="line">85</div><div class="line">86</div><div class="line">87</div><div class="line">88</div><div class="line">89</div><div class="line">90</div><div class="line">91</div><div class="line">92</div><div class="line">93</div><div class="line">94</div><div class="line">95</div><div class="line">96</div><div class="line">97</div><div class="line">98</div><div class="line">99</div><div class="line">100</div><div class="line">101</div><div class="line">102</div><div class="line">103</div><div class="line">104</div><div class="line">105</div><div class="line">106</div><div class="line">107</div><div class="line">108</div><div class="line">109</div><div class="line">110</div><div class="line">111</div><div class="line">112</div><div class="line">113</div><div class="line">114</div><div class="line">115</div><div class="line">116</div><div class="line">117</div><div class="line">118</div><div class="line">119</div><div class="line">120</div><div class="line">121</div><div class="line">122</div><div class="line">123</div><div class="line">124</div><div class="line">125</div><div class="line">126</div><div class="line">127</div><div class="line">128</div><div class="line">129</div><div class="line">130</div><div class="line">131</div><div class="line">132</div><div class="line">133</div><div class="line">134</div><div class="line">135</div><div class="line">136</div><div class="line">137</div><div class="line">138</div><div class="line">139</div><div class="line">140</div><div class="line">141</div><div class="line">142</div><div class="line">143</div><div class="line">144</div><div class="line">145</div><div class="line">146</div><div class="line">147</div><div class="line">148</div><div class="line">149</div><div class="line">150</div><div class="line">151</div><div class="line">152</div><div class="line">153</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">func</span> <span class="title">newProxyServer</span><span class="params">(</span></span></div><div class="line">	config *proxyconfigapi.KubeProxyConfiguration,</div><div class="line">	cleanupAndExit <span class="keyword">bool</span>,</div><div class="line">	cleanupIPVS <span class="keyword">bool</span>,</div><div class="line">	scheme *runtime.Scheme,</div><div class="line">	master <span class="keyword">string</span>) <span class="params">(*ProxyServer, error)</span> &#123;</div><div class="line"></div><div class="line">	<span class="keyword">if</span> config == <span class="literal">nil</span> &#123;</div><div class="line">		<span class="keyword">return</span> <span class="literal">nil</span>, errors.New(<span class="string">"config is required"</span>)</div><div class="line">	&#125;</div><div class="line"></div><div class="line">	<span class="keyword">if</span> c, err := configz.New(proxyconfigapi.GroupName); err == <span class="literal">nil</span> &#123;</div><div class="line">		c.Set(config)</div><div class="line">	&#125; <span class="keyword">else</span> &#123;</div><div class="line">		<span class="keyword">return</span> <span class="literal">nil</span>, fmt.Errorf(<span class="string">"unable to register configz: %s"</span>, err)</div><div class="line">	&#125;</div><div class="line"></div><div class="line">	protocol := utiliptables.ProtocolIpv4</div><div class="line">	<span class="keyword">if</span> net.ParseIP(config.BindAddress).To4() == <span class="literal">nil</span> &#123;</div><div class="line">		glog.V(<span class="number">0</span>).Infof(<span class="string">"IPv6 bind address (%s), assume IPv6 operation"</span>, config.BindAddress)</div><div class="line">		protocol = utiliptables.ProtocolIpv6</div><div class="line">	&#125;</div><div class="line"></div><div class="line">	<span class="keyword">var</span> iptInterface utiliptables.Interface</div><div class="line">	<span class="keyword">var</span> ipvsInterface utilipvs.Interface</div><div class="line">	<span class="keyword">var</span> kernelHandler ipvs.KernelHandler</div><div class="line">	<span class="keyword">var</span> ipsetInterface utilipset.Interface</div><div class="line">	<span class="keyword">var</span> dbus utildbus.Interface</div><div class="line"></div><div class="line">	<span class="comment">// Create a iptables utils.</span></div><div class="line">	execer := exec.New()</div><div class="line"></div><div class="line">	dbus = utildbus.New()</div><div class="line">	iptInterface = utiliptables.New(execer, dbus, protocol)</div><div class="line">	kernelHandler = ipvs.NewLinuxKernelHandler()</div><div class="line">	ipsetInterface = utilipset.New(execer)</div><div class="line">	canUseIPVS, _ := ipvs.CanUseIPVSProxier(kernelHandler, ipsetInterface)</div><div class="line">	<span class="keyword">if</span> canUseIPVS &#123;</div><div class="line">		ipvsInterface = utilipvs.New(execer)</div><div class="line">	&#125;</div><div class="line"></div><div class="line">	<span class="comment">// We omit creation of pretty much everything if we run in cleanup mode</span></div><div class="line">	<span class="keyword">if</span> cleanupAndExit &#123;</div><div class="line">		<span class="keyword">return</span> &amp;ProxyServer&#123;</div><div class="line">			execer:         execer,</div><div class="line">			IptInterface:   iptInterface,</div><div class="line">			IpvsInterface:  ipvsInterface,</div><div class="line">			IpsetInterface: ipsetInterface,</div><div class="line">			CleanupAndExit: cleanupAndExit,</div><div class="line">		&#125;, <span class="literal">nil</span></div><div class="line">	&#125;</div><div class="line"></div><div class="line">	client, eventClient, err := createClients(config.ClientConnection, master)</div><div class="line">	<span class="keyword">if</span> err != <span class="literal">nil</span> &#123;</div><div class="line">		<span class="keyword">return</span> <span class="literal">nil</span>, err</div><div class="line">	&#125;</div><div class="line"></div><div class="line">	<span class="comment">// Create event recorder</span></div><div class="line">	hostname, err := utilnode.GetHostname(config.HostnameOverride)</div><div class="line">	<span class="keyword">if</span> err != <span class="literal">nil</span> &#123;</div><div class="line">		<span class="keyword">return</span> <span class="literal">nil</span>, err</div><div class="line">	&#125;</div><div class="line">	eventBroadcaster := record.NewBroadcaster()</div><div class="line">	recorder := eventBroadcaster.NewRecorder(scheme, v1.EventSource&#123;Component: <span class="string">"kube-proxy"</span>, Host: hostname&#125;)</div><div class="line"></div><div class="line">	nodeRef := &amp;v1.ObjectReference&#123;</div><div class="line">		Kind:      <span class="string">"Node"</span>,</div><div class="line">		Name:      hostname,</div><div class="line">		UID:       types.UID(hostname),</div><div class="line">		Namespace: <span class="string">""</span>,</div><div class="line">	&#125;</div><div class="line"></div><div class="line">	<span class="keyword">var</span> healthzServer *healthcheck.HealthzServer</div><div class="line">	<span class="keyword">var</span> healthzUpdater healthcheck.HealthzUpdater</div><div class="line">	<span class="keyword">if</span> <span class="built_in">len</span>(config.HealthzBindAddress) &gt; <span class="number">0</span> &#123;</div><div class="line">		healthzServer = healthcheck.NewDefaultHealthzServer(config.HealthzBindAddress, <span class="number">2</span>*config.IPTables.SyncPeriod.Duration, recorder, nodeRef)</div><div class="line">		healthzUpdater = healthzServer</div><div class="line">	&#125;</div><div class="line"></div><div class="line">	<span class="keyword">var</span> proxier proxy.ProxyProvider</div><div class="line">	<span class="keyword">var</span> serviceEventHandler proxyconfig.ServiceHandler</div><div class="line">	<span class="keyword">var</span> endpointsEventHandler proxyconfig.EndpointsHandler</div><div class="line"></div><div class="line">	proxyMode := getProxyMode(<span class="keyword">string</span>(config.Mode), iptInterface, kernelHandler, ipsetInterface, iptables.LinuxKernelCompatTester&#123;&#125;)</div><div class="line">	nodeIP := net.ParseIP(config.BindAddress)</div><div class="line">	<span class="keyword">if</span> nodeIP.IsUnspecified() &#123;</div><div class="line">		nodeIP = getNodeIP(client, hostname)</div><div class="line">	&#125;</div><div class="line">	<span class="keyword">if</span> proxyMode == proxyModeIPTables &#123;</div><div class="line">		<span class="comment">// ...</span></div><div class="line">	&#125; <span class="keyword">else</span> <span class="keyword">if</span> proxyMode == proxyModeIPVS &#123;</div><div class="line">		glog.V(<span class="number">0</span>).Info(<span class="string">"Using ipvs Proxier."</span>)</div><div class="line">		proxierIPVS, err := ipvs.NewProxier(</div><div class="line">			iptInterface,</div><div class="line">			ipvsInterface,</div><div class="line">			ipsetInterface,</div><div class="line">			utilsysctl.New(),</div><div class="line">			execer,</div><div class="line">			config.IPVS.SyncPeriod.Duration,</div><div class="line">			config.IPVS.MinSyncPeriod.Duration,</div><div class="line">			config.IPVS.ExcludeCIDRs,</div><div class="line">			config.IPTables.MasqueradeAll,</div><div class="line">			<span class="keyword">int</span>(*config.IPTables.MasqueradeBit),</div><div class="line">			config.ClusterCIDR,</div><div class="line">			hostname,</div><div class="line">			nodeIP,</div><div class="line">			recorder,</div><div class="line">			healthzServer,</div><div class="line">			config.IPVS.Scheduler,</div><div class="line">			config.NodePortAddresses,</div><div class="line">		)</div><div class="line">		<span class="keyword">if</span> err != <span class="literal">nil</span> &#123;</div><div class="line">			<span class="keyword">return</span> <span class="literal">nil</span>, fmt.Errorf(<span class="string">"unable to create proxier: %v"</span>, err)</div><div class="line">		&#125;</div><div class="line">		metrics.RegisterMetrics()</div><div class="line">		proxier = proxierIPVS</div><div class="line">		serviceEventHandler = proxierIPVS</div><div class="line">		endpointsEventHandler = proxierIPVS</div><div class="line">		glog.V(<span class="number">0</span>).Info(<span class="string">"Tearing down inactive rules."</span>)</div><div class="line">		<span class="comment">// TODO this has side effects that should only happen when Run() is invoked.</span></div><div class="line">		userspace.CleanupLeftovers(iptInterface)</div><div class="line">		iptables.CleanupLeftovers(iptInterface)</div><div class="line">	&#125; <span class="keyword">else</span> &#123;</div><div class="line">		glog.V(<span class="number">0</span>).Info(<span class="string">"Using userspace Proxier."</span>)</div><div class="line">		<span class="comment">// ...</span></div><div class="line">	&#125;</div><div class="line"></div><div class="line">	iptInterface.AddReloadFunc(proxier.Sync)</div><div class="line"></div><div class="line">	<span class="keyword">return</span> &amp;ProxyServer&#123;</div><div class="line">		Client:                 client,</div><div class="line">		EventClient:            eventClient,</div><div class="line">		IptInterface:           iptInterface,</div><div class="line">		IpvsInterface:          ipvsInterface,</div><div class="line">		IpsetInterface:         ipsetInterface,</div><div class="line">		execer:                 execer,</div><div class="line">		Proxier:                proxier,</div><div class="line">		Broadcaster:            eventBroadcaster,</div><div class="line">		Recorder:               recorder,</div><div class="line">		ConntrackConfiguration: config.Conntrack,</div><div class="line">		Conntracker:            &amp;realConntracker&#123;&#125;,</div><div class="line">		ProxyMode:              proxyMode,</div><div class="line">		NodeRef:                nodeRef,</div><div class="line">		MetricsBindAddress:     config.MetricsBindAddress,</div><div class="line">		EnableProfiling:        config.EnableProfiling,</div><div class="line">		OOMScoreAdj:            config.OOMScoreAdj,</div><div class="line">		ResourceContainer:      config.ResourceContainer,</div><div class="line">		ConfigSyncPeriod:       config.ConfigSyncPeriod.Duration,</div><div class="line">		ServiceEventHandler:    serviceEventHandler,</div><div class="line">		EndpointsEventHandler:  endpointsEventHandler,</div><div class="line">		HealthzServer:          healthzServer,</div><div class="line">	&#125;, <span class="literal">nil</span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>以上代码的基本流程是：</p>
+<ol>
+<li>创建 iptables 的接口 <code>iptInterface</code> 以及 ipvs 的接口 <code>ipvsInterface</code></li>
+<li>根据上面的字段初始化 ProxyServer</li>
+<li>创建健康检查服务</li>
+<li>初始化 <code>serviceEventHandler</code> 和 <code>endpointsEventHandler</code>，用于定义 service 和 endpoints 的发生变化后的处理方法。</li>
+<li>根据 proxyMode 进入不同的分支</li>
+<li>如果是使用 ipvs 模式，调用 <code>./pkg/proxy/ipvs/proxier.go</code> 的 <code>NewProxier</code> 进行初始化。iptable, userspace 模式同理</li>
+</ol>
+<p>需要注意的是调用 <code>NewProxier</code> 过程中，有 <code>proxier.syncRunner = async.NewBoundedFrequencyRunner(&quot;sync-runner&quot;, proxier.syncProxyRules, minSyncPeriod, syncPeriod, burstSyncs)</code> 这么一行，用来初始化 <code>syncRunner</code>，这里很重要，在下面我们会看到。</p>
+<h3 id="运行-ProxyServer"><a href="#运行-ProxyServer" class="headerlink" title="运行 ProxyServer"></a>运行 ProxyServer</h3><figure class="highlight golang"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">func</span> <span class="params">(s *ProxyServer)</span> <span class="title">Run</span><span class="params">()</span> <span class="title">error</span></span> &#123;</div><div class="line">	<span class="comment">// glog ...</span></div><div class="line">	<span class="comment">// remove iptables rules and exit</span></div><div class="line">	<span class="keyword">if</span> s.CleanupAndExit &#123;</div><div class="line">		encounteredError := userspace.CleanupLeftovers(s.IptInterface)</div><div class="line">		encounteredError = iptables.CleanupLeftovers(s.IptInterface) || encounteredError</div><div class="line">		encounteredError = ipvs.CleanupLeftovers(s.IpvsInterface, s.IptInterface, s.IpsetInterface, s.CleanupIPVS) || encounteredError</div><div class="line">		<span class="keyword">if</span> encounteredError &#123;</div><div class="line">			<span class="keyword">return</span> errors.New(<span class="string">"encountered an error while tearing down rules."</span>)</div><div class="line">		&#125;</div><div class="line">		<span class="keyword">return</span> <span class="literal">nil</span></div><div class="line">	&#125;</div><div class="line"></div><div class="line">	<span class="comment">// TODO(vmarmol): Use container config for this.</span></div><div class="line">	<span class="keyword">var</span> oomAdjuster *oom.OOMAdjuster</div><div class="line">	<span class="keyword">if</span> s.OOMScoreAdj != <span class="literal">nil</span> &#123;</div><div class="line">		oomAdjuster = oom.NewOOMAdjuster()</div><div class="line">		<span class="keyword">if</span> err := oomAdjuster.ApplyOOMScoreAdj(<span class="number">0</span>, <span class="keyword">int</span>(*s.OOMScoreAdj)); err != <span class="literal">nil</span> &#123;</div><div class="line">			glog.V(<span class="number">2</span>).Info(err)</div><div class="line">		&#125;</div><div class="line">	&#125;</div><div class="line"></div><div class="line">	<span class="keyword">if</span> <span class="built_in">len</span>(s.ResourceContainer) != <span class="number">0</span> &#123;</div><div class="line">		<span class="keyword">if</span> err := resourcecontainer.RunInResourceContainer(s.ResourceContainer); err != <span class="literal">nil</span> &#123;</div><div class="line">			glog.Warningf(<span class="string">"Failed to start in resource-only container %q: %v"</span>, s.ResourceContainer, err)</div><div class="line">		&#125; <span class="keyword">else</span> &#123;</div><div class="line">			glog.V(<span class="number">2</span>).Infof(<span class="string">"Running in resource-only container %q"</span>, s.ResourceContainer)</div><div class="line">		&#125;</div><div class="line">	&#125;</div><div class="line"></div><div class="line">	<span class="keyword">if</span> s.Broadcaster != <span class="literal">nil</span> &amp;&amp; s.EventClient != <span class="literal">nil</span> &#123;</div><div class="line">		s.Broadcaster.StartRecordingToSink(&amp;v1core.EventSinkImpl&#123;Interface: s.EventClient.Events(<span class="string">""</span>)&#125;)</div><div class="line">	&#125;</div><div class="line"></div><div class="line">	<span class="comment">// Start up a healthz server if requested</span></div><div class="line">	<span class="comment">// ...</span></div><div class="line"></div><div class="line">	<span class="comment">// Start up a metrics server if requested</span></div><div class="line">	<span class="comment">// ...</span></div><div class="line"></div><div class="line">	<span class="comment">// Tune conntrack, if requested</span></div><div class="line">	<span class="comment">// Conntracker is always nil for windows</span></div><div class="line">	<span class="comment">// ...</span></div><div class="line">	informerFactory := informers.NewSharedInformerFactory(s.Client, s.ConfigSyncPeriod)</div><div class="line"></div><div class="line">	serviceConfig := config.NewServiceConfig(informerFactory.Core().V1().Services(), s.ConfigSyncPeriod)</div><div class="line">	serviceConfig.RegisterEventHandler(s.ServiceEventHandler)</div><div class="line">	<span class="keyword">go</span> serviceConfig.Run(wait.NeverStop)</div><div class="line"></div><div class="line">	endpointsConfig := config.NewEndpointsConfig(informerFactory.Core().V1().Endpoints(), s.ConfigSyncPeriod)</div><div class="line">	endpointsConfig.RegisterEventHandler(s.EndpointsEventHandler)</div><div class="line">	<span class="keyword">go</span> endpointsConfig.Run(wait.NeverStop)</div><div class="line"></div><div class="line">	<span class="keyword">go</span> informerFactory.Start(wait.NeverStop)</div><div class="line"></div><div class="line">	s.birthCry()</div><div class="line"></div><div class="line">	s.Proxier.SyncLoop()</div><div class="line">	<span class="keyword">return</span> <span class="literal">nil</span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>如果运行时带了 <code>CleanupAndExit</code> 参数，清理所有的 iptables，ipvs 的规则然后退出。OOM adjuster 和 ResourceContainer 目前都没有完整实现，先跳过，接着启动健康检查服务，metrics 服务器，用于监控，最后启动 informer，注册 service，endpoint 的监听事件，这两个 handler 都是之前注册的 <code>proxierIPVS</code>，当监听到 service，endpoint 的变化，就会触发响应的方法，注意到 <code>ProxyServer</code> 中定义的 <code>ServiceEventHandler</code> 和 <code>EndpointsEventHandler</code> 分别是 <code>ServiceHandler</code>，<code>EndpointsHandler</code> 类型，实际上定义的是一个接口：</p>
+<figure class="highlight golang"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">type</span> ServiceHandler <span class="keyword">interface</span> &#123;</div><div class="line">	OnServiceAdd(service *v1.Service)</div><div class="line">	OnServiceUpdate(oldService, service *v1.Service)</div><div class="line">	OnServiceDelete(service *v1.Service)</div><div class="line">	OnServiceSynced()</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="keyword">type</span> EndpointsHandler <span class="keyword">interface</span> &#123;</div><div class="line">	OnEndpointsAdd(endpoints *v1.Endpoints)</div><div class="line">	OnEndpointsUpdate(oldEndpoints, endpoints *v1.Endpoints)</div><div class="line">	OnEndpointsDelete(endpoints *v1.Endpoints)</div><div class="line">	OnEndpointsSynced()</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>在 <code>pkg/proxy/ipvs/proxier.go</code> 的 <code>Proxier</code> 中实现了这些方法，可以一一对照查看。<code>Run</code> 方法最后会调用 <code>s.Proxier.SyncLoop</code>，也属于 Proxier 的实现，这些都在 <code>pkg/proxy/ipvs</code> 模块里。</p>
+<h4 id="ipvs"><a href="#ipvs" class="headerlink" title="ipvs"></a>ipvs</h4><p>以监听到增加 service 的事件为例，我们看看 Proxier 会做什么。</p>
+<figure class="highlight golang"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">func</span> <span class="params">(proxier *Proxier)</span> <span class="title">OnServiceAdd</span><span class="params">(service *v1.Service)</span></span> &#123;</div><div class="line">	proxier.OnServiceUpdate(<span class="literal">nil</span>, service)</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">func</span> <span class="params">(proxier *Proxier)</span> <span class="title">OnServiceUpdate</span><span class="params">(oldService, service *v1.Service)</span></span> &#123;</div><div class="line">	<span class="keyword">if</span> proxier.serviceChanges.Update(oldService, service) &amp;&amp; proxier.isInitialized() &#123;</div><div class="line">		proxier.syncRunner.Run()</div><div class="line">	&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>Update 方法在 <code>pkg/proxy/service.go</code> 中：</p>
+<figure class="highlight golang"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">func</span> <span class="params">(sct *ServiceChangeTracker)</span> <span class="title">Update</span><span class="params">(previous, current *v1.Service)</span> <span class="title">bool</span></span> &#123;</div><div class="line">	svc := current</div><div class="line">	<span class="keyword">if</span> svc == <span class="literal">nil</span> &#123;</div><div class="line">		svc = previous</div><div class="line">	&#125;</div><div class="line">	<span class="keyword">if</span> svc == <span class="literal">nil</span> &#123;</div><div class="line">		<span class="keyword">return</span> <span class="literal">false</span></div><div class="line">	&#125;</div><div class="line">	namespacedName := types.NamespacedName&#123;Namespace: svc.Namespace, Name: svc.Name&#125;</div><div class="line"></div><div class="line">	sct.lock.Lock()</div><div class="line">	<span class="keyword">defer</span> sct.lock.Unlock()</div><div class="line"></div><div class="line">	change, exists := sct.items[namespacedName]</div><div class="line">	<span class="keyword">if</span> !exists &#123;</div><div class="line">		change = &amp;serviceChange&#123;&#125;</div><div class="line">		change.previous = sct.serviceToServiceMap(previous)</div><div class="line">		sct.items[namespacedName] = change</div><div class="line">	&#125;</div><div class="line">	change.current = sct.serviceToServiceMap(current)</div><div class="line">	<span class="keyword">if</span> reflect.DeepEqual(change.previous, change.current) &#123;</div><div class="line">		<span class="built_in">delete</span>(sct.items, namespacedName)</div><div class="line">	&#125;</div><div class="line">	<span class="keyword">return</span> <span class="built_in">len</span>(sct.items) &gt; <span class="number">0</span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>实际上只是对比 Service 的变化，然后将其存在一个 Map 数据结构中，最后 <code>OnServiceUpdate</code> 会调用 <code>proxier.syncRunner.Run()</code>。</p>
+<figure class="highlight golang"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">func</span> <span class="params">(bfr *BoundedFrequencyRunner)</span> <span class="title">Run</span><span class="params">()</span></span> &#123;</div><div class="line">	<span class="keyword">select</span> &#123;</div><div class="line">	<span class="keyword">case</span> bfr.run &lt;- <span class="keyword">struct</span>&#123;&#125;&#123;&#125;:</div><div class="line">	<span class="keyword">default</span>:</div><div class="line">	&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p><code>Run</code> 方法会发送一个信号到 <code>BoundedFrequencyRunner</code> 的 run 这个 channel。还记得 <code>Run</code> 方法的最后，我们调用了 <code>SyncLoop</code> 方法：</p>
+<figure class="highlight golang"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">func</span> <span class="params">(proxier *Proxier)</span> <span class="title">SyncLoop</span><span class="params">()</span></span> &#123;</div><div class="line">	<span class="keyword">if</span> proxier.healthzServer != <span class="literal">nil</span> &#123;</div><div class="line">		proxier.healthzServer.UpdateTimestamp()</div><div class="line">	&#125;</div><div class="line">	proxier.syncRunner.Loop(wait.NeverStop)</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p><code>Loop</code> 方法在 <code>pkg/util/async/bounded_frequency_runner.go</code> 中：</p>
+<figure class="highlight golang"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">func</span> <span class="params">(bfr *BoundedFrequencyRunner)</span> <span class="title">Loop</span><span class="params">(stop &lt;-<span class="keyword">chan</span> <span class="keyword">struct</span>&#123;&#125;)</span></span> &#123;</div><div class="line">	glog.V(<span class="number">3</span>).Infof(<span class="string">"%s Loop running"</span>, bfr.name)</div><div class="line">	bfr.timer.Reset(bfr.maxInterval)</div><div class="line">	<span class="keyword">for</span> &#123;</div><div class="line">		<span class="keyword">select</span> &#123;</div><div class="line">		<span class="keyword">case</span> &lt;-stop:</div><div class="line">			bfr.stop()</div><div class="line">			glog.V(<span class="number">3</span>).Infof(<span class="string">"%s Loop stopping"</span>, bfr.name)</div><div class="line">			<span class="keyword">return</span></div><div class="line">		<span class="keyword">case</span> &lt;-bfr.timer.C():</div><div class="line">			bfr.tryRun()</div><div class="line">		<span class="keyword">case</span> &lt;-bfr.run:</div><div class="line">			bfr.tryRun()</div><div class="line">		&#125;</div><div class="line">	&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>它会不停的运行，定期地执行 <code>tryRun</code> 方法，当接收到 run 事件时，也会调用 <code>tryRun</code> 方法：</p>
+<figure class="highlight golang"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">func</span> <span class="params">(bfr *BoundedFrequencyRunner)</span> <span class="title">tryRun</span><span class="params">()</span></span> &#123;</div><div class="line">	bfr.mu.Lock()</div><div class="line">	<span class="keyword">defer</span> bfr.mu.Unlock()</div><div class="line"></div><div class="line">	<span class="keyword">if</span> bfr.limiter.TryAccept() &#123;</div><div class="line">		bfr.fn()</div><div class="line">		bfr.lastRun = bfr.timer.Now()</div><div class="line">		bfr.timer.Stop()</div><div class="line">		bfr.timer.Reset(bfr.maxInterval)</div><div class="line">		glog.V(<span class="number">3</span>).Infof(<span class="string">"%s: ran, next possible in %v, periodic in %v"</span>, bfr.name, bfr.minInterval, bfr.maxInterval)</div><div class="line">		<span class="keyword">return</span></div><div class="line">	&#125;</div><div class="line">	<span class="comment">// ...</span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>这个 <code>tryRun</code> 方法会调用 <code>bfr.fn()</code>，这个回调函数其实就是在 <code>proxier.syncRunner = async.NewBoundedFrequencyRunner(&quot;sync-runner&quot;, proxier.syncProxyRules, minSyncPeriod, syncPeriod, burstSyncs)</code> 注册的，也就是说所有的这些定期执行，通过事件触发执行的方法，最终会调用 <code>syncProxyRules</code>。</p>
+<p>这个方法特别长，借助设计文档里的伪代码可以帮助理解（有一些增改）：</p>
+<figure class="highlight golang"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">func</span> <span class="params">(proxier *Proxier)</span> <span class="title">syncProxyRules</span><span class="params">()</span></span> &#123;</div><div class="line">	<span class="comment">// 当服务或 endpoint 更新时，调用这个方法</span></div><div class="line">    <span class="comment">// 同步 ipvs 规则或 iptables(如 mark，comment）。确保机器上有 kube-ipvs0 网卡，ipvs 需要在上面绑定地址，如果没有的话创建一个新的。确保有 ipset，用于批量设置 iptables 规则。</span></div><div class="line">    <span class="keyword">for</span> svcName, svcInfo := <span class="keyword">range</span> proxier.serviceMap &#123;</div><div class="line">      <span class="comment">// 处理 service 类型是 clusterIP 情况</span></div><div class="line">      <span class="comment">// 从 svcInfo 中获取 ClusterIP 等信息，设置粘滞会话的类型，过期时间等信息</span></div><div class="line">      <span class="comment">// 将 clusterIP 与虚拟网卡绑定，调用 libnetwork API 创建 VirtualServer</span></div><div class="line">      <span class="comment">// 通过调用 syncEndpoint，更新 RealServer</span></div><div class="line"></div><div class="line">      <span class="comment">// 处理 service 类型是 externalIPs 情况</span></div><div class="line">      <span class="comment">// 创建一条 SNAT 规则，数据包转发给 external IP（端口转发），构建 ipvs VirtualServer，地址是 external IP</span></div><div class="line">      <span class="comment">// 设置粘滞会话信息</span></div><div class="line">      <span class="comment">// 调用 libnetwork API 创建 VirtualServer，RealServer</span></div><div class="line"></div><div class="line">      <span class="comment">// 处理 service 类型是 load-balancer ingress 情况</span></div><div class="line">	    <span class="keyword">for</span> _, ingress := <span class="keyword">range</span> svcInfo.LoadBalancerStatus.Ingress &#123;</div><div class="line">		    <span class="keyword">if</span> ingress.IP != <span class="string">""</span> &#123;</div><div class="line">          <span class="keyword">if</span> <span class="built_in">len</span>(svcInfo.LoadBalancerSourceRanges) != <span class="number">0</span> &#123;</div><div class="line">            install specific iptables</div><div class="line">          &#125;</div><div class="line">          <span class="comment">// 构建 ipvs 的 VirtualServer</span></div><div class="line">          <span class="comment">// 设置粘滞会话信息</span></div><div class="line">          <span class="comment">// 调用 libnetwork API 创建 VirtualServer，RealServer</span></div><div class="line">        &#125;</div><div class="line">      &#125;</div><div class="line"></div><div class="line">      <span class="comment">// 处理 service 类型是 nodeports 情况</span></div><div class="line">      <span class="keyword">if</span> svcInfo.NodePort != <span class="number">0</span> &#123;</div><div class="line">		    fall back on iptables, recruit existing iptables proxier implementation</div><div class="line">		    <span class="comment">// 用 iptable 解决</span></div><div class="line">      &#125;</div><div class="line">      <span class="comment">// 清理工作，调用 libnet API 清理不需要的 ipvs 规则，清理不需要的网卡，service 地址的绑定，清理不需要的 iptables 链规则。</span></div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>以上巨长的 <code>syncProxyRules</code> 方法就是 kube-proxy 创建负载均衡的主要逻辑，其中 service 和 endpoint 的结果可以从之前保存的 Map 中拿到。</p>
+<h2 id="References"><a href="#References" class="headerlink" title="References"></a>References</h2><ul>
+<li><a href="https://github.com/kubernetes/kubernetes/tree/release-1.12/pkg/proxy/ipvs" target="_blank" rel="external">Kubernetes IPVS</a></li>
+<li><a href="https://github.com/kubernetes/community/blob/39a6b946b0a1b213207acb5361661940a378d0d0/keps/sig-network/0011-ipvs-proxier.md" target="_blank" rel="external">Kubernetes/community ipvs 设计文档</a></li>
+<li><a href="http://www.linuxvirtualserver.org/zh/lvs1.html" target="_blank" rel="external">Linux服务器集群系统（一）</a></li>
+<li><a href="https://www.jianshu.com/p/8a61de3f8be9" target="_blank" rel="external">LVS原理介绍</a></li>
+<li><a href="https://github.com/docker/libnetwork/blob/master/ipvs/netlink.go" target="_blank" rel="external">libnetwork/ipvs/netlink.go</a></li>
+<li><a href="https://xuxinkun.github.io/2016/07/22/kubernetes-proxy/" target="_blank" rel="external">kubernetes入门之kube-proxy实现原理</a></li>
+<li><a href="https://www.youtube.com/watch?v=4-pawkiazEg" target="_blank" rel="external">Scale Kubernetes to Support 50,000 Services [I] - Haibin Xie &amp; Quinton Hoole</a></li>
+<li><a href="https://docs.google.com/presentation/d/1BaIAywY2qqeHtyGZtlyAp89JIZs59MZLKcFLxKE6LyM/edit?usp=sharing" target="_blank" rel="external">Slides of Scale Kubernetes to Support 50,000 Services [I] - Haibin Xie &amp; Quinton Hoole</a></li>
+<li><a href="https://github.com/kubernetes/community/pull/692" target="_blank" rel="external">support ipvs mode for kube-proxy #692</a></li>
+<li><a href="https://kubernetes.io/blog/2018/07/09/ipvs-based-in-cluster-load-balancing-deep-dive/" target="_blank" rel="external">IPVS-Based In-Cluster Load Balancing Deep Dive</a></li>
+</ul>
+
+      
+    </div>
+
+    <div>
+      
+        
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/k8s/" rel="tag">#k8s</a>
+          
+            <a href="/tags/Golang/" rel="tag">#Golang</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/07/28/Kubernetes 源码笔记（kubeadm）/" rel="next" title="Kubernetes 源码笔记（kubeadm）">
+                <i class="fa fa-chevron-left"></i> Kubernetes 源码笔记（kubeadm）
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/07/28/Kubernetes 源码笔记（kube-scheduler）/" rel="prev" title="Kubernetes 源码笔记（kube-scheduler）">
+                Kubernetes 源码笔记（kube-scheduler） <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+      <div id="disqus_thread">
+        <noscript>
+          Please enable JavaScript to view the
+          <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a>
+        </noscript>
+      </div>
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel ">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="https://avatars1.githubusercontent.com/u/6964284?v=3&s=460"
+               alt="Frank" />
+          <p class="site-author-name" itemprop="name">Frank</p>
+          <p class="site-description motion-element" itemprop="description"></p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">362</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+          
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">134</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/knarfeh" target="_blank">
+                  
+                    <i class="fa fa-github"></i> GitHub
+                  
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://twitter.com/knarfeh" target="_blank">
+                  
+                    <i class="fa fa-twitter"></i> Twitter
+                  
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://weibo.com/2753500945" target="_blank">
+                  
+                    <i class="fa fa-weibo"></i> Weibo
+                  
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+          <div class="cc-license motion-element" itemprop="license">
+            <a href="http://creativecommons.org/licenses/by-sa/4.0" class="cc-opacity" target="_blank">
+              <img src="/images/cc-by-sa.svg" alt="Creative Commons" />
+            </a>
+          </div>
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+      </section>
+
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc-indicator-top post-toc-indicator">
+            <i class="fa fa-angle-double-up"></i>
+          </div>
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#原理"><span class="nav-number">1.</span> <span class="nav-text">原理</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#userspace-mode"><span class="nav-number">1.1.</span> <span class="nav-text">userspace mode</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#实例（该例摘自-kubernetes入门之kube-proxy实现原理）："><span class="nav-number">1.1.1.</span> <span class="nav-text">实例（该例摘自 kubernetes入门之kube-proxy实现原理）：</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#iptables-mode"><span class="nav-number">1.2.</span> <span class="nav-text">iptables mode</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#示例（该例摘自-kubernetes入门之kube-proxy实现原理）"><span class="nav-number">1.2.1.</span> <span class="nav-text">示例（该例摘自 kubernetes入门之kube-proxy实现原理）</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#IPVS"><span class="nav-number">1.3.</span> <span class="nav-text">IPVS</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#LVS-NAT-Network-Address-Transform"><span class="nav-number">1.3.1.</span> <span class="nav-text">LVS-NAT Network Address Transform</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#LVS-TUN-IPTuneling"><span class="nav-number">1.3.2.</span> <span class="nav-text">LVS-TUN IPTuneling</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#LVS-DR-Direct-Routing"><span class="nav-number">1.3.3.</span> <span class="nav-text">LVS-DR Direct Routing</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#静态方法，根据算法本身进行轮询调度"><span class="nav-number">1.3.4.</span> <span class="nav-text">静态方法，根据算法本身进行轮询调度</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#动态方法，根据算法以及-RS-的当前负载状态进行调度"><span class="nav-number">1.3.5.</span> <span class="nav-text">动态方法，根据算法以及 RS 的当前负载状态进行调度</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#代码解析"><span class="nav-number">2.</span> <span class="nav-text">代码解析</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Run"><span class="nav-number">2.1.</span> <span class="nav-text">Run()</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#初始化-ProxyServer"><span class="nav-number">2.2.</span> <span class="nav-text">初始化 ProxyServer</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#运行-ProxyServer"><span class="nav-number">2.3.</span> <span class="nav-text">运行 ProxyServer</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#ipvs"><span class="nav-number">2.3.1.</span> <span class="nav-text">ipvs</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#References"><span class="nav-number">3.</span> <span class="nav-text">References</span></a></li></ol></div>
+            
+          </div>
+          <div class="post-toc-indicator-bottom post-toc-indicator">
+            <i class="fa fa-angle-double-down"></i>
+          </div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy;  2015 - 
+  <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Frank</span>
+</div>
+
+<div class="powered-by">
+  由 <a class="theme-link" href="http://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Muse
+  </a>
+</div>
+
+
+
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+
+  
+
+
+
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+  <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
+
+  <script type="text/javascript" src="/vendors/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  <script type="text/javascript" src="/vendors/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  <script type="text/javascript" src="/vendors/velocity/velocity.min.js"></script>
+
+  <script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js"></script>
+
+  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=0.5.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=0.5.0"></script>
+
+
+
+  
+  
+
+  
+  
+<script type="text/javascript" src="/js/src/scrollspy.js?v=0.5.0"></script>
+
+<script type="text/javascript" id="sidebar.toc.highlight">
+  $(document).ready(function () {
+    var tocSelector = '.post-toc';
+    var $tocSelector = $(tocSelector);
+    var activeCurrentSelector = '.active-current';
+
+    $tocSelector
+      .on('activate.bs.scrollspy', function () {
+        var $currentActiveElement = $(tocSelector + ' .active').last();
+
+        removeCurrentActiveClass();
+        $currentActiveElement.addClass('active-current');
+
+        $tocSelector[0].scrollTop = $currentActiveElement.position().top;
+      })
+      .on('clear.bs.scrollspy', function () {
+        removeCurrentActiveClass();
+      });
+
+    function removeCurrentActiveClass () {
+      $(tocSelector + ' ' + activeCurrentSelector)
+        .removeClass(activeCurrentSelector.substring(1));
+    }
+
+    function processTOC () {
+      getTOCMaxHeight();
+      toggleTOCOverflowIndicators();
+    }
+
+    function getTOCMaxHeight () {
+      var height = $('.sidebar').height() -
+                   $tocSelector.position().top -
+                   $('.post-toc-indicator-bottom').height();
+
+      $tocSelector.css('height', height);
+
+      return height;
+    }
+
+    function toggleTOCOverflowIndicators () {
+      tocOverflowIndicator(
+        '.post-toc-indicator-top',
+        $tocSelector.scrollTop() > 0 ? 'show' : 'hide'
+      );
+
+      tocOverflowIndicator(
+        '.post-toc-indicator-bottom',
+        $tocSelector.scrollTop() >= $tocSelector.find('ol').height() - $tocSelector.height() ? 'hide' : 'show'
+      )
+    }
+
+    $(document).on('sidebar.motion.complete', function () {
+      processTOC();
+    });
+
+    $('body').scrollspy({ target: tocSelector });
+    $(window).on('resize', function () {
+      if ( $('.sidebar').hasClass('sidebar-active') ) {
+        processTOC();
+      }
+    });
+
+    onScroll($tocSelector);
+
+    function onScroll (element) {
+      element.on('mousewheel DOMMouseScroll', function (event) {
+          var oe = event.originalEvent;
+          var delta = oe.wheelDelta || -oe.detail;
+
+          this.scrollTop += ( delta < 0 ? 1 : -1 ) * 30;
+          event.preventDefault();
+
+          toggleTOCOverflowIndicators();
+      });
+    }
+
+    function tocOverflowIndicator (indicator, action) {
+      var $indicator = $(indicator);
+      var opacity = action === 'show' ? 1 : 0;
+      $indicator.velocity ?
+        $indicator.velocity('stop').velocity({
+          opacity: opacity
+        }, { duration: 100 }) :
+        $indicator.stop().animate({
+          opacity: opacity
+        }, 100);
+    }
+
+  });
+</script>
+
+<script type="text/javascript" id="sidebar.nav">
+  $(document).ready(function () {
+    var html = $('html');
+    var TAB_ANIMATE_DURATION = 200;
+    var hasVelocity = $.isFunction(html.velocity);
+
+    $('.sidebar-nav li').on('click', function () {
+      var item = $(this);
+      var activeTabClassName = 'sidebar-nav-active';
+      var activePanelClassName = 'sidebar-panel-active';
+      if (item.hasClass(activeTabClassName)) {
+        return;
+      }
+
+      var currentTarget = $('.' + activePanelClassName);
+      var target = $('.' + item.data('target'));
+
+      hasVelocity ?
+        currentTarget.velocity('transition.slideUpOut', TAB_ANIMATE_DURATION, function () {
+          target
+            .velocity('stop')
+            .velocity('transition.slideDownIn', TAB_ANIMATE_DURATION)
+            .addClass(activePanelClassName);
+        }) :
+        currentTarget.animate({ opacity: 0 }, TAB_ANIMATE_DURATION, function () {
+          currentTarget.hide();
+          target
+            .stop()
+            .css({'opacity': 0, 'display': 'block'})
+            .animate({ opacity: 1 }, TAB_ANIMATE_DURATION, function () {
+              currentTarget.removeClass(activePanelClassName);
+              target.addClass(activePanelClassName);
+            });
+        });
+
+      item.siblings().removeClass(activeTabClassName);
+      item.addClass(activeTabClassName);
+    });
+
+    $('.post-toc a').on('click', function (e) {
+      e.preventDefault();
+      var targetSelector = NexT.utils.escapeSelector(this.getAttribute('href'));
+      var offset = $(targetSelector).offset().top;
+      hasVelocity ?
+        html.velocity('stop').velocity('scroll', {
+          offset: offset  + 'px',
+          mobileHA: false
+        }) :
+        $('html, body').stop().animate({
+          scrollTop: offset
+        }, 500);
+    });
+
+    // Expand sidebar on post detail page by default, when post has a toc.
+    NexT.motion.middleWares.sidebar = function () {
+      var $tocContent = $('.post-toc-content');
+
+      if (CONFIG.scheme !== 'Pisces' && (CONFIG.sidebar.display === 'post' || CONFIG.sidebar.display === 'always')) {
+        if ($tocContent.length > 0 && $tocContent.html().trim().length > 0) {
+          NexT.utils.displaySidebar();
+        }
+      }
+    };
+  });
+</script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=0.5.0"></script>
+
+
+
+  
+
+
+
+  
+
+    <script type="text/javascript">
+      var disqus_shortname = 'knarfeh';
+      var disqus_identifier = '2018/07/28/Kubernetes 源码笔记（kube-proxy）/';
+      var disqus_title = 'Kubernetes 源码笔记（kube-proxy）';
+      var disqus_url = 'http://knarfeh.github.io/2018/07/28/Kubernetes 源码笔记（kube-proxy）/';
+
+      function run_disqus_script(disqus_script){
+        var dsq = document.createElement('script');
+        dsq.type = 'text/javascript';
+        dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/' + disqus_script;
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+      }
+
+      run_disqus_script('count.js');
+      
+        run_disqus_script('embed.js');
+      
+    </script>
+  
+
+
+
+  
+  
+  
+  <script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+      }
+    });
+  </script>
+
+  <script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+      var all = MathJax.Hub.getAllJax(), i;
+      for (i=0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';
+      }
+    });
+  </script>
+
+  
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js"></script>
+    <script type="text/javascript" async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML">
+</script>
+  
+
+
+  
+
+  <script type="text/javascript" src="/js/src/custom.js"></script>
+</body>
+</html>
