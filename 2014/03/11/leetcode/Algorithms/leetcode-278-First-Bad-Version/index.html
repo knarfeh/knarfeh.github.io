@@ -277,7 +277,7 @@
 <h3 id="分析"><a href="#分析" class="headerlink" title="分析"></a>分析</h3><hr>
 <p>二分法咯</p>
 <h3 id="解决方案1-C"><a href="#解决方案1-C" class="headerlink" title="解决方案1(C++)"></a>解决方案1(C++)</h3><hr>
-<figure class="highlight excel"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line">// Forward declaration of isBadVersion API.</div><div class="line">bool isBadVersion(<span class="built_in">int</span> version);</div><div class="line"></div><div class="line">class Solution &#123;</div><div class="line">publ<span class="symbol">ic:</span></div><div class="line">    <span class="built_in">int</span> firstBadVersion(<span class="built_in">int</span> <span class="built_in">n</span>) &#123;</div><div class="line">        <span class="built_in">int</span> <span class="built_in">left</span> = <span class="number">1</span>, <span class="built_in">right</span> = <span class="built_in">n</span>;</div><div class="line">        </div><div class="line">        while(<span class="built_in">left</span> &lt; <span class="built_in">right</span>) &#123;</div><div class="line">            <span class="built_in">int</span> <span class="built_in">mid</span> = <span class="built_in">left</span> + (<span class="built_in">right</span>-<span class="built_in">left</span>)/<span class="number">2</span>;</div><div class="line">            <span class="built_in">if</span>(isBadVersion(<span class="built_in">mid</span>)) &#123;</div><div class="line">                <span class="built_in">right</span> = <span class="built_in">mid</span>;</div><div class="line">            &#125;else &#123;</div><div class="line">                <span class="built_in">left</span> = <span class="built_in">mid</span>+<span class="number">1</span>;</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">        return <span class="built_in">left</span>;</div><div class="line">    &#125;</div><div class="line">&#125;;</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line">// Forward declaration of isBadVersion API.</div><div class="line">bool isBadVersion(int version);</div><div class="line"></div><div class="line">class Solution &#123;</div><div class="line">public:</div><div class="line">    int firstBadVersion(int n) &#123;</div><div class="line">        int left = 1, right = n;</div><div class="line">        </div><div class="line">        while(left &lt; right) &#123;</div><div class="line">            int mid = left + (right-left)/2;</div><div class="line">            if(isBadVersion(mid)) &#123;</div><div class="line">                right = mid;</div><div class="line">            &#125;else &#123;</div><div class="line">                left = mid+1;</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">        return left;</div><div class="line">    &#125;</div><div class="line">&#125;;</div></pre></td></tr></table></figure>
 <h3 id="相关问题"><a href="#相关问题" class="headerlink" title="相关问题"></a>相关问题</h3><hr>
 <p><a href="https://leetcode.com/problems/search-insert-position/" target="_blank" rel="external">(M) Search Insert Position</a><br><a href="https://leetcode.com/problems/search-for-a-range/" target="_blank" rel="external">(M) Search for a Range</a>   </p>
 <h3 id="题目来源"><a href="#题目来源" class="headerlink" title="题目来源"></a><a href="https://leetcode.com/problems/first-bad-version/" target="_blank" rel="external">题目来源</a></h3>
@@ -307,16 +307,16 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2014/03/11/leetcode/Algorithms/leetcode-283-Move-Zeroes/" rel="next" title="leetcode-283-Move-Zeroes">
-                <i class="fa fa-chevron-left"></i> leetcode-283-Move-Zeroes
+              <a href="/2014/03/11/leetcode/Algorithms/leetcode-274-H-Index/" rel="next" title="leetcode-274-H-Index">
+                <i class="fa fa-chevron-left"></i> leetcode-274-H-Index
               </a>
             
           </div>
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2014/03/11/leetcode/Algorithms/leetcode-260-Single-Number-III/" rel="prev" title="leetcode-260-Single-Number-III">
-                leetcode-260-Single-Number-III <i class="fa fa-chevron-right"></i>
+              <a href="/2014/03/11/leetcode/Algorithms/leetcode-264-Ugly-Number-II/" rel="prev" title="leetcode-264-Ugly-Number-II">
+                leetcode-264-Ugly-Number-II <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>

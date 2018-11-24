@@ -276,7 +276,7 @@
 <p>Any ping with time in <code>[t - 3000, t]</code> will count, including the current ping.</p>
 <p>It is guaranteed that every call to <code>ping</code> uses a strictly larger value of <code>t</code> than before.</p>
 <p><strong>Example 1:</strong></p>
-<figure class="highlight prolog"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="symbol">Input</span>: inputs = [<span class="string">"RecentCounter"</span>,<span class="string">"ping"</span>,<span class="string">"ping"</span>,<span class="string">"ping"</span>,<span class="string">"ping"</span>], inputs = [[],[<span class="number">1</span>],[<span class="number">100</span>],[<span class="number">3001</span>],[<span class="number">3002</span>]]</div><div class="line"><span class="symbol">Output</span>: [null,<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">3</span>]</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">Input: inputs = [&quot;RecentCounter&quot;,&quot;ping&quot;,&quot;ping&quot;,&quot;ping&quot;,&quot;ping&quot;], inputs = [[],[1],[100],[3001],[3002]]</div><div class="line">Output: [null,1,2,3,3]</div></pre></td></tr></table></figure>
 <p><strong>Note:</strong></p>
 <ol>
 <li>Each test case will have at most <code>10000</code> calls to <code>ping</code>.</li>
@@ -287,7 +287,7 @@
 <h3 id="分析"><a href="#分析" class="headerlink" title="分析"></a>分析</h3><hr>
 <p>调用 ping 的时候会给定时间，求 3000 ms 内 ping 的次数，可以用队列来记录 ping。</p>
 <h3 id="解决方案1-Java"><a href="#解决方案1-Java" class="headerlink" title="解决方案1(Java)"></a>解决方案1(Java)</h3><hr>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">class</span> RecentCounter &#123;</div><div class="line">    Queue&lt;Integer&gt; <span class="built_in">queue</span>;</div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="title">RecentCounter</span><span class="params">()</span> </span>&#123;</div><div class="line">        <span class="built_in">queue</span> = <span class="keyword">new</span> LinkedList();</div><div class="line">    &#125;</div><div class="line">    </div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">ping</span><span class="params">(<span class="keyword">int</span> t)</span> </span>&#123;</div><div class="line">        <span class="built_in">queue</span>.add(t);</div><div class="line">        <span class="keyword">while</span>(<span class="built_in">queue</span>.peek() &lt; t - <span class="number">3000</span>) &#123;</div><div class="line">            <span class="built_in">queue</span>.poll();</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">return</span> <span class="built_in">queue</span>.size();</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line">class RecentCounter &#123;</div><div class="line">    Queue&lt;Integer&gt; queue;</div><div class="line">    public RecentCounter() &#123;</div><div class="line">        queue = new LinkedList();</div><div class="line">    &#125;</div><div class="line">    </div><div class="line">    public int ping(int t) &#123;</div><div class="line">        queue.add(t);</div><div class="line">        while(queue.peek() &lt; t - 3000) &#123;</div><div class="line">            queue.poll();</div><div class="line">        &#125;</div><div class="line">        return queue.size();</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <h3 id="题目来源"><a href="#题目来源" class="headerlink" title="题目来源"></a><a href="https://leetcode.com/problems/number-of-recent-calls/description/" target="_blank" rel="external">题目来源</a></h3>
       
     </div>
@@ -315,8 +315,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2014/03/11/leetcode/Algorithms/leetcode-922-Sort-Array-By-Parity-II/" rel="next" title="leetcode-922-Sort-Array-By-Parity-II">
-                <i class="fa fa-chevron-left"></i> leetcode-922-Sort-Array-By-Parity-II
+              <a href="/2014/03/11/leetcode/Algorithms/leetcode-929-Unique-Email-Addresses/" rel="next" title="leetcode-929-Unique-Email-Addresses">
+                <i class="fa fa-chevron-left"></i> leetcode-929-Unique-Email-Addresses
               </a>
             
           </div>

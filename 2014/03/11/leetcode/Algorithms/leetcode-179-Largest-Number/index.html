@@ -57,18 +57,18 @@
 
 
 
-<meta name="description" content="描述 Given a list of non negative integers, arrange them such that they form the largest number. Example 1: 12Input: [10,2]Output: &quot;210&quot; Example 2: 12Input: [3,30,34,5,9]Output: &quot;9534330&quot; Note: The resu">
+<meta name="description" content="描述 Given a list of non negative integers, arrange them such that they form the largest number. Example 1: 12Input: [10,2]Output: &amp;quot;210&amp;quot; Example 2: 12Input: [3,30,34,5,9]Output: &amp;quot;9534330&amp;">
 <meta name="keywords" content="algorithms,leetcode,Sort">
 <meta property="og:type" content="article">
 <meta property="og:title" content="leetcode-179-Largest-Number">
 <meta property="og:url" content="http://knarfeh.github.io/2014/03/11/leetcode/Algorithms/leetcode-179-Largest-Number/index.html">
 <meta property="og:site_name" content="knarfeh&#39;s logbook">
-<meta property="og:description" content="描述 Given a list of non negative integers, arrange them such that they form the largest number. Example 1: 12Input: [10,2]Output: &quot;210&quot; Example 2: 12Input: [3,30,34,5,9]Output: &quot;9534330&quot; Note: The resu">
+<meta property="og:description" content="描述 Given a list of non negative integers, arrange them such that they form the largest number. Example 1: 12Input: [10,2]Output: &amp;quot;210&amp;quot; Example 2: 12Input: [3,30,34,5,9]Output: &amp;quot;9534330&amp;">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:updated_time" content="2018-10-06T09:57:15.901Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="leetcode-179-Largest-Number">
-<meta name="twitter:description" content="描述 Given a list of non negative integers, arrange them such that they form the largest number. Example 1: 12Input: [10,2]Output: &quot;210&quot; Example 2: 12Input: [3,30,34,5,9]Output: &quot;9534330&quot; Note: The resu">
+<meta name="twitter:description" content="描述 Given a list of non negative integers, arrange them such that they form the largest number. Example 1: 12Input: [10,2]Output: &amp;quot;210&amp;quot; Example 2: 12Input: [3,30,34,5,9]Output: &amp;quot;9534330&amp;">
 
 
 
@@ -272,9 +272,9 @@
         <h3 id="描述"><a href="#描述" class="headerlink" title="描述"></a>描述</h3><hr>
 <p>Given a list of non negative integers, arrange them such that they form the largest number.</p>
 <p><strong>Example 1:</strong></p>
-<figure class="highlight avrasm"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="symbol">Input:</span> [<span class="number">10</span>,<span class="number">2</span>]</div><div class="line"><span class="symbol">Output:</span> <span class="string">"210"</span></div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">Input: [10,2]</div><div class="line">Output: &quot;210&quot;</div></pre></td></tr></table></figure>
 <p><strong>Example 2:</strong></p>
-<figure class="highlight avrasm"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="symbol">Input:</span> [<span class="number">3</span>,<span class="number">30</span>,<span class="number">34</span>,<span class="number">5</span>,<span class="number">9</span>]</div><div class="line"><span class="symbol">Output:</span> <span class="string">"9534330"</span></div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">Input: [3,30,34,5,9]</div><div class="line">Output: &quot;9534330&quot;</div></pre></td></tr></table></figure>
 <p><strong>Note:</strong> The result may be very large, so you need to return a string instead of an integer.</p>
 <a id="more"></a>
 <h3 id="分析"><a href="#分析" class="headerlink" title="分析"></a>分析</h3><hr>
@@ -287,7 +287,7 @@
 <li>需要考虑 [0, 0] 这样的 corner case，对于 [0, 0] 如果不做特殊处理，会返回 “00”，而实际上我们只需要 “0”。</li>
 </ol>
 <h3 id="解决方案1-Java"><a href="#解决方案1-Java" class="headerlink" title="解决方案1(Java)"></a>解决方案1(Java)</h3><hr>
-<figure class="highlight processing"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div></pre></td><td class="code"><pre><div class="line">class Solution &#123;</div><div class="line">    <span class="keyword">public</span> <span class="keyword">String</span> largestNumber(<span class="built_in">int</span>[] nums) &#123;</div><div class="line">        <span class="keyword">if</span> (nums.length == <span class="number">0</span>) &#123;</div><div class="line">            <span class="keyword">return</span> <span class="string">""</span>;</div><div class="line">        &#125;</div><div class="line">        </div><div class="line">        <span class="keyword">String</span>[] nums2Strings = <span class="keyword">new</span> <span class="keyword">String</span>[nums.length];</div><div class="line">        </div><div class="line">        <span class="keyword">for</span> (<span class="built_in">int</span> i = <span class="number">0</span>; i &lt; nums.length; i++) &#123;</div><div class="line">            nums2Strings[i] = <span class="keyword">String</span>.valueOf(nums[i]);</div><div class="line">        &#125;</div><div class="line">        </div><div class="line">        Arrays.<span class="built_in">sort</span>(nums2Strings, <span class="keyword">new</span> Comparator&lt;<span class="keyword">String</span>&gt;() &#123;</div><div class="line">           <span class="keyword">public</span> <span class="built_in">int</span> compare(<span class="keyword">String</span> s1, <span class="keyword">String</span> s2) &#123;</div><div class="line">               <span class="keyword">String</span> s1s2 = s1 + s2;</div><div class="line">               <span class="keyword">String</span> s2s1 = s2 + s1;</div><div class="line">               <span class="keyword">return</span> s2s1.compareTo(s1s2);</div><div class="line">           &#125; </div><div class="line">        &#125;);</div><div class="line">        </div><div class="line">        <span class="keyword">if</span> (nums2Strings[<span class="number">0</span>].equals(<span class="string">"0"</span>)) &#123;</div><div class="line">            <span class="keyword">return</span> <span class="string">"0"</span>;</div><div class="line">        &#125;</div><div class="line">        </div><div class="line">        StringBuilder result = <span class="keyword">new</span> StringBuilder();</div><div class="line">        </div><div class="line">        <span class="keyword">for</span> (<span class="keyword">String</span> <span class="built_in">str</span>: nums2Strings) &#123;</div><div class="line">            result.<span class="built_in">append</span>(<span class="built_in">str</span>);</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">return</span> result.toString();</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div></pre></td><td class="code"><pre><div class="line">class Solution &#123;</div><div class="line">    public String largestNumber(int[] nums) &#123;</div><div class="line">        if (nums.length == 0) &#123;</div><div class="line">            return &quot;&quot;;</div><div class="line">        &#125;</div><div class="line">        </div><div class="line">        String[] nums2Strings = new String[nums.length];</div><div class="line">        </div><div class="line">        for (int i = 0; i &lt; nums.length; i++) &#123;</div><div class="line">            nums2Strings[i] = String.valueOf(nums[i]);</div><div class="line">        &#125;</div><div class="line">        </div><div class="line">        Arrays.sort(nums2Strings, new Comparator&lt;String&gt;() &#123;</div><div class="line">           public int compare(String s1, String s2) &#123;</div><div class="line">               String s1s2 = s1 + s2;</div><div class="line">               String s2s1 = s2 + s1;</div><div class="line">               return s2s1.compareTo(s1s2);</div><div class="line">           &#125; </div><div class="line">        &#125;);</div><div class="line">        </div><div class="line">        if (nums2Strings[0].equals(&quot;0&quot;)) &#123;</div><div class="line">            return &quot;0&quot;;</div><div class="line">        &#125;</div><div class="line">        </div><div class="line">        StringBuilder result = new StringBuilder();</div><div class="line">        </div><div class="line">        for (String str: nums2Strings) &#123;</div><div class="line">            result.append(str);</div><div class="line">        &#125;</div><div class="line">        return result.toString();</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <h3 id="题目来源"><a href="#题目来源" class="headerlink" title="题目来源"></a><a href="https://leetcode.com/problems/largest-number/" target="_blank" rel="external">题目来源</a></h3>
       
     </div>
@@ -315,16 +315,16 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2014/03/11/leetcode/Algorithms/leetcode-199-Binary-Tree-Right-Side-View/" rel="next" title="leetcode-199-Binary-Tree-Right-Side-View">
-                <i class="fa fa-chevron-left"></i> leetcode-199-Binary-Tree-Right-Side-View
+              <a href="/2014/03/11/leetcode/Algorithms/leetcode-190-Reverse-Bits/" rel="next" title="leetcode-190-Reverse-Bits">
+                <i class="fa fa-chevron-left"></i> leetcode-190-Reverse-Bits
               </a>
             
           </div>
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2014/03/11/leetcode/Algorithms/leetcode-148-Sort-List/" rel="prev" title="leetcode-148-Sort-List">
-                leetcode-148-Sort-List <i class="fa fa-chevron-right"></i>
+              <a href="/2014/03/11/leetcode/Algorithms/leetcode-19-Remove-Nth-Node-From-End-of-List/" rel="prev" title="leetcode-19-Remove-Nth-Node-From-End-of-List">
+                leetcode-19-Remove-Nth-Node-From-End-of-List <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>

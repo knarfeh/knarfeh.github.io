@@ -273,14 +273,14 @@
 <p>Given a <em>n</em> x <em>n</em> matrix where each of the rows and columns are sorted in ascending order, find the kth smallest element in the matrix.</p>
 <p>Note that it is the kth smallest element in the sorted order, not the kth distinct element.</p>
 <p><strong>Example:</strong></p>
-<figure class="highlight lsl"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">matrix = [</div><div class="line">   [ <span class="number">1</span>,  <span class="number">5</span>,  <span class="number">9</span>],</div><div class="line">   [<span class="number">10</span>, <span class="number">11</span>, <span class="number">13</span>],</div><div class="line">   [<span class="number">12</span>, <span class="number">13</span>, <span class="number">15</span>]</div><div class="line">],</div><div class="line">k = <span class="number">8</span>,</div><div class="line"></div><div class="line">return <span class="number">13.</span></div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">matrix = [</div><div class="line">   [ 1,  5,  9],</div><div class="line">   [10, 11, 13],</div><div class="line">   [12, 13, 15]</div><div class="line">],</div><div class="line">k = 8,</div><div class="line"></div><div class="line">return 13.</div></pre></td></tr></table></figure>
 <p><strong>Note:</strong><br>You may assume k is always valid, $1 ≤ k ≤ n^2$.</p>
 <a id="more"></a>
 <h3 id="分析"><a href="#分析" class="headerlink" title="分析"></a>分析</h3><hr>
 <p>这个题目要求找到第 k 小的元素，但数组并非规则的有序排列，也就是说没法按照顺序遍历数组。如果使用最大堆解决这个问题会比较简单，遍历二元数组中的所有元素，将其加入堆中，如果堆的大小超过 k，将其中最大的元素拿到，也就是执行一次 poll 操作。最后留下的堆中，最大的数字是第 k 小的元素。</p>
 <p>看讨论里，使用 Java 解决这个问题的，也有用优先队列的，但代码都好啰嗦的样子。</p>
 <h3 id="解决方案1-Java"><a href="#解决方案1-Java" class="headerlink" title="解决方案1(Java)"></a>解决方案1(Java)</h3><hr>
-<figure class="highlight mel"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line">class Solution &#123;</div><div class="line">    public <span class="keyword">int</span> kthSmallest(<span class="keyword">int</span>[][] <span class="keyword">matrix</span>, <span class="keyword">int</span> k) &#123;</div><div class="line">        PriorityQueue&lt;Integer&gt; heap = new PriorityQueue &lt;Integer&gt;(<span class="keyword">matrix</span>.length*<span class="keyword">matrix</span>.length, Collections.reverseOrder());</div><div class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="keyword">matrix</span>.length; i++) &#123;</div><div class="line">            <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">0</span>; j &lt; <span class="keyword">matrix</span>[i].length; j++) &#123;</div><div class="line">                heap.add(<span class="keyword">matrix</span>[i][j]);</div><div class="line">                <span class="keyword">if</span> (heap.<span class="keyword">size</span>() &gt; k) &#123;</div><div class="line">                    heap.poll();</div><div class="line">                &#125;</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">return</span> heap.peek();</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line">class Solution &#123;</div><div class="line">    public int kthSmallest(int[][] matrix, int k) &#123;</div><div class="line">        PriorityQueue&lt;Integer&gt; heap = new PriorityQueue &lt;Integer&gt;(matrix.length*matrix.length, Collections.reverseOrder());</div><div class="line">        for (int i = 0; i &lt; matrix.length; i++) &#123;</div><div class="line">            for (int j = 0; j &lt; matrix[i].length; j++) &#123;</div><div class="line">                heap.add(matrix[i][j]);</div><div class="line">                if (heap.size() &gt; k) &#123;</div><div class="line">                    heap.poll();</div><div class="line">                &#125;</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">        return heap.peek();</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <h3 id="相关问题"><a href="#相关问题" class="headerlink" title="相关问题"></a>相关问题</h3><hr>
 <ul>
 <li><a href="https://leetcode.com/problems/find-k-pairs-with-smallest-sums" target="_blank" rel="external">(M) Find K Pairs with Smallest Sums</a>   </li>
@@ -315,16 +315,16 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2014/03/11/leetcode/Algorithms/leetcode-380-Insert-Delete-GetRandom-O(1)/" rel="next" title="leetcode-380-Insert-Delete-GetRandom-O(1)">
-                <i class="fa fa-chevron-left"></i> leetcode-380-Insert-Delete-GetRandom-O(1)
+              <a href="/2014/03/11/leetcode/Algorithms/leetcode-383-Ransom-Note/" rel="next" title="leetcode-353-Ransom-Note">
+                <i class="fa fa-chevron-left"></i> leetcode-353-Ransom-Note
               </a>
             
           </div>
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2014/03/11/leetcode/Algorithms/leetcode-367-Valid-Perfect-Square/" rel="prev" title="leetcode-367-Valid-Perfect-Square">
-                leetcode-367-Valid-Perfect-Square <i class="fa fa-chevron-right"></i>
+              <a href="/2014/03/11/leetcode/Algorithms/leetcode-38-Count-and-Say/" rel="prev" title="leetcode-38-Count-and-Say">
+                leetcode-38-Count-and-Say <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>

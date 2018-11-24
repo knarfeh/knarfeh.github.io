@@ -57,18 +57,18 @@
 
 
 
-<meta name="description" content="描述 Given a string S, return the “reversed” string where all characters that are not a letter stay in the same place, and all letters reverse their positions. Example 1: 12Input: &quot;ab-cd&quot;Output: &quot;dc-ba&quot;">
+<meta name="description" content="描述 Given a string S, return the “reversed” string where all characters that are not a letter stay in the same place, and all letters reverse their positions. Example 1: 12Input: &amp;quot;ab-cd&amp;quot;Outpu">
 <meta name="keywords" content="algorithms,leetcode,Array">
 <meta property="og:type" content="article">
 <meta property="og:title" content="leetcode-917-Reverse-Only-Letters">
 <meta property="og:url" content="http://knarfeh.github.io/2014/03/11/leetcode/Algorithms/leetcode-917-Reverse-Only-Letters/index.html">
 <meta property="og:site_name" content="knarfeh&#39;s logbook">
-<meta property="og:description" content="描述 Given a string S, return the “reversed” string where all characters that are not a letter stay in the same place, and all letters reverse their positions. Example 1: 12Input: &quot;ab-cd&quot;Output: &quot;dc-ba&quot;">
+<meta property="og:description" content="描述 Given a string S, return the “reversed” string where all characters that are not a letter stay in the same place, and all letters reverse their positions. Example 1: 12Input: &amp;quot;ab-cd&amp;quot;Outpu">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:updated_time" content="2018-11-11T08:57:37.591Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="leetcode-917-Reverse-Only-Letters">
-<meta name="twitter:description" content="描述 Given a string S, return the “reversed” string where all characters that are not a letter stay in the same place, and all letters reverse their positions. Example 1: 12Input: &quot;ab-cd&quot;Output: &quot;dc-ba&quot;">
+<meta name="twitter:description" content="描述 Given a string S, return the “reversed” string where all characters that are not a letter stay in the same place, and all letters reverse their positions. Example 1: 12Input: &amp;quot;ab-cd&amp;quot;Outpu">
 
 
 
@@ -272,16 +272,16 @@
         <h3 id="描述"><a href="#描述" class="headerlink" title="描述"></a>描述</h3><hr>
 <p>Given a string <code>S</code>, return the “reversed” string where all characters that are not a letter stay in the same place, and all letters reverse their positions.</p>
 <p><strong>Example 1:</strong></p>
-<figure class="highlight avrasm"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="symbol">Input:</span> <span class="string">"ab-cd"</span></div><div class="line"><span class="symbol">Output:</span> <span class="string">"dc-ba"</span></div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">Input: &quot;ab-cd&quot;</div><div class="line">Output: &quot;dc-ba&quot;</div></pre></td></tr></table></figure>
 <p><strong>Example 2:</strong></p>
-<figure class="highlight avrasm"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="symbol">Input:</span> <span class="string">"a-bC-dEf-ghIj"</span></div><div class="line"><span class="symbol">Output:</span> <span class="string">"j-Ih-gfE-dCba"</span></div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">Input: &quot;a-bC-dEf-ghIj&quot;</div><div class="line">Output: &quot;j-Ih-gfE-dCba&quot;</div></pre></td></tr></table></figure>
 <p><strong>Example 3:</strong></p>
-<figure class="highlight avrasm"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="symbol">Input:</span> <span class="string">"Test1ng-Leet=code-Q!"</span></div><div class="line"><span class="symbol">Output:</span> <span class="string">"Qedo1ct-eeLg=ntse-T!"</span></div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">Input: &quot;Test1ng-Leet=code-Q!&quot;</div><div class="line">Output: &quot;Qedo1ct-eeLg=ntse-T!&quot;</div></pre></td></tr></table></figure>
 <a id="more"></a>
 <h3 id="分析"><a href="#分析" class="headerlink" title="分析"></a>分析</h3><hr>
 <p>双指针，从两边向中间靠近，将前后的字符进行交互，即可达到倒转的目的。</p>
 <h3 id="解决方案1-Java"><a href="#解决方案1-Java" class="headerlink" title="解决方案1(Java)"></a>解决方案1(Java)</h3><hr>
-<figure class="highlight vbscript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">class</span> Solution &#123;</div><div class="line">    <span class="keyword">public</span> <span class="built_in">String</span> reverseOnlyLetters(<span class="built_in">String</span> S) &#123;</div><div class="line">        char[] sCharsArray = S.toCharArray();</div><div class="line">        <span class="built_in">int</span> <span class="built_in">left</span> = <span class="number">0</span>, <span class="built_in">right</span> = sCharsArray.length - <span class="number">1</span>;</div><div class="line">        <span class="keyword">while</span>(<span class="built_in">left</span> &lt; <span class="built_in">right</span>) &#123;</div><div class="line">            <span class="keyword">while</span>(<span class="built_in">left</span> &lt; <span class="built_in">right</span> &amp;&amp; !Character.isLetter(sCharsArray[<span class="built_in">left</span>])) &#123;</div><div class="line">                <span class="built_in">left</span>++;</div><div class="line">            &#125;</div><div class="line">            <span class="keyword">while</span>(<span class="built_in">left</span> &lt; <span class="built_in">right</span> &amp;&amp; !Character.isLetter(sCharsArray[<span class="built_in">right</span>])) &#123;</div><div class="line">                <span class="built_in">right</span>--;</div><div class="line">            &#125;</div><div class="line">            char tmp = sCharsArray[<span class="built_in">left</span>];</div><div class="line">            sCharsArray[<span class="built_in">left</span>] = sCharsArray[<span class="built_in">right</span>];</div><div class="line">            sCharsArray[<span class="built_in">right</span>] = tmp;</div><div class="line">            <span class="built_in">left</span>++;</div><div class="line">            <span class="built_in">right</span>--;</div><div class="line">        &#125;</div><div class="line">        return <span class="keyword">new</span> <span class="built_in">String</span>(sCharsArray);</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div></pre></td><td class="code"><pre><div class="line">class Solution &#123;</div><div class="line">    public String reverseOnlyLetters(String S) &#123;</div><div class="line">        char[] sCharsArray = S.toCharArray();</div><div class="line">        int left = 0, right = sCharsArray.length - 1;</div><div class="line">        while(left &lt; right) &#123;</div><div class="line">            while(left &lt; right &amp;&amp; !Character.isLetter(sCharsArray[left])) &#123;</div><div class="line">                left++;</div><div class="line">            &#125;</div><div class="line">            while(left &lt; right &amp;&amp; !Character.isLetter(sCharsArray[right])) &#123;</div><div class="line">                right--;</div><div class="line">            &#125;</div><div class="line">            char tmp = sCharsArray[left];</div><div class="line">            sCharsArray[left] = sCharsArray[right];</div><div class="line">            sCharsArray[right] = tmp;</div><div class="line">            left++;</div><div class="line">            right--;</div><div class="line">        &#125;</div><div class="line">        return new String(sCharsArray);</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <h3 id="题目来源"><a href="#题目来源" class="headerlink" title="题目来源"></a><a href="https://leetcode.com/problems/reverse-only-letters/description/" target="_blank" rel="external">题目来源</a></h3>
       
     </div>
@@ -309,16 +309,16 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2014/03/11/leetcode/Algorithms/leetcode-908-Smallest-Range-I/" rel="next" title="leetcode-908-Smallest-Range-I">
-                <i class="fa fa-chevron-left"></i> leetcode-908-Smallest-Range-I
+              <a href="/2014/03/11/leetcode/Algorithms/leetcode-919-Complete-Binary-Tree-Inserter/" rel="next" title="leetcode-919-Complete-Binary-Tree-Inserter">
+                <i class="fa fa-chevron-left"></i> leetcode-919-Complete-Binary-Tree-Inserter
               </a>
             
           </div>
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2014/03/11/leetcode/Algorithms/leetcode-919-Complete-Binary-Tree-Inserter/" rel="prev" title="leetcode-919-Complete-Binary-Tree-Inserter">
-                leetcode-919-Complete-Binary-Tree-Inserter <i class="fa fa-chevron-right"></i>
+              <a href="/2014/03/11/leetcode/Algorithms/leetcode-908-Smallest-Range-I/" rel="prev" title="leetcode-908-Smallest-Range-I">
+                leetcode-908-Smallest-Range-I <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>

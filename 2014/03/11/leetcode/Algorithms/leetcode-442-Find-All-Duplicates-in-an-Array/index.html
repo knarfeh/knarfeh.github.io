@@ -274,12 +274,12 @@
 <p>Find all the elements that appear <strong>twice</strong> in this array.</p>
 <p>Could you do it without extra space and in $O(n)$ runtime?</p>
 <p><strong>Example:</strong></p>
-<figure class="highlight accesslog"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">Input:</div><div class="line"><span class="string">[4,3,2,7,8,2,3,1]</span></div><div class="line"></div><div class="line">Output:</div><div class="line"><span class="string">[2,3]</span></div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">Input:</div><div class="line">[4,3,2,7,8,2,3,1]</div><div class="line"></div><div class="line">Output:</div><div class="line">[2,3]</div></pre></td></tr></table></figure>
 <a id="more"></a>
 <h3 id="分析"><a href="#分析" class="headerlink" title="分析"></a>分析</h3><hr>
 <p>1 ≤ a[i] ≤ n，遍历的时候将 a[i] 的值对应的 a 的值取反，如果遍历过程中这个索引出现负值，则表明出现了两次。</p>
 <h3 id="解决方案1-Java"><a href="#解决方案1-Java" class="headerlink" title="解决方案1(Java)"></a>解决方案1(Java)</h3><hr>
-<figure class="highlight fortran"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">class</span> Solution &#123;</div><div class="line">    <span class="keyword">public</span> List&lt;<span class="keyword">Integer</span>&gt; findDuplicates(<span class="built_in">int</span>[] nums) &#123;</div><div class="line">        List&lt;<span class="keyword">Integer</span>&gt; result = new ArrayList&lt;<span class="keyword">Integer</span>&gt;();</div><div class="line">        </div><div class="line">        for (<span class="built_in">int</span> i = <span class="number">0</span>; i &lt; nums.length; i++) &#123;</div><div class="line">            <span class="built_in">int</span> <span class="built_in">index</span> = Math.<span class="built_in">abs</span>(nums[i]) - <span class="number">1</span>;</div><div class="line">            <span class="keyword">if</span> (nums[<span class="built_in">index</span>] &lt; <span class="number">0</span>) &#123;</div><div class="line">                result.add(<span class="built_in">index</span>+<span class="number">1</span>);</div><div class="line">            &#125;</div><div class="line">            nums[<span class="built_in">index</span>] = -nums[<span class="built_in">index</span>];</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">return</span> result;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line">class Solution &#123;</div><div class="line">    public List&lt;Integer&gt; findDuplicates(int[] nums) &#123;</div><div class="line">        List&lt;Integer&gt; result = new ArrayList&lt;Integer&gt;();</div><div class="line">        </div><div class="line">        for (int i = 0; i &lt; nums.length; i++) &#123;</div><div class="line">            int index = Math.abs(nums[i]) - 1;</div><div class="line">            if (nums[index] &lt; 0) &#123;</div><div class="line">                result.add(index+1);</div><div class="line">            &#125;</div><div class="line">            nums[index] = -nums[index];</div><div class="line">        &#125;</div><div class="line">        return result;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <h3 id="相关问题"><a href="#相关问题" class="headerlink" title="相关问题"></a>相关问题</h3><hr>
 <p><a href="https://leetcode.com/problems/find-all-numbers-disappeared-in-an-array" target="_blank" rel="external">(M) Find All Numbers Disappeared in an Array</a>   </p>
 <h3 id="题目来源"><a href="#题目来源" class="headerlink" title="题目来源"></a><a href="https://leetcode.com/problems/find-all-duplicates-in-an-array/description/" target="_blank" rel="external">题目来源</a></h3>
@@ -309,16 +309,16 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2014/03/11/leetcode/Algorithms/leetcode-449-Serialize-and-Deserialize-BST/" rel="next" title="leetcode-449-Serialize-and-Deserialize-BST">
-                <i class="fa fa-chevron-left"></i> leetcode-449-Serialize-and-Deserialize-BST
+              <a href="/2014/03/11/leetcode/Algorithms/leetcode-445-Add-Two-Numbers-II/" rel="next" title="leetcode-445-Add-Two-Numbers-II">
+                <i class="fa fa-chevron-left"></i> leetcode-445-Add-Two-Numbers-II
               </a>
             
           </div>
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2014/03/11/leetcode/Algorithms/leetcode-447-Number-of-Boomerangs/" rel="prev" title="leetcode-447-Number-of-Boomerangs">
-                leetcode-447-Number-of-Boomerangs <i class="fa fa-chevron-right"></i>
+              <a href="/2014/03/11/leetcode/Algorithms/leetcode-441-Arranging-Coins/" rel="prev" title="leetcode-441-Arranging-Coins">
+                leetcode-441-Arranging-Coins <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>

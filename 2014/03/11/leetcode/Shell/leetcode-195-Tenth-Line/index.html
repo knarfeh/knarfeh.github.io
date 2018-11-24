@@ -272,11 +272,11 @@
         <h3 id="描述"><a href="#描述" class="headerlink" title="描述"></a>描述</h3><hr>
 <p>How would you print just the 10th line of a file?</p>
 <p>For example, assume that file.txt has the following content:</p>
-<figure class="highlight gauss"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">Line</span> <span class="number">1</span></div><div class="line"><span class="keyword">Line</span> <span class="number">2</span></div><div class="line"><span class="keyword">Line</span> <span class="number">3</span></div><div class="line"><span class="keyword">Line</span> <span class="number">4</span></div><div class="line"><span class="keyword">Line</span> <span class="number">5</span></div><div class="line"><span class="keyword">Line</span> <span class="number">6</span></div><div class="line"><span class="keyword">Line</span> <span class="number">7</span></div><div class="line"><span class="keyword">Line</span> <span class="number">8</span></div><div class="line"><span class="keyword">Line</span> <span class="number">9</span></div><div class="line"><span class="keyword">Line</span> <span class="number">10</span></div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">Line 1</div><div class="line">Line 2</div><div class="line">Line 3</div><div class="line">Line 4</div><div class="line">Line 5</div><div class="line">Line 6</div><div class="line">Line 7</div><div class="line">Line 8</div><div class="line">Line 9</div><div class="line">Line 10</div></pre></td></tr></table></figure>
 <p>Your script should output the tenth line, which is:</p>
-<figure class="highlight gauss"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">Line</span> <span class="number">10</span></div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">Line 10</div></pre></td></tr></table></figure>
 <h3 id="解决方案"><a href="#解决方案" class="headerlink" title="解决方案"></a>解决方案</h3><hr>
-<figure class="highlight vhdl"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"># Read from the <span class="keyword">file</span> <span class="keyword">file</span>.txt <span class="keyword">and</span> output the tenth <span class="literal">line</span> <span class="keyword">to</span> stdout.</div><div class="line">awk <span class="string">"NR==10"</span> <span class="keyword">file</span>.txt</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"># Read from the file file.txt and output the tenth line to stdout.</div><div class="line">awk &quot;NR==10&quot; file.txt</div></pre></td></tr></table></figure>
 <h3 id="题目来源"><a href="#题目来源" class="headerlink" title="题目来源"></a><a href="https://leetcode.com/problems/tenth-line/" target="_blank" rel="external">题目来源</a></h3>
       
     </div>
@@ -310,8 +310,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2014/03/11/leetcode/Shell/leetcode-194-Transpose-File/" rel="prev" title="leetcode-194-Transpose-File">
-                leetcode-194-Transpose-File <i class="fa fa-chevron-right"></i>
+              <a href="/2014/03/11/leetcode/Shell/leetcode-193-Valid-Phone-Numbers/" rel="prev" title="leetcode-193-Valid-Phone-Numbers">
+                leetcode-193-Valid-Phone-Numbers <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>

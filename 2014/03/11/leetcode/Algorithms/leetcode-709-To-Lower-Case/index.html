@@ -57,18 +57,18 @@
 
 
 
-<meta name="description" content="描述 Implement function ToLowerCase() that has a string parameter str, and returns the same string in lowercase. Example 1: 12Input: &quot;Hello&quot;Output: &quot;hello&quot; Example 2: 12Input: &quot;here&quot;Output: &quot;here&quot; Examp">
+<meta name="description" content="描述 Implement function ToLowerCase() that has a string parameter str, and returns the same string in lowercase. Example 1: 12Input: &amp;quot;Hello&amp;quot;Output: &amp;quot;hello&amp;quot; Example 2: 12Input: &amp;quot;">
 <meta name="keywords" content="algorithms,leetcode,String">
 <meta property="og:type" content="article">
 <meta property="og:title" content="leetcode-709-To-Lower-Case">
 <meta property="og:url" content="http://knarfeh.github.io/2014/03/11/leetcode/Algorithms/leetcode-709-To-Lower-Case/index.html">
 <meta property="og:site_name" content="knarfeh&#39;s logbook">
-<meta property="og:description" content="描述 Implement function ToLowerCase() that has a string parameter str, and returns the same string in lowercase. Example 1: 12Input: &quot;Hello&quot;Output: &quot;hello&quot; Example 2: 12Input: &quot;here&quot;Output: &quot;here&quot; Examp">
+<meta property="og:description" content="描述 Implement function ToLowerCase() that has a string parameter str, and returns the same string in lowercase. Example 1: 12Input: &amp;quot;Hello&amp;quot;Output: &amp;quot;hello&amp;quot; Example 2: 12Input: &amp;quot;">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:updated_time" content="2018-11-11T09:26:58.589Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="leetcode-709-To-Lower-Case">
-<meta name="twitter:description" content="描述 Implement function ToLowerCase() that has a string parameter str, and returns the same string in lowercase. Example 1: 12Input: &quot;Hello&quot;Output: &quot;hello&quot; Example 2: 12Input: &quot;here&quot;Output: &quot;here&quot; Examp">
+<meta name="twitter:description" content="描述 Implement function ToLowerCase() that has a string parameter str, and returns the same string in lowercase. Example 1: 12Input: &amp;quot;Hello&amp;quot;Output: &amp;quot;hello&amp;quot; Example 2: 12Input: &amp;quot;">
 
 
 
@@ -272,16 +272,16 @@
         <h3 id="描述"><a href="#描述" class="headerlink" title="描述"></a>描述</h3><hr>
 <p>Implement function ToLowerCase() that has a string parameter str, and returns the same string in lowercase.</p>
 <p><strong>Example 1:</strong></p>
-<figure class="highlight avrasm"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="symbol">Input:</span> <span class="string">"Hello"</span></div><div class="line"><span class="symbol">Output:</span> <span class="string">"hello"</span></div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">Input: &quot;Hello&quot;</div><div class="line">Output: &quot;hello&quot;</div></pre></td></tr></table></figure>
 <p><strong>Example 2:</strong></p>
-<figure class="highlight avrasm"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="symbol">Input:</span> <span class="string">"here"</span></div><div class="line"><span class="symbol">Output:</span> <span class="string">"here"</span></div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">Input: &quot;here&quot;</div><div class="line">Output: &quot;here&quot;</div></pre></td></tr></table></figure>
 <p><strong>Example 3:</strong></p>
-<figure class="highlight avrasm"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="symbol">Input:</span> <span class="string">"LOVELY"</span></div><div class="line"><span class="symbol">Output:</span> <span class="string">"lovely"</span></div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">Input: &quot;LOVELY&quot;</div><div class="line">Output: &quot;lovely&quot;</div></pre></td></tr></table></figure>
 <a id="more"></a>
 <h3 id="分析"><a href="#分析" class="headerlink" title="分析"></a>分析</h3><hr>
 <p>使用 Java 来解决的话，需要先把字符串转换为字符数组，遍历字符数组，把大写字母转换为小写字母</p>
 <h3 id="解决方案1-Java"><a href="#解决方案1-Java" class="headerlink" title="解决方案1(Java)"></a>解决方案1(Java)</h3><hr>
-<figure class="highlight processing"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">class Solution &#123;</div><div class="line">    <span class="keyword">public</span> <span class="keyword">String</span> toLowerCase(<span class="keyword">String</span> <span class="built_in">str</span>) &#123;</div><div class="line">        <span class="built_in">char</span>[] result = <span class="built_in">str</span>.toCharArray();</div><div class="line">        <span class="keyword">for</span> (<span class="built_in">int</span> i = <span class="number">0</span>; i &lt; result.length; i++) &#123;</div><div class="line">            <span class="keyword">if</span> (<span class="string">'A'</span> &lt;= result[i] &amp;&amp; result[i] &lt;= <span class="string">'Z'</span>) &#123;</div><div class="line">                result[i] = (<span class="built_in">char</span>) (result[i] - <span class="string">'A'</span> + <span class="string">'a'</span>);</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">return</span> <span class="keyword">new</span> <span class="keyword">String</span>(result);</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">class Solution &#123;</div><div class="line">    public String toLowerCase(String str) &#123;</div><div class="line">        char[] result = str.toCharArray();</div><div class="line">        for (int i = 0; i &lt; result.length; i++) &#123;</div><div class="line">            if (&apos;A&apos; &lt;= result[i] &amp;&amp; result[i] &lt;= &apos;Z&apos;) &#123;</div><div class="line">                result[i] = (char) (result[i] - &apos;A&apos; + &apos;a&apos;);</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">        return new String(result);</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <h3 id="题目来源"><a href="#题目来源" class="headerlink" title="题目来源"></a><a href="https://leetcode.com/problems/to-lower-case/description/" target="_blank" rel="external">题目来源</a></h3>
       
     </div>
@@ -309,16 +309,16 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2014/03/11/leetcode/Algorithms/leetcode-728-Self-Dividing-Numbers/" rel="next" title="leetcode-728-Self-Dividing-Numbers">
-                <i class="fa fa-chevron-left"></i> leetcode-728-Self-Dividing-Numbers
+              <a href="/2014/03/11/leetcode/Algorithms/leetcode-707-Design-Linked-List/" rel="next" title="leetcode-707-Design-Linked-List">
+                <i class="fa fa-chevron-left"></i> leetcode-707-Design-Linked-List
               </a>
             
           </div>
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2014/03/11/leetcode/Algorithms/leetcode-705-Design-HashSet/" rel="prev" title="leetcode-705-Design-HashSet">
-                leetcode-705-Design-HashSet <i class="fa fa-chevron-right"></i>
+              <a href="/2014/03/11/leetcode/Algorithms/leetcode-706-Design-HashMap/" rel="prev" title="leetcode-706-Design-HashMap">
+                leetcode-706-Design-HashMap <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>

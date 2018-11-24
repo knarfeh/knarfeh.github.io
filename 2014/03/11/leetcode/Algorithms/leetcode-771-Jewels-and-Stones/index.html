@@ -273,9 +273,9 @@
 <p>You’re given strings <code>J</code> representing the types of stones that are jewels, and <code>S</code> representing the stones you have.  Each character in <code>S</code>is a type of stone you have.  You want to know how many of the stones you have are also jewels.</p>
 <p>The letters in <code>J</code> are guaranteed distinct, and all characters in <code>J</code> and <code>S</code> are letters. Letters are case sensitive, so <code>&quot;a&quot;</code> is considered a different type of stone from <code>&quot;A&quot;</code>.</p>
 <p><strong>Example 1:</strong></p>
-<figure class="highlight avrasm"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="symbol">Input:</span> J = <span class="string">"aA"</span>, S = <span class="string">"aAAbbbb"</span></div><div class="line"><span class="symbol">Output:</span> <span class="number">3</span></div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">Input: J = &quot;aA&quot;, S = &quot;aAAbbbb&quot;</div><div class="line">Output: 3</div></pre></td></tr></table></figure>
 <p><strong>Example 2:</strong></p>
-<figure class="highlight avrasm"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="symbol">Input:</span> J = <span class="string">"z"</span>, S = <span class="string">"ZZ"</span></div><div class="line"><span class="symbol">Output:</span> <span class="number">0</span></div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">Input: J = &quot;z&quot;, S = &quot;ZZ&quot;</div><div class="line">Output: 0</div></pre></td></tr></table></figure>
 <p><strong>Note:</strong></p>
 <ul>
 <li><code>S</code> and <code>J</code> will consist of letters and have length at most 50.</li>
@@ -285,7 +285,7 @@
 <h3 id="分析"><a href="#分析" class="headerlink" title="分析"></a>分析</h3><hr>
 <p>J 作为一个集合，遍历 S，判断是否在 J 中，就像查询哈希列表一样，统计一下即可。</p>
 <h3 id="解决方案1-Java"><a href="#解决方案1-Java" class="headerlink" title="解决方案1(Java)"></a>解决方案1(Java)</h3><hr>
-<figure class="highlight arduino"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">class</span> Solution &#123;</div><div class="line">    <span class="keyword">public</span> <span class="keyword">int</span> numJewelsInStones(<span class="keyword">String</span> J, <span class="keyword">String</span> S) &#123;</div><div class="line">        <span class="keyword">int</span> result = <span class="number">0</span>;</div><div class="line">        <span class="built_in">for</span> (<span class="keyword">char</span> c : S.toCharArray()) &#123;</div><div class="line">            <span class="built_in">if</span> (J.indexOf(c) != <span class="number">-1</span>) &#123;</div><div class="line">                result++;</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">        <span class="built_in">return</span> result;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">class Solution &#123;</div><div class="line">    public int numJewelsInStones(String J, String S) &#123;</div><div class="line">        int result = 0;</div><div class="line">        for (char c : S.toCharArray()) &#123;</div><div class="line">            if (J.indexOf(c) != -1) &#123;</div><div class="line">                result++;</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">        return result;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <h3 id="题目来源"><a href="#题目来源" class="headerlink" title="题目来源"></a><a href="https://leetcode.com/problems/jewels-and-stones/description/" target="_blank" rel="external">题目来源</a></h3>
       
     </div>
@@ -313,16 +313,16 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2014/03/11/leetcode/Algorithms/leetcode-784-Letter-Case-Permutation/" rel="next" title="leetcode-784-Letter-Case-Permutation">
-                <i class="fa fa-chevron-left"></i> leetcode-784-Letter-Case-Permutation
+              <a href="/2014/03/11/leetcode/Algorithms/leetcode-783-Minimum-Distance-Between-BST-Nodes/" rel="next" title="leetcode-783-Minimum-Distance-Between-BST-Nodes">
+                <i class="fa fa-chevron-left"></i> leetcode-783-Minimum-Distance-Between-BST-Nodes
               </a>
             
           </div>
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2014/03/11/leetcode/Algorithms/leetcode-766-Toeplitz-Matrix/" rel="prev" title="leetcode-766-Toeplitz-Matrix">
-                leetcode-766-Toeplitz-Matrix <i class="fa fa-chevron-right"></i>
+              <a href="/2014/03/11/leetcode/Algorithms/leetcode-748-Shortest-Completing-Word/" rel="prev" title="leetcode-748-Shortest-Completing-Word">
+                leetcode-748-Shortest-Completing-Word <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>

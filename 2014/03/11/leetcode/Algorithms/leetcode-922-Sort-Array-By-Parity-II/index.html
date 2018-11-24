@@ -274,7 +274,7 @@
 <p>Sort the array so that whenever <code>A[i]</code> is odd, <code>i</code> is odd; and whenever <code>A[i]</code> is even, <code>i</code> is even.</p>
 <p>You may return any answer array that satisfies this condition.</p>
 <p><strong>Example 1:</strong></p>
-<figure class="highlight prolog"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="symbol">Input</span>: [<span class="number">4</span>,<span class="number">2</span>,<span class="number">5</span>,<span class="number">7</span>]</div><div class="line"><span class="symbol">Output</span>: [<span class="number">4</span>,<span class="number">5</span>,<span class="number">2</span>,<span class="number">7</span>]</div><div class="line"><span class="symbol">Explanation</span>: [<span class="number">4</span>,<span class="number">7</span>,<span class="number">2</span>,<span class="number">5</span>], [<span class="number">2</span>,<span class="number">5</span>,<span class="number">4</span>,<span class="number">7</span>], [<span class="number">2</span>,<span class="number">7</span>,<span class="number">4</span>,<span class="number">5</span>] would also have been accepted.</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">Input: [4,2,5,7]</div><div class="line">Output: [4,5,2,7]</div><div class="line">Explanation: [4,7,2,5], [2,5,4,7], [2,7,4,5] would also have been accepted.</div></pre></td></tr></table></figure>
 <p><strong>Note:</strong></p>
 <ol>
 <li><code>2 &lt;= A.length &lt;= 20000</code></li>
@@ -285,7 +285,7 @@
 <h3 id="分析"><a href="#分析" class="headerlink" title="分析"></a>分析</h3><hr>
 <p>定义一个 i 变量用来记录偶数位的索引，j 变量记录奇数位的索引，当 i, j 位置上的值都不匹配时，交换两值，时间复杂度是 $O(n)$。</p>
 <h3 id="解决方案1-Java"><a href="#解决方案1-Java" class="headerlink" title="解决方案1(Java)"></a>解决方案1(Java)</h3><hr>
-<figure class="highlight delphi"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">class</span> Solution <span class="comment">&#123;</span></div><div class="line">    public int[] sortArrayByParityII(int[] A) &#123;</div><div class="line">        for (int i = 0, j = 1; i &lt; A.length &amp;&amp; j &lt; A.length; ) &#123;</div><div class="line">            if (A[i]%2 == 1 &amp;&amp; A[j]%2 == 0) &#123;</div><div class="line">                A[i] = A[i] + A[j];</div><div class="line">                A[j] = A[i] - A[j];</div><div class="line">                A[i] = A[i] - A[j];</div><div class="line">            &#125;</div><div class="line">            <span class="keyword">if</span> (A[i]%<span class="number">2</span> == <span class="number">0</span>) <span class="comment">&#123;</span></div><div class="line">                i += 2;</div><div class="line">            &#125;</div><div class="line">            <span class="keyword">if</span> (A[j]%<span class="number">2</span> == <span class="number">1</span>) <span class="comment">&#123;</span></div><div class="line">                j += 2;</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">        return A;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line">class Solution &#123;</div><div class="line">    public int[] sortArrayByParityII(int[] A) &#123;</div><div class="line">        for (int i = 0, j = 1; i &lt; A.length &amp;&amp; j &lt; A.length; ) &#123;</div><div class="line">            if (A[i]%2 == 1 &amp;&amp; A[j]%2 == 0) &#123;</div><div class="line">                A[i] = A[i] + A[j];</div><div class="line">                A[j] = A[i] - A[j];</div><div class="line">                A[i] = A[i] - A[j];</div><div class="line">            &#125;</div><div class="line">            if (A[i]%2 == 0) &#123;</div><div class="line">                i += 2;</div><div class="line">            &#125;</div><div class="line">            if (A[j]%2 == 1) &#123;</div><div class="line">                j += 2;</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">        return A;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <h3 id="题目来源"><a href="#题目来源" class="headerlink" title="题目来源"></a><a href="https://leetcode.com/problems/sort-array-by-parity-ii/description/" target="_blank" rel="external">题目来源</a></h3>
       
     </div>
@@ -311,16 +311,16 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2014/03/11/leetcode/Database/leetcode-175-Combine-Two-Tables/" rel="next" title="leetcode-175-Combine-Two-Tables">
-                <i class="fa fa-chevron-left"></i> leetcode-175-Combine-Two-Tables
+              <a href="/2014/03/11/leetcode/Algorithms/leetcode-925-Long-Pressed-Name/" rel="next" title="leetcode-925-Long-Pressed-Name">
+                <i class="fa fa-chevron-left"></i> leetcode-925-Long-Pressed-Name
               </a>
             
           </div>
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2014/03/11/leetcode/Algorithms/leetcode-933-Number-of-Recent-Calls/" rel="prev" title="leetcode-933-Number-of-Recent-Calls">
-                leetcode-933-Number-of-Recent-Calls <i class="fa fa-chevron-right"></i>
+              <a href="/2014/03/11/leetcode/Algorithms/leetcode-921-Minimum-Add-to-Make-Parentheses-Valid/" rel="prev" title="leetcode-921-Minimum-Add-to-Make-Parentheses-Valid">
+                leetcode-921-Minimum-Add-to-Make-Parentheses-Valid <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>

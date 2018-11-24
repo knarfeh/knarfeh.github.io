@@ -41,7 +41,7 @@
 <link href="/css/main.css?v=0.5.0" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="algorithms,leetcode,Linked-List,Two-Pointers," />
+  <meta name="keywords" content="algorithms,leetcode,Two-Pointers,Linked-List," />
 
 
 
@@ -58,7 +58,7 @@
 
 
 <meta name="description" content="描述 Given a linked list, return the node where the cycle begins. If there is no cycle, return null. Note: Do not modify the linked list. Follow up:Can you solve it without using extra space?">
-<meta name="keywords" content="algorithms,leetcode,Linked-List,Two-Pointers">
+<meta name="keywords" content="algorithms,leetcode,Two-Pointers,Linked-List">
 <meta property="og:type" content="article">
 <meta property="og:title" content="leetcode-142-Linked-List-Cycle-II">
 <meta property="og:url" content="http://knarfeh.github.io/2014/03/11/leetcode/Algorithms/leetcode-142-Linked-List-Cycle-II/index.html">
@@ -276,7 +276,7 @@
 <h3 id="分析"><a href="#分析" class="headerlink" title="分析"></a>分析</h3><hr>
 <p>这道题承接上一题，不过这道题需要找到环的入口。最后再加一个循环即可，让一个指针从 head 往环的方向走，另一个指针在环里转悠，最终两个指针会在环口相遇。</p>
 <h3 id="解决方案1-Java"><a href="#解决方案1-Java" class="headerlink" title="解决方案1(Java)"></a>解决方案1(Java)</h3><hr>
-<figure class="highlight vbscript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div></pre></td><td class="code"><pre><div class="line">/**</div><div class="line"> * Definition <span class="keyword">for</span> singly-linked list.</div><div class="line"> * <span class="keyword">class</span> ListNode &#123;</div><div class="line"> *     <span class="built_in">int</span> val;</div><div class="line"> *     ListNode <span class="keyword">next</span>;</div><div class="line"> *     ListNode(<span class="built_in">int</span> x) &#123;</div><div class="line"> *         val = x;</div><div class="line"> *         <span class="keyword">next</span> = <span class="literal">null</span>;</div><div class="line"> *     &#125;</div><div class="line"> * &#125;</div><div class="line"> */</div><div class="line"><span class="keyword">public</span> <span class="keyword">class</span> Solution &#123;</div><div class="line">    <span class="keyword">public</span> ListNode detectCycle(ListNode head) &#123;</div><div class="line">        ListNode fast = head, slow = head;</div><div class="line">        <span class="keyword">while</span> (fast != <span class="literal">null</span> &amp;&amp; fast.<span class="keyword">next</span> != <span class="literal">null</span>) &#123;</div><div class="line">            fast = fast.<span class="keyword">next</span>.<span class="keyword">next</span>;</div><div class="line">            slow = slow.<span class="keyword">next</span>;</div><div class="line">            <span class="keyword">if</span> (fast == slow) &#123;</div><div class="line">                break;</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">        </div><div class="line">        <span class="keyword">if</span> (fast == <span class="literal">null</span> || fast.<span class="keyword">next</span> == <span class="literal">null</span>) &#123;</div><div class="line">            return <span class="literal">null</span>;</div><div class="line">        &#125;</div><div class="line">        slow = head;</div><div class="line">        <span class="keyword">while</span> (slow != fast) &#123;</div><div class="line">            slow = slow.<span class="keyword">next</span>;</div><div class="line">            fast = fast.<span class="keyword">next</span>;</div><div class="line">        &#125;</div><div class="line">        return fast;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div></pre></td><td class="code"><pre><div class="line">/**</div><div class="line"> * Definition for singly-linked list.</div><div class="line"> * class ListNode &#123;</div><div class="line"> *     int val;</div><div class="line"> *     ListNode next;</div><div class="line"> *     ListNode(int x) &#123;</div><div class="line"> *         val = x;</div><div class="line"> *         next = null;</div><div class="line"> *     &#125;</div><div class="line"> * &#125;</div><div class="line"> */</div><div class="line">public class Solution &#123;</div><div class="line">    public ListNode detectCycle(ListNode head) &#123;</div><div class="line">        ListNode fast = head, slow = head;</div><div class="line">        while (fast != null &amp;&amp; fast.next != null) &#123;</div><div class="line">            fast = fast.next.next;</div><div class="line">            slow = slow.next;</div><div class="line">            if (fast == slow) &#123;</div><div class="line">                break;</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">        </div><div class="line">        if (fast == null || fast.next == null) &#123;</div><div class="line">            return null;</div><div class="line">        &#125;</div><div class="line">        slow = head;</div><div class="line">        while (slow != fast) &#123;</div><div class="line">            slow = slow.next;</div><div class="line">            fast = fast.next;</div><div class="line">        &#125;</div><div class="line">        return fast;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <h3 id="相关问题"><a href="#相关问题" class="headerlink" title="相关问题"></a>相关问题</h3><hr>
 <ul>
 <li><a href="https://leetcode.com/problems/find-the-duplicate-number/" target="_blank" rel="external">(H) Find the Duplicate Number</a>   </li>
@@ -300,9 +300,9 @@
           
             <a href="/tags/leetcode/" rel="tag">#leetcode</a>
           
-            <a href="/tags/Linked-List/" rel="tag">#Linked-List</a>
-          
             <a href="/tags/Two-Pointers/" rel="tag">#Two-Pointers</a>
+          
+            <a href="/tags/Linked-List/" rel="tag">#Linked-List</a>
           
         </div>
       
@@ -311,16 +311,16 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2014/03/11/leetcode/Algorithms/leetcode-144-Binary-Tree-Preorder-Traversal/" rel="next" title="leetcode-144-Binary-Tree-Preorder-Traversal">
-                <i class="fa fa-chevron-left"></i> leetcode-144-Binary-Tree-Preorder-Traversal
+              <a href="/2014/03/11/leetcode/Algorithms/leetcode-145-Binary-Tree-Postorder-Traversal/" rel="next" title="leetcode-145-Binary-Tree-Postorder-Traversal">
+                <i class="fa fa-chevron-left"></i> leetcode-145-Binary-Tree-Postorder-Traversal
               </a>
             
           </div>
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2014/03/11/leetcode/Algorithms/leetcode-125-Valid-Palindrome/" rel="prev" title="leetcode-125-Valid-Palindrome">
-                leetcode-125-Valid-Palindrome <i class="fa fa-chevron-right"></i>
+              <a href="/2014/03/11/leetcode/Algorithms/leetcode-141-Linked-List-Cycle/" rel="prev" title="leetcode-141-Linked-List-Cycle">
+                leetcode-141-Linked-List-Cycle <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>

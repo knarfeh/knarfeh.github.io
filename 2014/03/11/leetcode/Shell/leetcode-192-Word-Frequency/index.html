@@ -278,14 +278,14 @@
 <li>Words are separated by one or more whitespace characters.   </li>
 </ul>
 <p>For example, assume that words.txt has the following content:</p>
-<figure class="highlight applescript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">the</span> <span class="built_in">day</span> <span class="keyword">is</span> sunny <span class="keyword">the</span> <span class="keyword">the</span></div><div class="line"><span class="keyword">the</span> sunny <span class="keyword">is</span> <span class="keyword">is</span></div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">the day is sunny the the</div><div class="line">the sunny is is</div></pre></td></tr></table></figure>
 <p>Your script should output the following, sorted by descending frequency:</p>
-<figure class="highlight lsl"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">the <span class="number">4</span></div><div class="line">is <span class="number">3</span></div><div class="line">sunny <span class="number">2</span></div><div class="line">day <span class="number">1</span></div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">the 4</div><div class="line">is 3</div><div class="line">sunny 2</div><div class="line">day 1</div></pre></td></tr></table></figure>
 <p><strong>Note</strong>:</p>
 <p>Don’t worry about handling ties, it is guaranteed that each word’s frequency count is unique.</p>
 <h3 id="解决方案"><a href="#解决方案" class="headerlink" title="解决方案"></a>解决方案</h3><hr>
 <p>这种需求是有很多方法解决的，但思路大致都一样：去重，排序，格式化输出。不得不说，类 Unix 系统的管道真是一个伟大的想法：）</p>
-<figure class="highlight vim"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">cat</span> words.txt | <span class="keyword">tr</span> -s <span class="string">' '</span> <span class="string">'\n'</span> | <span class="keyword">sort</span> | uniq -<span class="keyword">c</span> | <span class="keyword">sort</span> -r |awk <span class="string">'&#123;print $2, $1&#125;'</span></div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">cat words.txt | tr -s &apos; &apos; &apos;\n&apos; | sort | uniq -c | sort -r |awk &apos;&#123;print $2, $1&#125;&apos;</div></pre></td></tr></table></figure>
 <p>先通过 cat 命令得到 words.txt 文件的内容，利用 tr 命令将空格符合替换成换行符，进行一次排序，这样就可以通过 uniq 命令统计重复行出现的次数，再排序一次，通过 -r 参数获得一个倒叙的排序，再通过 awk 命令格式化输出。</p>
 <h3 id="题目来源"><a href="#题目来源" class="headerlink" title="题目来源"></a><a href="https://leetcode.com/problems/combine-two-tables/" target="_blank" rel="external">题目来源</a></h3>
       
@@ -312,16 +312,16 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2014/03/11/leetcode/Shell/leetcode-193-Valid-Phone-Numbers/" rel="next" title="leetcode-193-Valid-Phone-Numbers">
-                <i class="fa fa-chevron-left"></i> leetcode-193-Valid-Phone-Numbers
+              <a href="/2014/03/11/leetcode/Shell/leetcode-194-Transpose-File/" rel="next" title="leetcode-194-Transpose-File">
+                <i class="fa fa-chevron-left"></i> leetcode-194-Transpose-File
               </a>
             
           </div>
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2014/03/11/leetcode/Database/leetcode-626-Exchange-Seats/" rel="prev" title="leetcode-626-Exchange-Seats">
-                leetcode-626-Exchange-Seats <i class="fa fa-chevron-right"></i>
+              <a href="/2014/03/11/leetcode/Database/leetcode-627-Swap-Salary/" rel="prev" title="leetcode-627-Swap-Salary">
+                leetcode-627-Swap-Salary <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>

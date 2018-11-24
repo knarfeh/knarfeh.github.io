@@ -272,14 +272,14 @@
         <h3 id="描述"><a href="#描述" class="headerlink" title="描述"></a>描述</h3><hr>
 <p>Find the <strong>k</strong>th largest element in an unsorted array. Note that it is the kth largest element in the sorted order, not the kth distinct element.</p>
 <p><strong>Example 1:</strong></p>
-<figure class="highlight avrasm"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="symbol">Input:</span> [<span class="number">3</span>,<span class="number">2</span>,<span class="number">1</span>,<span class="number">5</span>,<span class="number">6</span>,<span class="number">4</span>] <span class="keyword">and</span> k = <span class="number">2</span></div><div class="line"><span class="symbol">Output:</span> <span class="number">5</span></div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">Input: [3,2,1,5,6,4] and k = 2</div><div class="line">Output: 5</div></pre></td></tr></table></figure>
 <p><strong>Example 2:</strong></p>
-<figure class="highlight avrasm"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="symbol">Input:</span> [<span class="number">3</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">1</span>,<span class="number">2</span>,<span class="number">4</span>,<span class="number">5</span>,<span class="number">5</span>,<span class="number">6</span>] <span class="keyword">and</span> k = <span class="number">4</span></div><div class="line"><span class="symbol">Output:</span> <span class="number">4</span></div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">Input: [3,2,3,1,2,4,5,5,6] and k = 4</div><div class="line">Output: 4</div></pre></td></tr></table></figure>
 <p><strong>Note:</strong><br>You may assume k is always valid, 1 ≤ k ≤ array’s length.<br><a id="more"></a></p>
 <h3 id="分析"><a href="#分析" class="headerlink" title="分析"></a>分析</h3><hr>
 <p>和 <a href="https://leetcode.com/problems/kth-smallest-element-in-a-sorted-matrix" target="_blank" rel="external">Kth Smallest Element in a Sorted Matrix</a> 这道题类似，可以用优先队列解决，不过那道题用的是最大堆，这道题用的是最小堆，在堆顶的是整个数组中由大到小排列的第 k 个数，它的 k-1 个子节点都比它大。</p>
 <h3 id="解决方案1-Java"><a href="#解决方案1-Java" class="headerlink" title="解决方案1(Java)"></a>解决方案1(Java)</h3><hr>
-<figure class="highlight cs"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">findKthLargest</span>(<span class="params"><span class="keyword">int</span>[] nums, <span class="keyword">int</span> k</span>) </span>&#123;</div><div class="line">        PriorityQueue&lt;Integer&gt; heap = <span class="keyword">new</span> PriorityQueue&lt;&gt;(k);</div><div class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; nums.length; i++) &#123;</div><div class="line">            heap.<span class="keyword">add</span>(nums[i]);</div><div class="line">            <span class="keyword">if</span> (heap.size() &gt; k) &#123;</div><div class="line">                heap.poll();</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">return</span> heap.peek();</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">class Solution &#123;</div><div class="line">    public int findKthLargest(int[] nums, int k) &#123;</div><div class="line">        PriorityQueue&lt;Integer&gt; heap = new PriorityQueue&lt;&gt;(k);</div><div class="line">        for (int i = 0; i &lt; nums.length; i++) &#123;</div><div class="line">            heap.add(nums[i]);</div><div class="line">            if (heap.size() &gt; k) &#123;</div><div class="line">                heap.poll();</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">        return heap.peek();</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <h3 id="相关问题"><a href="#相关问题" class="headerlink" title="相关问题"></a>相关问题</h3><hr>
 <ul>
 <li><a href="https://leetcode.com/problems/wiggle-sort-ii/" target="_blank" rel="external">(M) Wiggle Sort II</a>   </li>
@@ -316,16 +316,16 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2014/03/11/leetcode/Algorithms/leetcode-230-Kth-Smallest-Element-in-a-BST/" rel="next" title="leetcode-230-Kth-Smallest-Element-in-a-BST">
-                <i class="fa fa-chevron-left"></i> leetcode-230-Kth-Smallest-Element-in-a-BST
+              <a href="/2014/03/11/leetcode/Algorithms/leetcode-219-Contains-Duplicate-II/" rel="next" title="leetcode-219-Contains-Duplicate-II">
+                <i class="fa fa-chevron-left"></i> leetcode-219-Contains-Duplicate-II
               </a>
             
           </div>
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2014/03/11/leetcode/Algorithms/leetcode-211-Add-and-Search-Word-Data-structure-design/" rel="prev" title="leetcode-211-Add-and-Search-Word---Data-structure-design">
-                leetcode-211-Add-and-Search-Word---Data-structure-design <i class="fa fa-chevron-right"></i>
+              <a href="/2014/03/11/leetcode/Algorithms/leetcode-217-Contains-Duplicate/" rel="prev" title="leetcode-217-Contains-Duplicate">
+                leetcode-217-Contains-Duplicate <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>

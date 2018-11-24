@@ -272,9 +272,9 @@
         <h3 id="描述"><a href="#描述" class="headerlink" title="描述"></a>描述</h3><hr>
 <p>Given an array containing <em>n</em> distinct numbers taken from <code>0, 1, 2, ..., n</code>, find the one that is missing from the array.</p>
 <p><strong>Example 1:</strong></p>
-<figure class="highlight avrasm"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="symbol">Input:</span> [<span class="number">3</span>,<span class="number">0</span>,<span class="number">1</span>]</div><div class="line"><span class="symbol">Output:</span> <span class="number">2</span></div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">Input: [3,0,1]</div><div class="line">Output: 2</div></pre></td></tr></table></figure>
 <p><strong>Example 2:</strong></p>
-<figure class="highlight avrasm"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="symbol">Input:</span> [<span class="number">9</span>,<span class="number">6</span>,<span class="number">4</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">5</span>,<span class="number">7</span>,<span class="number">0</span>,<span class="number">1</span>]</div><div class="line"><span class="symbol">Output:</span> <span class="number">8</span></div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">Input: [9,6,4,2,3,5,7,0,1]</div><div class="line">Output: 8</div></pre></td></tr></table></figure>
 <p><strong>Note</strong>:<br>Your algorithm should run in linear runtime complexity. Could you implement it using only constant extra space complexity?</p>
 <a id="more"></a>
 <h3 id="分析"><a href="#分析" class="headerlink" title="分析"></a>分析</h3><hr>
@@ -282,9 +282,9 @@
 <p>$\sum_{n}^{i=0}=\frac{n(n+1)}{2}$</p>
 <p>所以可以先根据公式求和，再减去原数组的和就可以得到缺失的那个数字。时间复杂度是 O(n)，空间复杂度是常数，符合题目的要求。</p>
 <h3 id="解决方案1-Java"><a href="#解决方案1-Java" class="headerlink" title="解决方案1(Java)"></a>解决方案1(Java)</h3><hr>
-<figure class="highlight cs"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">missingNumber</span>(<span class="params"><span class="keyword">int</span>[] nums</span>) </span>&#123;</div><div class="line">        <span class="keyword">int</span> expect = nums.length*(nums.length+<span class="number">1</span>) / <span class="number">2</span>;</div><div class="line">        <span class="keyword">int</span> actual = <span class="number">0</span>;</div><div class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> num : nums) &#123;</div><div class="line">            actual += num;</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">return</span> expect - actual;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">class Solution &#123;</div><div class="line">    public int missingNumber(int[] nums) &#123;</div><div class="line">        int expect = nums.length*(nums.length+1) / 2;</div><div class="line">        int actual = 0;</div><div class="line">        for (int num : nums) &#123;</div><div class="line">            actual += num;</div><div class="line">        &#125;</div><div class="line">        return expect - actual;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <h3 id="解决方案2-Python"><a href="#解决方案2-Python" class="headerlink" title="解决方案2(Python)"></a>解决方案2(Python)</h3><p>利用 Python 的列表-集合转换，集合相减运算可以用一行代码解决这个问题，唔，感觉有作弊嫌疑<code>←_←</code> 这个效率自然是不高的。</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span>:</span></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">missingNumber</span><span class="params">(self, nums)</span>:</span></div><div class="line">        <span class="string">"""</span></div><div class="line">        :type nums: List[int]</div><div class="line">        :rtype: int</div><div class="line">        """</div><div class="line">        <span class="keyword">return</span> (set(list(range(len(nums)+<span class="number">1</span>))) - set(nums)).pop()</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">class Solution:</div><div class="line">    def missingNumber(self, nums):</div><div class="line">        &quot;&quot;&quot;</div><div class="line">        :type nums: List[int]</div><div class="line">        :rtype: int</div><div class="line">        &quot;&quot;&quot;</div><div class="line">        return (set(list(range(len(nums)+1))) - set(nums)).pop()</div></pre></td></tr></table></figure>
 <h3 id="相关问题"><a href="#相关问题" class="headerlink" title="相关问题"></a>相关问题</h3><hr>
 <p><a href="https://leetcode.com/problems/first-missing-positive/" target="_blank" rel="external">(H) First Missing Positive</a><br><a href="https://leetcode.com/problems/single-number/" target="_blank" rel="external">(M) Single Number</a><br><a href="https://leetcode.com/problems/find-the-duplicate-number/" target="_blank" rel="external">(H) Find the Duplicate Number</a>   </p>
 <h3 id="题目来源"><a href="#题目来源" class="headerlink" title="题目来源"></a><a href="https://leetcode.com/problems/missing-number/" target="_blank" rel="external">题目来源</a></h3>
@@ -318,16 +318,16 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2014/03/11/leetcode/Algorithms/leetcode-287-Find-the-Duplicate-Number/" rel="next" title="leetcode-287-Find-the-Duplicate-Number">
-                <i class="fa fa-chevron-left"></i> leetcode-287-Find-the-Duplicate-Number
+              <a href="/2014/03/11/leetcode/Algorithms/leetcode-283-Move-Zeroes/" rel="next" title="leetcode-283-Move-Zeroes">
+                <i class="fa fa-chevron-left"></i> leetcode-283-Move-Zeroes
               </a>
             
           </div>
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2014/03/11/leetcode/Database/leetcode-177-Nth-Highest-Salary/" rel="prev" title="leetcode-177-Nth-Highest-Salary">
-                leetcode-177-Nth-Highest-Salary <i class="fa fa-chevron-right"></i>
+              <a href="/2014/03/11/leetcode/Algorithms/leetcode-274-H-Index/" rel="prev" title="leetcode-274-H-Index">
+                leetcode-274-H-Index <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>

@@ -272,9 +272,9 @@
         <h3 id="描述"><a href="#描述" class="headerlink" title="描述"></a>描述</h3><hr>
 <p>Given an array <em>nums</em> containing <em>n</em> + 1 integers where each integer is between 1 and <em>n</em> (inclusive), prove that at least one duplicate number must exist. Assume that there is only one duplicate number, find the duplicate one.</p>
 <p><strong>Example 1:</strong></p>
-<figure class="highlight avrasm"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="symbol">Input:</span> [<span class="number">1</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">2</span>,<span class="number">2</span>]</div><div class="line"><span class="symbol">Output:</span> <span class="number">2</span></div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">Input: [1,3,4,2,2]</div><div class="line">Output: 2</div></pre></td></tr></table></figure>
 <p><strong>Example 2:</strong></p>
-<figure class="highlight avrasm"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="symbol">Input:</span> [<span class="number">3</span>,<span class="number">1</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">2</span>]</div><div class="line"><span class="symbol">Output:</span> <span class="number">3</span></div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">Input: [3,1,3,4,2]</div><div class="line">Output: 3</div></pre></td></tr></table></figure>
 <p><strong>Note:</strong></p>
 <ol>
 <li>You <strong>must not</strong> modify the array (assume the array is read only).</li>
@@ -286,7 +286,7 @@
 <h3 id="分析"><a href="#分析" class="headerlink" title="分析"></a>分析</h3><hr>
 <p>和 <a href="https://leetcode.com/problems/linked-list-cycle-ii/" target="_blank" rel="external">142. Linked List Cycle II</a> 的思路基本一致。这道题可以把数组当做一个图，对于数组中的值，<code>i -&gt; A[i]</code> 是一条有向连接，由于数组的长度是 n+1, 而值的范围为 <code>1~n</code>，重复的那个值就相当于有两个节点指向它，因此这个图中一定存在环。求这个环的入口，逻辑就跟 <a href="https://leetcode.com/problems/linked-list-cycle-ii/" target="_blank" rel="external">142. Linked List Cycle II</a> 这道题没什么区别了。</p>
 <h3 id="解决方案1-Java"><a href="#解决方案1-Java" class="headerlink" title="解决方案1(Java)"></a>解决方案1(Java)</h3><hr>
-<figure class="highlight nginx"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line"><span class="attribute">class</span> Solution &#123;</div><div class="line">    <span class="attribute">public</span> int findDuplicate(int[] nums) &#123;</div><div class="line">        <span class="attribute">if</span> (nums.length &lt; <span class="number">1</span>) &#123;</div><div class="line">            <span class="attribute">return</span> -<span class="number">1</span>;</div><div class="line">        &#125;</div><div class="line">        <span class="attribute">int</span> slow = nums[<span class="number">0</span>], fast = nums[nums[<span class="number">0</span>]];</div><div class="line">        <span class="attribute">while</span> (slow != fast) &#123;</div><div class="line">            <span class="attribute">slow</span> = nums[slow];</div><div class="line">            <span class="attribute">fast</span> = nums[nums[fast]];</div><div class="line">        &#125;</div><div class="line">        </div><div class="line">        <span class="attribute">slow</span> = <span class="number">0</span>;</div><div class="line">        <span class="attribute">while</span> (fast != slow) &#123;</div><div class="line">            <span class="attribute">fast</span> = nums[fast];</div><div class="line">            <span class="attribute">slow</span> = nums[slow];</div><div class="line">        &#125;</div><div class="line">        <span class="attribute">return</span> fast;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line">class Solution &#123;</div><div class="line">    public int findDuplicate(int[] nums) &#123;</div><div class="line">        if (nums.length &lt; 1) &#123;</div><div class="line">            return -1;</div><div class="line">        &#125;</div><div class="line">        int slow = nums[0], fast = nums[nums[0]];</div><div class="line">        while (slow != fast) &#123;</div><div class="line">            slow = nums[slow];</div><div class="line">            fast = nums[nums[fast]];</div><div class="line">        &#125;</div><div class="line">        </div><div class="line">        slow = 0;</div><div class="line">        while (fast != slow) &#123;</div><div class="line">            fast = nums[fast];</div><div class="line">            slow = nums[slow];</div><div class="line">        &#125;</div><div class="line">        return fast;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <h3 id="相关问题"><a href="#相关问题" class="headerlink" title="相关问题"></a>相关问题</h3><hr>
 <ul>
 <li><a href="https://leetcode.com/problems/linked-list-cycle-ii/" target="_blank" rel="external">(M) Linked List Cycle II</a>   </li>
@@ -326,16 +326,16 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2014/03/11/leetcode/Algorithms/leetcode-297-Serialize-and-Deserialize-Binary-Tree/" rel="next" title="leetcode-297-Serialize-and-Deserialize-Binary-Tree">
-                <i class="fa fa-chevron-left"></i> leetcode-297-Serialize-and-Deserialize-Binary-Tree
+              <a href="/2014/03/11/leetcode/Algorithms/leetcode-290-Word-Pattern/" rel="next" title="leetcode-290-Word-Pattern">
+                <i class="fa fa-chevron-left"></i> leetcode-290-Word-Pattern
               </a>
             
           </div>
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2014/03/11/leetcode/Algorithms/leetcode-268-Missing-Number/" rel="prev" title="leetcode-268-Missing-Number">
-                leetcode-268-Missing-Number <i class="fa fa-chevron-right"></i>
+              <a href="/2014/03/11/leetcode/Algorithms/leetcode-28-Implement-strStr()/" rel="prev" title="leetcode-28-Implement-strStr()">
+                leetcode-28-Implement-strStr() <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>

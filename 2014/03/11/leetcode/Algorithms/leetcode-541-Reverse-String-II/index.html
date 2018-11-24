@@ -272,7 +272,7 @@
         <h3 id="描述"><a href="#描述" class="headerlink" title="描述"></a>描述</h3><hr>
 <p>Given a string and an integer k, you need to reverse the first k characters for every 2k characters counting from the start of the string. If there are less than k characters left, reverse all of them. If there are less than 2k but greater than or equal to k characters, then reverse the first k characters and left the other as original.</p>
 <p><strong>Example:</strong></p>
-<figure class="highlight avrasm"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="symbol">Input:</span> s = <span class="string">"abcdefg"</span>, k = <span class="number">2</span></div><div class="line"><span class="symbol">Output:</span> <span class="string">"bacdfeg"</span></div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">Input: s = &quot;abcdefg&quot;, k = 2</div><div class="line">Output: &quot;bacdfeg&quot;</div></pre></td></tr></table></figure>
 <p>Restrictions:</p>
 <ol>
 <li>The string consists of lower English letters only.</li>
@@ -283,7 +283,7 @@
 <p>题意是给定一个字符串，要求每 2k 的字符串，将前 k 位倒转，如果最后不足 k 位，将其全部倒转，如果最后大于 k 位，不足 2k 为，倒转 k 位。</p>
 <p>一次遍历即可。</p>
 <h3 id="解决方案1-Java"><a href="#解决方案1-Java" class="headerlink" title="解决方案1(Java)"></a>解决方案1(Java)</h3><hr>
-<figure class="highlight vbscript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">class</span> Solution &#123;</div><div class="line">    <span class="keyword">public</span> <span class="built_in">String</span> reverseStr(<span class="built_in">String</span> s, <span class="built_in">int</span> k) &#123;</div><div class="line">        char[] result = s.toCharArray();</div><div class="line">        <span class="keyword">for</span> (<span class="built_in">int</span> i = <span class="number">0</span>; i &lt; result.length; i += <span class="number">2</span>*k) &#123;</div><div class="line">            <span class="built_in">int</span> <span class="built_in">left</span> = i, <span class="built_in">right</span> = Math.min(<span class="built_in">left</span>+k<span class="number">-1</span>, result.length<span class="number">-1</span>);</div><div class="line">            <span class="keyword">while</span> (<span class="built_in">left</span> &lt; <span class="built_in">right</span>) &#123;</div><div class="line">                char tmp = result[<span class="built_in">left</span>];</div><div class="line">                result[<span class="built_in">left</span>++] = result[<span class="built_in">right</span>];</div><div class="line">                result[<span class="built_in">right</span>--] = tmp;</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">        return <span class="keyword">new</span> <span class="built_in">String</span>(result);</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line">class Solution &#123;</div><div class="line">    public String reverseStr(String s, int k) &#123;</div><div class="line">        char[] result = s.toCharArray();</div><div class="line">        for (int i = 0; i &lt; result.length; i += 2*k) &#123;</div><div class="line">            int left = i, right = Math.min(left+k-1, result.length-1);</div><div class="line">            while (left &lt; right) &#123;</div><div class="line">                char tmp = result[left];</div><div class="line">                result[left++] = result[right];</div><div class="line">                result[right--] = tmp;</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">        return new String(result);</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <h3 id="相关问题"><a href="#相关问题" class="headerlink" title="相关问题"></a>相关问题</h3><hr>
 <ul>
 <li><a href="https://leetcode.com/problems/reverse-words-in-a-string-iii" target="_blank" rel="external">(E)Reverse Words in a String III </a> </li>
@@ -316,16 +316,16 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2014/03/11/leetcode/Algorithms/leetcode-547-Friend-Circles/" rel="next" title="leetcode-547-Friend-Circles">
-                <i class="fa fa-chevron-left"></i> leetcode-547-Friend-Circles
+              <a href="/2014/03/11/leetcode/Algorithms/leetcode-543-Diameter-of-Binary-Tree/" rel="next" title="leetcode-leetcode-543-Diameter-of-Binary-Tree">
+                <i class="fa fa-chevron-left"></i> leetcode-leetcode-543-Diameter-of-Binary-Tree
               </a>
             
           </div>
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2014/03/11/leetcode/Algorithms/leetcode-543-Diameter-of-Binary-Tree/" rel="prev" title="leetcode-leetcode-543-Diameter-of-Binary-Tree">
-                leetcode-leetcode-543-Diameter-of-Binary-Tree <i class="fa fa-chevron-right"></i>
+              <a href="/2014/03/11/leetcode/Algorithms/leetcode-538-Convert-BST-to-Greater-Tree/" rel="prev" title="leetcode-538-Convert-BST-to-Greater-Tree">
+                leetcode-538-Convert-BST-to-Greater-Tree <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>

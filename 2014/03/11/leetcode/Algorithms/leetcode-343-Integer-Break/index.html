@@ -41,7 +41,7 @@
 <link href="/css/main.css?v=0.5.0" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="algorithms,leetcode,Math,Dynamic-Programming," />
+  <meta name="keywords" content="algorithms,leetcode,Dynamic-Programming,Math," />
 
 
 
@@ -58,7 +58,7 @@
 
 
 <meta name="description" content="描述 Given a positive integer n, break it into the sum of at least two positive integers and maximize the product of those integers. Return the maximum product you can get. For example, given n = 2, ret">
-<meta name="keywords" content="algorithms,leetcode,Math,Dynamic-Programming">
+<meta name="keywords" content="algorithms,leetcode,Dynamic-Programming,Math">
 <meta property="og:type" content="article">
 <meta property="og:title" content="leetcode-343-Integer-Break">
 <meta property="og:url" content="http://knarfeh.github.io/2014/03/11/leetcode/Algorithms/leetcode-343-Integer-Break/index.html">
@@ -278,7 +278,7 @@
 <p>其实这是一道数学题。假设最终的值是 f，分割的数可以不是整数，设为 m，有：$f=m^{\frac{n}{m}}$，两边取对数，有$lnf=\frac{n}{m}lnm$，两边同时对 m 求导，有：$\frac{f^{‘}}{f}=n\frac{1-lnm}{m^{2}}$，可知，当 m=e=2.718…时取最大值，m=3 与 e 最接近，分割的数为整数，可以取3。  </p>
 <p>再换个角度思考，分割出的数字大于4是不行的，因为假设分割出了m，m 可以分割为 m-2 和 2，而$(m-2)*2&gt;m$，$m=4$ 时，$m=2*2=2+2$，因此只需要比较2和3两个数，假设$n=3*m+2*n$，$f=3^{m}+2^{n}=3^{m}+2^{\frac{n-3*m}{2}}$，两边取对数，有：$lnf=mln3+\frac{x-3m}{2}ln2=\frac{x}{2}ln2+(ln3-\frac{3}{2}ln2)m$，$ln3-\frac{3}{2}ln2$ 是大于0的，m 越大，f 越大，因此 m 取3。</p>
 <h3 id="解决方案1-C"><a href="#解决方案1-C" class="headerlink" title="解决方案1(C++)"></a>解决方案1(C++)</h3><hr>
-<figure class="highlight cs"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</div><div class="line"><span class="keyword">public</span>:</div><div class="line">    <span class="function"><span class="keyword">int</span> <span class="title">integerBreak</span>(<span class="params"><span class="keyword">int</span> n</span>) </span>&#123;</div><div class="line">        <span class="keyword">if</span>(n == <span class="number">2</span>) &#123;</div><div class="line">            <span class="keyword">return</span> <span class="number">1</span>;</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">if</span>(n == <span class="number">3</span>) &#123;</div><div class="line">            <span class="keyword">return</span> <span class="number">2</span>;</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">int</span> res = <span class="number">1</span>;</div><div class="line">        <span class="keyword">while</span>(n &gt; <span class="number">4</span>) &#123;</div><div class="line">            n -= <span class="number">3</span>;</div><div class="line">            res *= <span class="number">3</span>;</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">return</span> res * n;</div><div class="line">    &#125;</div><div class="line">&#125;;</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line">class Solution &#123;</div><div class="line">public:</div><div class="line">    int integerBreak(int n) &#123;</div><div class="line">        if(n == 2) &#123;</div><div class="line">            return 1;</div><div class="line">        &#125;</div><div class="line">        if(n == 3) &#123;</div><div class="line">            return 2;</div><div class="line">        &#125;</div><div class="line">        int res = 1;</div><div class="line">        while(n &gt; 4) &#123;</div><div class="line">            n -= 3;</div><div class="line">            res *= 3;</div><div class="line">        &#125;</div><div class="line">        return res * n;</div><div class="line">    &#125;</div><div class="line">&#125;;</div></pre></td></tr></table></figure>
 <h3 id="相关问题"><a href="#相关问题" class="headerlink" title="相关问题"></a>相关问题</h3><hr>
 <h3 id="题目来源"><a href="#题目来源" class="headerlink" title="题目来源"></a><a href="https://leetcode.com/problems/integer-break/" target="_blank" rel="external">题目来源</a></h3>
       
@@ -298,9 +298,9 @@
           
             <a href="/tags/leetcode/" rel="tag">#leetcode</a>
           
-            <a href="/tags/Math/" rel="tag">#Math</a>
-          
             <a href="/tags/Dynamic-Programming/" rel="tag">#Dynamic-Programming</a>
+          
+            <a href="/tags/Math/" rel="tag">#Math</a>
           
         </div>
       
@@ -309,8 +309,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2014/03/11/leetcode/Algorithms/leetcode-344-Reverse-String/" rel="next" title="leetcode-344-Reverse-String">
-                <i class="fa fa-chevron-left"></i> leetcode-344-Reverse-String
+              <a href="/2014/03/11/leetcode/Algorithms/leetcode-345-Reverse-Vowels-of-a-String/" rel="next" title="leetcode-345-Reverse-Vowels-of-a-String">
+                <i class="fa fa-chevron-left"></i> leetcode-345-Reverse-Vowels-of-a-String
               </a>
             
           </div>

@@ -273,12 +273,12 @@
 <p>Given a text file <code>file.txt</code>, transpose its content.</p>
 <p>You may assume that each row has the same number of columns and each field is separated by the ‘ ‘ character.</p>
 <p>For example, if <code>file.txt</code> has the following content:</p>
-<figure class="highlight lsl"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">name age</div><div class="line">alice <span class="number">21</span></div><div class="line">ryan <span class="number">30</span></div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">name age</div><div class="line">alice 21</div><div class="line">ryan 30</div></pre></td></tr></table></figure>
 <p>Output the following:</p>
-<figure class="highlight lsl"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">name alice ryan</div><div class="line">age <span class="number">21</span> <span class="number">30</span></div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">name alice ryan</div><div class="line">age 21 30</div></pre></td></tr></table></figure>
 <h3 id="解决方案"><a href="#解决方案" class="headerlink" title="解决方案"></a>解决方案</h3><hr>
 <p>依旧是强大的 Awk。NR 是 Awk 的内建变量，表明目前读到的行号，NF 也是 Awk 的内建变量，记录当前行的字段数量。</p>
-<figure class="highlight stata"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"># <span class="keyword">Read</span> from the <span class="keyword">file</span> <span class="keyword">file</span>.txt and <span class="keyword">print</span> its transposed content to stdout.</div><div class="line">awk '</div><div class="line">NR == 1 &#123; <span class="keyword">for</span> (i = 1; i &lt;= NF; i++) &#123; <span class="keyword">line</span>[i] = <span class="variable">$i</span> &#125; &#125;</div><div class="line">NR &gt; 1 &#123; <span class="keyword">for</span> (i = 1; i &lt;= NF; i++) &#123; <span class="keyword">line</span>[i] = <span class="keyword">line</span>[i] <span class="string">" "</span> <span class="variable">$i</span> &#125; &#125;</div><div class="line">END &#123; <span class="keyword">for</span> (i = 1; i &lt;= NF; i++) &#123; <span class="keyword">print</span> <span class="keyword">line</span>[i] &#125; &#125;</div><div class="line">' <span class="keyword">file</span>.txt</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"># Read from the file file.txt and print its transposed content to stdout.</div><div class="line">awk &apos;</div><div class="line">NR == 1 &#123; for (i = 1; i &lt;= NF; i++) &#123; line[i] = $i &#125; &#125;</div><div class="line">NR &gt; 1 &#123; for (i = 1; i &lt;= NF; i++) &#123; line[i] = line[i] &quot; &quot; $i &#125; &#125;</div><div class="line">END &#123; for (i = 1; i &lt;= NF; i++) &#123; print line[i] &#125; &#125;</div><div class="line">&apos; file.txt</div></pre></td></tr></table></figure>
 <h3 id="题目来源"><a href="#题目来源" class="headerlink" title="题目来源"></a><a href="https://leetcode.com/problems/transpose-file/" target="_blank" rel="external">题目来源</a></h3>
       
     </div>
@@ -304,16 +304,16 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2014/03/11/leetcode/Shell/leetcode-195-Tenth-Line/" rel="next" title="leetcode-195-Tenth-Line">
-                <i class="fa fa-chevron-left"></i> leetcode-195-Tenth-Line
+              <a href="/2014/03/11/leetcode/Shell/leetcode-193-Valid-Phone-Numbers/" rel="next" title="leetcode-193-Valid-Phone-Numbers">
+                <i class="fa fa-chevron-left"></i> leetcode-193-Valid-Phone-Numbers
               </a>
             
           </div>
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2014/03/11/leetcode/Shell/leetcode-193-Valid-Phone-Numbers/" rel="prev" title="leetcode-193-Valid-Phone-Numbers">
-                leetcode-193-Valid-Phone-Numbers <i class="fa fa-chevron-right"></i>
+              <a href="/2014/03/11/leetcode/Shell/leetcode-192-Word-Frequency/" rel="prev" title="leetcode-175-Combine-Two-Tables">
+                leetcode-175-Combine-Two-Tables <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>

@@ -278,7 +278,7 @@
 <p>It is possible to use both of these rules at the same time.</p>
 <p>Given a list of <code>emails</code>, we send one email to each address in the list.  How many different addresses actually receive mails? </p>
 <p><strong>Example 1:</strong></p>
-<figure class="highlight perl"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">Input: [<span class="string">"test.email+alex@leetcode.com"</span>,<span class="string">"test.e.mail+bob.cathy@leetcode.com"</span>,<span class="string">"testemail+david@lee.tcode.com"</span>]</div><div class="line">Output: <span class="number">2</span></div><div class="line">Explanation: <span class="string">"testemail@leetcode.com"</span> <span class="keyword">and</span> <span class="string">"testemail@lee.tcode.com"</span> actually receive mails</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">Input: [&quot;test.email+alex@leetcode.com&quot;,&quot;test.e.mail+bob.cathy@leetcode.com&quot;,&quot;testemail+david@lee.tcode.com&quot;]</div><div class="line">Output: 2</div><div class="line">Explanation: &quot;testemail@leetcode.com&quot; and &quot;testemail@lee.tcode.com&quot; actually receive mails</div></pre></td></tr></table></figure>
 <p><strong>Note:</strong></p>
 <ul>
 <li><code>1 &lt;= emails[i].length &lt;= 100</code></li>
@@ -289,7 +289,7 @@
 <h3 id="分析"><a href="#分析" class="headerlink" title="分析"></a>分析</h3><hr>
 <p>邮箱地址分为两部分，前面一部分属于 local 字段，后面一部分属于 domain 字段，在 local 字段里，<code>+</code> 符号后面的字符串需要丢弃，且 <code>.</code> 字符需要替换为空字符，最后用一个哈希集合来存储这些字段即可。</p>
 <h3 id="解决方案1-Java"><a href="#解决方案1-Java" class="headerlink" title="解决方案1(Java)"></a>解决方案1(Java)</h3><hr>
-<figure class="highlight autoit"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line">class Solution &#123;</div><div class="line">    public <span class="built_in">int</span> numUniqueEmails(<span class="built_in">String</span>[] emails) &#123;</div><div class="line">        Set&lt;<span class="built_in">String</span>&gt; result = new HashSet()<span class="comment">;</span></div><div class="line">        <span class="keyword">for</span> (<span class="built_in">String</span> email: emails) &#123;</div><div class="line">            <span class="built_in">int</span> atIndex = email.indexOf(<span class="string">'@'</span>)<span class="comment">;</span></div><div class="line">            <span class="built_in">String</span> <span class="keyword">local</span> = email.substring(<span class="number">0</span>, atIndex)<span class="comment">;</span></div><div class="line">            <span class="built_in">String</span> domain = email.substring(atIndex)<span class="comment">;</span></div><div class="line">            <span class="keyword">if</span> (<span class="keyword">local</span>.contains(<span class="string">"+"</span>)) &#123;</div><div class="line">                <span class="keyword">local</span> = <span class="keyword">local</span>.substring(<span class="number">0</span>, <span class="keyword">local</span>.indexOf(<span class="string">'+'</span>))<span class="comment">;</span></div><div class="line">            &#125;</div><div class="line">            <span class="keyword">local</span> = <span class="keyword">local</span>.replaceAll(<span class="string">"."</span>, <span class="string">""</span>)<span class="comment">;</span></div><div class="line">            result.add(<span class="keyword">local</span> + domain)<span class="comment">;</span></div><div class="line">        &#125;</div><div class="line">        <span class="keyword">return</span> result.size()<span class="comment">;</span></div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line">class Solution &#123;</div><div class="line">    public int numUniqueEmails(String[] emails) &#123;</div><div class="line">        Set&lt;String&gt; result = new HashSet();</div><div class="line">        for (String email: emails) &#123;</div><div class="line">            int atIndex = email.indexOf(&apos;@&apos;);</div><div class="line">            String local = email.substring(0, atIndex);</div><div class="line">            String domain = email.substring(atIndex);</div><div class="line">            if (local.contains(&quot;+&quot;)) &#123;</div><div class="line">                local = local.substring(0, local.indexOf(&apos;+&apos;));</div><div class="line">            &#125;</div><div class="line">            local = local.replaceAll(&quot;.&quot;, &quot;&quot;);</div><div class="line">            result.add(local + domain);</div><div class="line">        &#125;</div><div class="line">        return result.size();</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <h3 id="题目来源"><a href="#题目来源" class="headerlink" title="题目来源"></a><a href="https://leetcode.com/problems/unique-email-addresses/description/" target="_blank" rel="external">题目来源</a></h3>
       
     </div>
@@ -317,16 +317,16 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2014/03/11/leetcode/Algorithms/leetcode-925-Long-Pressed-Name/" rel="next" title="leetcode-925-Long-Pressed-Name">
-                <i class="fa fa-chevron-left"></i> leetcode-925-Long-Pressed-Name
+              <a href="/2014/03/11/leetcode/Algorithms/leetcode-94-Binary-Tree-Inorder-Traversal/" rel="next" title="leetcode-94-Binary-Tree-Inorder-Traversal">
+                <i class="fa fa-chevron-left"></i> leetcode-94-Binary-Tree-Inorder-Traversal
               </a>
             
           </div>
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2014/03/11/leetcode/Algorithms/leetcode-921-Minimum-Add-to-Make-Parentheses-Valid/" rel="prev" title="leetcode-921-Minimum-Add-to-Make-Parentheses-Valid">
-                leetcode-921-Minimum-Add-to-Make-Parentheses-Valid <i class="fa fa-chevron-right"></i>
+              <a href="/2014/03/11/leetcode/Algorithms/leetcode-933-Number-of-Recent-Calls/" rel="prev" title="leetcode-933-Number-of-Recent-Calls">
+                leetcode-933-Number-of-Recent-Calls <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>

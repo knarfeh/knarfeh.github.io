@@ -277,14 +277,14 @@
 <li>You could assume no leading zero bit in the integer’s binary representation.</li>
 </ol>
 <p><strong>Example 1:</strong></p>
-<figure class="highlight vim"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">Inpu<span class="variable">t:</span> <span class="number">5</span></div><div class="line">Outpu<span class="variable">t:</span> <span class="number">2</span></div><div class="line">Explanation: The binary representation of <span class="number">5</span> <span class="keyword">is</span> <span class="number">101</span> (<span class="keyword">no</span> leading zero bits), <span class="built_in">and</span> its complement <span class="keyword">is</span> <span class="number">010</span>. So you need <span class="keyword">to</span> output <span class="number">2</span>.</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">Input: 5</div><div class="line">Output: 2</div><div class="line">Explanation: The binary representation of 5 is 101 (no leading zero bits), and its complement is 010. So you need to output 2.</div></pre></td></tr></table></figure>
 <p><strong>Example 2:</strong></p>
-<figure class="highlight vim"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">Inpu<span class="variable">t:</span> <span class="number">1</span></div><div class="line">Outpu<span class="variable">t:</span> <span class="number">0</span></div><div class="line">Explanation: The binary representation of <span class="number">1</span> <span class="keyword">is</span> <span class="number">1</span> (<span class="keyword">no</span> leading zero bits), <span class="built_in">and</span> its complement <span class="keyword">is</span> <span class="number">0</span>. So you need <span class="keyword">to</span> output <span class="number">0</span>.</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">Input: 1</div><div class="line">Output: 0</div><div class="line">Explanation: The binary representation of 1 is 1 (no leading zero bits), and its complement is 0. So you need to output 0.</div></pre></td></tr></table></figure>
 <a id="more"></a>
 <h3 id="分析"><a href="#分析" class="headerlink" title="分析"></a>分析</h3><hr>
 <p>给定一个整数，要求我们求其补数，把这个数的二进制表示翻过来就行了，如果是使用 ~ 运算会有个问题，最高位1前面的0也会被翻转，在 Java 里，使用 highestOneBit(i) 函数可以取 i 的二进制形式的最左边的最高位，其他位补零，将其减一再与 ~ 运算后的数进行与运算即为我们想要的结果。</p>
 <h3 id="解决方案1-Java"><a href="#解决方案1-Java" class="headerlink" title="解决方案1(Java)"></a>解决方案1(Java)</h3><hr>
-<figure class="highlight dart"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</div><div class="line">    public <span class="built_in">int</span> findComplement(<span class="built_in">int</span> <span class="built_in">num</span>) &#123;</div><div class="line">        <span class="keyword">return</span> ~<span class="built_in">num</span> &amp; (Integer.highestOneBit(<span class="built_in">num</span>) - <span class="number">1</span>);</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">class Solution &#123;</div><div class="line">    public int findComplement(int num) &#123;</div><div class="line">        return ~num &amp; (Integer.highestOneBit(num) - 1);</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <h3 id="题目来源"><a href="#题目来源" class="headerlink" title="题目来源"></a><a href="https://leetcode.com/problems/number-complement/description/" target="_blank" rel="external">题目来源</a></h3>
       
     </div>
@@ -320,8 +320,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2014/03/11/leetcode/Algorithms/leetcode-463-Island-Perimeter/" rel="prev" title="leetcode-463-Island-Perimeter">
-                leetcode-463-Island-Perimeter <i class="fa fa-chevron-right"></i>
+              <a href="/2014/03/11/leetcode/Algorithms/leetcode-47-Permutations-II/" rel="prev" title="leetcode-47-Permutations-II">
+                leetcode-47-Permutations-II <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>

@@ -278,7 +278,7 @@
 <h3 id="分析"><a href="#分析" class="headerlink" title="分析"></a>分析</h3><hr>
 <p>和那道<a href="http://knarfeh.github.io/2014/03/11/leetcode/leetcode-231-Power-of-Two/">2的n次幂</a>，用log函数即可。</p>
 <h3 id="解决方案1-C"><a href="#解决方案1-C" class="headerlink" title="解决方案1(C++)"></a>解决方案1(C++)</h3><hr>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">class</span> Solution &#123;</div><div class="line"><span class="keyword">public</span>:</div><div class="line">    <span class="function"><span class="keyword">bool</span> <span class="title">isPowerOfFour</span><span class="params">(<span class="keyword">int</span> num)</span> </span>&#123;</div><div class="line">        <span class="keyword">if</span>(num &lt;= <span class="number">0</span>) &#123;</div><div class="line">            <span class="keyword">return</span> <span class="literal">false</span>;</div><div class="line">        &#125;<span class="keyword">else</span> &#123;</div><div class="line">            <span class="keyword">return</span> (<span class="built_in">log</span>(num)/<span class="built_in">log</span>(<span class="number">4</span>)) == (<span class="keyword">int</span>)(<span class="built_in">log</span>(num)/<span class="built_in">log</span>(<span class="number">4</span>));</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">&#125;;</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">class Solution &#123;</div><div class="line">public:</div><div class="line">    bool isPowerOfFour(int num) &#123;</div><div class="line">        if(num &lt;= 0) &#123;</div><div class="line">            return false;</div><div class="line">        &#125;else &#123;</div><div class="line">            return (log(num)/log(4)) == (int)(log(num)/log(4));</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">&#125;;</div></pre></td></tr></table></figure>
 <h3 id="相关问题"><a href="#相关问题" class="headerlink" title="相关问题"></a>相关问题</h3><hr>
 <p><a href="https://leetcode.com/problems/power-of-two/" target="_blank" rel="external">(E) Power of Two</a><br><a href="https://leetcode.com/problems/power-of-three/" target="_blank" rel="external">(E) Power of Three</a>   </p>
 <h3 id="题目来源"><a href="#题目来源" class="headerlink" title="题目来源"></a><a href="https://leetcode.com/problems/palindrome-pairs/" target="_blank" rel="external">题目来源</a></h3>
@@ -316,8 +316,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2014/03/11/leetcode/Algorithms/leetcode-337-House-Robber-III/" rel="prev" title="leetcode-337-House-Robber-III">
-                leetcode-337-House-Robber-III <i class="fa fa-chevron-right"></i>
+              <a href="/2014/03/11/leetcode/Algorithms/leetcode-338-Counting-Bits/" rel="prev" title="leetcode-338-Counting-Bits">
+                leetcode-338-Counting-Bits <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>

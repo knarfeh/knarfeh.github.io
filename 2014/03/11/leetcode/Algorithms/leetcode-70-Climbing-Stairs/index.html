@@ -276,7 +276,7 @@
 <h3 id="分析"><a href="#分析" class="headerlink" title="分析"></a>分析</h3><hr>
 <p>典型的动态规划题目，一句话说明动态规划这类题目的特点：某个状态总是依赖于前面1个或2个甚至多个状态，可能是前2个状态求最大值，也可能是求和，而边界状态是已知的。比如这题，如果是1阶的楼梯，有1种方式，2阶的楼梯，有2种方式，走到第n阶楼梯，可能是从n-1阶来的，也可能是从n-2阶来的，因此走第n阶可能的方式总数等于走n-1阶的方式总数加走n-2阶的方式总数。</p>
 <h3 id="解决方案1-C"><a href="#解决方案1-C" class="headerlink" title="解决方案1(C++)"></a>解决方案1(C++)</h3><hr>
-<figure class="highlight cs"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</div><div class="line"><span class="keyword">public</span>:</div><div class="line">    <span class="function"><span class="keyword">int</span> <span class="title">climbStairs</span>(<span class="params"><span class="keyword">int</span> n</span>) </span>&#123;</div><div class="line">        <span class="keyword">int</span> p[n] = &#123;<span class="number">0</span>&#125;;</div><div class="line">        p[<span class="number">0</span>] = <span class="number">1</span>;</div><div class="line">        p[<span class="number">1</span>] = <span class="number">2</span>;</div><div class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">2</span>; i &lt; n; i++) &#123;</div><div class="line">            p[i] = p[i<span class="number">-1</span>] + p[i<span class="number">-2</span>];</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">return</span> p[n<span class="number">-1</span>];</div><div class="line">    &#125;</div><div class="line">&#125;;</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">class Solution &#123;</div><div class="line">public:</div><div class="line">    int climbStairs(int n) &#123;</div><div class="line">        int p[n] = &#123;0&#125;;</div><div class="line">        p[0] = 1;</div><div class="line">        p[1] = 2;</div><div class="line">        for(int i = 2; i &lt; n; i++) &#123;</div><div class="line">            p[i] = p[i-1] + p[i-2];</div><div class="line">        &#125;</div><div class="line">        return p[n-1];</div><div class="line">    &#125;</div><div class="line">&#125;;</div></pre></td></tr></table></figure>
 <h3 id="相关问题"><a href="#相关问题" class="headerlink" title="相关问题"></a>相关问题</h3><hr>
 <h3 id="题目来源"><a href="#题目来源" class="headerlink" title="题目来源"></a><a href="https://leetcode.com/problems/climbing-stairs/" target="_blank" rel="external">题目来源</a></h3>
       
@@ -307,16 +307,16 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2014/03/11/leetcode/Algorithms/leetcode-8-String-to-Integer-(atoi)/" rel="next" title="leetcode-8-String-to-Integer-(atoi)">
-                <i class="fa fa-chevron-left"></i> leetcode-8-String-to-Integer-(atoi)
+              <a href="/2014/03/11/leetcode/Algorithms/leetcode-700-Search-in-a-Binary-Search-Tree/" rel="next" title="leetcode-700-Search-in-a-Binary-Search-Tree">
+                <i class="fa fa-chevron-left"></i> leetcode-700-Search-in-a-Binary-Search-Tree
               </a>
             
           </div>
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2014/03/11/leetcode/Algorithms/leetcode-69-Sqrt(x)/" rel="prev" title="leetcode-69-Sqrt(x)">
-                leetcode-69-Sqrt(x) <i class="fa fa-chevron-right"></i>
+              <a href="/2014/03/11/leetcode/Algorithms/leetcode-7-Reverse-Integer/" rel="prev" title="leetcode-7-Reverse-Integer">
+                leetcode-7-Reverse-Integer <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>

@@ -57,18 +57,18 @@
 
 
 
-<meta name="description" content="描述 Given a string S and a character C, return an array of integers representing the shortest distance from the character C in the string. Example 1: 12Input: S = &quot;loveleetcode&quot;, C = &apos;e&apos;Output: [3, 2,">
+<meta name="description" content="描述 Given a string S and a character C, return an array of integers representing the shortest distance from the character C in the string. Example 1: 12Input: S = &amp;quot;loveleetcode&amp;quot;, C = &amp;apos;e&amp;">
 <meta name="keywords" content="algorithms,leetcode,Array">
 <meta property="og:type" content="article">
 <meta property="og:title" content="leetcode-821-Shortest-Distance-to-a-Character">
 <meta property="og:url" content="http://knarfeh.github.io/2014/03/11/leetcode/Algorithms/leetcode-821-Shortest-Distance-to-a-Character/index.html">
 <meta property="og:site_name" content="knarfeh&#39;s logbook">
-<meta property="og:description" content="描述 Given a string S and a character C, return an array of integers representing the shortest distance from the character C in the string. Example 1: 12Input: S = &quot;loveleetcode&quot;, C = &apos;e&apos;Output: [3, 2,">
+<meta property="og:description" content="描述 Given a string S and a character C, return an array of integers representing the shortest distance from the character C in the string. Example 1: 12Input: S = &amp;quot;loveleetcode&amp;quot;, C = &amp;apos;e&amp;">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:updated_time" content="2018-11-11T09:06:49.789Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="leetcode-821-Shortest-Distance-to-a-Character">
-<meta name="twitter:description" content="描述 Given a string S and a character C, return an array of integers representing the shortest distance from the character C in the string. Example 1: 12Input: S = &quot;loveleetcode&quot;, C = &apos;e&apos;Output: [3, 2,">
+<meta name="twitter:description" content="描述 Given a string S and a character C, return an array of integers representing the shortest distance from the character C in the string. Example 1: 12Input: S = &amp;quot;loveleetcode&amp;quot;, C = &amp;apos;e&amp;">
 
 
 
@@ -272,7 +272,7 @@
         <h3 id="描述"><a href="#描述" class="headerlink" title="描述"></a>描述</h3><hr>
 <p>Given a string <code>S</code> and a character <code>C</code>, return an array of integers representing the shortest distance from the character <code>C</code> in the string.</p>
 <p><strong>Example 1:</strong></p>
-<figure class="highlight avrasm"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="symbol">Input:</span> S = <span class="string">"loveleetcode"</span>, C = <span class="string">'e'</span></div><div class="line"><span class="symbol">Output:</span> [<span class="number">3</span>, <span class="number">2</span>, <span class="number">1</span>, <span class="number">0</span>, <span class="number">1</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">1</span>, <span class="number">2</span>, <span class="number">2</span>, <span class="number">1</span>, <span class="number">0</span>]</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">Input: S = &quot;loveleetcode&quot;, C = &apos;e&apos;</div><div class="line">Output: [3, 2, 1, 0, 1, 0, 0, 1, 2, 2, 1, 0]</div></pre></td></tr></table></figure>
 <p><strong>Note:</strong></p>
 <ol>
 <li><code>S</code> string length is in <code>[1, 10000].</code></li>
@@ -284,7 +284,7 @@
 <p>题目大意是输出字符串的每个字符到某个字符的最短距离。</p>
 <p>最短距离可能是来自左边，也可能来自右边，从左到右遍历一次再从右到左遍历一次即可。</p>
 <h3 id="解决方案1-Java"><a href="#解决方案1-Java" class="headerlink" title="解决方案1(Java)"></a>解决方案1(Java)</h3><hr>
-<figure class="highlight arduino"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">class</span> Solution &#123;</div><div class="line">    <span class="keyword">public</span> <span class="keyword">int</span>[] shortestToChar(<span class="keyword">String</span> S, <span class="keyword">char</span> C) &#123;</div><div class="line">        <span class="keyword">int</span> sizeS = S.length();</div><div class="line">        <span class="keyword">int</span>[] result = <span class="keyword">new</span> <span class="keyword">int</span>[sizeS];</div><div class="line">        <span class="keyword">int</span> prev = Integer.MIN_VALUE / <span class="number">2</span>;</div><div class="line">        </div><div class="line">        <span class="built_in">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; sizeS; i++) &#123;</div><div class="line">            <span class="built_in">if</span> (S.charAt(i) == C) &#123;</div><div class="line">                prev = i;</div><div class="line">            &#125;</div><div class="line">            result[i] = i - prev;</div><div class="line">        &#125;</div><div class="line">        </div><div class="line">        prev = Integer.MAX_VALUE / <span class="number">2</span>;</div><div class="line">        <span class="built_in">for</span> (<span class="keyword">int</span> i = sizeS<span class="number">-1</span>; i &gt;= <span class="number">0</span>; i--) &#123;</div><div class="line">            <span class="built_in">if</span> (S.charAt(i) == C) &#123;</div><div class="line">                prev = i;</div><div class="line">            &#125;</div><div class="line">            result[i] = Math.<span class="built_in">min</span>(result[i], prev-i);</div><div class="line">        &#125;</div><div class="line">        <span class="built_in">return</span> result;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div></pre></td><td class="code"><pre><div class="line">class Solution &#123;</div><div class="line">    public int[] shortestToChar(String S, char C) &#123;</div><div class="line">        int sizeS = S.length();</div><div class="line">        int[] result = new int[sizeS];</div><div class="line">        int prev = Integer.MIN_VALUE / 2;</div><div class="line">        </div><div class="line">        for (int i = 0; i &lt; sizeS; i++) &#123;</div><div class="line">            if (S.charAt(i) == C) &#123;</div><div class="line">                prev = i;</div><div class="line">            &#125;</div><div class="line">            result[i] = i - prev;</div><div class="line">        &#125;</div><div class="line">        </div><div class="line">        prev = Integer.MAX_VALUE / 2;</div><div class="line">        for (int i = sizeS-1; i &gt;= 0; i--) &#123;</div><div class="line">            if (S.charAt(i) == C) &#123;</div><div class="line">                prev = i;</div><div class="line">            &#125;</div><div class="line">            result[i] = Math.min(result[i], prev-i);</div><div class="line">        &#125;</div><div class="line">        return result;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <h3 id="题目来源"><a href="#题目来源" class="headerlink" title="题目来源"></a><a href="https://leetcode.com/problems/shortest-distance-to-a-character/description/" target="_blank" rel="external">题目来源</a></h3>
       
     </div>
@@ -320,8 +320,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2014/03/11/leetcode/Algorithms/leetcode-817-Linked-List-Components/" rel="prev" title="leetcode-817-Linked-List-Components">
-                leetcode-817-Linked-List-Components <i class="fa fa-chevron-right"></i>
+              <a href="/2014/03/11/leetcode/Algorithms/leetcode-824-Goat-Latin/" rel="prev" title="leetcode-824-Goat-Latin">
+                leetcode-824-Goat-Latin <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>

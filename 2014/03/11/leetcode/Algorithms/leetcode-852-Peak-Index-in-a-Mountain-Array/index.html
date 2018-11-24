@@ -277,9 +277,9 @@
 </ul>
 <p>Given an array that is definitely a mountain, return any <code>i</code> such that <code>A[0] &lt; A[1] &lt; ... A[i-1] &lt; A[i] &gt; A[i+1] &gt; ... &gt; A[A.length - 1]</code>.</p>
 <p><strong>Example 1:</strong></p>
-<figure class="highlight avrasm"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="symbol">Input:</span> [<span class="number">0</span>,<span class="number">1</span>,<span class="number">0</span>]</div><div class="line"><span class="symbol">Output:</span> <span class="number">1</span></div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">Input: [0,1,0]</div><div class="line">Output: 1</div></pre></td></tr></table></figure>
 <p><strong>Example 2:</strong></p>
-<figure class="highlight avrasm"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="symbol">Input:</span> [<span class="number">0</span>,<span class="number">2</span>,<span class="number">1</span>,<span class="number">0</span>]</div><div class="line"><span class="symbol">Output:</span> <span class="number">1</span></div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">Input: [0,2,1,0]</div><div class="line">Output: 1</div></pre></td></tr></table></figure>
 <p><strong>Note:</strong></p>
 <ol>
 <li><code>3 &lt;= A.length &lt;= 10000</code></li>
@@ -290,7 +290,7 @@
 <h3 id="分析"><a href="#分析" class="headerlink" title="分析"></a>分析</h3><hr>
 <p>唔，用二分查找的话，还能再优化一下。</p>
 <h3 id="解决方案2-Java"><a href="#解决方案2-Java" class="headerlink" title="解决方案2(Java)"></a>解决方案2(Java)</h3><hr>
-<figure class="highlight cs"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">peakIndexInMountainArray</span>(<span class="params"><span class="keyword">int</span>[] A</span>) </span>&#123;</div><div class="line">        <span class="keyword">int</span> i = <span class="number">0</span>; </div><div class="line">        <span class="keyword">for</span> (; A[i] &lt;= A[i+<span class="number">1</span>]; i++) &#123;</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">return</span> i;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">class Solution &#123;</div><div class="line">    public int peakIndexInMountainArray(int[] A) &#123;</div><div class="line">        int i = 0; </div><div class="line">        for (; A[i] &lt;= A[i+1]; i++) &#123;</div><div class="line">        &#125;</div><div class="line">        return i;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <h3 id="相关问题"><a href="#相关问题" class="headerlink" title="相关问题"></a>相关问题</h3><hr>
 <p><a href="https://leetcode.com/problems/find-peak-element" target="_blank" rel="external">(M) Find Peak Element</a>   </p>
 <h3 id="题目来源"><a href="#题目来源" class="headerlink" title="题目来源"></a><a href="https://leetcode.com/problems/peak-index-in-a-mountain-array/description/" target="_blank" rel="external">题目来源</a></h3>
@@ -328,8 +328,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2014/03/11/leetcode/Algorithms/leetcode-856-Score-of-Parentheses/" rel="prev" title="leetcode-856-Score-of-Parentheses">
-                leetcode-856-Score-of-Parentheses <i class="fa fa-chevron-right"></i>
+              <a href="/2014/03/11/leetcode/Algorithms/leetcode-860-Lemonade-Change/" rel="prev" title="leetcode-860-Lemonade-Change">
+                leetcode-860-Lemonade-Change <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>

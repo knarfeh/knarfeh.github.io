@@ -41,7 +41,7 @@
 <link href="/css/main.css?v=0.5.0" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="algorithms,leetcode,String,Two-Pointers," />
+  <meta name="keywords" content="algorithms,leetcode,Two-Pointers,String," />
 
 
 
@@ -58,7 +58,7 @@
 
 
 <meta name="description" content="描述 Given a string, determine if it is a palindrome, considering only alphanumeric characters and ignoring cases. Note: For the purpose of this problem, we define empty string as valid palindrome. Exam">
-<meta name="keywords" content="algorithms,leetcode,String,Two-Pointers">
+<meta name="keywords" content="algorithms,leetcode,Two-Pointers,String">
 <meta property="og:type" content="article">
 <meta property="og:title" content="leetcode-125-Valid-Palindrome">
 <meta property="og:url" content="http://knarfeh.github.io/2014/03/11/leetcode/Algorithms/leetcode-125-Valid-Palindrome/index.html">
@@ -273,14 +273,14 @@
 <p>Given a string, determine if it is a palindrome, considering only alphanumeric characters and ignoring cases.</p>
 <p><strong>Note:</strong> For the purpose of this problem, we define empty string as valid palindrome.</p>
 <p><strong>Example 1:</strong></p>
-<figure class="highlight groovy"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="string">Input:</span> <span class="string">"A man, a plan, a canal: Panama"</span></div><div class="line"><span class="string">Output:</span> <span class="literal">true</span></div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">Input: &quot;A man, a plan, a canal: Panama&quot;</div><div class="line">Output: true</div></pre></td></tr></table></figure>
 <p><strong>Example 2:</strong></p>
-<figure class="highlight groovy"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="string">Input:</span> <span class="string">"race a car"</span></div><div class="line"><span class="string">Output:</span> <span class="literal">false</span></div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">Input: &quot;race a car&quot;</div><div class="line">Output: false</div></pre></td></tr></table></figure>
 <a id="more"></a>
 <h3 id="分析"><a href="#分析" class="headerlink" title="分析"></a>分析</h3><hr>
 <p>判断一个字符串是否为回文，有意思的是，题目里明明说了都是字母，用 Java 实现的代码里，判断时却不能用 <code>isLetter</code>，用 <code>isLetterOrDigit</code> 才能通过。</p>
 <h3 id="解决方案1-Java"><a href="#解决方案1-Java" class="headerlink" title="解决方案1(Java)"></a>解决方案1(Java)</h3><hr>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">isPalindrome</span><span class="params">(String s)</span> </span>&#123;</div><div class="line">        <span class="keyword">if</span> (s == <span class="keyword">null</span>) &#123;</div><div class="line">            <span class="keyword">return</span> <span class="keyword">false</span>;</div><div class="line">        &#125;</div><div class="line">        </div><div class="line">        <span class="keyword">int</span> l = <span class="number">0</span>, r = s.length() - <span class="number">1</span>;</div><div class="line">        <span class="keyword">while</span> (l &lt;= r) &#123;</div><div class="line">            <span class="keyword">while</span>(l &lt; r &amp;&amp; !Character.isLetterOrDigit(s.charAt(l))) &#123;</div><div class="line">                l++;</div><div class="line">            &#125;</div><div class="line">            <span class="keyword">while</span>(l &lt; r &amp;&amp; !Character.isLetterOrDigit(s.charAt(r))) &#123;</div><div class="line">                r--;</div><div class="line">            &#125;</div><div class="line">            <span class="keyword">if</span> (Character.toLowerCase(s.charAt(l)) == Character.toLowerCase(s.charAt(r))) &#123;</div><div class="line">                l++;</div><div class="line">                r--;</div><div class="line">            &#125; <span class="keyword">else</span> &#123;</div><div class="line">                <span class="keyword">return</span> <span class="keyword">false</span>;</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">return</span> <span class="keyword">true</span>;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div></pre></td><td class="code"><pre><div class="line">class Solution &#123;</div><div class="line">    public boolean isPalindrome(String s) &#123;</div><div class="line">        if (s == null) &#123;</div><div class="line">            return false;</div><div class="line">        &#125;</div><div class="line">        </div><div class="line">        int l = 0, r = s.length() - 1;</div><div class="line">        while (l &lt;= r) &#123;</div><div class="line">            while(l &lt; r &amp;&amp; !Character.isLetterOrDigit(s.charAt(l))) &#123;</div><div class="line">                l++;</div><div class="line">            &#125;</div><div class="line">            while(l &lt; r &amp;&amp; !Character.isLetterOrDigit(s.charAt(r))) &#123;</div><div class="line">                r--;</div><div class="line">            &#125;</div><div class="line">            if (Character.toLowerCase(s.charAt(l)) == Character.toLowerCase(s.charAt(r))) &#123;</div><div class="line">                l++;</div><div class="line">                r--;</div><div class="line">            &#125; else &#123;</div><div class="line">                return false;</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">        return true;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <h3 id="相关问题"><a href="#相关问题" class="headerlink" title="相关问题"></a>相关问题</h3><hr>
 <ul>
 <li><a href="https://leetcode.com/problems/palindrome-linked-list/" target="_blank" rel="external">(E) Palindrome Linked List</a>   </li>
@@ -304,9 +304,9 @@
           
             <a href="/tags/leetcode/" rel="tag">#leetcode</a>
           
-            <a href="/tags/String/" rel="tag">#String</a>
-          
             <a href="/tags/Two-Pointers/" rel="tag">#Two-Pointers</a>
+          
+            <a href="/tags/String/" rel="tag">#String</a>
           
         </div>
       
@@ -315,8 +315,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2014/03/11/leetcode/Algorithms/leetcode-142-Linked-List-Cycle-II/" rel="next" title="leetcode-142-Linked-List-Cycle-II">
-                <i class="fa fa-chevron-left"></i> leetcode-142-Linked-List-Cycle-II
+              <a href="/2014/03/11/leetcode/Algorithms/leetcode-13-Roman-to-Integer/" rel="next" title="leetcode-13-Roman-to-Integer">
+                <i class="fa fa-chevron-left"></i> leetcode-13-Roman-to-Integer
               </a>
             
           </div>

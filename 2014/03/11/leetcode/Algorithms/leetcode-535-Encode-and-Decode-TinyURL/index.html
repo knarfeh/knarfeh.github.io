@@ -280,7 +280,7 @@
 <p>实现一个短链接服务，需要实现编码，解码方法，实际上就是写一个哈希算法，貌似没多少测试数据进行判断，居然还是一道 Medium 难度的题。</p>
 <h3 id="解决方案1-Java"><a href="#解决方案1-Java" class="headerlink" title="解决方案1(Java)"></a>解决方案1(Java)</h3><hr>
 <p>直接使用字符串的 hashCode 函数实现。</p>
-<figure class="highlight arduino"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="keyword">class</span> Codec &#123;</div><div class="line">    Map&lt;Integer, <span class="keyword">String</span>&gt; <span class="built_in">map</span> = <span class="keyword">new</span> HashMap&lt;&gt;();</div><div class="line"></div><div class="line">    <span class="comment">// Encodes a URL to a shortened URL.</span></div><div class="line">    <span class="keyword">public</span> <span class="keyword">String</span> encode(<span class="keyword">String</span> longUrl) &#123;</div><div class="line">        <span class="built_in">map</span>.<span class="built_in">put</span>(longUrl.hashCode(), longUrl);</div><div class="line">        <span class="built_in">return</span> <span class="string">"http://tinyurl.com/"</span> + longUrl.hashCode();</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="comment">// Decodes a shortened URL to its original URL.</span></div><div class="line">    <span class="keyword">public</span> <span class="keyword">String</span> decode(<span class="keyword">String</span> shortUrl) &#123;</div><div class="line">        <span class="built_in">return</span> <span class="built_in">map</span>.<span class="built_in">get</span>(Integer.<span class="built_in">parseInt</span>(shortUrl.replace(<span class="string">"http://tinyurl.com/"</span>, <span class="string">""</span>)));</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="comment">// Your Codec object will be instantiated and called as such:</span></div><div class="line"><span class="comment">// Codec codec = new Codec();</span></div><div class="line"><span class="comment">// codec.decode(codec.encode(url));</span></div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line">public class Codec &#123;</div><div class="line">    Map&lt;Integer, String&gt; map = new HashMap&lt;&gt;();</div><div class="line"></div><div class="line">    // Encodes a URL to a shortened URL.</div><div class="line">    public String encode(String longUrl) &#123;</div><div class="line">        map.put(longUrl.hashCode(), longUrl);</div><div class="line">        return &quot;http://tinyurl.com/&quot; + longUrl.hashCode();</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    // Decodes a shortened URL to its original URL.</div><div class="line">    public String decode(String shortUrl) &#123;</div><div class="line">        return map.get(Integer.parseInt(shortUrl.replace(&quot;http://tinyurl.com/&quot;, &quot;&quot;)));</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line">// Your Codec object will be instantiated and called as such:</div><div class="line">// Codec codec = new Codec();</div><div class="line">// codec.decode(codec.encode(url));</div></pre></td></tr></table></figure>
 <h3 id="题目来源"><a href="#题目来源" class="headerlink" title="题目来源"></a><a href="https://leetcode.com/problems/encode-and-decode-tinyurl/description/" target="_blank" rel="external">题目来源</a></h3>
       
     </div>
@@ -310,16 +310,16 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2014/03/11/leetcode/Algorithms/leetcode-538-Convert-BST-to-Greater-Tree/" rel="next" title="leetcode-538-Convert-BST-to-Greater-Tree">
-                <i class="fa fa-chevron-left"></i> leetcode-538-Convert-BST-to-Greater-Tree
+              <a href="/2014/03/11/leetcode/Algorithms/leetcode-58-Length-of-Last-Word/" rel="next" title="leetcode-58-Length-of-Last-Word">
+                <i class="fa fa-chevron-left"></i> leetcode-58-Length-of-Last-Word
               </a>
             
           </div>
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2014/03/11/leetcode/Algorithms/leetcode-530-Minimum-Absolute-Difference-in-BST/" rel="prev" title="leetcode-530-Minimum-Absolute-Difference-in-BST">
-                leetcode-530-Minimum-Absolute-Difference-in-BST <i class="fa fa-chevron-right"></i>
+              <a href="/2014/03/11/leetcode/Algorithms/leetcode-575-Distribute-Candies/" rel="prev" title="leetcode-575-Distribute-Candies">
+                leetcode-575-Distribute-Candies <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>

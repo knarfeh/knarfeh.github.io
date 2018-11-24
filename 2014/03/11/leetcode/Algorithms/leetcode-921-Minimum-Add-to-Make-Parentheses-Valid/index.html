@@ -279,18 +279,18 @@
 </ul>
 <p>Given a parentheses string, return the minimum number of parentheses we must add to make the resulting string valid.</p>
 <p><strong>Example 1:</strong></p>
-<figure class="highlight avrasm"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="symbol">Input:</span> <span class="string">"())"</span></div><div class="line"><span class="symbol">Output:</span> <span class="number">1</span></div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">Input: &quot;())&quot;</div><div class="line">Output: 1</div></pre></td></tr></table></figure>
 <p><strong>Example 2:</strong></p>
-<figure class="highlight avrasm"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="symbol">Input:</span> <span class="string">"((("</span></div><div class="line"><span class="symbol">Output:</span> <span class="number">3</span></div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">Input: &quot;(((&quot;</div><div class="line">Output: 3</div></pre></td></tr></table></figure>
 <p><strong>Example 3:</strong></p>
-<figure class="highlight avrasm"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="symbol">Input:</span> <span class="string">"()"</span></div><div class="line"><span class="symbol">Output:</span> <span class="number">0</span></div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">Input: &quot;()&quot;</div><div class="line">Output: 0</div></pre></td></tr></table></figure>
 <p><strong>Example 4:</strong></p>
-<figure class="highlight avrasm"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="symbol">Input:</span> <span class="string">"()))(("</span></div><div class="line"><span class="symbol">Output:</span> <span class="number">4</span></div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">Input: &quot;()))((&quot;</div><div class="line">Output: 4</div></pre></td></tr></table></figure>
 <a id="more"></a>
 <h3 id="分析"><a href="#分析" class="headerlink" title="分析"></a>分析</h3><hr>
 <p>利用栈的特性来模拟左右括号的匹配过程，最后剩下的不能匹配的括号就是需要增加的括号的最小值。</p>
 <h3 id="解决方案1-Java"><a href="#解决方案1-Java" class="headerlink" title="解决方案1(Java)"></a>解决方案1(Java)</h3><hr>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">class</span> Solution &#123;</div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">minAddToMakeValid</span><span class="params">(String S)</span> </span>&#123;</div><div class="line">        Stack&lt;Character&gt; <span class="built_in">stack</span> = <span class="keyword">new</span> Stack&lt;&gt;();</div><div class="line">        <span class="keyword">for</span> (<span class="keyword">char</span> c: S.toCharArray()) &#123;</div><div class="line">            <span class="keyword">if</span> (c == <span class="string">'('</span>) &#123;</div><div class="line">                <span class="built_in">stack</span>.push(c);</div><div class="line">            &#125; <span class="keyword">else</span> &#123;</div><div class="line">                <span class="keyword">if</span> (!<span class="built_in">stack</span>.isEmpty() &amp;&amp; <span class="built_in">stack</span>.peek() == <span class="string">'('</span>) &#123;</div><div class="line">                    <span class="built_in">stack</span>.pop();</div><div class="line">                &#125; <span class="keyword">else</span> &#123;</div><div class="line">                    <span class="built_in">stack</span>.push(c);</div><div class="line">                &#125;</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">return</span> <span class="built_in">stack</span>.size();</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line">class Solution &#123;</div><div class="line">    public int minAddToMakeValid(String S) &#123;</div><div class="line">        Stack&lt;Character&gt; stack = new Stack&lt;&gt;();</div><div class="line">        for (char c: S.toCharArray()) &#123;</div><div class="line">            if (c == &apos;(&apos;) &#123;</div><div class="line">                stack.push(c);</div><div class="line">            &#125; else &#123;</div><div class="line">                if (!stack.isEmpty() &amp;&amp; stack.peek() == &apos;(&apos;) &#123;</div><div class="line">                    stack.pop();</div><div class="line">                &#125; else &#123;</div><div class="line">                    stack.push(c);</div><div class="line">                &#125;</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">        return stack.size();</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <h3 id="题目来源"><a href="#题目来源" class="headerlink" title="题目来源"></a><a href="https://leetcode.com/problems/minimum-add-to-make-parentheses-valid/description/" target="_blank" rel="external">题目来源</a></h3>
       
     </div>
@@ -318,16 +318,16 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2014/03/11/leetcode/Algorithms/leetcode-929-Unique-Email-Addresses/" rel="next" title="leetcode-929-Unique-Email-Addresses">
-                <i class="fa fa-chevron-left"></i> leetcode-929-Unique-Email-Addresses
+              <a href="/2014/03/11/leetcode/Algorithms/leetcode-922-Sort-Array-By-Parity-II/" rel="next" title="leetcode-922-Sort-Array-By-Parity-II">
+                <i class="fa fa-chevron-left"></i> leetcode-922-Sort-Array-By-Parity-II
               </a>
             
           </div>
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2014/03/11/leetcode/Algorithms/leetcode-908-Smallest-Range-I/" rel="prev" title="leetcode-908-Smallest-Range-I">
-                leetcode-908-Smallest-Range-I <i class="fa fa-chevron-right"></i>
+              <a href="/2014/03/11/leetcode/Algorithms/leetcode-919-Complete-Binary-Tree-Inserter/" rel="prev" title="leetcode-919-Complete-Binary-Tree-Inserter">
+                leetcode-919-Complete-Binary-Tree-Inserter <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>

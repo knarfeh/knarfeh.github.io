@@ -767,8 +767,112 @@
         
           
             <p>终于受不了了SAE+WordPress的龟速！第一篇当然是helloworld哈哈哈哈！！！</p>
-<figure class="highlight arduino"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">print</span> <span class="string">"hello world!"</span></div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">print &quot;hello world!&quot;</div></pre></td></tr></table></figure>
           
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2014/03/11/leetcode/Database/leetcode-175-Combine-Two-Tables/" itemprop="url">
+                  leetcode-175-Combine-Two-Tables
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2014-03-11T00:33:34+08:00" content="2014-03-11">
+              2014-03-11
+            </time>
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2014/03/11/leetcode/Database/leetcode-175-Combine-Two-Tables/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2014/03/11/leetcode/Database/leetcode-175-Combine-Two-Tables/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <h3 id="描述"><a href="#描述" class="headerlink" title="描述"></a>描述</h3><hr>
+<p>Table: <code>Person</code></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">+-------------+---------+</div><div class="line">| Column Name | Type    |</div><div class="line">+-------------+---------+</div><div class="line">| PersonId    | int     |</div><div class="line">| FirstName   | varchar |</div><div class="line">| LastName    | varchar |</div><div class="line">+-------------+---------+</div><div class="line">PersonId is the primary key column for this table.</div></pre></td></tr></table></figure>
+<p>Table: <code>Address</code></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">+-------------+---------+</div><div class="line">| Column Name | Type    |</div><div class="line">+-------------+---------+</div><div class="line">| AddressId   | int     |</div><div class="line">| PersonId    | int     |</div><div class="line">| City        | varchar |</div><div class="line">| State       | varchar |</div><div class="line">+-------------+---------+</div><div class="line">AddressId is the primary key column for this table.</div></pre></td></tr></table></figure>
+<p>Write a SQL query for a report that provides the following information for each person in the Person table, regardless if there is an address for each of those people:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">FirstName, LastName, City, State</div></pre></td></tr></table></figure>
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2014/03/11/leetcode/Database/leetcode-175-Combine-Two-Tables/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
         
       
     </div>
@@ -863,7 +967,7 @@
         
           <h3 id="描述"><a href="#描述" class="headerlink" title="描述"></a>描述</h3><hr>
 <p>Write a SQL query to get the second highest salary from the <code>Employee</code> table.</p>
-<figure class="highlight asciidoc"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="code">+----+</span>--------+</div><div class="line"><span class="section">| Id | Salary |</span></div><div class="line">+----+--------+</div><div class="line">| 1  | 100    |</div><div class="line">| 2  | 200    |</div><div class="line"><span class="section">| 3  | 300    |</span></div><div class="line">+----+--------+</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">+----+--------+</div><div class="line">| Id | Salary |</div><div class="line">+----+--------+</div><div class="line">| 1  | 100    |</div><div class="line">| 2  | 200    |</div><div class="line">| 3  | 300    |</div><div class="line">+----+--------+</div></pre></td></tr></table></figure>
 <p>For example, given the above Employee table, the second highest salary is 200. If there is no second highest salary, then the query should return null.<br>
           <div class="post-more-link text-center">
             <a class="btn" href="/2014/03/11/leetcode/Database/leetcode-176-Second-Highest-Salary/#more" rel="contents">
@@ -913,8 +1017,8 @@
             
               
                 
-                <a class="post-title-link" href="/2014/03/11/leetcode/Database/leetcode-180-Consecutive-Numbers/" itemprop="url">
-                  leetcode-180-Consecutive-Numbers
+                <a class="post-title-link" href="/2014/03/11/leetcode/Database/leetcode-177-Nth-Highest-Salary/" itemprop="url">
+                  leetcode-177-Nth-Highest-Salary
                 </a>
               
             
@@ -938,8 +1042,8 @@
             
               <span class="post-comments-count">
                 &nbsp; | &nbsp;
-                <a href="/2014/03/11/leetcode/Database/leetcode-180-Consecutive-Numbers/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2014/03/11/leetcode/Database/leetcode-180-Consecutive-Numbers/" itemprop="commentsCount"></span>
+                <a href="/2014/03/11/leetcode/Database/leetcode-177-Nth-Highest-Salary/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2014/03/11/leetcode/Database/leetcode-177-Nth-Highest-Salary/" itemprop="commentsCount"></span>
                 </a>
               </span>
             
@@ -963,113 +1067,11 @@
       
         
           <h3 id="描述"><a href="#描述" class="headerlink" title="描述"></a>描述</h3><hr>
-<p>Write a SQL query to find all numbers that appear at least three times consecutively.</p>
-<figure class="highlight gherkin"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">+----+-----+</div><div class="line">|<span class="string"> Id </span>|<span class="string"> Num </span>|</div><div class="line">+----+-----+</div><div class="line">|<span class="string"> 1  </span>|<span class="string">  1  </span>|</div><div class="line">|<span class="string"> 2  </span>|<span class="string">  1  </span>|</div><div class="line">|<span class="string"> 3  </span>|<span class="string">  1  </span>|</div><div class="line">|<span class="string"> 4  </span>|<span class="string">  2  </span>|</div><div class="line">|<span class="string"> 5  </span>|<span class="string">  1  </span>|</div><div class="line">|<span class="string"> 6  </span>|<span class="string">  2  </span>|</div><div class="line">|<span class="string"> 7  </span>|<span class="string">  2  </span>|</div><div class="line">+----+-----+</div></pre></td></tr></table></figure>
-<p>For example, given the above Logs table, 1 is the only number that appears consecutively for at least three times.<br>
+<p>Write a SQL query to get the second highest salary from the <code>Employee</code> table.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">+----+--------+</div><div class="line">| Id | Salary |</div><div class="line">+----+--------+</div><div class="line">| 1  | 100    |</div><div class="line">| 2  | 200    |</div><div class="line">| 3  | 300    |</div><div class="line">+----+--------+</div></pre></td></tr></table></figure>
+<p>For example, given the above Employee table, the $n^{th}$ highest salary where n = 2 is <strong>200</strong>. If there is no $n{th}$ highest salary, then the query should return <strong>null</strong>.<br>
           <div class="post-more-link text-center">
-            <a class="btn" href="/2014/03/11/leetcode/Database/leetcode-180-Consecutive-Numbers/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2014/03/11/leetcode/Database/leetcode-182-Duplicate-Emails/" itemprop="url">
-                  leetcode-182-Duplicate-Emails
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2014-03-11T00:33:34+08:00" content="2014-03-11">
-              2014-03-11
-            </time>
-          </span>
-
-          
-
-          
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2014/03/11/leetcode/Database/leetcode-182-Duplicate-Emails/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2014/03/11/leetcode/Database/leetcode-182-Duplicate-Emails/" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <h3 id="描述"><a href="#描述" class="headerlink" title="描述"></a>描述</h3><hr>
-<p>Write a SQL query to find all duplicate emails in a table named <code>Person</code>.</p>
-<figure class="highlight asciidoc"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="code">+----+</span>---------+</div><div class="line"><span class="section">| Id | Email   |</span></div><div class="line">+----+---------+</div><div class="line">| 1  | a@b.com |</div><div class="line">| 2  | c@d.com |</div><div class="line"><span class="section">| 3  | a@b.com |</span></div><div class="line">+----+---------+</div></pre></td></tr></table></figure>
-<p>For example, your query should return the following for the above table:</p>
-<figure class="highlight asciidoc"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="code">+---------+</span></div><div class="line"><span class="section">| Email   |</span></div><div class="line">+---------+</div><div class="line"><span class="section">| a@b.com |</span></div><div class="line">+---------+</div></pre></td></tr></table></figure>
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2014/03/11/leetcode/Database/leetcode-182-Duplicate-Emails/#more" rel="contents">
+            <a class="btn" href="/2014/03/11/leetcode/Database/leetcode-177-Nth-Highest-Salary/#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
@@ -1167,9 +1169,9 @@
         
           <h3 id="描述"><a href="#描述" class="headerlink" title="描述"></a>描述</h3><hr>
 <p>The <code>Employee</code> table holds all employees including their managers. Every employee has an Id, and there is also a column for the manager Id.</p>
-<figure class="highlight gherkin"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">+----+-------+--------+-----------+</div><div class="line">|<span class="string"> Id </span>|<span class="string"> Name  </span>|<span class="string"> Salary </span>|<span class="string"> ManagerId </span>|</div><div class="line">+----+-------+--------+-----------+</div><div class="line">|<span class="string"> 1  </span>|<span class="string"> Joe   </span>|<span class="string"> 70000  </span>|<span class="string"> 3         </span>|</div><div class="line">|<span class="string"> 2  </span>|<span class="string"> Henry </span>|<span class="string"> 80000  </span>|<span class="string"> 4         </span>|</div><div class="line">|<span class="string"> 3  </span>|<span class="string"> Sam   </span>|<span class="string"> 60000  </span>|<span class="string"> NULL      </span>|</div><div class="line">|<span class="string"> 4  </span>|<span class="string"> Max   </span>|<span class="string"> 90000  </span>|<span class="string"> NULL      </span>|</div><div class="line">+----+-------+--------+-----------+</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">+----+-------+--------+-----------+</div><div class="line">| Id | Name  | Salary | ManagerId |</div><div class="line">+----+-------+--------+-----------+</div><div class="line">| 1  | Joe   | 70000  | 3         |</div><div class="line">| 2  | Henry | 80000  | 4         |</div><div class="line">| 3  | Sam   | 60000  | NULL      |</div><div class="line">| 4  | Max   | 90000  | NULL      |</div><div class="line">+----+-------+--------+-----------+</div></pre></td></tr></table></figure>
 <p>Given the <code>Employee</code> table, write a SQL query that finds out employees who earn more than their managers. For the above table, Joe is the only employee who earns more than his manager.</p>
-<figure class="highlight asciidoc"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="code">+----------+</span></div><div class="line"><span class="section">| Employee |</span></div><div class="line">+----------+</div><div class="line"><span class="section">| Joe      |</span></div><div class="line">+----------+</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">+----------+</div><div class="line">| Employee |</div><div class="line">+----------+</div><div class="line">| Joe      |</div><div class="line">+----------+</div></pre></td></tr></table></figure>
           <div class="post-more-link text-center">
             <a class="btn" href="/2014/03/11/leetcode/Database/leetcode-181-Employees-Earning-More-Than-Their-Managers/#more" rel="contents">
               阅读全文 &raquo;

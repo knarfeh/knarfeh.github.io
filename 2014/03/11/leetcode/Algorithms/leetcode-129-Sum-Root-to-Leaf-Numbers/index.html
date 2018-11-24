@@ -274,7 +274,7 @@
 <p>An example is the root-to-leaf path 1-&gt;2-&gt;3 which represents the number 123.</p>
 <p>Find the total sum of all root-to-leaf numbers.</p>
 <p>For example, </p>
-<figure class="highlight asciidoc"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div></pre></td><td class="code"><pre><div class="line"><span class="code">    1</span></div><div class="line"><span class="code">   / \</span></div><div class="line"><span class="code">  2   3</span></div><div class="line"></div><div class="line"><span class="code">```</span>  </div><div class="line"></div><div class="line">The root-to-leaf path 1-&gt;2 represents the number 12.</div><div class="line">The root-to-leaf path 1-&gt;3 represents the number 13.</div><div class="line"></div><div class="line">Return the sum = 12 + 13 = 25. </div><div class="line"></div><div class="line">&lt;!--more--&gt;</div><div class="line"></div><div class="line"><span class="section">### 分析</span></div><div class="line">---</div><div class="line"></div><div class="line">深度优先遍历</div><div class="line"></div><div class="line"><span class="section">### 解决方案1(C++)</span></div><div class="line">---</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div></pre></td><td class="code"><pre><div class="line">    1</div><div class="line">   / \</div><div class="line">  2   3</div><div class="line"></div><div class="line">```  </div><div class="line"></div><div class="line">The root-to-leaf path 1-&gt;2 represents the number 12.</div><div class="line">The root-to-leaf path 1-&gt;3 represents the number 13.</div><div class="line"></div><div class="line">Return the sum = 12 + 13 = 25. </div><div class="line"></div><div class="line">&lt;!--more--&gt;</div><div class="line"></div><div class="line">### 分析</div><div class="line">---</div><div class="line"></div><div class="line">深度优先遍历</div><div class="line"></div><div class="line">### 解决方案1(C++)</div><div class="line">---</div></pre></td></tr></table></figure>
 <p>/**</p>
 <ul>
 <li>Definition for a binary tree node.</li>
@@ -295,7 +295,7 @@ if(root-&gt;left == NULL &amp;&amp; root-&gt;right == NULL) {
 }
 return sum_recursion(root-&gt;left, sum*10 + root-&gt;val) + sum_recursion(root-&gt;right, sum*10 + root-&gt;val);
 </code></pre><p> }<br>};</p>
-<figure class="highlight gcode"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"></div><div class="line"><span class="attr">### 解决方案2</span><span class="comment">(Python)</span>：</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">### 解决方案2(Python)：</div></pre></td></tr></table></figure>
 </li>
 </ul>
 <h1 id="Definition-for-a-binary-tree-node"><a href="#Definition-for-a-binary-tree-node" class="headerlink" title="Definition for a binary tree node."></a>Definition for a binary tree node.</h1><h1 id="class-TreeNode-object"><a href="#class-TreeNode-object" class="headerlink" title="class TreeNode(object):"></a>class TreeNode(object):</h1><h1 id="def-init-self-x"><a href="#def-init-self-x" class="headerlink" title="def init(self, x):"></a>def <strong>init</strong>(self, x):</h1><h1 id="self-val-x"><a href="#self-val-x" class="headerlink" title="self.val = x"></a>self.val = x</h1><h1 id="self-left-None"><a href="#self-left-None" class="headerlink" title="self.left = None"></a>self.left = None</h1><h1 id="self-right-None"><a href="#self-right-None" class="headerlink" title="self.right = None"></a>self.right = None</h1><p>class Solution(object):<br>    def sumNumbers(self, root):<br>        “””<br>        :type root: TreeNode<br>        :rtype: int<br>        “””<br>        return self.sum_recursion(root, 0)</p>
@@ -337,16 +337,16 @@ return sum_recursion(root-&gt;left, sum*10 + root-&gt;val) + sum_recursion(root-
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2014/03/11/leetcode/Algorithms/leetcode-13-Roman-to-Integer/" rel="next" title="leetcode-13-Roman-to-Integer">
-                <i class="fa fa-chevron-left"></i> leetcode-13-Roman-to-Integer
+              <a href="/2014/03/11/leetcode/Algorithms/leetcode-136-Single-Number/" rel="next" title="leetcode-136-Single-Number">
+                <i class="fa fa-chevron-left"></i> leetcode-136-Single-Number
               </a>
             
           </div>
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2014/03/11/leetcode/Algorithms/leetcode-120-Triangle/" rel="prev" title="leetcode-120-Triangle">
-                leetcode-120-Triangle <i class="fa fa-chevron-right"></i>
+              <a href="/2014/03/11/leetcode/Algorithms/leetcode-13-Roman-to-Integer/" rel="prev" title="leetcode-13-Roman-to-Integer">
+                leetcode-13-Roman-to-Integer <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>

@@ -272,9 +272,9 @@
         <h3 id="描述"><a href="#描述" class="headerlink" title="描述"></a>描述</h3><hr>
 <p>Given a <strong>sorted</strong> (in ascending order) integer array <code>nums</code> of <code>n</code> elements and a <code>target</code> value, write a function to search <code>target</code> in <code>nums</code>. If <code>target</code> exists, then return its index, otherwise return <code>-1</code>.</p>
 <p><strong>Example 1:</strong></p>
-<figure class="highlight vim"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">Inpu<span class="variable">t:</span> nums = [-<span class="number">1</span>,<span class="number">0</span>,<span class="number">3</span>,<span class="number">5</span>,<span class="number">9</span>,<span class="number">12</span>], target = <span class="number">9</span></div><div class="line">Outpu<span class="variable">t:</span> <span class="number">4</span></div><div class="line">Explanation: <span class="number">9</span> <span class="built_in">exists</span> in nums <span class="built_in">and</span> its <span class="built_in">index</span> <span class="keyword">is</span> <span class="number">4</span></div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">Input: nums = [-1,0,3,5,9,12], target = 9</div><div class="line">Output: 4</div><div class="line">Explanation: 9 exists in nums and its index is 4</div></pre></td></tr></table></figure>
 <p><strong>Example 2:</strong></p>
-<figure class="highlight groovy"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="string">Input:</span> nums = [<span class="number">-1</span>,<span class="number">0</span>,<span class="number">3</span>,<span class="number">5</span>,<span class="number">9</span>,<span class="number">12</span>], target = <span class="number">2</span></div><div class="line"><span class="string">Output:</span> <span class="number">-1</span></div><div class="line"><span class="string">Explanation:</span> <span class="number">2</span> does not exist <span class="keyword">in</span> nums so <span class="keyword">return</span> <span class="number">-1</span></div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">Input: nums = [-1,0,3,5,9,12], target = 2</div><div class="line">Output: -1</div><div class="line">Explanation: 2 does not exist in nums so return -1</div></pre></td></tr></table></figure>
 <p><strong>Note:</strong></p>
 <ol>
 <li>You may assume that all elements in <code>nums</code> are unique.</li>
@@ -285,7 +285,7 @@
 <h3 id="分析"><a href="#分析" class="headerlink" title="分析"></a>分析</h3><hr>
 <p>二分查找，唔。</p>
 <h3 id="解决方案1-Java"><a href="#解决方案1-Java" class="headerlink" title="解决方案1(Java)"></a>解决方案1(Java)</h3><hr>
-<figure class="highlight aspectj"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</div><div class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">int</span> <span class="title">search</span><span class="params">(<span class="keyword">int</span>[] nums, <span class="keyword">int</span> <span class="keyword">target</span>)</span> </span>&#123;</div><div class="line">        <span class="keyword">int</span> l = <span class="number">0</span>, h = nums.length - <span class="number">1</span>;</div><div class="line">        <span class="keyword">while</span> (l &lt;= h) &#123;</div><div class="line">            <span class="keyword">int</span> mid = (l + h) &gt;&gt;&gt; <span class="number">1</span>;</div><div class="line">            <span class="keyword">if</span> (nums[mid] &lt; <span class="keyword">target</span>) &#123;</div><div class="line">                l = mid + <span class="number">1</span>;</div><div class="line">            &#125; <span class="function"><span class="keyword">else</span> <span class="title">if</span> <span class="params">(nums[mid] &gt; <span class="keyword">target</span>)</span> </span>&#123;</div><div class="line">                h = mid - <span class="number">1</span>;</div><div class="line">            &#125; <span class="keyword">else</span> &#123;</div><div class="line">                <span class="keyword">return</span> mid;</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">return</span> <span class="number">-1</span>;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line">class Solution &#123;</div><div class="line">    public int search(int[] nums, int target) &#123;</div><div class="line">        int l = 0, h = nums.length - 1;</div><div class="line">        while (l &lt;= h) &#123;</div><div class="line">            int mid = (l + h) &gt;&gt;&gt; 1;</div><div class="line">            if (nums[mid] &lt; target) &#123;</div><div class="line">                l = mid + 1;</div><div class="line">            &#125; else if (nums[mid] &gt; target) &#123;</div><div class="line">                h = mid - 1;</div><div class="line">            &#125; else &#123;</div><div class="line">                return mid;</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">        return -1;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <h3 id="相关问题"><a href="#相关问题" class="headerlink" title="相关问题"></a>相关问题</h3><hr>
 <ul>
 <li><a href="https://leetcode.com/problems/search-in-a-sorted-array-of-unknown-size" target="_blank" rel="external">(M) Search in a Sorted Array of Unknown Size</a>   </li>
@@ -317,16 +317,16 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2014/03/11/leetcode/Algorithms/leetcode-706-Design-HashMap/" rel="next" title="leetcode-706-Design-HashMap">
-                <i class="fa fa-chevron-left"></i> leetcode-706-Design-HashMap
+              <a href="/2014/03/11/leetcode/Algorithms/leetcode-705-Design-HashSet/" rel="next" title="leetcode-705-Design-HashSet">
+                <i class="fa fa-chevron-left"></i> leetcode-705-Design-HashSet
               </a>
             
           </div>
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2014/03/11/leetcode/Algorithms/leetcode-703-Kth-Largest-Element-in-a-Stream/" rel="prev" title="leetcode-703-Kth-Largest-Element-in-a-Stream">
-                leetcode-703-Kth-Largest-Element-in-a-Stream <i class="fa fa-chevron-right"></i>
+              <a href="/2014/03/11/leetcode/Algorithms/leetcode-700-Search-in-a-Binary-Search-Tree/" rel="prev" title="leetcode-700-Search-in-a-Binary-Search-Tree">
+                leetcode-700-Search-in-a-Binary-Search-Tree <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>

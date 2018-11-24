@@ -274,9 +274,9 @@
 <p>Two rectangles overlap if the area of their intersection is positive.  To be clear, two rectangles that only touch at the corner or edges do not overlap.</p>
 <p>Given two (axis-aligned) rectangles, return whether they overlap.</p>
 <p><strong>Example 1:</strong></p>
-<figure class="highlight groovy"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="string">Input:</span> rec1 = [<span class="number">0</span>,<span class="number">0</span>,<span class="number">2</span>,<span class="number">2</span>], rec2 = [<span class="number">1</span>,<span class="number">1</span>,<span class="number">3</span>,<span class="number">3</span>]</div><div class="line"><span class="string">Output:</span> <span class="literal">true</span></div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">Input: rec1 = [0,0,2,2], rec2 = [1,1,3,3]</div><div class="line">Output: true</div></pre></td></tr></table></figure>
 <p><strong>Example 2:</strong></p>
-<figure class="highlight groovy"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="string">Input:</span> rec1 = [<span class="number">0</span>,<span class="number">0</span>,<span class="number">1</span>,<span class="number">1</span>], rec2 = [<span class="number">1</span>,<span class="number">0</span>,<span class="number">2</span>,<span class="number">1</span>]</div><div class="line"><span class="string">Output:</span> <span class="literal">false</span></div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">Input: rec1 = [0,0,1,1], rec2 = [1,0,2,1]</div><div class="line">Output: false</div></pre></td></tr></table></figure>
 <p><strong>Notes:</strong></p>
 <ol>
 <li>Both rectangles <code>rec1</code> and <code>rec2</code> are lists of 4 integers.</li>
@@ -286,7 +286,7 @@
 <h3 id="分析"><a href="#分析" class="headerlink" title="分析"></a>分析</h3><hr>
 <p>根据坐标判断两个长方形是否相交，小学知识？</p>
 <h3 id="解决方案1-Java"><a href="#解决方案1-Java" class="headerlink" title="解决方案1(Java)"></a>解决方案1(Java)</h3><hr>
-<figure class="highlight accesslog"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">class Solution &#123;</div><div class="line">    public boolean isRectangleOverlap(int<span class="string">[]</span> rec1, int<span class="string">[]</span> rec2) &#123;</div><div class="line">        return !(rec1<span class="string">[2]</span> &lt;= rec2<span class="string">[0]</span> || rec1<span class="string">[3]</span> &lt;= rec2<span class="string">[1]</span> || rec1<span class="string">[0]</span> &gt;= rec2<span class="string">[2]</span> || rec1<span class="string">[1]</span> &gt;= rec2<span class="string">[3]</span>);</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">class Solution &#123;</div><div class="line">    public boolean isRectangleOverlap(int[] rec1, int[] rec2) &#123;</div><div class="line">        return !(rec1[2] &lt;= rec2[0] || rec1[3] &lt;= rec2[1] || rec1[0] &gt;= rec2[2] || rec1[1] &gt;= rec2[3]);</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <h3 id="相关问题"><a href="#相关问题" class="headerlink" title="相关问题"></a>相关问题</h3><hr>
 <p><a href="https://leetcode.com/problems/rectangle-area" target="_blank" rel="external">(M) Rectangle Area</a>   </p>
 <h3 id="题目来源"><a href="#题目来源" class="headerlink" title="题目来源"></a><a href="https://leetcode.com/problems/rectangle-overlap/description/" target="_blank" rel="external">题目来源</a></h3>
@@ -316,16 +316,16 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2014/03/11/leetcode/Algorithms/leetcode-832-Flipping-an-Image/" rel="next" title="leetcode-832-Flipping-an-Image">
-                <i class="fa fa-chevron-left"></i> leetcode-832-Flipping-an-Image
+              <a href="/2014/03/11/leetcode/Algorithms/leetcode-841-Keys-and-Rooms/" rel="next" title="leetcode-841-Keys-and-Rooms">
+                <i class="fa fa-chevron-left"></i> leetcode-841-Keys-and-Rooms
               </a>
             
           </div>
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2014/03/11/leetcode/Algorithms/leetcode-830-Positions-of-Large-Groups/" rel="prev" title="leetcode-830-Positions-of-Large-Groups">
-                leetcode-830-Positions-of-Large-Groups <i class="fa fa-chevron-right"></i>
+              <a href="/2014/03/11/leetcode/Algorithms/leetcode-832-Flipping-an-Image/" rel="prev" title="leetcode-832-Flipping-an-Image">
+                leetcode-832-Flipping-an-Image <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>

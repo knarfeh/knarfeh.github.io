@@ -279,14 +279,14 @@
 <p>A student could be rewarded if his attendance record doesn’t contain <strong>more than one ‘A’ (absent)</strong> or <strong>more than two continuous ‘L’ (late)</strong>.</p>
 <p>You need to return whether the student could be rewarded according to his attendance record.</p>
 <p><strong>Example 1:</strong></p>
-<figure class="highlight avrasm"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="symbol">Input:</span> <span class="string">"PPALLP"</span></div><div class="line"><span class="symbol">Output:</span> True</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">Input: &quot;PPALLP&quot;</div><div class="line">Output: True</div></pre></td></tr></table></figure>
 <p><strong>Example 2:</strong></p>
-<figure class="highlight avrasm"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="symbol">Input:</span> <span class="string">"PPALLL"</span></div><div class="line"><span class="symbol">Output:</span> False</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">Input: &quot;PPALLL&quot;</div><div class="line">Output: False</div></pre></td></tr></table></figure>
 <a id="more"></a>
 <h3 id="分析"><a href="#分析" class="headerlink" title="分析"></a>分析</h3><hr>
 <p>如果学生缺席次数大于等于两次，连续迟到的次数大于两次，则不能得出席奖。</p>
 <h3 id="解决方案1-Java"><a href="#解决方案1-Java" class="headerlink" title="解决方案1(Java)"></a>解决方案1(Java)</h3><hr>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">checkRecord</span><span class="params">(String s)</span> </span>&#123;</div><div class="line">        <span class="keyword">int</span> aCount = <span class="number">0</span>, lCount = <span class="number">0</span>;</div><div class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; s.length(); i++) &#123;</div><div class="line">            <span class="keyword">if</span> (s.charAt(i) == <span class="string">'A'</span>) &#123;</div><div class="line">                aCount++;</div><div class="line">            &#125;</div><div class="line">            <span class="keyword">if</span> (s.charAt(i) == <span class="string">'L'</span>) &#123;</div><div class="line">                lCount++;</div><div class="line">            &#125; <span class="keyword">else</span> &#123;</div><div class="line">                lCount = <span class="number">0</span>;</div><div class="line">            &#125;</div><div class="line">            <span class="keyword">if</span> (aCount &gt;= <span class="number">2</span> || lCount &gt; <span class="number">2</span>) &#123;</div><div class="line">                <span class="keyword">return</span> <span class="keyword">false</span>;</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">return</span> <span class="keyword">true</span>;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line">class Solution &#123;</div><div class="line">    public boolean checkRecord(String s) &#123;</div><div class="line">        int aCount = 0, lCount = 0;</div><div class="line">        for (int i = 0; i &lt; s.length(); i++) &#123;</div><div class="line">            if (s.charAt(i) == &apos;A&apos;) &#123;</div><div class="line">                aCount++;</div><div class="line">            &#125;</div><div class="line">            if (s.charAt(i) == &apos;L&apos;) &#123;</div><div class="line">                lCount++;</div><div class="line">            &#125; else &#123;</div><div class="line">                lCount = 0;</div><div class="line">            &#125;</div><div class="line">            if (aCount &gt;= 2 || lCount &gt; 2) &#123;</div><div class="line">                return false;</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">        return true;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <h3 id="相关问题"><a href="#相关问题" class="headerlink" title="相关问题"></a>相关问题</h3><hr>
 <ul>
 <li><a href="https://leetcode.com/problems/student-attendance-record-ii" target="_blank" rel="external">(H) Student Attendance Record II</a>   </li>
@@ -318,16 +318,16 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2014/03/11/leetcode/Algorithms/leetcode-566-Reshape-the-Matrix/" rel="next" title="leetcode-74-Search-a-2D-Matrix">
-                <i class="fa fa-chevron-left"></i> leetcode-74-Search-a-2D-Matrix
+              <a href="/2014/03/11/leetcode/Algorithms/leetcode-557-Reverse-Words-in-a-String-III/" rel="next" title="leetcode-557-Reverse-Words-in-a-String-III">
+                <i class="fa fa-chevron-left"></i> leetcode-557-Reverse-Words-in-a-String-III
               </a>
             
           </div>
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2014/03/11/leetcode/Algorithms/leetcode-559-Maximum-Depth-of-N-ary-Tree/" rel="prev" title="leetcode-559-Maximum-Depth-of-N-ary-Tree">
-                leetcode-559-Maximum-Depth-of-N-ary-Tree <i class="fa fa-chevron-right"></i>
+              <a href="/2014/03/11/leetcode/Algorithms/leetcode-547-Friend-Circles/" rel="prev" title="leetcode-547-Friend-Circles">
+                leetcode-547-Friend-Circles <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>

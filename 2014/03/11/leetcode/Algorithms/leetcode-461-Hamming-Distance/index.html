@@ -274,12 +274,12 @@
 <p>Given two integers x and y, calculate the Hamming distance.</p>
 <p>Note:<br>$0 ≤ x, y &lt; 2^{31}.$</p>
 <p>Example:</p>
-<figure class="highlight http"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="attribute">Input</span>: x = 1, y = 4</div><div class="line"></div><div class="line"><span class="http"><span class="attribute">Output</span>: 2</span></div><div class="line"></div><div class="line"><span class="applescript">Explanation:</span></div><div class="line"><span class="number">1</span>   (<span class="number">0</span> <span class="number">0</span> <span class="number">0</span> <span class="number">1</span>)</div><div class="line"><span class="number">4</span>   (<span class="number">0</span> <span class="number">1</span> <span class="number">0</span> <span class="number">0</span>)</div><div class="line">       ↑   ↑</div><div class="line"></div><div class="line">The <span class="keyword">above</span> arrows point <span class="keyword">to</span> positions <span class="keyword">where</span> <span class="keyword">the</span> corresponding bits are different.</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">Input: x = 1, y = 4</div><div class="line"></div><div class="line">Output: 2</div><div class="line"></div><div class="line">Explanation:</div><div class="line">1   (0 0 0 1)</div><div class="line">4   (0 1 0 0)</div><div class="line">       ↑   ↑</div><div class="line"></div><div class="line">The above arrows point to positions where the corresponding bits are different.</div></pre></td></tr></table></figure>
 <a id="more"></a>
 <h3 id="分析"><a href="#分析" class="headerlink" title="分析"></a>分析</h3><hr>
 <p><a href="https://en.wikipedia.org/wiki/Hamming_distance" target="_blank" rel="external">汉明距离</a>是指两个等长字符串对应位置的不同字符的个数。</p>
 <h3 id="解决方案3-Python"><a href="#解决方案3-Python" class="headerlink" title="解决方案3(Python)"></a>解决方案3(Python)</h3><hr>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span><span class="params">(object)</span>:</span></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">hammingDistance</span><span class="params">(self, x, y)</span>:</span></div><div class="line">        <span class="string">"""</span></div><div class="line">        :type x: int</div><div class="line">        :type y: int</div><div class="line">        :rtype: int</div><div class="line">        """</div><div class="line">        <span class="keyword">return</span> bin(x^y).count(<span class="string">"1"</span>)</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">class Solution(object):</div><div class="line">    def hammingDistance(self, x, y):</div><div class="line">        &quot;&quot;&quot;</div><div class="line">        :type x: int</div><div class="line">        :type y: int</div><div class="line">        :rtype: int</div><div class="line">        &quot;&quot;&quot;</div><div class="line">        return bin(x^y).count(&quot;1&quot;)</div></pre></td></tr></table></figure>
 <h3 id="相关问题"><a href="#相关问题" class="headerlink" title="相关问题"></a>相关问题</h3><hr>
 <h3 id="题目来源"><a href="#题目来源" class="headerlink" title="题目来源"></a><a href="https://leetcode.com/problems/hamming-distance/" target="_blank" rel="external">题目来源</a></h3>
       
@@ -306,16 +306,16 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2014/03/11/leetcode/Algorithms/leetcode-504-Base-7/" rel="next" title="leetcode-504-Base-7">
-                <i class="fa fa-chevron-left"></i> leetcode-504-Base-7
+              <a href="/2014/03/11/leetcode/Algorithms/leetcode-463-Island-Perimeter/" rel="next" title="leetcode-463-Island-Perimeter">
+                <i class="fa fa-chevron-left"></i> leetcode-463-Island-Perimeter
               </a>
             
           </div>
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2014/03/11/leetcode/Algorithms/leetcode-40-Combination-Sum-II/" rel="prev" title="leetcode-40-Combination-Sum-II">
-                leetcode-40-Combination-Sum-II <i class="fa fa-chevron-right"></i>
+              <a href="/2014/03/11/leetcode/Algorithms/leetcode-454-4Sum-II/" rel="prev" title="leetcode-454-4Sum-II">
+                leetcode-454-4Sum-II <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>

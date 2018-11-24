@@ -41,7 +41,7 @@
 <link href="/css/main.css?v=0.5.0" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="algorithms,leetcode,Linked-List,Two-Pointers," />
+  <meta name="keywords" content="algorithms,leetcode,Two-Pointers,Linked-List," />
 
 
 
@@ -58,7 +58,7 @@
 
 
 <meta name="description" content="描述 Given a linked list, remove the nth node from the end of list and return its head. For example, 123Given linked list: 1-&amp;gt;2-&amp;gt;3-&amp;gt;4-&amp;gt;5, and n = 2.After removing the second node from the en">
-<meta name="keywords" content="algorithms,leetcode,Linked-List,Two-Pointers">
+<meta name="keywords" content="algorithms,leetcode,Two-Pointers,Linked-List">
 <meta property="og:type" content="article">
 <meta property="og:title" content="leetcode-19-Remove-Nth-Node-From-End-of-List">
 <meta property="og:url" content="http://knarfeh.github.io/2014/03/11/leetcode/Algorithms/leetcode-19-Remove-Nth-Node-From-End-of-List/index.html">
@@ -272,12 +272,12 @@
         <h3 id="描述"><a href="#描述" class="headerlink" title="描述"></a>描述</h3><hr>
 <p>Given a linked list, remove the nth node from the end of list and return its head.</p>
 <p>For example,</p>
-<figure class="highlight ocaml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="type">Given</span> linked <span class="built_in">list</span>: <span class="number">1</span>-&gt;<span class="number">2</span>-&gt;<span class="number">3</span>-&gt;<span class="number">4</span>-&gt;<span class="number">5</span>, <span class="keyword">and</span> n = <span class="number">2.</span></div><div class="line"></div><div class="line"><span class="type">After</span> removing the second node from the <span class="keyword">end</span>, the linked <span class="built_in">list</span> becomes <span class="number">1</span>-&gt;<span class="number">2</span>-&gt;<span class="number">3</span>-&gt;<span class="number">5.</span></div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">Given linked list: 1-&gt;2-&gt;3-&gt;4-&gt;5, and n = 2.</div><div class="line"></div><div class="line">After removing the second node from the end, the linked list becomes 1-&gt;2-&gt;3-&gt;5.</div></pre></td></tr></table></figure>
 <a id="more"></a>
 <h3 id="分析"><a href="#分析" class="headerlink" title="分析"></a>分析</h3><hr>
 <p>设置3个指针，其中两指针间相隔的元素是n-1个，当第二个指针指向链尾元素时，此时第一个指针指向的元素即要移除的元素，利用第一个指针前的一个指针将该指针移除，要注意边界情况，比如要移除的元素是链表的第一个元素。</p>
 <h3 id="解决方案1-C"><a href="#解决方案1-C" class="headerlink" title="解决方案1(C++)"></a>解决方案1(C++)</h3><hr>
-<figure class="highlight vbscript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div></pre></td><td class="code"><pre><div class="line">/**</div><div class="line"> * Definition <span class="keyword">for</span> singly-linked list.</div><div class="line"> * struct ListNode &#123;</div><div class="line"> *     <span class="built_in">int</span> val;</div><div class="line"> *     ListNode *<span class="keyword">next</span>;</div><div class="line"> *     ListNode(<span class="built_in">int</span> x) : val(x), <span class="keyword">next</span>(<span class="literal">NULL</span>) &#123;&#125;</div><div class="line"> * &#125;;</div><div class="line"> */</div><div class="line"><span class="keyword">class</span> Solution &#123;</div><div class="line"><span class="keyword">public</span>:</div><div class="line">    ListNode* removeNthFromEnd(ListNode* head, <span class="built_in">int</span> n) &#123;</div><div class="line">        <span class="keyword">if</span>(head == <span class="literal">NULL</span>) &#123;</div><div class="line">            return <span class="literal">NULL</span>;</div><div class="line">        &#125;</div><div class="line">        </div><div class="line">        ListNode *first_pre = <span class="literal">NULL</span>;</div><div class="line">        ListNode *first = head;</div><div class="line">        ListNode *<span class="built_in">second</span> = head;</div><div class="line">        </div><div class="line">        <span class="keyword">for</span>(<span class="built_in">int</span> i = <span class="number">0</span>; i &lt; n<span class="number">-1</span>; i++)&#123;</div><div class="line">            <span class="built_in">second</span> = <span class="built_in">second</span>-&gt;<span class="keyword">next</span>;</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">while</span>(<span class="built_in">second</span>-&gt;<span class="keyword">next</span>) &#123;</div><div class="line">            first_pre = first;</div><div class="line">            first = first-&gt;<span class="keyword">next</span>;</div><div class="line">            <span class="built_in">second</span> = <span class="built_in">second</span>-&gt;<span class="keyword">next</span>;</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">if</span>(first_pre == <span class="literal">NULL</span>) &#123;</div><div class="line">            head = first-&gt;<span class="keyword">next</span>;</div><div class="line">            delete first;</div><div class="line">        &#125;<span class="keyword">else</span> &#123;</div><div class="line">            first_pre-&gt;<span class="keyword">next</span> = first-&gt;<span class="keyword">next</span>;</div><div class="line">            delete first;</div><div class="line">        &#125;</div><div class="line">        return head;</div><div class="line">    &#125;</div><div class="line">&#125;;</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div></pre></td><td class="code"><pre><div class="line">/**</div><div class="line"> * Definition for singly-linked list.</div><div class="line"> * struct ListNode &#123;</div><div class="line"> *     int val;</div><div class="line"> *     ListNode *next;</div><div class="line"> *     ListNode(int x) : val(x), next(NULL) &#123;&#125;</div><div class="line"> * &#125;;</div><div class="line"> */</div><div class="line">class Solution &#123;</div><div class="line">public:</div><div class="line">    ListNode* removeNthFromEnd(ListNode* head, int n) &#123;</div><div class="line">        if(head == NULL) &#123;</div><div class="line">            return NULL;</div><div class="line">        &#125;</div><div class="line">        </div><div class="line">        ListNode *first_pre = NULL;</div><div class="line">        ListNode *first = head;</div><div class="line">        ListNode *second = head;</div><div class="line">        </div><div class="line">        for(int i = 0; i &lt; n-1; i++)&#123;</div><div class="line">            second = second-&gt;next;</div><div class="line">        &#125;</div><div class="line">        while(second-&gt;next) &#123;</div><div class="line">            first_pre = first;</div><div class="line">            first = first-&gt;next;</div><div class="line">            second = second-&gt;next;</div><div class="line">        &#125;</div><div class="line">        if(first_pre == NULL) &#123;</div><div class="line">            head = first-&gt;next;</div><div class="line">            delete first;</div><div class="line">        &#125;else &#123;</div><div class="line">            first_pre-&gt;next = first-&gt;next;</div><div class="line">            delete first;</div><div class="line">        &#125;</div><div class="line">        return head;</div><div class="line">    &#125;</div><div class="line">&#125;;</div></pre></td></tr></table></figure>
 <h3 id="相关问题"><a href="#相关问题" class="headerlink" title="相关问题"></a>相关问题</h3><hr>
 <h3 id="题目来源"><a href="#题目来源" class="headerlink" title="题目来源"></a><a href="https://leetcode.com/problems/remove-nth-node-from-end-of-list/" target="_blank" rel="external">题目来源</a></h3>
       
@@ -297,9 +297,9 @@
           
             <a href="/tags/leetcode/" rel="tag">#leetcode</a>
           
-            <a href="/tags/Linked-List/" rel="tag">#Linked-List</a>
-          
             <a href="/tags/Two-Pointers/" rel="tag">#Two-Pointers</a>
+          
+            <a href="/tags/Linked-List/" rel="tag">#Linked-List</a>
           
         </div>
       
@@ -308,8 +308,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2014/03/11/leetcode/Algorithms/leetcode-190-Reverse-Bits/" rel="next" title="leetcode-190-Reverse-Bits">
-                <i class="fa fa-chevron-left"></i> leetcode-190-Reverse-Bits
+              <a href="/2014/03/11/leetcode/Algorithms/leetcode-179-Largest-Number/" rel="next" title="leetcode-179-Largest-Number">
+                <i class="fa fa-chevron-left"></i> leetcode-179-Largest-Number
               </a>
             
           </div>

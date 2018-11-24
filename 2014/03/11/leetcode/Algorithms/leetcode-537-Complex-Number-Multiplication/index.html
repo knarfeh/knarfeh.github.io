@@ -57,18 +57,18 @@
 
 
 
-<meta name="description" content="描述 Given two strings representing two complex numbers. You need to return a string representing their multiplication. Note $i^2 = -1$ according to the definition. Example 1: 123Input: &quot;1+1i&quot;, &quot;1+1i&quot;Ou">
+<meta name="description" content="描述 Given two strings representing two complex numbers. You need to return a string representing their multiplication. Note $i^2 = -1$ according to the definition. Example 1: 123Input: &amp;quot;1+1i&amp;quot;">
 <meta name="keywords" content="algorithms,leetcode,Math,String">
 <meta property="og:type" content="article">
 <meta property="og:title" content="leetcode-537-Complex-Number-Multiplication">
 <meta property="og:url" content="http://knarfeh.github.io/2014/03/11/leetcode/Algorithms/leetcode-537-Complex-Number-Multiplication/index.html">
 <meta property="og:site_name" content="knarfeh&#39;s logbook">
-<meta property="og:description" content="描述 Given two strings representing two complex numbers. You need to return a string representing their multiplication. Note $i^2 = -1$ according to the definition. Example 1: 123Input: &quot;1+1i&quot;, &quot;1+1i&quot;Ou">
+<meta property="og:description" content="描述 Given two strings representing two complex numbers. You need to return a string representing their multiplication. Note $i^2 = -1$ according to the definition. Example 1: 123Input: &amp;quot;1+1i&amp;quot;">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:updated_time" content="2018-11-11T12:58:38.425Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="leetcode-537-Complex-Number-Multiplication">
-<meta name="twitter:description" content="描述 Given two strings representing two complex numbers. You need to return a string representing their multiplication. Note $i^2 = -1$ according to the definition. Example 1: 123Input: &quot;1+1i&quot;, &quot;1+1i&quot;Ou">
+<meta name="twitter:description" content="描述 Given two strings representing two complex numbers. You need to return a string representing their multiplication. Note $i^2 = -1$ according to the definition. Example 1: 123Input: &amp;quot;1+1i&amp;quot;">
 
 
 
@@ -273,9 +273,9 @@
 <p>Given two strings representing two <a href="https://en.wikipedia.org/wiki/Complex_number" target="_blank" rel="external">complex numbers</a>.</p>
 <p>You need to return a string representing their multiplication. Note $i^2 = -1$ according to the definition.</p>
 <p><strong>Example 1:</strong></p>
-<figure class="highlight livecodeserver"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">Input: <span class="string">"1+1i"</span>, <span class="string">"1+1i"</span></div><div class="line">Output: <span class="string">"0+2i"</span></div><div class="line">Explanation: (<span class="number">1</span> + i) * (<span class="number">1</span> + i) = <span class="number">1</span> + i2 + <span class="number">2</span> * i = <span class="number">2</span>i, <span class="keyword">and</span> you need <span class="built_in">convert</span> <span class="keyword">it</span> <span class="built_in">to</span> <span class="keyword">the</span> form <span class="keyword">of</span> <span class="number">0</span>+<span class="number">2</span>i.</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">Input: &quot;1+1i&quot;, &quot;1+1i&quot;</div><div class="line">Output: &quot;0+2i&quot;</div><div class="line">Explanation: (1 + i) * (1 + i) = 1 + i2 + 2 * i = 2i, and you need convert it to the form of 0+2i.</div></pre></td></tr></table></figure>
 <p><strong>Example 2:</strong></p>
-<figure class="highlight livecodeserver"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">Input: <span class="string">"1+-1i"</span>, <span class="string">"1+-1i"</span></div><div class="line">Output: <span class="string">"0+-2i"</span></div><div class="line">Explanation: (<span class="number">1</span> - i) * (<span class="number">1</span> - i) = <span class="number">1</span> + i2 - <span class="number">2</span> * i = <span class="number">-2</span>i, <span class="keyword">and</span> you need <span class="built_in">convert</span> <span class="keyword">it</span> <span class="built_in">to</span> <span class="keyword">the</span> form <span class="keyword">of</span> <span class="number">0</span>+<span class="number">-2</span>i.</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">Input: &quot;1+-1i&quot;, &quot;1+-1i&quot;</div><div class="line">Output: &quot;0+-2i&quot;</div><div class="line">Explanation: (1 - i) * (1 - i) = 1 + i2 - 2 * i = -2i, and you need convert it to the form of 0+-2i.</div></pre></td></tr></table></figure>
 <p><strong>Note:</strong></p>
 <ol>
 <li>The input strings will not have extra blank.</li>
@@ -285,7 +285,7 @@
 <h3 id="分析"><a href="#分析" class="headerlink" title="分析"></a>分析</h3><hr>
 <p>复数相乘，挺简单的。$(a+bi)*(c+di)=ac+bci+adi-bd=(ac-db)+(ad+bc)i$</p>
 <h3 id="解决方案1-Java"><a href="#解决方案1-Java" class="headerlink" title="解决方案1(Java)"></a>解决方案1(Java)</h3><hr>
-<figure class="highlight arduino"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">class</span> Solution &#123;</div><div class="line">    <span class="keyword">public</span> <span class="keyword">String</span> complexNumberMultiply(<span class="keyword">String</span> a, <span class="keyword">String</span> b) &#123;</div><div class="line">        <span class="keyword">String</span> aList[] = a.split(<span class="string">"\\+|i"</span>);</div><div class="line">        <span class="keyword">String</span> bList[] = b.split(<span class="string">"\\+|i"</span>);</div><div class="line">        <span class="keyword">int</span> aReal = Integer.<span class="built_in">parseInt</span>(aList[<span class="number">0</span>]);</div><div class="line">        <span class="keyword">int</span> aImg = Integer.<span class="built_in">parseInt</span>(aList[<span class="number">1</span>]);</div><div class="line">        <span class="keyword">int</span> bReal = Integer.<span class="built_in">parseInt</span>(bList[<span class="number">0</span>]);</div><div class="line">        <span class="keyword">int</span> bImg = Integer.<span class="built_in">parseInt</span>(bList[<span class="number">1</span>]);</div><div class="line">        <span class="built_in">return</span> (aReal*bReal - aImg*bImg) + <span class="string">"+"</span> + (aReal*bImg + aImg*bReal) + <span class="string">"i"</span>;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">class Solution &#123;</div><div class="line">    public String complexNumberMultiply(String a, String b) &#123;</div><div class="line">        String aList[] = a.split(&quot;\\+|i&quot;);</div><div class="line">        String bList[] = b.split(&quot;\\+|i&quot;);</div><div class="line">        int aReal = Integer.parseInt(aList[0]);</div><div class="line">        int aImg = Integer.parseInt(aList[1]);</div><div class="line">        int bReal = Integer.parseInt(bList[0]);</div><div class="line">        int bImg = Integer.parseInt(bList[1]);</div><div class="line">        return (aReal*bReal - aImg*bImg) + &quot;+&quot; + (aReal*bImg + aImg*bReal) + &quot;i&quot;;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <h3 id="题目来源"><a href="#题目来源" class="headerlink" title="题目来源"></a><a href="https://leetcode.com/problems/complex-number-multiplication/description/" target="_blank" rel="external">题目来源</a></h3>
       
     </div>
@@ -315,16 +315,16 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2014/03/11/leetcode/Algorithms/leetcode-55-Jump-Game/" rel="next" title="leetcode-55-Jump-Game">
-                <i class="fa fa-chevron-left"></i> leetcode-55-Jump-Game
+              <a href="/2014/03/11/leetcode/Algorithms/leetcode-530-Minimum-Absolute-Difference-in-BST/" rel="next" title="leetcode-530-Minimum-Absolute-Difference-in-BST">
+                <i class="fa fa-chevron-left"></i> leetcode-530-Minimum-Absolute-Difference-in-BST
               </a>
             
           </div>
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2014/03/11/leetcode/Algorithms/leetcode-538-Convert-BST-to-Greater-Tree/" rel="prev" title="leetcode-538-Convert-BST-to-Greater-Tree">
-                leetcode-538-Convert-BST-to-Greater-Tree <i class="fa fa-chevron-right"></i>
+              <a href="/2014/03/11/leetcode/Algorithms/leetcode-53-Maximum-Subarray/" rel="prev" title="leetcode-53-Maximum-Subarray">
+                leetcode-53-Maximum-Subarray <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>

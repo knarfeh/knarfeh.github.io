@@ -279,14 +279,14 @@
 <li>You <strong>must not use any method provided by the library</strong> which converts/formats the number to hex directly.</li>
 </ol>
 <p><strong>Example 1:</strong></p>
-<figure class="highlight avrasm"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="symbol">Input:</span></div><div class="line"><span class="number">26</span></div><div class="line"></div><div class="line"><span class="symbol">Output:</span></div><div class="line"><span class="string">"1a"</span></div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">Input:</div><div class="line">26</div><div class="line"></div><div class="line">Output:</div><div class="line">&quot;1a&quot;</div></pre></td></tr></table></figure>
 <p><strong>Example 2:</strong></p>
-<figure class="highlight avrasm"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="symbol">Input:</span></div><div class="line"><span class="number">-1</span></div><div class="line"></div><div class="line"><span class="symbol">Output:</span></div><div class="line"><span class="string">"ffffffff"</span></div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">Input:</div><div class="line">-1</div><div class="line"></div><div class="line">Output:</div><div class="line">&quot;ffffffff&quot;</div></pre></td></tr></table></figure>
 <a id="more"></a>
 <h3 id="分析"><a href="#分析" class="headerlink" title="分析"></a>分析</h3><hr>
 <p>注意 <code>&gt;&gt;&gt;</code> 和 <code>&gt;&gt;</code> 和区别，<code>&gt;&gt;&gt;</code> 可以用于负数。</p>
 <h3 id="解决方案1-Java"><a href="#解决方案1-Java" class="headerlink" title="解决方案1(Java)"></a>解决方案1(Java)</h3><hr>
-<figure class="highlight dart"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</div><div class="line">    public <span class="built_in">String</span> toHex(<span class="built_in">int</span> <span class="built_in">num</span>) &#123;</div><div class="line">        char[] hexChar = &#123;<span class="string">'0'</span>, <span class="string">'1'</span>, <span class="string">'2'</span>, <span class="string">'3'</span>, <span class="string">'4'</span>, <span class="string">'5'</span>, <span class="string">'6'</span>, <span class="string">'7'</span>, <span class="string">'8'</span>, <span class="string">'9'</span>, <span class="string">'a'</span>, <span class="string">'b'</span>, <span class="string">'c'</span>, <span class="string">'d'</span>, <span class="string">'e'</span>, <span class="string">'f'</span>&#125;;</div><div class="line">        </div><div class="line">        <span class="keyword">if</span> (<span class="built_in">num</span> == <span class="number">0</span>) &#123;</div><div class="line">            <span class="keyword">return</span> <span class="string">"0"</span>;</div><div class="line">        &#125;</div><div class="line">        <span class="built_in">String</span> result = <span class="string">""</span>;</div><div class="line">        <span class="keyword">while</span>(<span class="built_in">num</span> != <span class="number">0</span>) &#123;</div><div class="line">            result = hexChar[(<span class="built_in">num</span> &amp; <span class="number">15</span>)] + result;</div><div class="line">            <span class="built_in">num</span> = (<span class="built_in">num</span> &gt;&gt;&gt; <span class="number">4</span>);</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">return</span> result;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line">class Solution &#123;</div><div class="line">    public String toHex(int num) &#123;</div><div class="line">        char[] hexChar = &#123;&apos;0&apos;, &apos;1&apos;, &apos;2&apos;, &apos;3&apos;, &apos;4&apos;, &apos;5&apos;, &apos;6&apos;, &apos;7&apos;, &apos;8&apos;, &apos;9&apos;, &apos;a&apos;, &apos;b&apos;, &apos;c&apos;, &apos;d&apos;, &apos;e&apos;, &apos;f&apos;&#125;;</div><div class="line">        </div><div class="line">        if (num == 0) &#123;</div><div class="line">            return &quot;0&quot;;</div><div class="line">        &#125;</div><div class="line">        String result = &quot;&quot;;</div><div class="line">        while(num != 0) &#123;</div><div class="line">            result = hexChar[(num &amp; 15)] + result;</div><div class="line">            num = (num &gt;&gt;&gt; 4);</div><div class="line">        &#125;</div><div class="line">        return result;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <h3 id="题目来源"><a href="#题目来源" class="headerlink" title="题目来源"></a><a href="https://leetcode.com/problems/convert-a-number-to-hexadecimal/description/" target="_blank" rel="external">题目来源</a></h3>
       
     </div>
@@ -314,16 +314,16 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2014/03/11/leetcode/Algorithms/leetcode-409-Longest-Palindrome/" rel="next" title="leetcode-409-Longest-Palindrome">
-                <i class="fa fa-chevron-left"></i> leetcode-409-Longest-Palindrome
+              <a href="/2014/03/11/leetcode/Algorithms/leetcode-412-Fizz-Buzz/" rel="next" title="leetcode-412-Fizz-Buzz">
+                <i class="fa fa-chevron-left"></i> leetcode-412-Fizz-Buzz
               </a>
             
           </div>
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2014/03/11/leetcode/Algorithms/leetcode-404-Sum-of-Left-Leaves/" rel="prev" title="leetcode-404-Sum-of-Left-Leaves">
-                leetcode-404-Sum-of-Left-Leaves <i class="fa fa-chevron-right"></i>
+              <a href="/2014/03/11/leetcode/Algorithms/leetcode-39-Combination-Sum/" rel="prev" title="leetcode-39-Combination-Sum">
+                leetcode-39-Combination-Sum <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
