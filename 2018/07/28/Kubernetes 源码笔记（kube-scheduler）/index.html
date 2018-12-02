@@ -41,7 +41,7 @@
 <link href="/css/main.css?v=0.5.0" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="k8s,Golang," />
+  <meta name="keywords" content="Golang,k8s," />
 
 
 
@@ -58,7 +58,7 @@
 
 
 <meta name="description" content="kube-scheduler 运行在 Kubernetes 的管理节点（Master 节点）上，负责完成从 Pod 到 Node 的调度过程。Scheduler 会跟踪集群中所有 Node 的资源利用情况，并采取合适的调度策略，确保调度的均衡性，避免集群中的某些节点过载。 一言以蔽之，kube-scheduler 用来为 Pod 找到一个合适的 Node。">
-<meta name="keywords" content="k8s,Golang">
+<meta name="keywords" content="Golang,k8s">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Kubernetes 源码笔记（kube-scheduler）">
 <meta property="og:url" content="http://knarfeh.github.io/2018/07/28/Kubernetes 源码笔记（kube-scheduler）/index.html">
@@ -66,7 +66,7 @@
 <meta property="og:description" content="kube-scheduler 运行在 Kubernetes 的管理节点（Master 节点）上，负责完成从 Pod 到 Node 的调度过程。Scheduler 会跟踪集群中所有 Node 的资源利用情况，并采取合适的调度策略，确保调度的均衡性，避免集群中的某些节点过载。 一言以蔽之，kube-scheduler 用来为 Pod 找到一个合适的 Node。">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="https://knarfeh-1254074221.cos.na-siliconvalley.myqcloud.com/kube_scheduler_algo.png">
-<meta property="og:updated_time" content="2018-11-18T14:54:22.753Z">
+<meta property="og:updated_time" content="2018-12-01T06:30:42.850Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Kubernetes 源码笔记（kube-scheduler）">
 <meta name="twitter:description" content="kube-scheduler 运行在 Kubernetes 的管理节点（Master 节点）上，负责完成从 Pod 到 Node 的调度过程。Scheduler 会跟踪集群中所有 Node 的资源利用情况，并采取合适的调度策略，确保调度的均衡性，避免集群中的某些节点过载。 一言以蔽之，kube-scheduler 用来为 Pod 找到一个合适的 Node。">
@@ -174,16 +174,6 @@
               <i class="menu-item-icon fa fa-tags fa-fw"></i> <br />
             
             标签
-          </a>
-        </li>
-      
-        
-        <li class="menu-item menu-item-twitter">
-          <a href="/twitter" rel="section">
-            
-              <i class="menu-item-icon fa fa-coffee fa-fw"></i> <br />
-            
-            Twitter
           </a>
         </li>
       
@@ -429,6 +419,9 @@
 <li><a href="https://kubernetes.io/docs/tasks/administer-cluster/configure-multiple-schedulers/" target="_blank" rel="external">Configure Multiple Schedulers</a></li>
 <li><a href="https://zhuanlan.zhihu.com/p/33470869" target="_blank" rel="external">kubernetes的kube-scheduler性能将提升40%</a></li>
 <li><a href="http://dockone.io/article/2885" target="_blank" rel="external">DockOne微信分享（一四九）：Kubernetes调度详解</a></li>
+<li><a href="https://www.youtube.com/watch?v=bbPcb2JuJPw" target="_blank" rel="external">Kubernetes Scheduling Features or How Can I Make the System Do What I Want? [I] - Marek Grabowski</a></li>
+<li><a href="https://groups.google.com/forum/#!topic/kubernetes-sig-scheduling/kdRqO818ApI" target="_blank" rel="external">Proposal to refactor Scheduler，邮件列表：Scheduler 重构计划</a></li>
+<li><a href="https://gist.githubusercontent.com/misterikkit/16c7c36311f1f4029305348cc3f40654/raw/e00ae760a9e1997231ce4668cd4c83ffdef19c48/scheduler.png" target="_blank" rel="external">Scheduler architecture</a></li>
 </ul>
 
       
@@ -444,9 +437,9 @@
       
         <div class="post-tags">
           
-            <a href="/tags/k8s/" rel="tag">#k8s</a>
-          
             <a href="/tags/Golang/" rel="tag">#Golang</a>
+          
+            <a href="/tags/k8s/" rel="tag">#k8s</a>
           
         </div>
       
@@ -536,7 +529,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">362</span>
+              <span class="site-state-item-count">363</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -570,15 +563,7 @@
               <span class="links-of-author-item">
                 <a href="https://twitter.com/knarfeh" target="_blank">
                   
-                    <i class="fa fa-twitter"></i> Twitter
-                  
-                </a>
-              </span>
-            
-              <span class="links-of-author-item">
-                <a href="https://weibo.com/2753500945" target="_blank">
-                  
-                    <i class="fa fa-weibo"></i> Weibo
+                    <i class="fa fa-globe"></i> Twitter
                   
                 </a>
               </span>

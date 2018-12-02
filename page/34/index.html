@@ -172,16 +172,6 @@
           </a>
         </li>
       
-        
-        <li class="menu-item menu-item-twitter">
-          <a href="/twitter" rel="section">
-            
-              <i class="menu-item-icon fa fa-coffee fa-fw"></i> <br />
-            
-            Twitter
-          </a>
-        </li>
-      
 
       
     </ul>
@@ -221,8 +211,8 @@
             
               
                 
-                <a class="post-title-link" href="/2014/03/11/leetcode/Algorithms/leetcode-856-Score-of-Parentheses/" itemprop="url">
-                  leetcode-856-Score-of-Parentheses
+                <a class="post-title-link" href="/2014/03/11/leetcode/Algorithms/leetcode-844-Backspace-String-Compare/" itemprop="url">
+                  leetcode-844-Backspace-String-Compare
                 </a>
               
             
@@ -246,8 +236,8 @@
             
               <span class="post-comments-count">
                 &nbsp; | &nbsp;
-                <a href="/2014/03/11/leetcode/Algorithms/leetcode-856-Score-of-Parentheses/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2014/03/11/leetcode/Algorithms/leetcode-856-Score-of-Parentheses/" itemprop="commentsCount"></span>
+                <a href="/2014/03/11/leetcode/Algorithms/leetcode-844-Backspace-String-Compare/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2014/03/11/leetcode/Algorithms/leetcode-844-Backspace-String-Compare/" itemprop="commentsCount"></span>
                 </a>
               </span>
             
@@ -271,22 +261,141 @@
       
         
           <h3 id="描述"><a href="#描述" class="headerlink" title="描述"></a>描述</h3><hr>
-<p>Given a balanced parentheses string <code>S</code>, compute the score of the string based on the following rule:</p>
-<ul>
-<li><code>()</code> has score 1</li>
-<li><code>AB</code> has score <code>A + B</code>, where A and B are balanced parentheses strings.</li>
-<li><code>(A)</code> has score <code>2 * A</code>, where A is a balanced parentheses string.</li>
-</ul>
+<p>Given two strings <code>S</code> and <code>T</code>, return if they are equal when both are typed into empty text editors. <code>#</code> means a backspace character.</p>
 <p><strong>Example 1:</strong></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">Input: &quot;()&quot;</div><div class="line">Output: 1</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">Input: S = &quot;ab#c&quot;, T = &quot;ad#c&quot;</div><div class="line">Output: true</div><div class="line">Explanation: Both S and T become &quot;ac&quot;.</div></pre></td></tr></table></figure>
 <p><strong>Example 2:</strong></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">Input: &quot;(())&quot;</div><div class="line">Output: 2</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">Input: S = &quot;ab##&quot;, T = &quot;c#d#&quot;</div><div class="line">Output: true</div><div class="line">Explanation: Both S and T become &quot;&quot;.</div></pre></td></tr></table></figure>
 <p><strong>Example 3:</strong></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">Input: &quot;()()&quot;</div><div class="line">Output: 2</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">Input: S = &quot;a##c&quot;, T = &quot;#a#c&quot;</div><div class="line">Output: true</div><div class="line">Explanation: Both S and T become &quot;c&quot;.</div></pre></td></tr></table></figure>
 <p><strong>Example 4:</strong></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">Input: &quot;(()(()))&quot;</div><div class="line">Output: 6</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">Input: S = &quot;a#c&quot;, T = &quot;b&quot;</div><div class="line">Output: false</div><div class="line">Explanation: S becomes &quot;c&quot; while T becomes &quot;b&quot;.</div></pre></td></tr></table></figure>
+<p><strong>Note</strong>:</p>
+<ol>
+<li><code>1 &lt;= S.length &lt;= 200</code></li>
+<li><code>1 &lt;= T.length &lt;= 200</code></li>
+<li><code>S</code> and <code>T</code> only contain lowercase letters and <code>&#39;#&#39;</code> characters.</li>
+</ol>
+<p><strong>Follow up:</strong></p>
+<ul>
+<li>Can you solve it in <code>O(N)</code> time and <code>O(1)</code> space?</li>
+</ul>
           <div class="post-more-link text-center">
-            <a class="btn" href="/2014/03/11/leetcode/Algorithms/leetcode-856-Score-of-Parentheses/#more" rel="contents">
+            <a class="btn" href="/2014/03/11/leetcode/Algorithms/leetcode-844-Backspace-String-Compare/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2014/03/11/leetcode/Algorithms/leetcode-852-Peak-Index-in-a-Mountain-Array/" itemprop="url">
+                  leetcode-852-Peak-Index-in-a-Mountain-Array
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2014-03-11T00:33:34+08:00" content="2014-03-11">
+              2014-03-11
+            </time>
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2014/03/11/leetcode/Algorithms/leetcode-852-Peak-Index-in-a-Mountain-Array/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2014/03/11/leetcode/Algorithms/leetcode-852-Peak-Index-in-a-Mountain-Array/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <h3 id="描述"><a href="#描述" class="headerlink" title="描述"></a>描述</h3><hr>
+<p>Let’s call an array <code>A</code> a <em>mountain</em> if the following properties hold:</p>
+<ul>
+<li><code>A.length &gt;= 3</code></li>
+<li>There exists some <code>0 &lt; i &lt; A.length - 1</code> such that <code>A[0] &lt; A[1] &lt; ... A[i-1] &lt; A[i] &gt; A[i+1] &gt; ... &gt; A[A.length - 1]</code></li>
+</ul>
+<p>Given an array that is definitely a mountain, return any <code>i</code> such that <code>A[0] &lt; A[1] &lt; ... A[i-1] &lt; A[i] &gt; A[i+1] &gt; ... &gt; A[A.length - 1]</code>.</p>
+<p><strong>Example 1:</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">Input: [0,1,0]</div><div class="line">Output: 1</div></pre></td></tr></table></figure>
+<p><strong>Example 2:</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">Input: [0,2,1,0]</div><div class="line">Output: 1</div></pre></td></tr></table></figure>
+<p><strong>Note:</strong></p>
+<ol>
+<li><code>3 &lt;= A.length &lt;= 10000</code></li>
+<li><code>0 &lt;= A[i] &lt;= 10^6</code></li>
+<li>A is a mountain, as defined above.</li>
+</ol>
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2014/03/11/leetcode/Algorithms/leetcode-852-Peak-Index-in-a-Mountain-Array/#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
@@ -449,8 +558,8 @@
             
               
                 
-                <a class="post-title-link" href="/2014/03/11/leetcode/Algorithms/leetcode-852-Peak-Index-in-a-Mountain-Array/" itemprop="url">
-                  leetcode-852-Peak-Index-in-a-Mountain-Array
+                <a class="post-title-link" href="/2014/03/11/leetcode/Algorithms/leetcode-872-Leaf-Similar-Trees/" itemprop="url">
+                  leetcode-872-Leaf-Similar-Trees
                 </a>
               
             
@@ -474,8 +583,8 @@
             
               <span class="post-comments-count">
                 &nbsp; | &nbsp;
-                <a href="/2014/03/11/leetcode/Algorithms/leetcode-852-Peak-Index-in-a-Mountain-Array/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2014/03/11/leetcode/Algorithms/leetcode-852-Peak-Index-in-a-Mountain-Array/" itemprop="commentsCount"></span>
+                <a href="/2014/03/11/leetcode/Algorithms/leetcode-872-Leaf-Similar-Trees/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2014/03/11/leetcode/Algorithms/leetcode-872-Leaf-Similar-Trees/" itemprop="commentsCount"></span>
                 </a>
               </span>
             
@@ -499,24 +608,17 @@
       
         
           <h3 id="描述"><a href="#描述" class="headerlink" title="描述"></a>描述</h3><hr>
-<p>Let’s call an array <code>A</code> a <em>mountain</em> if the following properties hold:</p>
-<ul>
-<li><code>A.length &gt;= 3</code></li>
-<li>There exists some <code>0 &lt; i &lt; A.length - 1</code> such that <code>A[0] &lt; A[1] &lt; ... A[i-1] &lt; A[i] &gt; A[i+1] &gt; ... &gt; A[A.length - 1]</code></li>
-</ul>
-<p>Given an array that is definitely a mountain, return any <code>i</code> such that <code>A[0] &lt; A[1] &lt; ... A[i-1] &lt; A[i] &gt; A[i+1] &gt; ... &gt; A[A.length - 1]</code>.</p>
-<p><strong>Example 1:</strong></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">Input: [0,1,0]</div><div class="line">Output: 1</div></pre></td></tr></table></figure>
-<p><strong>Example 2:</strong></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">Input: [0,2,1,0]</div><div class="line">Output: 1</div></pre></td></tr></table></figure>
+<p>Consider all the leaves of a binary tree.  From left to right order, the values of those leaves form a <em>leaf value sequence.</em></p>
+<p><img src="https://s3-lc-upload.s3.amazonaws.com/uploads/2018/07/16/tree.png" alt="img"></p>
+<p>For example, in the given tree above, the leaf value sequence is <code>(6, 7, 4, 9, 8)</code>.</p>
+<p>Two binary trees are considered <em>leaf-similar</em> if their leaf value sequence is the same.</p>
+<p>Return <code>true</code> if and only if the two given trees with head nodes <code>root1</code> and <code>root2</code> are leaf-similar.</p>
 <p><strong>Note:</strong></p>
-<ol>
-<li><code>3 &lt;= A.length &lt;= 10000</code></li>
-<li><code>0 &lt;= A[i] &lt;= 10^6</code></li>
-<li>A is a mountain, as defined above.</li>
-</ol>
+<ul>
+<li>Both of the given trees will have between <code>1</code> and <code>100</code> nodes.</li>
+</ul>
           <div class="post-more-link text-center">
-            <a class="btn" href="/2014/03/11/leetcode/Algorithms/leetcode-852-Peak-Index-in-a-Mountain-Array/#more" rel="contents">
+            <a class="btn" href="/2014/03/11/leetcode/Algorithms/leetcode-872-Leaf-Similar-Trees/#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
@@ -626,114 +728,6 @@
 </ol>
           <div class="post-more-link text-center">
             <a class="btn" href="/2014/03/11/leetcode/Algorithms/leetcode-867-Transpose-Matrix/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2014/03/11/leetcode/Algorithms/leetcode-876-Middle-of-the-Linked-List/" itemprop="url">
-                  leetcode-876-Middle-of-the-Linked-List
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2014-03-11T00:33:34+08:00" content="2014-03-11">
-              2014-03-11
-            </time>
-          </span>
-
-          
-
-          
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2014/03/11/leetcode/Algorithms/leetcode-876-Middle-of-the-Linked-List/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2014/03/11/leetcode/Algorithms/leetcode-876-Middle-of-the-Linked-List/" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <h3 id="描述"><a href="#描述" class="headerlink" title="描述"></a>描述</h3><hr>
-<p>Given a non-empty, singly linked list with head node <code>head</code>, return a middle node of linked list.</p>
-<p>If there are two middle nodes, return the second middle node.</p>
-<p><strong>Example 1:</strong></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">Input: [1,2,3,4,5]</div><div class="line">Output: Node 3 from this list (Serialization: [3,4,5])</div><div class="line">The returned node has value 3.  (The judge&apos;s serialization of this node is [3,4,5]).</div><div class="line">Note that we returned a ListNode object ans, such that:</div><div class="line">ans.val = 3, ans.next.val = 4, ans.next.next.val = 5, and ans.next.next.next = NULL.</div></pre></td></tr></table></figure>
-<p><strong>Example 2:</strong></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">Input: [1,2,3,4,5,6]</div><div class="line">Output: Node 4 from this list (Serialization: [4,5,6])</div><div class="line">Since the list has two middle nodes with values 3 and 4, we return the second one.</div></pre></td></tr></table></figure>
-<p><strong>Note:</strong></p>
-<ul>
-<li>The number of nodes in the given list will be between <code>1</code> and <code>100</code>.</li>
-</ul>
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2014/03/11/leetcode/Algorithms/leetcode-876-Middle-of-the-Linked-List/#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
@@ -892,8 +886,8 @@
             
               
                 
-                <a class="post-title-link" href="/2014/03/11/leetcode/Algorithms/leetcode-872-Leaf-Similar-Trees/" itemprop="url">
-                  leetcode-872-Leaf-Similar-Trees
+                <a class="post-title-link" href="/2014/03/11/leetcode/Algorithms/leetcode-877-Stone-Game/" itemprop="url">
+                  leetcode-877-Stone-Game
                 </a>
               
             
@@ -917,8 +911,8 @@
             
               <span class="post-comments-count">
                 &nbsp; | &nbsp;
-                <a href="/2014/03/11/leetcode/Algorithms/leetcode-872-Leaf-Similar-Trees/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2014/03/11/leetcode/Algorithms/leetcode-872-Leaf-Similar-Trees/" itemprop="commentsCount"></span>
+                <a href="/2014/03/11/leetcode/Algorithms/leetcode-877-Stone-Game/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2014/03/11/leetcode/Algorithms/leetcode-877-Stone-Game/" itemprop="commentsCount"></span>
                 </a>
               </span>
             
@@ -942,17 +936,21 @@
       
         
           <h3 id="描述"><a href="#描述" class="headerlink" title="描述"></a>描述</h3><hr>
-<p>Consider all the leaves of a binary tree.  From left to right order, the values of those leaves form a <em>leaf value sequence.</em></p>
-<p><img src="https://s3-lc-upload.s3.amazonaws.com/uploads/2018/07/16/tree.png" alt="img"></p>
-<p>For example, in the given tree above, the leaf value sequence is <code>(6, 7, 4, 9, 8)</code>.</p>
-<p>Two binary trees are considered <em>leaf-similar</em> if their leaf value sequence is the same.</p>
-<p>Return <code>true</code> if and only if the two given trees with head nodes <code>root1</code> and <code>root2</code> are leaf-similar.</p>
+<p>Alex and Lee play a game with piles of stones.  There are an even number of piles <strong>arranged in a row</strong>, and each pile has a positive integer number of stones <code>piles[i]</code>.</p>
+<p>The objective of the game is to end with the most stones.  The total number of stones is odd, so there are no ties.</p>
+<p>Alex and Lee take turns, with Alex starting first.  Each turn, a player takes the entire pile of stones from either the beginning or the end of the row.  This continues until there are no more piles left, at which point the person with the most stones wins.</p>
+<p>Assuming Alex and Lee play optimally, return <code>True</code> if and only if Alex wins the game.</p>
+<p><strong>Example 1:</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">Input: [5,3,4,5]</div><div class="line">Output: true</div><div class="line">Explanation: </div><div class="line">Alex starts first, and can only take the first 5 or the last 5.</div><div class="line">Say he takes the first 5, so that the row becomes [3, 4, 5].</div><div class="line">If Lee takes 3, then the board is [4, 5], and Alex takes 5 to win with 10 points.</div><div class="line">If Lee takes the last 5, then the board is [3, 4], and Alex takes 4 to win with 9 points.</div><div class="line">This demonstrated that taking the first 5 was a winning move for Alex, so we return true.</div></pre></td></tr></table></figure>
 <p><strong>Note:</strong></p>
-<ul>
-<li>Both of the given trees will have between <code>1</code> and <code>100</code> nodes.</li>
-</ul>
+<ol>
+<li><code>2 &lt;= piles.length &lt;= 500</code></li>
+<li><code>piles.length</code> is even.</li>
+<li><code>1 &lt;= piles[i] &lt;= 500</code></li>
+<li><code>sum(piles)</code> is odd.</li>
+</ol>
           <div class="post-more-link text-center">
-            <a class="btn" href="/2014/03/11/leetcode/Algorithms/leetcode-872-Leaf-Similar-Trees/#more" rel="contents">
+            <a class="btn" href="/2014/03/11/leetcode/Algorithms/leetcode-877-Stone-Game/#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
@@ -999,8 +997,8 @@
             
               
                 
-                <a class="post-title-link" href="/2014/03/11/leetcode/Algorithms/leetcode-883-Projection-Area-of-3D-Shapes/" itemprop="url">
-                  leetcode-883-Projection-Area-of-3D-Shapes
+                <a class="post-title-link" href="/2014/03/11/leetcode/Algorithms/leetcode-876-Middle-of-the-Linked-List/" itemprop="url">
+                  leetcode-876-Middle-of-the-Linked-List
                 </a>
               
             
@@ -1024,8 +1022,8 @@
             
               <span class="post-comments-count">
                 &nbsp; | &nbsp;
-                <a href="/2014/03/11/leetcode/Algorithms/leetcode-883-Projection-Area-of-3D-Shapes/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2014/03/11/leetcode/Algorithms/leetcode-883-Projection-Area-of-3D-Shapes/" itemprop="commentsCount"></span>
+                <a href="/2014/03/11/leetcode/Algorithms/leetcode-876-Middle-of-the-Linked-List/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2014/03/11/leetcode/Algorithms/leetcode-876-Middle-of-the-Linked-List/" itemprop="commentsCount"></span>
                 </a>
               </span>
             
@@ -1049,30 +1047,18 @@
       
         
           <h3 id="描述"><a href="#描述" class="headerlink" title="描述"></a>描述</h3><hr>
-<p>On a <code>N * N</code> grid, we place some <code>1 * 1 * 1</code>cubes that are axis-aligned with the x, y, and z axes.</p>
-<p>Each value <code>v = grid[i][j]</code> represents a tower of <code>v</code> cubes placed on top of grid cell <code>(i, j)</code>.</p>
-<p>Now we view the <em>projection</em> of these cubes onto the xy, yz, and zx planes.</p>
-<p>A projection is like a shadow, that maps our 3 dimensional figure to a 2 dimensional plane. </p>
-<p>Here, we are viewing the “shadow” when looking at the cubes from the top, the front, and the side.</p>
-<p>Return the total area of all three projections.</p>
+<p>Given a non-empty, singly linked list with head node <code>head</code>, return a middle node of linked list.</p>
+<p>If there are two middle nodes, return the second middle node.</p>
 <p><strong>Example 1:</strong></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">Input: [[2]]</div><div class="line">Output: 5</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">Input: [1,2,3,4,5]</div><div class="line">Output: Node 3 from this list (Serialization: [3,4,5])</div><div class="line">The returned node has value 3.  (The judge&apos;s serialization of this node is [3,4,5]).</div><div class="line">Note that we returned a ListNode object ans, such that:</div><div class="line">ans.val = 3, ans.next.val = 4, ans.next.next.val = 5, and ans.next.next.next = NULL.</div></pre></td></tr></table></figure>
 <p><strong>Example 2:</strong></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">Input: [[1,2],[3,4]]</div><div class="line">Output: 17</div><div class="line">Explanation: </div><div class="line">Here are the three projections (&quot;shadows&quot;) of the shape made with each axis-aligned plane.</div></pre></td></tr></table></figure>
-<p><img src="https://s3-lc-upload.s3.amazonaws.com/uploads/2018/08/02/shadow.png" alt="shadow"></p>
-<p><strong>Example 3:</strong></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">Input: [[1,0],[0,2]]</div><div class="line">Output: 8</div></pre></td></tr></table></figure>
-<p><strong>Example 4:</strong></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">Input: [[1,1,1],[1,0,1],[1,1,1]]</div><div class="line">Output: 14</div></pre></td></tr></table></figure>
-<p><strong>Example 5:</strong></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">Input: [[2,2,2],[2,1,2],[2,2,2]]</div><div class="line">Output: 21</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">Input: [1,2,3,4,5,6]</div><div class="line">Output: Node 4 from this list (Serialization: [4,5,6])</div><div class="line">Since the list has two middle nodes with values 3 and 4, we return the second one.</div></pre></td></tr></table></figure>
 <p><strong>Note:</strong></p>
 <ul>
-<li><code>1 &lt;= grid.length = grid[0].length &lt;= 50</code></li>
-<li><code>0 &lt;= grid[i][j] &lt;= 50</code></li>
+<li>The number of nodes in the given list will be between <code>1</code> and <code>100</code>.</li>
 </ul>
           <div class="post-more-link text-center">
-            <a class="btn" href="/2014/03/11/leetcode/Algorithms/leetcode-883-Projection-Area-of-3D-Shapes/#more" rel="contents">
+            <a class="btn" href="/2014/03/11/leetcode/Algorithms/leetcode-876-Middle-of-the-Linked-List/#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
@@ -1219,8 +1205,8 @@
             
               
                 
-                <a class="post-title-link" href="/2014/03/11/leetcode/Algorithms/leetcode-877-Stone-Game/" itemprop="url">
-                  leetcode-877-Stone-Game
+                <a class="post-title-link" href="/2014/03/11/leetcode/Algorithms/leetcode-89-Gray-Code/" itemprop="url">
+                  leetcode-89-Gray-Code
                 </a>
               
             
@@ -1244,8 +1230,8 @@
             
               <span class="post-comments-count">
                 &nbsp; | &nbsp;
-                <a href="/2014/03/11/leetcode/Algorithms/leetcode-877-Stone-Game/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2014/03/11/leetcode/Algorithms/leetcode-877-Stone-Game/" itemprop="commentsCount"></span>
+                <a href="/2014/03/11/leetcode/Algorithms/leetcode-89-Gray-Code/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2014/03/11/leetcode/Algorithms/leetcode-89-Gray-Code/" itemprop="commentsCount"></span>
                 </a>
               </span>
             
@@ -1269,21 +1255,12 @@
       
         
           <h3 id="描述"><a href="#描述" class="headerlink" title="描述"></a>描述</h3><hr>
-<p>Alex and Lee play a game with piles of stones.  There are an even number of piles <strong>arranged in a row</strong>, and each pile has a positive integer number of stones <code>piles[i]</code>.</p>
-<p>The objective of the game is to end with the most stones.  The total number of stones is odd, so there are no ties.</p>
-<p>Alex and Lee take turns, with Alex starting first.  Each turn, a player takes the entire pile of stones from either the beginning or the end of the row.  This continues until there are no more piles left, at which point the person with the most stones wins.</p>
-<p>Assuming Alex and Lee play optimally, return <code>True</code> if and only if Alex wins the game.</p>
-<p><strong>Example 1:</strong></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">Input: [5,3,4,5]</div><div class="line">Output: true</div><div class="line">Explanation: </div><div class="line">Alex starts first, and can only take the first 5 or the last 5.</div><div class="line">Say he takes the first 5, so that the row becomes [3, 4, 5].</div><div class="line">If Lee takes 3, then the board is [4, 5], and Alex takes 5 to win with 10 points.</div><div class="line">If Lee takes the last 5, then the board is [3, 4], and Alex takes 4 to win with 9 points.</div><div class="line">This demonstrated that taking the first 5 was a winning move for Alex, so we return true.</div></pre></td></tr></table></figure>
-<p><strong>Note:</strong></p>
-<ol>
-<li><code>2 &lt;= piles.length &lt;= 500</code></li>
-<li><code>piles.length</code> is even.</li>
-<li><code>1 &lt;= piles[i] &lt;= 500</code></li>
-<li><code>sum(piles)</code> is odd.</li>
-</ol>
+<p>The gray code is a binary numeral system where two successive values differ in only one bit.</p>
+<p>Given a non-negative integer n representing the total number of bits in the code, print the sequence of gray code. A gray code sequence must begin with 0.</p>
+<p>For example, given n = 2, return [0,1,3,2]. Its gray code sequence is:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">00 - 0</div><div class="line">01 - 1</div><div class="line">11 - 3</div><div class="line">10 - 2</div></pre></td></tr></table></figure>
           <div class="post-more-link text-center">
-            <a class="btn" href="/2014/03/11/leetcode/Algorithms/leetcode-877-Stone-Game/#more" rel="contents">
+            <a class="btn" href="/2014/03/11/leetcode/Algorithms/leetcode-89-Gray-Code/#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
@@ -1354,7 +1331,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">362</span>
+              <span class="site-state-item-count">363</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -1388,15 +1365,7 @@
               <span class="links-of-author-item">
                 <a href="https://twitter.com/knarfeh" target="_blank">
                   
-                    <i class="fa fa-twitter"></i> Twitter
-                  
-                </a>
-              </span>
-            
-              <span class="links-of-author-item">
-                <a href="https://weibo.com/2753500945" target="_blank">
-                  
-                    <i class="fa fa-weibo"></i> Weibo
+                    <i class="fa fa-globe"></i> Twitter
                   
                 </a>
               </span>

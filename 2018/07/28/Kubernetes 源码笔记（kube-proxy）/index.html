@@ -41,7 +41,7 @@
 <link href="/css/main.css?v=0.5.0" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="k8s,Golang," />
+  <meta name="keywords" content="Golang,k8s," />
 
 
 
@@ -58,7 +58,7 @@
 
 
 <meta name="description" content="kube-proxy 运行在 Kubernetes 集群的计算节点上，负责 Service 的负载均衡及服务代理。">
-<meta name="keywords" content="k8s,Golang">
+<meta name="keywords" content="Golang,k8s">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Kubernetes 源码笔记（kube-proxy）">
 <meta property="og:url" content="http://knarfeh.github.io/2018/07/28/Kubernetes 源码笔记（kube-proxy）/index.html">
@@ -71,7 +71,7 @@
 <meta property="og:image" content="https://knarfeh-1254074221.cos.na-siliconvalley.myqcloud.com/lvs-nat.jpg">
 <meta property="og:image" content="https://knarfeh-1254074221.cos.na-siliconvalley.myqcloud.com/lvs-tun.jpg">
 <meta property="og:image" content="https://knarfeh-1254074221.cos.na-siliconvalley.myqcloud.com/lvs-dr.jpg">
-<meta property="og:updated_time" content="2018-11-18T14:54:20.042Z">
+<meta property="og:updated_time" content="2018-11-27T05:36:22.377Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Kubernetes 源码笔记（kube-proxy）">
 <meta name="twitter:description" content="kube-proxy 运行在 Kubernetes 集群的计算节点上，负责 Service 的负载均衡及服务代理。">
@@ -179,16 +179,6 @@
               <i class="menu-item-icon fa fa-tags fa-fw"></i> <br />
             
             标签
-          </a>
-        </li>
-      
-        
-        <li class="menu-item menu-item-twitter">
-          <a href="/twitter" rel="section">
-            
-              <i class="menu-item-icon fa fa-coffee fa-fw"></i> <br />
-            
-            Twitter
           </a>
         </li>
       
@@ -339,7 +329,7 @@
 </ul>
 <p>kube-proxy 可以通过 <code>--ipvs-scheduler</code> 参数选择调度算法，默认情况下是 Round Robin 算法。</p>
 <p>关于 LVS 的详细介绍，可以查阅 <a href="http://www.linuxvirtualserver.org/zh/lvs1.html" target="_blank" rel="external">Linux服务器集群系统（一）</a>。</p>
-<p>创建一个 service 后，k8s 会在每个节点上创建一个网卡，同时绑定在 Service IP（VIP）上，这是内核会认为 VIP 就是本机 IP，通过 socket 调用，创建 IPVS 的 virtual server 和 real server，分别对应 k8s 的 Service 和 Endpoints。socket 的调用由 docker 公司的 <a href="https://github.com/docker/libnetwork/blob/master/ipvs/ipvs.go" target="_blank" rel="external">libnetwork</a> 库完成。</p>
+<p>创建一个 service 后，k8s 会在每个节点上创建一个网卡，同时绑定在 Service IP（VIP）上，这时内核会认为 VIP 就是本机 IP，通过 socket 调用，创建 IPVS 的 virtual server 和 real server，分别对应 k8s 的 Service 和 Endpoints。socket 的调用由 docker 公司的 <a href="https://github.com/docker/libnetwork/blob/master/ipvs/ipvs.go" target="_blank" rel="external">libnetwork</a> 库完成。</p>
 <h2 id="代码解析"><a href="#代码解析" class="headerlink" title="代码解析"></a>代码解析</h2><p>了解了 kube-proxy 的原理，再阅读代码就很容易理解了。代码版本是 v1.12.2-beta.0。</p>
 <h3 id="Run"><a href="#Run" class="headerlink" title="Run()"></a>Run()</h3><p><code>Run</code> 方法在 <code>cmd/kube-proxy/proxy.go</code> 中。</p>
 <figure class="highlight golang"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">func</span> <span class="params">(o *Options)</span> <span class="title">Run</span><span class="params">()</span> <span class="title">error</span></span> &#123;</div><div class="line">	<span class="keyword">if</span> <span class="built_in">len</span>(o.WriteConfigTo) &gt; <span class="number">0</span> &#123;</div><div class="line">		<span class="keyword">return</span> o.writeConfigFile()</div><div class="line">	&#125;</div><div class="line"></div><div class="line">	proxyServer, err := NewProxyServer(o)</div><div class="line">	<span class="keyword">if</span> err != <span class="literal">nil</span> &#123;</div><div class="line">		<span class="keyword">return</span> err</div><div class="line">	&#125;</div><div class="line"></div><div class="line">	<span class="keyword">return</span> proxyServer.Run()</div><div class="line">&#125;</div></pre></td></tr></table></figure>
@@ -386,6 +376,7 @@
 <li><a href="https://docs.google.com/presentation/d/1BaIAywY2qqeHtyGZtlyAp89JIZs59MZLKcFLxKE6LyM/edit?usp=sharing" target="_blank" rel="external">Slides of Scale Kubernetes to Support 50,000 Services [I] - Haibin Xie &amp; Quinton Hoole</a></li>
 <li><a href="https://github.com/kubernetes/community/pull/692" target="_blank" rel="external">support ipvs mode for kube-proxy #692</a></li>
 <li><a href="https://kubernetes.io/blog/2018/07/09/ipvs-based-in-cluster-load-balancing-deep-dive/" target="_blank" rel="external">IPVS-Based In-Cluster Load Balancing Deep Dive</a></li>
+<li><a href="https://www.yangcs.net/posts/kube-router/" target="_blank" rel="external">Kube-router 实战-使用 Kube-router 作为 Kubernetes 负载均衡器</a></li>
 </ul>
 
       
@@ -401,9 +392,9 @@
       
         <div class="post-tags">
           
-            <a href="/tags/k8s/" rel="tag">#k8s</a>
-          
             <a href="/tags/Golang/" rel="tag">#Golang</a>
+          
+            <a href="/tags/k8s/" rel="tag">#k8s</a>
           
         </div>
       
@@ -412,8 +403,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2018/07/28/Kubernetes 源码笔记（kubeadm）/" rel="next" title="Kubernetes 源码笔记（kubeadm）">
-                <i class="fa fa-chevron-left"></i> Kubernetes 源码笔记（kubeadm）
+              <a href="/2018/07/28/KubeCon 视频/" rel="next" title="KubeCon 视频">
+                <i class="fa fa-chevron-left"></i> KubeCon 视频
               </a>
             
           </div>
@@ -497,7 +488,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">362</span>
+              <span class="site-state-item-count">363</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -531,15 +522,7 @@
               <span class="links-of-author-item">
                 <a href="https://twitter.com/knarfeh" target="_blank">
                   
-                    <i class="fa fa-twitter"></i> Twitter
-                  
-                </a>
-              </span>
-            
-              <span class="links-of-author-item">
-                <a href="https://weibo.com/2753500945" target="_blank">
-                  
-                    <i class="fa fa-weibo"></i> Weibo
+                    <i class="fa fa-globe"></i> Twitter
                   
                 </a>
               </span>
