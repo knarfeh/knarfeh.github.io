@@ -211,8 +211,8 @@
             
               
                 
-                <a class="post-title-link" href="/2014/03/11/leetcode/Algorithms/leetcode-697-Degree-of-an-Array/" itemprop="url">
-                  leetcode-697-Degree-of-an-Array
+                <a class="post-title-link" href="/2014/03/11/leetcode/Algorithms/leetcode-70-Climbing-Stairs/" itemprop="url">
+                  leetcode-70-Climbing-Stairs
                 </a>
               
             
@@ -236,8 +236,8 @@
             
               <span class="post-comments-count">
                 &nbsp; | &nbsp;
-                <a href="/2014/03/11/leetcode/Algorithms/leetcode-697-Degree-of-an-Array/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2014/03/11/leetcode/Algorithms/leetcode-697-Degree-of-an-Array/" itemprop="commentsCount"></span>
+                <a href="/2014/03/11/leetcode/Algorithms/leetcode-70-Climbing-Stairs/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2014/03/11/leetcode/Algorithms/leetcode-70-Climbing-Stairs/" itemprop="commentsCount"></span>
                 </a>
               </span>
             
@@ -261,17 +261,11 @@
       
         
           <h3 id="描述"><a href="#描述" class="headerlink" title="描述"></a>描述</h3><hr>
-<p>Given a non-empty array of non-negative integers <code>nums</code>, the <strong>degree</strong> of this array is defined as the maximum frequency of any one of its elements.</p>
-<p>Your task is to find the smallest possible length of a (contiguous) subarray of <code>nums</code>, that has the same degree as <code>nums</code>.</p>
-<p><strong>Example 1:</strong></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">Input: [1, 2, 2, 3, 1]</div><div class="line">Output: 2</div><div class="line">Explanation: </div><div class="line">The input array has a degree of 2 because both elements 1 and 2 appear twice.</div><div class="line">Of the subarrays that have the same degree:</div><div class="line">[1, 2, 2, 3, 1], [1, 2, 2, 3], [2, 2, 3, 1], [1, 2, 2], [2, 2, 3], [2, 2]</div><div class="line">The shortest length is 2. So return 2.</div></pre></td></tr></table></figure>
-<p><strong>Example 2:</strong></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">Input: [1,2,2,3,1,4,2]</div><div class="line">Output: 6</div></pre></td></tr></table></figure>
-<p><strong>Note:</strong></p>
-<p><code>nums.length</code> will be between 1 and 50,000.</p>
-<p><code>nums[i]</code> will be an integer between 0 and 49,999.</p>
+<p>You are climbing a stair case. It takes n steps to reach to the top.</p>
+<p>Each time you can either climb 1 or 2 steps. In how many distinct ways can you climb to the top?</p>
+<p>Subscribe to see which companies asked this question<br>
           <div class="post-more-link text-center">
-            <a class="btn" href="/2014/03/11/leetcode/Algorithms/leetcode-697-Degree-of-an-Array/#more" rel="contents">
+            <a class="btn" href="/2014/03/11/leetcode/Algorithms/leetcode-70-Climbing-Stairs/#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
@@ -318,8 +312,8 @@
             
               
                 
-                <a class="post-title-link" href="/2014/03/11/leetcode/Algorithms/leetcode-696-Count-Binary-Substrings/" itemprop="url">
-                  leetcode-696-Count-Binary-Substrings
+                <a class="post-title-link" href="/2014/03/11/leetcode/Algorithms/leetcode-7-Reverse-Integer/" itemprop="url">
+                  leetcode-7-Reverse-Integer
                 </a>
               
             
@@ -343,8 +337,8 @@
             
               <span class="post-comments-count">
                 &nbsp; | &nbsp;
-                <a href="/2014/03/11/leetcode/Algorithms/leetcode-696-Count-Binary-Substrings/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2014/03/11/leetcode/Algorithms/leetcode-696-Count-Binary-Substrings/" itemprop="commentsCount"></span>
+                <a href="/2014/03/11/leetcode/Algorithms/leetcode-7-Reverse-Integer/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2014/03/11/leetcode/Algorithms/leetcode-7-Reverse-Integer/" itemprop="commentsCount"></span>
                 </a>
               </span>
             
@@ -368,17 +362,115 @@
       
         
           <h3 id="描述"><a href="#描述" class="headerlink" title="描述"></a>描述</h3><hr>
-<p>Give a string <code>s</code>, count the number of non-empty (contiguous) substrings that have the same number of 0’s and 1’s, and all the 0’s and all the 1’s in these substrings are grouped consecutively.</p>
-<p>Substrings that occur multiple times are counted the number of times they occur.</p>
-<p><strong>Example 1:</strong></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">Input: &quot;00110011&quot;</div><div class="line">Output: 6</div><div class="line">Explanation: There are 6 substrings that have equal number of consecutive 1&apos;s and 0&apos;s: &quot;0011&quot;, &quot;01&quot;, &quot;1100&quot;, &quot;10&quot;, &quot;0011&quot;, and &quot;01&quot;.</div><div class="line"></div><div class="line">Notice that some of these substrings repeat and are counted the number of times they occur.</div><div class="line"></div><div class="line">Also, &quot;00110011&quot; is not a valid substring because all the 0&apos;s (and 1&apos;s) are not grouped together.</div></pre></td></tr></table></figure>
-<p><strong>Example 2:</strong></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">Input: &quot;10101&quot;</div><div class="line">Output: 4</div><div class="line">Explanation: There are 4 substrings: &quot;10&quot;, &quot;01&quot;, &quot;10&quot;, &quot;01&quot; that have equal number of consecutive 1&apos;s and 0&apos;s.</div></pre></td></tr></table></figure>
-<p><strong>Note:</strong></p>
-<p><code>s.length</code> will be between 1 and 50,000.</p>
-<p><code>s</code> will only consist of “0” or “1” characters.</p>
+<p>Reverse digits of an integer.</p>
+<p><strong>Example1</strong>: x = 123, return 321<br><strong>Example2</strong>: x = -123, return -321<br>
           <div class="post-more-link text-center">
-            <a class="btn" href="/2014/03/11/leetcode/Algorithms/leetcode-696-Count-Binary-Substrings/#more" rel="contents">
+            <a class="btn" href="/2014/03/11/leetcode/Algorithms/leetcode-7-Reverse-Integer/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2014/03/11/leetcode/Algorithms/leetcode-700-Search-in-a-Binary-Search-Tree/" itemprop="url">
+                  leetcode-700-Search-in-a-Binary-Search-Tree
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2014-03-11T00:33:34+08:00" content="2014-03-11">
+              2014-03-11
+            </time>
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2014/03/11/leetcode/Algorithms/leetcode-700-Search-in-a-Binary-Search-Tree/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2014/03/11/leetcode/Algorithms/leetcode-700-Search-in-a-Binary-Search-Tree/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <h3 id="描述"><a href="#描述" class="headerlink" title="描述"></a>描述</h3><hr>
+<p>Given the root node of a binary search tree (BST) and a value. You need to find the node in the BST that the node’s value equals the given value. Return the subtree rooted with that node. If such node doesn’t exist, you should return NULL.</p>
+<p>For example, </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">Given the tree:</div><div class="line">        4</div><div class="line">       / \</div><div class="line">      2   7</div><div class="line">     / \</div><div class="line">    1   3</div><div class="line"></div><div class="line">And the value to search: 2</div></pre></td></tr></table></figure>
+<p>You should return this subtree:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">  2     </div><div class="line"> / \   </div><div class="line">1   3</div></pre></td></tr></table></figure>
+<p>In the example above, if we want to search the value <code>5</code>, since there is no node with value <code>5</code>, we should return <code>NULL</code>.</p>
+<p>Note that an empty tree is represented by <code>NULL</code>, therefore you would see the expected output (serialized tree format) as <code>[]</code>, not <code>null</code>.</p>
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2014/03/11/leetcode/Algorithms/leetcode-700-Search-in-a-Binary-Search-Tree/#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
@@ -528,8 +620,8 @@
             
               
                 
-                <a class="post-title-link" href="/2014/03/11/leetcode/Algorithms/leetcode-700-Search-in-a-Binary-Search-Tree/" itemprop="url">
-                  leetcode-700-Search-in-a-Binary-Search-Tree
+                <a class="post-title-link" href="/2014/03/11/leetcode/Algorithms/leetcode-704-Binary-Search/" itemprop="url">
+                  leetcode-704-Binary-Search
                 </a>
               
             
@@ -553,8 +645,8 @@
             
               <span class="post-comments-count">
                 &nbsp; | &nbsp;
-                <a href="/2014/03/11/leetcode/Algorithms/leetcode-700-Search-in-a-Binary-Search-Tree/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2014/03/11/leetcode/Algorithms/leetcode-700-Search-in-a-Binary-Search-Tree/" itemprop="commentsCount"></span>
+                <a href="/2014/03/11/leetcode/Algorithms/leetcode-704-Binary-Search/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2014/03/11/leetcode/Algorithms/leetcode-704-Binary-Search/" itemprop="commentsCount"></span>
                 </a>
               </span>
             
@@ -578,15 +670,19 @@
       
         
           <h3 id="描述"><a href="#描述" class="headerlink" title="描述"></a>描述</h3><hr>
-<p>Given the root node of a binary search tree (BST) and a value. You need to find the node in the BST that the node’s value equals the given value. Return the subtree rooted with that node. If such node doesn’t exist, you should return NULL.</p>
-<p>For example, </p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">Given the tree:</div><div class="line">        4</div><div class="line">       / \</div><div class="line">      2   7</div><div class="line">     / \</div><div class="line">    1   3</div><div class="line"></div><div class="line">And the value to search: 2</div></pre></td></tr></table></figure>
-<p>You should return this subtree:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">  2     </div><div class="line"> / \   </div><div class="line">1   3</div></pre></td></tr></table></figure>
-<p>In the example above, if we want to search the value <code>5</code>, since there is no node with value <code>5</code>, we should return <code>NULL</code>.</p>
-<p>Note that an empty tree is represented by <code>NULL</code>, therefore you would see the expected output (serialized tree format) as <code>[]</code>, not <code>null</code>.</p>
+<p>Given a <strong>sorted</strong> (in ascending order) integer array <code>nums</code> of <code>n</code> elements and a <code>target</code> value, write a function to search <code>target</code> in <code>nums</code>. If <code>target</code> exists, then return its index, otherwise return <code>-1</code>.</p>
+<p><strong>Example 1:</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">Input: nums = [-1,0,3,5,9,12], target = 9</div><div class="line">Output: 4</div><div class="line">Explanation: 9 exists in nums and its index is 4</div></pre></td></tr></table></figure>
+<p><strong>Example 2:</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">Input: nums = [-1,0,3,5,9,12], target = 2</div><div class="line">Output: -1</div><div class="line">Explanation: 2 does not exist in nums so return -1</div></pre></td></tr></table></figure>
+<p><strong>Note:</strong></p>
+<ol>
+<li>You may assume that all elements in <code>nums</code> are unique.</li>
+<li><code>n</code> will be in the range <code>[1, 10000]</code>.</li>
+<li>The value of each element in <code>nums</code> will be in the range <code>[-9999, 9999]</code>.</li>
+</ol>
           <div class="post-more-link text-center">
-            <a class="btn" href="/2014/03/11/leetcode/Algorithms/leetcode-700-Search-in-a-Binary-Search-Tree/#more" rel="contents">
+            <a class="btn" href="/2014/03/11/leetcode/Algorithms/leetcode-704-Binary-Search/#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
@@ -746,8 +842,8 @@
             
               
                 
-                <a class="post-title-link" href="/2014/03/11/leetcode/Algorithms/leetcode-704-Binary-Search/" itemprop="url">
-                  leetcode-704-Binary-Search
+                <a class="post-title-link" href="/2014/03/11/leetcode/Algorithms/leetcode-706-Design-HashMap/" itemprop="url">
+                  leetcode-706-Design-HashMap
                 </a>
               
             
@@ -771,8 +867,8 @@
             
               <span class="post-comments-count">
                 &nbsp; | &nbsp;
-                <a href="/2014/03/11/leetcode/Algorithms/leetcode-704-Binary-Search/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2014/03/11/leetcode/Algorithms/leetcode-704-Binary-Search/" itemprop="commentsCount"></span>
+                <a href="/2014/03/11/leetcode/Algorithms/leetcode-706-Design-HashMap/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2014/03/11/leetcode/Algorithms/leetcode-706-Design-HashMap/" itemprop="commentsCount"></span>
                 </a>
               </span>
             
@@ -796,19 +892,138 @@
       
         
           <h3 id="描述"><a href="#描述" class="headerlink" title="描述"></a>描述</h3><hr>
-<p>Given a <strong>sorted</strong> (in ascending order) integer array <code>nums</code> of <code>n</code> elements and a <code>target</code> value, write a function to search <code>target</code> in <code>nums</code>. If <code>target</code> exists, then return its index, otherwise return <code>-1</code>.</p>
-<p><strong>Example 1:</strong></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">Input: nums = [-1,0,3,5,9,12], target = 9</div><div class="line">Output: 4</div><div class="line">Explanation: 9 exists in nums and its index is 4</div></pre></td></tr></table></figure>
-<p><strong>Example 2:</strong></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">Input: nums = [-1,0,3,5,9,12], target = 2</div><div class="line">Output: -1</div><div class="line">Explanation: 2 does not exist in nums so return -1</div></pre></td></tr></table></figure>
+<p>Design a HashMap without using any built-in hash table libraries.</p>
+<p>To be specific, your design should include these functions:</p>
+<ul>
+<li><code>put(key, value)</code> : Insert a (key, value) pair into the HashMap. If the value already exists in the HashMap, update the value.</li>
+<li><code>get(key)</code>: Returns the value to which the specified key is mapped, or -1 if this map contains no mapping for the key.</li>
+<li><code>remove(key)</code> : Remove the mapping for the value key if this map contains the mapping for the key.</li>
+</ul>
+<p><strong>Example:</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">MyHashMap hashMap = new MyHashMap();</div><div class="line">hashMap.put(1, 1);          </div><div class="line">hashMap.put(2, 2);         </div><div class="line">hashMap.get(1);            // returns 1</div><div class="line">hashMap.get(3);            // returns -1 (not found)</div><div class="line">hashMap.put(2, 1);          // update the existing value</div><div class="line">hashMap.get(2);            // returns 1 </div><div class="line">hashMap.remove(2);          // remove the mapping for 2</div><div class="line">hashMap.get(2);            // returns -1 (not found)</div></pre></td></tr></table></figure>
 <p><strong>Note:</strong></p>
-<ol>
-<li>You may assume that all elements in <code>nums</code> are unique.</li>
-<li><code>n</code> will be in the range <code>[1, 10000]</code>.</li>
-<li>The value of each element in <code>nums</code> will be in the range <code>[-9999, 9999]</code>.</li>
-</ol>
+<ul>
+<li>All keys and values will be in the range of <code>[0, 1000000]</code>.</li>
+<li>The number of operations will be in the range of <code>[1, 10000]</code>.</li>
+<li>Please do not use the built-in HashMap library.</li>
+</ul>
           <div class="post-more-link text-center">
-            <a class="btn" href="/2014/03/11/leetcode/Algorithms/leetcode-704-Binary-Search/#more" rel="contents">
+            <a class="btn" href="/2014/03/11/leetcode/Algorithms/leetcode-706-Design-HashMap/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2014/03/11/leetcode/Algorithms/leetcode-707-Design-Linked-List/" itemprop="url">
+                  leetcode-707-Design-Linked-List
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2014-03-11T00:33:34+08:00" content="2014-03-11">
+              2014-03-11
+            </time>
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2014/03/11/leetcode/Algorithms/leetcode-707-Design-Linked-List/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2014/03/11/leetcode/Algorithms/leetcode-707-Design-Linked-List/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <h3 id="描述"><a href="#描述" class="headerlink" title="描述"></a>描述</h3><hr>
+<p>Design your implementation of the linked list. You can choose to use the singly linked list or the doubly linked list. A node in a singly linked list should have two attributes: <code>val</code> and <code>next</code>. <code>val</code> is the value of the current node, and <code>next</code> is a pointer/reference to the next node. If you want to use the doubly linked list, you will need one more attribute <code>prev</code> to indicate the previous node in the linked list. Assume all nodes in the linked list are 0-indexed.</p>
+<p>Implement these functions in your linked list class:</p>
+<ul>
+<li>get(index) : Get the value of the <code>index</code>-th node in the linked list. If the index is invalid, return <code>-1</code>.</li>
+<li>addAtHead(val) : Add a node of value <code>val</code> before the first element of the linked list. After the insertion, the new node will be the first node of the linked list.</li>
+<li>addAtTail(val) : Append a node of value <code>val</code> to the last element of the linked list.</li>
+<li>addAtIndex(index, val) : Add a node of value <code>val</code> before the <code>index</code>-th node in the linked list. If <code>index</code> equals to the length of linked list, the node will be appended to the end of linked list. If index is greater than the length, the node will not be inserted.</li>
+<li>deleteAtIndex(index) : Delete the <code>index</code>-th node in the linked list, if the index is valid.</li>
+</ul>
+<p><strong>Example:</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">MyLinkedList linkedList = new MyLinkedList();</div><div class="line">linkedList.addAtHead(1);</div><div class="line">linkedList.addAtTail(3);</div><div class="line">linkedList.addAtIndex(1, 2);  // linked list becomes 1-&gt;2-&gt;3</div><div class="line">linkedList.get(1);            // returns 2</div><div class="line">linkedList.deleteAtIndex(1);  // now the linked list is 1-&gt;3</div><div class="line">linkedList.get(1);            // returns 3</div></pre></td></tr></table></figure>
+<p><strong>Note:</strong></p>
+<ul>
+<li>All values will be in the range of <code>[1, 1000]</code>.</li>
+<li>The number of operations will be in the range of <code>[1, 1000]</code>.</li>
+<li>Please do not use the built-in LinkedList library.</li>
+</ul>
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2014/03/11/leetcode/Algorithms/leetcode-707-Design-Linked-List/#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
@@ -960,119 +1175,6 @@
             
               
                 
-                <a class="post-title-link" href="/2014/03/11/leetcode/Algorithms/leetcode-706-Design-HashMap/" itemprop="url">
-                  leetcode-706-Design-HashMap
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2014-03-11T00:33:34+08:00" content="2014-03-11">
-              2014-03-11
-            </time>
-          </span>
-
-          
-
-          
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2014/03/11/leetcode/Algorithms/leetcode-706-Design-HashMap/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2014/03/11/leetcode/Algorithms/leetcode-706-Design-HashMap/" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <h3 id="描述"><a href="#描述" class="headerlink" title="描述"></a>描述</h3><hr>
-<p>Design a HashMap without using any built-in hash table libraries.</p>
-<p>To be specific, your design should include these functions:</p>
-<ul>
-<li><code>put(key, value)</code> : Insert a (key, value) pair into the HashMap. If the value already exists in the HashMap, update the value.</li>
-<li><code>get(key)</code>: Returns the value to which the specified key is mapped, or -1 if this map contains no mapping for the key.</li>
-<li><code>remove(key)</code> : Remove the mapping for the value key if this map contains the mapping for the key.</li>
-</ul>
-<p><strong>Example:</strong></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">MyHashMap hashMap = new MyHashMap();</div><div class="line">hashMap.put(1, 1);          </div><div class="line">hashMap.put(2, 2);         </div><div class="line">hashMap.get(1);            // returns 1</div><div class="line">hashMap.get(3);            // returns -1 (not found)</div><div class="line">hashMap.put(2, 1);          // update the existing value</div><div class="line">hashMap.get(2);            // returns 1 </div><div class="line">hashMap.remove(2);          // remove the mapping for 2</div><div class="line">hashMap.get(2);            // returns -1 (not found)</div></pre></td></tr></table></figure>
-<p><strong>Note:</strong></p>
-<ul>
-<li>All keys and values will be in the range of <code>[0, 1000000]</code>.</li>
-<li>The number of operations will be in the range of <code>[1, 10000]</code>.</li>
-<li>Please do not use the built-in HashMap library.</li>
-</ul>
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2014/03/11/leetcode/Algorithms/leetcode-706-Design-HashMap/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
                 <a class="post-title-link" href="/2014/03/11/leetcode/Algorithms/leetcode-717-1-bit-and-2-bit-Characters/" itemprop="url">
                   leetcode-717-1-bit-and-2-bit-Characters
                 </a>
@@ -1159,121 +1261,6 @@
 
 
     
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2014/03/11/leetcode/Algorithms/leetcode-707-Design-Linked-List/" itemprop="url">
-                  leetcode-707-Design-Linked-List
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2014-03-11T00:33:34+08:00" content="2014-03-11">
-              2014-03-11
-            </time>
-          </span>
-
-          
-
-          
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2014/03/11/leetcode/Algorithms/leetcode-707-Design-Linked-List/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2014/03/11/leetcode/Algorithms/leetcode-707-Design-Linked-List/" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <h3 id="描述"><a href="#描述" class="headerlink" title="描述"></a>描述</h3><hr>
-<p>Design your implementation of the linked list. You can choose to use the singly linked list or the doubly linked list. A node in a singly linked list should have two attributes: <code>val</code> and <code>next</code>. <code>val</code> is the value of the current node, and <code>next</code> is a pointer/reference to the next node. If you want to use the doubly linked list, you will need one more attribute <code>prev</code> to indicate the previous node in the linked list. Assume all nodes in the linked list are 0-indexed.</p>
-<p>Implement these functions in your linked list class:</p>
-<ul>
-<li>get(index) : Get the value of the <code>index</code>-th node in the linked list. If the index is invalid, return <code>-1</code>.</li>
-<li>addAtHead(val) : Add a node of value <code>val</code> before the first element of the linked list. After the insertion, the new node will be the first node of the linked list.</li>
-<li>addAtTail(val) : Append a node of value <code>val</code> to the last element of the linked list.</li>
-<li>addAtIndex(index, val) : Add a node of value <code>val</code> before the <code>index</code>-th node in the linked list. If <code>index</code> equals to the length of linked list, the node will be appended to the end of linked list. If index is greater than the length, the node will not be inserted.</li>
-<li>deleteAtIndex(index) : Delete the <code>index</code>-th node in the linked list, if the index is valid.</li>
-</ul>
-<p><strong>Example:</strong></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">MyLinkedList linkedList = new MyLinkedList();</div><div class="line">linkedList.addAtHead(1);</div><div class="line">linkedList.addAtTail(3);</div><div class="line">linkedList.addAtIndex(1, 2);  // linked list becomes 1-&gt;2-&gt;3</div><div class="line">linkedList.get(1);            // returns 2</div><div class="line">linkedList.deleteAtIndex(1);  // now the linked list is 1-&gt;3</div><div class="line">linkedList.get(1);            // returns 3</div></pre></td></tr></table></figure>
-<p><strong>Note:</strong></p>
-<ul>
-<li>All values will be in the range of <code>[1, 1000]</code>.</li>
-<li>The number of operations will be in the range of <code>[1, 1000]</code>.</li>
-<li>Please do not use the built-in LinkedList library.</li>
-</ul>
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2014/03/11/leetcode/Algorithms/leetcode-707-Design-Linked-List/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
@@ -1319,7 +1306,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">363</span>
+              <span class="site-state-item-count">362</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
