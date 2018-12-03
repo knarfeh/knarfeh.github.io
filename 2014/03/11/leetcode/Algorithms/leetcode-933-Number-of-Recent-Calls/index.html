@@ -65,7 +65,7 @@
 <meta property="og:site_name" content="knarfeh&#39;s logbook">
 <meta property="og:description" content="描述 Write a class RecentCounter to count recent requests. It has only one method: ping(int t), where t represents some time in milliseconds. Return the number of pings that have been made from 3000 mil">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-11-11T08:55:22.081Z">
+<meta property="og:updated_time" content="2018-12-03T02:15:36.344Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="leetcode-933-Number-of-Recent-Calls">
 <meta name="twitter:description" content="描述 Write a class RecentCounter to count recent requests. It has only one method: ping(int t), where t represents some time in milliseconds. Return the number of pings that have been made from 3000 mil">
@@ -275,9 +275,11 @@
 </ol>
 <a id="more"></a>
 <h3 id="分析"><a href="#分析" class="headerlink" title="分析"></a>分析</h3><hr>
-<p>调用 ping 的时候会给定时间，求 3000 ms 内 ping 的次数，可以用队列来记录 ping。</p>
+<p>调用 ping 的时候会给定时间，求过去的 3000 ms 内 ping 的次数，可以用队列来记录 ping。</p>
 <h3 id="解决方案1-Java"><a href="#解决方案1-Java" class="headerlink" title="解决方案1(Java)"></a>解决方案1(Java)</h3><hr>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line">class RecentCounter &#123;</div><div class="line">    Queue&lt;Integer&gt; queue;</div><div class="line">    public RecentCounter() &#123;</div><div class="line">        queue = new LinkedList();</div><div class="line">    &#125;</div><div class="line">    </div><div class="line">    public int ping(int t) &#123;</div><div class="line">        queue.add(t);</div><div class="line">        while(queue.peek() &lt; t - 3000) &#123;</div><div class="line">            queue.poll();</div><div class="line">        &#125;</div><div class="line">        return queue.size();</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">RecentCounter</span> </span>&#123;</div><div class="line">    Queue&lt;Integer&gt; queue;</div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="title">RecentCounter</span><span class="params">()</span> </span>&#123;</div><div class="line">        queue = <span class="keyword">new</span> LinkedList();</div><div class="line">    &#125;</div><div class="line">    </div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">ping</span><span class="params">(<span class="keyword">int</span> t)</span> </span>&#123;</div><div class="line">        queue.add(t);</div><div class="line">        <span class="keyword">while</span>(queue.peek() &lt; t - <span class="number">3000</span>) &#123;</div><div class="line">            queue.poll();</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">return</span> queue.size();</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h3 id="解决方案2-Python3"><a href="#解决方案2-Python3" class="headerlink" title="解决方案2(Python3)"></a>解决方案2(Python3)</h3><hr>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line">class RecentCounter:</div><div class="line"></div><div class="line">    def __init__(self):</div><div class="line">        self.queue = collections.deque()</div><div class="line"></div><div class="line">    def ping(self, t):</div><div class="line">        &quot;&quot;&quot;</div><div class="line">        :type t: int</div><div class="line">        :rtype: int</div><div class="line">        &quot;&quot;&quot;</div><div class="line">        self.queue.append(t)</div><div class="line">        while self.queue[0] &lt; t - 3000:</div><div class="line">            self.queue.popleft()</div><div class="line">        return len(self.queue)</div></pre></td></tr></table></figure>
 <h3 id="题目来源"><a href="#题目来源" class="headerlink" title="题目来源"></a><a href="https://leetcode.com/problems/number-of-recent-calls/description/" target="_blank" rel="external">题目来源</a></h3>
       
     </div>
@@ -305,16 +307,16 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2014/03/11/leetcode/Algorithms/leetcode-96-Unique-Binary-Search-Trees/" rel="next" title="leetcode-96-Unique-Binary-Search-Trees">
-                <i class="fa fa-chevron-left"></i> leetcode-96-Unique-Binary-Search-Trees
+              <a href="/2014/03/11/leetcode/Algorithms/leetcode-929-Unique-Email-Addresses/" rel="next" title="leetcode-929-Unique-Email-Addresses">
+                <i class="fa fa-chevron-left"></i> leetcode-929-Unique-Email-Addresses
               </a>
             
           </div>
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2014/03/11/leetcode/Algorithms/leetcode-95-Unique-Binary-Search-Trees-II/" rel="prev" title="leetcode-95-Unique-Binary-Search-Trees-II">
-                leetcode-95-Unique-Binary-Search-Trees-II <i class="fa fa-chevron-right"></i>
+              <a href="/2014/03/11/leetcode/Algorithms/leetcode-922-Sort-Array-By-Parity-II/" rel="prev" title="leetcode-922-Sort-Array-By-Parity-II">
+                leetcode-922-Sort-Array-By-Parity-II <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -390,7 +392,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">362</span>
+              <span class="site-state-item-count">363</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -457,7 +459,7 @@
               
             
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#描述"><span class="nav-number">1.</span> <span class="nav-text">描述</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#分析"><span class="nav-number">2.</span> <span class="nav-text">分析</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#解决方案1-Java"><span class="nav-number">3.</span> <span class="nav-text">解决方案1(Java)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#题目来源"><span class="nav-number">4.</span> <span class="nav-text">题目来源</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#描述"><span class="nav-number">1.</span> <span class="nav-text">描述</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#分析"><span class="nav-number">2.</span> <span class="nav-text">分析</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#解决方案1-Java"><span class="nav-number">3.</span> <span class="nav-text">解决方案1(Java)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#解决方案2-Python3"><span class="nav-number">4.</span> <span class="nav-text">解决方案2(Python3)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#题目来源"><span class="nav-number">5.</span> <span class="nav-text">题目来源</span></a></li></ol></div>
             
           </div>
           <div class="post-toc-indicator-bottom post-toc-indicator">
