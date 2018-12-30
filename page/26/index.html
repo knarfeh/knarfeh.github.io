@@ -211,8 +211,8 @@
             
               
                 
-                <a class="post-title-link" href="/2014/03/11/leetcode/Algorithms/leetcode-565-Array-Nesting/" itemprop="url">
-                  leetcode-565-Array-Nesting
+                <a class="post-title-link" href="/2014/03/11/leetcode/Algorithms/leetcode-561-Array-Partition-I/" itemprop="url">
+                  leetcode-561-Array-Partition-I
                 </a>
               
             
@@ -236,8 +236,8 @@
             
               <span class="post-comments-count">
                 &nbsp; | &nbsp;
-                <a href="/2014/03/11/leetcode/Algorithms/leetcode-565-Array-Nesting/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2014/03/11/leetcode/Algorithms/leetcode-565-Array-Nesting/" itemprop="commentsCount"></span>
+                <a href="/2014/03/11/leetcode/Algorithms/leetcode-561-Array-Partition-I/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2014/03/11/leetcode/Algorithms/leetcode-561-Array-Partition-I/" itemprop="commentsCount"></span>
                 </a>
               </span>
             
@@ -261,18 +261,13 @@
       
         
           <h3 id="描述"><a href="#描述" class="headerlink" title="描述"></a>描述</h3><hr>
-<p>A zero-indexed array A of length N contains all integers from 0 to N-1. Find and return the longest length of set S, where S[i] = {A[i], A[A[i]], A[A[A[i]]], … } subjected to the rule below.</p>
-<p>Suppose the first element in S starts with the selection of element A[i] of index = i, the next element in S should be A[A[i]], and then A[A[A[i]]]… By that analogy, we stop adding right before a duplicate element occurs in S.</p>
-<p><strong>Example 1:</strong></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">Input: A = [5,4,0,3,1,6,2]</div><div class="line">Output: 4</div><div class="line">Explanation: </div><div class="line">A[0] = 5, A[1] = 4, A[2] = 0, A[3] = 3, A[4] = 1, A[5] = 6, A[6] = 2.</div><div class="line"></div><div class="line">One of the longest S[K]:</div><div class="line">S[0] = &#123;A[0], A[5], A[6], A[2]&#125; = &#123;5, 6, 2, 0&#125;</div></pre></td></tr></table></figure>
+<p>Given an array of <strong>2n</strong> integers, your task is to group these integers into n pairs of integer, say (a1, b1), (a2, b2), …, (an, bn) which makes sum of min(ai, bi) for all i from 1 to n as large as possible.</p>
+<p><strong>Example1</strong>:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">Input: [1,4,3,2]</div><div class="line"></div><div class="line">Output: 4</div><div class="line">Explanation: n is 2, and the maximum sum of pairs is 4.</div></pre></td></tr></table></figure>
 <p><strong>Note:</strong></p>
-<ol>
-<li>N is an integer within the range [1, 20,000].</li>
-<li>The elements of A are all distinct.</li>
-<li>Each element of A is an integer within the range [0, N-1].</li>
-</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">1. n is a positive integer, which is in the range of [1, 10000].</div><div class="line">2. All the integers in the array will be in the range of [-10000, 10000].</div></pre></td></tr></table></figure>
           <div class="post-more-link text-center">
-            <a class="btn" href="/2014/03/11/leetcode/Algorithms/leetcode-565-Array-Nesting/#more" rel="contents">
+            <a class="btn" href="/2014/03/11/leetcode/Algorithms/leetcode-561-Array-Partition-I/#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
@@ -427,8 +422,8 @@
             
               
                 
-                <a class="post-title-link" href="/2014/03/11/leetcode/Algorithms/leetcode-58-Length-of-Last-Word/" itemprop="url">
-                  leetcode-58-Length-of-Last-Word
+                <a class="post-title-link" href="/2014/03/11/leetcode/Algorithms/leetcode-565-Array-Nesting/" itemprop="url">
+                  leetcode-565-Array-Nesting
                 </a>
               
             
@@ -452,8 +447,8 @@
             
               <span class="post-comments-count">
                 &nbsp; | &nbsp;
-                <a href="/2014/03/11/leetcode/Algorithms/leetcode-58-Length-of-Last-Word/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2014/03/11/leetcode/Algorithms/leetcode-58-Length-of-Last-Word/" itemprop="commentsCount"></span>
+                <a href="/2014/03/11/leetcode/Algorithms/leetcode-565-Array-Nesting/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2014/03/11/leetcode/Algorithms/leetcode-565-Array-Nesting/" itemprop="commentsCount"></span>
                 </a>
               </span>
             
@@ -477,12 +472,18 @@
       
         
           <h3 id="描述"><a href="#描述" class="headerlink" title="描述"></a>描述</h3><hr>
-<p>Given a string s consists of upper/lower-case alphabets and empty space characters ‘ ‘, return the length of last word in the string.</p>
-<p>If the last word does not exist, return 0.</p>
-<p>Note: A word is defined as a character sequence consists of non-space characters only.</p>
-<p>For example,<br>Given s = “Hello World”,<br>return 5. </p>
+<p>A zero-indexed array A of length N contains all integers from 0 to N-1. Find and return the longest length of set S, where S[i] = {A[i], A[A[i]], A[A[A[i]]], … } subjected to the rule below.</p>
+<p>Suppose the first element in S starts with the selection of element A[i] of index = i, the next element in S should be A[A[i]], and then A[A[A[i]]]… By that analogy, we stop adding right before a duplicate element occurs in S.</p>
+<p><strong>Example 1:</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">Input: A = [5,4,0,3,1,6,2]</div><div class="line">Output: 4</div><div class="line">Explanation: </div><div class="line">A[0] = 5, A[1] = 4, A[2] = 0, A[3] = 3, A[4] = 1, A[5] = 6, A[6] = 2.</div><div class="line"></div><div class="line">One of the longest S[K]:</div><div class="line">S[0] = &#123;A[0], A[5], A[6], A[2]&#125; = &#123;5, 6, 2, 0&#125;</div></pre></td></tr></table></figure>
+<p><strong>Note:</strong></p>
+<ol>
+<li>N is an integer within the range [1, 20,000].</li>
+<li>The elements of A are all distinct.</li>
+<li>Each element of A is an integer within the range [0, N-1].</li>
+</ol>
           <div class="post-more-link text-center">
-            <a class="btn" href="/2014/03/11/leetcode/Algorithms/leetcode-58-Length-of-Last-Word/#more" rel="contents">
+            <a class="btn" href="/2014/03/11/leetcode/Algorithms/leetcode-565-Array-Nesting/#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
@@ -529,8 +530,8 @@
             
               
                 
-                <a class="post-title-link" href="/2014/03/11/leetcode/Algorithms/leetcode-557-Reverse-Words-in-a-String-III/" itemprop="url">
-                  leetcode-557-Reverse-Words-in-a-String-III
+                <a class="post-title-link" href="/2014/03/11/leetcode/Algorithms/leetcode-566-Reshape-the-Matrix/" itemprop="url">
+                  leetcode-74-Search-a-2D-Matrix
                 </a>
               
             
@@ -554,8 +555,8 @@
             
               <span class="post-comments-count">
                 &nbsp; | &nbsp;
-                <a href="/2014/03/11/leetcode/Algorithms/leetcode-557-Reverse-Words-in-a-String-III/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2014/03/11/leetcode/Algorithms/leetcode-557-Reverse-Words-in-a-String-III/" itemprop="commentsCount"></span>
+                <a href="/2014/03/11/leetcode/Algorithms/leetcode-566-Reshape-the-Matrix/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2014/03/11/leetcode/Algorithms/leetcode-566-Reshape-the-Matrix/" itemprop="commentsCount"></span>
                 </a>
               </span>
             
@@ -579,12 +580,130 @@
       
         
           <h3 id="描述"><a href="#描述" class="headerlink" title="描述"></a>描述</h3><hr>
-<p>Given a string, you need to reverse the order of characters in each word within a sentence while still preserving whitespace and initial word order.</p>
+<p>In MATLAB, there is a very useful function called ‘reshape’, which can reshape a matrix into a new one with different size but keep its original data.</p>
+<p>You’re given a matrix represented by a two-dimensional array, and two <strong>positive</strong> integers <strong>r</strong> and <strong>c</strong> representing the <strong>row</strong> number and <strong>column</strong> number of the wanted reshaped matrix, respectively.</p>
+<p>The reshaped matrix need to be filled with all the elements of the original matrix in the same <strong>row-traversing</strong> order as they were.</p>
+<p>If the ‘reshape’ operation with given parameters is possible and legal, output the new reshaped matrix; Otherwise, output the original matrix.</p>
 <p><strong>Example 1:</strong></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">Input: &quot;Let&apos;s take LeetCode contest&quot;</div><div class="line">Output: &quot;s&apos;teL ekat edoCteeL tsetnoc&quot;</div></pre></td></tr></table></figure>
-<p><strong>Note:</strong> In the string, each word is separated by single space and there will not be any extra space in the string.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">Input: </div><div class="line">nums = </div><div class="line">[[1,2],</div><div class="line"> [3,4]]</div><div class="line">r = 1, c = 4</div><div class="line">Output: </div><div class="line">[[1,2,3,4]]</div><div class="line">Explanation:</div><div class="line">The row-traversing of nums is [1,2,3,4]. The new reshaped matrix is a 1 * 4 matrix, fill it row by row by using the previous list.</div></pre></td></tr></table></figure>
+<p><strong>Example 2:</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">Input: </div><div class="line">nums = </div><div class="line">[[1,2],</div><div class="line"> [3,4]]</div><div class="line">r = 2, c = 4</div><div class="line">Output: </div><div class="line">[[1,2],</div><div class="line"> [3,4]]</div><div class="line">Explanation:</div><div class="line">There is no way to reshape a 2 * 2 matrix to a 2 * 4 matrix. So output the original matrix.</div></pre></td></tr></table></figure>
+<p><strong>Note:</strong></p>
+<ol>
+<li>The height and width of the given matrix is in range [1, 100].</li>
+<li>The given r and c are all positive.</li>
+</ol>
           <div class="post-more-link text-center">
-            <a class="btn" href="/2014/03/11/leetcode/Algorithms/leetcode-557-Reverse-Words-in-a-String-III/#more" rel="contents">
+            <a class="btn" href="/2014/03/11/leetcode/Algorithms/leetcode-566-Reshape-the-Matrix/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2014/03/11/leetcode/Algorithms/leetcode-572-Subtree-of-Another-Tree/" itemprop="url">
+                  leetcode-572-Subtree-of-Another-Tree
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2014-03-11T00:33:34+08:00" content="2014-03-11">
+              2014-03-11
+            </time>
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2014/03/11/leetcode/Algorithms/leetcode-572-Subtree-of-Another-Tree/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2014/03/11/leetcode/Algorithms/leetcode-572-Subtree-of-Another-Tree/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <h3 id="描述"><a href="#描述" class="headerlink" title="描述"></a>描述</h3><hr>
+<p>Given two non-empty binary trees <strong>s</strong> and <strong>t</strong>, check whether tree <strong>t</strong> has exactly the same structure and node values with a subtree of <strong>s</strong>. A subtree of <strong>s</strong> is a tree consists of a node in <strong>s</strong> and all of this node’s descendants. The tree <strong>s</strong> could also be considered as a subtree of itself.</p>
+<p><strong>Example 1:</strong><br>Given tree s:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">    3</div><div class="line">   / \</div><div class="line">  4   5</div><div class="line"> / \</div><div class="line">1   2</div></pre></td></tr></table></figure>
+<p>Given tree t:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">  4 </div><div class="line"> / \</div><div class="line">1   2</div></pre></td></tr></table></figure>
+<p>Return <strong>true</strong>, because t has the same structure and node values with a subtree of s.</p>
+<p><strong>Example 2:</strong><br>Given tree s:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">    3</div><div class="line">   / \</div><div class="line">  4   5</div><div class="line"> / \</div><div class="line">1   2</div><div class="line">   /</div><div class="line">  0</div></pre></td></tr></table></figure>
+<p>Given tree t:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">  4</div><div class="line"> / \</div><div class="line">1   2</div></pre></td></tr></table></figure>
+<p>Return false .<br>
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2014/03/11/leetcode/Algorithms/leetcode-572-Subtree-of-Another-Tree/#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
@@ -693,6 +812,108 @@
 </ol>
           <div class="post-more-link text-center">
             <a class="btn" href="/2014/03/11/leetcode/Algorithms/leetcode-575-Distribute-Candies/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2014/03/11/leetcode/Algorithms/leetcode-58-Length-of-Last-Word/" itemprop="url">
+                  leetcode-58-Length-of-Last-Word
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2014-03-11T00:33:34+08:00" content="2014-03-11">
+              2014-03-11
+            </time>
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2014/03/11/leetcode/Algorithms/leetcode-58-Length-of-Last-Word/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2014/03/11/leetcode/Algorithms/leetcode-58-Length-of-Last-Word/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <h3 id="描述"><a href="#描述" class="headerlink" title="描述"></a>描述</h3><hr>
+<p>Given a string s consists of upper/lower-case alphabets and empty space characters ‘ ‘, return the length of last word in the string.</p>
+<p>If the last word does not exist, return 0.</p>
+<p>Note: A word is defined as a character sequence consists of non-space characters only.</p>
+<p>For example,<br>Given s = “Hello World”,<br>return 5. </p>
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2014/03/11/leetcode/Algorithms/leetcode-58-Length-of-Last-Word/#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
@@ -1008,221 +1229,6 @@
 </ol>
           <div class="post-more-link text-center">
             <a class="btn" href="/2014/03/11/leetcode/Algorithms/leetcode-598-Range-Addition-II/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2014/03/11/leetcode/Algorithms/leetcode-599-Minimum-Index-Sum-of-Two-Lists/" itemprop="url">
-                  leetcode-599-Minimum-Index-Sum-of-Two-Lists
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2014-03-11T00:33:34+08:00" content="2014-03-11">
-              2014-03-11
-            </time>
-          </span>
-
-          
-
-          
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2014/03/11/leetcode/Algorithms/leetcode-599-Minimum-Index-Sum-of-Two-Lists/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2014/03/11/leetcode/Algorithms/leetcode-599-Minimum-Index-Sum-of-Two-Lists/" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <h3 id="描述"><a href="#描述" class="headerlink" title="描述"></a>描述</h3><hr>
-<p>Suppose Andy and Doris want to choose a restaurant for dinner, and they both have a list of favorite restaurants represented by strings.</p>
-<p>You need to help them find out their <strong>common interest</strong> with the <strong>least list index sum</strong>. If there is a choice tie between answers, output all of them with no order requirement. You could assume there always exists an answer.</p>
-<p><strong>Example 1:</strong></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">Input:</div><div class="line">[&quot;Shogun&quot;, &quot;Tapioca Express&quot;, &quot;Burger King&quot;, &quot;KFC&quot;]</div><div class="line">[&quot;Piatti&quot;, &quot;The Grill at Torrey Pines&quot;, &quot;Hungry Hunter Steakhouse&quot;, &quot;Shogun&quot;]</div><div class="line">Output: [&quot;Shogun&quot;]</div><div class="line">Explanation: The only restaurant they both like is &quot;Shogun&quot;.</div></pre></td></tr></table></figure>
-<p><strong>Example 2:</strong></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">Input:</div><div class="line">[&quot;Shogun&quot;, &quot;Tapioca Express&quot;, &quot;Burger King&quot;, &quot;KFC&quot;]</div><div class="line">[&quot;KFC&quot;, &quot;Shogun&quot;, &quot;Burger King&quot;]</div><div class="line">Output: [&quot;Shogun&quot;]</div><div class="line">Explanation: The restaurant they both like and have the least index sum is &quot;Shogun&quot; with index sum 1 (0+1).</div></pre></td></tr></table></figure>
-<p><strong>Note:</strong></p>
-<ol>
-<li>The length of both lists will be in the range of [1, 1000].</li>
-<li>The length of strings in both lists will be in the range of [1, 30].</li>
-<li>The index is starting from 0 to the list length minus 1.</li>
-<li>No duplicates in both lists.</li>
-</ol>
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2014/03/11/leetcode/Algorithms/leetcode-599-Minimum-Index-Sum-of-Two-Lists/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2014/03/11/leetcode/Algorithms/leetcode-606-Construct-String-from-Binary-Tree/" itemprop="url">
-                  leetcode-606-Construct-String-from-Binary-Tree
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2014-03-11T00:33:34+08:00" content="2014-03-11">
-              2014-03-11
-            </time>
-          </span>
-
-          
-
-          
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2014/03/11/leetcode/Algorithms/leetcode-606-Construct-String-from-Binary-Tree/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2014/03/11/leetcode/Algorithms/leetcode-606-Construct-String-from-Binary-Tree/" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <h3 id="描述"><a href="#描述" class="headerlink" title="描述"></a>描述</h3><hr>
-<p>You need to construct a string consists of parenthesis and integers from a binary tree with the preorder traversing way.</p>
-<p>The null node needs to be represented by empty parenthesis pair “()”. And you need to omit all the empty parenthesis pairs that don’t affect the one-to-one mapping relationship between the string and the original binary tree.</p>
-<p><strong>Example 1:</strong></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">Input: Binary tree: [1,2,3,4]</div><div class="line">       1</div><div class="line">     /   \</div><div class="line">    2     3</div><div class="line">   /    </div><div class="line">  4     </div><div class="line"></div><div class="line">Output: &quot;1(2(4))(3)&quot;</div><div class="line"></div><div class="line">Explanation: Originallay it needs to be &quot;1(2(4)())(3()())&quot;, </div><div class="line">but you need to omit all the unnecessary empty parenthesis pairs. </div><div class="line">And it will be &quot;1(2(4))(3)&quot;.</div></pre></td></tr></table></figure>
-<p><strong>Example 2:</strong></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">Input: Binary tree: [1,2,3,null,4]</div><div class="line">       1</div><div class="line">     /   \</div><div class="line">    2     3</div><div class="line">     \  </div><div class="line">      4 </div><div class="line"></div><div class="line">Output: &quot;1(2()(4))(3)&quot;</div><div class="line"></div><div class="line">Explanation: Almost the same as the first example, </div><div class="line">except we can&apos;t omit the first parenthesis pair to break the one-to-one mapping relationship between the input and the output.</div></pre></td></tr></table></figure>
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2014/03/11/leetcode/Algorithms/leetcode-606-Construct-String-from-Binary-Tree/#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
