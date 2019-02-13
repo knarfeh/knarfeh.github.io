@@ -211,8 +211,8 @@
             
               
                 
-                <a class="post-title-link" href="/2014/03/11/leetcode/Algorithms/leetcode-720-Longest-Word-in-Dictionary/" itemprop="url">
-                  leetcode-720-Longest-Word-in-Dictionary
+                <a class="post-title-link" href="/2014/03/11/leetcode/Algorithms/leetcode-717-1-bit-and-2-bit-Characters/" itemprop="url">
+                  leetcode-717-1-bit-and-2-bit-Characters
                 </a>
               
             
@@ -236,8 +236,8 @@
             
               <span class="post-comments-count">
                 &nbsp; | &nbsp;
-                <a href="/2014/03/11/leetcode/Algorithms/leetcode-720-Longest-Word-in-Dictionary/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2014/03/11/leetcode/Algorithms/leetcode-720-Longest-Word-in-Dictionary/" itemprop="commentsCount"></span>
+                <a href="/2014/03/11/leetcode/Algorithms/leetcode-717-1-bit-and-2-bit-Characters/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2014/03/11/leetcode/Algorithms/leetcode-717-1-bit-and-2-bit-Characters/" itemprop="commentsCount"></span>
                 </a>
               </span>
             
@@ -261,18 +261,17 @@
       
         
           <h3 id="描述"><a href="#描述" class="headerlink" title="描述"></a>描述</h3><hr>
-<p>Given a list of strings <code>words</code> representing an English Dictionary, find the longest word in <code>words</code> that can be built one character at a time by other words in <code>words</code>. If there is more than one possible answer, return the longest word with the smallest lexicographical order.</p>
-<p>If there is no answer, return the empty string.</p>
+<p>We have two special characters. The first character can be represented by one bit <code>0</code>. The second character can be represented by two bits (<code>10</code> or <code>11</code>).</p>
+<p>Now given a string represented by several bits. Return whether the last character must be a one-bit character or not. The given string will always end with a zero.</p>
 <p><strong>Example 1:</strong></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">Input: </div><div class="line">words = [&quot;w&quot;,&quot;wo&quot;,&quot;wor&quot;,&quot;worl&quot;, &quot;world&quot;]</div><div class="line">Output: &quot;world&quot;</div><div class="line">Explanation: </div><div class="line">The word &quot;world&quot; can be built one character at a time by &quot;w&quot;, &quot;wo&quot;, &quot;wor&quot;, and &quot;worl&quot;.</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">Input: </div><div class="line">bits = [1, 0, 0]</div><div class="line">Output: True</div><div class="line">Explanation: </div><div class="line">The only way to decode it is two-bit character and one-bit character. So the last character is one-bit character.</div></pre></td></tr></table></figure>
 <p><strong>Example 2:</strong></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">Input: </div><div class="line">words = [&quot;a&quot;, &quot;banana&quot;, &quot;app&quot;, &quot;appl&quot;, &quot;ap&quot;, &quot;apply&quot;, &quot;apple&quot;]</div><div class="line">Output: &quot;apple&quot;</div><div class="line">Explanation: </div><div class="line">Both &quot;apply&quot; and &quot;apple&quot; can be built from other words in the dictionary. However, &quot;apple&quot; is lexicographically smaller than &quot;apply&quot;.</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">Input: </div><div class="line">bits = [1, 1, 1, 0]</div><div class="line">Output: False</div><div class="line">Explanation: </div><div class="line">The only way to decode it is two-bit character and two-bit character. So the last character is NOT one-bit character.</div></pre></td></tr></table></figure>
 <p><strong>Note:</strong></p>
-<p>All the strings in the input will only contain lowercase letters.</p>
-<p>The length of <code>words</code> will be in the range <code>[1, 1000]</code>.</p>
-<p>The length of <code>words[i]</code> will be in the range <code>[1, 30]</code>.</p>
+<p><code>1 &lt;= len(bits) &lt;= 1000</code>.</p>
+<p><code>bits[i]</code> is always <code>0</code> or <code>1</code>.</p>
           <div class="post-more-link text-center">
-            <a class="btn" href="/2014/03/11/leetcode/Algorithms/leetcode-720-Longest-Word-in-Dictionary/#more" rel="contents">
+            <a class="btn" href="/2014/03/11/leetcode/Algorithms/leetcode-717-1-bit-and-2-bit-Characters/#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
@@ -427,8 +426,8 @@
             
               
                 
-                <a class="post-title-link" href="/2014/03/11/leetcode/Algorithms/leetcode-704-Binary-Search/" itemprop="url">
-                  leetcode-704-Binary-Search
+                <a class="post-title-link" href="/2014/03/11/leetcode/Algorithms/leetcode-709-To-Lower-Case/" itemprop="url">
+                  leetcode-709-To-Lower-Case
                 </a>
               
             
@@ -452,8 +451,8 @@
             
               <span class="post-comments-count">
                 &nbsp; | &nbsp;
-                <a href="/2014/03/11/leetcode/Algorithms/leetcode-704-Binary-Search/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2014/03/11/leetcode/Algorithms/leetcode-704-Binary-Search/" itemprop="commentsCount"></span>
+                <a href="/2014/03/11/leetcode/Algorithms/leetcode-709-To-Lower-Case/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2014/03/11/leetcode/Algorithms/leetcode-709-To-Lower-Case/" itemprop="commentsCount"></span>
                 </a>
               </span>
             
@@ -477,19 +476,121 @@
       
         
           <h3 id="描述"><a href="#描述" class="headerlink" title="描述"></a>描述</h3><hr>
-<p>Given a <strong>sorted</strong> (in ascending order) integer array <code>nums</code> of <code>n</code> elements and a <code>target</code> value, write a function to search <code>target</code> in <code>nums</code>. If <code>target</code> exists, then return its index, otherwise return <code>-1</code>.</p>
+<p>Implement function ToLowerCase() that has a string parameter str, and returns the same string in lowercase.</p>
 <p><strong>Example 1:</strong></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">Input: nums = [-1,0,3,5,9,12], target = 9</div><div class="line">Output: 4</div><div class="line">Explanation: 9 exists in nums and its index is 4</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">Input: &quot;Hello&quot;</div><div class="line">Output: &quot;hello&quot;</div></pre></td></tr></table></figure>
 <p><strong>Example 2:</strong></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">Input: nums = [-1,0,3,5,9,12], target = 2</div><div class="line">Output: -1</div><div class="line">Explanation: 2 does not exist in nums so return -1</div></pre></td></tr></table></figure>
-<p><strong>Note:</strong></p>
-<ol>
-<li>You may assume that all elements in <code>nums</code> are unique.</li>
-<li><code>n</code> will be in the range <code>[1, 10000]</code>.</li>
-<li>The value of each element in <code>nums</code> will be in the range <code>[-9999, 9999]</code>.</li>
-</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">Input: &quot;here&quot;</div><div class="line">Output: &quot;here&quot;</div></pre></td></tr></table></figure>
+<p><strong>Example 3:</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">Input: &quot;LOVELY&quot;</div><div class="line">Output: &quot;lovely&quot;</div></pre></td></tr></table></figure>
           <div class="post-more-link text-center">
-            <a class="btn" href="/2014/03/11/leetcode/Algorithms/leetcode-704-Binary-Search/#more" rel="contents">
+            <a class="btn" href="/2014/03/11/leetcode/Algorithms/leetcode-709-To-Lower-Case/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2014/03/11/leetcode/Algorithms/leetcode-728-Self-Dividing-Numbers/" itemprop="url">
+                  leetcode-728-Self-Dividing-Numbers
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2014-03-11T00:33:34+08:00" content="2014-03-11">
+              2014-03-11
+            </time>
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2014/03/11/leetcode/Algorithms/leetcode-728-Self-Dividing-Numbers/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2014/03/11/leetcode/Algorithms/leetcode-728-Self-Dividing-Numbers/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <h3 id="描述"><a href="#描述" class="headerlink" title="描述"></a>描述</h3><hr>
+<p>A <em>self-dividing number</em> is a number that is divisible by every digit it contains.</p>
+<p>For example, 128 is a self-dividing number because <code>128 % 1 == 0</code>, <code>128 % 2 == 0</code>, and <code>128 % 8 == 0</code>.</p>
+<p>Also, a self-dividing number is not allowed to contain the digit zero.</p>
+<p>Given a lower and upper number bound, output a list of every possible self dividing number, including the bounds if possible.</p>
+<p><strong>Example 1:</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">Input: </div><div class="line">left = 1, right = 22</div><div class="line">Output: [1, 2, 3, 4, 5, 6, 7, 8, 9, 11, 12, 15, 22]</div></pre></td></tr></table></figure>
+<p><strong>Note:</strong></p>
+<p>The boundaries of each input argument are <code>1 &lt;= left &lt;= right &lt;= 10000</code>.</p>
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2014/03/11/leetcode/Algorithms/leetcode-728-Self-Dividing-Numbers/#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
@@ -591,6 +692,107 @@
 <p>Subscribe to see which companies asked this question</p>
           <div class="post-more-link text-center">
             <a class="btn" href="/2014/03/11/leetcode/Algorithms/leetcode-73-Set-Matrix-Zeroes/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2014/03/11/leetcode/Algorithms/leetcode-739-Daily-Temperatures/" itemprop="url">
+                  leetcode-739-Daily-Temperatures
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2014-03-11T00:33:34+08:00" content="2014-03-11">
+              2014-03-11
+            </time>
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2014/03/11/leetcode/Algorithms/leetcode-739-Daily-Temperatures/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2014/03/11/leetcode/Algorithms/leetcode-739-Daily-Temperatures/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <h3 id="描述"><a href="#描述" class="headerlink" title="描述"></a>描述</h3><hr>
+<p>Given a list of daily temperatures <code>T</code>, return a list such that, for each day in the input, tells you how many days you would have to wait until a warmer temperature. If there is no future day for which this is possible, put <code>0</code> instead.</p>
+<p>For example, given the list of temperatures <code>T = [73, 74, 75, 71, 69, 72, 76, 73]</code>, your output should be <code>[1, 1, 4, 2, 1, 1, 0, 0]</code>.</p>
+<p><strong>Note:</strong> The length of <code>temperatures</code> will be in the range <code>[1, 30000]</code>. Each temperature will be an integer in the range <code>[30, 100]</code>.</p>
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2014/03/11/leetcode/Algorithms/leetcode-739-Daily-Temperatures/#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
@@ -750,8 +952,8 @@
             
               
                 
-                <a class="post-title-link" href="/2014/03/11/leetcode/Algorithms/leetcode-728-Self-Dividing-Numbers/" itemprop="url">
-                  leetcode-728-Self-Dividing-Numbers
+                <a class="post-title-link" href="/2014/03/11/leetcode/Algorithms/leetcode-766-Toeplitz-Matrix/" itemprop="url">
+                  leetcode-766-Toeplitz-Matrix
                 </a>
               
             
@@ -775,8 +977,8 @@
             
               <span class="post-comments-count">
                 &nbsp; | &nbsp;
-                <a href="/2014/03/11/leetcode/Algorithms/leetcode-728-Self-Dividing-Numbers/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2014/03/11/leetcode/Algorithms/leetcode-728-Self-Dividing-Numbers/" itemprop="commentsCount"></span>
+                <a href="/2014/03/11/leetcode/Algorithms/leetcode-766-Toeplitz-Matrix/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2014/03/11/leetcode/Algorithms/leetcode-766-Toeplitz-Matrix/" itemprop="commentsCount"></span>
                 </a>
               </span>
             
@@ -799,227 +1001,26 @@
 
       
         
-          <h3 id="描述"><a href="#描述" class="headerlink" title="描述"></a>描述</h3><hr>
-<p>A <em>self-dividing number</em> is a number that is divisible by every digit it contains.</p>
-<p>For example, 128 is a self-dividing number because <code>128 % 1 == 0</code>, <code>128 % 2 == 0</code>, and <code>128 % 8 == 0</code>.</p>
-<p>Also, a self-dividing number is not allowed to contain the digit zero.</p>
-<p>Given a lower and upper number bound, output a list of every possible self dividing number, including the bounds if possible.</p>
+          <h3 id="描述"><a href="#描述" class="headerlink" title="描述"></a>描述</h3><p>A matrix is <em>Toeplitz</em> if every diagonal from top-left to bottom-right has the same element.</p>
+<p>Now given an <code>M x N</code> matrix, return <code>True</code> if and only if the matrix is <em>Toeplitz</em>.</p>
 <p><strong>Example 1:</strong></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">Input: </div><div class="line">left = 1, right = 22</div><div class="line">Output: [1, 2, 3, 4, 5, 6, 7, 8, 9, 11, 12, 15, 22]</div></pre></td></tr></table></figure>
-<p><strong>Note:</strong></p>
-<p>The boundaries of each input argument are <code>1 &lt;= left &lt;= right &lt;= 10000</code>.</p>
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2014/03/11/leetcode/Algorithms/leetcode-728-Self-Dividing-Numbers/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2014/03/11/leetcode/Algorithms/leetcode-762-Prime-Number-of-Set-Bits-in-Binary-Representation/" itemprop="url">
-                  leetcode-762-Prime-Number-of-Set-Bits-in-Binary-Representation
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2014-03-11T00:33:34+08:00" content="2014-03-11">
-              2014-03-11
-            </time>
-          </span>
-
-          
-
-          
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2014/03/11/leetcode/Algorithms/leetcode-762-Prime-Number-of-Set-Bits-in-Binary-Representation/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2014/03/11/leetcode/Algorithms/leetcode-762-Prime-Number-of-Set-Bits-in-Binary-Representation/" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <h3 id="描述"><a href="#描述" class="headerlink" title="描述"></a>描述</h3><hr>
-<p>Given two integers <code>L</code> and <code>R</code>, find the count of numbers in the range <code>[L, R]</code> (inclusive) having a prime number of set bits in their binary representation.</p>
-<p>(Recall that the number of set bits an integer has is the number of <code>1</code>s present when written in binary. For example, <code>21</code> written in binary is <code>10101</code> which has 3 set bits. Also, 1 is not a prime.)</p>
-<p><strong>Example 1:</strong></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">Input: L = 6, R = 10</div><div class="line">Output: 4</div><div class="line">Explanation:</div><div class="line">6 -&gt; 110 (2 set bits, 2 is prime)</div><div class="line">7 -&gt; 111 (3 set bits, 3 is prime)</div><div class="line">9 -&gt; 1001 (2 set bits , 2 is prime)</div><div class="line">10-&gt;1010 (2 set bits , 2 is prime)</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">Input:</div><div class="line">matrix = [</div><div class="line">  [1,2,3,4],</div><div class="line">  [5,1,2,3],</div><div class="line">  [9,5,1,2]</div><div class="line">]</div><div class="line">Output: True</div><div class="line">Explanation:</div><div class="line">In the above grid, the diagonals are:</div><div class="line">&quot;[9]&quot;, &quot;[5, 5]&quot;, &quot;[1, 1, 1]&quot;, &quot;[2, 2, 2]&quot;, &quot;[3, 3]&quot;, &quot;[4]&quot;.</div><div class="line">In each diagonal all elements are the same, so the answer is True.</div></pre></td></tr></table></figure>
 <p><strong>Example 2:</strong></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">Input: L = 10, R = 15</div><div class="line">Output: 5</div><div class="line">Explanation:</div><div class="line">10 -&gt; 1010 (2 set bits, 2 is prime)</div><div class="line">11 -&gt; 1011 (3 set bits, 3 is prime)</div><div class="line">12 -&gt; 1100 (2 set bits, 2 is prime)</div><div class="line">13 -&gt; 1101 (3 set bits, 3 is prime)</div><div class="line">14 -&gt; 1110 (3 set bits, 3 is prime)</div><div class="line">15 -&gt; 1111 (4 set bits, 4 is not prime)</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">Input:</div><div class="line">matrix = [</div><div class="line">  [1,2],</div><div class="line">  [2,2]</div><div class="line">]</div><div class="line">Output: False</div><div class="line">Explanation:</div><div class="line">The diagonal &quot;[1, 2]&quot; has different elements.</div></pre></td></tr></table></figure>
 <p><strong>Note:</strong></p>
 <ol>
-<li><code>L, R</code> will be integers <code>L &lt;= R</code> in the range <code>[1, 10^6]</code>.</li>
-<li><code>R - L</code> will be at most 10000.</li>
+<li><code>matrix</code> will be a 2D array of integers.</li>
+<li><code>matrix</code> will have a number of rows and columns in range <code>[1, 20]</code>.</li>
+<li><code>matrix[i][j]</code> will be integers in range <code>[0, 99]</code>.</li>
 </ol>
+<p><strong>Follow up:</strong></p>
+<ol>
+<li>What if the matrix is stored on disk, and the memory is limited such that you can only load at most one row of the matrix into the memory at once?</li>
+<li>What if the matrix is so large that you can only load up a partial row into the memory at once?</li>
+</ol>
+<hr>
           <div class="post-more-link text-center">
-            <a class="btn" href="/2014/03/11/leetcode/Algorithms/leetcode-762-Prime-Number-of-Set-Bits-in-Binary-Representation/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2014/03/11/leetcode/Algorithms/leetcode-739-Daily-Temperatures/" itemprop="url">
-                  leetcode-739-Daily-Temperatures
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2014-03-11T00:33:34+08:00" content="2014-03-11">
-              2014-03-11
-            </time>
-          </span>
-
-          
-
-          
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2014/03/11/leetcode/Algorithms/leetcode-739-Daily-Temperatures/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2014/03/11/leetcode/Algorithms/leetcode-739-Daily-Temperatures/" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <h3 id="描述"><a href="#描述" class="headerlink" title="描述"></a>描述</h3><hr>
-<p>Given a list of daily temperatures <code>T</code>, return a list such that, for each day in the input, tells you how many days you would have to wait until a warmer temperature. If there is no future day for which this is possible, put <code>0</code> instead.</p>
-<p>For example, given the list of temperatures <code>T = [73, 74, 75, 71, 69, 72, 76, 73]</code>, your output should be <code>[1, 1, 4, 2, 1, 1, 0, 0]</code>.</p>
-<p><strong>Note:</strong> The length of <code>temperatures</code> will be in the range <code>[1, 30000]</code>. Each temperature will be an integer in the range <code>[30, 100]</code>.</p>
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2014/03/11/leetcode/Algorithms/leetcode-739-Daily-Temperatures/#more" rel="contents">
+            <a class="btn" href="/2014/03/11/leetcode/Algorithms/leetcode-766-Toeplitz-Matrix/#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
@@ -1175,8 +1176,8 @@
             
               
                 
-                <a class="post-title-link" href="/2014/03/11/leetcode/Algorithms/leetcode-783-Minimum-Distance-Between-BST-Nodes/" itemprop="url">
-                  leetcode-783-Minimum-Distance-Between-BST-Nodes
+                <a class="post-title-link" href="/2014/03/11/leetcode/Algorithms/leetcode-762-Prime-Number-of-Set-Bits-in-Binary-Representation/" itemprop="url">
+                  leetcode-762-Prime-Number-of-Set-Bits-in-Binary-Representation
                 </a>
               
             
@@ -1200,8 +1201,8 @@
             
               <span class="post-comments-count">
                 &nbsp; | &nbsp;
-                <a href="/2014/03/11/leetcode/Algorithms/leetcode-783-Minimum-Distance-Between-BST-Nodes/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2014/03/11/leetcode/Algorithms/leetcode-783-Minimum-Distance-Between-BST-Nodes/" itemprop="commentsCount"></span>
+                <a href="/2014/03/11/leetcode/Algorithms/leetcode-762-Prime-Number-of-Set-Bits-in-Binary-Representation/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2014/03/11/leetcode/Algorithms/leetcode-762-Prime-Number-of-Set-Bits-in-Binary-Representation/" itemprop="commentsCount"></span>
                 </a>
               </span>
             
@@ -1225,16 +1226,19 @@
       
         
           <h3 id="描述"><a href="#描述" class="headerlink" title="描述"></a>描述</h3><hr>
-<p>Given a Binary Search Tree (BST) with the root node <code>root</code>, return the minimum difference between the values of any two different nodes in the tree.</p>
-<p><strong>Example :</strong></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line">Input: root = [4,2,6,1,3,null,null]</div><div class="line">Output: 1</div><div class="line">Explanation:</div><div class="line">Note that root is a TreeNode object, not an array.</div><div class="line"></div><div class="line">The given tree [4,2,6,1,3,null,null] is represented by the following diagram:</div><div class="line"></div><div class="line">          4</div><div class="line">        /   \</div><div class="line">      2      6</div><div class="line">     / \    </div><div class="line">    1   3  </div><div class="line"></div><div class="line">while the minimum difference in this tree is 1, it occurs between node 1 and node 2, also between node 3 and node 2.</div></pre></td></tr></table></figure>
+<p>Given two integers <code>L</code> and <code>R</code>, find the count of numbers in the range <code>[L, R]</code> (inclusive) having a prime number of set bits in their binary representation.</p>
+<p>(Recall that the number of set bits an integer has is the number of <code>1</code>s present when written in binary. For example, <code>21</code> written in binary is <code>10101</code> which has 3 set bits. Also, 1 is not a prime.)</p>
+<p><strong>Example 1:</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">Input: L = 6, R = 10</div><div class="line">Output: 4</div><div class="line">Explanation:</div><div class="line">6 -&gt; 110 (2 set bits, 2 is prime)</div><div class="line">7 -&gt; 111 (3 set bits, 3 is prime)</div><div class="line">9 -&gt; 1001 (2 set bits , 2 is prime)</div><div class="line">10-&gt;1010 (2 set bits , 2 is prime)</div></pre></td></tr></table></figure>
+<p><strong>Example 2:</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">Input: L = 10, R = 15</div><div class="line">Output: 5</div><div class="line">Explanation:</div><div class="line">10 -&gt; 1010 (2 set bits, 2 is prime)</div><div class="line">11 -&gt; 1011 (3 set bits, 3 is prime)</div><div class="line">12 -&gt; 1100 (2 set bits, 2 is prime)</div><div class="line">13 -&gt; 1101 (3 set bits, 3 is prime)</div><div class="line">14 -&gt; 1110 (3 set bits, 3 is prime)</div><div class="line">15 -&gt; 1111 (4 set bits, 4 is not prime)</div></pre></td></tr></table></figure>
 <p><strong>Note:</strong></p>
 <ol>
-<li>The size of the BST will be between 2 and <code>100</code>.</li>
-<li>The BST is always valid, each node’s value is an integer, and each node’s value is different.</li>
+<li><code>L, R</code> will be integers <code>L &lt;= R</code> in the range <code>[1, 10^6]</code>.</li>
+<li><code>R - L</code> will be at most 10000.</li>
 </ol>
           <div class="post-more-link text-center">
-            <a class="btn" href="/2014/03/11/leetcode/Algorithms/leetcode-783-Minimum-Distance-Between-BST-Nodes/#more" rel="contents">
+            <a class="btn" href="/2014/03/11/leetcode/Algorithms/leetcode-762-Prime-Number-of-Set-Bits-in-Binary-Representation/#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
@@ -1305,7 +1309,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">363</span>
+              <span class="site-state-item-count">364</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>

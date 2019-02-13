@@ -211,8 +211,8 @@
             
               
                 
-                <a class="post-title-link" href="/2014/03/11/leetcode/Algorithms/leetcode-852-Peak-Index-in-a-Mountain-Array/" itemprop="url">
-                  leetcode-852-Peak-Index-in-a-Mountain-Array
+                <a class="post-title-link" href="/2014/03/11/leetcode/Algorithms/leetcode-844-Backspace-String-Compare/" itemprop="url">
+                  leetcode-844-Backspace-String-Compare
                 </a>
               
             
@@ -236,8 +236,8 @@
             
               <span class="post-comments-count">
                 &nbsp; | &nbsp;
-                <a href="/2014/03/11/leetcode/Algorithms/leetcode-852-Peak-Index-in-a-Mountain-Array/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2014/03/11/leetcode/Algorithms/leetcode-852-Peak-Index-in-a-Mountain-Array/" itemprop="commentsCount"></span>
+                <a href="/2014/03/11/leetcode/Algorithms/leetcode-844-Backspace-String-Compare/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2014/03/11/leetcode/Algorithms/leetcode-844-Backspace-String-Compare/" itemprop="commentsCount"></span>
                 </a>
               </span>
             
@@ -261,24 +261,27 @@
       
         
           <h3 id="描述"><a href="#描述" class="headerlink" title="描述"></a>描述</h3><hr>
-<p>Let’s call an array <code>A</code> a <em>mountain</em> if the following properties hold:</p>
-<ul>
-<li><code>A.length &gt;= 3</code></li>
-<li>There exists some <code>0 &lt; i &lt; A.length - 1</code> such that <code>A[0] &lt; A[1] &lt; ... A[i-1] &lt; A[i] &gt; A[i+1] &gt; ... &gt; A[A.length - 1]</code></li>
-</ul>
-<p>Given an array that is definitely a mountain, return any <code>i</code> such that <code>A[0] &lt; A[1] &lt; ... A[i-1] &lt; A[i] &gt; A[i+1] &gt; ... &gt; A[A.length - 1]</code>.</p>
+<p>Given two strings <code>S</code> and <code>T</code>, return if they are equal when both are typed into empty text editors. <code>#</code> means a backspace character.</p>
 <p><strong>Example 1:</strong></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">Input: [0,1,0]</div><div class="line">Output: 1</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">Input: S = &quot;ab#c&quot;, T = &quot;ad#c&quot;</div><div class="line">Output: true</div><div class="line">Explanation: Both S and T become &quot;ac&quot;.</div></pre></td></tr></table></figure>
 <p><strong>Example 2:</strong></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">Input: [0,2,1,0]</div><div class="line">Output: 1</div></pre></td></tr></table></figure>
-<p><strong>Note:</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">Input: S = &quot;ab##&quot;, T = &quot;c#d#&quot;</div><div class="line">Output: true</div><div class="line">Explanation: Both S and T become &quot;&quot;.</div></pre></td></tr></table></figure>
+<p><strong>Example 3:</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">Input: S = &quot;a##c&quot;, T = &quot;#a#c&quot;</div><div class="line">Output: true</div><div class="line">Explanation: Both S and T become &quot;c&quot;.</div></pre></td></tr></table></figure>
+<p><strong>Example 4:</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">Input: S = &quot;a#c&quot;, T = &quot;b&quot;</div><div class="line">Output: false</div><div class="line">Explanation: S becomes &quot;c&quot; while T becomes &quot;b&quot;.</div></pre></td></tr></table></figure>
+<p><strong>Note</strong>:</p>
 <ol>
-<li><code>3 &lt;= A.length &lt;= 10000</code></li>
-<li><code>0 &lt;= A[i] &lt;= 10^6</code></li>
-<li>A is a mountain, as defined above.</li>
+<li><code>1 &lt;= S.length &lt;= 200</code></li>
+<li><code>1 &lt;= T.length &lt;= 200</code></li>
+<li><code>S</code> and <code>T</code> only contain lowercase letters and <code>&#39;#&#39;</code> characters.</li>
 </ol>
+<p><strong>Follow up:</strong></p>
+<ul>
+<li>Can you solve it in <code>O(N)</code> time and <code>O(1)</code> space?</li>
+</ul>
           <div class="post-more-link text-center">
-            <a class="btn" href="/2014/03/11/leetcode/Algorithms/leetcode-852-Peak-Index-in-a-Mountain-Array/#more" rel="contents">
+            <a class="btn" href="/2014/03/11/leetcode/Algorithms/leetcode-844-Backspace-String-Compare/#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
@@ -775,118 +778,6 @@
             
               
                 
-                <a class="post-title-link" href="/2014/03/11/leetcode/Algorithms/leetcode-868-Binary-Gap/" itemprop="url">
-                  leetcode-868-Binary-Gap
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2014-03-11T00:33:34+08:00" content="2014-03-11">
-              2014-03-11
-            </time>
-          </span>
-
-          
-
-          
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2014/03/11/leetcode/Algorithms/leetcode-868-Binary-Gap/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2014/03/11/leetcode/Algorithms/leetcode-868-Binary-Gap/" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <h3 id="描述"><a href="#描述" class="headerlink" title="描述"></a>描述</h3><hr>
-<p>Given a positive integer <code>N</code>, find and return the longest distance between two consecutive 1’s in the binary representation of <code>N</code>.</p>
-<p>If there aren’t two consecutive 1’s, return 0.</p>
-<p><strong>Example 1:</strong></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">Input: 22</div><div class="line">Output: 2</div><div class="line">Explanation: </div><div class="line">22 in binary is 0b10110.</div><div class="line">In the binary representation of 22, there are three ones, and two consecutive pairs of 1&apos;s.</div><div class="line">The first consecutive pair of 1&apos;s have distance 2.</div><div class="line">The second consecutive pair of 1&apos;s have distance 1.</div><div class="line">The answer is the largest of these two distances, which is 2.</div></pre></td></tr></table></figure>
-<p><strong>Example 2:</strong></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">Input: 5</div><div class="line">Output: 2</div><div class="line">Explanation: </div><div class="line">5 in binary is 0b101.</div></pre></td></tr></table></figure>
-<p><strong>Example 3:</strong></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">Input: 6</div><div class="line">Output: 1</div><div class="line">Explanation: </div><div class="line">6 in binary is 0b110.</div></pre></td></tr></table></figure>
-<p><strong>Example 4:</strong></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">Input: 8</div><div class="line">Output: 0</div><div class="line">Explanation: </div><div class="line">8 in binary is 0b1000.</div><div class="line">There aren&apos;t any consecutive pairs of 1&apos;s in the binary representation of 8, so we return 0.</div></pre></td></tr></table></figure>
-<p><strong>Note:</strong></p>
-<ul>
-<li><code>1 &lt;= N &lt;= 10^9</code></li>
-</ul>
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2014/03/11/leetcode/Algorithms/leetcode-868-Binary-Gap/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
                 <a class="post-title-link" href="/2014/03/11/leetcode/Algorithms/leetcode-872-Leaf-Similar-Trees/" itemprop="url">
                   leetcode-872-Leaf-Similar-Trees
                 </a>
@@ -948,6 +839,117 @@
 </ul>
           <div class="post-more-link text-center">
             <a class="btn" href="/2014/03/11/leetcode/Algorithms/leetcode-872-Leaf-Similar-Trees/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2014/03/11/leetcode/Algorithms/leetcode-877-Stone-Game/" itemprop="url">
+                  leetcode-877-Stone-Game
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2014-03-11T00:33:34+08:00" content="2014-03-11">
+              2014-03-11
+            </time>
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2014/03/11/leetcode/Algorithms/leetcode-877-Stone-Game/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2014/03/11/leetcode/Algorithms/leetcode-877-Stone-Game/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <h3 id="描述"><a href="#描述" class="headerlink" title="描述"></a>描述</h3><hr>
+<p>Alex and Lee play a game with piles of stones.  There are an even number of piles <strong>arranged in a row</strong>, and each pile has a positive integer number of stones <code>piles[i]</code>.</p>
+<p>The objective of the game is to end with the most stones.  The total number of stones is odd, so there are no ties.</p>
+<p>Alex and Lee take turns, with Alex starting first.  Each turn, a player takes the entire pile of stones from either the beginning or the end of the row.  This continues until there are no more piles left, at which point the person with the most stones wins.</p>
+<p>Assuming Alex and Lee play optimally, return <code>True</code> if and only if Alex wins the game.</p>
+<p><strong>Example 1:</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">Input: [5,3,4,5]</div><div class="line">Output: true</div><div class="line">Explanation: </div><div class="line">Alex starts first, and can only take the first 5 or the last 5.</div><div class="line">Say he takes the first 5, so that the row becomes [3, 4, 5].</div><div class="line">If Lee takes 3, then the board is [4, 5], and Alex takes 5 to win with 10 points.</div><div class="line">If Lee takes the last 5, then the board is [3, 4], and Alex takes 4 to win with 9 points.</div><div class="line">This demonstrated that taking the first 5 was a winning move for Alex, so we return true.</div></pre></td></tr></table></figure>
+<p><strong>Note:</strong></p>
+<ol>
+<li><code>2 &lt;= piles.length &lt;= 500</code></li>
+<li><code>piles.length</code> is even.</li>
+<li><code>1 &lt;= piles[i] &lt;= 500</code></li>
+<li><code>sum(piles)</code> is odd.</li>
+</ol>
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2014/03/11/leetcode/Algorithms/leetcode-877-Stone-Game/#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
@@ -1102,8 +1104,8 @@
             
               
                 
-                <a class="post-title-link" href="/2014/03/11/leetcode/Algorithms/leetcode-877-Stone-Game/" itemprop="url">
-                  leetcode-877-Stone-Game
+                <a class="post-title-link" href="/2014/03/11/leetcode/Algorithms/leetcode-868-Binary-Gap/" itemprop="url">
+                  leetcode-868-Binary-Gap
                 </a>
               
             
@@ -1127,8 +1129,8 @@
             
               <span class="post-comments-count">
                 &nbsp; | &nbsp;
-                <a href="/2014/03/11/leetcode/Algorithms/leetcode-877-Stone-Game/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2014/03/11/leetcode/Algorithms/leetcode-877-Stone-Game/" itemprop="commentsCount"></span>
+                <a href="/2014/03/11/leetcode/Algorithms/leetcode-868-Binary-Gap/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2014/03/11/leetcode/Algorithms/leetcode-868-Binary-Gap/" itemprop="commentsCount"></span>
                 </a>
               </span>
             
@@ -1152,21 +1154,22 @@
       
         
           <h3 id="描述"><a href="#描述" class="headerlink" title="描述"></a>描述</h3><hr>
-<p>Alex and Lee play a game with piles of stones.  There are an even number of piles <strong>arranged in a row</strong>, and each pile has a positive integer number of stones <code>piles[i]</code>.</p>
-<p>The objective of the game is to end with the most stones.  The total number of stones is odd, so there are no ties.</p>
-<p>Alex and Lee take turns, with Alex starting first.  Each turn, a player takes the entire pile of stones from either the beginning or the end of the row.  This continues until there are no more piles left, at which point the person with the most stones wins.</p>
-<p>Assuming Alex and Lee play optimally, return <code>True</code> if and only if Alex wins the game.</p>
+<p>Given a positive integer <code>N</code>, find and return the longest distance between two consecutive 1’s in the binary representation of <code>N</code>.</p>
+<p>If there aren’t two consecutive 1’s, return 0.</p>
 <p><strong>Example 1:</strong></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">Input: [5,3,4,5]</div><div class="line">Output: true</div><div class="line">Explanation: </div><div class="line">Alex starts first, and can only take the first 5 or the last 5.</div><div class="line">Say he takes the first 5, so that the row becomes [3, 4, 5].</div><div class="line">If Lee takes 3, then the board is [4, 5], and Alex takes 5 to win with 10 points.</div><div class="line">If Lee takes the last 5, then the board is [3, 4], and Alex takes 4 to win with 9 points.</div><div class="line">This demonstrated that taking the first 5 was a winning move for Alex, so we return true.</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">Input: 22</div><div class="line">Output: 2</div><div class="line">Explanation: </div><div class="line">22 in binary is 0b10110.</div><div class="line">In the binary representation of 22, there are three ones, and two consecutive pairs of 1&apos;s.</div><div class="line">The first consecutive pair of 1&apos;s have distance 2.</div><div class="line">The second consecutive pair of 1&apos;s have distance 1.</div><div class="line">The answer is the largest of these two distances, which is 2.</div></pre></td></tr></table></figure>
+<p><strong>Example 2:</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">Input: 5</div><div class="line">Output: 2</div><div class="line">Explanation: </div><div class="line">5 in binary is 0b101.</div></pre></td></tr></table></figure>
+<p><strong>Example 3:</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">Input: 6</div><div class="line">Output: 1</div><div class="line">Explanation: </div><div class="line">6 in binary is 0b110.</div></pre></td></tr></table></figure>
+<p><strong>Example 4:</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">Input: 8</div><div class="line">Output: 0</div><div class="line">Explanation: </div><div class="line">8 in binary is 0b1000.</div><div class="line">There aren&apos;t any consecutive pairs of 1&apos;s in the binary representation of 8, so we return 0.</div></pre></td></tr></table></figure>
 <p><strong>Note:</strong></p>
-<ol>
-<li><code>2 &lt;= piles.length &lt;= 500</code></li>
-<li><code>piles.length</code> is even.</li>
-<li><code>1 &lt;= piles[i] &lt;= 500</code></li>
-<li><code>sum(piles)</code> is odd.</li>
-</ol>
+<ul>
+<li><code>1 &lt;= N &lt;= 10^9</code></li>
+</ul>
           <div class="post-more-link text-center">
-            <a class="btn" href="/2014/03/11/leetcode/Algorithms/leetcode-877-Stone-Game/#more" rel="contents">
+            <a class="btn" href="/2014/03/11/leetcode/Algorithms/leetcode-868-Binary-Gap/#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
@@ -1337,7 +1340,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">363</span>
+              <span class="site-state-item-count">364</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
