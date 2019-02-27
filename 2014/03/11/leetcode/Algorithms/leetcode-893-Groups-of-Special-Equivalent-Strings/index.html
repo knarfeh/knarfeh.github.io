@@ -65,7 +65,7 @@
 <meta property="og:site_name" content="knarfeh&#39;s logbook">
 <meta property="og:description" content="描述 You are given an array A of strings. Two strings S and T are special-equivalent if after any number of moves, S == T. A move consists of choosing two indices i and j with i % 2 == j % 2, and swappi">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-11-11T09:00:04.725Z">
+<meta property="og:updated_time" content="2019-02-14T14:03:24.832Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="leetcode-893-Groups-of-Special-Equivalent-Strings">
 <meta name="twitter:description" content="描述 You are given an array A of strings. Two strings S and T are special-equivalent if after any number of moves, S == T. A move consists of choosing two indices i and j with i % 2 == j % 2, and swappi">
@@ -285,7 +285,7 @@
 <p>题目大意是给定一个包含字符串的集合，对于一些字符串，如果对于奇数位置的字符和偶数位置的字符任意调换顺序，得到的结果是一样的，那么这些字符串属于同一个组，要求根据输入的集合得出这个集合有几个组。</p>
 <p>可以分别将字符串里的奇数位置的字符和偶数位置的字符进行排序，排序的结果放入一个哈希集合，最后这个哈希集合的大小就是组的数量。这个『排序』的过程可以用通过增加空间复杂度的方式实现，也可以用排序实现</p>
 <h3 id="解决方案1-Java"><a href="#解决方案1-Java" class="headerlink" title="解决方案1(Java)"></a>解决方案1(Java)</h3><hr>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">class Solution &#123;</div><div class="line">    public int numSpecialEquivGroups(String[] A) &#123;</div><div class="line">        Set&lt;String&gt; result = new HashSet();</div><div class="line">        for (String S: A) &#123;</div><div class="line">            int[] count = new int[52];</div><div class="line">            for (int i = 0; i &lt; S.length(); i++) &#123;</div><div class="line">                count[S.charAt(i) - &apos;a&apos; + 26*(i%2)]++;</div><div class="line">            &#125;</div><div class="line">            result.add(Arrays.toString(count));</div><div class="line">        &#125;</div><div class="line">        return result.size();</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">numSpecialEquivGroups</span><span class="params">(String[] A)</span> </span>&#123;</div><div class="line">        Set&lt;String&gt; result = <span class="keyword">new</span> HashSet();</div><div class="line">        <span class="keyword">for</span> (String S: A) &#123;</div><div class="line">            <span class="keyword">int</span>[] count = <span class="keyword">new</span> <span class="keyword">int</span>[<span class="number">52</span>];</div><div class="line">            <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; S.length(); i++) &#123;</div><div class="line">                count[S.charAt(i) - <span class="string">'a'</span> + <span class="number">26</span>*(i%<span class="number">2</span>)]++;</div><div class="line">            &#125;</div><div class="line">            result.add(Arrays.toString(count));</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">return</span> result.size();</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <h3 id="题目来源"><a href="#题目来源" class="headerlink" title="题目来源"></a><a href="https://leetcode.com/problems/groups-of-special-equivalent-strings/description/" target="_blank" rel="external">题目来源</a></h3>
       
     </div>
@@ -321,8 +321,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2014/03/11/leetcode/Algorithms/leetcode-896-Monotonic-Array/" rel="prev" title="leetcode-896-Monotonic-Array">
-                leetcode-896-Monotonic-Array <i class="fa fa-chevron-right"></i>
+              <a href="/2014/03/11/leetcode/Algorithms/leetcode-892-Surface-Area-of-3D-Shapes/" rel="prev" title="leetcode-892-Surface-Area-of-3D-Shapes">
+                leetcode-892-Surface-Area-of-3D-Shapes <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -398,7 +398,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">364</span>
+              <span class="site-state-item-count">365</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -408,7 +408,7 @@
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">134</span>
+                <span class="site-state-item-count">135</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>

@@ -65,7 +65,7 @@
 <meta property="og:site_name" content="knarfeh&#39;s logbook">
 <meta property="og:description" content="描述 Write a class RecentCounter to count recent requests. It has only one method: ping(int t), where t represents some time in milliseconds. Return the number of pings that have been made from 3000 mil">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-12-03T02:15:36.344Z">
+<meta property="og:updated_time" content="2019-02-14T13:20:34.450Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="leetcode-933-Number-of-Recent-Calls">
 <meta name="twitter:description" content="描述 Write a class RecentCounter to count recent requests. It has only one method: ping(int t), where t represents some time in milliseconds. Return the number of pings that have been made from 3000 mil">
@@ -279,7 +279,7 @@
 <h3 id="解决方案1-Java"><a href="#解决方案1-Java" class="headerlink" title="解决方案1(Java)"></a>解决方案1(Java)</h3><hr>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">RecentCounter</span> </span>&#123;</div><div class="line">    Queue&lt;Integer&gt; queue;</div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="title">RecentCounter</span><span class="params">()</span> </span>&#123;</div><div class="line">        queue = <span class="keyword">new</span> LinkedList();</div><div class="line">    &#125;</div><div class="line">    </div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">ping</span><span class="params">(<span class="keyword">int</span> t)</span> </span>&#123;</div><div class="line">        queue.add(t);</div><div class="line">        <span class="keyword">while</span>(queue.peek() &lt; t - <span class="number">3000</span>) &#123;</div><div class="line">            queue.poll();</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">return</span> queue.size();</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <h3 id="解决方案2-Python3"><a href="#解决方案2-Python3" class="headerlink" title="解决方案2(Python3)"></a>解决方案2(Python3)</h3><hr>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line">class RecentCounter:</div><div class="line"></div><div class="line">    def __init__(self):</div><div class="line">        self.queue = collections.deque()</div><div class="line"></div><div class="line">    def ping(self, t):</div><div class="line">        &quot;&quot;&quot;</div><div class="line">        :type t: int</div><div class="line">        :rtype: int</div><div class="line">        &quot;&quot;&quot;</div><div class="line">        self.queue.append(t)</div><div class="line">        while self.queue[0] &lt; t - 3000:</div><div class="line">            self.queue.popleft()</div><div class="line">        return len(self.queue)</div></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">RecentCounter</span>:</span></div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self)</span>:</span></div><div class="line">        self.queue = collections.deque()</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">ping</span><span class="params">(self, t)</span>:</span></div><div class="line">        <span class="string">"""</span></div><div class="line">        :type t: int</div><div class="line">        :rtype: int</div><div class="line">        """</div><div class="line">        self.queue.append(t)</div><div class="line">        <span class="keyword">while</span> self.queue[<span class="number">0</span>] &lt; t - <span class="number">3000</span>:</div><div class="line">            self.queue.popleft()</div><div class="line">        <span class="keyword">return</span> len(self.queue)</div></pre></td></tr></table></figure>
 <h3 id="题目来源"><a href="#题目来源" class="headerlink" title="题目来源"></a><a href="https://leetcode.com/problems/number-of-recent-calls/description/" target="_blank" rel="external">题目来源</a></h3>
       
     </div>
@@ -307,16 +307,16 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2014/03/11/leetcode/Algorithms/leetcode-98-Validate-Binary-Search-Tree/" rel="next" title="leetcode-98-Validate-Binary-Search-Tree">
-                <i class="fa fa-chevron-left"></i> leetcode-98-Validate-Binary-Search-Tree
+              <a href="/2014/03/11/leetcode/Database/leetcode-196-Delete-Duplicate-Emails/" rel="next" title="leetcode-196-Delete-Duplicate-Emails">
+                <i class="fa fa-chevron-left"></i> leetcode-196-Delete-Duplicate-Emails
               </a>
             
           </div>
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2014/03/11/leetcode/Algorithms/leetcode-95-Unique-Binary-Search-Trees-II/" rel="prev" title="leetcode-95-Unique-Binary-Search-Trees-II">
-                leetcode-95-Unique-Binary-Search-Trees-II <i class="fa fa-chevron-right"></i>
+              <a href="/2014/03/11/leetcode/Database/leetcode-184-Department-Highest-Salary/" rel="prev" title="leetcode-184-Department-Highest-Salary">
+                leetcode-184-Department-Highest-Salary <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -392,7 +392,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">364</span>
+              <span class="site-state-item-count">365</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -402,7 +402,7 @@
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">134</span>
+                <span class="site-state-item-count">135</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>

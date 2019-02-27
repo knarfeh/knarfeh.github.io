@@ -65,7 +65,7 @@
 <meta property="og:site_name" content="knarfeh&#39;s logbook">
 <meta property="og:description" content="描述 We have an array A of integers, and an array queries of queries. For the i-th query val = queries[i][0], index = queries[i][1], we add val to A[index].  Then, the answer to the i-th query is the su">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-02-13T13:15:37.181Z">
+<meta property="og:updated_time" content="2019-02-14T13:20:20.888Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="leetcode-985-Sum-of-Even-Numbers-After-Queries">
 <meta name="twitter:description" content="描述 We have an array A of integers, and an array queries of queries. For the i-th query val = queries[i][0], index = queries[i][1], we add val to A[index].  Then, the answer to the i-th query is the su">
@@ -279,9 +279,9 @@
 <p>最简单的方式是直接按照题意两次循环，时间复杂度是 $O(Q*N)$，$Q$ 是 $queries$ 的长度，$N$ 是 $A$ 的长度。空间复杂度是 $O(Q)$。该方法用 Java 实现</p>
 <p>Solution 里有一个讨巧的方式，先把 A 的偶数和都计算出来，记为 S，时间复杂度是 $O(N)$，接着遍历 queries，首先判断 A[index] 是否为偶数，如果为偶数，S 要减去 A[index]，因为不能把 A[index] 纳入和的计算，接着再根据 A[index] + val 计算真正的和。该方法用 Python 实现。</p>
 <h3 id="解决方案1-Java"><a href="#解决方案1-Java" class="headerlink" title="解决方案1(Java)"></a>解决方案1(Java)</h3><hr>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div></pre></td><td class="code"><pre><div class="line">class Solution &#123;</div><div class="line">    public int[] sumEvenAfterQueries(int[] A, int[][] queries) &#123;</div><div class="line">        int[] result = new int[A.length];</div><div class="line">        for (int i = 0; i &lt; queries.length; i++) &#123;</div><div class="line">            int[] query = queries[i];</div><div class="line">            int add = query[0];</div><div class="line">            int index = query[1];</div><div class="line">            A[index] += add;</div><div class="line">            </div><div class="line">            int sum = 0;</div><div class="line">            for (int j = 0; j &lt; A.length; j++) &#123;</div><div class="line">                if (A[j] % 2 == 0) &#123;</div><div class="line">                    sum += A[j];</div><div class="line">                &#125;</div><div class="line">            &#125;</div><div class="line">            result[i] = sum;</div><div class="line">        &#125;</div><div class="line">        return result;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</div><div class="line">    <span class="keyword">public</span> <span class="keyword">int</span>[] sumEvenAfterQueries(<span class="keyword">int</span>[] A, <span class="keyword">int</span>[][] queries) &#123;</div><div class="line">        <span class="keyword">int</span>[] result = <span class="keyword">new</span> <span class="keyword">int</span>[A.length];</div><div class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; queries.length; i++) &#123;</div><div class="line">            <span class="keyword">int</span>[] query = queries[i];</div><div class="line">            <span class="keyword">int</span> add = query[<span class="number">0</span>];</div><div class="line">            <span class="keyword">int</span> index = query[<span class="number">1</span>];</div><div class="line">            A[index] += add;</div><div class="line">            </div><div class="line">            <span class="keyword">int</span> sum = <span class="number">0</span>;</div><div class="line">            <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">0</span>; j &lt; A.length; j++) &#123;</div><div class="line">                <span class="keyword">if</span> (A[j] % <span class="number">2</span> == <span class="number">0</span>) &#123;</div><div class="line">                    sum += A[j];</div><div class="line">                &#125;</div><div class="line">            &#125;</div><div class="line">            result[i] = sum;</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">return</span> result;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <h3 id="解决方案1-Python"><a href="#解决方案1-Python" class="headerlink" title="解决方案1(Python)"></a>解决方案1(Python)</h3><hr>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line">class Solution(object):</div><div class="line">    def sumEvenAfterQueries(self, A, queries):</div><div class="line">        &quot;&quot;&quot;</div><div class="line">        :type A: List[int]</div><div class="line">        :type queries: List[List[int]]</div><div class="line">        :rtype: List[int]</div><div class="line">        &quot;&quot;&quot;</div><div class="line">        S = sum(x for x in A if x % 2 == 0)</div><div class="line">        result = []</div><div class="line">        </div><div class="line">        for x, k in queries:</div><div class="line">            if A[k] % 2 == 0:</div><div class="line">                S -= A[k]</div><div class="line">            A[k] += x</div><div class="line">            if A[k] % 2 == 0:</div><div class="line">                S += A[k]</div><div class="line">            result.append(S)</div><div class="line">            </div><div class="line">        return result</div></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span><span class="params">(object)</span>:</span></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">sumEvenAfterQueries</span><span class="params">(self, A, queries)</span>:</span></div><div class="line">        <span class="string">"""</span></div><div class="line">        :type A: List[int]</div><div class="line">        :type queries: List[List[int]]</div><div class="line">        :rtype: List[int]</div><div class="line">        """</div><div class="line">        S = sum(x <span class="keyword">for</span> x <span class="keyword">in</span> A <span class="keyword">if</span> x % <span class="number">2</span> == <span class="number">0</span>)</div><div class="line">        result = []</div><div class="line">        </div><div class="line">        <span class="keyword">for</span> x, k <span class="keyword">in</span> queries:</div><div class="line">            <span class="keyword">if</span> A[k] % <span class="number">2</span> == <span class="number">0</span>:</div><div class="line">                S -= A[k]</div><div class="line">            A[k] += x</div><div class="line">            <span class="keyword">if</span> A[k] % <span class="number">2</span> == <span class="number">0</span>:</div><div class="line">                S += A[k]</div><div class="line">            result.append(S)</div><div class="line">            </div><div class="line">        <span class="keyword">return</span> result</div></pre></td></tr></table></figure>
 <h3 id="题目来源"><a href="#题目来源" class="headerlink" title="题目来源"></a><a href="https://leetcode.com/problems/sum-of-even-numbers-after-queries/" target="_blank" rel="external">题目来源</a></h3>
       
     </div>
@@ -309,16 +309,16 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2014/03/11/leetcode/Database/leetcode-177-Nth-Highest-Salary/" rel="next" title="leetcode-177-Nth-Highest-Salary">
-                <i class="fa fa-chevron-left"></i> leetcode-177-Nth-Highest-Salary
+              <a href="/2014/03/11/leetcode/Algorithms/leetcode-99-Recover-Binary-Search-Tree/" rel="next" title="leetcode-99-Recover-Binary-Search-Tree">
+                <i class="fa fa-chevron-left"></i> leetcode-99-Recover-Binary-Search-Tree
               </a>
             
           </div>
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2014/03/11/leetcode/Database/leetcode-176-Second-Highest-Salary/" rel="prev" title="leetcode-176-Second-Highest-Salary">
-                leetcode-176-Second-Highest-Salary <i class="fa fa-chevron-right"></i>
+              <a href="/2014/03/11/leetcode/Database/leetcode-175-Combine-Two-Tables/" rel="prev" title="leetcode-175-Combine-Two-Tables">
+                leetcode-175-Combine-Two-Tables <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -394,7 +394,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">364</span>
+              <span class="site-state-item-count">365</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -404,7 +404,7 @@
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">134</span>
+                <span class="site-state-item-count">135</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>

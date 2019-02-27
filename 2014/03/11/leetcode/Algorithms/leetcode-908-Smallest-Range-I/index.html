@@ -65,7 +65,7 @@
 <meta property="og:site_name" content="knarfeh&#39;s logbook">
 <meta property="og:description" content="描述 Given an array A of integers, for each integer A[i] we may choose any x with -K &amp;lt;= x &amp;lt;= K, and add x to A[i]. After this process, we have some array B. Return the smallest possible difference">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-11-11T08:57:57.024Z">
+<meta property="og:updated_time" content="2019-02-14T14:02:30.480Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="leetcode-908-Smallest-Range-I">
 <meta name="twitter:description" content="描述 Given an array A of integers, for each integer A[i] we may choose any x with -K &amp;lt;= x &amp;lt;= K, and add x to A[i]. After this process, we have some array B. Return the smallest possible difference">
@@ -280,7 +280,7 @@
 <p>题目大意是 A 数组里的每个值可以加上一个 x，(-K &lt;= x &lt;= K)，对 A 数组所有数字进行这样的操作之后得到新数组 B，求可能得到的最小的 B 最大值和最小值之差。</p>
 <p>要想要这个差最小，那么最大值和最小值应该尽可能靠拢，最好的情况可能是最大值减 K，最小值加 K，如果最大值减 K 减去最小值加 K 的结果大于零，那么结果为最大值减 K 减去最小值加 K 的结果，否则这个结果就是零。</p>
 <h3 id="解决方案1-Java"><a href="#解决方案1-Java" class="headerlink" title="解决方案1(Java)"></a>解决方案1(Java)</h3><hr>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">class Solution &#123;</div><div class="line">    public int smallestRangeI(int[] A, int K) &#123;</div><div class="line">        int min = A[0], max = A[0];</div><div class="line">        for (int i: A) &#123;</div><div class="line">            min = Math.min(min, i);</div><div class="line">            max = Math.max(max, i);</div><div class="line">        &#125;</div><div class="line">        return Math.max(max-min-2*K, 0);</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">smallestRangeI</span><span class="params">(<span class="keyword">int</span>[] A, <span class="keyword">int</span> K)</span> </span>&#123;</div><div class="line">        <span class="keyword">int</span> min = A[<span class="number">0</span>], max = A[<span class="number">0</span>];</div><div class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i: A) &#123;</div><div class="line">            min = Math.min(min, i);</div><div class="line">            max = Math.max(max, i);</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">return</span> Math.max(max-min-<span class="number">2</span>*K, <span class="number">0</span>);</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <h3 id="题目来源"><a href="#题目来源" class="headerlink" title="题目来源"></a><a href="https://leetcode.com/problems/smallest-range-i/description/" target="_blank" rel="external">题目来源</a></h3>
       
     </div>
@@ -316,8 +316,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2014/03/11/leetcode/Algorithms/leetcode-917-Reverse-Only-Letters/" rel="prev" title="leetcode-917-Reverse-Only-Letters">
-                leetcode-917-Reverse-Only-Letters <i class="fa fa-chevron-right"></i>
+              <a href="/2014/03/11/leetcode/Algorithms/leetcode-896-Monotonic-Array/" rel="prev" title="leetcode-896-Monotonic-Array">
+                leetcode-896-Monotonic-Array <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -393,7 +393,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">364</span>
+              <span class="site-state-item-count">365</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -403,7 +403,7 @@
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">134</span>
+                <span class="site-state-item-count">135</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>

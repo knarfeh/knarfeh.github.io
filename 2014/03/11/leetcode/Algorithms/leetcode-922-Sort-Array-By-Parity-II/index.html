@@ -65,7 +65,7 @@
 <meta property="og:site_name" content="knarfeh&#39;s logbook">
 <meta property="og:description" content="描述 Given an array A of non-negative integers, half of the integers in A are odd, and half of the integers are even. Sort the array so that whenever A[i] is odd, i is odd; and whenever A[i] is even, i">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-11-11T08:56:31.280Z">
+<meta property="og:updated_time" content="2019-02-14T13:21:02.828Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="leetcode-922-Sort-Array-By-Parity-II">
 <meta name="twitter:description" content="描述 Given an array A of non-negative integers, half of the integers in A are odd, and half of the integers are even. Sort the array so that whenever A[i] is odd, i is odd; and whenever A[i] is even, i">
@@ -275,7 +275,7 @@
 <h3 id="分析"><a href="#分析" class="headerlink" title="分析"></a>分析</h3><hr>
 <p>定义一个 i 变量用来记录偶数位的索引，j 变量记录奇数位的索引，当 i, j 位置上的值都不匹配时，交换两值，时间复杂度是 $O(n)$。</p>
 <h3 id="解决方案1-Java"><a href="#解决方案1-Java" class="headerlink" title="解决方案1(Java)"></a>解决方案1(Java)</h3><hr>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line">class Solution &#123;</div><div class="line">    public int[] sortArrayByParityII(int[] A) &#123;</div><div class="line">        for (int i = 0, j = 1; i &lt; A.length &amp;&amp; j &lt; A.length; ) &#123;</div><div class="line">            if (A[i]%2 == 1 &amp;&amp; A[j]%2 == 0) &#123;</div><div class="line">                A[i] = A[i] + A[j];</div><div class="line">                A[j] = A[i] - A[j];</div><div class="line">                A[i] = A[i] - A[j];</div><div class="line">            &#125;</div><div class="line">            if (A[i]%2 == 0) &#123;</div><div class="line">                i += 2;</div><div class="line">            &#125;</div><div class="line">            if (A[j]%2 == 1) &#123;</div><div class="line">                j += 2;</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">        return A;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</div><div class="line">    <span class="keyword">public</span> <span class="keyword">int</span>[] sortArrayByParityII(<span class="keyword">int</span>[] A) &#123;</div><div class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>, j = <span class="number">1</span>; i &lt; A.length &amp;&amp; j &lt; A.length; ) &#123;</div><div class="line">            <span class="keyword">if</span> (A[i]%<span class="number">2</span> == <span class="number">1</span> &amp;&amp; A[j]%<span class="number">2</span> == <span class="number">0</span>) &#123;</div><div class="line">                A[i] = A[i] + A[j];</div><div class="line">                A[j] = A[i] - A[j];</div><div class="line">                A[i] = A[i] - A[j];</div><div class="line">            &#125;</div><div class="line">            <span class="keyword">if</span> (A[i]%<span class="number">2</span> == <span class="number">0</span>) &#123;</div><div class="line">                i += <span class="number">2</span>;</div><div class="line">            &#125;</div><div class="line">            <span class="keyword">if</span> (A[j]%<span class="number">2</span> == <span class="number">1</span>) &#123;</div><div class="line">                j += <span class="number">2</span>;</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">return</span> A;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <h3 id="题目来源"><a href="#题目来源" class="headerlink" title="题目来源"></a><a href="https://leetcode.com/problems/sort-array-by-parity-ii/description/" target="_blank" rel="external">题目来源</a></h3>
       
     </div>
@@ -301,16 +301,16 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2014/03/11/leetcode/Algorithms/leetcode-919-Complete-Binary-Tree-Inserter/" rel="next" title="leetcode-919-Complete-Binary-Tree-Inserter">
-                <i class="fa fa-chevron-left"></i> leetcode-919-Complete-Binary-Tree-Inserter
+              <a href="/2014/03/11/leetcode/Algorithms/leetcode-925-Long-Pressed-Name/" rel="next" title="leetcode-925-Long-Pressed-Name">
+                <i class="fa fa-chevron-left"></i> leetcode-925-Long-Pressed-Name
               </a>
             
           </div>
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2014/03/11/leetcode/Algorithms/leetcode-921-Minimum-Add-to-Make-Parentheses-Valid/" rel="prev" title="leetcode-921-Minimum-Add-to-Make-Parentheses-Valid">
-                leetcode-921-Minimum-Add-to-Make-Parentheses-Valid <i class="fa fa-chevron-right"></i>
+              <a href="/2014/03/11/leetcode/Algorithms/leetcode-919-Complete-Binary-Tree-Inserter/" rel="prev" title="leetcode-919-Complete-Binary-Tree-Inserter">
+                leetcode-919-Complete-Binary-Tree-Inserter <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -386,7 +386,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">364</span>
+              <span class="site-state-item-count">365</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -396,7 +396,7 @@
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">134</span>
+                <span class="site-state-item-count">135</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>

@@ -65,7 +65,7 @@
 <meta property="og:site_name" content="knarfeh&#39;s logbook">
 <meta property="og:description" content="描述 Every email consists of a local name and a domain name, separated by the @ sign. For example, in alice@leetcode.com, alice is the local name, and leetcode.com is the domain name. Besides lowercase">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-11-11T08:56:00.581Z">
+<meta property="og:updated_time" content="2019-02-14T13:20:46.171Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="leetcode-929-Unique-Email-Addresses">
 <meta name="twitter:description" content="描述 Every email consists of a local name and a domain name, separated by the @ sign. For example, in alice@leetcode.com, alice is the local name, and leetcode.com is the domain name. Besides lowercase">
@@ -279,7 +279,7 @@
 <h3 id="分析"><a href="#分析" class="headerlink" title="分析"></a>分析</h3><hr>
 <p>邮箱地址分为两部分，前面一部分属于 local 字段，后面一部分属于 domain 字段，在 local 字段里，<code>+</code> 符号后面的字符串需要丢弃，且 <code>.</code> 字符需要替换为空字符，最后用一个哈希集合来存储这些字段即可。</p>
 <h3 id="解决方案1-Java"><a href="#解决方案1-Java" class="headerlink" title="解决方案1(Java)"></a>解决方案1(Java)</h3><hr>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line">class Solution &#123;</div><div class="line">    public int numUniqueEmails(String[] emails) &#123;</div><div class="line">        Set&lt;String&gt; result = new HashSet();</div><div class="line">        for (String email: emails) &#123;</div><div class="line">            int atIndex = email.indexOf(&apos;@&apos;);</div><div class="line">            String local = email.substring(0, atIndex);</div><div class="line">            String domain = email.substring(atIndex);</div><div class="line">            if (local.contains(&quot;+&quot;)) &#123;</div><div class="line">                local = local.substring(0, local.indexOf(&apos;+&apos;));</div><div class="line">            &#125;</div><div class="line">            local = local.replaceAll(&quot;.&quot;, &quot;&quot;);</div><div class="line">            result.add(local + domain);</div><div class="line">        &#125;</div><div class="line">        return result.size();</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">numUniqueEmails</span><span class="params">(String[] emails)</span> </span>&#123;</div><div class="line">        Set&lt;String&gt; result = <span class="keyword">new</span> HashSet();</div><div class="line">        <span class="keyword">for</span> (String email: emails) &#123;</div><div class="line">            <span class="keyword">int</span> atIndex = email.indexOf(<span class="string">'@'</span>);</div><div class="line">            String local = email.substring(<span class="number">0</span>, atIndex);</div><div class="line">            String domain = email.substring(atIndex);</div><div class="line">            <span class="keyword">if</span> (local.contains(<span class="string">"+"</span>)) &#123;</div><div class="line">                local = local.substring(<span class="number">0</span>, local.indexOf(<span class="string">'+'</span>));</div><div class="line">            &#125;</div><div class="line">            local = local.replaceAll(<span class="string">"."</span>, <span class="string">""</span>);</div><div class="line">            result.add(local + domain);</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">return</span> result.size();</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <h3 id="题目来源"><a href="#题目来源" class="headerlink" title="题目来源"></a><a href="https://leetcode.com/problems/unique-email-addresses/description/" target="_blank" rel="external">题目来源</a></h3>
       
     </div>
@@ -307,16 +307,16 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2014/03/11/leetcode/Algorithms/leetcode-96-Unique-Binary-Search-Trees/" rel="next" title="leetcode-96-Unique-Binary-Search-Trees">
-                <i class="fa fa-chevron-left"></i> leetcode-96-Unique-Binary-Search-Trees
+              <a href="/2014/03/11/leetcode/Algorithms/leetcode-94-Binary-Tree-Inorder-Traversal/" rel="next" title="leetcode-94-Binary-Tree-Inorder-Traversal">
+                <i class="fa fa-chevron-left"></i> leetcode-94-Binary-Tree-Inorder-Traversal
               </a>
             
           </div>
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2014/03/11/leetcode/Algorithms/leetcode-98-Validate-Binary-Search-Tree/" rel="prev" title="leetcode-98-Validate-Binary-Search-Tree">
-                leetcode-98-Validate-Binary-Search-Tree <i class="fa fa-chevron-right"></i>
+              <a href="/2014/03/11/leetcode/Algorithms/leetcode-925-Long-Pressed-Name/" rel="prev" title="leetcode-925-Long-Pressed-Name">
+                leetcode-925-Long-Pressed-Name <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -392,7 +392,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">364</span>
+              <span class="site-state-item-count">365</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -402,7 +402,7 @@
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">134</span>
+                <span class="site-state-item-count">135</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
