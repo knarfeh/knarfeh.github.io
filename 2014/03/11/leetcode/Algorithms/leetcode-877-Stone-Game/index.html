@@ -41,7 +41,7 @@
 <link href="/css/main.css?v=0.5.0" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="algorithms,leetcode,Dynamic-Programming,Math," />
+  <meta name="keywords" content="algorithms,leetcode,Math,Dynamic-Programming," />
 
 
 
@@ -58,14 +58,14 @@
 
 
 <meta name="description" content="描述 Alex and Lee play a game with piles of stones.  There are an even number of piles arranged in a row, and each pile has a positive integer number of stones piles[i]. The objective of the game is to">
-<meta name="keywords" content="algorithms,leetcode,Dynamic-Programming,Math">
+<meta name="keywords" content="algorithms,leetcode,Math,Dynamic-Programming">
 <meta property="og:type" content="article">
 <meta property="og:title" content="leetcode-877-Stone-Game">
 <meta property="og:url" content="http://knarfeh.github.io/2014/03/11/leetcode/Algorithms/leetcode-877-Stone-Game/index.html">
 <meta property="og:site_name" content="knarfeh&#39;s logbook">
 <meta property="og:description" content="描述 Alex and Lee play a game with piles of stones.  There are an even number of piles arranged in a row, and each pile has a positive integer number of stones piles[i]. The objective of the game is to">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-11-11T09:02:22.614Z">
+<meta property="og:updated_time" content="2019-03-05T14:06:09.535Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="leetcode-877-Stone-Game">
 <meta name="twitter:description" content="描述 Alex and Lee play a game with piles of stones.  There are an even number of piles arranged in a row, and each pile has a positive integer number of stones piles[i]. The objective of the game is to">
@@ -277,10 +277,10 @@
 <h3 id="分析"><a href="#分析" class="headerlink" title="分析"></a>分析</h3><hr>
 <p>$dp[i][j]$ 表示 $piles[i]~piles[j]$石头堆中，Alex 最多可以赢 Lee 的数量，则有 $dp[i][j] = max(piles[i] - dp[i+1][j], piles[j] - dp[i][j-1])​$，其中如果 Alex 取第一块，$dp[i+1][j]$ 为 Lee 赢 Alex 的数量，因此 $piles[i] - dp[i+1][j]$ 为 Alex 可以赢 Lee 的数量。</p>
 <h3 id="解决方案1-Java"><a href="#解决方案1-Java" class="headerlink" title="解决方案1(Java)"></a>解决方案1(Java)</h3><hr>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line">class Solution &#123;</div><div class="line">    public boolean stoneGame(int[] piles) &#123;</div><div class="line">        int length = piles.length;</div><div class="line">        int[][] dp = new int[length][length];</div><div class="line">        for (int i = 0; i &lt; length; i++) &#123;</div><div class="line">            dp[i][i] = piles[i];</div><div class="line">        &#125;</div><div class="line">        </div><div class="line">        for (int distance = 1; distance &lt; length; distance++) &#123;</div><div class="line">            for (int i = 0; i &lt; length - distance; i++) &#123;</div><div class="line">                dp[i][i+distance] = Math.max(piles[i]-dp[i+1][i+distance], piles[i+distance]-dp[i][i+distance-1]);</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">        return dp[0][length-1] &gt; 0;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">stoneGame</span><span class="params">(<span class="keyword">int</span>[] piles)</span> </span>&#123;</div><div class="line">        <span class="keyword">int</span> length = piles.length;</div><div class="line">        <span class="keyword">int</span>[][] dp = <span class="keyword">new</span> <span class="keyword">int</span>[length][length];</div><div class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; length; i++) &#123;</div><div class="line">            dp[i][i] = piles[i];</div><div class="line">        &#125;</div><div class="line">        </div><div class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> distance = <span class="number">1</span>; distance &lt; length; distance++) &#123;</div><div class="line">            <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; length - distance; i++) &#123;</div><div class="line">                dp[i][i+distance] = Math.max(piles[i]-dp[i+<span class="number">1</span>][i+distance], piles[i+distance]-dp[i][i+distance-<span class="number">1</span>]);</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">return</span> dp[<span class="number">0</span>][length-<span class="number">1</span>] &gt; <span class="number">0</span>;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <h3 id="解决方案2-Java"><a href="#解决方案2-Java" class="headerlink" title="解决方案2(Java)"></a>解决方案2(Java)</h3><hr>
 <p>题目中其实有个隐含条件，石头的堆树为偶数，这确保了先取的 Alex 可以取1，3，5… 2n+1 或 2，4，6，2n，而总数量为奇数，这两个序列的和总有一个更大，所以先取的 Alex 一定可以赢。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">class Solution &#123;</div><div class="line">    public boolean stoneGame(int[] piles) &#123;</div><div class="line">        return true;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">stoneGame</span><span class="params">(<span class="keyword">int</span>[] piles)</span> </span>&#123;</div><div class="line">        <span class="keyword">return</span> <span class="keyword">true</span>;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <h3 id="题目来源"><a href="#题目来源" class="headerlink" title="题目来源"></a><a href="https://leetcode.com/problems/stone-game/description/" target="_blank" rel="external">题目来源</a></h3>
       
     </div>
@@ -299,9 +299,9 @@
           
             <a href="/tags/leetcode/" rel="tag">#leetcode</a>
           
-            <a href="/tags/Dynamic-Programming/" rel="tag">#Dynamic-Programming</a>
-          
             <a href="/tags/Math/" rel="tag">#Math</a>
+          
+            <a href="/tags/Dynamic-Programming/" rel="tag">#Dynamic-Programming</a>
           
         </div>
       
@@ -310,8 +310,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2014/03/11/leetcode/Algorithms/leetcode-883-Projection-Area-of-3D-Shapes/" rel="next" title="leetcode-883-Projection-Area-of-3D-Shapes">
-                <i class="fa fa-chevron-left"></i> leetcode-883-Projection-Area-of-3D-Shapes
+              <a href="/2014/03/11/leetcode/Algorithms/leetcode-88-Merge-Sorted-Array/" rel="next" title="leetcode-88-Merge-Sorted-Array">
+                <i class="fa fa-chevron-left"></i> leetcode-88-Merge-Sorted-Array
               </a>
             
           </div>

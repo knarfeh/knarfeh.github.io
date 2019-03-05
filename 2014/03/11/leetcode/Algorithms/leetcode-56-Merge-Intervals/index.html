@@ -65,7 +65,7 @@
 <meta property="og:site_name" content="knarfeh&#39;s logbook">
 <meta property="og:description" content="描述 Given a collection of intervals, merge all overlapping intervals. For example,Given [1,3],[2,6],[8,10],[15,18],return [1,6],[8,10],[15,18].">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2016-10-28T15:40:40.000Z">
+<meta property="og:updated_time" content="2019-03-05T14:06:09.525Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="leetcode-56-Merge-Intervals">
 <meta name="twitter:description" content="描述 Given a collection of intervals, merge all overlapping intervals. For example,Given [1,3],[2,6],[8,10],[15,18],return [1,6],[8,10],[15,18].">
@@ -266,7 +266,7 @@
 <h3 id="分析"><a href="#分析" class="headerlink" title="分析"></a>分析</h3><hr>
 <p>也就是一层循环，比较查看是否有交集，有交集就合并。</p>
 <h3 id="解决方案1-Python"><a href="#解决方案1-Python" class="headerlink" title="解决方案1(Python)"></a>解决方案1(Python)</h3><hr>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div></pre></td><td class="code"><pre><div class="line"># Definition for an interval.</div><div class="line"># class Interval(object):</div><div class="line">#     def __init__(self, s=0, e=0):</div><div class="line">#         self.start = s</div><div class="line">#         self.end = e</div><div class="line"></div><div class="line">class Solution(object):</div><div class="line">    def merge(self, intervals):</div><div class="line">        &quot;&quot;&quot;</div><div class="line">        :type intervals: List[Interval]</div><div class="line">        :rtype: List[Interval]</div><div class="line">        &quot;&quot;&quot;</div><div class="line">        if not intervals:</div><div class="line">            return []</div><div class="line">            </div><div class="line">        intervals.sort(key=lambda x: x.start)</div><div class="line">        result = [intervals[0]]</div><div class="line">        for item in intervals[1:]:</div><div class="line">            pre = result[-1]</div><div class="line">            if pre.end &gt;= item.start:</div><div class="line">                pre.end = max(pre.end, item.end)</div><div class="line">            else:</div><div class="line">                result.append(item)</div><div class="line">        return result</div></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># Definition for an interval.</span></div><div class="line"><span class="comment"># class Interval(object):</span></div><div class="line"><span class="comment">#     def __init__(self, s=0, e=0):</span></div><div class="line"><span class="comment">#         self.start = s</span></div><div class="line"><span class="comment">#         self.end = e</span></div><div class="line"></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span><span class="params">(object)</span>:</span></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">merge</span><span class="params">(self, intervals)</span>:</span></div><div class="line">        <span class="string">"""</span></div><div class="line">        :type intervals: List[Interval]</div><div class="line">        :rtype: List[Interval]</div><div class="line">        """</div><div class="line">        <span class="keyword">if</span> <span class="keyword">not</span> intervals:</div><div class="line">            <span class="keyword">return</span> []</div><div class="line">            </div><div class="line">        intervals.sort(key=<span class="keyword">lambda</span> x: x.start)</div><div class="line">        result = [intervals[<span class="number">0</span>]]</div><div class="line">        <span class="keyword">for</span> item <span class="keyword">in</span> intervals[<span class="number">1</span>:]:</div><div class="line">            pre = result[<span class="number">-1</span>]</div><div class="line">            <span class="keyword">if</span> pre.end &gt;= item.start:</div><div class="line">                pre.end = max(pre.end, item.end)</div><div class="line">            <span class="keyword">else</span>:</div><div class="line">                result.append(item)</div><div class="line">        <span class="keyword">return</span> result</div></pre></td></tr></table></figure>
 <h3 id="相关问题"><a href="#相关问题" class="headerlink" title="相关问题"></a>相关问题</h3><hr>
 <p><a href="https://leetcode.com/problems/meeting-rooms/" target="_blank" rel="external">(E) Meeting Rooms</a><br><a href="https://leetcode.com/problems/insert-interval/" target="_blank" rel="external">(H) Insert Interval</a><br><a href="https://leetcode.com/problems/meeting-rooms-ii/" target="_blank" rel="external">(M) Meeting Rooms II</a>   </p>
 <h3 id="题目来源"><a href="#题目来源" class="headerlink" title="题目来源"></a><a href="https://leetcode.com/problems/merge-intervals/" target="_blank" rel="external">题目来源</a></h3>
@@ -298,16 +298,16 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2014/03/11/leetcode/Algorithms/leetcode-551-Student-Attendance-Record-I/" rel="next" title="leetcode-551-Student-Attendance-Record-I">
-                <i class="fa fa-chevron-left"></i> leetcode-551-Student-Attendance-Record-I
+              <a href="/2014/03/11/leetcode/Algorithms/leetcode-559-Maximum-Depth-of-N-ary-Tree/" rel="next" title="leetcode-559-Maximum-Depth-of-N-ary-Tree">
+                <i class="fa fa-chevron-left"></i> leetcode-559-Maximum-Depth-of-N-ary-Tree
               </a>
             
           </div>
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2014/03/11/leetcode/Algorithms/leetcode-553-Optimal-Division/" rel="prev" title="leetcode-553-Optimal-Division">
-                leetcode-553-Optimal-Division <i class="fa fa-chevron-right"></i>
+              <a href="/2014/03/11/leetcode/Algorithms/leetcode-543-Diameter-of-Binary-Tree/" rel="prev" title="leetcode-leetcode-543-Diameter-of-Binary-Tree">
+                leetcode-leetcode-543-Diameter-of-Binary-Tree <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>

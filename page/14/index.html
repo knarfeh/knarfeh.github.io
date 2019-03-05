@@ -211,8 +211,8 @@
             
               
                 
-                <a class="post-title-link" href="/2014/03/11/leetcode/Algorithms/leetcode-257-Binary-Tree-Paths/" itemprop="url">
-                  leetcode-257-Binary-Tree-Paths
+                <a class="post-title-link" href="/2014/03/11/leetcode/Algorithms/leetcode-205-Isomorphic-Strings/" itemprop="url">
+                  leetcode-205-Isomorphic-Strings
                 </a>
               
             
@@ -236,118 +236,8 @@
             
               <span class="post-comments-count">
                 &nbsp; | &nbsp;
-                <a href="/2014/03/11/leetcode/Algorithms/leetcode-257-Binary-Tree-Paths/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2014/03/11/leetcode/Algorithms/leetcode-257-Binary-Tree-Paths/" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h3 id="描述"><a href="#描述" class="headerlink" title="描述"></a>描述</h3><hr>
-<p>Given a binary tree, return all root-to-leaf paths.</p>
-<p>For example, given the following binary tree: </p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">   1</div><div class="line"> /   \</div><div class="line">2     3</div><div class="line"> \</div><div class="line">  5</div></pre></td></tr></table></figure>
-<p>All root-to-leaf paths are: </p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">[&quot;1-&gt;2-&gt;5&quot;, &quot;1-&gt;3&quot;]</div></pre></td></tr></table></figure>
-<h3 id="分析"><a href="#分析" class="headerlink" title="分析"></a>分析</h3><hr>
-<p>树的深度优先遍历。</p>
-<h3 id="解决方案1-C"><a href="#解决方案1-C" class="headerlink" title="解决方案1(C++)"></a>解决方案1(C++)</h3><hr>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div></pre></td><td class="code"><pre><div class="line">/**</div><div class="line"> * Definition for a binary tree node.</div><div class="line"> * struct TreeNode &#123;</div><div class="line"> *     int val;</div><div class="line"> *     TreeNode *left;</div><div class="line"> *     TreeNode *right;</div><div class="line"> *     TreeNode(int x) : val(x), left(NULL), right(NULL) &#123;&#125;</div><div class="line"> * &#125;;</div><div class="line"> */</div><div class="line">class Solution &#123;</div><div class="line">public:</div><div class="line">    vector&lt;string&gt; binaryTreePaths(TreeNode* root) &#123;</div><div class="line">        vector&lt;string&gt; result;</div><div class="line">        if(root == NULL) &#123;</div><div class="line">            return result;</div><div class="line">        &#125;</div><div class="line">        path(root, result, to_string(root-&gt;val));</div><div class="line">        return result;</div><div class="line">    &#125;</div><div class="line">    </div><div class="line">    void path(TreeNode* root, vector&lt;string&gt;&amp; result, string str_buff) &#123;</div><div class="line">        if(root-&gt;left==NULL &amp;&amp; root-&gt;right==NULL) &#123;</div><div class="line">            result.push_back(str_buff);</div><div class="line">        &#125;</div><div class="line">        if(root-&gt;left != NULL) &#123;</div><div class="line">            path(root-&gt;left, result, str_buff+&quot;-&gt;&quot;+to_string(root-&gt;left-&gt;val));</div><div class="line">        &#125;</div><div class="line">        if(root-&gt;right != NULL) &#123;</div><div class="line">            path(root-&gt;right, result, str_buff+&quot;-&gt;&quot;+to_string(root-&gt;right-&gt;val));</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">&#125;;</div></pre></td></tr></table></figure>
-<h3 id="解决方案2-Java"><a href="#解决方案2-Java" class="headerlink" title="解决方案2(Java)"></a>解决方案2(Java)</h3><hr>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div></pre></td><td class="code"><pre><div class="line">/**</div><div class="line"> * Definition for a binary tree node.</div><div class="line"> * public class TreeNode &#123;</div><div class="line"> *     int val;</div><div class="line"> *     TreeNode left;</div><div class="line"> *     TreeNode right;</div><div class="line"> *     TreeNode(int x) &#123; val = x; &#125;</div><div class="line"> * &#125;</div><div class="line"> */</div><div class="line">public class Solution &#123;</div><div class="line">    public List&lt;String&gt; binaryTreePaths(TreeNode root) &#123;</div><div class="line">        List&lt;String&gt; result = new ArrayList&lt;&gt;();</div><div class="line">        if(root == null) &#123;</div><div class="line">            return result;</div><div class="line">        &#125;</div><div class="line">        String str_buff = new String();</div><div class="line">        path(root, result, (root.val)+&quot;&quot;);</div><div class="line">        return result;</div><div class="line">    &#125;</div><div class="line">    </div><div class="line">    private void path(TreeNode root, List&lt;String&gt; result, String str_buff) &#123;</div><div class="line">        if(root.left == null &amp;&amp; root.right == null) &#123;</div><div class="line">            result.add(str_buff.toString());</div><div class="line">        &#125;</div><div class="line">        </div><div class="line">        if(root.left != null) &#123;</div><div class="line">            path(root.left, result, str_buff+&quot;-&gt;&quot;+(root.left.val));</div><div class="line">        &#125;</div><div class="line">        if(root.right != null) &#123;</div><div class="line">            path(root.right, result, str_buff+&quot;-&gt;&quot;+(root.right.val));</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<h3 id="解决方案3-Python"><a href="#解决方案3-Python" class="headerlink" title="解决方案3(Python)"></a>解决方案3(Python)</h3><hr>
-<h3 id="相关问题"><a href="#相关问题" class="headerlink" title="相关问题"></a>相关问题</h3><hr>
-<p><a href="https://leetcode.com/problems/path-sum-ii/" target="_blank" rel="external">(M) Path Sum II</a>   </p>
-<h3 id="题目来源"><a href="#题目来源" class="headerlink" title="题目来源"></a><a href="https://leetcode.com/problems/binary-tree-paths/" target="_blank" rel="external">题目来源</a></h3>
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2014/03/11/leetcode/Algorithms/leetcode-263-Ugly-Number/" itemprop="url">
-                  leetcode-263-Ugly-Number
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2014-03-11T00:33:34+08:00" content="2014-03-11">
-              2014-03-11
-            </time>
-          </span>
-
-          
-
-          
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2014/03/11/leetcode/Algorithms/leetcode-263-Ugly-Number/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2014/03/11/leetcode/Algorithms/leetcode-263-Ugly-Number/" itemprop="commentsCount"></span>
+                <a href="/2014/03/11/leetcode/Algorithms/leetcode-205-Isomorphic-Strings/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2014/03/11/leetcode/Algorithms/leetcode-205-Isomorphic-Strings/" itemprop="commentsCount"></span>
                 </a>
               </span>
             
@@ -371,11 +261,15 @@
       
         
           <h3 id="描述"><a href="#描述" class="headerlink" title="描述"></a>描述</h3><hr>
-<p>Write a program to check whether a given number is an ugly number.</p>
-<p>Ugly numbers are positive numbers whose prime factors only include 2, 3, 5. For example, 6, 8 are ugly while 14 is not ugly since it includes another prime factor 7.</p>
-<p>Note that 1 is typically treated as an ugly number.<br>
+<p>Given two strings <strong>s</strong> and <strong>t</strong>, determine if they are isomorphic.</p>
+<p>Two strings are isomorphic if the characters in <strong>s</strong> can be replaced to get <strong>t</strong>.</p>
+<p>All occurrences of a character must be replaced with another character while preserving the order of characters. No two characters may map to the same character but a character may map to itself.</p>
+<p>For example,</p>
+<p>For example,<br>Given <code>&quot;egg&quot;</code>, <code>&quot;add&quot;</code>, return true.</p>
+<p>Given <code>&quot;foo&quot;</code>, <code>&quot;bar&quot;</code>, return false.</p>
+<p>Given <code>&quot;paper&quot;</code>, <code>&quot;title&quot;</code>, return true.</p>
           <div class="post-more-link text-center">
-            <a class="btn" href="/2014/03/11/leetcode/Algorithms/leetcode-263-Ugly-Number/#more" rel="contents">
+            <a class="btn" href="/2014/03/11/leetcode/Algorithms/leetcode-205-Isomorphic-Strings/#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
@@ -422,8 +316,8 @@
             
               
                 
-                <a class="post-title-link" href="/2014/03/11/leetcode/Algorithms/leetcode-260-Single-Number-III/" itemprop="url">
-                  leetcode-260-Single-Number-III
+                <a class="post-title-link" href="/2014/03/11/leetcode/Algorithms/leetcode-206-Reverse-Linked-List/" itemprop="url">
+                  leetcode-206-Reverse-Linked-List
                 </a>
               
             
@@ -447,8 +341,8 @@
             
               <span class="post-comments-count">
                 &nbsp; | &nbsp;
-                <a href="/2014/03/11/leetcode/Algorithms/leetcode-260-Single-Number-III/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2014/03/11/leetcode/Algorithms/leetcode-260-Single-Number-III/" itemprop="commentsCount"></span>
+                <a href="/2014/03/11/leetcode/Algorithms/leetcode-206-Reverse-Linked-List/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2014/03/11/leetcode/Algorithms/leetcode-206-Reverse-Linked-List/" itemprop="commentsCount"></span>
                 </a>
               </span>
             
@@ -472,16 +366,9 @@
       
         
           <h3 id="描述"><a href="#描述" class="headerlink" title="描述"></a>描述</h3><hr>
-<p>Given an array of numbers <code>nums</code>, in which exactly two elements appear only once and all the other elements appear exactly twice. Find the two elements that appear only once.</p>
-<p>For example:</p>
-<p>Given nums = <code>[1, 2, 1, 3, 2, 5]</code>, return <code>[3, 5]</code>.</p>
-<p><strong>Note</strong>:</p>
-<ol>
-<li>The order of the result is not important. So in the above example, [5, 3] is also correct.  </li>
-<li>Your algorithm should run in linear runtime complexity. Could you implement it using only constant space complexity?</li>
-</ol>
+<p>Reverse a singly linked list.<br>
           <div class="post-more-link text-center">
-            <a class="btn" href="/2014/03/11/leetcode/Algorithms/leetcode-260-Single-Number-III/#more" rel="contents">
+            <a class="btn" href="/2014/03/11/leetcode/Algorithms/leetcode-206-Reverse-Linked-List/#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
@@ -528,8 +415,8 @@
             
               
                 
-                <a class="post-title-link" href="/2014/03/11/leetcode/Algorithms/leetcode-264-Ugly-Number-II/" itemprop="url">
-                  leetcode-264-Ugly-Number-II
+                <a class="post-title-link" href="/2014/03/11/leetcode/Algorithms/leetcode-21-Merge-Two-Sorted-Lists/" itemprop="url">
+                  leetcode-21-Merge-Two-Sorted-Lists
                 </a>
               
             
@@ -553,8 +440,8 @@
             
               <span class="post-comments-count">
                 &nbsp; | &nbsp;
-                <a href="/2014/03/11/leetcode/Algorithms/leetcode-264-Ugly-Number-II/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2014/03/11/leetcode/Algorithms/leetcode-264-Ugly-Number-II/" itemprop="commentsCount"></span>
+                <a href="/2014/03/11/leetcode/Algorithms/leetcode-21-Merge-Two-Sorted-Lists/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2014/03/11/leetcode/Algorithms/leetcode-21-Merge-Two-Sorted-Lists/" itemprop="commentsCount"></span>
                 </a>
               </span>
             
@@ -578,17 +465,212 @@
       
         
           <h3 id="描述"><a href="#描述" class="headerlink" title="描述"></a>描述</h3><hr>
-<p>Write a program to find the <code>n</code>-th ugly number.</p>
-<p>Ugly numbers are <strong>positive numbers</strong> whose prime factors only include <code>2, 3, 5</code>. </p>
+<p>Merge two sorted linked lists and return it as a new list. The new list should be made by splicing together the nodes of the first two lists.<br>
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2014/03/11/leetcode/Algorithms/leetcode-21-Merge-Two-Sorted-Lists/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2014/03/11/leetcode/Algorithms/leetcode-202-Happy-Number/" itemprop="url">
+                  leetcode-202-Happy-Number
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2014-03-11T00:33:34+08:00" content="2014-03-11">
+              2014-03-11
+            </time>
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2014/03/11/leetcode/Algorithms/leetcode-202-Happy-Number/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2014/03/11/leetcode/Algorithms/leetcode-202-Happy-Number/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <h3 id="描述"><a href="#描述" class="headerlink" title="描述"></a>描述</h3><hr>
+<p>Write an algorithm to determine if a number is “happy”.</p>
+<p>A happy number is a number defined by the following process: Starting with any positive integer, replace the number by the sum of the squares of its digits, and repeat the process until the number equals 1 (where it will stay), or it loops endlessly in a cycle which does not include 1. Those numbers for which this process ends in 1 are happy numbers.</p>
+<p><strong>Example</strong>: 19 is a happy number</p>
+<p>$1^2 + 9^2 = 82$<br>$8^2 + 2^2 = 68$<br>$6^2 + 8^2 = 100$<br>$1^2 + 0^2 + 0^2 = 1$</p>
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2014/03/11/leetcode/Algorithms/leetcode-202-Happy-Number/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2014/03/11/leetcode/Algorithms/leetcode-199-Binary-Tree-Right-Side-View/" itemprop="url">
+                  leetcode-199-Binary-Tree-Right-Side-View
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2014-03-11T00:33:34+08:00" content="2014-03-11">
+              2014-03-11
+            </time>
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2014/03/11/leetcode/Algorithms/leetcode-199-Binary-Tree-Right-Side-View/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2014/03/11/leetcode/Algorithms/leetcode-199-Binary-Tree-Right-Side-View/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <h3 id="描述"><a href="#描述" class="headerlink" title="描述"></a>描述</h3><hr>
+<p>Given a binary tree, imagine yourself standing on the <em>right</em> side of it, return the values of the nodes you can see ordered from top to bottom.</p>
 <p><strong>Example:</strong></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">Input: n = 10</div><div class="line">Output: 12</div><div class="line">Explanation: 1, 2, 3, 4, 5, 6, 8, 9, 10, 12 is the sequence of the first 10 ugly numbers.</div></pre></td></tr></table></figure>
-<p><strong>Note:</strong>  </p>
-<ol>
-<li><code>1</code> is typically treated as an ugly number.</li>
-<li><code>n</code> <strong>does not exceed 1690</strong>.</li>
-</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">Input: [1,2,3,null,5,null,4]</div><div class="line">Output: [1, 3, 4]</div><div class="line">Explanation:</div><div class="line"></div><div class="line">   1            &lt;---</div><div class="line"> /   \</div><div class="line">2     3         &lt;---</div><div class="line"> \     \</div><div class="line">  5     4       &lt;---</div></pre></td></tr></table></figure>
           <div class="post-more-link text-center">
-            <a class="btn" href="/2014/03/11/leetcode/Algorithms/leetcode-264-Ugly-Number-II/#more" rel="contents">
+            <a class="btn" href="/2014/03/11/leetcode/Algorithms/leetcode-199-Binary-Tree-Right-Side-View/#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
@@ -635,8 +717,8 @@
             
               
                 
-                <a class="post-title-link" href="/2014/03/11/leetcode/Algorithms/leetcode-278-First-Bad-Version/" itemprop="url">
-                  leetcode-278-First-Bad-Version
+                <a class="post-title-link" href="/2014/03/11/leetcode/Algorithms/leetcode-213-House-Robber-II/" itemprop="url">
+                  leetcode-213-House-Robber-II
                 </a>
               
             
@@ -660,8 +742,8 @@
             
               <span class="post-comments-count">
                 &nbsp; | &nbsp;
-                <a href="/2014/03/11/leetcode/Algorithms/leetcode-278-First-Bad-Version/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2014/03/11/leetcode/Algorithms/leetcode-278-First-Bad-Version/" itemprop="commentsCount"></span>
+                <a href="/2014/03/11/leetcode/Algorithms/leetcode-213-House-Robber-II/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2014/03/11/leetcode/Algorithms/leetcode-213-House-Robber-II/" itemprop="commentsCount"></span>
                 </a>
               </span>
             
@@ -685,11 +767,11 @@
       
         
           <h3 id="描述"><a href="#描述" class="headerlink" title="描述"></a>描述</h3><hr>
-<p>You are a product manager and currently leading a team to develop a new product. Unfortunately, the latest version of your product fails the quality check. Since each version is developed based on the previous version, all the versions after a bad version are also bad.</p>
-<p>Suppose you have <code>n</code> versions <code>[1, 2, ..., n]</code> and you want to find out the first bad one, which causes all the following ones to be bad.</p>
-<p>You are given an API <code>bool isBadVersion(version)</code> which will return whether <code>version</code> is bad. Implement a function to find the first bad version. You should minimize the number of calls to the API. </p>
+<p>Note: This is an extension of House Robber.</p>
+<p>After robbing those houses on that street, the thief has found himself a new place for his thievery so that he will not get too much attention. This time, all houses at this place are arranged in a circle. That means the first house is the neighbor of the last one. Meanwhile, the security system for these houses remain the same as for those in the previous street.</p>
+<p>Given a list of non-negative integers representing the amount of money of each house, determine the maximum amount of money you can rob tonight without alerting the police.</p>
           <div class="post-more-link text-center">
-            <a class="btn" href="/2014/03/11/leetcode/Algorithms/leetcode-278-First-Bad-Version/#more" rel="contents">
+            <a class="btn" href="/2014/03/11/leetcode/Algorithms/leetcode-213-House-Robber-II/#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
@@ -736,8 +818,8 @@
             
               
                 
-                <a class="post-title-link" href="/2014/03/11/leetcode/Algorithms/leetcode-283-Move-Zeroes/" itemprop="url">
-                  leetcode-283-Move-Zeroes
+                <a class="post-title-link" href="/2014/03/11/leetcode/Algorithms/leetcode-211-Add-and-Search-Word-Data-structure-design/" itemprop="url">
+                  leetcode-211-Add-and-Search-Word---Data-structure-design
                 </a>
               
             
@@ -761,8 +843,8 @@
             
               <span class="post-comments-count">
                 &nbsp; | &nbsp;
-                <a href="/2014/03/11/leetcode/Algorithms/leetcode-283-Move-Zeroes/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2014/03/11/leetcode/Algorithms/leetcode-283-Move-Zeroes/" itemprop="commentsCount"></span>
+                <a href="/2014/03/11/leetcode/Algorithms/leetcode-211-Add-and-Search-Word-Data-structure-design/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2014/03/11/leetcode/Algorithms/leetcode-211-Add-and-Search-Word-Data-structure-design/" itemprop="commentsCount"></span>
                 </a>
               </span>
             
@@ -786,217 +868,14 @@
       
         
           <h3 id="描述"><a href="#描述" class="headerlink" title="描述"></a>描述</h3><hr>
-<p>Given an array nums, write a function to move all 0’s to the end of it while maintaining the relative order of the non-zero elements.</p>
-<p>For example, given nums = [0, 1, 0, 3, 12], after calling your function, nums should be [1, 3, 12, 0, 0].<br>
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2014/03/11/leetcode/Algorithms/leetcode-283-Move-Zeroes/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2014/03/11/leetcode/Algorithms/leetcode-268-Missing-Number/" itemprop="url">
-                  leetcode-268-Missing-Number
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2014-03-11T00:33:34+08:00" content="2014-03-11">
-              2014-03-11
-            </time>
-          </span>
-
-          
-
-          
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2014/03/11/leetcode/Algorithms/leetcode-268-Missing-Number/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2014/03/11/leetcode/Algorithms/leetcode-268-Missing-Number/" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <h3 id="描述"><a href="#描述" class="headerlink" title="描述"></a>描述</h3><hr>
-<p>Given an array containing <em>n</em> distinct numbers taken from <code>0, 1, 2, ..., n</code>, find the one that is missing from the array.</p>
-<p><strong>Example 1:</strong></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">Input: [3,0,1]</div><div class="line">Output: 2</div></pre></td></tr></table></figure>
-<p><strong>Example 2:</strong></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">Input: [9,6,4,2,3,5,7,0,1]</div><div class="line">Output: 8</div></pre></td></tr></table></figure>
-<p><strong>Note</strong>:<br>Your algorithm should run in linear runtime complexity. Could you implement it using only constant extra space complexity?</p>
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2014/03/11/leetcode/Algorithms/leetcode-268-Missing-Number/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2014/03/11/leetcode/Algorithms/leetcode-274-H-Index/" itemprop="url">
-                  leetcode-274-H-Index
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2014-03-11T00:33:34+08:00" content="2014-03-11">
-              2014-03-11
-            </time>
-          </span>
-
-          
-
-          
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2014/03/11/leetcode/Algorithms/leetcode-274-H-Index/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2014/03/11/leetcode/Algorithms/leetcode-274-H-Index/" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <h3 id="描述"><a href="#描述" class="headerlink" title="描述"></a>描述</h3><hr>
-<p>Given an array of citations (each citation is a non-negative integer) of a researcher, write a function to compute the researcher’s h-index.</p>
-<p>According to the <a href="https://en.wikipedia.org/wiki/H-index" target="_blank" rel="external">definition of h-index on Wikipedia</a>: “A scientist has index <em>h</em> if <em>h</em> of his/her <em>N</em> papers have <strong>at least</strong> <em>h</em> citations each, and the other <em>N − h</em> papers have <strong>no more than</strong> <em>h</em> citations each.”</p>
+<p>Design a data structure that supports the following two operations:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">void addWord(word)</div><div class="line">bool search(word)</div></pre></td></tr></table></figure>
+<p>search(word) can search a literal word or a regular expression string containing only letters <code>a-z</code> or <code>.</code>. A <code>.</code> means it can represent any one letter.</p>
 <p><strong>Example:</strong></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">Input: citations = [3,0,6,1,5]</div><div class="line">Output: 3 </div><div class="line">Explanation: [3,0,6,1,5] means the researcher has 5 papers in total and each of them had </div><div class="line">             received 3, 0, 6, 1, 5 citations respectively. </div><div class="line">             Since the researcher has 3 papers with at least 3 citations each and the remaining </div><div class="line">             two with no more than 3 citations each, her h-index is 3.</div></pre></td></tr></table></figure>
-<p><strong>Note:</strong> If there are several possible values for <em>h</em>, the maximum one is taken as the h-index.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">addWord(&quot;bad&quot;)</div><div class="line">addWord(&quot;dad&quot;)</div><div class="line">addWord(&quot;mad&quot;)</div><div class="line">search(&quot;pad&quot;) -&gt; false</div><div class="line">search(&quot;bad&quot;) -&gt; true</div><div class="line">search(&quot;.ad&quot;) -&gt; true</div><div class="line">search(&quot;b..&quot;) -&gt; true</div></pre></td></tr></table></figure>
+<p><strong>Note:</strong><br>You may assume that all words are consist of lowercase letters <code>a-z</code>.</p>
           <div class="post-more-link text-center">
-            <a class="btn" href="/2014/03/11/leetcode/Algorithms/leetcode-274-H-Index/#more" rel="contents">
+            <a class="btn" href="/2014/03/11/leetcode/Algorithms/leetcode-211-Add-and-Search-Word-Data-structure-design/#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
@@ -1043,8 +922,8 @@
             
               
                 
-                <a class="post-title-link" href="/2014/03/11/leetcode/Algorithms/leetcode-290-Word-Pattern/" itemprop="url">
-                  leetcode-290-Word-Pattern
+                <a class="post-title-link" href="/2014/03/11/leetcode/Algorithms/leetcode-208-Implement-Trie-(Prefix-Tree)/" itemprop="url">
+                  leetcode-208-Implement-Trie-(Prefix-Tree)
                 </a>
               
             
@@ -1068,8 +947,8 @@
             
               <span class="post-comments-count">
                 &nbsp; | &nbsp;
-                <a href="/2014/03/11/leetcode/Algorithms/leetcode-290-Word-Pattern/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2014/03/11/leetcode/Algorithms/leetcode-290-Word-Pattern/" itemprop="commentsCount"></span>
+                <a href="/2014/03/11/leetcode/Algorithms/leetcode-208-Implement-Trie-(Prefix-Tree)/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2014/03/11/leetcode/Algorithms/leetcode-208-Implement-Trie-(Prefix-Tree)/" itemprop="commentsCount"></span>
                 </a>
               </span>
             
@@ -1093,12 +972,10 @@
       
         
           <h3 id="描述"><a href="#描述" class="headerlink" title="描述"></a>描述</h3><hr>
-<p>Given a <code>pattern</code> and a string <code>str</code>, find if <code>str</code> follows the same pattern.</p>
-<p>Here follow means a full match, such that there is a bijection between a letter in <code>pattern</code> and a non-empty word in <code>str</code>.</p>
-<p><strong>Examples:</strong></p>
-<p>pattern = <code>&quot;abba&quot;</code>, str = <code>&quot;dog cat cat dog&quot;</code> should return true.<br>pattern = <code>&quot;abba&quot;</code>, str = <code>&quot;dog cat cat fish&quot;</code> should return false.<br>pattern = <code>&quot;aaaa&quot;</code>, str = <code>&quot;dog cat cat dog&quot;</code> should return false.<br>pattern = <code>&quot;abba&quot;</code>, str = <code>&quot;dog dog dog dog&quot;</code> should return false.   </p>
+<p>Implement a trie with <code>insert</code>, <code>search</code>, and <code>startsWith</code> methods.</p>
+<p>Note:<br>You may assume that all inputs are consist of lowercase letters <code>a-z</code>.<br>
           <div class="post-more-link text-center">
-            <a class="btn" href="/2014/03/11/leetcode/Algorithms/leetcode-290-Word-Pattern/#more" rel="contents">
+            <a class="btn" href="/2014/03/11/leetcode/Algorithms/leetcode-208-Implement-Trie-(Prefix-Tree)/#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
@@ -1145,8 +1022,8 @@
             
               
                 
-                <a class="post-title-link" href="/2014/03/11/leetcode/Algorithms/leetcode-287-Find-the-Duplicate-Number/" itemprop="url">
-                  leetcode-287-Find-the-Duplicate-Number
+                <a class="post-title-link" href="/2014/03/11/leetcode/Algorithms/leetcode-217-Contains-Duplicate/" itemprop="url">
+                  leetcode-217-Contains-Duplicate
                 </a>
               
             
@@ -1170,8 +1047,8 @@
             
               <span class="post-comments-count">
                 &nbsp; | &nbsp;
-                <a href="/2014/03/11/leetcode/Algorithms/leetcode-287-Find-the-Duplicate-Number/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2014/03/11/leetcode/Algorithms/leetcode-287-Find-the-Duplicate-Number/" itemprop="commentsCount"></span>
+                <a href="/2014/03/11/leetcode/Algorithms/leetcode-217-Contains-Duplicate/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2014/03/11/leetcode/Algorithms/leetcode-217-Contains-Duplicate/" itemprop="commentsCount"></span>
                 </a>
               </span>
             
@@ -1195,20 +1072,113 @@
       
         
           <h3 id="描述"><a href="#描述" class="headerlink" title="描述"></a>描述</h3><hr>
-<p>Given an array <em>nums</em> containing <em>n</em> + 1 integers where each integer is between 1 and <em>n</em> (inclusive), prove that at least one duplicate number must exist. Assume that there is only one duplicate number, find the duplicate one.</p>
+<p>Given an array of integers, find if the array contains any duplicates. Your function should return true if any value appears at least twice in the array, and it should return false if every element is distinct.<br>
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2014/03/11/leetcode/Algorithms/leetcode-217-Contains-Duplicate/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2014/03/11/leetcode/Algorithms/leetcode-215-Kth-Largest-Element-in-an-Array/" itemprop="url">
+                  leetcode-215-Kth-Largest-Element-in-an-Array
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2014-03-11T00:33:34+08:00" content="2014-03-11">
+              2014-03-11
+            </time>
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2014/03/11/leetcode/Algorithms/leetcode-215-Kth-Largest-Element-in-an-Array/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2014/03/11/leetcode/Algorithms/leetcode-215-Kth-Largest-Element-in-an-Array/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <h3 id="描述"><a href="#描述" class="headerlink" title="描述"></a>描述</h3><hr>
+<p>Find the <strong>k</strong>th largest element in an unsorted array. Note that it is the kth largest element in the sorted order, not the kth distinct element.</p>
 <p><strong>Example 1:</strong></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">Input: [1,3,4,2,2]</div><div class="line">Output: 2</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">Input: [3,2,1,5,6,4] and k = 2</div><div class="line">Output: 5</div></pre></td></tr></table></figure>
 <p><strong>Example 2:</strong></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">Input: [3,1,3,4,2]</div><div class="line">Output: 3</div></pre></td></tr></table></figure>
-<p><strong>Note:</strong></p>
-<ol>
-<li>You <strong>must not</strong> modify the array (assume the array is read only).</li>
-<li>You must use only constant, <em>O</em>(1) extra space.</li>
-<li>Your runtime complexity should be less than <em>O</em>(<em>n</em>2).</li>
-<li>There is only one duplicate number in the array, but it could be repeated more than once.</li>
-</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">Input: [3,2,3,1,2,4,5,5,6] and k = 4</div><div class="line">Output: 4</div></pre></td></tr></table></figure>
+<p><strong>Note:</strong><br>You may assume k is always valid, 1 ≤ k ≤ array’s length.<br>
           <div class="post-more-link text-center">
-            <a class="btn" href="/2014/03/11/leetcode/Algorithms/leetcode-287-Find-the-Duplicate-Number/#more" rel="contents">
+            <a class="btn" href="/2014/03/11/leetcode/Algorithms/leetcode-215-Kth-Largest-Element-in-an-Array/#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>

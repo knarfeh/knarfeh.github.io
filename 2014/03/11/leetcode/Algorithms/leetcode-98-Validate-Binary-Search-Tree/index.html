@@ -65,7 +65,7 @@
 <meta property="og:site_name" content="knarfeh&#39;s logbook">
 <meta property="og:description" content="描述 Given a binary tree, determine if it is a valid binary search tree (BST). Assume a BST is defined as follows:  The left subtree of a node contains only nodes with keys less than the node’s key. The">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2016-10-28T15:40:40.000Z">
+<meta property="og:updated_time" content="2019-03-05T14:06:09.540Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="leetcode-98-Validate-Binary-Search-Tree">
 <meta name="twitter:description" content="描述 Given a binary tree, determine if it is a valid binary search tree (BST). Assume a BST is defined as follows:  The left subtree of a node contains only nodes with keys less than the node’s key. The">
@@ -272,7 +272,7 @@
 <p>判断一个二叉树是否为二分查找树。<br>需要注意的是，如果是左子树，是左子树的所有节点都比根节点小，而非只是左孩子比其小。</p>
 <h3 id="解决方案1-C"><a href="#解决方案1-C" class="headerlink" title="解决方案1(C++)"></a>解决方案1(C++)</h3><hr>
 <p>遍历时记录当前节点所允许的最大值、最小值，时间复杂度O(n)，空间复杂度O(logn)</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div></pre></td><td class="code"><pre><div class="line">/**</div><div class="line"> * Definition for a binary tree node.</div><div class="line"> * struct TreeNode &#123;</div><div class="line"> *     int val;</div><div class="line"> *     TreeNode *left;</div><div class="line"> *     TreeNode *right;</div><div class="line"> *     TreeNode(int x) : val(x), left(NULL), right(NULL) &#123;&#125;</div><div class="line"> * &#125;;</div><div class="line"> */</div><div class="line">class Solution &#123;</div><div class="line">public:</div><div class="line">    bool isValidBST(TreeNode* root) &#123;</div><div class="line">        return isValidBST(root, LLONG_MIN, LLONG_MAX);</div><div class="line">    &#125;</div><div class="line">    </div><div class="line">    bool isValidBST(TreeNode* root, long lower, long upper) &#123;</div><div class="line">        if(root == NULL) &#123;</div><div class="line">            return true;</div><div class="line">        &#125;</div><div class="line">        </div><div class="line">        return root-&gt;val&gt;lower &amp;&amp; root-&gt;val&lt;upper &amp;&amp; </div><div class="line">                isValidBST(root-&gt;left, lower, root-&gt;val) &amp;&amp;</div><div class="line">                isValidBST(root-&gt;right, root-&gt;val, upper);</div><div class="line">    &#125;</div><div class="line">&#125;;</div></pre></td></tr></table></figure>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div></pre></td><td class="code"><pre><div class="line"><span class="comment">/**</span></div><div class="line"> * Definition for a binary tree node.</div><div class="line"> * struct TreeNode &#123;</div><div class="line"> *     int val;</div><div class="line"> *     TreeNode *left;</div><div class="line"> *     TreeNode *right;</div><div class="line"> *     TreeNode(int x) : val(x), left(NULL), right(NULL) &#123;&#125;</div><div class="line"> * &#125;;</div><div class="line"> */</div><div class="line"><span class="keyword">class</span> Solution &#123;</div><div class="line"><span class="keyword">public</span>:</div><div class="line">    <span class="function"><span class="keyword">bool</span> <span class="title">isValidBST</span><span class="params">(TreeNode* root)</span> </span>&#123;</div><div class="line">        <span class="keyword">return</span> isValidBST(root, LLONG_MIN, LLONG_MAX);</div><div class="line">    &#125;</div><div class="line">    </div><div class="line">    <span class="function"><span class="keyword">bool</span> <span class="title">isValidBST</span><span class="params">(TreeNode* root, <span class="keyword">long</span> lower, <span class="keyword">long</span> upper)</span> </span>&#123;</div><div class="line">        <span class="keyword">if</span>(root == <span class="literal">NULL</span>) &#123;</div><div class="line">            <span class="keyword">return</span> <span class="literal">true</span>;</div><div class="line">        &#125;</div><div class="line">        </div><div class="line">        <span class="keyword">return</span> root-&gt;val&gt;lower &amp;&amp; root-&gt;val&lt;upper &amp;&amp; </div><div class="line">                isValidBST(root-&gt;left, lower, root-&gt;val) &amp;&amp;</div><div class="line">                isValidBST(root-&gt;right, root-&gt;val, upper);</div><div class="line">    &#125;</div><div class="line">&#125;;</div></pre></td></tr></table></figure>
 <h3 id="相关问题"><a href="#相关问题" class="headerlink" title="相关问题"></a>相关问题</h3><hr>
 <p><a href="https://leetcode.com/problems/binary-tree-inorder-traversal/" target="_blank" rel="external">(M) Binary Tree Inorder Traversal</a>   </p>
 <h3 id="题目来源"><a href="#题目来源" class="headerlink" title="题目来源"></a><a href="https://leetcode.com/problems/validate-binary-search-tree/" target="_blank" rel="external">题目来源</a></h3>
@@ -304,16 +304,16 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2014/03/11/leetcode/Database/leetcode-175-Combine-Two-Tables/" rel="next" title="leetcode-175-Combine-Two-Tables">
-                <i class="fa fa-chevron-left"></i> leetcode-175-Combine-Two-Tables
+              <a href="/2014/03/11/leetcode/Algorithms/leetcode-99-Recover-Binary-Search-Tree/" rel="next" title="leetcode-99-Recover-Binary-Search-Tree">
+                <i class="fa fa-chevron-left"></i> leetcode-99-Recover-Binary-Search-Tree
               </a>
             
           </div>
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2014/03/11/leetcode/Algorithms/leetcode-95-Unique-Binary-Search-Trees-II/" rel="prev" title="leetcode-95-Unique-Binary-Search-Trees-II">
-                leetcode-95-Unique-Binary-Search-Trees-II <i class="fa fa-chevron-right"></i>
+              <a href="/2014/03/11/leetcode/Algorithms/leetcode-96-Unique-Binary-Search-Trees/" rel="prev" title="leetcode-96-Unique-Binary-Search-Trees">
+                leetcode-96-Unique-Binary-Search-Trees <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>

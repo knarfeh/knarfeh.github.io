@@ -65,7 +65,7 @@
 <meta property="og:site_name" content="knarfeh&#39;s logbook">
 <meta property="og:description" content="描述 Given a non-empty binary tree, find the maximum path sum. For this problem, a path is defined as any sequence of nodes from some starting node to any node in the tree along the parent-child connect">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-11-11T08:48:03.935Z">
+<meta property="og:updated_time" content="2019-03-05T14:06:09.500Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="leetcode-124-Binary-Tree-Maximum-Path-Sum">
 <meta name="twitter:description" content="描述 Given a non-empty binary tree, find the maximum path sum. For this problem, a path is defined as any sequence of nodes from some starting node to any node in the tree along the parent-child connect">
@@ -270,7 +270,7 @@
 <h3 id="分析"><a href="#分析" class="headerlink" title="分析"></a>分析</h3><hr>
 <p>这道题有难度，二叉树里路径可以从任意节点开始到任意节点结束，二叉树可以用 DFS 来遍历，先算出左右子树的结果 left, right, 如果大于0，则对结果有利，加上 left 或 right 后与之前的 max 进行比较，取较大值。</p>
 <h3 id="解决方案1-Java"><a href="#解决方案1-Java" class="headerlink" title="解决方案1(Java)"></a>解决方案1(Java)</h3><hr>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div></pre></td><td class="code"><pre><div class="line">/**</div><div class="line"> * Definition for a binary tree node.</div><div class="line"> * public class TreeNode &#123;</div><div class="line"> *     int val;</div><div class="line"> *     TreeNode left;</div><div class="line"> *     TreeNode right;</div><div class="line"> *     TreeNode(int x) &#123; val = x; &#125;</div><div class="line"> * &#125;</div><div class="line"> */</div><div class="line">class Solution &#123;</div><div class="line">    int max = Integer.MIN_VALUE;</div><div class="line">    public int maxPathSum(TreeNode root) &#123;</div><div class="line">        dfs(root);</div><div class="line">        return max;</div><div class="line">    &#125;</div><div class="line">    </div><div class="line">    private int dfs(TreeNode root) &#123;</div><div class="line">        if (root == null) &#123;</div><div class="line">            return 0;</div><div class="line">        &#125;</div><div class="line">        int left = Math.max(dfs(root.left), 0);</div><div class="line">        int right = Math.max(dfs(root.right), 0);</div><div class="line">        max = Math.max(max, root.val + left + right);</div><div class="line">        return root.val + Math.max(left, right);</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div></pre></td><td class="code"><pre><div class="line"><span class="comment">/**</span></div><div class="line"> * Definition for a binary tree node.</div><div class="line"> * public class TreeNode &#123;</div><div class="line"> *     int val;</div><div class="line"> *     TreeNode left;</div><div class="line"> *     TreeNode right;</div><div class="line"> *     TreeNode(int x) &#123; val = x; &#125;</div><div class="line"> * &#125;</div><div class="line"> */</div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</div><div class="line">    <span class="keyword">int</span> max = Integer.MIN_VALUE;</div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">maxPathSum</span><span class="params">(TreeNode root)</span> </span>&#123;</div><div class="line">        dfs(root);</div><div class="line">        <span class="keyword">return</span> max;</div><div class="line">    &#125;</div><div class="line">    </div><div class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">int</span> <span class="title">dfs</span><span class="params">(TreeNode root)</span> </span>&#123;</div><div class="line">        <span class="keyword">if</span> (root == <span class="keyword">null</span>) &#123;</div><div class="line">            <span class="keyword">return</span> <span class="number">0</span>;</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">int</span> left = Math.max(dfs(root.left), <span class="number">0</span>);</div><div class="line">        <span class="keyword">int</span> right = Math.max(dfs(root.right), <span class="number">0</span>);</div><div class="line">        max = Math.max(max, root.val + left + right);</div><div class="line">        <span class="keyword">return</span> root.val + Math.max(left, right);</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <h3 id="相关问题"><a href="#相关问题" class="headerlink" title="相关问题"></a>相关问题</h3><hr>
 <ul>
 <li><a href="https://leetcode.com/problems/path-sum/" target="_blank" rel="external">(E) Path Sum</a>   </li>
@@ -307,16 +307,16 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2014/03/11/leetcode/Algorithms/leetcode-122-Best-Time-to-Buy-and-Sell-Stock-II/" rel="next" title="leetcode-122-Best-Time-to-Buy-and-Sell-Stock-II">
-                <i class="fa fa-chevron-left"></i> leetcode-122-Best-Time-to-Buy-and-Sell-Stock-II
+              <a href="/2014/03/11/leetcode/Algorithms/leetcode-129-Sum-Root-to-Leaf-Numbers/" rel="next" title="leetcode-129-Sum-Root-to-Leaf-Numbers">
+                <i class="fa fa-chevron-left"></i> leetcode-129-Sum-Root-to-Leaf-Numbers
               </a>
             
           </div>
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2014/03/11/leetcode/Algorithms/leetcode-129-Sum-Root-to-Leaf-Numbers/" rel="prev" title="leetcode-129-Sum-Root-to-Leaf-Numbers">
-                leetcode-129-Sum-Root-to-Leaf-Numbers <i class="fa fa-chevron-right"></i>
+              <a href="/2014/03/11/leetcode/Algorithms/leetcode-122-Best-Time-to-Buy-and-Sell-Stock-II/" rel="prev" title="leetcode-122-Best-Time-to-Buy-and-Sell-Stock-II">
+                leetcode-122-Best-Time-to-Buy-and-Sell-Stock-II <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>

@@ -65,7 +65,7 @@
 <meta property="og:site_name" content="knarfeh&#39;s logbook">
 <meta property="og:description" content="描述 The count-and-say sequence is the sequence of integers beginning as follows:   1, 11, 21, 1211, 111221, … 1 is read off as &amp;quot;one 1&amp;quot; or 11.11 is read off as &amp;quot;two 1s&amp;quot; or 21.21 is r">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2016-10-28T15:40:40.000Z">
+<meta property="og:updated_time" content="2019-03-05T14:06:09.519Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="leetcode-38-Count-and-Say">
 <meta name="twitter:description" content="描述 The count-and-say sequence is the sequence of integers beginning as follows:   1, 11, 21, 1211, 111221, … 1 is read off as &amp;quot;one 1&amp;quot; or 11.11 is read off as &amp;quot;two 1s&amp;quot; or 21.21 is r">
@@ -267,7 +267,7 @@
 <h3 id="分析"><a href="#分析" class="headerlink" title="分析"></a>分析</h3><hr>
 <p>要获得这一序列的第n个数，直接按照题目的要求进行模拟，输出即可。  </p>
 <h3 id="解决方案1-C"><a href="#解决方案1-C" class="headerlink" title="解决方案1(C++)"></a>解决方案1(C++)</h3><hr>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div></pre></td><td class="code"><pre><div class="line">class Solution &#123;</div><div class="line">public:</div><div class="line">    string countAndSay(int n) &#123;</div><div class="line">        string res = &quot;1&quot;;</div><div class="line">        for(int i = 2; i &lt;= n; i++) &#123;</div><div class="line">            int j = 0; </div><div class="line">            string nowstring;</div><div class="line">            while(j &lt; res.size()) &#123;</div><div class="line">                int numberof_j = 0; </div><div class="line">                for(numberof_j = j+1; numberof_j &lt; res.size(); numberof_j++) &#123;</div><div class="line">                    if(res[numberof_j] != res[j]) break;</div><div class="line">                &#125;</div><div class="line">                nowstring.push_back(numberof_j-j+&apos;0&apos;);</div><div class="line">                nowstring.push_back(res[j]);</div><div class="line">                j = numberof_j;</div><div class="line">            &#125;</div><div class="line">            res = nowstring;</div><div class="line">        &#125;</div><div class="line">        return res;</div><div class="line">    &#125;</div><div class="line">&#125;;</div></pre></td></tr></table></figure>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">class</span> Solution &#123;</div><div class="line"><span class="keyword">public</span>:</div><div class="line">    <span class="function"><span class="built_in">string</span> <span class="title">countAndSay</span><span class="params">(<span class="keyword">int</span> n)</span> </span>&#123;</div><div class="line">        <span class="built_in">string</span> res = <span class="string">"1"</span>;</div><div class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">2</span>; i &lt;= n; i++) &#123;</div><div class="line">            <span class="keyword">int</span> j = <span class="number">0</span>; </div><div class="line">            <span class="built_in">string</span> nowstring;</div><div class="line">            <span class="keyword">while</span>(j &lt; res.size()) &#123;</div><div class="line">                <span class="keyword">int</span> numberof_j = <span class="number">0</span>; </div><div class="line">                <span class="keyword">for</span>(numberof_j = j+<span class="number">1</span>; numberof_j &lt; res.size(); numberof_j++) &#123;</div><div class="line">                    <span class="keyword">if</span>(res[numberof_j] != res[j]) <span class="keyword">break</span>;</div><div class="line">                &#125;</div><div class="line">                nowstring.push_back(numberof_j-j+<span class="string">'0'</span>);</div><div class="line">                nowstring.push_back(res[j]);</div><div class="line">                j = numberof_j;</div><div class="line">            &#125;</div><div class="line">            res = nowstring;</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">return</span> res;</div><div class="line">    &#125;</div><div class="line">&#125;;</div></pre></td></tr></table></figure>
 <h3 id="相关问题"><a href="#相关问题" class="headerlink" title="相关问题"></a>相关问题</h3><hr>
 <p><a href="https://leetcode.com/problems/encode-and-decode-strings/" target="_blank" rel="external">(M) Encode and Decode Strings</a>   </p>
 <h3 id="题目来源"><a href="#题目来源" class="headerlink" title="题目来源"></a><a href="https://leetcode.com/problems/count-and-say/" target="_blank" rel="external">题目来源</a></h3>
@@ -297,16 +297,16 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2014/03/11/leetcode/Algorithms/leetcode-380-Insert-Delete-GetRandom-O(1)/" rel="next" title="leetcode-380-Insert-Delete-GetRandom-O(1)">
-                <i class="fa fa-chevron-left"></i> leetcode-380-Insert-Delete-GetRandom-O(1)
+              <a href="/2014/03/11/leetcode/Algorithms/leetcode-371-Sum-of-Two-Integers/" rel="next" title="leetcode-237-Delete-Node-in-a-Linked-List">
+                <i class="fa fa-chevron-left"></i> leetcode-237-Delete-Node-in-a-Linked-List
               </a>
             
           </div>
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2014/03/11/leetcode/Algorithms/leetcode-345-Reverse-Vowels-of-a-String/" rel="prev" title="leetcode-345-Reverse-Vowels-of-a-String">
-                leetcode-345-Reverse-Vowels-of-a-String <i class="fa fa-chevron-right"></i>
+              <a href="/2014/03/11/leetcode/Algorithms/leetcode-374-Guess-Number-Higher-or-Lower/" rel="prev" title="leetcode-374-Guess-Number-Higher-or-Lower.md">
+                leetcode-374-Guess-Number-Higher-or-Lower.md <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>

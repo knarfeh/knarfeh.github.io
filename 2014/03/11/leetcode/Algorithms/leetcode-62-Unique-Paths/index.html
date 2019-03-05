@@ -66,7 +66,7 @@
 <meta property="og:description" content="描述 A robot is located at the top-left corner of a m x n grid (marked ‘Start’ in the diagram below). The robot can only move either down or right at any point in time. The robot is trying to reach the">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="http://leetcode.com/wp-content/uploads/2014/12/robot_maze.png">
-<meta property="og:updated_time" content="2016-10-28T15:40:40.000Z">
+<meta property="og:updated_time" content="2019-03-05T14:06:09.527Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="leetcode-62-Unique-Paths">
 <meta name="twitter:description" content="描述 A robot is located at the top-left corner of a m x n grid (marked ‘Start’ in the diagram below). The robot can only move either down or right at any point in time. The robot is trying to reach the">
@@ -270,7 +270,7 @@
 <h3 id="分析"><a href="#分析" class="headerlink" title="分析"></a>分析</h3><hr>
 <p>动态规划，每一个位置的数量等于这个位置上方位置和左边位置数量相加。</p>
 <h3 id="解决方案1-C"><a href="#解决方案1-C" class="headerlink" title="解决方案1(C++)"></a>解决方案1(C++)</h3><hr>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">class Solution &#123;</div><div class="line">public:</div><div class="line">    int uniquePaths(int m, int n) &#123;</div><div class="line">        vector&lt;vector&lt;int&gt; &gt; table(m, vector&lt;int&gt;(n, 1));</div><div class="line">        for(int i = 1; i &lt; m; i++) &#123;</div><div class="line">            for(int j = 1; j &lt; n; j++) &#123;</div><div class="line">                table[i][j] = table[i-1][j] + table[i][j-1];</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">        return table[m-1][n-1];</div><div class="line">    &#125;</div><div class="line">&#125;;</div></pre></td></tr></table></figure>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">class</span> Solution &#123;</div><div class="line"><span class="keyword">public</span>:</div><div class="line">    <span class="function"><span class="keyword">int</span> <span class="title">uniquePaths</span><span class="params">(<span class="keyword">int</span> m, <span class="keyword">int</span> n)</span> </span>&#123;</div><div class="line">        <span class="built_in">vector</span>&lt;<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; &gt; table(m, <span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;(n, <span class="number">1</span>));</div><div class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">1</span>; i &lt; m; i++) &#123;</div><div class="line">            <span class="keyword">for</span>(<span class="keyword">int</span> j = <span class="number">1</span>; j &lt; n; j++) &#123;</div><div class="line">                table[i][j] = table[i<span class="number">-1</span>][j] + table[i][j<span class="number">-1</span>];</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">return</span> table[m<span class="number">-1</span>][n<span class="number">-1</span>];</div><div class="line">    &#125;</div><div class="line">&#125;;</div></pre></td></tr></table></figure>
 <h3 id="相关问题"><a href="#相关问题" class="headerlink" title="相关问题"></a>相关问题</h3><hr>
 <p><a href="https://leetcode.com/problems/unique-paths-ii/" target="_blank" rel="external">(M) Unique Paths II</a><br><a href="https://leetcode.com/problems/minimum-path-sum/" target="_blank" rel="external">(M) Minimum Path Sum</a><br><a href="https://leetcode.com/problems/dungeon-game/" target="_blank" rel="external">(H) Dungeon Game</a>   </p>
 <h3 id="题目来源"><a href="#题目来源" class="headerlink" title="题目来源"></a><a href="https://leetcode.com/problems/unique-paths/" target="_blank" rel="external">题目来源</a></h3>
@@ -302,16 +302,16 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2014/03/11/leetcode/Algorithms/leetcode-628-Maximum-Product-of-Three-Numbers/" rel="next" title="leetcode-628-Maximum-Product-of-Three-Numbers">
-                <i class="fa fa-chevron-left"></i> leetcode-628-Maximum-Product-of-Three-Numbers
+              <a href="/2014/03/11/leetcode/Algorithms/leetcode-599-Minimum-Index-Sum-of-Two-Lists/" rel="next" title="leetcode-599-Minimum-Index-Sum-of-Two-Lists">
+                <i class="fa fa-chevron-left"></i> leetcode-599-Minimum-Index-Sum-of-Two-Lists
               </a>
             
           </div>
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2014/03/11/leetcode/Algorithms/leetcode-609-Find-Duplicate-File-in-System/" rel="prev" title="leetcode-609-Find-Duplicate-File-in-System">
-                leetcode-609-Find-Duplicate-File-in-System <i class="fa fa-chevron-right"></i>
+              <a href="/2014/03/11/leetcode/Algorithms/leetcode-598-Range-Addition-II/" rel="prev" title="leetcode-598-Range-Addition-II">
+                leetcode-598-Range-Addition-II <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>

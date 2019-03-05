@@ -65,7 +65,7 @@
 <meta property="og:site_name" content="knarfeh&#39;s logbook">
 <meta property="og:description" content="描述 Given an array of non-negative integers, you are initially positioned at the first index of the array. Each element in the array represents your maximum jump length at that position. Determine if y">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-11-11T08:46:03.782Z">
+<meta property="og:updated_time" content="2019-03-05T14:06:09.525Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="leetcode-55-Jump-Game">
 <meta name="twitter:description" content="描述 Given an array of non-negative integers, you are initially positioned at the first index of the array. Each element in the array represents your maximum jump length at that position. Determine if y">
@@ -271,7 +271,7 @@
 <h3 id="分析"><a href="#分析" class="headerlink" title="分析"></a>分析</h3><hr>
 <p>虽然这道题的标签里有个贪婪算法的标签，但这道题目实际可以用动态规划的思想解决，f(n) 表示到 n 索引下还剩的步数，则有 $f(i) = max(f(i-1), A[i-1]) - 1$，i &gt; 1，f(0) = 0。</p>
 <h3 id="解决方案1-Java"><a href="#解决方案1-Java" class="headerlink" title="解决方案1(Java)"></a>解决方案1(Java)</h3><hr>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">class Solution &#123;</div><div class="line">    public boolean canJump(int[] nums) &#123;</div><div class="line">        int[] f = new int[nums.length];</div><div class="line">        for (int i = 1; i &lt; nums.length; i++) &#123;</div><div class="line">            f[i] = Math.max(f[i-1], nums[i-1]) - 1;</div><div class="line">            if (f[i] &lt; 0) &#123;</div><div class="line">                return false;</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">        // return f[nums.length-1] &gt;= 0;</div><div class="line">        return true;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">canJump</span><span class="params">(<span class="keyword">int</span>[] nums)</span> </span>&#123;</div><div class="line">        <span class="keyword">int</span>[] f = <span class="keyword">new</span> <span class="keyword">int</span>[nums.length];</div><div class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt; nums.length; i++) &#123;</div><div class="line">            f[i] = Math.max(f[i-<span class="number">1</span>], nums[i-<span class="number">1</span>]) - <span class="number">1</span>;</div><div class="line">            <span class="keyword">if</span> (f[i] &lt; <span class="number">0</span>) &#123;</div><div class="line">                <span class="keyword">return</span> <span class="keyword">false</span>;</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">        <span class="comment">// return f[nums.length-1] &gt;= 0;</span></div><div class="line">        <span class="keyword">return</span> <span class="keyword">true</span>;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <h3 id="相关问题"><a href="#相关问题" class="headerlink" title="相关问题"></a>相关问题</h3><hr>
 <ul>
 <li><a href="https://leetcode.com/problems/jump-game-ii" target="_blank" rel="external">(M) Jump Game II</a></li>
@@ -305,16 +305,16 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2014/03/11/leetcode/Algorithms/leetcode-543-Diameter-of-Binary-Tree/" rel="next" title="leetcode-leetcode-543-Diameter-of-Binary-Tree">
-                <i class="fa fa-chevron-left"></i> leetcode-leetcode-543-Diameter-of-Binary-Tree
+              <a href="/2014/03/11/leetcode/Algorithms/leetcode-541-Reverse-String-II/" rel="next" title="leetcode-541-Reverse-String-II">
+                <i class="fa fa-chevron-left"></i> leetcode-541-Reverse-String-II
               </a>
             
           </div>
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2014/03/11/leetcode/Algorithms/leetcode-541-Reverse-String-II/" rel="prev" title="leetcode-541-Reverse-String-II">
-                leetcode-541-Reverse-String-II <i class="fa fa-chevron-right"></i>
+              <a href="/2014/03/11/leetcode/Algorithms/leetcode-537-Complex-Number-Multiplication/" rel="prev" title="leetcode-537-Complex-Number-Multiplication">
+                leetcode-537-Complex-Number-Multiplication <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>

@@ -65,7 +65,7 @@
 <meta property="og:site_name" content="knarfeh&#39;s logbook">
 <meta property="og:description" content="描述 We are given two sentences A and B.  (A sentence is a string of space separated words.  Each word consists only of lowercase letters.) A word is uncommon if it appears exactly once in one of the se">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-11-11T09:01:48.337Z">
+<meta property="og:updated_time" content="2019-03-05T14:06:09.536Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="leetcode-884-Uncommon-Words-from-Two-Sentences">
 <meta name="twitter:description" content="描述 We are given two sentences A and B.  (A sentence is a string of space separated words.  Each word consists only of lowercase letters.) A word is uncommon if it appears exactly once in one of the se">
@@ -278,7 +278,7 @@
 <h3 id="分析"><a href="#分析" class="headerlink" title="分析"></a>分析</h3><hr>
 <p>用一个 Map 来存 A, B 两个数组中单词出现的次数，如果出现两次，这个单词在 A, B 两个数组都出现了，如果只出现了一次，则这个单词是题目里所要求的 <code>uncommon word</code>。</p>
 <h3 id="解决方案1-Java"><a href="#解决方案1-Java" class="headerlink" title="解决方案1(Java)"></a>解决方案1(Java)</h3><hr>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line">class Solution &#123;</div><div class="line">    public String[] uncommonFromSentences(String A, String B) &#123;</div><div class="line">        Map&lt;String, Integer&gt; wordCountMap = new HashMap();</div><div class="line">        for (String word: A.split(&quot; &quot;)) &#123;</div><div class="line">            wordCountMap.put(word, wordCountMap.getOrDefault(word, 0) + 1);</div><div class="line">        &#125;</div><div class="line">        for (String word: B.split(&quot; &quot;)) &#123;</div><div class="line">            wordCountMap.put(word, wordCountMap.getOrDefault(word, 0) + 1);</div><div class="line">        &#125;</div><div class="line">        </div><div class="line">        List&lt;String&gt; result = new LinkedList();</div><div class="line">        for (String word: wordCountMap.keySet()) &#123;</div><div class="line">            if (wordCountMap.get(word) == 1) &#123;</div><div class="line">                result.add(word);</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">        return result.toArray(new String[result.size()]);</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</div><div class="line">    <span class="keyword">public</span> String[] uncommonFromSentences(String A, String B) &#123;</div><div class="line">        Map&lt;String, Integer&gt; wordCountMap = <span class="keyword">new</span> HashMap();</div><div class="line">        <span class="keyword">for</span> (String word: A.split(<span class="string">" "</span>)) &#123;</div><div class="line">            wordCountMap.put(word, wordCountMap.getOrDefault(word, <span class="number">0</span>) + <span class="number">1</span>);</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">for</span> (String word: B.split(<span class="string">" "</span>)) &#123;</div><div class="line">            wordCountMap.put(word, wordCountMap.getOrDefault(word, <span class="number">0</span>) + <span class="number">1</span>);</div><div class="line">        &#125;</div><div class="line">        </div><div class="line">        List&lt;String&gt; result = <span class="keyword">new</span> LinkedList();</div><div class="line">        <span class="keyword">for</span> (String word: wordCountMap.keySet()) &#123;</div><div class="line">            <span class="keyword">if</span> (wordCountMap.get(word) == <span class="number">1</span>) &#123;</div><div class="line">                result.add(word);</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">return</span> result.toArray(<span class="keyword">new</span> String[result.size()]);</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <h3 id="题目来源"><a href="#题目来源" class="headerlink" title="题目来源"></a><a href="https://leetcode.com/problems/uncommon-words-from-two-sentences/description/" target="_blank" rel="external">题目来源</a></h3>
       
     </div>
@@ -306,16 +306,16 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2014/03/11/leetcode/Algorithms/leetcode-892-Surface-Area-of-3D-Shapes/" rel="next" title="leetcode-892-Surface-Area-of-3D-Shapes">
-                <i class="fa fa-chevron-left"></i> leetcode-892-Surface-Area-of-3D-Shapes
+              <a href="/2014/03/11/leetcode/Algorithms/leetcode-889-Construct-Binary-Tree-from-Preorder-and-Postorder-Traversal/" rel="next" title="leetcode-889-Construct-Binary-Tree-from-Preorder-and-Postorder-Traversal">
+                <i class="fa fa-chevron-left"></i> leetcode-889-Construct-Binary-Tree-from-Preorder-and-Postorder-Traversal
               </a>
             
           </div>
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2014/03/11/leetcode/Algorithms/leetcode-890-Find-and-Replace-Pattern/" rel="prev" title="leetcode-890-Find-and-Replace-Pattern">
-                leetcode-890-Find-and-Replace-Pattern <i class="fa fa-chevron-right"></i>
+              <a href="/2014/03/11/leetcode/Algorithms/leetcode-883-Projection-Area-of-3D-Shapes/" rel="prev" title="leetcode-883-Projection-Area-of-3D-Shapes">
+                leetcode-883-Projection-Area-of-3D-Shapes <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>

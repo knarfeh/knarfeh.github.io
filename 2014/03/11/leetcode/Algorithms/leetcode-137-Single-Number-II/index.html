@@ -65,7 +65,7 @@
 <meta property="og:site_name" content="knarfeh&#39;s logbook">
 <meta property="og:description" content="描述 Given an array of integers, every element appears three times except for one. Find that single one.   Note:   Your algorithm should have a linear runtime complexity. Could you implement it without">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2016-10-28T15:40:40.000Z">
+<meta property="og:updated_time" content="2019-03-05T14:06:09.505Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="leetcode-137-Single-Number-II">
 <meta name="twitter:description" content="描述 Given an array of integers, every element appears three times except for one. Find that single one.   Note:   Your algorithm should have a linear runtime complexity. Could you implement it without">
@@ -266,7 +266,7 @@
 <h3 id="分析"><a href="#分析" class="headerlink" title="分析"></a>分析</h3><hr>
 <p>很有意思的一道题，与上一道题<a href="http://knarfeh.com/2014/03/11/leetcode/leetcode-136-Single-Number/" target="_blank" rel="external">leetcode-137-Single-Number</a>不同的是，这里的元素是三个为一组。可以用位运算，将所有的数字看作二进制的数，把所有的数字在每一位出现的次数加起来，如果是3的倍数，那么要找的那个数在该位上就是0，否则是1</p>
 <h3 id="解决方案1-C"><a href="#解决方案1-C" class="headerlink" title="解决方案1(C++)"></a>解决方案1(C++)</h3><hr>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line">class Solution &#123;</div><div class="line">public:</div><div class="line">    int singleNumber(vector&lt;int&gt;&amp; nums) &#123;</div><div class="line">        int i_num = 0;</div><div class="line">        int result;</div><div class="line">        </div><div class="line">        for(int i = 0; i &lt; 32; i++) &#123;</div><div class="line">            for(int j = 0; j &lt; nums.size(); j++) &#123;</div><div class="line">                i_num += (nums[j]&gt;&gt;i) &amp; 1;</div><div class="line">            &#125;</div><div class="line">            result |= (i_num % 3) &lt;&lt; i;</div><div class="line">            i_num = 0;</div><div class="line">        &#125;</div><div class="line">        return result;</div><div class="line">    &#125;</div><div class="line">&#125;;</div></pre></td></tr></table></figure>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">class</span> Solution &#123;</div><div class="line"><span class="keyword">public</span>:</div><div class="line">    <span class="function"><span class="keyword">int</span> <span class="title">singleNumber</span><span class="params">(<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&amp; nums)</span> </span>&#123;</div><div class="line">        <span class="keyword">int</span> i_num = <span class="number">0</span>;</div><div class="line">        <span class="keyword">int</span> result;</div><div class="line">        </div><div class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="number">32</span>; i++) &#123;</div><div class="line">            <span class="keyword">for</span>(<span class="keyword">int</span> j = <span class="number">0</span>; j &lt; nums.size(); j++) &#123;</div><div class="line">                i_num += (nums[j]&gt;&gt;i) &amp; <span class="number">1</span>;</div><div class="line">            &#125;</div><div class="line">            result |= (i_num % <span class="number">3</span>) &lt;&lt; i;</div><div class="line">            i_num = <span class="number">0</span>;</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">return</span> result;</div><div class="line">    &#125;</div><div class="line">&#125;;</div></pre></td></tr></table></figure>
 <h3 id="相关问题"><a href="#相关问题" class="headerlink" title="相关问题"></a>相关问题</h3><hr>
 <p><a href="https://leetcode.com/problems/single-number-iii/" target="_blank" rel="external">(M) Single Number III</a><br><a href="https://leetcode.com/problems/single-number/" target="_blank" rel="external">(M) Single Number</a>   </p>
 <h3 id="题目来源"><a href="#题目来源" class="headerlink" title="题目来源"></a><a href="https://leetcode.com/problems/single-number-ii/" target="_blank" rel="external">题目来源</a></h3>
@@ -296,16 +296,16 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2014/03/11/leetcode/Algorithms/leetcode-136-Single-Number/" rel="next" title="leetcode-136-Single-Number">
-                <i class="fa fa-chevron-left"></i> leetcode-136-Single-Number
+              <a href="/2014/03/11/leetcode/Algorithms/leetcode-125-Valid-Palindrome/" rel="next" title="leetcode-125-Valid-Palindrome">
+                <i class="fa fa-chevron-left"></i> leetcode-125-Valid-Palindrome
               </a>
             
           </div>
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2014/03/11/leetcode/Algorithms/leetcode-13-Roman-to-Integer/" rel="prev" title="leetcode-13-Roman-to-Integer">
-                leetcode-13-Roman-to-Integer <i class="fa fa-chevron-right"></i>
+              <a href="/2014/03/11/leetcode/Algorithms/leetcode-136-Single-Number/" rel="prev" title="leetcode-136-Single-Number">
+                leetcode-136-Single-Number <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>

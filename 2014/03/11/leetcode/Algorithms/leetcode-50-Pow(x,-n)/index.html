@@ -65,7 +65,7 @@
 <meta property="og:site_name" content="knarfeh&#39;s logbook">
 <meta property="og:description" content="描述 Implement pow(x, n).">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2016-10-28T15:40:40.000Z">
+<meta property="og:updated_time" content="2019-03-05T14:06:09.523Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="leetcode-50-Pow(x,-n)">
 <meta name="twitter:description" content="描述 Implement pow(x, n).">
@@ -265,7 +265,7 @@
 <h3 id="分析"><a href="#分析" class="headerlink" title="分析"></a>分析</h3><hr>
 <p>$x^n$ 可以写作 $ x^{n/2} * x^{n/2} * x^{n\%2} $，可以用递归。</p>
 <h3 id="解决方案1-C"><a href="#解决方案1-C" class="headerlink" title="解决方案1(C++)"></a>解决方案1(C++)</h3><hr>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div></pre></td><td class="code"><pre><div class="line">class Solution &#123;</div><div class="line">public:</div><div class="line">    double pow_recu(double x, int n) &#123;</div><div class="line">        if(n == 0) &#123;</div><div class="line">            return 1;</div><div class="line">        &#125;</div><div class="line">        </div><div class="line">        double harf_x = pow_recu(x, n/2);</div><div class="line">        </div><div class="line">        if(n % 2 == 0) &#123;</div><div class="line">            return harf_x * harf_x;</div><div class="line">        &#125;else &#123;</div><div class="line">            return harf_x * harf_x * x;</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">    </div><div class="line">    double myPow(double x, int n) &#123;</div><div class="line">        if(n &lt; 0) &#123;</div><div class="line">            return 1 / pow_recu(x, -n);</div><div class="line">        &#125;else &#123;</div><div class="line">            return pow_recu(x, n);</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">&#125;;</div></pre></td></tr></table></figure>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">class</span> Solution &#123;</div><div class="line"><span class="keyword">public</span>:</div><div class="line">    <span class="function"><span class="keyword">double</span> <span class="title">pow_recu</span><span class="params">(<span class="keyword">double</span> x, <span class="keyword">int</span> n)</span> </span>&#123;</div><div class="line">        <span class="keyword">if</span>(n == <span class="number">0</span>) &#123;</div><div class="line">            <span class="keyword">return</span> <span class="number">1</span>;</div><div class="line">        &#125;</div><div class="line">        </div><div class="line">        <span class="keyword">double</span> harf_x = pow_recu(x, n/<span class="number">2</span>);</div><div class="line">        </div><div class="line">        <span class="keyword">if</span>(n % <span class="number">2</span> == <span class="number">0</span>) &#123;</div><div class="line">            <span class="keyword">return</span> harf_x * harf_x;</div><div class="line">        &#125;<span class="keyword">else</span> &#123;</div><div class="line">            <span class="keyword">return</span> harf_x * harf_x * x;</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">    </div><div class="line">    <span class="function"><span class="keyword">double</span> <span class="title">myPow</span><span class="params">(<span class="keyword">double</span> x, <span class="keyword">int</span> n)</span> </span>&#123;</div><div class="line">        <span class="keyword">if</span>(n &lt; <span class="number">0</span>) &#123;</div><div class="line">            <span class="keyword">return</span> <span class="number">1</span> / pow_recu(x, -n);</div><div class="line">        &#125;<span class="keyword">else</span> &#123;</div><div class="line">            <span class="keyword">return</span> pow_recu(x, n);</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">&#125;;</div></pre></td></tr></table></figure>
 <h3 id="相关问题"><a href="#相关问题" class="headerlink" title="相关问题"></a>相关问题</h3><hr>
 <p><a href="https://leetcode.com/problems/sqrtx/" target="_blank" rel="external">(M) Sqrt(x)</a>   </p>
 <h3 id="题目来源"><a href="#题目来源" class="headerlink" title="题目来源"></a><a href="https://leetcode.com/problems/powx-n/" target="_blank" rel="external">题目来源</a></h3>
@@ -297,16 +297,16 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2014/03/11/leetcode/Algorithms/leetcode-495-Teemo-Attacking/" rel="next" title="leetcode-495-Teemo-Attacking">
-                <i class="fa fa-chevron-left"></i> leetcode-495-Teemo-Attacking
+              <a href="/2014/03/11/leetcode/Algorithms/leetcode-476-Number-Complement/" rel="next" title="leetcode-476-Number-Complement">
+                <i class="fa fa-chevron-left"></i> leetcode-476-Number-Complement
               </a>
             
           </div>
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2014/03/11/leetcode/Algorithms/leetcode-476-Number-Complement/" rel="prev" title="leetcode-476-Number-Complement">
-                leetcode-476-Number-Complement <i class="fa fa-chevron-right"></i>
+              <a href="/2014/03/11/leetcode/Algorithms/leetcode-495-Teemo-Attacking/" rel="prev" title="leetcode-495-Teemo-Attacking">
+                leetcode-495-Teemo-Attacking <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>

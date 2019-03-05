@@ -65,7 +65,7 @@
 <meta property="og:site_name" content="knarfeh&#39;s logbook">
 <meta property="og:description" content="描述 Given a binary tree, find its minimum depth. The minimum depth is the number of nodes along the shortest path from the root node down to the nearest leaf node. Subscribe to see which companies aske">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2016-10-28T15:40:40.000Z">
+<meta property="og:updated_time" content="2019-03-05T14:06:09.482Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="leetcode-111-Minimum-Depth-of-Binary-Tree">
 <meta name="twitter:description" content="描述 Given a binary tree, find its minimum depth. The minimum depth is the number of nodes along the shortest path from the root node down to the nearest leaf node. Subscribe to see which companies aske">
@@ -266,7 +266,7 @@
 <h3 id="分析"><a href="#分析" class="headerlink" title="分析"></a>分析</h3><hr>
 <p>求根节点到叶结点的最小距离，和求树的最大深度是类似的。 <a href="http://knarfeh.github.io/2014/03/11/leetcode/leetcode-104-Maximum-Depth-of-Binary-Tree/">leetcode-104-Maximum-Depth-of-Binary-Tree</a></p>
 <h3 id="解决方案1（C-）"><a href="#解决方案1（C-）" class="headerlink" title="解决方案1（C++）"></a>解决方案1（C++）</h3><hr>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div></pre></td><td class="code"><pre><div class="line">/**</div><div class="line"> * Definition for a binary tree node.</div><div class="line"> * struct TreeNode &#123;</div><div class="line"> *     int val;</div><div class="line"> *     TreeNode *left;</div><div class="line"> *     TreeNode *right;</div><div class="line"> *     TreeNode(int x) : val(x), left(NULL), right(NULL) &#123;&#125;</div><div class="line"> * &#125;;</div><div class="line"> */</div><div class="line">class Solution &#123;</div><div class="line">public:</div><div class="line">    int minDepth(TreeNode* root) &#123;</div><div class="line">        if(root == NULL) &#123;</div><div class="line">            return 0;</div><div class="line">        &#125;</div><div class="line">        if(root-&gt;left == NULL) &#123;</div><div class="line">            return minDepth(root-&gt;right) + 1;</div><div class="line">        &#125;</div><div class="line">        if(root-&gt;right == NULL) &#123;</div><div class="line">            return minDepth(root-&gt;left) + 1;</div><div class="line">        &#125;</div><div class="line">        return min(minDepth(root-&gt;left), minDepth(root-&gt;right)) + 1;</div><div class="line">    &#125;</div><div class="line">&#125;;</div></pre></td></tr></table></figure>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div></pre></td><td class="code"><pre><div class="line"><span class="comment">/**</span></div><div class="line"> * Definition for a binary tree node.</div><div class="line"> * struct TreeNode &#123;</div><div class="line"> *     int val;</div><div class="line"> *     TreeNode *left;</div><div class="line"> *     TreeNode *right;</div><div class="line"> *     TreeNode(int x) : val(x), left(NULL), right(NULL) &#123;&#125;</div><div class="line"> * &#125;;</div><div class="line"> */</div><div class="line"><span class="keyword">class</span> Solution &#123;</div><div class="line"><span class="keyword">public</span>:</div><div class="line">    <span class="function"><span class="keyword">int</span> <span class="title">minDepth</span><span class="params">(TreeNode* root)</span> </span>&#123;</div><div class="line">        <span class="keyword">if</span>(root == <span class="literal">NULL</span>) &#123;</div><div class="line">            <span class="keyword">return</span> <span class="number">0</span>;</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">if</span>(root-&gt;left == <span class="literal">NULL</span>) &#123;</div><div class="line">            <span class="keyword">return</span> minDepth(root-&gt;right) + <span class="number">1</span>;</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">if</span>(root-&gt;right == <span class="literal">NULL</span>) &#123;</div><div class="line">            <span class="keyword">return</span> minDepth(root-&gt;left) + <span class="number">1</span>;</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">return</span> min(minDepth(root-&gt;left), minDepth(root-&gt;right)) + <span class="number">1</span>;</div><div class="line">    &#125;</div><div class="line">&#125;;</div></pre></td></tr></table></figure>
 <h3 id="相关问题"><a href="#相关问题" class="headerlink" title="相关问题"></a>相关问题</h3><hr>
 <p><a href="https://leetcode.com/problems/binary-tree-level-order-traversal/" target="_blank" rel="external">(E) Binary Tree Level Order Traversal</a><br><a href="https://leetcode.com/problems/maximum-depth-of-binary-tree/" target="_blank" rel="external">(E) Maximum Depth of Binary Tree</a>   </p>
 <h3 id="题目来源"><a href="#题目来源" class="headerlink" title="题目来源"></a><a href="https://leetcode.com/problems/minimum-depth-of-binary-tree/" target="_blank" rel="external">题目来源</a></h3>
@@ -302,16 +302,16 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2014/03/11/leetcode/Algorithms/leetcode-11-Container-With-Most-Water/" rel="next" title="leetcode-11-Container-With-Most-Water">
-                <i class="fa fa-chevron-left"></i> leetcode-11-Container-With-Most-Water
+              <a href="/2014/03/11/leetcode/Algorithms/leetcode-114-Flatten-Binary-Tree-to-Linked-List/" rel="next" title="leetcode-114-Flatten-Binary-Tree-to-Linked-List">
+                <i class="fa fa-chevron-left"></i> leetcode-114-Flatten-Binary-Tree-to-Linked-List
               </a>
             
           </div>
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2014/03/11/leetcode/Algorithms/leetcode-106-Construct-Binary-Tree-from-Inorder-and-Postorder-Traversal/" rel="prev" title="leetcode-106-Construct-Binary-Tree-from-Inorder-and-Postorder-Traversal">
-                leetcode-106-Construct-Binary-Tree-from-Inorder-and-Postorder-Traversal <i class="fa fa-chevron-right"></i>
+              <a href="/2014/03/11/leetcode/Algorithms/leetcode-113-Path-Sum-II/" rel="prev" title="leetcode-113-Path-Sum-II">
+                leetcode-113-Path-Sum-II <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
