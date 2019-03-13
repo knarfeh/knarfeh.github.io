@@ -41,7 +41,7 @@
 <link href="/css/main.css?v=0.5.0" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="algorithms,leetcode,Array,review,Hash-Table," />
+  <meta name="keywords" content="algorithms,leetcode,Array,Hash-Table,review," />
 
 
 
@@ -58,14 +58,14 @@
 
 
 <meta name="description" content="描述 Given an array of integers, find if the array contains any duplicates. Your function should return true if any value appears at least twice in the array, and it should return false if every element">
-<meta name="keywords" content="algorithms,leetcode,Array,review,Hash-Table">
+<meta name="keywords" content="algorithms,leetcode,Array,Hash-Table,review">
 <meta property="og:type" content="article">
 <meta property="og:title" content="leetcode-217-Contains-Duplicate">
 <meta property="og:url" content="http://knarfeh.github.io/2014/03/11/leetcode/Algorithms/leetcode-217-Contains-Duplicate/index.html">
 <meta property="og:site_name" content="knarfeh&#39;s logbook">
 <meta property="og:description" content="描述 Given an array of integers, find if the array contains any duplicates. Your function should return true if any value appears at least twice in the array, and it should return false if every element">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2016-10-28T15:40:40.000Z">
+<meta property="og:updated_time" content="2019-03-08T15:14:03.926Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="leetcode-217-Contains-Duplicate">
 <meta name="twitter:description" content="描述 Given an array of integers, find if the array contains any duplicates. Your function should return true if any value appears at least twice in the array, and it should return false if every element">
@@ -264,10 +264,10 @@
 <h3 id="分析"><a href="#分析" class="headerlink" title="分析"></a>分析</h3><hr>
 <h3 id="解决方案1-C"><a href="#解决方案1-C" class="headerlink" title="解决方案1(C++)"></a>解决方案1(C++)</h3><hr>
 <p>用C++的话，判断一个数组中是否有重复的元素，可以先排序，如果有重复的，那么这两个元素一定是相邻的，做判断即可。   </p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line">class Solution &#123;</div><div class="line">public:</div><div class="line">    bool containsDuplicate(vector&lt;int&gt;&amp; nums) &#123;</div><div class="line">        if(nums.size() &lt;2)&#123;</div><div class="line">            return false;</div><div class="line">        &#125;</div><div class="line">        sort(nums.begin(), nums.end());</div><div class="line">        for(int i = 0; i &lt; nums.size()-1; i++)&#123;</div><div class="line">            if(nums[i] == nums[i+1])&#123;</div><div class="line">                return true;</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">        return false;</div><div class="line">    &#125;</div><div class="line">&#125;;</div></pre></td></tr></table></figure>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">class</span> Solution &#123;</div><div class="line"><span class="keyword">public</span>:</div><div class="line">    <span class="function"><span class="keyword">bool</span> <span class="title">containsDuplicate</span><span class="params">(<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&amp; nums)</span> </span>&#123;</div><div class="line">        <span class="keyword">if</span>(nums.size() &lt;<span class="number">2</span>)&#123;</div><div class="line">            <span class="keyword">return</span> <span class="literal">false</span>;</div><div class="line">        &#125;</div><div class="line">        sort(nums.begin(), nums.end());</div><div class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; nums.size()<span class="number">-1</span>; i++)&#123;</div><div class="line">            <span class="keyword">if</span>(nums[i] == nums[i+<span class="number">1</span>])&#123;</div><div class="line">                <span class="keyword">return</span> <span class="literal">true</span>;</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">return</span> <span class="literal">false</span>;</div><div class="line">    &#125;</div><div class="line">&#125;;</div></pre></td></tr></table></figure>
 <h3 id="解决方案2-Python"><a href="#解决方案2-Python" class="headerlink" title="解决方案2(Python)"></a>解决方案2(Python)</h3><hr>
 <p>在Python中，有一种集合类型set，根据集合的定义，重复元素之记录一次，可以根据这一定义判断</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">class Solution(object):</div><div class="line">    def containsDuplicate(self, nums):</div><div class="line">        &quot;&quot;&quot;</div><div class="line">        :type nums: List[int]</div><div class="line">        :rtype: bool</div><div class="line">        &quot;&quot;&quot;</div><div class="line">        return len(nums) &gt; len(set(nums))</div></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span><span class="params">(object)</span>:</span></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">containsDuplicate</span><span class="params">(self, nums)</span>:</span></div><div class="line">        <span class="string">"""</span></div><div class="line">        :type nums: List[int]</div><div class="line">        :rtype: bool</div><div class="line">        """</div><div class="line">        <span class="keyword">return</span> len(nums) &gt; len(set(nums))</div></pre></td></tr></table></figure>
 <h3 id="相关问题"><a href="#相关问题" class="headerlink" title="相关问题"></a>相关问题</h3><hr>
 <p><a href="https://leetcode.com/problems/contains-duplicate-ii/" target="_blank" rel="external">(E) Contains Duplicate II</a><br><a href="https://leetcode.com/problems/contains-duplicate-iii/" target="_blank" rel="external">(M) Contains Duplicate III</a>   </p>
 <h3 id="题目来源"><a href="#题目来源" class="headerlink" title="题目来源"></a><a href="https://leetcode.com/problems/contains-duplicate/" target="_blank" rel="external">题目来源</a></h3>
@@ -290,9 +290,9 @@
           
             <a href="/tags/Array/" rel="tag">#Array</a>
           
-            <a href="/tags/review/" rel="tag">#review</a>
-          
             <a href="/tags/Hash-Table/" rel="tag">#Hash-Table</a>
+          
+            <a href="/tags/review/" rel="tag">#review</a>
           
         </div>
       
@@ -301,16 +301,16 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2014/03/11/leetcode/Algorithms/leetcode-215-Kth-Largest-Element-in-an-Array/" rel="next" title="leetcode-215-Kth-Largest-Element-in-an-Array">
-                <i class="fa fa-chevron-left"></i> leetcode-215-Kth-Largest-Element-in-an-Array
+              <a href="/2014/03/11/leetcode/Algorithms/leetcode-226-Invert-Binary-Tree/" rel="next" title="leetcode-226-Invert-Binary-Tree">
+                <i class="fa fa-chevron-left"></i> leetcode-226-Invert-Binary-Tree
               </a>
             
           </div>
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2014/03/11/leetcode/Algorithms/leetcode-208-Implement-Trie-(Prefix-Tree)/" rel="prev" title="leetcode-208-Implement-Trie-(Prefix-Tree)">
-                leetcode-208-Implement-Trie-(Prefix-Tree) <i class="fa fa-chevron-right"></i>
+              <a href="/2014/03/11/leetcode/Algorithms/leetcode-211-Add-and-Search-Word-Data-structure-design/" rel="prev" title="leetcode-211-Add-and-Search-Word---Data-structure-design">
+                leetcode-211-Add-and-Search-Word---Data-structure-design <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
