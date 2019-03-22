@@ -65,7 +65,7 @@
 <meta property="og:site_name" content="knarfeh&#39;s logbook">
 <meta property="og:description" content="描述 Given an m  n matrix M initialized with all *0‘s and several update operations. Operations are represented by a 2D array, and each operation is represented by an array with two positive integers a">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-11-11T12:50:35.958Z">
+<meta property="og:updated_time" content="2019-03-14T14:29:01.078Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="leetcode-598-Range-Addition-II">
 <meta name="twitter:description" content="描述 Given an m  n matrix M initialized with all *0‘s and several update operations. Operations are represented by a 2D array, and each operation is represented by an array with two positive integers a">
@@ -275,7 +275,7 @@
 <h3 id="分析"><a href="#分析" class="headerlink" title="分析"></a>分析</h3><hr>
 <p>在最小数字组成的边界中的数字才会被每次更新，因此只要找到横坐标，纵坐标中的最小数字而已。</p>
 <h3 id="解决方案1-Java"><a href="#解决方案1-Java" class="headerlink" title="解决方案1(Java)"></a>解决方案1(Java)</h3><hr>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">class Solution &#123;</div><div class="line">    public int maxCount(int m, int n, int[][] ops) &#123;</div><div class="line">        for (int[] op: ops) &#123;</div><div class="line">            m = Math.min(m, op[0]);</div><div class="line">            n = Math.min(n, op[1]);</div><div class="line">        &#125;</div><div class="line">        return m*n;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">maxCount</span><span class="params">(<span class="keyword">int</span> m, <span class="keyword">int</span> n, <span class="keyword">int</span>[][] ops)</span> </span>&#123;</div><div class="line">        <span class="keyword">for</span> (<span class="keyword">int</span>[] op: ops) &#123;</div><div class="line">            m = Math.min(m, op[<span class="number">0</span>]);</div><div class="line">            n = Math.min(n, op[<span class="number">1</span>]);</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">return</span> m*n;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <h3 id="相关问题"><a href="#相关问题" class="headerlink" title="相关问题"></a>相关问题</h3><hr>
 <p><a href="https://leetcode.com/problems/range-addition" target="_blank" rel="external">(M) Range Addition</a>   </p>
 <h3 id="题目来源"><a href="#题目来源" class="headerlink" title="题目来源"></a><a href="https://leetcode.com/problems/range-addition-ii/description/" target="_blank" rel="external">题目来源</a></h3>
@@ -305,16 +305,16 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2014/03/11/leetcode/Algorithms/leetcode-590-N-ary-Tree-Postorder-Traversal/" rel="next" title="leetcode-590-N-ary-Tree-Postorder-Traversal">
-                <i class="fa fa-chevron-left"></i> leetcode-590-N-ary-Tree-Postorder-Traversal
+              <a href="/2014/03/11/leetcode/Algorithms/leetcode-606-Construct-String-from-Binary-Tree/" rel="next" title="leetcode-606-Construct-String-from-Binary-Tree">
+                <i class="fa fa-chevron-left"></i> leetcode-606-Construct-String-from-Binary-Tree
               </a>
             
           </div>
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2014/03/11/leetcode/Algorithms/leetcode-589-N-ary-Tree-Preorder-Traversal/" rel="prev" title="leetcode-589-N-ary-Tree-Preorder-Traversal">
-                leetcode-589-N-ary-Tree-Preorder-Traversal <i class="fa fa-chevron-right"></i>
+              <a href="/2014/03/11/leetcode/Algorithms/leetcode-590-N-ary-Tree-Postorder-Traversal/" rel="prev" title="leetcode-590-N-ary-Tree-Postorder-Traversal">
+                leetcode-590-N-ary-Tree-Postorder-Traversal <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>

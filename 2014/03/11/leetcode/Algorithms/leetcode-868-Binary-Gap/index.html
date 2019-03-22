@@ -65,7 +65,7 @@
 <meta property="og:site_name" content="knarfeh&#39;s logbook">
 <meta property="og:description" content="描述 Given a positive integer N, find and return the longest distance between two consecutive 1’s in the binary representation of N. If there aren’t two consecutive 1’s, return 0. Example 1: 12345678Inp">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-11-11T15:35:31.622Z">
+<meta property="og:updated_time" content="2019-03-18T13:08:01.785Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="leetcode-868-Binary-Gap">
 <meta name="twitter:description" content="描述 Given a positive integer N, find and return the longest distance between two consecutive 1’s in the binary representation of N. If there aren’t two consecutive 1’s, return 0. Example 1: 12345678Inp">
@@ -278,7 +278,7 @@
 <h3 id="分析"><a href="#分析" class="headerlink" title="分析"></a>分析</h3><hr>
 <p>用一个额外的数组记录 1 出现的索引，接着遍历这个额外的数组，找到最大的间隔即可。</p>
 <h3 id="解决方案1-Java"><a href="#解决方案1-Java" class="headerlink" title="解决方案1(Java)"></a>解决方案1(Java)</h3><hr>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line">class Solution &#123;</div><div class="line">    public int binaryGap(int N) &#123;</div><div class="line">        int[] indexedN = new int[32];</div><div class="line">        int j = 0;</div><div class="line">        for (int i = 0; i &lt; 32; i++) &#123;</div><div class="line">            if (((N &gt;&gt; i) &amp; 1) == 1) &#123;</div><div class="line">                indexedN[j] = i;</div><div class="line">                j++;</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">        </div><div class="line">        int result = 0;</div><div class="line">        for (int i = 0; i &lt; j -1; i++) &#123;</div><div class="line">            result = Math.max(result, indexedN[i+1]-indexedN[i]);</div><div class="line">        &#125;</div><div class="line">        return result;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">binaryGap</span><span class="params">(<span class="keyword">int</span> N)</span> </span>&#123;</div><div class="line">        <span class="keyword">int</span>[] indexedN = <span class="keyword">new</span> <span class="keyword">int</span>[<span class="number">32</span>];</div><div class="line">        <span class="keyword">int</span> j = <span class="number">0</span>;</div><div class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="number">32</span>; i++) &#123;</div><div class="line">            <span class="keyword">if</span> (((N &gt;&gt; i) &amp; <span class="number">1</span>) == <span class="number">1</span>) &#123;</div><div class="line">                indexedN[j] = i;</div><div class="line">                j++;</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">        </div><div class="line">        <span class="keyword">int</span> result = <span class="number">0</span>;</div><div class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; j -<span class="number">1</span>; i++) &#123;</div><div class="line">            result = Math.max(result, indexedN[i+<span class="number">1</span>]-indexedN[i]);</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">return</span> result;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <h3 id="题目来源"><a href="#题目来源" class="headerlink" title="题目来源"></a><a href="https://leetcode.com/problems/binary-gap/description/" target="_blank" rel="external">题目来源</a></h3>
       
     </div>
@@ -306,16 +306,16 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2014/03/11/leetcode/Algorithms/leetcode-867-Transpose-Matrix/" rel="next" title="leetcode-867-Transpose-Matrix">
-                <i class="fa fa-chevron-left"></i> leetcode-867-Transpose-Matrix
+              <a href="/2014/03/11/leetcode/Algorithms/leetcode-856-Score-of-Parentheses/" rel="next" title="leetcode-856-Score-of-Parentheses">
+                <i class="fa fa-chevron-left"></i> leetcode-856-Score-of-Parentheses
               </a>
             
           </div>
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2014/03/11/leetcode/Algorithms/leetcode-877-Stone-Game/" rel="prev" title="leetcode-877-Stone-Game">
-                leetcode-877-Stone-Game <i class="fa fa-chevron-right"></i>
+              <a href="/2014/03/11/leetcode/Algorithms/leetcode-867-Transpose-Matrix/" rel="prev" title="leetcode-867-Transpose-Matrix">
+                leetcode-867-Transpose-Matrix <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>

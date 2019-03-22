@@ -65,7 +65,7 @@
 <meta property="og:site_name" content="knarfeh&#39;s logbook">
 <meta property="og:description" content="描述 Given a non-empty integer array of size n, find the minimum number of moves required to make all array elements equal, where a move is incrementing n - 1 elements by 1. Example: 12345678910Input:[1">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-11-11T13:25:56.652Z">
+<meta property="og:updated_time" content="2019-03-14T14:23:48.048Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="leetcode-453-Minimum-Moves-to-Equal-Array-Elements">
 <meta name="twitter:description" content="描述 Given a non-empty integer array of size n, find the minimum number of moves required to make all array elements equal, where a move is incrementing n - 1 elements by 1. Example: 12345678910Input:[1">
@@ -267,7 +267,7 @@
 <h3 id="分析"><a href="#分析" class="headerlink" title="分析"></a>分析</h3><hr>
 <p>这道题可以这样来考虑：从一个数组中选中一个数，除这个数之外的其他数自增1，最后要使这些数字的值都相等，要使步骤最小的话，我们肯定不会选择最小的数，因为增加其他的数字会使得其他数与最小数差距越来越大，步骤反而会增加。这个过程其实是对于每个数字都一样，都是为了增加最小的数，使其与自身相等，而这个步骤的次数就是自身与最小值的差，将所有的差都详解即为总的步骤。</p>
 <h3 id="解决方案1-Java"><a href="#解决方案1-Java" class="headerlink" title="解决方案1(Java)"></a>解决方案1(Java)</h3><hr>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line">class Solution &#123;</div><div class="line">    public int minMoves(int[] nums) &#123;</div><div class="line">        if (nums.length == 0) &#123;</div><div class="line">            return 0;</div><div class="line">        &#125;</div><div class="line">        int min = nums[0];</div><div class="line">        for (int n: nums) &#123;</div><div class="line">            min = Math.min(min, n);</div><div class="line">        &#125;</div><div class="line">        int result = 0;</div><div class="line">        for (int n: nums) &#123;</div><div class="line">            result += (n - min);</div><div class="line">        &#125;</div><div class="line">        return result;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">minMoves</span><span class="params">(<span class="keyword">int</span>[] nums)</span> </span>&#123;</div><div class="line">        <span class="keyword">if</span> (nums.length == <span class="number">0</span>) &#123;</div><div class="line">            <span class="keyword">return</span> <span class="number">0</span>;</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">int</span> min = nums[<span class="number">0</span>];</div><div class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> n: nums) &#123;</div><div class="line">            min = Math.min(min, n);</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">int</span> result = <span class="number">0</span>;</div><div class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> n: nums) &#123;</div><div class="line">            result += (n - min);</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">return</span> result;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <h3 id="相关问题"><a href="#相关问题" class="headerlink" title="相关问题"></a>相关问题</h3><hr>
 <ul>
 <li><a href="https://leetcode.com/problems/minimum-moves-to-equal-array-elements-ii" target="_blank" rel="external">(M) Minimum Moves to Equal Array Elements II</a>   </li>
@@ -307,8 +307,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2014/03/11/leetcode/Algorithms/leetcode-461-Hamming-Distance/" rel="prev" title="leetcode-461-Hamming-Distance">
-                leetcode-461-Hamming-Distance <i class="fa fa-chevron-right"></i>
+              <a href="/2014/03/11/leetcode/Algorithms/leetcode-451-Sort-Characters-By-Frequency/" rel="prev" title="leetcode-451-Sort-Characters-By-Frequency">
+                leetcode-451-Sort-Characters-By-Frequency <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>

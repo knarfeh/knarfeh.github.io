@@ -65,7 +65,7 @@
 <meta property="og:site_name" content="knarfeh&#39;s logbook">
 <meta property="og:description" content="描述 Let’s call an array A a mountain if the following properties hold:  A.length &amp;gt;= 3 There exists some 0 &amp;lt; i &amp;lt; A.length - 1 such that A[0] &amp;lt; A[1] &amp;lt; ... A[i-1] &amp;lt; A[i] &amp;gt; A[i+1] &amp;gt;">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-11-11T09:03:45.952Z">
+<meta property="og:updated_time" content="2019-03-18T13:08:01.772Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="leetcode-852-Peak-Index-in-a-Mountain-Array">
 <meta name="twitter:description" content="描述 Let’s call an array A a mountain if the following properties hold:  A.length &amp;gt;= 3 There exists some 0 &amp;lt; i &amp;lt; A.length - 1 such that A[0] &amp;lt; A[1] &amp;lt; ... A[i-1] &amp;lt; A[i] &amp;gt; A[i+1] &amp;gt;">
@@ -280,7 +280,7 @@
 <h3 id="分析"><a href="#分析" class="headerlink" title="分析"></a>分析</h3><hr>
 <p>唔，用二分查找的话，还能再优化一下。</p>
 <h3 id="解决方案2-Java"><a href="#解决方案2-Java" class="headerlink" title="解决方案2(Java)"></a>解决方案2(Java)</h3><hr>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">class Solution &#123;</div><div class="line">    public int peakIndexInMountainArray(int[] A) &#123;</div><div class="line">        int i = 0; </div><div class="line">        for (; A[i] &lt;= A[i+1]; i++) &#123;</div><div class="line">        &#125;</div><div class="line">        return i;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">peakIndexInMountainArray</span><span class="params">(<span class="keyword">int</span>[] A)</span> </span>&#123;</div><div class="line">        <span class="keyword">int</span> i = <span class="number">0</span>; </div><div class="line">        <span class="keyword">for</span> (; A[i] &lt;= A[i+<span class="number">1</span>]; i++) &#123;</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">return</span> i;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <h3 id="相关问题"><a href="#相关问题" class="headerlink" title="相关问题"></a>相关问题</h3><hr>
 <p><a href="https://leetcode.com/problems/find-peak-element" target="_blank" rel="external">(M) Find Peak Element</a>   </p>
 <h3 id="题目来源"><a href="#题目来源" class="headerlink" title="题目来源"></a><a href="https://leetcode.com/problems/peak-index-in-a-mountain-array/description/" target="_blank" rel="external">题目来源</a></h3>
@@ -310,16 +310,16 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2014/03/11/leetcode/Algorithms/leetcode-844-Backspace-String-Compare/" rel="next" title="leetcode-844-Backspace-String-Compare">
-                <i class="fa fa-chevron-left"></i> leetcode-844-Backspace-String-Compare
+              <a href="/2014/03/11/leetcode/Algorithms/leetcode-841-Keys-and-Rooms/" rel="next" title="leetcode-841-Keys-and-Rooms">
+                <i class="fa fa-chevron-left"></i> leetcode-841-Keys-and-Rooms
               </a>
             
           </div>
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2014/03/11/leetcode/Algorithms/leetcode-836-Rectangle-Overlap/" rel="prev" title="leetcode-836-Rectangle-Overlap">
-                leetcode-836-Rectangle-Overlap <i class="fa fa-chevron-right"></i>
+              <a href="/2014/03/11/leetcode/Algorithms/leetcode-844-Backspace-String-Compare/" rel="prev" title="leetcode-844-Backspace-String-Compare">
+                leetcode-844-Backspace-String-Compare <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>

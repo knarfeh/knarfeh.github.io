@@ -65,7 +65,7 @@
 <meta property="og:site_name" content="knarfeh&#39;s logbook">
 <meta property="og:description" content="描述 Given a string, you need to reverse the order of characters in each word within a sentence while still preserving whitespace and initial word order. Example 1: 12Input: &amp;quot;Let&amp;apos;s take LeetCo">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-09-20T01:55:19.135Z">
+<meta property="og:updated_time" content="2019-03-14T14:27:23.146Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="leetcode-557-Reverse-Words-in-a-String-III">
 <meta name="twitter:description" content="描述 Given a string, you need to reverse the order of characters in each word within a sentence while still preserving whitespace and initial word order. Example 1: 12Input: &amp;quot;Let&amp;apos;s take LeetCo">
@@ -268,7 +268,7 @@
 <h3 id="分析"><a href="#分析" class="headerlink" title="分析"></a>分析</h3><hr>
 <p>在 Java 里，有个 StringBuilder 可以用来进行字符串的翻转。</p>
 <h3 id="解决方案1-Java"><a href="#解决方案1-Java" class="headerlink" title="解决方案1(Java)"></a>解决方案1(Java)</h3><hr>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">class Solution &#123;</div><div class="line">    public String reverseWords(String s) &#123;</div><div class="line">        String words[] = s.split(&quot; &quot;);</div><div class="line">        StringBuilder result = new StringBuilder();</div><div class="line">        for (String word: words) &#123;</div><div class="line">            result.append(new StringBuilder(word).reverse().toString() + &quot; &quot;);</div><div class="line">        &#125;</div><div class="line">        return result.toString().trim();</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</div><div class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">reverseWords</span><span class="params">(String s)</span> </span>&#123;</div><div class="line">        String words[] = s.split(<span class="string">" "</span>);</div><div class="line">        StringBuilder result = <span class="keyword">new</span> StringBuilder();</div><div class="line">        <span class="keyword">for</span> (String word: words) &#123;</div><div class="line">            result.append(<span class="keyword">new</span> StringBuilder(word).reverse().toString() + <span class="string">" "</span>);</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">return</span> result.toString().trim();</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <h3 id="相关问题"><a href="#相关问题" class="headerlink" title="相关问题"></a>相关问题</h3><hr>
 <p><a href="https://leetcode.com/problems/reverse-string-ii" target="_blank" rel="external">(E)Reverse String II </a>   </p>
 <h3 id="题目来源"><a href="#题目来源" class="headerlink" title="题目来源"></a><a href="https://leetcode.com/problems/reverse-words-in-a-string-iii/description/" target="_blank" rel="external">题目来源</a></h3>
@@ -298,16 +298,16 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2014/03/11/leetcode/Algorithms/leetcode-560-Subarray-Sum-Equals-K/" rel="next" title="leetcode-560-Subarray-Sum-Equals-K">
-                <i class="fa fa-chevron-left"></i> leetcode-560-Subarray-Sum-Equals-K
+              <a href="/2014/03/11/leetcode/Algorithms/leetcode-559-Maximum-Depth-of-N-ary-Tree/" rel="next" title="leetcode-559-Maximum-Depth-of-N-ary-Tree">
+                <i class="fa fa-chevron-left"></i> leetcode-559-Maximum-Depth-of-N-ary-Tree
               </a>
             
           </div>
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2014/03/11/leetcode/Algorithms/leetcode-561-Array-Partition-I/" rel="prev" title="leetcode-561-Array-Partition-I">
-                leetcode-561-Array-Partition-I <i class="fa fa-chevron-right"></i>
+              <a href="/2014/03/11/leetcode/Algorithms/leetcode-553-Optimal-Division/" rel="prev" title="leetcode-553-Optimal-Division">
+                leetcode-553-Optimal-Division <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>

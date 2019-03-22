@@ -65,7 +65,7 @@
 <meta property="og:site_name" content="knarfeh&#39;s logbook">
 <meta property="og:description" content="描述 There are n bulbs that are initially off. You first turn on all the bulbs. Then, you turn off every second bulb. On the third round, you toggle every third bulb (turning on if it’s off or turning o">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2016-10-28T15:40:40.000Z">
+<meta property="og:updated_time" content="2019-03-14T14:17:23.714Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="leetcode-319-Bulb-Switcher">
 <meta name="twitter:description" content="描述 There are n bulbs that are initially off. You first turn on all the bulbs. Then, you turn off every second bulb. On the third round, you toggle every third bulb (turning on if it’s off or turning o">
@@ -274,7 +274,7 @@ So you should return 1, because there is only one bulb is on.
 <h3 id="分析"><a href="#分析" class="headerlink" title="分析"></a>分析</h3><hr>
 <p>可以在纸上画一下一下找一下规律，题目给定 n 个灯泡，在 n 次之后，留下的小于等于 n 的平方数，为什么呢，比如我们考虑第 m 个灯泡什么时候改变，如 m 等于16，16的因子数有1，2，4，8，16，我们把这个数字分组，可分成(1, 16), (2, 8), (4)，对于平方数，总是会留下一个单独的，以1分隔时，灯打开了，以16分隔时灯又免了，但最终会留下一个单独的，使灯打开，因此留下的都是平方数，程序只需返回小于等于 n 的平方数的个数。</p>
 <h3 id="解决方案1-C"><a href="#解决方案1-C" class="headerlink" title="解决方案1(C++)"></a>解决方案1(C++)</h3><hr>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">class Solution &#123;</div><div class="line">public:</div><div class="line">    int bulbSwitch(int n) &#123;</div><div class="line">        return sqrt(n);</div><div class="line">    &#125;</div><div class="line">&#125;;</div></pre></td></tr></table></figure>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">class</span> Solution &#123;</div><div class="line"><span class="keyword">public</span>:</div><div class="line">    <span class="function"><span class="keyword">int</span> <span class="title">bulbSwitch</span><span class="params">(<span class="keyword">int</span> n)</span> </span>&#123;</div><div class="line">        <span class="keyword">return</span> <span class="built_in">sqrt</span>(n);</div><div class="line">    &#125;</div><div class="line">&#125;;</div></pre></td></tr></table></figure>
 <h3 id="相关问题"><a href="#相关问题" class="headerlink" title="相关问题"></a>相关问题</h3><hr>
 <h3 id="题目来源"><a href="#题目来源" class="headerlink" title="题目来源"></a><a href="https://leetcode.com/problems/bulb-switcher/" target="_blank" rel="external">题目来源</a></h3>
       
@@ -313,8 +313,8 @@ So you should return 1, because there is only one bulb is on.
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2014/03/11/leetcode/Algorithms/leetcode-297-Serialize-and-Deserialize-Binary-Tree/" rel="prev" title="leetcode-297-Serialize-and-Deserialize-Binary-Tree">
-                leetcode-297-Serialize-and-Deserialize-Binary-Tree <i class="fa fa-chevron-right"></i>
+              <a href="/2014/03/11/leetcode/Algorithms/leetcode-313-Super-Ugly-Number/" rel="prev" title="leetcode-313-Super-Ugly-Number">
+                leetcode-313-Super-Ugly-Number <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>

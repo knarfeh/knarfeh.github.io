@@ -65,7 +65,7 @@
 <meta property="og:site_name" content="knarfeh&#39;s logbook">
 <meta property="og:description" content="描述 Given a non-negative integer num, repeatedly add all its digits until the result has only one digit. For example: Given num = 38, the process is like: 3 + 8 = 11, 1 + 1 = 2. Since 2 has only one di">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2016-10-28T15:40:40.000Z">
+<meta property="og:updated_time" content="2019-03-14T12:48:04.165Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="leetcode-258-Add-Digits">
 <meta name="twitter:description" content="描述 Given a non-negative integer num, repeatedly add all its digits until the result has only one digit. For example: Given num = 38, the process is like: 3 + 8 = 11, 1 + 1 = 2. Since 2 has only one di">
@@ -266,7 +266,7 @@
 <h3 id="分析"><a href="#分析" class="headerlink" title="分析"></a>分析</h3><hr>
 <p>找数学规律的一道题，比方说38，是3+8，而前面的3是30%9得到的，而11，1+1，前面的1是10%9得到的，</p>
 <h3 id="解决方案1-C"><a href="#解决方案1-C" class="headerlink" title="解决方案1(C++)"></a>解决方案1(C++)</h3><hr>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">class Solution &#123;</div><div class="line">public:</div><div class="line">    int addDigits(int num) &#123;</div><div class="line">        if(num%9 == 0 &amp;&amp; num != 0)&#123;</div><div class="line">            return 9;</div><div class="line">        &#125;else &#123;</div><div class="line">            return num%9;</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">&#125;;</div></pre></td></tr></table></figure>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">class</span> Solution &#123;</div><div class="line"><span class="keyword">public</span>:</div><div class="line">    <span class="function"><span class="keyword">int</span> <span class="title">addDigits</span><span class="params">(<span class="keyword">int</span> num)</span> </span>&#123;</div><div class="line">        <span class="keyword">if</span>(num%<span class="number">9</span> == <span class="number">0</span> &amp;&amp; num != <span class="number">0</span>)&#123;</div><div class="line">            <span class="keyword">return</span> <span class="number">9</span>;</div><div class="line">        &#125;<span class="keyword">else</span> &#123;</div><div class="line">            <span class="keyword">return</span> num%<span class="number">9</span>;</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">&#125;;</div></pre></td></tr></table></figure>
 <h3 id="相关问题"><a href="#相关问题" class="headerlink" title="相关问题"></a>相关问题</h3><hr>
 <p><a href="https://leetcode.com/problems/happy-number/" target="_blank" rel="external">(E) Happy Number</a>   </p>
 <h3 id="题目来源"><a href="#题目来源" class="headerlink" title="题目来源"></a><a href="https://leetcode.com/problems/add-digits/" target="_blank" rel="external">题目来源</a></h3>
@@ -296,16 +296,16 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2014/03/11/leetcode/Algorithms/leetcode-230-Kth-Smallest-Element-in-a-BST/" rel="next" title="leetcode-230-Kth-Smallest-Element-in-a-BST">
-                <i class="fa fa-chevron-left"></i> leetcode-230-Kth-Smallest-Element-in-a-BST
+              <a href="/2014/03/11/leetcode/Algorithms/leetcode-257-Binary-Tree-Paths/" rel="next" title="leetcode-257-Binary-Tree-Paths">
+                <i class="fa fa-chevron-left"></i> leetcode-257-Binary-Tree-Paths
               </a>
             
           </div>
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2014/03/11/leetcode/Algorithms/leetcode-242-Valid-Anagram/" rel="prev" title="leetcode-242-Valid-Anagram">
-                leetcode-242-Valid-Anagram <i class="fa fa-chevron-right"></i>
+              <a href="/2014/03/11/leetcode/Algorithms/leetcode-238-Product-of-Array-Except-Self/" rel="prev" title="leetcode-238-Product-of-Array-Except-Self">
+                leetcode-238-Product-of-Array-Except-Self <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>

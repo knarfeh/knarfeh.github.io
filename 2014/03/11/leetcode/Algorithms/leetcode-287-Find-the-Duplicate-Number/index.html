@@ -65,7 +65,7 @@
 <meta property="og:site_name" content="knarfeh&#39;s logbook">
 <meta property="og:description" content="描述 Given an array nums containing n + 1 integers where each integer is between 1 and n (inclusive), prove that at least one duplicate number must exist. Assume that there is only one duplicate number,">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-11-11T13:28:22.876Z">
+<meta property="og:updated_time" content="2019-03-14T12:50:36.078Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="leetcode-287-Find-the-Duplicate-Number">
 <meta name="twitter:description" content="描述 Given an array nums containing n + 1 integers where each integer is between 1 and n (inclusive), prove that at least one duplicate number must exist. Assume that there is only one duplicate number,">
@@ -276,7 +276,7 @@
 <h3 id="分析"><a href="#分析" class="headerlink" title="分析"></a>分析</h3><hr>
 <p>和 <a href="https://leetcode.com/problems/linked-list-cycle-ii/" target="_blank" rel="external">142. Linked List Cycle II</a> 的思路基本一致。这道题可以把数组当做一个图，对于数组中的值，<code>i -&gt; A[i]</code> 是一条有向连接，由于数组的长度是 n+1, 而值的范围为 <code>1~n</code>，重复的那个值就相当于有两个节点指向它，因此这个图中一定存在环。求这个环的入口，逻辑就跟 <a href="https://leetcode.com/problems/linked-list-cycle-ii/" target="_blank" rel="external">142. Linked List Cycle II</a> 这道题没什么区别了。</p>
 <h3 id="解决方案1-Java"><a href="#解决方案1-Java" class="headerlink" title="解决方案1(Java)"></a>解决方案1(Java)</h3><hr>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line">class Solution &#123;</div><div class="line">    public int findDuplicate(int[] nums) &#123;</div><div class="line">        if (nums.length &lt; 1) &#123;</div><div class="line">            return -1;</div><div class="line">        &#125;</div><div class="line">        int slow = nums[0], fast = nums[nums[0]];</div><div class="line">        while (slow != fast) &#123;</div><div class="line">            slow = nums[slow];</div><div class="line">            fast = nums[nums[fast]];</div><div class="line">        &#125;</div><div class="line">        </div><div class="line">        slow = 0;</div><div class="line">        while (fast != slow) &#123;</div><div class="line">            fast = nums[fast];</div><div class="line">            slow = nums[slow];</div><div class="line">        &#125;</div><div class="line">        return fast;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">findDuplicate</span><span class="params">(<span class="keyword">int</span>[] nums)</span> </span>&#123;</div><div class="line">        <span class="keyword">if</span> (nums.length &lt; <span class="number">1</span>) &#123;</div><div class="line">            <span class="keyword">return</span> -<span class="number">1</span>;</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">int</span> slow = nums[<span class="number">0</span>], fast = nums[nums[<span class="number">0</span>]];</div><div class="line">        <span class="keyword">while</span> (slow != fast) &#123;</div><div class="line">            slow = nums[slow];</div><div class="line">            fast = nums[nums[fast]];</div><div class="line">        &#125;</div><div class="line">        </div><div class="line">        slow = <span class="number">0</span>;</div><div class="line">        <span class="keyword">while</span> (fast != slow) &#123;</div><div class="line">            fast = nums[fast];</div><div class="line">            slow = nums[slow];</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">return</span> fast;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <h3 id="相关问题"><a href="#相关问题" class="headerlink" title="相关问题"></a>相关问题</h3><hr>
 <ul>
 <li><a href="https://leetcode.com/problems/linked-list-cycle-ii/" target="_blank" rel="external">(M) Linked List Cycle II</a>   </li>
@@ -316,16 +316,16 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2014/03/11/leetcode/Algorithms/leetcode-21-Merge-Two-Sorted-Lists/" rel="next" title="leetcode-21-Merge-Two-Sorted-Lists">
-                <i class="fa fa-chevron-left"></i> leetcode-21-Merge-Two-Sorted-Lists
+              <a href="/2014/03/11/leetcode/Algorithms/leetcode-290-Word-Pattern/" rel="next" title="leetcode-290-Word-Pattern">
+                <i class="fa fa-chevron-left"></i> leetcode-290-Word-Pattern
               </a>
             
           </div>
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2014/03/11/leetcode/Algorithms/leetcode-283-Move-Zeroes/" rel="prev" title="leetcode-283-Move-Zeroes">
-                leetcode-283-Move-Zeroes <i class="fa fa-chevron-right"></i>
+              <a href="/2014/03/11/leetcode/Algorithms/leetcode-292-Nim-Game/" rel="prev" title="leetcode-292-Nim-Game">
+                leetcode-292-Nim-Game <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>

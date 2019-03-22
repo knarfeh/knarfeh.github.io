@@ -65,7 +65,7 @@
 <meta property="og:site_name" content="knarfeh&#39;s logbook">
 <meta property="og:description" content="描述 Give a string s, count the number of non-empty (contiguous) substrings that have the same number of 0’s and 1’s, and all the 0’s and all the 1’s in these substrings are grouped consecutively. Subst">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-11-11T12:43:28.234Z">
+<meta property="og:updated_time" content="2019-03-18T13:08:01.667Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="leetcode-696-Count-Binary-Substrings">
 <meta name="twitter:description" content="描述 Give a string s, count the number of non-empty (contiguous) substrings that have the same number of 0’s and 1’s, and all the 0’s and all the 1’s in these substrings are grouped consecutively. Subst">
@@ -273,7 +273,7 @@
 <h3 id="分析"><a href="#分析" class="headerlink" title="分析"></a>分析</h3><hr>
 <p>题目的要求是子串有相同个数的1和0，并且1和0是连续的，所以例子里的00110011的子串 00110011不符合要求，根据特性，我们可以计算当前连续的个数，与之前计算的连续的个数比较，如果前面紧连的长度大于等于目前的长度，则为我们要找的子串。</p>
 <h3 id="解决方案1-Java"><a href="#解决方案1-Java" class="headerlink" title="解决方案1(Java)"></a>解决方案1(Java)</h3><hr>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line">class Solution &#123;</div><div class="line">    public int countBinarySubstrings(String s) &#123;</div><div class="line">        int result = 0, previousLength = 0, currentLength = 1;</div><div class="line">        for (int i = 1; i &lt; s.length(); i++) &#123;</div><div class="line">            if (s.charAt(i) == s.charAt(i-1)) &#123;</div><div class="line">                currentLength++;</div><div class="line">            &#125; else &#123;</div><div class="line">                previousLength = currentLength;</div><div class="line">                currentLength = 1;</div><div class="line">            &#125;</div><div class="line">            if (previousLength &gt;= currentLength) &#123;</div><div class="line">                result++;</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">        return result;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">countBinarySubstrings</span><span class="params">(String s)</span> </span>&#123;</div><div class="line">        <span class="keyword">int</span> result = <span class="number">0</span>, previousLength = <span class="number">0</span>, currentLength = <span class="number">1</span>;</div><div class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt; s.length(); i++) &#123;</div><div class="line">            <span class="keyword">if</span> (s.charAt(i) == s.charAt(i-<span class="number">1</span>)) &#123;</div><div class="line">                currentLength++;</div><div class="line">            &#125; <span class="keyword">else</span> &#123;</div><div class="line">                previousLength = currentLength;</div><div class="line">                currentLength = <span class="number">1</span>;</div><div class="line">            &#125;</div><div class="line">            <span class="keyword">if</span> (previousLength &gt;= currentLength) &#123;</div><div class="line">                result++;</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">return</span> result;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <h3 id="相关问题"><a href="#相关问题" class="headerlink" title="相关问题"></a>相关问题</h3><hr>
 <ul>
 <li><a href="https://leetcode.com/problems/encode-and-decode-strings" target="_blank" rel="external">(M) Encode and Decode Strings</a>   </li>
@@ -305,8 +305,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2014/03/11/leetcode/Algorithms/leetcode-7-Reverse-Integer/" rel="next" title="leetcode-7-Reverse-Integer">
-                <i class="fa fa-chevron-left"></i> leetcode-7-Reverse-Integer
+              <a href="/2014/03/11/leetcode/Algorithms/leetcode-697-Degree-of-an-Array/" rel="next" title="leetcode-697-Degree-of-an-Array">
+                <i class="fa fa-chevron-left"></i> leetcode-697-Degree-of-an-Array
               </a>
             
           </div>

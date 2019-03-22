@@ -65,7 +65,7 @@
 <meta property="og:site_name" content="knarfeh&#39;s logbook">
 <meta property="og:description" content="描述 A rectangle is represented as a list [x1, y1, x2, y2], where (x1, y1) are the coordinates of its bottom-left corner, and (x2, y2) are the coordinates of its top-right corner. Two rectangles overlap">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-11-11T09:04:38.180Z">
+<meta property="og:updated_time" content="2019-03-18T13:08:01.764Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="leetcode-836-Rectangle-Overlap">
 <meta name="twitter:description" content="描述 A rectangle is represented as a list [x1, y1, x2, y2], where (x1, y1) are the coordinates of its bottom-left corner, and (x2, y2) are the coordinates of its top-right corner. Two rectangles overlap">
@@ -276,7 +276,7 @@
 <h3 id="分析"><a href="#分析" class="headerlink" title="分析"></a>分析</h3><hr>
 <p>根据坐标判断两个长方形是否相交，小学知识？</p>
 <h3 id="解决方案1-Java"><a href="#解决方案1-Java" class="headerlink" title="解决方案1(Java)"></a>解决方案1(Java)</h3><hr>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">class Solution &#123;</div><div class="line">    public boolean isRectangleOverlap(int[] rec1, int[] rec2) &#123;</div><div class="line">        return !(rec1[2] &lt;= rec2[0] || rec1[3] &lt;= rec2[1] || rec1[0] &gt;= rec2[2] || rec1[1] &gt;= rec2[3]);</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">isRectangleOverlap</span><span class="params">(<span class="keyword">int</span>[] rec1, <span class="keyword">int</span>[] rec2)</span> </span>&#123;</div><div class="line">        <span class="keyword">return</span> !(rec1[<span class="number">2</span>] &lt;= rec2[<span class="number">0</span>] || rec1[<span class="number">3</span>] &lt;= rec2[<span class="number">1</span>] || rec1[<span class="number">0</span>] &gt;= rec2[<span class="number">2</span>] || rec1[<span class="number">1</span>] &gt;= rec2[<span class="number">3</span>]);</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <h3 id="相关问题"><a href="#相关问题" class="headerlink" title="相关问题"></a>相关问题</h3><hr>
 <p><a href="https://leetcode.com/problems/rectangle-area" target="_blank" rel="external">(M) Rectangle Area</a>   </p>
 <h3 id="题目来源"><a href="#题目来源" class="headerlink" title="题目来源"></a><a href="https://leetcode.com/problems/rectangle-overlap/description/" target="_blank" rel="external">题目来源</a></h3>
@@ -306,16 +306,16 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2014/03/11/leetcode/Algorithms/leetcode-852-Peak-Index-in-a-Mountain-Array/" rel="next" title="leetcode-852-Peak-Index-in-a-Mountain-Array">
-                <i class="fa fa-chevron-left"></i> leetcode-852-Peak-Index-in-a-Mountain-Array
+              <a href="/2014/03/11/leetcode/Algorithms/leetcode-844-Backspace-String-Compare/" rel="next" title="leetcode-844-Backspace-String-Compare">
+                <i class="fa fa-chevron-left"></i> leetcode-844-Backspace-String-Compare
               </a>
             
           </div>
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2014/03/11/leetcode/Algorithms/leetcode-830-Positions-of-Large-Groups/" rel="prev" title="leetcode-830-Positions-of-Large-Groups">
-                leetcode-830-Positions-of-Large-Groups <i class="fa fa-chevron-right"></i>
+              <a href="/2014/03/11/leetcode/Algorithms/leetcode-83-Remove-Duplicates-from-Sorted-List/" rel="prev" title="leetcode-83-Remove-Duplicates-from-Sorted-List">
+                leetcode-83-Remove-Duplicates-from-Sorted-List <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>

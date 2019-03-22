@@ -65,7 +65,7 @@
 <meta property="og:site_name" content="knarfeh&#39;s logbook">
 <meta property="og:description" content="描述 We have two special characters. The first character can be represented by one bit 0. The second character can be represented by two bits (10 or 11). Now given a string represented by several bits.">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-11-11T09:26:47.704Z">
+<meta property="og:updated_time" content="2019-03-18T13:08:01.688Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="leetcode-717-1-bit-and-2-bit-Characters">
 <meta name="twitter:description" content="描述 We have two special characters. The first character can be represented by one bit 0. The second character can be represented by two bits (10 or 11). Now given a string represented by several bits.">
@@ -273,7 +273,7 @@
 <h3 id="分析"><a href="#分析" class="headerlink" title="分析"></a>分析</h3><hr>
 <p>输入是一个数组，其中的元素是 10，11， 0，判断最后一个元素是否为 0。注意到 0 长度是1，10，11 的长度都是2，一次遍历即可。时间复杂度为 O(n), 空间复杂度为 O(n)</p>
 <h3 id="解决方案1-Java"><a href="#解决方案1-Java" class="headerlink" title="解决方案1(Java)"></a>解决方案1(Java)</h3><hr>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">class Solution &#123;</div><div class="line">    public boolean isOneBitCharacter(int[] bits) &#123;</div><div class="line">        int i = 0;</div><div class="line">        while (i &lt; bits.length-1) &#123;</div><div class="line">            if (bits[i] == 1) &#123;</div><div class="line">                i += 2;</div><div class="line">            &#125; else &#123;</div><div class="line">                i++;</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">        return i == bits.length-1;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">isOneBitCharacter</span><span class="params">(<span class="keyword">int</span>[] bits)</span> </span>&#123;</div><div class="line">        <span class="keyword">int</span> i = <span class="number">0</span>;</div><div class="line">        <span class="keyword">while</span> (i &lt; bits.length-<span class="number">1</span>) &#123;</div><div class="line">            <span class="keyword">if</span> (bits[i] == <span class="number">1</span>) &#123;</div><div class="line">                i += <span class="number">2</span>;</div><div class="line">            &#125; <span class="keyword">else</span> &#123;</div><div class="line">                i++;</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">return</span> i == bits.length-<span class="number">1</span>;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <h3 id="相关问题"><a href="#相关问题" class="headerlink" title="相关问题"></a>相关问题</h3><hr>
 <p><a href="https://leetcode.com/problems/gray-code" target="_blank" rel="external">(M) Gray Code</a>   </p>
 <h3 id="题目来源"><a href="#题目来源" class="headerlink" title="题目来源"></a><a href="https://leetcode.com/problems/1-bit-and-2-bit-characters/description/" target="_blank" rel="external">题目来源</a></h3>
@@ -311,8 +311,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2014/03/11/leetcode/Algorithms/leetcode-706-Design-HashMap/" rel="prev" title="leetcode-706-Design-HashMap">
-                leetcode-706-Design-HashMap <i class="fa fa-chevron-right"></i>
+              <a href="/2014/03/11/leetcode/Algorithms/leetcode-705-Design-HashSet/" rel="prev" title="leetcode-705-Design-HashSet">
+                leetcode-705-Design-HashSet <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>

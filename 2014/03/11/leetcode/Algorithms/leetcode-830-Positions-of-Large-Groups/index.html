@@ -65,7 +65,7 @@
 <meta property="og:site_name" content="knarfeh&#39;s logbook">
 <meta property="og:description" content="描述 In a string S of lowercase letters, these letters form consecutive groups of the same character. For example, a string like S = &amp;quot;abbxxxxzyy&amp;quot; has the groups &amp;quot;a&amp;quot;, &amp;quot;bb&amp;quot;,">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-11-11T09:06:06.646Z">
+<meta property="og:updated_time" content="2019-03-18T13:08:01.759Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="leetcode-830-Positions-of-Large-Groups">
 <meta name="twitter:description" content="描述 In a string S of lowercase letters, these letters form consecutive groups of the same character. For example, a string like S = &amp;quot;abbxxxxzyy&amp;quot; has the groups &amp;quot;a&amp;quot;, &amp;quot;bb&amp;quot;,">
@@ -275,7 +275,7 @@
 <h3 id="分析"><a href="#分析" class="headerlink" title="分析"></a>分析</h3><hr>
 <p>一前一后双指针，一次遍历即可。</p>
 <h3 id="解决方案1-Java"><a href="#解决方案1-Java" class="headerlink" title="解决方案1(Java)"></a>解决方案1(Java)</h3><hr>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line">class Solution &#123;</div><div class="line">    public List&lt;List&lt;Integer&gt;&gt; largeGroupPositions(String S) &#123;</div><div class="line">        S = S + &apos;#&apos;;</div><div class="line">        List&lt;List&lt;Integer&gt;&gt; result = new LinkedList&lt;&gt;();</div><div class="line">        for (int fastI = 0, slowI = 0; fastI &lt; S.length(); fastI++) &#123;</div><div class="line">            if (S.charAt(fastI) != S.charAt(slowI)) &#123;</div><div class="line">                if ((fastI-slowI) &gt;= 3) &#123;</div><div class="line">                    result.add(Arrays.asList(new Integer[]&#123;slowI, fastI-1&#125;));</div><div class="line">                &#125;</div><div class="line">                slowI = fastI;</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">        return result;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</div><div class="line">    <span class="keyword">public</span> List&lt;List&lt;Integer&gt;&gt; largeGroupPositions(String S) &#123;</div><div class="line">        S = S + <span class="string">'#'</span>;</div><div class="line">        List&lt;List&lt;Integer&gt;&gt; result = <span class="keyword">new</span> LinkedList&lt;&gt;();</div><div class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> fastI = <span class="number">0</span>, slowI = <span class="number">0</span>; fastI &lt; S.length(); fastI++) &#123;</div><div class="line">            <span class="keyword">if</span> (S.charAt(fastI) != S.charAt(slowI)) &#123;</div><div class="line">                <span class="keyword">if</span> ((fastI-slowI) &gt;= <span class="number">3</span>) &#123;</div><div class="line">                    result.add(Arrays.asList(<span class="keyword">new</span> Integer[]&#123;slowI, fastI-<span class="number">1</span>&#125;));</div><div class="line">                &#125;</div><div class="line">                slowI = fastI;</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">return</span> result;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <h3 id="题目来源"><a href="#题目来源" class="headerlink" title="题目来源"></a><a href="https://leetcode.com/problems/positions-of-large-groups/description/" target="_blank" rel="external">题目来源</a></h3>
       
     </div>
@@ -303,8 +303,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2014/03/11/leetcode/Algorithms/leetcode-836-Rectangle-Overlap/" rel="next" title="leetcode-836-Rectangle-Overlap">
-                <i class="fa fa-chevron-left"></i> leetcode-836-Rectangle-Overlap
+              <a href="/2014/03/11/leetcode/Algorithms/leetcode-83-Remove-Duplicates-from-Sorted-List/" rel="next" title="leetcode-83-Remove-Duplicates-from-Sorted-List">
+                <i class="fa fa-chevron-left"></i> leetcode-83-Remove-Duplicates-from-Sorted-List
               </a>
             
           </div>

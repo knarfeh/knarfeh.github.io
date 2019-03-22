@@ -65,7 +65,7 @@
 <meta property="og:site_name" content="knarfeh&#39;s logbook">
 <meta property="og:description" content="描述 For a web developer, it is very important to know how to design a web page’s size. So, given a specific rectangular web page’s area, your job by now is to design a rectangular web page, whose lengt">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-11-11T13:17:24.199Z">
+<meta property="og:updated_time" content="2019-03-14T14:24:41.289Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="leetcode-492-Construct-the-Rectangle">
 <meta name="twitter:description" content="描述 For a web developer, it is very important to know how to design a web page’s size. So, given a specific rectangular web page’s area, your job by now is to design a rectangular web page, whose lengt">
@@ -272,7 +272,7 @@
 </ol>
 <a id="more"></a>
 <h3 id="解决方案1-Java"><a href="#解决方案1-Java" class="headerlink" title="解决方案1(Java)"></a>解决方案1(Java)</h3><hr>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">class Solution &#123;</div><div class="line">    public int[] constructRectangle(int area) &#123;</div><div class="line">        int width = (int)Math.sqrt(area);</div><div class="line">        while (area % width != 0) &#123;</div><div class="line">            width--;</div><div class="line">        &#125;</div><div class="line">        return new int[]&#123;area/width, width&#125;;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</div><div class="line">    <span class="keyword">public</span> <span class="keyword">int</span>[] constructRectangle(<span class="keyword">int</span> area) &#123;</div><div class="line">        <span class="keyword">int</span> width = (<span class="keyword">int</span>)Math.sqrt(area);</div><div class="line">        <span class="keyword">while</span> (area % width != <span class="number">0</span>) &#123;</div><div class="line">            width--;</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">return</span> <span class="keyword">new</span> <span class="keyword">int</span>[]&#123;area/width, width&#125;;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <h3 id="题目来源"><a href="#题目来源" class="headerlink" title="题目来源"></a><a href="https://leetcode.com/problems/construct-the-rectangle/description/" target="_blank" rel="external">题目来源</a></h3>
       
     </div>
@@ -300,16 +300,16 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2014/03/11/leetcode/Algorithms/leetcode-495-Teemo-Attacking/" rel="next" title="leetcode-495-Teemo-Attacking">
-                <i class="fa fa-chevron-left"></i> leetcode-495-Teemo-Attacking
+              <a href="/2014/03/11/leetcode/Algorithms/leetcode-50-Pow(x,-n)/" rel="next" title="leetcode-50-Pow(x,-n)">
+                <i class="fa fa-chevron-left"></i> leetcode-50-Pow(x,-n)
               </a>
             
           </div>
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2014/03/11/leetcode/Algorithms/leetcode-49-Group-Anagrams/" rel="prev" title="leetcode-49-Group-Anagrams">
-                leetcode-49-Group-Anagrams <i class="fa fa-chevron-right"></i>
+              <a href="/2014/03/11/leetcode/Algorithms/leetcode-495-Teemo-Attacking/" rel="prev" title="leetcode-495-Teemo-Attacking">
+                leetcode-495-Teemo-Attacking <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>

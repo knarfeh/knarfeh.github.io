@@ -65,7 +65,7 @@
 <meta property="og:site_name" content="knarfeh&#39;s logbook">
 <meta property="og:description" content="描述 Given a string which consists of lowercase or uppercase letters, find the length of the longest palindromes that can be built with those letters. This is case sensitive, for example &amp;quot;Aa&amp;quot;">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-11-11T13:24:43.322Z">
+<meta property="og:updated_time" content="2019-03-14T14:22:01.454Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="leetcode-409-Longest-Palindrome">
 <meta name="twitter:description" content="描述 Given a string which consists of lowercase or uppercase letters, find the length of the longest palindromes that can be built with those letters. This is case sensitive, for example &amp;quot;Aa&amp;quot;">
@@ -269,7 +269,7 @@
 <h3 id="分析"><a href="#分析" class="headerlink" title="分析"></a>分析</h3><hr>
 <p>用一个字符串里的字母组成回文，判断能组成的回文的最大长度。思路是统计每个字符的出现次数。如果字符出现了偶数次，将该字符出现的次数直接加入到结果中，如果出现了奇数次，则将字符出现的次数减一加入到结果中，最后，如果有奇数次的字符，结果加一。</p>
 <h3 id="解决方案1-Java"><a href="#解决方案1-Java" class="headerlink" title="解决方案1(Java)"></a>解决方案1(Java)</h3><hr>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line">class Solution &#123;</div><div class="line">    public int longestPalindrome(String s) &#123;</div><div class="line">        int[] charCount = new int[256];</div><div class="line">        for (char c: s.toCharArray()) &#123;</div><div class="line">            charCount[c]++;</div><div class="line">        &#125;</div><div class="line">        int result = 0;</div><div class="line">        int oddCount = 0;</div><div class="line">        for (int count: charCount) &#123;</div><div class="line">            result += count;</div><div class="line">            if (count % 2 == 1) &#123;</div><div class="line">                oddCount++;</div><div class="line">                result--;</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">        return oddCount &gt; 0 ? result+1: result;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">longestPalindrome</span><span class="params">(String s)</span> </span>&#123;</div><div class="line">        <span class="keyword">int</span>[] charCount = <span class="keyword">new</span> <span class="keyword">int</span>[<span class="number">256</span>];</div><div class="line">        <span class="keyword">for</span> (<span class="keyword">char</span> c: s.toCharArray()) &#123;</div><div class="line">            charCount[c]++;</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">int</span> result = <span class="number">0</span>;</div><div class="line">        <span class="keyword">int</span> oddCount = <span class="number">0</span>;</div><div class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> count: charCount) &#123;</div><div class="line">            result += count;</div><div class="line">            <span class="keyword">if</span> (count % <span class="number">2</span> == <span class="number">1</span>) &#123;</div><div class="line">                oddCount++;</div><div class="line">                result--;</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">return</span> oddCount &gt; <span class="number">0</span> ? result+<span class="number">1</span>: result;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <h3 id="相关问题"><a href="#相关问题" class="headerlink" title="相关问题"></a>相关问题</h3><hr>
 <ul>
 <li><a href="https://leetcode.com/problems/palindrome-permutation" target="_blank" rel="external">(E) Palindrome Permutation</a>   </li>
@@ -301,16 +301,16 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2014/03/11/leetcode/Algorithms/leetcode-404-Sum-of-Left-Leaves/" rel="next" title="leetcode-404-Sum-of-Left-Leaves">
-                <i class="fa fa-chevron-left"></i> leetcode-404-Sum-of-Left-Leaves
+              <a href="/2014/03/11/leetcode/Algorithms/leetcode-414-Third-Maximum-Number/" rel="next" title="leetcode-414-Third-Maximum-Number">
+                <i class="fa fa-chevron-left"></i> leetcode-414-Third-Maximum-Number
               </a>
             
           </div>
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2014/03/11/leetcode/Algorithms/leetcode-389-Find-the-Difference/" rel="prev" title="leetcode-389-Find-the-Difference">
-                leetcode-389-Find-the-Difference <i class="fa fa-chevron-right"></i>
+              <a href="/2014/03/11/leetcode/Algorithms/leetcode-40-Combination-Sum-II/" rel="prev" title="leetcode-40-Combination-Sum-II">
+                leetcode-40-Combination-Sum-II <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>

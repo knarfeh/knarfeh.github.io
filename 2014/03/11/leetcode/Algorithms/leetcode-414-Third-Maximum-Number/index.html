@@ -65,7 +65,7 @@
 <meta property="og:site_name" content="knarfeh&#39;s logbook">
 <meta property="og:description" content="描述 Given a non-empty array of integers, return the third maximum number in this array. If it does not exist, return the maximum number. The time complexity must be in O(n). Example 1: 12345Input: [3,">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-11-11T13:25:12.006Z">
+<meta property="og:updated_time" content="2019-03-14T14:22:17.531Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="leetcode-414-Third-Maximum-Number">
 <meta name="twitter:description" content="描述 Given a non-empty array of integers, return the third maximum number in this array. If it does not exist, return the maximum number. The time complexity must be in O(n). Example 1: 12345Input: [3,">
@@ -271,7 +271,7 @@
 <h3 id="分析"><a href="#分析" class="headerlink" title="分析"></a>分析</h3><hr>
 <p>求数组中第三大的数，没有必要用堆，直接一次遍历然后比较即可。</p>
 <h3 id="解决方案1-Java"><a href="#解决方案1-Java" class="headerlink" title="解决方案1(Java)"></a>解决方案1(Java)</h3><hr>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div></pre></td><td class="code"><pre><div class="line">class Solution &#123;</div><div class="line">    public int thirdMax(int[] nums) &#123;</div><div class="line">        Integer max = null;</div><div class="line">        Integer max2 = null;</div><div class="line">        Integer max3 = null;</div><div class="line">        </div><div class="line">        for (Integer n: nums) &#123;</div><div class="line">            if (n.equals(max) || n.equals(max2) || n.equals(max3)) &#123;</div><div class="line">                continue;</div><div class="line">            &#125;</div><div class="line">            if (max == null || n &gt; max) &#123;</div><div class="line">                max3 = max2;</div><div class="line">                max2 = max;</div><div class="line">                max = n;</div><div class="line">            &#125; else if (max2 == null || n &gt; max2) &#123;</div><div class="line">                max3 = max2;</div><div class="line">                max2 = n;</div><div class="line">            &#125; else if (max3 == null || n &gt; max3) &#123;</div><div class="line">                max3 = n;</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">        return max3 == null ? max: max3;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">thirdMax</span><span class="params">(<span class="keyword">int</span>[] nums)</span> </span>&#123;</div><div class="line">        Integer max = <span class="keyword">null</span>;</div><div class="line">        Integer max2 = <span class="keyword">null</span>;</div><div class="line">        Integer max3 = <span class="keyword">null</span>;</div><div class="line">        </div><div class="line">        <span class="keyword">for</span> (Integer n: nums) &#123;</div><div class="line">            <span class="keyword">if</span> (n.equals(max) || n.equals(max2) || n.equals(max3)) &#123;</div><div class="line">                <span class="keyword">continue</span>;</div><div class="line">            &#125;</div><div class="line">            <span class="keyword">if</span> (max == <span class="keyword">null</span> || n &gt; max) &#123;</div><div class="line">                max3 = max2;</div><div class="line">                max2 = max;</div><div class="line">                max = n;</div><div class="line">            &#125; <span class="keyword">else</span> <span class="keyword">if</span> (max2 == <span class="keyword">null</span> || n &gt; max2) &#123;</div><div class="line">                max3 = max2;</div><div class="line">                max2 = n;</div><div class="line">            &#125; <span class="keyword">else</span> <span class="keyword">if</span> (max3 == <span class="keyword">null</span> || n &gt; max3) &#123;</div><div class="line">                max3 = n;</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">return</span> max3 == <span class="keyword">null</span> ? max: max3;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <h3 id="相关问题"><a href="#相关问题" class="headerlink" title="相关问题"></a>相关问题</h3><hr>
 <p><a href="https://leetcode.com/problems/kth-largest-element-in-an-array" target="_blank" rel="external">(M) Kth Largest Element in an Array</a>   </p>
 <h3 id="题目来源"><a href="#题目来源" class="headerlink" title="题目来源"></a><a href="https://leetcode.com/problems/third-maximum-number/description/" target="_blank" rel="external">题目来源</a></h3>
@@ -301,16 +301,16 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2014/03/11/leetcode/Algorithms/leetcode-419-Battleships-in-a-Board/" rel="next" title="leetcode-419-Battleships-in-a-Board">
-                <i class="fa fa-chevron-left"></i> leetcode-419-Battleships-in-a-Board
+              <a href="/2014/03/11/leetcode/Algorithms/leetcode-412-Fizz-Buzz/" rel="next" title="leetcode-412-Fizz-Buzz">
+                <i class="fa fa-chevron-left"></i> leetcode-412-Fizz-Buzz
               </a>
             
           </div>
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2014/03/11/leetcode/Algorithms/leetcode-415-Add-Strings/" rel="prev" title="leetcode-415-Add-Strings">
-                leetcode-415-Add-Strings <i class="fa fa-chevron-right"></i>
+              <a href="/2014/03/11/leetcode/Algorithms/leetcode-409-Longest-Palindrome/" rel="prev" title="leetcode-409-Longest-Palindrome">
+                leetcode-409-Longest-Palindrome <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>

@@ -65,7 +65,7 @@
 <meta property="og:site_name" content="knarfeh&#39;s logbook">
 <meta property="og:description" content="描述 Given two strings S and T, return if they are equal when both are typed into empty text editors. # means a backspace character. Example 1: 123Input: S = &amp;quot;ab#c&amp;quot;, T = &amp;quot;ad#c&amp;quot;Output">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-11-11T09:04:04.063Z">
+<meta property="og:updated_time" content="2019-03-18T13:08:01.769Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="leetcode-844-Backspace-String-Compare">
 <meta name="twitter:description" content="描述 Given two strings S and T, return if they are equal when both are typed into empty text editors. # means a backspace character. Example 1: 123Input: S = &amp;quot;ab#c&amp;quot;, T = &amp;quot;ad#c&amp;quot;Output">
@@ -283,7 +283,7 @@
 <h3 id="分析"><a href="#分析" class="headerlink" title="分析"></a>分析</h3><hr>
 <p>可以用先进后出的栈的思想来解决这个问题。</p>
 <h3 id="解决方案1-Java"><a href="#解决方案1-Java" class="headerlink" title="解决方案1(Java)"></a>解决方案1(Java)</h3><hr>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line">class Solution &#123;</div><div class="line">    public boolean backspaceCompare(String S, String T) &#123;</div><div class="line">        return realStr(S).equals(realStr(T));</div><div class="line">    &#125;</div><div class="line">    </div><div class="line">    private String realStr(String s) &#123;</div><div class="line">        StringBuilder result = new StringBuilder();</div><div class="line">        for (char c: s.toCharArray()) &#123;</div><div class="line">            if (c == &apos;#&apos;) &#123;</div><div class="line">                if (result.length() &gt; 0) &#123;</div><div class="line">                    result.setLength(result.length() - 1);</div><div class="line">                &#125;</div><div class="line">            &#125; else &#123;</div><div class="line">                result.append(c);</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">        return result.toString();</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">backspaceCompare</span><span class="params">(String S, String T)</span> </span>&#123;</div><div class="line">        <span class="keyword">return</span> realStr(S).equals(realStr(T));</div><div class="line">    &#125;</div><div class="line">    </div><div class="line">    <span class="function"><span class="keyword">private</span> String <span class="title">realStr</span><span class="params">(String s)</span> </span>&#123;</div><div class="line">        StringBuilder result = <span class="keyword">new</span> StringBuilder();</div><div class="line">        <span class="keyword">for</span> (<span class="keyword">char</span> c: s.toCharArray()) &#123;</div><div class="line">            <span class="keyword">if</span> (c == <span class="string">'#'</span>) &#123;</div><div class="line">                <span class="keyword">if</span> (result.length() &gt; <span class="number">0</span>) &#123;</div><div class="line">                    result.setLength(result.length() - <span class="number">1</span>);</div><div class="line">                &#125;</div><div class="line">            &#125; <span class="keyword">else</span> &#123;</div><div class="line">                result.append(c);</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">return</span> result.toString();</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <h3 id="题目来源"><a href="#题目来源" class="headerlink" title="题目来源"></a><a href="https://leetcode.com/problems/backspace-string-compare/description/" target="_blank" rel="external">题目来源</a></h3>
       
     </div>
@@ -313,16 +313,16 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2014/03/11/leetcode/Algorithms/leetcode-860-Lemonade-Change/" rel="next" title="leetcode-860-Lemonade-Change">
-                <i class="fa fa-chevron-left"></i> leetcode-860-Lemonade-Change
+              <a href="/2014/03/11/leetcode/Algorithms/leetcode-852-Peak-Index-in-a-Mountain-Array/" rel="next" title="leetcode-852-Peak-Index-in-a-Mountain-Array">
+                <i class="fa fa-chevron-left"></i> leetcode-852-Peak-Index-in-a-Mountain-Array
               </a>
             
           </div>
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2014/03/11/leetcode/Algorithms/leetcode-852-Peak-Index-in-a-Mountain-Array/" rel="prev" title="leetcode-852-Peak-Index-in-a-Mountain-Array">
-                leetcode-852-Peak-Index-in-a-Mountain-Array <i class="fa fa-chevron-right"></i>
+              <a href="/2014/03/11/leetcode/Algorithms/leetcode-836-Rectangle-Overlap/" rel="prev" title="leetcode-836-Rectangle-Overlap">
+                leetcode-836-Rectangle-Overlap <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>

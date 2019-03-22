@@ -65,7 +65,7 @@
 <meta property="og:site_name" content="knarfeh&#39;s logbook">
 <meta property="og:description" content="描述 Given two arrays, write a function to compute their intersection. Example:Given nums1 = [1, 2, 2, 1], nums2 = [2, 2], return [2]. Note:  Each element in the result must be unique. The result can be">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2016-10-28T15:40:40.000Z">
+<meta property="og:updated_time" content="2019-03-14T14:19:45.211Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="leetcode-349-Intersection-of-Two-Arrays">
 <meta name="twitter:description" content="描述 Given two arrays, write a function to compute their intersection. Example:Given nums1 = [1, 2, 2, 1], nums2 = [2, 2], return [2]. Note:  Each element in the result must be unique. The result can be">
@@ -269,9 +269,9 @@
 </ul>
 <a id="more"></a>
 <h3 id="分析"><a href="#分析" class="headerlink" title="分析"></a>分析</h3><hr>
-<p>C艹的话，用hash表啰</p>
+<p>C艹的话，用 hash 表啰</p>
 <h3 id="解决方案1-C"><a href="#解决方案1-C" class="headerlink" title="解决方案1(C++)"></a>解决方案1(C++)</h3><hr>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line">class Solution &#123;</div><div class="line">public:</div><div class="line">    vector&lt;int&gt; intersection(vector&lt;int&gt;&amp; nums1, vector&lt;int&gt;&amp; nums2) &#123;</div><div class="line">        unordered_map&lt;int, int&gt; map_int_int;</div><div class="line">        </div><div class="line">        unordered_set&lt;int&gt; result;</div><div class="line">        </div><div class="line">        for(auto &amp;a: nums1) &#123;</div><div class="line">            map_int_int[a]++;</div><div class="line">        &#125;</div><div class="line">        </div><div class="line">        for(auto &amp;b: nums2) &#123;</div><div class="line">            if(map_int_int[b] &gt; 0) &#123;</div><div class="line">                result.insert(b);</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">        return vector&lt;int&gt;(result.begin(), result.end());</div><div class="line">    &#125;</div><div class="line">&#125;;</div></pre></td></tr></table></figure>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">class</span> Solution &#123;</div><div class="line"><span class="keyword">public</span>:</div><div class="line">    <span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; intersection(<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&amp; nums1, <span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&amp; nums2) &#123;</div><div class="line">        <span class="built_in">unordered_map</span>&lt;<span class="keyword">int</span>, <span class="keyword">int</span>&gt; map_int_int;</div><div class="line">        </div><div class="line">        <span class="built_in">unordered_set</span>&lt;<span class="keyword">int</span>&gt; result;</div><div class="line">        </div><div class="line">        <span class="keyword">for</span>(<span class="keyword">auto</span> &amp;a: nums1) &#123;</div><div class="line">            map_int_int[a]++;</div><div class="line">        &#125;</div><div class="line">        </div><div class="line">        <span class="keyword">for</span>(<span class="keyword">auto</span> &amp;b: nums2) &#123;</div><div class="line">            <span class="keyword">if</span>(map_int_int[b] &gt; <span class="number">0</span>) &#123;</div><div class="line">                result.insert(b);</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">return</span> <span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;(result.begin(), result.end());</div><div class="line">    &#125;</div><div class="line">&#125;;</div></pre></td></tr></table></figure>
 <h3 id="相关问题"><a href="#相关问题" class="headerlink" title="相关问题"></a>相关问题</h3><hr>
 <p><a href="https://leetcode.com/problems/intersection-of-two-arrays-ii/" target="_blank" rel="external">(E) Intersection of Two Arrays II</a>   </p>
 <h3 id="题目来源"><a href="#题目来源" class="headerlink" title="题目来源"></a><a href="https://leetcode.com/problems/intersection-of-two-arrays/" target="_blank" rel="external">题目来源</a></h3>
@@ -307,8 +307,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2014/03/11/leetcode/Algorithms/leetcode-345-Reverse-Vowels-of-a-String/" rel="next" title="leetcode-345-Reverse-Vowels-of-a-String">
-                <i class="fa fa-chevron-left"></i> leetcode-345-Reverse-Vowels-of-a-String
+              <a href="/2014/03/11/leetcode/Algorithms/leetcode-35-Search-Insert-Position/" rel="next" title="leetcode-35-Search-Insert-Position">
+                <i class="fa fa-chevron-left"></i> leetcode-35-Search-Insert-Position
               </a>
             
           </div>

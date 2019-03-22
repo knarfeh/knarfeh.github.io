@@ -65,7 +65,7 @@
 <meta property="og:site_name" content="knarfeh&#39;s logbook">
 <meta property="og:description" content="描述 Implement function ToLowerCase() that has a string parameter str, and returns the same string in lowercase. Example 1: 12Input: &amp;quot;Hello&amp;quot;Output: &amp;quot;hello&amp;quot; Example 2: 12Input: &amp;quot;">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-11-11T09:26:58.589Z">
+<meta property="og:updated_time" content="2019-03-18T13:08:01.687Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="leetcode-709-To-Lower-Case">
 <meta name="twitter:description" content="描述 Implement function ToLowerCase() that has a string parameter str, and returns the same string in lowercase. Example 1: 12Input: &amp;quot;Hello&amp;quot;Output: &amp;quot;hello&amp;quot; Example 2: 12Input: &amp;quot;">
@@ -271,7 +271,7 @@
 <h3 id="分析"><a href="#分析" class="headerlink" title="分析"></a>分析</h3><hr>
 <p>使用 Java 来解决的话，需要先把字符串转换为字符数组，遍历字符数组，把大写字母转换为小写字母</p>
 <h3 id="解决方案1-Java"><a href="#解决方案1-Java" class="headerlink" title="解决方案1(Java)"></a>解决方案1(Java)</h3><hr>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">class Solution &#123;</div><div class="line">    public String toLowerCase(String str) &#123;</div><div class="line">        char[] result = str.toCharArray();</div><div class="line">        for (int i = 0; i &lt; result.length; i++) &#123;</div><div class="line">            if (&apos;A&apos; &lt;= result[i] &amp;&amp; result[i] &lt;= &apos;Z&apos;) &#123;</div><div class="line">                result[i] = (char) (result[i] - &apos;A&apos; + &apos;a&apos;);</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">        return new String(result);</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</div><div class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">toLowerCase</span><span class="params">(String str)</span> </span>&#123;</div><div class="line">        <span class="keyword">char</span>[] result = str.toCharArray();</div><div class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; result.length; i++) &#123;</div><div class="line">            <span class="keyword">if</span> (<span class="string">'A'</span> &lt;= result[i] &amp;&amp; result[i] &lt;= <span class="string">'Z'</span>) &#123;</div><div class="line">                result[i] = (<span class="keyword">char</span>) (result[i] - <span class="string">'A'</span> + <span class="string">'a'</span>);</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">return</span> <span class="keyword">new</span> String(result);</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <h3 id="题目来源"><a href="#题目来源" class="headerlink" title="题目来源"></a><a href="https://leetcode.com/problems/to-lower-case/description/" target="_blank" rel="external">题目来源</a></h3>
       
     </div>
@@ -299,8 +299,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2014/03/11/leetcode/Algorithms/leetcode-73-Set-Matrix-Zeroes/" rel="next" title="leetcode-73-Set-Matrix-Zeroes">
-                <i class="fa fa-chevron-left"></i> leetcode-73-Set-Matrix-Zeroes
+              <a href="/2014/03/11/leetcode/Algorithms/leetcode-707-Design-Linked-List/" rel="next" title="leetcode-707-Design-Linked-List">
+                <i class="fa fa-chevron-left"></i> leetcode-707-Design-Linked-List
               </a>
             
           </div>

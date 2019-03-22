@@ -65,7 +65,7 @@
 <meta property="og:site_name" content="knarfeh&#39;s logbook">
 <meta property="og:description" content="描述 Given two non-negative integers num1 and num2 represented as string, return the sum of num1 and num2. Note:  The length of both num1 and num2 is &amp;lt; 5100. Both num1 and num2 contains only digits 0">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-11-11T13:19:25.047Z">
+<meta property="og:updated_time" content="2019-03-14T14:22:23.839Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="leetcode-415-Add-Strings">
 <meta name="twitter:description" content="描述 Given two non-negative integers num1 and num2 represented as string, return the sum of num1 and num2. Note:  The length of both num1 and num2 is &amp;lt; 5100. Both num1 and num2 contains only digits 0">
@@ -272,7 +272,7 @@
 <h3 id="分析"><a href="#分析" class="headerlink" title="分析"></a>分析</h3><hr>
 <p>用两个字符串表示非负的整数，求它们的和，需要注意的是字符串的长度小于 5100，没法用 int 型进行计算。可以一个字符一个字符进行相加计算，处理好进位即可。</p>
 <h3 id="解决方案1-Java"><a href="#解决方案1-Java" class="headerlink" title="解决方案1(Java)"></a>解决方案1(Java)</h3><hr>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line">class Solution &#123;</div><div class="line">    public String addStrings(String num1, String num2) &#123;</div><div class="line">        int i = num1.length() - 1, j = num2.length() - 1, carry = 0;</div><div class="line">        String result = &quot;&quot;;</div><div class="line">        while (i &gt;= 0 || j &gt;= 0) &#123;</div><div class="line">            if (i &gt;= 0) &#123;</div><div class="line">                carry += num1.charAt(i) - &apos;0&apos;;</div><div class="line">                i--;</div><div class="line">            &#125;</div><div class="line">            if (j &gt;= 0) &#123;</div><div class="line">                carry += num2.charAt(j) - &apos;0&apos;;</div><div class="line">                j--;</div><div class="line">            &#125;</div><div class="line">            result = Integer.toString(carry % 10) + result;</div><div class="line">            carry /= 10;</div><div class="line">        &#125;</div><div class="line">        return carry != 0 ? &quot;1&quot; + result: result;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</div><div class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">addStrings</span><span class="params">(String num1, String num2)</span> </span>&#123;</div><div class="line">        <span class="keyword">int</span> i = num1.length() - <span class="number">1</span>, j = num2.length() - <span class="number">1</span>, carry = <span class="number">0</span>;</div><div class="line">        String result = <span class="string">""</span>;</div><div class="line">        <span class="keyword">while</span> (i &gt;= <span class="number">0</span> || j &gt;= <span class="number">0</span>) &#123;</div><div class="line">            <span class="keyword">if</span> (i &gt;= <span class="number">0</span>) &#123;</div><div class="line">                carry += num1.charAt(i) - <span class="string">'0'</span>;</div><div class="line">                i--;</div><div class="line">            &#125;</div><div class="line">            <span class="keyword">if</span> (j &gt;= <span class="number">0</span>) &#123;</div><div class="line">                carry += num2.charAt(j) - <span class="string">'0'</span>;</div><div class="line">                j--;</div><div class="line">            &#125;</div><div class="line">            result = Integer.toString(carry % <span class="number">10</span>) + result;</div><div class="line">            carry /= <span class="number">10</span>;</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">return</span> carry != <span class="number">0</span> ? <span class="string">"1"</span> + result: result;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <h3 id="相关问题"><a href="#相关问题" class="headerlink" title="相关问题"></a>相关问题</h3><hr>
 <ul>
 <li><a href="https://leetcode.com/problems/add-two-numbers" target="_blank" rel="external">(M) Add Two Numbers</a>   </li>
@@ -305,16 +305,16 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2014/03/11/leetcode/Algorithms/leetcode-414-Third-Maximum-Number/" rel="next" title="leetcode-414-Third-Maximum-Number">
-                <i class="fa fa-chevron-left"></i> leetcode-414-Third-Maximum-Number
+              <a href="/2014/03/11/leetcode/Algorithms/leetcode-43-Multiply-Strings/" rel="next" title="leetcode-43-Multiply-Strings">
+                <i class="fa fa-chevron-left"></i> leetcode-43-Multiply-Strings
               </a>
             
           </div>
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2014/03/11/leetcode/Algorithms/leetcode-405-Convert-a-Number-to-Hexadecimal/" rel="prev" title="leetcode-405-Convert-a-Number-to-Hexadecimal">
-                leetcode-405-Convert-a-Number-to-Hexadecimal <i class="fa fa-chevron-right"></i>
+              <a href="/2014/03/11/leetcode/Algorithms/leetcode-419-Battleships-in-a-Board/" rel="prev" title="leetcode-419-Battleships-in-a-Board">
+                leetcode-419-Battleships-in-a-Board <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>

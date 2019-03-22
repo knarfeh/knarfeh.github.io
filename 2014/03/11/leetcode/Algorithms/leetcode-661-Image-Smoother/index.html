@@ -65,7 +65,7 @@
 <meta property="og:site_name" content="knarfeh&#39;s logbook">
 <meta property="og:description" content="描述 Given a 2D integer matrix M representing the gray scale of an image, you need to design a smoother to make the gray scale of each cell becomes the average gray scale (rounding down) of all the 8 su">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-11-11T12:38:30.379Z">
+<meta property="og:updated_time" content="2019-03-18T13:08:01.640Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="leetcode-661-Image-Smoother">
 <meta name="twitter:description" content="描述 Given a 2D integer matrix M representing the gray scale of an image, you need to design a smoother to make the gray scale of each cell becomes the average gray scale (rounding down) of all the 8 su">
@@ -272,7 +272,7 @@
 <h3 id="分析"><a href="#分析" class="headerlink" title="分析"></a>分析</h3><hr>
 <p>对图片进行平滑处理，这里的算法很简单，对每个点统计周围点的总数，然后除以点的总数即为该点的值。</p>
 <h3 id="解决方案1-Java"><a href="#解决方案1-Java" class="headerlink" title="解决方案1(Java)"></a>解决方案1(Java)</h3><hr>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div></pre></td><td class="code"><pre><div class="line">class Solution &#123;</div><div class="line">    public int[][] imageSmoother(int[][] M) &#123;</div><div class="line">        int row = M.length, col = M[0].length;</div><div class="line">        int[][] result = new int[row][col];</div><div class="line">        </div><div class="line">        for (int i = 0; i &lt; row; i++) &#123;</div><div class="line">            for (int j = 0; j &lt; col; j++) &#123;</div><div class="line">                int count = 0;</div><div class="line">                for (int iRow = i-1; iRow &lt;= i+1; iRow++) &#123;</div><div class="line">                    for (int jCol = j-1; jCol &lt;= j+1; jCol++) &#123;</div><div class="line">                        if (0 &lt;= iRow &amp;&amp; iRow &lt; row &amp;&amp; 0 &lt;= jCol &amp;&amp; jCol &lt; col) &#123;</div><div class="line">                            result[i][j] += M[iRow][jCol];</div><div class="line">                            count++;</div><div class="line">                        &#125;</div><div class="line">                    &#125;</div><div class="line">                &#125;</div><div class="line">                result[i][j] /= count;</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">        return result;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</div><div class="line">    <span class="keyword">public</span> <span class="keyword">int</span>[][] imageSmoother(<span class="keyword">int</span>[][] M) &#123;</div><div class="line">        <span class="keyword">int</span> row = M.length, col = M[<span class="number">0</span>].length;</div><div class="line">        <span class="keyword">int</span>[][] result = <span class="keyword">new</span> <span class="keyword">int</span>[row][col];</div><div class="line">        </div><div class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; row; i++) &#123;</div><div class="line">            <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">0</span>; j &lt; col; j++) &#123;</div><div class="line">                <span class="keyword">int</span> count = <span class="number">0</span>;</div><div class="line">                <span class="keyword">for</span> (<span class="keyword">int</span> iRow = i-<span class="number">1</span>; iRow &lt;= i+<span class="number">1</span>; iRow++) &#123;</div><div class="line">                    <span class="keyword">for</span> (<span class="keyword">int</span> jCol = j-<span class="number">1</span>; jCol &lt;= j+<span class="number">1</span>; jCol++) &#123;</div><div class="line">                        <span class="keyword">if</span> (<span class="number">0</span> &lt;= iRow &amp;&amp; iRow &lt; row &amp;&amp; <span class="number">0</span> &lt;= jCol &amp;&amp; jCol &lt; col) &#123;</div><div class="line">                            result[i][j] += M[iRow][jCol];</div><div class="line">                            count++;</div><div class="line">                        &#125;</div><div class="line">                    &#125;</div><div class="line">                &#125;</div><div class="line">                result[i][j] /= count;</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">return</span> result;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <h3 id="题目来源"><a href="#题目来源" class="headerlink" title="题目来源"></a><a href="https://leetcode.com/problems/image-smoother/description/" target="_blank" rel="external">题目来源</a></h3>
       
     </div>
@@ -300,16 +300,16 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2014/03/11/leetcode/Algorithms/leetcode-653-Two-Sum-IV-Input-is-a-BST/" rel="next" title="leetcode-653-Two-Sum-IV-Input-is-a-BST">
-                <i class="fa fa-chevron-left"></i> leetcode-653-Two-Sum-IV-Input-is-a-BST
+              <a href="/2014/03/11/leetcode/Algorithms/leetcode-667-Beautiful-Arrangement-II/" rel="next" title="leetcode-667-Beautiful-Arrangement-II">
+                <i class="fa fa-chevron-left"></i> leetcode-667-Beautiful-Arrangement-II
               </a>
             
           </div>
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2014/03/11/leetcode/Algorithms/leetcode-655-Print-Binary-Tree/" rel="prev" title="leetcode-655-Print-Binary-Tree">
-                leetcode-655-Print-Binary-Tree <i class="fa fa-chevron-right"></i>
+              <a href="/2014/03/11/leetcode/Algorithms/leetcode-657-Robot-Return-to-Origin/" rel="prev" title="leetcode-657-Robot-Return-to-Origin">
+                leetcode-657-Robot-Return-to-Origin <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>

@@ -66,7 +66,7 @@
 <meta property="og:description" content="描述 You have a list of points in the plane. Return the area of the largest triangle that can be formed by any 3 of the points. 12345Example:Input: points = [[0,0],[0,1],[1,0],[0,2],[2,0]]Output: 2Expla">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="https://s3-lc-upload.s3.amazonaws.com/uploads/2018/04/04/1027.png">
-<meta property="og:updated_time" content="2018-11-11T09:07:28.587Z">
+<meta property="og:updated_time" content="2019-03-18T13:08:01.745Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="leetcode-812-Largest-Triangle-Area">
 <meta name="twitter:description" content="描述 You have a list of points in the plane. Return the area of the largest triangle that can be formed by any 3 of the points. 12345Example:Input: points = [[0,0],[0,1],[1,0],[0,2],[2,0]]Output: 2Expla">
@@ -276,7 +276,7 @@
 <h3 id="分析"><a href="#分析" class="headerlink" title="分析"></a>分析</h3><hr>
 <p>给定一些二维数组中的节点，求这些节点能够组成的三角形的最大面积。求三角形面积可以用 <a href="https://en.wikipedia.org/wiki/Shoelace_formula" target="_blank" rel="external">Shoelace formula</a> 解决（原来叫做鞋带公式）。</p>
 <h3 id="解决方案1-Java"><a href="#解决方案1-Java" class="headerlink" title="解决方案1(Java)"></a>解决方案1(Java)</h3><hr>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line">class Solution &#123;</div><div class="line">    public double largestTriangleArea(int[][] points) &#123;</div><div class="line">        int N = points.length;</div><div class="line">        double result = 0;</div><div class="line">        for (int i = 0; i &lt; N; i++) &#123;</div><div class="line">            for (int j = i+1; j &lt; N; j++) &#123;</div><div class="line">                for (int k = j+1; k &lt; N; k++) &#123;</div><div class="line">                    result = Math.max(result, area(points[i], points[j], points[k]));</div><div class="line">                &#125;</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">        return result;</div><div class="line">    &#125;</div><div class="line">    </div><div class="line">    private double area(int[] A, int[] B, int[] C) &#123;</div><div class="line">        return 0.5 * Math.abs(A[0]*B[1] + B[0]*C[1] + C[0]*A[1] - A[1]*B[0] - B[1]*C[0] - C[1]*A[0]);</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">double</span> <span class="title">largestTriangleArea</span><span class="params">(<span class="keyword">int</span>[][] points)</span> </span>&#123;</div><div class="line">        <span class="keyword">int</span> N = points.length;</div><div class="line">        <span class="keyword">double</span> result = <span class="number">0</span>;</div><div class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; N; i++) &#123;</div><div class="line">            <span class="keyword">for</span> (<span class="keyword">int</span> j = i+<span class="number">1</span>; j &lt; N; j++) &#123;</div><div class="line">                <span class="keyword">for</span> (<span class="keyword">int</span> k = j+<span class="number">1</span>; k &lt; N; k++) &#123;</div><div class="line">                    result = Math.max(result, area(points[i], points[j], points[k]));</div><div class="line">                &#125;</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">return</span> result;</div><div class="line">    &#125;</div><div class="line">    </div><div class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">double</span> <span class="title">area</span><span class="params">(<span class="keyword">int</span>[] A, <span class="keyword">int</span>[] B, <span class="keyword">int</span>[] C)</span> </span>&#123;</div><div class="line">        <span class="keyword">return</span> <span class="number">0.5</span> * Math.abs(A[<span class="number">0</span>]*B[<span class="number">1</span>] + B[<span class="number">0</span>]*C[<span class="number">1</span>] + C[<span class="number">0</span>]*A[<span class="number">1</span>] - A[<span class="number">1</span>]*B[<span class="number">0</span>] - B[<span class="number">1</span>]*C[<span class="number">0</span>] - C[<span class="number">1</span>]*A[<span class="number">0</span>]);</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <h3 id="题目来源"><a href="#题目来源" class="headerlink" title="题目来源"></a><a href="https://leetcode.com/problems/largest-triangle-area/description/" target="_blank" rel="external">题目来源</a></h3>
       
     </div>
@@ -304,16 +304,16 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2014/03/11/leetcode/Algorithms/leetcode-821-Shortest-Distance-to-a-Character/" rel="next" title="leetcode-821-Shortest-Distance-to-a-Character">
-                <i class="fa fa-chevron-left"></i> leetcode-821-Shortest-Distance-to-a-Character
+              <a href="/2014/03/11/leetcode/Algorithms/leetcode-806-Number-of-Lines-To-Write-String/" rel="next" title="leetcode-806-Number-of-Lines-To-Write-String">
+                <i class="fa fa-chevron-left"></i> leetcode-806-Number-of-Lines-To-Write-String
               </a>
             
           </div>
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2014/03/11/leetcode/Algorithms/leetcode-811-Subdomain-Visit-Count/" rel="prev" title="leetcode-811-Subdomain-Visit-Count">
-                leetcode-811-Subdomain-Visit-Count <i class="fa fa-chevron-right"></i>
+              <a href="/2014/03/11/leetcode/Algorithms/leetcode-8-String-to-Integer-(atoi)/" rel="prev" title="leetcode-8-String-to-Integer-(atoi)">
+                leetcode-8-String-to-Integer-(atoi) <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>

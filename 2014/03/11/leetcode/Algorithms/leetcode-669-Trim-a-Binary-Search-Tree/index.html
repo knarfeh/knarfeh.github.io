@@ -65,7 +65,7 @@
 <meta property="og:site_name" content="knarfeh&#39;s logbook">
 <meta property="og:description" content="描述 Given a binary search tree and the lowest and highest boundaries as L and R, trim the tree so that all its elements lies in [L, R] (R &amp;gt;= L). You might need to change the root of the tree, so the">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-11-11T12:39:06.526Z">
+<meta property="og:updated_time" content="2019-03-18T13:08:01.647Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="leetcode-669-Trim-a-Binary-Search-Tree">
 <meta name="twitter:description" content="描述 Given a binary search tree and the lowest and highest boundaries as L and R, trim the tree so that all its elements lies in [L, R] (R &amp;gt;= L). You might need to change the root of the tree, so the">
@@ -269,7 +269,7 @@
 <h3 id="分析"><a href="#分析" class="headerlink" title="分析"></a>分析</h3><hr>
 <p>题意是给定一颗二叉树，要求根据范围修剪二叉树。练习递归的好题目。</p>
 <h3 id="解决方案1-Java"><a href="#解决方案1-Java" class="headerlink" title="解决方案1(Java)"></a>解决方案1(Java)</h3><hr>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div></pre></td><td class="code"><pre><div class="line">/**</div><div class="line"> * Definition for a binary tree node.</div><div class="line"> * public class TreeNode &#123;</div><div class="line"> *     int val;</div><div class="line"> *     TreeNode left;</div><div class="line"> *     TreeNode right;</div><div class="line"> *     TreeNode(int x) &#123; val = x; &#125;</div><div class="line"> * &#125;</div><div class="line"> */</div><div class="line">class Solution &#123;</div><div class="line">    public TreeNode trimBST(TreeNode root, int L, int R) &#123;</div><div class="line">        if (root == null) &#123;</div><div class="line">            return null;</div><div class="line">        &#125;</div><div class="line">        if (root.val &lt; L) &#123;</div><div class="line">            return trimBST(root.right, L, R);</div><div class="line">        &#125;</div><div class="line">        if (root.val &gt; R) &#123;</div><div class="line">            return trimBST(root.left, L, R);</div><div class="line">        &#125;</div><div class="line">        root.left = trimBST(root.left, L, R);</div><div class="line">        root.right = trimBST(root.right, L, R);</div><div class="line">        return root;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div></pre></td><td class="code"><pre><div class="line"><span class="comment">/**</span></div><div class="line"> * Definition for a binary tree node.</div><div class="line"> * public class TreeNode &#123;</div><div class="line"> *     int val;</div><div class="line"> *     TreeNode left;</div><div class="line"> *     TreeNode right;</div><div class="line"> *     TreeNode(int x) &#123; val = x; &#125;</div><div class="line"> * &#125;</div><div class="line"> */</div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</div><div class="line">    <span class="function"><span class="keyword">public</span> TreeNode <span class="title">trimBST</span><span class="params">(TreeNode root, <span class="keyword">int</span> L, <span class="keyword">int</span> R)</span> </span>&#123;</div><div class="line">        <span class="keyword">if</span> (root == <span class="keyword">null</span>) &#123;</div><div class="line">            <span class="keyword">return</span> <span class="keyword">null</span>;</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">if</span> (root.val &lt; L) &#123;</div><div class="line">            <span class="keyword">return</span> trimBST(root.right, L, R);</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">if</span> (root.val &gt; R) &#123;</div><div class="line">            <span class="keyword">return</span> trimBST(root.left, L, R);</div><div class="line">        &#125;</div><div class="line">        root.left = trimBST(root.left, L, R);</div><div class="line">        root.right = trimBST(root.right, L, R);</div><div class="line">        <span class="keyword">return</span> root;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <h3 id="题目来源"><a href="#题目来源" class="headerlink" title="题目来源"></a><a href="https://leetcode.com/problems/trim-a-binary-search-tree/description/" target="_blank" rel="external">题目来源</a></h3>
       
     </div>
@@ -297,16 +297,16 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2014/03/11/leetcode/Algorithms/leetcode-667-Beautiful-Arrangement-II/" rel="next" title="leetcode-667-Beautiful-Arrangement-II">
-                <i class="fa fa-chevron-left"></i> leetcode-667-Beautiful-Arrangement-II
+              <a href="/2014/03/11/leetcode/Algorithms/leetcode-671-Second-Minimum-Node-In-a-Binary-Tree/" rel="next" title="leetcode-671-Second-Minimum-Node-In-a-Binary-Tree">
+                <i class="fa fa-chevron-left"></i> leetcode-671-Second-Minimum-Node-In-a-Binary-Tree
               </a>
             
           </div>
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2014/03/11/leetcode/Algorithms/leetcode-654-Maximum-Binary-Tree/" rel="prev" title="leetcode-654-Maximum-Binary-Tree">
-                leetcode-654-Maximum-Binary-Tree <i class="fa fa-chevron-right"></i>
+              <a href="/2014/03/11/leetcode/Algorithms/leetcode-667-Beautiful-Arrangement-II/" rel="prev" title="leetcode-667-Beautiful-Arrangement-II">
+                leetcode-667-Beautiful-Arrangement-II <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>

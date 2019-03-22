@@ -65,7 +65,7 @@
 <meta property="og:site_name" content="knarfeh&#39;s logbook">
 <meta property="og:description" content="描述 Write a program that outputs the string representation of numbers from 1 to n. But for multiples of three it should output “Fizz” instead of the number and for the multiples of five output “Buzz”.">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-11-11T13:24:57.710Z">
+<meta property="og:updated_time" content="2019-03-14T14:22:07.781Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="leetcode-412-Fizz-Buzz">
 <meta name="twitter:description" content="描述 Write a program that outputs the string representation of numbers from 1 to n. But for multiples of three it should output “Fizz” instead of the number and for the multiples of five output “Buzz”.">
@@ -268,7 +268,7 @@
 <h3 id="分析"><a href="#分析" class="headerlink" title="分析"></a>分析</h3><hr>
 <p>很简单的题目，如果某个数能同时被3和5整除，输出 FizzBuzz，如果只能被3整除，输出 Fizz，如果只能被5整除，输出 Buzz。</p>
 <h3 id="解决方案1-Java"><a href="#解决方案1-Java" class="headerlink" title="解决方案1(Java)"></a>解决方案1(Java)</h3><hr>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line">class Solution &#123;</div><div class="line">    public List&lt;String&gt; fizzBuzz(int n) &#123;</div><div class="line">        List&lt;String&gt; result = new ArrayList&lt;String&gt;();</div><div class="line">        </div><div class="line">        for (int num = 1; num &lt;= n; num++) &#123;</div><div class="line">            if ((num%3 == 0) &amp;&amp; (num%5 == 0)) &#123;</div><div class="line">                result.add(&quot;FizzBuzz&quot;);</div><div class="line">            &#125; else if (num%3 == 0) &#123;</div><div class="line">                result.add(&quot;Fizz&quot;);</div><div class="line">            &#125; else if (num%5 == 0) &#123;</div><div class="line">                result.add(&quot;Buzz&quot;);</div><div class="line">            &#125; else &#123;</div><div class="line">                result.add(Integer.toString(num));</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">        return result;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</div><div class="line">    <span class="function"><span class="keyword">public</span> List&lt;String&gt; <span class="title">fizzBuzz</span><span class="params">(<span class="keyword">int</span> n)</span> </span>&#123;</div><div class="line">        List&lt;String&gt; result = <span class="keyword">new</span> ArrayList&lt;String&gt;();</div><div class="line">        </div><div class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> num = <span class="number">1</span>; num &lt;= n; num++) &#123;</div><div class="line">            <span class="keyword">if</span> ((num%<span class="number">3</span> == <span class="number">0</span>) &amp;&amp; (num%<span class="number">5</span> == <span class="number">0</span>)) &#123;</div><div class="line">                result.add(<span class="string">"FizzBuzz"</span>);</div><div class="line">            &#125; <span class="keyword">else</span> <span class="keyword">if</span> (num%<span class="number">3</span> == <span class="number">0</span>) &#123;</div><div class="line">                result.add(<span class="string">"Fizz"</span>);</div><div class="line">            &#125; <span class="keyword">else</span> <span class="keyword">if</span> (num%<span class="number">5</span> == <span class="number">0</span>) &#123;</div><div class="line">                result.add(<span class="string">"Buzz"</span>);</div><div class="line">            &#125; <span class="keyword">else</span> &#123;</div><div class="line">                result.add(Integer.toString(num));</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">return</span> result;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <h3 id="题目来源"><a href="#题目来源" class="headerlink" title="题目来源"></a><a href="https://leetcode.com/problems/fizz-buzz/description/" target="_blank" rel="external">题目来源</a></h3>
       
     </div>
@@ -294,16 +294,16 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2014/03/11/leetcode/Algorithms/leetcode-405-Convert-a-Number-to-Hexadecimal/" rel="next" title="leetcode-405-Convert-a-Number-to-Hexadecimal">
-                <i class="fa fa-chevron-left"></i> leetcode-405-Convert-a-Number-to-Hexadecimal
+              <a href="/2014/03/11/leetcode/Algorithms/leetcode-419-Battleships-in-a-Board/" rel="next" title="leetcode-419-Battleships-in-a-Board">
+                <i class="fa fa-chevron-left"></i> leetcode-419-Battleships-in-a-Board
               </a>
             
           </div>
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2014/03/11/leetcode/Algorithms/leetcode-404-Sum-of-Left-Leaves/" rel="prev" title="leetcode-404-Sum-of-Left-Leaves">
-                leetcode-404-Sum-of-Left-Leaves <i class="fa fa-chevron-right"></i>
+              <a href="/2014/03/11/leetcode/Algorithms/leetcode-414-Third-Maximum-Number/" rel="prev" title="leetcode-414-Third-Maximum-Number">
+                leetcode-414-Third-Maximum-Number <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>

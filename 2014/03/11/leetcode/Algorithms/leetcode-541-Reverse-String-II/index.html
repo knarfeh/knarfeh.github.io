@@ -65,7 +65,7 @@
 <meta property="og:site_name" content="knarfeh&#39;s logbook">
 <meta property="og:description" content="描述 Given a string and an integer k, you need to reverse the first k characters for every 2k characters counting from the start of the string. If there are less than k characters left, reverse all of t">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-11-11T12:58:10.020Z">
+<meta property="og:updated_time" content="2019-03-14T14:26:50.432Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="leetcode-541-Reverse-String-II">
 <meta name="twitter:description" content="描述 Given a string and an integer k, you need to reverse the first k characters for every 2k characters counting from the start of the string. If there are less than k characters left, reverse all of t">
@@ -273,7 +273,7 @@
 <p>题意是给定一个字符串，要求每 2k 的字符串，将前 k 位倒转，如果最后不足 k 位，将其全部倒转，如果最后大于 k 位，不足 2k 为，倒转 k 位。</p>
 <p>一次遍历即可。</p>
 <h3 id="解决方案1-Java"><a href="#解决方案1-Java" class="headerlink" title="解决方案1(Java)"></a>解决方案1(Java)</h3><hr>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line">class Solution &#123;</div><div class="line">    public String reverseStr(String s, int k) &#123;</div><div class="line">        char[] result = s.toCharArray();</div><div class="line">        for (int i = 0; i &lt; result.length; i += 2*k) &#123;</div><div class="line">            int left = i, right = Math.min(left+k-1, result.length-1);</div><div class="line">            while (left &lt; right) &#123;</div><div class="line">                char tmp = result[left];</div><div class="line">                result[left++] = result[right];</div><div class="line">                result[right--] = tmp;</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">        return new String(result);</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</div><div class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">reverseStr</span><span class="params">(String s, <span class="keyword">int</span> k)</span> </span>&#123;</div><div class="line">        <span class="keyword">char</span>[] result = s.toCharArray();</div><div class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; result.length; i += <span class="number">2</span>*k) &#123;</div><div class="line">            <span class="keyword">int</span> left = i, right = Math.min(left+k-<span class="number">1</span>, result.length-<span class="number">1</span>);</div><div class="line">            <span class="keyword">while</span> (left &lt; right) &#123;</div><div class="line">                <span class="keyword">char</span> tmp = result[left];</div><div class="line">                result[left++] = result[right];</div><div class="line">                result[right--] = tmp;</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">return</span> <span class="keyword">new</span> String(result);</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <h3 id="相关问题"><a href="#相关问题" class="headerlink" title="相关问题"></a>相关问题</h3><hr>
 <ul>
 <li><a href="https://leetcode.com/problems/reverse-words-in-a-string-iii" target="_blank" rel="external">(E)Reverse Words in a String III </a> </li>
@@ -306,16 +306,16 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2014/03/11/leetcode/Algorithms/leetcode-538-Convert-BST-to-Greater-Tree/" rel="next" title="leetcode-538-Convert-BST-to-Greater-Tree">
-                <i class="fa fa-chevron-left"></i> leetcode-538-Convert-BST-to-Greater-Tree
+              <a href="/2014/03/11/leetcode/Algorithms/leetcode-535-Encode-and-Decode-TinyURL/" rel="next" title="leetcode-535-Encode-and-Decode-TinyURL">
+                <i class="fa fa-chevron-left"></i> leetcode-535-Encode-and-Decode-TinyURL
               </a>
             
           </div>
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2014/03/11/leetcode/Algorithms/leetcode-530-Minimum-Absolute-Difference-in-BST/" rel="prev" title="leetcode-530-Minimum-Absolute-Difference-in-BST">
-                leetcode-530-Minimum-Absolute-Difference-in-BST <i class="fa fa-chevron-right"></i>
+              <a href="/2014/03/11/leetcode/Algorithms/leetcode-538-Convert-BST-to-Greater-Tree/" rel="prev" title="leetcode-538-Convert-BST-to-Greater-Tree">
+                leetcode-538-Convert-BST-to-Greater-Tree <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>

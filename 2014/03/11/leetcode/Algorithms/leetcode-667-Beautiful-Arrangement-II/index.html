@@ -65,7 +65,7 @@
 <meta property="og:site_name" content="knarfeh&#39;s logbook">
 <meta property="og:description" content="描述 Given two integers n and k, you need to construct a list which contains n different positive integers ranging from 1 to n and obeys the following requirement:Suppose this list is [a1, a2, a3, … , a">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-11-11T12:38:47.684Z">
+<meta property="og:updated_time" content="2019-03-18T13:08:01.644Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="leetcode-667-Beautiful-Arrangement-II">
 <meta name="twitter:description" content="描述 Given two integers n and k, you need to construct a list which contains n different positive integers ranging from 1 to n and obeys the following requirement:Suppose this list is [a1, a2, a3, … , a">
@@ -277,7 +277,7 @@
 <p>3, 1, 2</p>
 <p>n = 3, k = 1<br>1, 2, 3</p>
 <h3 id="解决方案1-Java"><a href="#解决方案1-Java" class="headerlink" title="解决方案1(Java)"></a>解决方案1(Java)</h3><hr>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line">class Solution &#123;</div><div class="line">    public int[] constructArray(int n, int k) &#123;</div><div class="line">        int[] result = new int[n];</div><div class="line">        int count = 0;</div><div class="line">        int left = 1, right = n;</div><div class="line">        while (left &lt;= right) &#123;</div><div class="line">            if (k &gt; 1) &#123;</div><div class="line">                result[count++] = k-- % 2 == 1? left++ : right--;</div><div class="line">            &#125; else &#123;</div><div class="line">                result[count++] = left++;</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">        return result;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</div><div class="line">    <span class="keyword">public</span> <span class="keyword">int</span>[] constructArray(<span class="keyword">int</span> n, <span class="keyword">int</span> k) &#123;</div><div class="line">        <span class="keyword">int</span>[] result = <span class="keyword">new</span> <span class="keyword">int</span>[n];</div><div class="line">        <span class="keyword">int</span> count = <span class="number">0</span>;</div><div class="line">        <span class="keyword">int</span> left = <span class="number">1</span>, right = n;</div><div class="line">        <span class="keyword">while</span> (left &lt;= right) &#123;</div><div class="line">            <span class="keyword">if</span> (k &gt; <span class="number">1</span>) &#123;</div><div class="line">                result[count++] = k-- % <span class="number">2</span> == <span class="number">1</span>? left++ : right--;</div><div class="line">            &#125; <span class="keyword">else</span> &#123;</div><div class="line">                result[count++] = left++;</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">return</span> result;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <h3 id="相关问题"><a href="#相关问题" class="headerlink" title="相关问题"></a>相关问题</h3><hr>
 <p><a href="https://leetcode.com/problems/beautiful-arrangement" target="_blank" rel="external">(M) Beautiful Arrangement</a>   </p>
 <h3 id="题目来源"><a href="#题目来源" class="headerlink" title="题目来源"></a><a href="https://leetcode.com/problems/beautiful-arrangement-ii/description/" target="_blank" rel="external">题目来源</a></h3>
@@ -307,16 +307,16 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2014/03/11/leetcode/Algorithms/leetcode-671-Second-Minimum-Node-In-a-Binary-Tree/" rel="next" title="leetcode-671-Second-Minimum-Node-In-a-Binary-Tree">
-                <i class="fa fa-chevron-left"></i> leetcode-671-Second-Minimum-Node-In-a-Binary-Tree
+              <a href="/2014/03/11/leetcode/Algorithms/leetcode-669-Trim-a-Binary-Search-Tree/" rel="next" title="leetcode-669-Trim-a-Binary-Search-Tree">
+                <i class="fa fa-chevron-left"></i> leetcode-669-Trim-a-Binary-Search-Tree
               </a>
             
           </div>
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2014/03/11/leetcode/Algorithms/leetcode-669-Trim-a-Binary-Search-Tree/" rel="prev" title="leetcode-669-Trim-a-Binary-Search-Tree">
-                leetcode-669-Trim-a-Binary-Search-Tree <i class="fa fa-chevron-right"></i>
+              <a href="/2014/03/11/leetcode/Algorithms/leetcode-661-Image-Smoother/" rel="prev" title="leetcode-661-Image-Smoother">
+                leetcode-661-Image-Smoother <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>

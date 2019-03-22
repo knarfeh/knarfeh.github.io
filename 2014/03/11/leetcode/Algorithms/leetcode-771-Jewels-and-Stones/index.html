@@ -65,7 +65,7 @@
 <meta property="og:site_name" content="knarfeh&#39;s logbook">
 <meta property="og:description" content="描述 You’re given strings J representing the types of stones that are jewels, and S representing the stones you have.  Each character in Sis a type of stone you have.  You want to know how many of the s">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-11-11T09:23:11.544Z">
+<meta property="og:updated_time" content="2019-03-18T13:08:01.708Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="leetcode-771-Jewels-and-Stones">
 <meta name="twitter:description" content="描述 You’re given strings J representing the types of stones that are jewels, and S representing the stones you have.  Each character in Sis a type of stone you have.  You want to know how many of the s">
@@ -275,7 +275,7 @@
 <h3 id="分析"><a href="#分析" class="headerlink" title="分析"></a>分析</h3><hr>
 <p>J 作为一个集合，遍历 S，判断是否在 J 中，就像查询哈希列表一样，统计一下即可。</p>
 <h3 id="解决方案1-Java"><a href="#解决方案1-Java" class="headerlink" title="解决方案1(Java)"></a>解决方案1(Java)</h3><hr>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">class Solution &#123;</div><div class="line">    public int numJewelsInStones(String J, String S) &#123;</div><div class="line">        int result = 0;</div><div class="line">        for (char c : S.toCharArray()) &#123;</div><div class="line">            if (J.indexOf(c) != -1) &#123;</div><div class="line">                result++;</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">        return result;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">numJewelsInStones</span><span class="params">(String J, String S)</span> </span>&#123;</div><div class="line">        <span class="keyword">int</span> result = <span class="number">0</span>;</div><div class="line">        <span class="keyword">for</span> (<span class="keyword">char</span> c : S.toCharArray()) &#123;</div><div class="line">            <span class="keyword">if</span> (J.indexOf(c) != -<span class="number">1</span>) &#123;</div><div class="line">                result++;</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">return</span> result;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <h3 id="题目来源"><a href="#题目来源" class="headerlink" title="题目来源"></a><a href="https://leetcode.com/problems/jewels-and-stones/description/" target="_blank" rel="external">题目来源</a></h3>
       
     </div>
@@ -303,16 +303,16 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2014/03/11/leetcode/Algorithms/leetcode-762-Prime-Number-of-Set-Bits-in-Binary-Representation/" rel="next" title="leetcode-762-Prime-Number-of-Set-Bits-in-Binary-Representation">
-                <i class="fa fa-chevron-left"></i> leetcode-762-Prime-Number-of-Set-Bits-in-Binary-Representation
+              <a href="/2014/03/11/leetcode/Algorithms/leetcode-789-Escape-The-Ghosts/" rel="next" title="leetcode-789-Escape-The-Ghosts">
+                <i class="fa fa-chevron-left"></i> leetcode-789-Escape-The-Ghosts
               </a>
             
           </div>
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2014/03/11/leetcode/Algorithms/leetcode-739-Daily-Temperatures/" rel="prev" title="leetcode-739-Daily-Temperatures">
-                leetcode-739-Daily-Temperatures <i class="fa fa-chevron-right"></i>
+              <a href="/2014/03/11/leetcode/Algorithms/leetcode-783-Minimum-Distance-Between-BST-Nodes/" rel="prev" title="leetcode-783-Minimum-Distance-Between-BST-Nodes">
+                leetcode-783-Minimum-Distance-Between-BST-Nodes <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>

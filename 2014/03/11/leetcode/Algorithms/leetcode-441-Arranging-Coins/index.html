@@ -65,7 +65,7 @@
 <meta property="og:site_name" content="knarfeh&#39;s logbook">
 <meta property="og:description" content="描述 You have a total of n coins that you want to form in a staircase shape, where every k-th row must have exactly k coins. Given n, find the total number of full staircase rows that can be formed. n i">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-11-11T13:25:25.082Z">
+<meta property="og:updated_time" content="2019-03-14T14:23:07.372Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="leetcode-441-Arranging-Coins">
 <meta name="twitter:description" content="描述 You have a total of n coins that you want to form in a staircase shape, where every k-th row must have exactly k coins. Given n, find the total number of full staircase rows that can be formed. n i">
@@ -271,10 +271,10 @@
 <h3 id="分析"><a href="#分析" class="headerlink" title="分析"></a>分析</h3><hr>
 <p>题意是给出 n 个硬币，第一行放1个，第二行放2个，以此类推，问有多少行能放满，简单粗暴的方法是一行行地从 n 个硬币中减去，最后返回行数即可，时间复杂度是 $O(n)$；也可以利用等差数列的和的公式解决。</p>
 <h3 id="解决方案1-Java"><a href="#解决方案1-Java" class="headerlink" title="解决方案1(Java)"></a>解决方案1(Java)</h3><hr>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">class Solution &#123;</div><div class="line">    public int arrangeCoins(int n) &#123;</div><div class="line">        int current = 1, remains = n - 1;</div><div class="line">        while (remains &gt;= current+1) &#123;</div><div class="line">            current++;</div><div class="line">            remains -= current;</div><div class="line">        &#125;</div><div class="line">        return n == 0 ? 0: current;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">arrangeCoins</span><span class="params">(<span class="keyword">int</span> n)</span> </span>&#123;</div><div class="line">        <span class="keyword">int</span> current = <span class="number">1</span>, remains = n - <span class="number">1</span>;</div><div class="line">        <span class="keyword">while</span> (remains &gt;= current+<span class="number">1</span>) &#123;</div><div class="line">            current++;</div><div class="line">            remains -= current;</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">return</span> n == <span class="number">0</span> ? <span class="number">0</span>: current;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <h3 id="解决方案2-Java"><a href="#解决方案2-Java" class="headerlink" title="解决方案2(Java)"></a>解决方案2(Java)</h3><hr>
 <p>$n = \frac{(1+x)<em>x}{2}$ =&gt; $x = \frac{\sqrt{8</em>n+1}-1}{2}$</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">class Solution &#123;</div><div class="line">    public int arrangeCoins(int n) &#123;</div><div class="line">        return (int)((Math.sqrt(8*(long)n+1)-1)/2);</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">arrangeCoins</span><span class="params">(<span class="keyword">int</span> n)</span> </span>&#123;</div><div class="line">        <span class="keyword">return</span> (<span class="keyword">int</span>)((Math.sqrt(<span class="number">8</span>*(<span class="keyword">long</span>)n+<span class="number">1</span>)-<span class="number">1</span>)/<span class="number">2</span>);</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <h3 id="题目来源"><a href="#题目来源" class="headerlink" title="题目来源"></a><a href="https://leetcode.com/problems/arranging-coins/description/" target="_blank" rel="external">题目来源</a></h3>
       
     </div>
@@ -304,16 +304,16 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2014/03/11/leetcode/Algorithms/leetcode-437-Path-Sum-III/" rel="next" title="leetcode-437-Path-Sum-III">
-                <i class="fa fa-chevron-left"></i> leetcode-437-Path-Sum-III
+              <a href="/2014/03/11/leetcode/Algorithms/leetcode-451-Sort-Characters-By-Frequency/" rel="next" title="leetcode-451-Sort-Characters-By-Frequency">
+                <i class="fa fa-chevron-left"></i> leetcode-451-Sort-Characters-By-Frequency
               </a>
             
           </div>
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2014/03/11/leetcode/Algorithms/leetcode-429-N-ary-Tree-Level-Order-Traversal/" rel="prev" title="leetcode-429-N-ary-Tree-Level-Order-Traversal">
-                leetcode-429-N-ary-Tree-Level-Order-Traversal <i class="fa fa-chevron-right"></i>
+              <a href="/2014/03/11/leetcode/Algorithms/leetcode-442-Find-All-Duplicates-in-an-Array/" rel="prev" title="leetcode-442-Find-All-Duplicates-in-an-Array">
+                leetcode-442-Find-All-Duplicates-in-an-Array <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>

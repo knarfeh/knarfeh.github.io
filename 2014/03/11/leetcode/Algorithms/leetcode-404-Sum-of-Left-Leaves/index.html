@@ -65,7 +65,7 @@
 <meta property="og:site_name" content="knarfeh&#39;s logbook">
 <meta property="og:description" content="描述 Find the sum of all left leaves in a given binary tree. Example: 1234567    3   / \  9  20    /  \   15   7There are two left leaves in the binary tree, with values 9 and 15 respectively. Return 24">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-11-11T13:24:21.436Z">
+<meta property="og:updated_time" content="2019-03-14T14:21:46.562Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="leetcode-404-Sum-of-Left-Leaves">
 <meta name="twitter:description" content="描述 Find the sum of all left leaves in a given binary tree. Example: 1234567    3   / \  9  20    /  \   15   7There are two left leaves in the binary tree, with values 9 and 15 respectively. Return 24">
@@ -267,7 +267,7 @@
 <h3 id="分析"><a href="#分析" class="headerlink" title="分析"></a>分析</h3><hr>
 <p>可以直接用递归的方式解决。在原函数里检查当前节点的左子节点是否为叶子节点，如果是，返回该左子节点的值加上右子节点递归调用的结果；如果不是，对左右子节点分别调用递归函数，返回两者之和。</p>
 <h3 id="解决方案1-Java"><a href="#解决方案1-Java" class="headerlink" title="解决方案1(Java)"></a>解决方案1(Java)</h3><hr>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div></pre></td><td class="code"><pre><div class="line">/**</div><div class="line"> * Definition for a binary tree node.</div><div class="line"> * public class TreeNode &#123;</div><div class="line"> *     int val;</div><div class="line"> *     TreeNode left;</div><div class="line"> *     TreeNode right;</div><div class="line"> *     TreeNode(int x) &#123; val = x; &#125;</div><div class="line"> * &#125;</div><div class="line"> */</div><div class="line">class Solution &#123;</div><div class="line">    int sum = 0;</div><div class="line">	public int sumOfLeftLeaves(TreeNode root) &#123;</div><div class="line">		if (root == null) &#123;</div><div class="line">			return 0;</div><div class="line">		&#125;</div><div class="line">		if (root.left != null &amp;&amp; root.left.left == null &amp;&amp; root.left.right == null) &#123;</div><div class="line">            return root.left.val + sumOfLeftLeaves(root.right);</div><div class="line">        &#125;</div><div class="line">        return sumOfLeftLeaves(root.left) + sumOfLeftLeaves(root.right);</div><div class="line">	&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div></pre></td><td class="code"><pre><div class="line"><span class="comment">/**</span></div><div class="line"> * Definition for a binary tree node.</div><div class="line"> * public class TreeNode &#123;</div><div class="line"> *     int val;</div><div class="line"> *     TreeNode left;</div><div class="line"> *     TreeNode right;</div><div class="line"> *     TreeNode(int x) &#123; val = x; &#125;</div><div class="line"> * &#125;</div><div class="line"> */</div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</div><div class="line">    <span class="keyword">int</span> sum = <span class="number">0</span>;</div><div class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">sumOfLeftLeaves</span><span class="params">(TreeNode root)</span> </span>&#123;</div><div class="line">		<span class="keyword">if</span> (root == <span class="keyword">null</span>) &#123;</div><div class="line">			<span class="keyword">return</span> <span class="number">0</span>;</div><div class="line">		&#125;</div><div class="line">		<span class="keyword">if</span> (root.left != <span class="keyword">null</span> &amp;&amp; root.left.left == <span class="keyword">null</span> &amp;&amp; root.left.right == <span class="keyword">null</span>) &#123;</div><div class="line">            <span class="keyword">return</span> root.left.val + sumOfLeftLeaves(root.right);</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">return</span> sumOfLeftLeaves(root.left) + sumOfLeftLeaves(root.right);</div><div class="line">	&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <h3 id="题目来源"><a href="#题目来源" class="headerlink" title="题目来源"></a><a href="https://leetcode.com/problems/sum-of-left-leaves/description/" target="_blank" rel="external">题目来源</a></h3>
       
     </div>
@@ -295,16 +295,16 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2014/03/11/leetcode/Algorithms/leetcode-412-Fizz-Buzz/" rel="next" title="leetcode-412-Fizz-Buzz">
-                <i class="fa fa-chevron-left"></i> leetcode-412-Fizz-Buzz
+              <a href="/2014/03/11/leetcode/Algorithms/leetcode-405-Convert-a-Number-to-Hexadecimal/" rel="next" title="leetcode-405-Convert-a-Number-to-Hexadecimal">
+                <i class="fa fa-chevron-left"></i> leetcode-405-Convert-a-Number-to-Hexadecimal
               </a>
             
           </div>
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2014/03/11/leetcode/Algorithms/leetcode-409-Longest-Palindrome/" rel="prev" title="leetcode-409-Longest-Palindrome">
-                leetcode-409-Longest-Palindrome <i class="fa fa-chevron-right"></i>
+              <a href="/2014/03/11/leetcode/Algorithms/leetcode-389-Find-the-Difference/" rel="prev" title="leetcode-389-Find-the-Difference">
+                leetcode-389-Find-the-Difference <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>

@@ -65,7 +65,7 @@
 <meta property="og:site_name" content="knarfeh&#39;s logbook">
 <meta property="og:description" content="描述 Given a binary tree, return the tilt of the whole tree. The tilt of a tree node is defined as the absolute difference between the sum of all left subtree node values and the sum of all right subtre">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-11-11T12:55:31.947Z">
+<meta property="og:updated_time" content="2019-03-14T14:28:10.037Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="leetcode-563-Binary-Tree-Tilt">
 <meta name="twitter:description" content="描述 Given a binary tree, return the tilt of the whole tree. The tilt of a tree node is defined as the absolute difference between the sum of all left subtree node values and the sum of all right subtre">
@@ -274,7 +274,7 @@
 <h3 id="分析"><a href="#分析" class="headerlink" title="分析"></a>分析</h3><hr>
 <p>后序遍历二叉树，可以套模板了。</p>
 <h3 id="解决方案1-Javascript"><a href="#解决方案1-Javascript" class="headerlink" title="解决方案1(Javascript)"></a>解决方案1(Javascript)</h3><hr>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div></pre></td><td class="code"><pre><div class="line">/**</div><div class="line"> * Definition for a binary tree node.</div><div class="line"> * function TreeNode(val) &#123;</div><div class="line"> *     this.val = val;</div><div class="line"> *     this.left = this.right = null;</div><div class="line"> * &#125;</div><div class="line"> */</div><div class="line">/**</div><div class="line"> * @param &#123;TreeNode&#125; root</div><div class="line"> * @return &#123;number&#125;</div><div class="line"> */</div><div class="line">let tilt;</div><div class="line">var findTilt = function(root) &#123;</div><div class="line">    tilt = 0;</div><div class="line">    postOrder(root);</div><div class="line">    return tilt;</div><div class="line">&#125;;</div><div class="line"></div><div class="line">var postOrder = function(root) &#123;</div><div class="line">    if (root == undefined) &#123;</div><div class="line">        return 0;</div><div class="line">    &#125;</div><div class="line">    let l = postOrder(root.left);</div><div class="line">    let r = postOrder(root.right);</div><div class="line">    tilt += Math.abs(r-l);</div><div class="line">    return root.val + l + r;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div></pre></td><td class="code"><pre><div class="line"><span class="comment">/**</span></div><div class="line"> * Definition for a binary tree node.</div><div class="line"> * function TreeNode(val) &#123;</div><div class="line"> *     this.val = val;</div><div class="line"> *     this.left = this.right = null;</div><div class="line"> * &#125;</div><div class="line"> */</div><div class="line"><span class="comment">/**</span></div><div class="line"> * @param &#123;TreeNode&#125; root</div><div class="line"> * @return &#123;number&#125;</div><div class="line"> */</div><div class="line"><span class="keyword">let</span> tilt;</div><div class="line"><span class="keyword">var</span> findTilt = <span class="function"><span class="keyword">function</span>(<span class="params">root</span>) </span>&#123;</div><div class="line">    tilt = <span class="number">0</span>;</div><div class="line">    postOrder(root);</div><div class="line">    <span class="keyword">return</span> tilt;</div><div class="line">&#125;;</div><div class="line"></div><div class="line"><span class="keyword">var</span> postOrder = <span class="function"><span class="keyword">function</span>(<span class="params">root</span>) </span>&#123;</div><div class="line">    <span class="keyword">if</span> (root == <span class="literal">undefined</span>) &#123;</div><div class="line">        <span class="keyword">return</span> <span class="number">0</span>;</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">let</span> l = postOrder(root.left);</div><div class="line">    <span class="keyword">let</span> r = postOrder(root.right);</div><div class="line">    tilt += <span class="built_in">Math</span>.abs(r-l);</div><div class="line">    <span class="keyword">return</span> root.val + l + r;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <h3 id="题目来源"><a href="#题目来源" class="headerlink" title="题目来源"></a><a href="https://leetcode.com/problems/binary-tree-tilt/description/" target="_blank" rel="external">题目来源</a></h3>
       
     </div>
@@ -302,16 +302,16 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2014/03/11/leetcode/Algorithms/leetcode-565-Array-Nesting/" rel="next" title="leetcode-565-Array-Nesting">
-                <i class="fa fa-chevron-left"></i> leetcode-565-Array-Nesting
+              <a href="/2014/03/11/leetcode/Algorithms/leetcode-58-Length-of-Last-Word/" rel="next" title="leetcode-58-Length-of-Last-Word">
+                <i class="fa fa-chevron-left"></i> leetcode-58-Length-of-Last-Word
               </a>
             
           </div>
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2014/03/11/leetcode/Algorithms/leetcode-560-Subarray-Sum-Equals-K/" rel="prev" title="leetcode-560-Subarray-Sum-Equals-K">
-                leetcode-560-Subarray-Sum-Equals-K <i class="fa fa-chevron-right"></i>
+              <a href="/2014/03/11/leetcode/Algorithms/leetcode-566-Reshape-the-Matrix/" rel="prev" title="leetcode-74-Search-a-2D-Matrix">
+                leetcode-74-Search-a-2D-Matrix <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>

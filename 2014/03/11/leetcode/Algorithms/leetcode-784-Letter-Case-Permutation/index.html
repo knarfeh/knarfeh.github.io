@@ -65,7 +65,7 @@
 <meta property="og:site_name" content="knarfeh&#39;s logbook">
 <meta property="og:description" content="描述 Given a string S, we can transform every letter individually to be lowercase or uppercase to create another string.  Return a list of all possible strings we could create. 123456789Examples:Input:">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-10-25T09:00:22.558Z">
+<meta property="og:updated_time" content="2019-03-18T13:08:01.718Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="leetcode-784-Letter-Case-Permutation">
 <meta name="twitter:description" content="描述 Given a string S, we can transform every letter individually to be lowercase or uppercase to create another string.  Return a list of all possible strings we could create. 123456789Examples:Input:">
@@ -271,7 +271,7 @@
 <h3 id="分析"><a href="#分析" class="headerlink" title="分析"></a>分析</h3><hr>
 <p>回溯+递归，代码结构类似于 <a href="https://leetcode.com/problems/permutations" target="_blank" rel="external">Permutation</a>。</p>
 <h3 id="解决方案1-Java"><a href="#解决方案1-Java" class="headerlink" title="解决方案1(Java)"></a>解决方案1(Java)</h3><hr>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div></pre></td><td class="code"><pre><div class="line">class Solution &#123;</div><div class="line">    public List&lt;String&gt; letterCasePermutation(String S) &#123;</div><div class="line">        List&lt;String&gt; result = new ArrayList&lt;&gt;();</div><div class="line">        char[] charArray = S.toCharArray();</div><div class="line">        dfs(charArray, result, 0);</div><div class="line">        return result;</div><div class="line">    &#125;</div><div class="line">    </div><div class="line">    private void dfs(char[] charArray, List&lt;String&gt; result, int index) &#123;</div><div class="line">        if (index == charArray.length) &#123;</div><div class="line">            result.add(new String(charArray));</div><div class="line">            return;</div><div class="line">        &#125;</div><div class="line">        if (Character.isDigit(charArray[index])) &#123;</div><div class="line">            dfs(charArray, result, index+1);</div><div class="line">        &#125; else &#123;</div><div class="line">            charArray[index] = Character.toLowerCase(charArray[index]);</div><div class="line">            dfs(charArray, result, index+1);</div><div class="line">            charArray[index] = Character.toUpperCase(charArray[index]);</div><div class="line">            dfs(charArray, result, index+1);</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</div><div class="line">    <span class="function"><span class="keyword">public</span> List&lt;String&gt; <span class="title">letterCasePermutation</span><span class="params">(String S)</span> </span>&#123;</div><div class="line">        List&lt;String&gt; result = <span class="keyword">new</span> ArrayList&lt;&gt;();</div><div class="line">        <span class="keyword">char</span>[] charArray = S.toCharArray();</div><div class="line">        dfs(charArray, result, <span class="number">0</span>);</div><div class="line">        <span class="keyword">return</span> result;</div><div class="line">    &#125;</div><div class="line">    </div><div class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">dfs</span><span class="params">(<span class="keyword">char</span>[] charArray, List&lt;String&gt; result, <span class="keyword">int</span> index)</span> </span>&#123;</div><div class="line">        <span class="keyword">if</span> (index == charArray.length) &#123;</div><div class="line">            result.add(<span class="keyword">new</span> String(charArray));</div><div class="line">            <span class="keyword">return</span>;</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">if</span> (Character.isDigit(charArray[index])) &#123;</div><div class="line">            dfs(charArray, result, index+<span class="number">1</span>);</div><div class="line">        &#125; <span class="keyword">else</span> &#123;</div><div class="line">            charArray[index] = Character.toLowerCase(charArray[index]);</div><div class="line">            dfs(charArray, result, index+<span class="number">1</span>);</div><div class="line">            charArray[index] = Character.toUpperCase(charArray[index]);</div><div class="line">            dfs(charArray, result, index+<span class="number">1</span>);</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <h3 id="相关问题"><a href="#相关问题" class="headerlink" title="相关问题"></a>相关问题</h3><hr>
 <ul>
 <li><a href="https://leetcode.com/problems/subsets" target="_blank" rel="external">(M) Subsets</a>   </li>
@@ -305,16 +305,16 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2014/03/11/leetcode/Algorithms/leetcode-804-Unique-Morse-Code-Words/" rel="next" title="leetcode-74-">
-                <i class="fa fa-chevron-left"></i> leetcode-74-
+              <a href="/2014/03/11/leetcode/Algorithms/leetcode-797-All-Paths-From-Source-to-Target/" rel="next" title="leetcode-797-All-Paths-From-Source-to-Target">
+                <i class="fa fa-chevron-left"></i> leetcode-797-All-Paths-From-Source-to-Target
               </a>
             
           </div>
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2014/03/11/leetcode/Algorithms/leetcode-766-Toeplitz-Matrix/" rel="prev" title="leetcode-766-Toeplitz-Matrix">
-                leetcode-766-Toeplitz-Matrix <i class="fa fa-chevron-right"></i>
+              <a href="/2014/03/11/leetcode/Algorithms/leetcode-789-Escape-The-Ghosts/" rel="prev" title="leetcode-789-Escape-The-Ghosts">
+                leetcode-789-Escape-The-Ghosts <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>

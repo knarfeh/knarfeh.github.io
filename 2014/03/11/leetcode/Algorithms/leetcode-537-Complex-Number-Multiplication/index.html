@@ -65,7 +65,7 @@
 <meta property="og:site_name" content="knarfeh&#39;s logbook">
 <meta property="og:description" content="描述 Given two strings representing two complex numbers. You need to return a string representing their multiplication. Note $i^2 = -1$ according to the definition. Example 1: 123Input: &amp;quot;1+1i&amp;quot;">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-11-11T12:58:38.425Z">
+<meta property="og:updated_time" content="2019-03-14T14:26:39.479Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="leetcode-537-Complex-Number-Multiplication">
 <meta name="twitter:description" content="描述 Given two strings representing two complex numbers. You need to return a string representing their multiplication. Note $i^2 = -1$ according to the definition. Example 1: 123Input: &amp;quot;1+1i&amp;quot;">
@@ -275,7 +275,7 @@
 <h3 id="分析"><a href="#分析" class="headerlink" title="分析"></a>分析</h3><hr>
 <p>复数相乘，挺简单的。$(a+bi)*(c+di)=ac+bci+adi-bd=(ac-db)+(ad+bc)i$</p>
 <h3 id="解决方案1-Java"><a href="#解决方案1-Java" class="headerlink" title="解决方案1(Java)"></a>解决方案1(Java)</h3><hr>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">class Solution &#123;</div><div class="line">    public String complexNumberMultiply(String a, String b) &#123;</div><div class="line">        String aList[] = a.split(&quot;\\+|i&quot;);</div><div class="line">        String bList[] = b.split(&quot;\\+|i&quot;);</div><div class="line">        int aReal = Integer.parseInt(aList[0]);</div><div class="line">        int aImg = Integer.parseInt(aList[1]);</div><div class="line">        int bReal = Integer.parseInt(bList[0]);</div><div class="line">        int bImg = Integer.parseInt(bList[1]);</div><div class="line">        return (aReal*bReal - aImg*bImg) + &quot;+&quot; + (aReal*bImg + aImg*bReal) + &quot;i&quot;;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</div><div class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">complexNumberMultiply</span><span class="params">(String a, String b)</span> </span>&#123;</div><div class="line">        String aList[] = a.split(<span class="string">"\\+|i"</span>);</div><div class="line">        String bList[] = b.split(<span class="string">"\\+|i"</span>);</div><div class="line">        <span class="keyword">int</span> aReal = Integer.parseInt(aList[<span class="number">0</span>]);</div><div class="line">        <span class="keyword">int</span> aImg = Integer.parseInt(aList[<span class="number">1</span>]);</div><div class="line">        <span class="keyword">int</span> bReal = Integer.parseInt(bList[<span class="number">0</span>]);</div><div class="line">        <span class="keyword">int</span> bImg = Integer.parseInt(bList[<span class="number">1</span>]);</div><div class="line">        <span class="keyword">return</span> (aReal*bReal - aImg*bImg) + <span class="string">"+"</span> + (aReal*bImg + aImg*bReal) + <span class="string">"i"</span>;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <h3 id="题目来源"><a href="#题目来源" class="headerlink" title="题目来源"></a><a href="https://leetcode.com/problems/complex-number-multiplication/description/" target="_blank" rel="external">题目来源</a></h3>
       
     </div>
@@ -305,16 +305,16 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2014/03/11/leetcode/Algorithms/leetcode-530-Minimum-Absolute-Difference-in-BST/" rel="next" title="leetcode-530-Minimum-Absolute-Difference-in-BST">
-                <i class="fa fa-chevron-left"></i> leetcode-530-Minimum-Absolute-Difference-in-BST
+              <a href="/2014/03/11/leetcode/Algorithms/leetcode-538-Convert-BST-to-Greater-Tree/" rel="next" title="leetcode-538-Convert-BST-to-Greater-Tree">
+                <i class="fa fa-chevron-left"></i> leetcode-538-Convert-BST-to-Greater-Tree
               </a>
             
           </div>
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2014/03/11/leetcode/Algorithms/leetcode-535-Encode-and-Decode-TinyURL/" rel="prev" title="leetcode-535-Encode-and-Decode-TinyURL">
-                leetcode-535-Encode-and-Decode-TinyURL <i class="fa fa-chevron-right"></i>
+              <a href="/2014/03/11/leetcode/Algorithms/leetcode-530-Minimum-Absolute-Difference-in-BST/" rel="prev" title="leetcode-530-Minimum-Absolute-Difference-in-BST">
+                leetcode-530-Minimum-Absolute-Difference-in-BST <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>

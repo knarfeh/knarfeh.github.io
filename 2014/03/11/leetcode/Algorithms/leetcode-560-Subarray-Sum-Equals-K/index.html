@@ -65,7 +65,7 @@
 <meta property="og:site_name" content="knarfeh&#39;s logbook">
 <meta property="og:description" content="描述 Given an array of integers and an integer k, you need to find the total number of continuous subarrays whose sum equals to k. Example 1: 12Input:nums = [1,1,1], k = 2Output: 2 Note:  The length of">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-11-11T12:55:35.708Z">
+<meta property="og:updated_time" content="2019-03-14T14:27:34.875Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="leetcode-560-Subarray-Sum-Equals-K">
 <meta name="twitter:description" content="描述 Given an array of integers and an integer k, you need to find the total number of continuous subarrays whose sum equals to k. Example 1: 12Input:nums = [1,1,1], k = 2Output: 2 Note:  The length of">
@@ -272,7 +272,7 @@
 <h3 id="分析"><a href="#分析" class="headerlink" title="分析"></a>分析</h3><hr>
 <p>题目要求是从一个数组中，求连续子序列和为 k 的个数。数据量不是很大，可以用暴力枚举的方式，还有一种方式是使用哈希表辅助的方式，定义 sum[i] 为 0-i 的和，哈希表存的是 sum 以及和为 sum 的子序列的个数，只需要遍历一次序列，遍历的过程中求 sum，同时根据当前的 sum 求哈希表中 sum-k 对应的子序列的个数，将这些值加起来即可。</p>
 <h3 id="解决方案1-Java"><a href="#解决方案1-Java" class="headerlink" title="解决方案1(Java)"></a>解决方案1(Java)</h3><hr>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line">class Solution &#123;</div><div class="line">    public int subarraySum(int[] nums, int k) &#123;</div><div class="line">        int sum = 0, result = 0;</div><div class="line">        Map&lt;Integer, Integer&gt; map = new HashMap&lt;&gt;();</div><div class="line">        map.put(0, 1);</div><div class="line">        for (int i = 0; i &lt; nums.length; i++) &#123;</div><div class="line">            sum += nums[i];</div><div class="line">            if (map.containsKey(sum-k)) &#123;</div><div class="line">                result += map.get(sum-k);</div><div class="line">            &#125;</div><div class="line">            map.put(sum, map.getOrDefault(sum, 0) + 1);</div><div class="line">        &#125;</div><div class="line">        return result;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">subarraySum</span><span class="params">(<span class="keyword">int</span>[] nums, <span class="keyword">int</span> k)</span> </span>&#123;</div><div class="line">        <span class="keyword">int</span> sum = <span class="number">0</span>, result = <span class="number">0</span>;</div><div class="line">        Map&lt;Integer, Integer&gt; map = <span class="keyword">new</span> HashMap&lt;&gt;();</div><div class="line">        map.put(<span class="number">0</span>, <span class="number">1</span>);</div><div class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; nums.length; i++) &#123;</div><div class="line">            sum += nums[i];</div><div class="line">            <span class="keyword">if</span> (map.containsKey(sum-k)) &#123;</div><div class="line">                result += map.get(sum-k);</div><div class="line">            &#125;</div><div class="line">            map.put(sum, map.getOrDefault(sum, <span class="number">0</span>) + <span class="number">1</span>);</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">return</span> result;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <h3 id="相关问题"><a href="#相关问题" class="headerlink" title="相关问题"></a>相关问题</h3><hr>
 <ul>
 <li><a href="https://leetcode.com/problems/two-sum" target="_blank" rel="external">(E) Two Sum</a></li>
@@ -309,16 +309,16 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2014/03/11/leetcode/Algorithms/leetcode-563-Binary-Tree-Tilt/" rel="next" title="leetcode-563-Binary-Tree-Tilt">
-                <i class="fa fa-chevron-left"></i> leetcode-563-Binary-Tree-Tilt
+              <a href="/2014/03/11/leetcode/Algorithms/leetcode-561-Array-Partition-I/" rel="next" title="leetcode-561-Array-Partition-I">
+                <i class="fa fa-chevron-left"></i> leetcode-561-Array-Partition-I
               </a>
             
           </div>
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2014/03/11/leetcode/Algorithms/leetcode-557-Reverse-Words-in-a-String-III/" rel="prev" title="leetcode-557-Reverse-Words-in-a-String-III">
-                leetcode-557-Reverse-Words-in-a-String-III <i class="fa fa-chevron-right"></i>
+              <a href="/2014/03/11/leetcode/Algorithms/leetcode-56-Merge-Intervals/" rel="prev" title="leetcode-56-Merge-Intervals">
+                leetcode-56-Merge-Intervals <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>

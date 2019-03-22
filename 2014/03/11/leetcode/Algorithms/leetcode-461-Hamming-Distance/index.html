@@ -65,7 +65,7 @@
 <meta property="og:site_name" content="knarfeh&#39;s logbook">
 <meta property="og:description" content="描述 The Hamming distance between two integers is the number of positions at which the corresponding bits are different. Given two integers x and y, calculate the Hamming distance. Note:$0 ≤ x, y &amp;lt; 2">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2017-06-13T13:10:17.000Z">
+<meta property="og:updated_time" content="2019-03-14T14:24:09.561Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="leetcode-461-Hamming-Distance">
 <meta name="twitter:description" content="描述 The Hamming distance between two integers is the number of positions at which the corresponding bits are different. Given two integers x and y, calculate the Hamming distance. Note:$0 ≤ x, y &amp;lt; 2">
@@ -268,8 +268,8 @@
 <a id="more"></a>
 <h3 id="分析"><a href="#分析" class="headerlink" title="分析"></a>分析</h3><hr>
 <p><a href="https://en.wikipedia.org/wiki/Hamming_distance" target="_blank" rel="external">汉明距离</a>是指两个等长字符串对应位置的不同字符的个数。</p>
-<h3 id="解决方案3-Python"><a href="#解决方案3-Python" class="headerlink" title="解决方案3(Python)"></a>解决方案3(Python)</h3><hr>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">class Solution(object):</div><div class="line">    def hammingDistance(self, x, y):</div><div class="line">        &quot;&quot;&quot;</div><div class="line">        :type x: int</div><div class="line">        :type y: int</div><div class="line">        :rtype: int</div><div class="line">        &quot;&quot;&quot;</div><div class="line">        return bin(x^y).count(&quot;1&quot;)</div></pre></td></tr></table></figure>
+<h3 id="解决方案1-Python"><a href="#解决方案1-Python" class="headerlink" title="解决方案1(Python)"></a>解决方案1(Python)</h3><hr>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span><span class="params">(object)</span>:</span></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">hammingDistance</span><span class="params">(self, x, y)</span>:</span></div><div class="line">        <span class="string">"""</span></div><div class="line">        :type x: int</div><div class="line">        :type y: int</div><div class="line">        :rtype: int</div><div class="line">        """</div><div class="line">        <span class="keyword">return</span> bin(x^y).count(<span class="string">"1"</span>)</div></pre></td></tr></table></figure>
 <h3 id="相关问题"><a href="#相关问题" class="headerlink" title="相关问题"></a>相关问题</h3><hr>
 <h3 id="题目来源"><a href="#题目来源" class="headerlink" title="题目来源"></a><a href="https://leetcode.com/problems/hamming-distance/" target="_blank" rel="external">题目来源</a></h3>
       
@@ -296,16 +296,16 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2014/03/11/leetcode/Algorithms/leetcode-453-Minimum-Moves-to-Equal-Array-Elements/" rel="next" title="leetcode-453-Minimum-Moves-to-Equal-Array-Elements">
-                <i class="fa fa-chevron-left"></i> leetcode-453-Minimum-Moves-to-Equal-Array-Elements
+              <a href="/2014/03/11/leetcode/Algorithms/leetcode-445-Add-Two-Numbers-II/" rel="next" title="leetcode-445-Add-Two-Numbers-II">
+                <i class="fa fa-chevron-left"></i> leetcode-445-Add-Two-Numbers-II
               </a>
             
           </div>
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2014/03/11/leetcode/Algorithms/leetcode-449-Serialize-and-Deserialize-BST/" rel="prev" title="leetcode-449-Serialize-and-Deserialize-BST">
-                leetcode-449-Serialize-and-Deserialize-BST <i class="fa fa-chevron-right"></i>
+              <a href="/2014/03/11/leetcode/Algorithms/leetcode-454-4Sum-II/" rel="prev" title="leetcode-454-4Sum-II">
+                leetcode-454-4Sum-II <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -448,7 +448,7 @@
               
             
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#描述"><span class="nav-number">1.</span> <span class="nav-text">描述</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#分析"><span class="nav-number">2.</span> <span class="nav-text">分析</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#解决方案3-Python"><span class="nav-number">3.</span> <span class="nav-text">解决方案3(Python)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#相关问题"><span class="nav-number">4.</span> <span class="nav-text">相关问题</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#题目来源"><span class="nav-number">5.</span> <span class="nav-text">题目来源</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#描述"><span class="nav-number">1.</span> <span class="nav-text">描述</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#分析"><span class="nav-number">2.</span> <span class="nav-text">分析</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#解决方案1-Python"><span class="nav-number">3.</span> <span class="nav-text">解决方案1(Python)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#相关问题"><span class="nav-number">4.</span> <span class="nav-text">相关问题</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#题目来源"><span class="nav-number">5.</span> <span class="nav-text">题目来源</span></a></li></ol></div>
             
           </div>
           <div class="post-toc-indicator-bottom post-toc-indicator">

@@ -65,7 +65,7 @@
 <meta property="og:site_name" content="knarfeh&#39;s logbook">
 <meta property="og:description" content="描述 Given a list of daily temperatures T, return a list such that, for each day in the input, tells you how many days you would have to wait until a warmer temperature. If there is no future day for wh">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-11-11T09:25:25.647Z">
+<meta property="og:updated_time" content="2019-03-18T13:08:01.699Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="leetcode-739-Daily-Temperatures">
 <meta name="twitter:description" content="描述 Given a list of daily temperatures T, return a list such that, for each day in the input, tells you how many days you would have to wait until a warmer temperature. If there is no future day for wh">
@@ -267,7 +267,7 @@
 <h3 id="分析"><a href="#分析" class="headerlink" title="分析"></a>分析</h3><hr>
 <p>题目大意是给定一个数组，表示每天的温度，求每天经过多少天会升温。这里可以用后进先出的栈来维护还没有出现升温日的索引，遍历时的那一天温度高于栈顶时，表明找到了升温的那天，进行出栈操作，并记录结果，也就是说维护的栈会保持一个从栈顶到栈尾递增的顺序。</p>
 <h3 id="解决方案1-Java"><a href="#解决方案1-Java" class="headerlink" title="解决方案1(Java)"></a>解决方案1(Java)</h3><hr>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line">class Solution &#123;</div><div class="line">    public int[] dailyTemperatures(int[] T) &#123;</div><div class="line">        Stack&lt;Integer&gt; stack = new Stack&lt;&gt;();</div><div class="line">        int[] result = new int[T.length];</div><div class="line">        for (int i = 0; i &lt; T.length; i++) &#123;</div><div class="line">            while(!stack.isEmpty() &amp;&amp; T[i] &gt; T[stack.peek()]) &#123;</div><div class="line">                int index = stack.pop();</div><div class="line">                result[index] = i - index;</div><div class="line">            &#125;</div><div class="line">            stack.push(i);</div><div class="line">        &#125;</div><div class="line">        return result;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</div><div class="line">    <span class="keyword">public</span> <span class="keyword">int</span>[] dailyTemperatures(<span class="keyword">int</span>[] T) &#123;</div><div class="line">        Stack&lt;Integer&gt; stack = <span class="keyword">new</span> Stack&lt;&gt;();</div><div class="line">        <span class="keyword">int</span>[] result = <span class="keyword">new</span> <span class="keyword">int</span>[T.length];</div><div class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; T.length; i++) &#123;</div><div class="line">            <span class="keyword">while</span>(!stack.isEmpty() &amp;&amp; T[i] &gt; T[stack.peek()]) &#123;</div><div class="line">                <span class="keyword">int</span> index = stack.pop();</div><div class="line">                result[index] = i - index;</div><div class="line">            &#125;</div><div class="line">            stack.push(i);</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">return</span> result;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <h3 id="相关问题"><a href="#相关问题" class="headerlink" title="相关问题"></a>相关问题</h3><hr>
 <p><a href="https://leetcode.com/problems/next-greater-element-i" target="_blank" rel="external">(E) Next Greater Element I</a>   </p>
 <h3 id="题目来源"><a href="#题目来源" class="headerlink" title="题目来源"></a><a href="https://leetcode.com/problems/daily-temperatures/description/" target="_blank" rel="external">题目来源</a></h3>
@@ -299,16 +299,16 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2014/03/11/leetcode/Algorithms/leetcode-771-Jewels-and-Stones/" rel="next" title="leetcode-771-Jewels-and-Stones">
-                <i class="fa fa-chevron-left"></i> leetcode-771-Jewels-and-Stones
+              <a href="/2014/03/11/leetcode/Algorithms/leetcode-748-Shortest-Completing-Word/" rel="next" title="leetcode-748-Shortest-Completing-Word">
+                <i class="fa fa-chevron-left"></i> leetcode-748-Shortest-Completing-Word
               </a>
             
           </div>
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2014/03/11/leetcode/Algorithms/leetcode-748-Shortest-Completing-Word/" rel="prev" title="leetcode-748-Shortest-Completing-Word">
-                leetcode-748-Shortest-Completing-Word <i class="fa fa-chevron-right"></i>
+              <a href="/2014/03/11/leetcode/Algorithms/leetcode-728-Self-Dividing-Numbers/" rel="prev" title="leetcode-728-Self-Dividing-Numbers">
+                leetcode-728-Self-Dividing-Numbers <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>

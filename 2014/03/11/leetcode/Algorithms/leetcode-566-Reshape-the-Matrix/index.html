@@ -65,7 +65,7 @@
 <meta property="og:site_name" content="knarfeh&#39;s logbook">
 <meta property="og:description" content="描述 In MATLAB, there is a very useful function called ‘reshape’, which can reshape a matrix into a new one with different size but keep its original data. You’re given a matrix represented by a two-dim">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-11-11T12:54:52.510Z">
+<meta property="og:updated_time" content="2019-03-14T14:28:21.996Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="leetcode-74-Search-a-2D-Matrix">
 <meta name="twitter:description" content="描述 In MATLAB, there is a very useful function called ‘reshape’, which can reshape a matrix into a new one with different size but keep its original data. You’re given a matrix represented by a two-dim">
@@ -277,7 +277,7 @@
 <h3 id="分析"><a href="#分析" class="headerlink" title="分析"></a>分析</h3><hr>
 <p>首先判断不能做 <code>reshape</code> 的情况，如果传入的 nums 数组长度为0，或者长宽的乘积不等于需要新建的数组的长宽的乘积，则不能做 <code>reshape</code> 操作，返回原数组。否则遍历原数组，一个个填充新数组的元素。</p>
 <h3 id="解决方案1-Java"><a href="#解决方案1-Java" class="headerlink" title="解决方案1(Java)"></a>解决方案1(Java)</h3><hr>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div></pre></td><td class="code"><pre><div class="line">class Solution &#123;</div><div class="line">    public int[][] matrixReshape(int[][] nums, int r, int c) &#123;</div><div class="line">        int[][] result = new int[r][c];</div><div class="line">        if ( nums.length == 0 || nums.length * nums[0].length != r * c) &#123;</div><div class="line">            return nums;</div><div class="line">        &#125;</div><div class="line">        int row = 0;</div><div class="line">        int col = 0;</div><div class="line">        for (int i = 0; i &lt; nums.length; i++) &#123;</div><div class="line">            for (int j = 0; j &lt; nums[0].length; j++) &#123;</div><div class="line">                result[row][col] = nums[i][j];</div><div class="line">                col++;</div><div class="line">                if (col == c) &#123;</div><div class="line">                    row++;</div><div class="line">                    col = 0;</div><div class="line">                &#125;</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">        return result;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</div><div class="line">    <span class="keyword">public</span> <span class="keyword">int</span>[][] matrixReshape(<span class="keyword">int</span>[][] nums, <span class="keyword">int</span> r, <span class="keyword">int</span> c) &#123;</div><div class="line">        <span class="keyword">int</span>[][] result = <span class="keyword">new</span> <span class="keyword">int</span>[r][c];</div><div class="line">        <span class="keyword">if</span> ( nums.length == <span class="number">0</span> || nums.length * nums[<span class="number">0</span>].length != r * c) &#123;</div><div class="line">            <span class="keyword">return</span> nums;</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">int</span> row = <span class="number">0</span>;</div><div class="line">        <span class="keyword">int</span> col = <span class="number">0</span>;</div><div class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; nums.length; i++) &#123;</div><div class="line">            <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">0</span>; j &lt; nums[<span class="number">0</span>].length; j++) &#123;</div><div class="line">                result[row][col] = nums[i][j];</div><div class="line">                col++;</div><div class="line">                <span class="keyword">if</span> (col == c) &#123;</div><div class="line">                    row++;</div><div class="line">                    col = <span class="number">0</span>;</div><div class="line">                &#125;</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">return</span> result;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <h3 id="题目来源"><a href="#题目来源" class="headerlink" title="题目来源"></a><a href="https://leetcode.com/problems/reshape-the-matrix/description/" target="_blank" rel="external">题目来源</a></h3>
       
     </div>
@@ -305,16 +305,16 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2014/03/11/leetcode/Algorithms/leetcode-575-Distribute-Candies/" rel="next" title="leetcode-575-Distribute-Candies">
-                <i class="fa fa-chevron-left"></i> leetcode-575-Distribute-Candies
+              <a href="/2014/03/11/leetcode/Algorithms/leetcode-563-Binary-Tree-Tilt/" rel="next" title="leetcode-563-Binary-Tree-Tilt">
+                <i class="fa fa-chevron-left"></i> leetcode-563-Binary-Tree-Tilt
               </a>
             
           </div>
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2014/03/11/leetcode/Algorithms/leetcode-572-Subtree-of-Another-Tree/" rel="prev" title="leetcode-572-Subtree-of-Another-Tree">
-                leetcode-572-Subtree-of-Another-Tree <i class="fa fa-chevron-right"></i>
+              <a href="/2014/03/11/leetcode/Algorithms/leetcode-565-Array-Nesting/" rel="prev" title="leetcode-565-Array-Nesting">
+                leetcode-565-Array-Nesting <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>

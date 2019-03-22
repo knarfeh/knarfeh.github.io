@@ -65,7 +65,7 @@
 <meta property="og:site_name" content="knarfeh&#39;s logbook">
 <meta property="og:description" content="描述 There are N rooms and you start in room 0.  Each room has a distinct number in 0, 1, 2, ..., N-1, and each room may have some keys to access the next room.  Formally, each room i has a list of keys">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-10-22T07:09:51.159Z">
+<meta property="og:updated_time" content="2019-03-18T13:08:01.767Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="leetcode-841-Keys-and-Rooms">
 <meta name="twitter:description" content="描述 There are N rooms and you start in room 0.  Each room has a distinct number in 0, 1, 2, ..., N-1, and each room may have some keys to access the next room.  Formally, each room i has a list of keys">
@@ -279,29 +279,8 @@
 <h3 id="分析"><a href="#分析" class="headerlink" title="分析"></a>分析</h3><hr>
 <p>这题的本质是判断一个图是否只有一个连通分图，用深度优先遍历即可。</p>
 <h3 id="解决方案1-Java"><a href="#解决方案1-Java" class="headerlink" title="解决方案1(Java)"></a>解决方案1(Java)</h3><hr>
-<pre><code>class Solution {
-    public boolean canVisitAllRooms(List&lt;List&lt;Integer&gt;&gt; rooms) {
-        int[] visited = new int[rooms.size()];
-        dfs(rooms, 0, visited);
-        for (int item: visited) {
-            if (item == 0) {
-                return false;
-            }
-        }
-        return true;
-    }
-
-    private void dfs(List&lt;List&lt;Integer&gt;&gt; rooms, int index, int[] visited) {
-        if (visited[index] == 1) {
-            return;
-        }
-        visited[index] = 1;
-        for (int item: rooms.get(index)) {
-            dfs(rooms, item, visited);
-        }
-    }
-}
-</code></pre><h3 id="题目来源"><a href="#题目来源" class="headerlink" title="题目来源"></a><a href="https://leetcode.com/problems/keys-and-rooms/description/" target="_blank" rel="external">题目来源</a></h3>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">canVisitAllRooms</span><span class="params">(List&lt;List&lt;Integer&gt;&gt; rooms)</span> </span>&#123;</div><div class="line">        <span class="keyword">int</span>[] visited = <span class="keyword">new</span> <span class="keyword">int</span>[rooms.size()];</div><div class="line">        dfs(rooms, <span class="number">0</span>, visited);</div><div class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> item: visited) &#123;</div><div class="line">            <span class="keyword">if</span> (item == <span class="number">0</span>) &#123;</div><div class="line">                <span class="keyword">return</span> <span class="keyword">false</span>;</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">return</span> <span class="keyword">true</span>;</div><div class="line">    &#125;</div><div class="line">    </div><div class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">dfs</span><span class="params">(List&lt;List&lt;Integer&gt;&gt; rooms, <span class="keyword">int</span> index, <span class="keyword">int</span>[] visited)</span> </span>&#123;</div><div class="line">        <span class="keyword">if</span> (visited[index] == <span class="number">1</span>) &#123;</div><div class="line">            <span class="keyword">return</span>;</div><div class="line">        &#125;</div><div class="line">        visited[index] = <span class="number">1</span>;</div><div class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> item: rooms.get(index)) &#123;</div><div class="line">            dfs(rooms, item, visited);</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h3 id="题目来源"><a href="#题目来源" class="headerlink" title="题目来源"></a><a href="https://leetcode.com/problems/keys-and-rooms/description/" target="_blank" rel="external">题目来源</a></h3>
       
     </div>
 
@@ -330,16 +309,16 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2014/03/11/leetcode/Algorithms/leetcode-814-Binary-Tree-Pruning/" rel="next" title="leetcode-814-Binary-Tree-Pruning">
-                <i class="fa fa-chevron-left"></i> leetcode-814-Binary-Tree-Pruning
+              <a href="/2014/03/11/leetcode/Algorithms/leetcode-860-Lemonade-Change/" rel="next" title="leetcode-860-Lemonade-Change">
+                <i class="fa fa-chevron-left"></i> leetcode-860-Lemonade-Change
               </a>
             
           </div>
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2014/03/11/leetcode/Algorithms/leetcode-860-Lemonade-Change/" rel="prev" title="leetcode-860-Lemonade-Change">
-                leetcode-860-Lemonade-Change <i class="fa fa-chevron-right"></i>
+              <a href="/2014/03/11/leetcode/Algorithms/leetcode-852-Peak-Index-in-a-Mountain-Array/" rel="prev" title="leetcode-852-Peak-Index-in-a-Mountain-Array">
+                leetcode-852-Peak-Index-in-a-Mountain-Array <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>

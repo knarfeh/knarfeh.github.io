@@ -65,7 +65,7 @@
 <meta property="og:site_name" content="knarfeh&#39;s logbook">
 <meta property="og:description" content="描述 Given an array of citations (each citation is a non-negative integer) of a researcher, write a function to compute the researcher’s h-index. According to the definition of h-index on Wikipedia: “A">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-11-11T13:27:49.722Z">
+<meta property="og:updated_time" content="2019-03-14T12:50:13.294Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="leetcode-274-H-Index">
 <meta name="twitter:description" content="描述 Given an array of citations (each citation is a non-negative integer) of a researcher, write a function to compute the researcher’s h-index. According to the definition of h-index on Wikipedia: “A">
@@ -270,9 +270,9 @@
 <p>这题要求我们求<a href="https://zh.wikipedia.org/wiki/H%E6%8C%87%E6%95%B0" target="_blank" rel="external">H指数</a>，思路不复杂，将某人发表的所有 SCI 论文按照引用次数从高到低排序，从高到低编号为 0，1，2 … n，当 n &gt;= 引用数时，这个值就是某人的 H 指数。这个指数可以用来评估研究人员的学术产出数量和学术产出水平。</p>
 <h3 id="解决方案1-Java"><a href="#解决方案1-Java" class="headerlink" title="解决方案1(Java)"></a>解决方案1(Java)</h3><hr>
 <p>在 Java 中，自定义 int 类型的 compare 方法还得先把 int 转换成 Integer，见 <a href="https://stackoverflow.com/questions/7414299/sorting-int-array-in-descending-order" target="_blank" rel="external">https://stackoverflow.com/questions/7414299/sorting-int-array-in-descending-order</a> ，索性用从低到高的顺序，只要序号对了就行。如果用 Python 就直观多了。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">class Solution &#123;</div><div class="line">    public int hIndex(int[] citations) &#123;</div><div class="line">        Arrays.sort(citations);</div><div class="line">        </div><div class="line">        int length = citations.length;</div><div class="line">        for (int i = length-1; i &gt;= 0; i--) &#123;</div><div class="line">            if (length-i-1 &gt;= citations[i]) &#123;</div><div class="line">                return length-i-1;</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">        return citations.length;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">hIndex</span><span class="params">(<span class="keyword">int</span>[] citations)</span> </span>&#123;</div><div class="line">        Arrays.sort(citations);</div><div class="line">        </div><div class="line">        <span class="keyword">int</span> length = citations.length;</div><div class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = length-<span class="number">1</span>; i &gt;= <span class="number">0</span>; i--) &#123;</div><div class="line">            <span class="keyword">if</span> (length-i-<span class="number">1</span> &gt;= citations[i]) &#123;</div><div class="line">                <span class="keyword">return</span> length-i-<span class="number">1</span>;</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">return</span> citations.length;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <h3 id="解决方案2-Python"><a href="#解决方案2-Python" class="headerlink" title="解决方案2(Python)"></a>解决方案2(Python)</h3><hr>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">class Solution:</div><div class="line">    def hIndex(self, citations):</div><div class="line">        &quot;&quot;&quot;</div><div class="line">        :type citations: List[int]</div><div class="line">        :rtype: int</div><div class="line">        &quot;&quot;&quot;</div><div class="line">        for i, v in enumerate(sorted(citations, reverse=True)):</div><div class="line">            if i &gt;= v:</div><div class="line">                return i;</div><div class="line">        return len(citations);</div></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span>:</span></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">hIndex</span><span class="params">(self, citations)</span>:</span></div><div class="line">        <span class="string">"""</span></div><div class="line">        :type citations: List[int]</div><div class="line">        :rtype: int</div><div class="line">        """</div><div class="line">        <span class="keyword">for</span> i, v <span class="keyword">in</span> enumerate(sorted(citations, reverse=<span class="keyword">True</span>)):</div><div class="line">            <span class="keyword">if</span> i &gt;= v:</div><div class="line">                <span class="keyword">return</span> i;</div><div class="line">        <span class="keyword">return</span> len(citations);</div></pre></td></tr></table></figure>
 <h3 id="相关问题"><a href="#相关问题" class="headerlink" title="相关问题"></a>相关问题</h3><hr>
 <ul>
 <li><a href="https://leetcode.com/problems/h-index-ii/" target="_blank" rel="external">(M) H-Index II</a>   </li>
@@ -306,16 +306,16 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2014/03/11/leetcode/Algorithms/leetcode-278-First-Bad-Version/" rel="next" title="leetcode-278-First-Bad-Version">
-                <i class="fa fa-chevron-left"></i> leetcode-278-First-Bad-Version
+              <a href="/2014/03/11/leetcode/Algorithms/leetcode-283-Move-Zeroes/" rel="next" title="leetcode-283-Move-Zeroes">
+                <i class="fa fa-chevron-left"></i> leetcode-283-Move-Zeroes
               </a>
             
           </div>
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2014/03/11/leetcode/Algorithms/leetcode-268-Missing-Number/" rel="prev" title="leetcode-268-Missing-Number">
-                leetcode-268-Missing-Number <i class="fa fa-chevron-right"></i>
+              <a href="/2014/03/11/leetcode/Algorithms/leetcode-28-Implement-strStr()/" rel="prev" title="leetcode-28-Implement-strStr()">
+                leetcode-28-Implement-strStr() <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>

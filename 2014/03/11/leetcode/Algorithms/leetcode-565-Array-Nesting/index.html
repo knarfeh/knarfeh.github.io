@@ -65,7 +65,7 @@
 <meta property="og:site_name" content="knarfeh&#39;s logbook">
 <meta property="og:description" content="描述 A zero-indexed array A of length N contains all integers from 0 to N-1. Find and return the longest length of set S, where S[i] = {A[i], A[A[i]], A[A[A[i]]], … } subjected to the rule below. Suppos">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-11-11T12:55:07.074Z">
+<meta property="og:updated_time" content="2019-03-14T14:28:15.375Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="leetcode-565-Array-Nesting">
 <meta name="twitter:description" content="描述 A zero-indexed array A of length N contains all integers from 0 to N-1. Find and return the longest length of set S, where S[i] = {A[i], A[A[i]], A[A[A[i]]], … } subjected to the rule below. Suppos">
@@ -274,7 +274,7 @@
 <h3 id="分析"><a href="#分析" class="headerlink" title="分析"></a>分析</h3><hr>
 <p>其实就是找长度最大的环，因为所有的节点的入度和出度都为1，所以一次遍历就行了。</p>
 <h3 id="解决方案1-Java"><a href="#解决方案1-Java" class="headerlink" title="解决方案1(Java)"></a>解决方案1(Java)</h3><hr>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line">class Solution &#123;</div><div class="line">    public int arrayNesting(int[] nums) &#123;</div><div class="line">        boolean[] visited = new boolean[nums.length];</div><div class="line">        int result = 0;</div><div class="line">        for (int i = 0; i &lt; nums.length; i++) &#123;</div><div class="line">            if (!visited[i]) &#123;</div><div class="line">                int start = nums[i], count = 0;</div><div class="line">                do &#123;</div><div class="line">                    start = nums[start];</div><div class="line">                    count++;</div><div class="line">                    visited[start] = true;</div><div class="line">                &#125;</div><div class="line">                while (start != nums[i]);</div><div class="line">                result = Math.max(result, count);</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">        return result;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">arrayNesting</span><span class="params">(<span class="keyword">int</span>[] nums)</span> </span>&#123;</div><div class="line">        <span class="keyword">boolean</span>[] visited = <span class="keyword">new</span> <span class="keyword">boolean</span>[nums.length];</div><div class="line">        <span class="keyword">int</span> result = <span class="number">0</span>;</div><div class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; nums.length; i++) &#123;</div><div class="line">            <span class="keyword">if</span> (!visited[i]) &#123;</div><div class="line">                <span class="keyword">int</span> start = nums[i], count = <span class="number">0</span>;</div><div class="line">                do &#123;</div><div class="line">                    start = nums[start];</div><div class="line">                    count++;</div><div class="line">                    visited[start] = <span class="keyword">true</span>;</div><div class="line">                &#125;</div><div class="line">                <span class="keyword">while</span> (start != nums[i]);</div><div class="line">                result = Math.max(result, count);</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">return</span> result;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <h3 id="相关问题"><a href="#相关问题" class="headerlink" title="相关问题"></a>相关问题</h3><hr>
 <ul>
 <li><a href="https://leetcode.com/problems/nested-list-weight-sum" target="_blank" rel="external">(E) Nested List Weight Sum</a>   </li>
@@ -308,16 +308,16 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2014/03/11/leetcode/Algorithms/leetcode-58-Length-of-Last-Word/" rel="next" title="leetcode-58-Length-of-Last-Word">
-                <i class="fa fa-chevron-left"></i> leetcode-58-Length-of-Last-Word
+              <a href="/2014/03/11/leetcode/Algorithms/leetcode-566-Reshape-the-Matrix/" rel="next" title="leetcode-74-Search-a-2D-Matrix">
+                <i class="fa fa-chevron-left"></i> leetcode-74-Search-a-2D-Matrix
               </a>
             
           </div>
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2014/03/11/leetcode/Algorithms/leetcode-563-Binary-Tree-Tilt/" rel="prev" title="leetcode-563-Binary-Tree-Tilt">
-                leetcode-563-Binary-Tree-Tilt <i class="fa fa-chevron-right"></i>
+              <a href="/2014/03/11/leetcode/Algorithms/leetcode-561-Array-Partition-I/" rel="prev" title="leetcode-561-Array-Partition-I">
+                leetcode-561-Array-Partition-I <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
