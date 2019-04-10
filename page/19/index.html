@@ -316,8 +316,8 @@
             
               
                 
-                <a class="post-title-link" href="/2014/03/11/leetcode/Algorithms/leetcode-35-Search-Insert-Position/" itemprop="url">
-                  leetcode-35-Search-Insert-Position
+                <a class="post-title-link" href="/2014/03/11/leetcode/Algorithms/leetcode-347-Top-K-Frequent-Elements/" itemprop="url">
+                  leetcode-347-Top-K-Frequent-Elements
                 </a>
               
             
@@ -341,8 +341,8 @@
             
               <span class="post-comments-count">
                 &nbsp; | &nbsp;
-                <a href="/2014/03/11/leetcode/Algorithms/leetcode-35-Search-Insert-Position/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2014/03/11/leetcode/Algorithms/leetcode-35-Search-Insert-Position/" itemprop="commentsCount"></span>
+                <a href="/2014/03/11/leetcode/Algorithms/leetcode-347-Top-K-Frequent-Elements/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2014/03/11/leetcode/Algorithms/leetcode-347-Top-K-Frequent-Elements/" itemprop="commentsCount"></span>
                 </a>
               </span>
             
@@ -366,11 +366,17 @@
       
         
           <h3 id="描述"><a href="#描述" class="headerlink" title="描述"></a>描述</h3><hr>
-<p>Given a sorted array and a target value, return the index if the target is found. If not, return the index where it would be if it were inserted in order.</p>
-<p>You may assume no duplicates in the array.</p>
-<p>Here are few examples.<br>[1,3,5,6], 5 → 2<br>[1,3,5,6], 2 → 1<br>[1,3,5,6], 7 → 4<br>[1,3,5,6], 0 → 0 </p>
+<p>Given a non-empty array of integers, return the <strong>k</strong> most frequent elements.</p>
+<p>For example,<br>Given <code>[1,1,1,2,2,3]</code> and k = 2, return <code>[1,2].</code> </p>
+<p><strong>Note:</strong></p>
+<ul>
+<li><p>You may assume k is always valid, 1 ≤ k ≤ number of unique elements.</p>
+</li>
+<li><p>Your algorithm’s time complexity must be better than O(n log n), where n is the array’s size.</p>
+</li>
+</ul>
           <div class="post-more-link text-center">
-            <a class="btn" href="/2014/03/11/leetcode/Algorithms/leetcode-35-Search-Insert-Position/#more" rel="contents">
+            <a class="btn" href="/2014/03/11/leetcode/Algorithms/leetcode-347-Top-K-Frequent-Elements/#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
@@ -417,8 +423,8 @@
             
               
                 
-                <a class="post-title-link" href="/2014/03/11/leetcode/Shell/leetcode-192-Word-Frequency/" itemprop="url">
-                  leetcode-175-Combine-Two-Tables
+                <a class="post-title-link" href="/2014/03/11/leetcode/Database/leetcode-178-Rank-Scores/" itemprop="url">
+                  leetcode-178-Rank-Scores
                 </a>
               
             
@@ -442,8 +448,8 @@
             
               <span class="post-comments-count">
                 &nbsp; | &nbsp;
-                <a href="/2014/03/11/leetcode/Shell/leetcode-192-Word-Frequency/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2014/03/11/leetcode/Shell/leetcode-192-Word-Frequency/" itemprop="commentsCount"></span>
+                <a href="/2014/03/11/leetcode/Database/leetcode-178-Rank-Scores/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2014/03/11/leetcode/Database/leetcode-178-Rank-Scores/" itemprop="commentsCount"></span>
                 </a>
               </span>
             
@@ -466,27 +472,16 @@
 
       
         
-          
-            <h3 id="描述"><a href="#描述" class="headerlink" title="描述"></a>描述</h3><hr>
-<p>Write a bash script to calculate the frequency of each word in a text file words.txt.</p>
-<p>For simplicity sake, you may assume:</p>
-<ul>
-<li>words.txt contains only lowercase characters and space ‘ ‘ characters.  </li>
-<li>Each word must consist of lowercase characters only.   </li>
-<li>Words are separated by one or more whitespace characters.   </li>
-</ul>
-<p>For example, assume that words.txt has the following content:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">the day is sunny the the</div><div class="line">the sunny is is</div></pre></td></tr></table></figure>
-<p>Your script should output the following, sorted by descending frequency:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">the 4</div><div class="line">is 3</div><div class="line">sunny 2</div><div class="line">day 1</div></pre></td></tr></table></figure>
-<p><strong>Note</strong>:</p>
-<p>Don’t worry about handling ties, it is guaranteed that each word’s frequency count is unique.</p>
-<h3 id="解决方案"><a href="#解决方案" class="headerlink" title="解决方案"></a>解决方案</h3><hr>
-<p>这种需求是有很多方法解决的，但思路大致都一样：去重，排序，格式化输出。不得不说，类 Unix 系统的管道真是一个伟大的想法：）</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">cat words.txt | tr -s &apos; &apos; &apos;\n&apos; | sort | uniq -c | sort -r |awk &apos;&#123;print $2, $1&#125;&apos;</div></pre></td></tr></table></figure>
-<p>先通过 cat 命令得到 words.txt 文件的内容，利用 tr 命令将空格符合替换成换行符，进行一次排序，这样就可以通过 uniq 命令统计重复行出现的次数，再排序一次，通过 -r 参数获得一个倒叙的排序，再通过 awk 命令格式化输出。</p>
-<h3 id="题目来源"><a href="#题目来源" class="headerlink" title="题目来源"></a><a href="https://leetcode.com/problems/combine-two-tables/" target="_blank" rel="external">题目来源</a></h3>
-          
+          <h3 id="描述"><a href="#描述" class="headerlink" title="描述"></a>描述</h3><hr>
+<p>Write a SQL query to rank scores. If there is a tie between two scores, both should have the same ranking. Note that after a tie, the next ranking number should be the next consecutive integer value. In other words, there should be no “holes” between ranks.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">+----+-------+</div><div class="line">| Id | Score |</div><div class="line">+----+-------+</div><div class="line">| 1  | 3.50  |</div><div class="line">| 2  | 3.65  |</div><div class="line">| 3  | 4.00  |</div><div class="line">| 4  | 3.85  |</div><div class="line">| 5  | 4.00  |</div><div class="line">| 6  | 3.65  |</div><div class="line">+----+-------+</div></pre></td></tr></table></figure>
+<p>For example, given the above Scores table, your query should generate the following report (order by highest score):</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">+-------+------+</div><div class="line">| Score | Rank |</div><div class="line">+-------+------+</div><div class="line">| 4.00  | 1    |</div><div class="line">| 4.00  | 1    |</div><div class="line">| 3.85  | 2    |</div><div class="line">| 3.65  | 3    |</div><div class="line">| 3.65  | 3    |</div><div class="line">| 3.50  | 4    |</div><div class="line">+-------+------+</div></pre></td></tr></table></figure>
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2014/03/11/leetcode/Database/leetcode-178-Rank-Scores/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
         
       
     </div>
@@ -631,8 +626,8 @@
             
               
                 
-                <a class="post-title-link" href="/2014/03/11/leetcode/Algorithms/leetcode-367-Valid-Perfect-Square/" itemprop="url">
-                  leetcode-367-Valid-Perfect-Square
+                <a class="post-title-link" href="/2014/03/11/leetcode/Algorithms/leetcode-371-Sum-of-Two-Integers/" itemprop="url">
+                  leetcode-237-Delete-Node-in-a-Linked-List
                 </a>
               
             
@@ -656,8 +651,8 @@
             
               <span class="post-comments-count">
                 &nbsp; | &nbsp;
-                <a href="/2014/03/11/leetcode/Algorithms/leetcode-367-Valid-Perfect-Square/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2014/03/11/leetcode/Algorithms/leetcode-367-Valid-Perfect-Square/" itemprop="commentsCount"></span>
+                <a href="/2014/03/11/leetcode/Algorithms/leetcode-371-Sum-of-Two-Integers/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2014/03/11/leetcode/Algorithms/leetcode-371-Sum-of-Two-Integers/" itemprop="commentsCount"></span>
                 </a>
               </span>
             
@@ -681,14 +676,11 @@
       
         
           <h3 id="描述"><a href="#描述" class="headerlink" title="描述"></a>描述</h3><hr>
-<p>Given a positive integer <em>num</em>, write a function which returns True if <em>num</em> is a perfect square else False.</p>
-<p><strong>Note:</strong> <strong>Do not</strong> use any built-in library function such as <code>sqrt</code>.</p>
-<p><strong>Example 1:</strong></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">Input: 16</div><div class="line">Output: true</div></pre></td></tr></table></figure>
-<p><strong>Example 2:</strong></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">Input: 14</div><div class="line">Output: false</div></pre></td></tr></table></figure>
+<p>Calculate the sum of two integers a and b, but you are <em>not allowed</em> to use the operator <code>+</code> and <code>-</code>.</p>
+<p><em>Example</em>:<br>Given a = 1 and b = 2, return 3.</p>
+<p><em>Credits</em>:<br>Special thanks to @fujiaozhu for adding this problem and creating all test cases.<br>
           <div class="post-more-link text-center">
-            <a class="btn" href="/2014/03/11/leetcode/Algorithms/leetcode-367-Valid-Perfect-Square/#more" rel="contents">
+            <a class="btn" href="/2014/03/11/leetcode/Algorithms/leetcode-371-Sum-of-Two-Integers/#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
@@ -840,8 +832,8 @@
             
               
                 
-                <a class="post-title-link" href="/2014/03/11/leetcode/Algorithms/leetcode-371-Sum-of-Two-Integers/" itemprop="url">
-                  leetcode-237-Delete-Node-in-a-Linked-List
+                <a class="post-title-link" href="/2014/03/11/leetcode/Algorithms/leetcode-367-Valid-Perfect-Square/" itemprop="url">
+                  leetcode-367-Valid-Perfect-Square
                 </a>
               
             
@@ -865,8 +857,8 @@
             
               <span class="post-comments-count">
                 &nbsp; | &nbsp;
-                <a href="/2014/03/11/leetcode/Algorithms/leetcode-371-Sum-of-Two-Integers/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2014/03/11/leetcode/Algorithms/leetcode-371-Sum-of-Two-Integers/" itemprop="commentsCount"></span>
+                <a href="/2014/03/11/leetcode/Algorithms/leetcode-367-Valid-Perfect-Square/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2014/03/11/leetcode/Algorithms/leetcode-367-Valid-Perfect-Square/" itemprop="commentsCount"></span>
                 </a>
               </span>
             
@@ -890,11 +882,14 @@
       
         
           <h3 id="描述"><a href="#描述" class="headerlink" title="描述"></a>描述</h3><hr>
-<p>Calculate the sum of two integers a and b, but you are <em>not allowed</em> to use the operator <code>+</code> and <code>-</code>.</p>
-<p><em>Example</em>:<br>Given a = 1 and b = 2, return 3.</p>
-<p><em>Credits</em>:<br>Special thanks to @fujiaozhu for adding this problem and creating all test cases.<br>
+<p>Given a positive integer <em>num</em>, write a function which returns True if <em>num</em> is a perfect square else False.</p>
+<p><strong>Note:</strong> <strong>Do not</strong> use any built-in library function such as <code>sqrt</code>.</p>
+<p><strong>Example 1:</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">Input: 16</div><div class="line">Output: true</div></pre></td></tr></table></figure>
+<p><strong>Example 2:</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">Input: 14</div><div class="line">Output: false</div></pre></td></tr></table></figure>
           <div class="post-more-link text-center">
-            <a class="btn" href="/2014/03/11/leetcode/Algorithms/leetcode-371-Sum-of-Two-Integers/#more" rel="contents">
+            <a class="btn" href="/2014/03/11/leetcode/Algorithms/leetcode-367-Valid-Perfect-Square/#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>

@@ -65,7 +65,7 @@
 <meta property="og:site_name" content="knarfeh&#39;s logbook">
 <meta property="og:description" content="描述 Reverse digits of an integer. Example1: x = 123, return 321Example2: x = -123, return -321">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-03-05T14:06:09.530Z">
+<meta property="og:updated_time" content="2019-04-10T14:42:39.094Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="leetcode-7-Reverse-Integer">
 <meta name="twitter:description" content="描述 Reverse digits of an integer. Example1: x = 123, return 321Example2: x = -123, return -321">
@@ -266,6 +266,8 @@
 <p>把一个数字倒过来，题目不难，需要考虑的是边界情况，如果越界，返回0</p>
 <h3 id="解决方案1-C"><a href="#解决方案1-C" class="headerlink" title="解决方案1(C++)"></a>解决方案1(C++)</h3><hr>
 <figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">class</span> Solution &#123;</div><div class="line"><span class="keyword">public</span>:</div><div class="line">    <span class="function"><span class="keyword">int</span> <span class="title">reverse</span><span class="params">(<span class="keyword">int</span> x)</span> </span>&#123;</div><div class="line">        <span class="keyword">long</span> <span class="keyword">long</span> result = <span class="number">0</span>;</div><div class="line">        </div><div class="line">        <span class="keyword">while</span>(x != <span class="number">0</span>) &#123;</div><div class="line">            <span class="keyword">int</span> now = x % <span class="number">10</span>;</div><div class="line">            result = result * <span class="number">10</span> + now;</div><div class="line">            <span class="keyword">if</span>(result &gt; INT_MAX || result &lt; INT_MIN) &#123;</div><div class="line">                <span class="keyword">return</span> <span class="number">0</span>;</div><div class="line">            &#125;</div><div class="line">            x = x / <span class="number">10</span>;</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">return</span> result;</div><div class="line">    &#125;</div><div class="line">&#125;;</div></pre></td></tr></table></figure>
+<h3 id="解决方案2-Rust"><a href="#解决方案2-Rust" class="headerlink" title="解决方案2(Rust)"></a>解决方案2(Rust)</h3><hr>
+<figure class="highlight rust"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">impl</span> Solution &#123;</div><div class="line">    <span class="keyword">pub</span> <span class="function"><span class="keyword">fn</span> <span class="title">reverse</span></span>(x: <span class="keyword">i32</span>) -&gt; <span class="keyword">i32</span> &#123;</div><div class="line">        x.signum() * x</div><div class="line">            .abs()</div><div class="line">            .to_string()</div><div class="line">            .chars()</div><div class="line">            .rev()</div><div class="line">            .collect::&lt;<span class="built_in">String</span>&gt;()</div><div class="line">            .parse::&lt;<span class="keyword">i32</span>&gt;()</div><div class="line">            .unwrap_or(<span class="number">0</span>)</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <h3 id="相关问题"><a href="#相关问题" class="headerlink" title="相关问题"></a>相关问题</h3><hr>
 <ul>
 <li><a href="https://leetcode.com/problems/string-to-integer-atoi/" target="_blank" rel="external">(E) String to Integer (atoi)</a>   </li>
@@ -297,16 +299,16 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2014/03/11/leetcode/Algorithms/leetcode-695-Max-Area-of-Island/" rel="next" title="leetcode-695-Max-Area-of-Island">
-                <i class="fa fa-chevron-left"></i> leetcode-695-Max-Area-of-Island
+              <a href="/2014/03/11/leetcode/Algorithms/leetcode-696-Count-Binary-Substrings/" rel="next" title="leetcode-696-Count-Binary-Substrings">
+                <i class="fa fa-chevron-left"></i> leetcode-696-Count-Binary-Substrings
               </a>
             
           </div>
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2014/03/11/leetcode/Algorithms/leetcode-697-Degree-of-an-Array/" rel="prev" title="leetcode-697-Degree-of-an-Array">
-                leetcode-697-Degree-of-an-Array <i class="fa fa-chevron-right"></i>
+              <a href="/2014/03/11/leetcode/Algorithms/leetcode-693-Binary-Number-with-Alternating-Bits/" rel="prev" title="leetcode-693-Binary-Number-with-Alternating-Bits">
+                leetcode-693-Binary-Number-with-Alternating-Bits <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -449,7 +451,7 @@
               
             
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#描述"><span class="nav-number">1.</span> <span class="nav-text">描述</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#分析"><span class="nav-number">2.</span> <span class="nav-text">分析</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#解决方案1-C"><span class="nav-number">3.</span> <span class="nav-text">解决方案1(C++)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#相关问题"><span class="nav-number">4.</span> <span class="nav-text">相关问题</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#题目来源"><span class="nav-number">5.</span> <span class="nav-text">题目来源</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#描述"><span class="nav-number">1.</span> <span class="nav-text">描述</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#分析"><span class="nav-number">2.</span> <span class="nav-text">分析</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#解决方案1-C"><span class="nav-number">3.</span> <span class="nav-text">解决方案1(C++)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#解决方案2-Rust"><span class="nav-number">4.</span> <span class="nav-text">解决方案2(Rust)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#相关问题"><span class="nav-number">5.</span> <span class="nav-text">相关问题</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#题目来源"><span class="nav-number">6.</span> <span class="nav-text">题目来源</span></a></li></ol></div>
             
           </div>
           <div class="post-toc-indicator-bottom post-toc-indicator">

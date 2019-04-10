@@ -900,8 +900,8 @@
             
               
                 
-                <a class="post-title-link" href="/2014/03/11/leetcode/Shell/leetcode-195-Tenth-Line/" itemprop="url">
-                  leetcode-195-Tenth-Line
+                <a class="post-title-link" href="/2014/03/11/leetcode/Database/leetcode-176-Second-Highest-Salary/" itemprop="url">
+                  leetcode-176-Second-Highest-Salary
                 </a>
               
             
@@ -925,111 +925,8 @@
             
               <span class="post-comments-count">
                 &nbsp; | &nbsp;
-                <a href="/2014/03/11/leetcode/Shell/leetcode-195-Tenth-Line/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2014/03/11/leetcode/Shell/leetcode-195-Tenth-Line/" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h3 id="描述"><a href="#描述" class="headerlink" title="描述"></a>描述</h3><hr>
-<p>How would you print just the 10th line of a file?</p>
-<p>For example, assume that file.txt has the following content:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">Line 1</div><div class="line">Line 2</div><div class="line">Line 3</div><div class="line">Line 4</div><div class="line">Line 5</div><div class="line">Line 6</div><div class="line">Line 7</div><div class="line">Line 8</div><div class="line">Line 9</div><div class="line">Line 10</div></pre></td></tr></table></figure>
-<p>Your script should output the tenth line, which is:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">Line 10</div></pre></td></tr></table></figure>
-<h3 id="解决方案"><a href="#解决方案" class="headerlink" title="解决方案"></a>解决方案</h3><hr>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"># Read from the file file.txt and output the tenth line to stdout.</div><div class="line">awk &quot;NR==10&quot; file.txt</div></pre></td></tr></table></figure>
-<h3 id="题目来源"><a href="#题目来源" class="headerlink" title="题目来源"></a><a href="https://leetcode.com/problems/tenth-line/" target="_blank" rel="external">题目来源</a></h3>
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2014/03/11/leetcode/Algorithms/leetcode-99-Recover-Binary-Search-Tree/" itemprop="url">
-                  leetcode-99-Recover-Binary-Search-Tree
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2014-03-11T00:33:34+08:00" content="2014-03-11">
-              2014-03-11
-            </time>
-          </span>
-
-          
-
-          
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2014/03/11/leetcode/Algorithms/leetcode-99-Recover-Binary-Search-Tree/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2014/03/11/leetcode/Algorithms/leetcode-99-Recover-Binary-Search-Tree/" itemprop="commentsCount"></span>
+                <a href="/2014/03/11/leetcode/Database/leetcode-176-Second-Highest-Salary/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2014/03/11/leetcode/Database/leetcode-176-Second-Highest-Salary/" itemprop="commentsCount"></span>
                 </a>
               </span>
             
@@ -1053,11 +950,11 @@
       
         
           <h3 id="描述"><a href="#描述" class="headerlink" title="描述"></a>描述</h3><hr>
-<p>Two elements of a binary search tree (BST) are swapped by mistake.</p>
-<p>Recover the tree without changing its structure. </p>
-<p><strong>Note:</strong><br>A solution using O(n) space is pretty straight forward. Could you devise a constant space solution? </p>
+<p>Write a SQL query to get the second highest salary from the <code>Employee</code> table.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">+----+--------+</div><div class="line">| Id | Salary |</div><div class="line">+----+--------+</div><div class="line">| 1  | 100    |</div><div class="line">| 2  | 200    |</div><div class="line">| 3  | 300    |</div><div class="line">+----+--------+</div></pre></td></tr></table></figure>
+<p>For example, given the above Employee table, the second highest salary is 200. If there is no second highest salary, then the query should return null.<br>
           <div class="post-more-link text-center">
-            <a class="btn" href="/2014/03/11/leetcode/Algorithms/leetcode-99-Recover-Binary-Search-Tree/#more" rel="contents">
+            <a class="btn" href="/2014/03/11/leetcode/Database/leetcode-176-Second-Highest-Salary/#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
@@ -1104,8 +1001,8 @@
             
               
                 
-                <a class="post-title-link" href="/2014/03/11/leetcode/Shell/leetcode-194-Transpose-File/" itemprop="url">
-                  leetcode-194-Transpose-File
+                <a class="post-title-link" href="/2014/03/11/leetcode/Database/leetcode-180-Consecutive-Numbers/" itemprop="url">
+                  leetcode-180-Consecutive-Numbers
                 </a>
               
             
@@ -1129,8 +1026,8 @@
             
               <span class="post-comments-count">
                 &nbsp; | &nbsp;
-                <a href="/2014/03/11/leetcode/Shell/leetcode-194-Transpose-File/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2014/03/11/leetcode/Shell/leetcode-194-Transpose-File/" itemprop="commentsCount"></span>
+                <a href="/2014/03/11/leetcode/Database/leetcode-180-Consecutive-Numbers/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2014/03/11/leetcode/Database/leetcode-180-Consecutive-Numbers/" itemprop="commentsCount"></span>
                 </a>
               </span>
             
@@ -1153,19 +1050,119 @@
 
       
         
+          <h3 id="描述"><a href="#描述" class="headerlink" title="描述"></a>描述</h3><hr>
+<p>Write a SQL query to find all numbers that appear at least three times consecutively.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">+----+-----+</div><div class="line">| Id | Num |</div><div class="line">+----+-----+</div><div class="line">| 1  |  1  |</div><div class="line">| 2  |  1  |</div><div class="line">| 3  |  1  |</div><div class="line">| 4  |  2  |</div><div class="line">| 5  |  1  |</div><div class="line">| 6  |  2  |</div><div class="line">| 7  |  2  |</div><div class="line">+----+-----+</div></pre></td></tr></table></figure>
+<p>For example, given the above Logs table, 1 is the only number that appears consecutively for at least three times.<br>
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2014/03/11/leetcode/Database/leetcode-180-Consecutive-Numbers/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2014/03/11/leetcode/Database/leetcode-175-Combine-Two-Tables/" itemprop="url">
+                  leetcode-175-Combine-Two-Tables
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2014-03-11T00:33:34+08:00" content="2014-03-11">
+              2014-03-11
+            </time>
+          </span>
+
           
-            <h3 id="描述"><a href="#描述" class="headerlink" title="描述"></a>描述</h3><hr>
-<p>Given a text file <code>file.txt</code>, transpose its content.</p>
-<p>You may assume that each row has the same number of columns and each field is separated by the ‘ ‘ character.</p>
-<p>For example, if <code>file.txt</code> has the following content:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">name age</div><div class="line">alice 21</div><div class="line">ryan 30</div></pre></td></tr></table></figure>
-<p>Output the following:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">name alice ryan</div><div class="line">age 21 30</div></pre></td></tr></table></figure>
-<h3 id="解决方案"><a href="#解决方案" class="headerlink" title="解决方案"></a>解决方案</h3><hr>
-<p>依旧是强大的 Awk。NR 是 Awk 的内建变量，表明目前读到的行号，NF 也是 Awk 的内建变量，记录当前行的字段数量。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"># Read from the file file.txt and print its transposed content to stdout.</div><div class="line">awk &apos;</div><div class="line">NR == 1 &#123; for (i = 1; i &lt;= NF; i++) &#123; line[i] = $i &#125; &#125;</div><div class="line">NR &gt; 1 &#123; for (i = 1; i &lt;= NF; i++) &#123; line[i] = line[i] &quot; &quot; $i &#125; &#125;</div><div class="line">END &#123; for (i = 1; i &lt;= NF; i++) &#123; print line[i] &#125; &#125;</div><div class="line">&apos; file.txt</div></pre></td></tr></table></figure>
-<h3 id="题目来源"><a href="#题目来源" class="headerlink" title="题目来源"></a><a href="https://leetcode.com/problems/transpose-file/" target="_blank" rel="external">题目来源</a></h3>
+
           
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2014/03/11/leetcode/Database/leetcode-175-Combine-Two-Tables/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2014/03/11/leetcode/Database/leetcode-175-Combine-Two-Tables/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <h3 id="描述"><a href="#描述" class="headerlink" title="描述"></a>描述</h3><hr>
+<p>Table: <code>Person</code></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">+-------------+---------+</div><div class="line">| Column Name | Type    |</div><div class="line">+-------------+---------+</div><div class="line">| PersonId    | int     |</div><div class="line">| FirstName   | varchar |</div><div class="line">| LastName    | varchar |</div><div class="line">+-------------+---------+</div><div class="line">PersonId is the primary key column for this table.</div></pre></td></tr></table></figure>
+<p>Table: <code>Address</code></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">+-------------+---------+</div><div class="line">| Column Name | Type    |</div><div class="line">+-------------+---------+</div><div class="line">| AddressId   | int     |</div><div class="line">| PersonId    | int     |</div><div class="line">| City        | varchar |</div><div class="line">| State       | varchar |</div><div class="line">+-------------+---------+</div><div class="line">AddressId is the primary key column for this table.</div></pre></td></tr></table></figure>
+<p>Write a SQL query for a report that provides the following information for each person in the Person table, regardless if there is an address for each of those people:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">FirstName, LastName, City, State</div></pre></td></tr></table></figure>
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2014/03/11/leetcode/Database/leetcode-175-Combine-Two-Tables/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
         
       
     </div>

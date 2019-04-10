@@ -211,8 +211,8 @@
             
               
                 
-                <a class="post-title-link" href="/2014/03/11/leetcode/Algorithms/leetcode-671-Second-Minimum-Node-In-a-Binary-Tree/" itemprop="url">
-                  leetcode-671-Second-Minimum-Node-In-a-Binary-Tree
+                <a class="post-title-link" href="/2014/03/11/leetcode/Algorithms/leetcode-676-Implement-Magic-Dictionary/" itemprop="url">
+                  leetcode-676-Implement-Magic-Dictionary
                 </a>
               
             
@@ -236,8 +236,8 @@
             
               <span class="post-comments-count">
                 &nbsp; | &nbsp;
-                <a href="/2014/03/11/leetcode/Algorithms/leetcode-671-Second-Minimum-Node-In-a-Binary-Tree/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2014/03/11/leetcode/Algorithms/leetcode-671-Second-Minimum-Node-In-a-Binary-Tree/" itemprop="commentsCount"></span>
+                <a href="/2014/03/11/leetcode/Algorithms/leetcode-676-Implement-Magic-Dictionary/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2014/03/11/leetcode/Algorithms/leetcode-676-Implement-Magic-Dictionary/" itemprop="commentsCount"></span>
                 </a>
               </span>
             
@@ -261,15 +261,119 @@
       
         
           <h3 id="描述"><a href="#描述" class="headerlink" title="描述"></a>描述</h3><hr>
-<p>Given a non-empty special binary tree consisting of nodes with the non-negative value, where each node in this tree has exactly <code>two</code>or <code>zero</code> sub-node. If the node has two sub-nodes, then this node’s value is the smaller value among its two sub-nodes.</p>
-<p>Given such a binary tree, you need to output the <strong>second minimum</strong> value in the set made of all the nodes’ value in the whole tree.</p>
-<p>If no such second minimum value exists, output -1 instead.</p>
+<p>Implement a magic directory with <code>buildDict</code>, and <code>search</code> methods.</p>
+<p>For the method <code>buildDict</code>, you’ll be given a list of non-repetitive words to build a dictionary.</p>
+<p>For the method <code>search</code>, you’ll be given a word, and judge whether if you modify <strong>exactly</strong> one character into <strong>another</strong> character in this word, the modified word is in the dictionary you just built.</p>
 <p><strong>Example 1:</strong></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">Input: </div><div class="line">    2</div><div class="line">   / \</div><div class="line">  2   5</div><div class="line">     / \</div><div class="line">    5   7</div><div class="line"></div><div class="line">Output: 5</div><div class="line">Explanation: The smallest value is 2, the second smallest value is 5.</div></pre></td></tr></table></figure>
-<p><strong>Example 2:</strong></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">Input: </div><div class="line">    2</div><div class="line">   / \</div><div class="line">  2   2</div><div class="line"></div><div class="line">Output: -1</div><div class="line">Explanation: The smallest value is 2, but there isn&apos;t any second smallest value.</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">Input: buildDict([&quot;hello&quot;, &quot;leetcode&quot;]), Output: Null</div><div class="line">Input: search(&quot;hello&quot;), Output: False</div><div class="line">Input: search(&quot;hhllo&quot;), Output: True</div><div class="line">Input: search(&quot;hell&quot;), Output: False</div><div class="line">Input: search(&quot;leetcoded&quot;), Output: False</div></pre></td></tr></table></figure>
+<p><strong>Note:</strong></p>
+<ol>
+<li>You may assume that all the inputs are consist of lowercase letters <code>a-z</code>.</li>
+<li>For contest purpose, the test data is rather small by now. You could think about highly efficient algorithm after the contest.</li>
+<li>Please remember to <strong>RESET</strong> your class variables declared in class MagicDictionary, as static/class variables are <strong>persisted across multiple test cases</strong>. Please see <a href="https://leetcode.com/faq/#different-output" target="_blank" rel="external">here</a> for more details.</li>
+</ol>
           <div class="post-more-link text-center">
-            <a class="btn" href="/2014/03/11/leetcode/Algorithms/leetcode-671-Second-Minimum-Node-In-a-Binary-Tree/#more" rel="contents">
+            <a class="btn" href="/2014/03/11/leetcode/Algorithms/leetcode-676-Implement-Magic-Dictionary/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2014/03/11/leetcode/Algorithms/leetcode-67-Add-Binary/" itemprop="url">
+                  leetcode-67-Add-Binary
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2014-03-11T00:33:34+08:00" content="2014-03-11">
+              2014-03-11
+            </time>
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2014/03/11/leetcode/Algorithms/leetcode-67-Add-Binary/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2014/03/11/leetcode/Algorithms/leetcode-67-Add-Binary/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <h3 id="描述"><a href="#描述" class="headerlink" title="描述"></a>描述</h3><hr>
+<p>Given two binary strings, return their sum (also a binary string).</p>
+<p>For example,<br>a = “11”<br>b = “1”<br>Return “100”. </p>
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2014/03/11/leetcode/Algorithms/leetcode-67-Add-Binary/#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
@@ -419,8 +523,8 @@
             
               
                 
-                <a class="post-title-link" href="/2014/03/11/leetcode/Algorithms/leetcode-67-Add-Binary/" itemprop="url">
-                  leetcode-67-Add-Binary
+                <a class="post-title-link" href="/2014/03/11/leetcode/Algorithms/leetcode-671-Second-Minimum-Node-In-a-Binary-Tree/" itemprop="url">
+                  leetcode-671-Second-Minimum-Node-In-a-Binary-Tree
                 </a>
               
             
@@ -444,8 +548,8 @@
             
               <span class="post-comments-count">
                 &nbsp; | &nbsp;
-                <a href="/2014/03/11/leetcode/Algorithms/leetcode-67-Add-Binary/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2014/03/11/leetcode/Algorithms/leetcode-67-Add-Binary/" itemprop="commentsCount"></span>
+                <a href="/2014/03/11/leetcode/Algorithms/leetcode-671-Second-Minimum-Node-In-a-Binary-Tree/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2014/03/11/leetcode/Algorithms/leetcode-671-Second-Minimum-Node-In-a-Binary-Tree/" itemprop="commentsCount"></span>
                 </a>
               </span>
             
@@ -469,225 +573,15 @@
       
         
           <h3 id="描述"><a href="#描述" class="headerlink" title="描述"></a>描述</h3><hr>
-<p>Given two binary strings, return their sum (also a binary string).</p>
-<p>For example,<br>a = “11”<br>b = “1”<br>Return “100”. </p>
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2014/03/11/leetcode/Algorithms/leetcode-67-Add-Binary/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2014/03/11/leetcode/Algorithms/leetcode-693-Binary-Number-with-Alternating-Bits/" itemprop="url">
-                  leetcode-693-Binary-Number-with-Alternating-Bits
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2014-03-11T00:33:34+08:00" content="2014-03-11">
-              2014-03-11
-            </time>
-          </span>
-
-          
-
-          
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2014/03/11/leetcode/Algorithms/leetcode-693-Binary-Number-with-Alternating-Bits/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2014/03/11/leetcode/Algorithms/leetcode-693-Binary-Number-with-Alternating-Bits/" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <h3 id="描述"><a href="#描述" class="headerlink" title="描述"></a>描述</h3><hr>
-<p>Given a positive integer, check whether it has alternating bits: namely, if two adjacent bits will always have different values.</p>
+<p>Given a non-empty special binary tree consisting of nodes with the non-negative value, where each node in this tree has exactly <code>two</code>or <code>zero</code> sub-node. If the node has two sub-nodes, then this node’s value is the smaller value among its two sub-nodes.</p>
+<p>Given such a binary tree, you need to output the <strong>second minimum</strong> value in the set made of all the nodes’ value in the whole tree.</p>
+<p>If no such second minimum value exists, output -1 instead.</p>
 <p><strong>Example 1:</strong></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">Input: 5</div><div class="line">Output: True</div><div class="line">Explanation:</div><div class="line">The binary representation of 5 is: 101</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">Input: </div><div class="line">    2</div><div class="line">   / \</div><div class="line">  2   5</div><div class="line">     / \</div><div class="line">    5   7</div><div class="line"></div><div class="line">Output: 5</div><div class="line">Explanation: The smallest value is 2, the second smallest value is 5.</div></pre></td></tr></table></figure>
 <p><strong>Example 2:</strong></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">Input: 7</div><div class="line">Output: False</div><div class="line">Explanation:</div><div class="line">The binary representation of 7 is: 111.</div></pre></td></tr></table></figure>
-<p><strong>Example 3:</strong></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">Input: 11</div><div class="line">Output: False</div><div class="line">Explanation:</div><div class="line">The binary representation of 11 is: 1011.</div></pre></td></tr></table></figure>
-<p><strong>Example 4:</strong></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">Input: 10</div><div class="line">Output: True</div><div class="line">Explanation:</div><div class="line">The binary representation of 10 is: 1010.</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">Input: </div><div class="line">    2</div><div class="line">   / \</div><div class="line">  2   2</div><div class="line"></div><div class="line">Output: -1</div><div class="line">Explanation: The smallest value is 2, but there isn&apos;t any second smallest value.</div></pre></td></tr></table></figure>
           <div class="post-more-link text-center">
-            <a class="btn" href="/2014/03/11/leetcode/Algorithms/leetcode-693-Binary-Number-with-Alternating-Bits/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2014/03/11/leetcode/Algorithms/leetcode-690-Employee-Importance/" itemprop="url">
-                  leetcode-690-Employee-Importance
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2014-03-11T00:33:34+08:00" content="2014-03-11">
-              2014-03-11
-            </time>
-          </span>
-
-          
-
-          
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2014/03/11/leetcode/Algorithms/leetcode-690-Employee-Importance/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2014/03/11/leetcode/Algorithms/leetcode-690-Employee-Importance/" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <h3 id="描述"><a href="#描述" class="headerlink" title="描述"></a>描述</h3><hr>
-<p>You are given a data structure of employee information, which includes the employee’s <strong>unique id</strong>, his <strong>importance value</strong> and his <strong>direct</strong>subordinates’ id.</p>
-<p>For example, employee 1 is the leader of employee 2, and employee 2 is the leader of employee 3. They have importance value 15, 10 and 5, respectively. Then employee 1 has a data structure like [1, 15, [2]], and employee 2 has [2, 10, [3]], and employee 3 has [3, 5, []]. Note that although employee 3 is also a subordinate of employee 1, the relationship is <strong>not direct</strong>.</p>
-<p>Now given the employee information of a company, and an employee id, you need to return the total importance value of this employee and all his subordinates.</p>
-<p><strong>Example 1:</strong></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">Input: [[1, 5, [2, 3]], [2, 3, []], [3, 3, []]], 1</div><div class="line">Output: 11</div><div class="line">Explanation:</div><div class="line">Employee 1 has importance value 5, and he has two direct subordinates: employee 2 and employee 3. They both have importance value 3. So the total importance value of employee 1 is 5 + 3 + 3 = 11.</div></pre></td></tr></table></figure>
-<p><strong>Note:</strong></p>
-<ol>
-<li>One employee has at most one <strong>direct</strong> leader and may have several subordinates.</li>
-<li>The maximum number of employees won’t exceed 2000.</li>
-</ol>
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2014/03/11/leetcode/Algorithms/leetcode-690-Employee-Importance/#more" rel="contents">
+            <a class="btn" href="/2014/03/11/leetcode/Algorithms/leetcode-671-Second-Minimum-Node-In-a-Binary-Tree/#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
@@ -947,8 +841,8 @@
             
               
                 
-                <a class="post-title-link" href="/2014/03/11/leetcode/Algorithms/leetcode-696-Count-Binary-Substrings/" itemprop="url">
-                  leetcode-696-Count-Binary-Substrings
+                <a class="post-title-link" href="/2014/03/11/leetcode/Algorithms/leetcode-690-Employee-Importance/" itemprop="url">
+                  leetcode-690-Employee-Importance
                 </a>
               
             
@@ -972,8 +866,8 @@
             
               <span class="post-comments-count">
                 &nbsp; | &nbsp;
-                <a href="/2014/03/11/leetcode/Algorithms/leetcode-696-Count-Binary-Substrings/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2014/03/11/leetcode/Algorithms/leetcode-696-Count-Binary-Substrings/" itemprop="commentsCount"></span>
+                <a href="/2014/03/11/leetcode/Algorithms/leetcode-690-Employee-Importance/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2014/03/11/leetcode/Algorithms/leetcode-690-Employee-Importance/" itemprop="commentsCount"></span>
                 </a>
               </span>
             
@@ -997,17 +891,18 @@
       
         
           <h3 id="描述"><a href="#描述" class="headerlink" title="描述"></a>描述</h3><hr>
-<p>Give a string <code>s</code>, count the number of non-empty (contiguous) substrings that have the same number of 0’s and 1’s, and all the 0’s and all the 1’s in these substrings are grouped consecutively.</p>
-<p>Substrings that occur multiple times are counted the number of times they occur.</p>
+<p>You are given a data structure of employee information, which includes the employee’s <strong>unique id</strong>, his <strong>importance value</strong> and his <strong>direct</strong>subordinates’ id.</p>
+<p>For example, employee 1 is the leader of employee 2, and employee 2 is the leader of employee 3. They have importance value 15, 10 and 5, respectively. Then employee 1 has a data structure like [1, 15, [2]], and employee 2 has [2, 10, [3]], and employee 3 has [3, 5, []]. Note that although employee 3 is also a subordinate of employee 1, the relationship is <strong>not direct</strong>.</p>
+<p>Now given the employee information of a company, and an employee id, you need to return the total importance value of this employee and all his subordinates.</p>
 <p><strong>Example 1:</strong></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">Input: &quot;00110011&quot;</div><div class="line">Output: 6</div><div class="line">Explanation: There are 6 substrings that have equal number of consecutive 1&apos;s and 0&apos;s: &quot;0011&quot;, &quot;01&quot;, &quot;1100&quot;, &quot;10&quot;, &quot;0011&quot;, and &quot;01&quot;.</div><div class="line"></div><div class="line">Notice that some of these substrings repeat and are counted the number of times they occur.</div><div class="line"></div><div class="line">Also, &quot;00110011&quot; is not a valid substring because all the 0&apos;s (and 1&apos;s) are not grouped together.</div></pre></td></tr></table></figure>
-<p><strong>Example 2:</strong></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">Input: &quot;10101&quot;</div><div class="line">Output: 4</div><div class="line">Explanation: There are 4 substrings: &quot;10&quot;, &quot;01&quot;, &quot;10&quot;, &quot;01&quot; that have equal number of consecutive 1&apos;s and 0&apos;s.</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">Input: [[1, 5, [2, 3]], [2, 3, []], [3, 3, []]], 1</div><div class="line">Output: 11</div><div class="line">Explanation:</div><div class="line">Employee 1 has importance value 5, and he has two direct subordinates: employee 2 and employee 3. They both have importance value 3. So the total importance value of employee 1 is 5 + 3 + 3 = 11.</div></pre></td></tr></table></figure>
 <p><strong>Note:</strong></p>
-<p><code>s.length</code> will be between 1 and 50,000.</p>
-<p><code>s</code> will only consist of “0” or “1” characters.</p>
+<ol>
+<li>One employee has at most one <strong>direct</strong> leader and may have several subordinates.</li>
+<li>The maximum number of employees won’t exceed 2000.</li>
+</ol>
           <div class="post-more-link text-center">
-            <a class="btn" href="/2014/03/11/leetcode/Algorithms/leetcode-696-Count-Binary-Substrings/#more" rel="contents">
+            <a class="btn" href="/2014/03/11/leetcode/Algorithms/leetcode-690-Employee-Importance/#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
@@ -1054,8 +949,8 @@
             
               
                 
-                <a class="post-title-link" href="/2014/03/11/leetcode/Algorithms/leetcode-697-Degree-of-an-Array/" itemprop="url">
-                  leetcode-697-Degree-of-an-Array
+                <a class="post-title-link" href="/2014/03/11/leetcode/Algorithms/leetcode-693-Binary-Number-with-Alternating-Bits/" itemprop="url">
+                  leetcode-693-Binary-Number-with-Alternating-Bits
                 </a>
               
             
@@ -1079,8 +974,8 @@
             
               <span class="post-comments-count">
                 &nbsp; | &nbsp;
-                <a href="/2014/03/11/leetcode/Algorithms/leetcode-697-Degree-of-an-Array/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2014/03/11/leetcode/Algorithms/leetcode-697-Degree-of-an-Array/" itemprop="commentsCount"></span>
+                <a href="/2014/03/11/leetcode/Algorithms/leetcode-693-Binary-Number-with-Alternating-Bits/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2014/03/11/leetcode/Algorithms/leetcode-693-Binary-Number-with-Alternating-Bits/" itemprop="commentsCount"></span>
                 </a>
               </span>
             
@@ -1104,17 +999,17 @@
       
         
           <h3 id="描述"><a href="#描述" class="headerlink" title="描述"></a>描述</h3><hr>
-<p>Given a non-empty array of non-negative integers <code>nums</code>, the <strong>degree</strong> of this array is defined as the maximum frequency of any one of its elements.</p>
-<p>Your task is to find the smallest possible length of a (contiguous) subarray of <code>nums</code>, that has the same degree as <code>nums</code>.</p>
+<p>Given a positive integer, check whether it has alternating bits: namely, if two adjacent bits will always have different values.</p>
 <p><strong>Example 1:</strong></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">Input: [1, 2, 2, 3, 1]</div><div class="line">Output: 2</div><div class="line">Explanation: </div><div class="line">The input array has a degree of 2 because both elements 1 and 2 appear twice.</div><div class="line">Of the subarrays that have the same degree:</div><div class="line">[1, 2, 2, 3, 1], [1, 2, 2, 3], [2, 2, 3, 1], [1, 2, 2], [2, 2, 3], [2, 2]</div><div class="line">The shortest length is 2. So return 2.</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">Input: 5</div><div class="line">Output: True</div><div class="line">Explanation:</div><div class="line">The binary representation of 5 is: 101</div></pre></td></tr></table></figure>
 <p><strong>Example 2:</strong></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">Input: [1,2,2,3,1,4,2]</div><div class="line">Output: 6</div></pre></td></tr></table></figure>
-<p><strong>Note:</strong></p>
-<p><code>nums.length</code> will be between 1 and 50,000.</p>
-<p><code>nums[i]</code> will be an integer between 0 and 49,999.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">Input: 7</div><div class="line">Output: False</div><div class="line">Explanation:</div><div class="line">The binary representation of 7 is: 111.</div></pre></td></tr></table></figure>
+<p><strong>Example 3:</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">Input: 11</div><div class="line">Output: False</div><div class="line">Explanation:</div><div class="line">The binary representation of 11 is: 1011.</div></pre></td></tr></table></figure>
+<p><strong>Example 4:</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">Input: 10</div><div class="line">Output: True</div><div class="line">Explanation:</div><div class="line">The binary representation of 10 is: 1010.</div></pre></td></tr></table></figure>
           <div class="post-more-link text-center">
-            <a class="btn" href="/2014/03/11/leetcode/Algorithms/leetcode-697-Degree-of-an-Array/#more" rel="contents">
+            <a class="btn" href="/2014/03/11/leetcode/Algorithms/leetcode-693-Binary-Number-with-Alternating-Bits/#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
@@ -1215,6 +1110,113 @@
 <p><strong>Example1</strong>: x = 123, return 321<br><strong>Example2</strong>: x = -123, return -321<br>
           <div class="post-more-link text-center">
             <a class="btn" href="/2014/03/11/leetcode/Algorithms/leetcode-7-Reverse-Integer/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2014/03/11/leetcode/Algorithms/leetcode-696-Count-Binary-Substrings/" itemprop="url">
+                  leetcode-696-Count-Binary-Substrings
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2014-03-11T00:33:34+08:00" content="2014-03-11">
+              2014-03-11
+            </time>
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2014/03/11/leetcode/Algorithms/leetcode-696-Count-Binary-Substrings/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2014/03/11/leetcode/Algorithms/leetcode-696-Count-Binary-Substrings/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <h3 id="描述"><a href="#描述" class="headerlink" title="描述"></a>描述</h3><hr>
+<p>Give a string <code>s</code>, count the number of non-empty (contiguous) substrings that have the same number of 0’s and 1’s, and all the 0’s and all the 1’s in these substrings are grouped consecutively.</p>
+<p>Substrings that occur multiple times are counted the number of times they occur.</p>
+<p><strong>Example 1:</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">Input: &quot;00110011&quot;</div><div class="line">Output: 6</div><div class="line">Explanation: There are 6 substrings that have equal number of consecutive 1&apos;s and 0&apos;s: &quot;0011&quot;, &quot;01&quot;, &quot;1100&quot;, &quot;10&quot;, &quot;0011&quot;, and &quot;01&quot;.</div><div class="line"></div><div class="line">Notice that some of these substrings repeat and are counted the number of times they occur.</div><div class="line"></div><div class="line">Also, &quot;00110011&quot; is not a valid substring because all the 0&apos;s (and 1&apos;s) are not grouped together.</div></pre></td></tr></table></figure>
+<p><strong>Example 2:</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">Input: &quot;10101&quot;</div><div class="line">Output: 4</div><div class="line">Explanation: There are 4 substrings: &quot;10&quot;, &quot;01&quot;, &quot;10&quot;, &quot;01&quot; that have equal number of consecutive 1&apos;s and 0&apos;s.</div></pre></td></tr></table></figure>
+<p><strong>Note:</strong></p>
+<p><code>s.length</code> will be between 1 and 50,000.</p>
+<p><code>s</code> will only consist of “0” or “1” characters.</p>
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2014/03/11/leetcode/Algorithms/leetcode-696-Count-Binary-Substrings/#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
