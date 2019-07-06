@@ -211,8 +211,8 @@
             
               
                 
-                <a class="post-title-link" href="/2014/03/11/leetcode/Algorithms/leetcode-513-Find-Bottom-Left-Tree-Value/" itemprop="url">
-                  leetcode-513-Find-Bottom-Left-Tree-Value
+                <a class="post-title-link" href="/2014/03/11/leetcode/Algorithms/leetcode-508-Most-Frequent-Subtree-Sum/" itemprop="url">
+                  leetcode-508-Most-Frequent-Subtree-Sum
                 </a>
               
             
@@ -236,8 +236,8 @@
             
               <span class="post-comments-count">
                 &nbsp; | &nbsp;
-                <a href="/2014/03/11/leetcode/Algorithms/leetcode-513-Find-Bottom-Left-Tree-Value/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2014/03/11/leetcode/Algorithms/leetcode-513-Find-Bottom-Left-Tree-Value/" itemprop="commentsCount"></span>
+                <a href="/2014/03/11/leetcode/Algorithms/leetcode-508-Most-Frequent-Subtree-Sum/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2014/03/11/leetcode/Algorithms/leetcode-508-Most-Frequent-Subtree-Sum/" itemprop="commentsCount"></span>
                 </a>
               </span>
             
@@ -261,14 +261,16 @@
       
         
           <h3 id="描述"><a href="#描述" class="headerlink" title="描述"></a>描述</h3><hr>
-<p>Given a binary tree, find the leftmost value in the last row of the tree.</p>
-<p><strong>Example 1:</strong></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">Input:</div><div class="line"></div><div class="line">    2</div><div class="line">   / \</div><div class="line">  1   3</div><div class="line"></div><div class="line">Output:</div><div class="line">1</div></pre></td></tr></table></figure>
-<p><strong>Example 2:</strong> </p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">Input:</div><div class="line"></div><div class="line">        1</div><div class="line">       / \</div><div class="line">      2   3</div><div class="line">     /   / \</div><div class="line">    4   5   6</div><div class="line">       /</div><div class="line">      7</div><div class="line"></div><div class="line">Output:</div><div class="line">7</div></pre></td></tr></table></figure>
-<p><strong>Note:</strong> You may assume the tree (i.e., the given root node) is not <strong>NULL</strong>.</p>
+<p>Given the root of a tree, you are asked to find the most frequent subtree sum. The subtree sum of a node is defined as the sum of all the node values formed by the subtree rooted at that node (including the node itself). So what is the most frequent subtree sum value? If there is a tie, return all the values with the highest frequency in any order.</p>
+<p><strong>Examples 1</strong><br>Input:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">  5</div><div class="line"> /  \</div><div class="line">2   -3</div></pre></td></tr></table></figure>
+<p>return [2, -3, 4], since all the values happen only once, return all of them in any order.</p>
+<p><strong>Examples 2</strong><br>Input:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">  5</div><div class="line"> /  \</div><div class="line">2   -5</div></pre></td></tr></table></figure>
+<p>return [2], since 2 happens twice, however -5 only occur once.</p>
+<p><strong>Note:</strong> You may assume the sum of values in any subtree is in the range of 32-bit signed integer.</p>
           <div class="post-more-link text-center">
-            <a class="btn" href="/2014/03/11/leetcode/Algorithms/leetcode-513-Find-Bottom-Left-Tree-Value/#more" rel="contents">
+            <a class="btn" href="/2014/03/11/leetcode/Algorithms/leetcode-508-Most-Frequent-Subtree-Sum/#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>

@@ -318,8 +318,8 @@
             
               
                 
-                <a class="post-title-link" href="/2014/03/11/leetcode/Algorithms/leetcode-384-Shuffle-an-Array/" itemprop="url">
-                  leetcode-384-Shuffle-an-Array
+                <a class="post-title-link" href="/2014/03/11/leetcode/Algorithms/leetcode-383-Ransom-Note/" itemprop="url">
+                  leetcode-353-Ransom-Note
                 </a>
               
             
@@ -343,8 +343,8 @@
             
               <span class="post-comments-count">
                 &nbsp; | &nbsp;
-                <a href="/2014/03/11/leetcode/Algorithms/leetcode-384-Shuffle-an-Array/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2014/03/11/leetcode/Algorithms/leetcode-384-Shuffle-an-Array/" itemprop="commentsCount"></span>
+                <a href="/2014/03/11/leetcode/Algorithms/leetcode-383-Ransom-Note/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2014/03/11/leetcode/Algorithms/leetcode-383-Ransom-Note/" itemprop="commentsCount"></span>
                 </a>
               </span>
             
@@ -368,11 +368,13 @@
       
         
           <h3 id="描述"><a href="#描述" class="headerlink" title="描述"></a>描述</h3><hr>
-<p>Shuffle a set of numbers without duplicates.</p>
-<p><strong>Example:</strong></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">// Init an array with set 1, 2, and 3.</div><div class="line">int[] nums = &#123;1,2,3&#125;;</div><div class="line">Solution solution = new Solution(nums);</div><div class="line"></div><div class="line">// Shuffle the array [1,2,3] and return its result. Any permutation of [1,2,3] must equally likely to be returned.</div><div class="line">solution.shuffle();</div><div class="line"></div><div class="line">// Resets the array back to its original configuration [1,2,3].</div><div class="line">solution.reset();</div><div class="line"></div><div class="line">// Returns the random shuffling of array [1,2,3].</div><div class="line">solution.shuffle();</div></pre></td></tr></table></figure>
+<p>Given an arbitrary ransom note string and another string containing letters from all the magazines, write a function that will return true if the ransom note can be constructed from the magazines; otherwise, it will return false.</p>
+<p>Each letter in the magazine string can only be used once in your ransom note.</p>
+<p><strong>Note</strong>:</p>
+<p>You may assume that both strings contain only lowercase letters. </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">canConstruct(&quot;a&quot;, &quot;b&quot;) -&gt; false</div><div class="line">canConstruct(&quot;aa&quot;, &quot;ab&quot;) -&gt; false</div><div class="line">canConstruct(&quot;aa&quot;, &quot;aab&quot;) -&gt; true</div></pre></td></tr></table></figure>
           <div class="post-more-link text-center">
-            <a class="btn" href="/2014/03/11/leetcode/Algorithms/leetcode-384-Shuffle-an-Array/#more" rel="contents">
+            <a class="btn" href="/2014/03/11/leetcode/Algorithms/leetcode-383-Ransom-Note/#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
@@ -529,8 +531,8 @@
             
               
                 
-                <a class="post-title-link" href="/2014/03/11/leetcode/Algorithms/leetcode-405-Convert-a-Number-to-Hexadecimal/" itemprop="url">
-                  leetcode-405-Convert-a-Number-to-Hexadecimal
+                <a class="post-title-link" href="/2014/03/11/leetcode/Algorithms/leetcode-384-Shuffle-an-Array/" itemprop="url">
+                  leetcode-384-Shuffle-an-Array
                 </a>
               
             
@@ -554,8 +556,8 @@
             
               <span class="post-comments-count">
                 &nbsp; | &nbsp;
-                <a href="/2014/03/11/leetcode/Algorithms/leetcode-405-Convert-a-Number-to-Hexadecimal/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2014/03/11/leetcode/Algorithms/leetcode-405-Convert-a-Number-to-Hexadecimal/" itemprop="commentsCount"></span>
+                <a href="/2014/03/11/leetcode/Algorithms/leetcode-384-Shuffle-an-Array/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2014/03/11/leetcode/Algorithms/leetcode-384-Shuffle-an-Array/" itemprop="commentsCount"></span>
                 </a>
               </span>
             
@@ -579,20 +581,11 @@
       
         
           <h3 id="描述"><a href="#描述" class="headerlink" title="描述"></a>描述</h3><hr>
-<p>Given an integer, write an algorithm to convert it to hexadecimal. For negative integer, <a href="https://en.wikipedia.org/wiki/Two%27s_complement" target="_blank" rel="external">two’s complement</a> method is used.</p>
-<p><strong>Note:</strong></p>
-<ol>
-<li>All letters in hexadecimal (<code>a-f</code>) must be in lowercase.</li>
-<li>The hexadecimal string must not contain extra leading <code>0</code>s. If the number is zero, it is represented by a single zero character <code>&#39;0&#39;</code>; otherwise, the first character in the hexadecimal string will not be the zero character.</li>
-<li>The given number is guaranteed to fit within the range of a 32-bit signed integer.</li>
-<li>You <strong>must not use any method provided by the library</strong> which converts/formats the number to hex directly.</li>
-</ol>
-<p><strong>Example 1:</strong></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">Input:</div><div class="line">26</div><div class="line"></div><div class="line">Output:</div><div class="line">&quot;1a&quot;</div></pre></td></tr></table></figure>
-<p><strong>Example 2:</strong></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">Input:</div><div class="line">-1</div><div class="line"></div><div class="line">Output:</div><div class="line">&quot;ffffffff&quot;</div></pre></td></tr></table></figure>
+<p>Shuffle a set of numbers without duplicates.</p>
+<p><strong>Example:</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">// Init an array with set 1, 2, and 3.</div><div class="line">int[] nums = &#123;1,2,3&#125;;</div><div class="line">Solution solution = new Solution(nums);</div><div class="line"></div><div class="line">// Shuffle the array [1,2,3] and return its result. Any permutation of [1,2,3] must equally likely to be returned.</div><div class="line">solution.shuffle();</div><div class="line"></div><div class="line">// Resets the array back to its original configuration [1,2,3].</div><div class="line">solution.reset();</div><div class="line"></div><div class="line">// Returns the random shuffling of array [1,2,3].</div><div class="line">solution.shuffle();</div></pre></td></tr></table></figure>
           <div class="post-more-link text-center">
-            <a class="btn" href="/2014/03/11/leetcode/Algorithms/leetcode-405-Convert-a-Number-to-Hexadecimal/#more" rel="contents">
+            <a class="btn" href="/2014/03/11/leetcode/Algorithms/leetcode-384-Shuffle-an-Array/#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
@@ -742,6 +735,114 @@
             
               
                 
+                <a class="post-title-link" href="/2014/03/11/leetcode/Algorithms/leetcode-40-Combination-Sum-II/" itemprop="url">
+                  leetcode-40-Combination-Sum-II
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2014-03-11T00:33:34+08:00" content="2014-03-11">
+              2014-03-11
+            </time>
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2014/03/11/leetcode/Algorithms/leetcode-40-Combination-Sum-II/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2014/03/11/leetcode/Algorithms/leetcode-40-Combination-Sum-II/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <h3 id="描述"><a href="#描述" class="headerlink" title="描述"></a>描述</h3><hr>
+<p>Given a collection of candidate numbers (<strong>C</strong>) and a target number (<strong>T</strong>), find all unique combinations in <strong>C</strong> where the candidate numbers sums to <strong>T</strong>.</p>
+<p>Each number in <strong>C</strong> may only be used once in the combination.</p>
+<p><strong>Note</strong> :</p>
+<ul>
+<li>All numbers (including target) will be positive integers.</li>
+<li>The solution set must not contain duplicate combinations.</li>
+</ul>
+<p>For example, given candidate set [10, 1, 2, 7, 6, 1, 5] and target 8,</p>
+<p>A solution set is:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">[</div><div class="line">  [1, 7],</div><div class="line">  [1, 2, 5],</div><div class="line">  [2, 6],</div><div class="line">  [1, 1, 6]</div><div class="line">]</div></pre></td></tr></table></figure>
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2014/03/11/leetcode/Algorithms/leetcode-40-Combination-Sum-II/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
                 <a class="post-title-link" href="/2014/03/11/leetcode/Algorithms/leetcode-404-Sum-of-Left-Leaves/" itemprop="url">
                   leetcode-404-Sum-of-Left-Leaves
                 </a>
@@ -843,8 +944,8 @@
             
               
                 
-                <a class="post-title-link" href="/2014/03/11/leetcode/Algorithms/leetcode-383-Ransom-Note/" itemprop="url">
-                  leetcode-353-Ransom-Note
+                <a class="post-title-link" href="/2014/03/11/leetcode/Algorithms/leetcode-405-Convert-a-Number-to-Hexadecimal/" itemprop="url">
+                  leetcode-405-Convert-a-Number-to-Hexadecimal
                 </a>
               
             
@@ -868,8 +969,8 @@
             
               <span class="post-comments-count">
                 &nbsp; | &nbsp;
-                <a href="/2014/03/11/leetcode/Algorithms/leetcode-383-Ransom-Note/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2014/03/11/leetcode/Algorithms/leetcode-383-Ransom-Note/" itemprop="commentsCount"></span>
+                <a href="/2014/03/11/leetcode/Algorithms/leetcode-405-Convert-a-Number-to-Hexadecimal/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2014/03/11/leetcode/Algorithms/leetcode-405-Convert-a-Number-to-Hexadecimal/" itemprop="commentsCount"></span>
                 </a>
               </span>
             
@@ -893,13 +994,20 @@
       
         
           <h3 id="描述"><a href="#描述" class="headerlink" title="描述"></a>描述</h3><hr>
-<p>Given an arbitrary ransom note string and another string containing letters from all the magazines, write a function that will return true if the ransom note can be constructed from the magazines; otherwise, it will return false.</p>
-<p>Each letter in the magazine string can only be used once in your ransom note.</p>
-<p><strong>Note</strong>:</p>
-<p>You may assume that both strings contain only lowercase letters. </p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">canConstruct(&quot;a&quot;, &quot;b&quot;) -&gt; false</div><div class="line">canConstruct(&quot;aa&quot;, &quot;ab&quot;) -&gt; false</div><div class="line">canConstruct(&quot;aa&quot;, &quot;aab&quot;) -&gt; true</div></pre></td></tr></table></figure>
+<p>Given an integer, write an algorithm to convert it to hexadecimal. For negative integer, <a href="https://en.wikipedia.org/wiki/Two%27s_complement" target="_blank" rel="external">two’s complement</a> method is used.</p>
+<p><strong>Note:</strong></p>
+<ol>
+<li>All letters in hexadecimal (<code>a-f</code>) must be in lowercase.</li>
+<li>The hexadecimal string must not contain extra leading <code>0</code>s. If the number is zero, it is represented by a single zero character <code>&#39;0&#39;</code>; otherwise, the first character in the hexadecimal string will not be the zero character.</li>
+<li>The given number is guaranteed to fit within the range of a 32-bit signed integer.</li>
+<li>You <strong>must not use any method provided by the library</strong> which converts/formats the number to hex directly.</li>
+</ol>
+<p><strong>Example 1:</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">Input:</div><div class="line">26</div><div class="line"></div><div class="line">Output:</div><div class="line">&quot;1a&quot;</div></pre></td></tr></table></figure>
+<p><strong>Example 2:</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">Input:</div><div class="line">-1</div><div class="line"></div><div class="line">Output:</div><div class="line">&quot;ffffffff&quot;</div></pre></td></tr></table></figure>
           <div class="post-more-link text-center">
-            <a class="btn" href="/2014/03/11/leetcode/Algorithms/leetcode-383-Ransom-Note/#more" rel="contents">
+            <a class="btn" href="/2014/03/11/leetcode/Algorithms/leetcode-405-Convert-a-Number-to-Hexadecimal/#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
@@ -1105,112 +1213,6 @@
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div></pre></td><td class="code"><pre><div class="line">n = 15,</div><div class="line"></div><div class="line">Return:</div><div class="line">[</div><div class="line">    &quot;1&quot;,</div><div class="line">    &quot;2&quot;,</div><div class="line">    &quot;Fizz&quot;,</div><div class="line">    &quot;4&quot;,</div><div class="line">    &quot;Buzz&quot;,</div><div class="line">    &quot;Fizz&quot;,</div><div class="line">    &quot;7&quot;,</div><div class="line">    &quot;8&quot;,</div><div class="line">    &quot;Fizz&quot;,</div><div class="line">    &quot;Buzz&quot;,</div><div class="line">    &quot;11&quot;,</div><div class="line">    &quot;Fizz&quot;,</div><div class="line">    &quot;13&quot;,</div><div class="line">    &quot;14&quot;,</div><div class="line">    &quot;FizzBuzz&quot;</div><div class="line">]</div></pre></td></tr></table></figure>
           <div class="post-more-link text-center">
             <a class="btn" href="/2014/03/11/leetcode/Algorithms/leetcode-412-Fizz-Buzz/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2014/03/11/leetcode/Algorithms/leetcode-415-Add-Strings/" itemprop="url">
-                  leetcode-415-Add-Strings
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2014-03-11T00:33:34+08:00" content="2014-03-11">
-              2014-03-11
-            </time>
-          </span>
-
-          
-
-          
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2014/03/11/leetcode/Algorithms/leetcode-415-Add-Strings/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2014/03/11/leetcode/Algorithms/leetcode-415-Add-Strings/" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <h3 id="描述"><a href="#描述" class="headerlink" title="描述"></a>描述</h3><hr>
-<p>Given two non-negative integers <code>num1</code> and <code>num2</code> represented as string, return the sum of <code>num1</code> and <code>num2</code>.</p>
-<p><strong>Note:</strong></p>
-<ol>
-<li>The length of both <code>num1</code> and <code>num2</code> is &lt; 5100.</li>
-<li>Both <code>num1</code> and <code>num2</code> contains only digits <code>0-9</code>.</li>
-<li>Both <code>num1</code> and <code>num2</code> does not contain any leading zero.</li>
-<li>You <strong>must not use any built-in BigInteger library</strong> or <strong>convert the inputs to integer</strong> directly.</li>
-</ol>
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2014/03/11/leetcode/Algorithms/leetcode-415-Add-Strings/#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
