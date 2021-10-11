@@ -1,0 +1,2138 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion">
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+  <link href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+  <link href="//fonts.googleapis.com/css?family=Lato:300,400,700,400italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+
+
+
+<link href="/vendors/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=0.5.0" rel="stylesheet" type="text/css">
+
+
+  <meta name="keywords" content="k8s,Golang,">
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=0.5.0">
+
+
+
+
+
+
+<meta name="description" content="Shanghai ‘18: KubeCon + CloudNativeCon">
+<meta name="keywords" content="k8s,Golang">
+<meta property="og:type" content="article">
+<meta property="og:title" content="KubeCon 视频 2018-Shanghai">
+<meta property="og:url" content="http://knarfeh.github.io/2018/07/28/KubeCon 视频 2018-Shanghai/index.html">
+<meta property="og:site_name" content="knarfeh&#39;s logbook">
+<meta property="og:description" content="Shanghai ‘18: KubeCon + CloudNativeCon">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2021-10-08T05:15:20.378Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="KubeCon 视频 2018-Shanghai">
+<meta name="twitter:description" content="Shanghai ‘18: KubeCon + CloudNativeCon">
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    scheme: 'Muse',
+    sidebar: {"display":"hide"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: 0,
+      author: '博主'
+    }
+  };
+</script>
+
+  <title> KubeCon 视频 2018-Shanghai | knarfeh's logbook </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+            (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+          m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-75002639-1', 'auto');
+  ga('send', 'pageview');
+</script>
+
+
+
+
+
+
+
+
+
+  
+  
+
+  <div class="container one-collumn  page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">knarfeh's logbook</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle"></p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-home fa-fw"></i> <br>
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-archive fa-fw"></i> <br>
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-tags fa-fw"></i> <br>
+            
+            标签
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                KubeCon 视频 2018-Shanghai
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2018-07-28T00:15:06+08:00" content="2018-07-28">
+              2018-07-28
+            </time>
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2018/07/28/KubeCon 视频 2018-Shanghai/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2018/07/28/KubeCon 视频 2018-Shanghai/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h2 id="Shanghai-‘18-KubeCon-CloudNativeCon"><a href="#Shanghai-‘18-KubeCon-CloudNativeCon" class="headerlink" title="Shanghai ‘18: KubeCon + CloudNativeCon"></a><a href="https://www.youtube.com/playlist?list=PLj6h78yzYM2OK087kzLgc4jTPVbZjuNfs" target="_blank" rel="noopener">Shanghai ‘18: KubeCon + CloudNativeCon</a></h2><a id="more"></a>
+<h3 id="Missing"><a href="#Missing" class="headerlink" title="Missing"></a>Missing</h3><table>
+<thead>
+<tr>
+<th>Topic</th>
+<th style="text-align:center">Presentation</th>
+<th style="text-align:right">Video</th>
+<th style="text-align:center">🌕 ⚫ 🔴 🔵 ⚪</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Take the Wheel, Don’t Reinvent It! - Deploying Apps With Helm in 5 Minutes - Christopher Hanson-34DtLud72bs</td>
+<td style="text-align:center">[Slides]</td>
+<td style="text-align:right"><a href="https://www.youtube.com/watch?v=34DtLud72bs" target="_blank" rel="noopener">Video</a></td>
+<td style="text-align:center">⚪</td>
+</tr>
+<tr>
+<td>Kubernetes Explained the Easy Way, Using Computer Games… - Steven Trescinski, Gluo-REeQjV6Pjr8</td>
+<td style="text-align:center">[Slides]</td>
+<td style="text-align:right"><a href="https://www.youtube.com/watch?v=REeQjV6Pjr8" target="_blank" rel="noopener">Video</a></td>
+<td style="text-align:center">⚪</td>
+</tr>
+<tr>
+<td>Kube-Liveboard - Make Your Cluster Visible - Xinkun Xu, JD.COM–MqK6dmd84E</td>
+<td style="text-align:center">[Slides]</td>
+<td style="text-align:right"><a href="https://www.youtube.com/watch?v=-MqK6dmd84E" target="_blank" rel="noopener">Video</a></td>
+<td style="text-align:center">⚪</td>
+</tr>
+<tr>
+<td>Jidproxy - ContainerCI On Kubernetes - Feng Wang, JD.COM-Fnu1IYdAQUE</td>
+<td style="text-align:center">[Slides]</td>
+<td style="text-align:right"><a href="https://www.youtube.com/watch?v=Fnu1IYdAQUE" target="_blank" rel="noopener">Video</a></td>
+<td style="text-align:center">⚪</td>
+</tr>
+<tr>
+<td>From Enterprise Image Registry to Chart Repository - Tan Jiang, VMware-FWxpUF1i0D8</td>
+<td style="text-align:center">[Slides]</td>
+<td style="text-align:right"><a href="https://www.youtube.com/watch?v=FWxpUF1i0D8" target="_blank" rel="noopener">Video</a></td>
+<td style="text-align:center">⚪</td>
+</tr>
+<tr>
+<td>Intro - Jaeger - Prithvi Raj Venkat Raj &amp; Won Jun Jang, Uber</td>
+<td style="text-align:center">[Slides]</td>
+<td style="text-align:right"><a href="https://missing" target="_blank" rel="noopener">Video</a></td>
+<td style="text-align:center">🔴 ⚪</td>
+</tr>
+<tr>
+<td>Effectively Extending Kubernetes Resources - Fan Zhang, VMware</td>
+<td style="text-align:center">[Slides]</td>
+<td style="text-align:right"><a href="https://missing" target="_blank" rel="noopener">Video</a></td>
+<td style="text-align:center">⚪</td>
+</tr>
+<tr>
+<td>Designing Kubernetes Clusters That Run on Embedded Devices</td>
+<td style="text-align:center">[Slides]</td>
+<td style="text-align:right"><a href="#">Video</a></td>
+<td style="text-align:center">⚪</td>
+</tr>
+<tr>
+<td>Kubernetes CI_CD Practices at Meetup - Rui Chen, Meetup</td>
+<td style="text-align:center">[Slides]</td>
+<td style="text-align:right"><a href="#">Video</a></td>
+<td style="text-align:center">⚪</td>
+</tr>
+<tr>
+<td>Kubernetes Love Machine Learning, Even on Private Cloud - Hui Luo</td>
+<td style="text-align:center">[Slides]</td>
+<td style="text-align:right"><a href="#">Video</a></td>
+<td style="text-align:center">⚪</td>
+</tr>
+<tr>
+<td>Modern Data Science in a Cloud Native World - Samuel Kreter, Microsoft-ZAB_N8F6uxM</td>
+<td style="text-align:center">[Slides]</td>
+<td style="text-align:right"><a href="#">Video</a></td>
+<td style="text-align:center">⚪</td>
+</tr>
+<tr>
+<td>Upgrading Stateful Sets in Constrained Environment - Kishore Yerrapragada, A10 Networks-feinZNMEyMk</td>
+<td style="text-align:center">[Slides]</td>
+<td style="text-align:right"><a href="#">Video</a></td>
+<td style="text-align:center">⚪</td>
+</tr>
+<tr>
+<td>Canary Deployment With Prometheus - Andrey Markelov, Infobip-3s2_UCeWeJg</td>
+<td style="text-align:center">[Slides]</td>
+<td style="text-align:right"><a href="#">Video</a></td>
+<td style="text-align:center">⚪</td>
+</tr>
+<tr>
+<td>Intro - CNCF K8s-Conformance WG - Zefeng Wang, Huawei &amp; Aaron Crickenberger, Google-VferOM34OGw</td>
+<td style="text-align:center">[Slides]</td>
+<td style="text-align:right"><a href="#">Video</a></td>
+<td style="text-align:center">⚪</td>
+</tr>
+<tr>
+<td>CI_CD Pipelines and Machine Learning - Jeremy Lewi, Google-EH850bIQVag</td>
+<td style="text-align:center">[Slides]</td>
+<td style="text-align:right"><a href="#">Video</a></td>
+<td style="text-align:center">⚪</td>
+</tr>
+</tbody>
+</table>
+<h3 id="Keynote"><a href="#Keynote" class="headerlink" title="Keynote"></a>Keynote</h3><table>
+<thead>
+<tr>
+<th>Topic</th>
+<th style="text-align:center">Presentation</th>
+<th style="text-align:right">Video</th>
+<th style="text-align:center">🌕 ⚫ 🔴 🔵 ⚪</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Opening Keynote: Cloud Native in China - Dan Kohn, Executive Director, Cloud Native Computing Foundation</td>
+<td style="text-align:center">[Slides]</td>
+<td style="text-align:right"><a href="https://www.youtube.com/watch?v=eZq8uhJU36Y&amp;list=PLj6h78yzYM2OK087kzLgc4jTPVbZjuNfs&amp;index=16" target="_blank" rel="noopener">Video</a></td>
+<td style="text-align:center">⚪</td>
+</tr>
+<tr>
+<td>Keynote: Harbor - Henry Zhang, Technical Director &amp; Alan Ren, General Manager, R &amp; D, VMware</td>
+<td style="text-align:center">[Slides]</td>
+<td style="text-align:right"><a href="https://www.youtube.com/watch?v=f2U5wu0LBrg&amp;list=PLj6h78yzYM2OK087kzLgc4jTPVbZjuNfs&amp;index=17" target="_blank" rel="noopener">Video</a></td>
+<td style="text-align:center"></td>
+</tr>
+<tr>
+<td>Keynote: Kubernetes and Other CNCF Projects Overview - Liz Rice, Technical Evangelist, Aqua Security &amp; Janet Kuo, Software Engineer, Google</td>
+<td style="text-align:center">[Slides]</td>
+<td style="text-align:right"><a href="https://www.youtube.com/watch?v=s40je2MMcJg&amp;list=PLj6h78yzYM2OfjgVxnn5gEm3D7w_9YYiG&amp;index=70&amp;t=0s" target="_blank" rel="noopener">Video</a></td>
+<td style="text-align:center">⚪</td>
+</tr>
+<tr>
+<td>Keynote: The Cloud Native Ecosystem in China - Tao Ma, Principal Engineer, Alibaba Cloud</td>
+<td style="text-align:center">[Slides]</td>
+<td style="text-align:right"><a href="https://www.youtube.com/watch?v=azGyHoWJ81o&amp;list=PLj6h78yzYM2OfjgVxnn5gEm3D7w_9YYiG&amp;index=71&amp;t=0s" target="_blank" rel="noopener">Video</a></td>
+<td style="text-align:center">⚪</td>
+</tr>
+<tr>
+<td>Keynote: Prometheus, Jaeger, and Envoy: The Observability for Today’s Enterprises - Priyanka Sharma, Director of Cloud-Native Alliances, GitLab</td>
+<td style="text-align:center">[Slides]</td>
+<td style="text-align:right"><a href="https://www.youtube.com/watch?v=WwpjCVJDJzw&amp;list=PLj6h78yzYM2OfjgVxnn5gEm3D7w_9YYiG&amp;index=76&amp;t=0s" target="_blank" rel="noopener">Video</a></td>
+<td style="text-align:center">⚪</td>
+</tr>
+<tr>
+<td>Keynote: Closing Remarks - Janet Kuo, Software Engineer, Google</td>
+<td style="text-align:center">[Slides]</td>
+<td style="text-align:right"><a href="https://www.youtube.com/watch?v=blIt2jl0DW0&amp;list=PLj6h78yzYM2OfjgVxnn5gEm3D7w_9YYiG&amp;index=77&amp;t=0s" target="_blank" rel="noopener">Video</a></td>
+<td style="text-align:center">⚪</td>
+</tr>
+<tr>
+<td>Keynote: Welcome Messages - Liz Rice, Technical Evangelist, Aqua Security</td>
+<td style="text-align:center">[Slides]</td>
+<td style="text-align:right"><a href="https://www.youtube.com/watch?v=IKcnx9ClvPk&amp;list=PLj6h78yzYM2OfjgVxnn5gEm3D7w_9YYiG&amp;index=78&amp;t=0s" target="_blank" rel="noopener">Video</a></td>
+<td style="text-align:center">⚪</td>
+</tr>
+<tr>
+<td>Keynote: Kubernetes Serverless Present and Serverless Future – Brendan Burns, Distinguished Engineer &amp; Co-Founder of Kubernetes, Microsoft</td>
+<td style="text-align:center">[Slides]</td>
+<td style="text-align:right"><a href="https://www.youtube.com/watch?v=VfZ8y-4V6Yc&amp;list=PLj6h78yzYM2OfjgVxnn5gEm3D7w_9YYiG&amp;index=75&amp;t=0s" target="_blank" rel="noopener">Video</a></td>
+<td style="text-align:center">🔴</td>
+</tr>
+<tr>
+<td>Keynote: Delivering Renewable Energy with Kubernetes – Wei Zhang, VP Technology, Goldwind Smart Energy &amp; Sheng Liang, CEO, Rancher Labs</td>
+<td style="text-align:center">[Slides]</td>
+<td style="text-align:right">[Video]</td>
+<td style="text-align:center"></td>
+</tr>
+<tr>
+<td>Keynote: The Challenges of Funding Open Source Development: The Case for Open Governance and Enterprise Contributions - Todd Moore, Vice President of Open Technology, IBM</td>
+<td style="text-align:center">[Slides]</td>
+<td style="text-align:right"><a href="https://www.youtube.com/watch?v=3C3mS9Xfb3w&amp;list=PLj6h78yzYM2OfjgVxnn5gEm3D7w_9YYiG&amp;index=74&amp;t=0s" target="_blank" rel="noopener">Video</a></td>
+<td style="text-align:center"></td>
+</tr>
+<tr>
+<td>Keynote: Closing Remarks - Liz Rice, Technical Evangelist, Aqua Security</td>
+<td style="text-align:center">[Slides]</td>
+<td style="text-align:right"><a href="https://www.youtube.com/watch?v=u-zoQkpk0wk&amp;list=PLj6h78yzYM2OfjgVxnn5gEm3D7w_9YYiG&amp;index=73&amp;t=0s" target="_blank" rel="noopener">Video</a></td>
+<td style="text-align:center">⚪</td>
+</tr>
+<tr>
+<td>Keynote: A Tale of Using Kubeflow to Make the Electricity Smarter in China – Julia Han, COO &amp; Xin Zhang, CEO, Caicloud</td>
+<td style="text-align:center">[Slides]</td>
+<td style="text-align:right"><a href="https://www.youtube.com/watch?v=_Iprto2olzc&amp;list=PLj6h78yzYM2OfjgVxnn5gEm3D7w_9YYiG&amp;index=8&amp;t=0s" target="_blank" rel="noopener">Video</a></td>
+<td style="text-align:center">🔴</td>
+</tr>
+<tr>
+<td>Keynote: Expanding to Verticals, How Kubernetes Accelerates Cloud-Native Movement in Various Industries – Zhenqin (Alan) LIAO, Director of PaaS Product Dept, Cloud Business Unit, Huawei</td>
+<td style="text-align:center">[Slides]</td>
+<td style="text-align:right"><a href="https://www.youtube.com/watch?v=-3TZ_3cBZQw&amp;list=PLj6h78yzYM2OfjgVxnn5gEm3D7w_9YYiG&amp;index=9&amp;t=0s" target="_blank" rel="noopener">Video</a></td>
+<td style="text-align:center">🔴</td>
+</tr>
+<tr>
+<td>Keynote: Kubernetes as a Foundational Layer of Infrastructure – Vicki Cheung, Engineering Manager, Lyft</td>
+<td style="text-align:center">[Slides]</td>
+<td style="text-align:right"><a href="https://www.youtube.com/watch?v=d_tAAr0Q3VE&amp;list=PLj6h78yzYM2OfjgVxnn5gEm3D7w_9YYiG&amp;index=10&amp;t=0s" target="_blank" rel="noopener">Video</a></td>
+<td style="text-align:center">⚪</td>
+</tr>
+<tr>
+<td>Keynote: Cloud Native Best Practices In Tencent Architecture - Joezou, PaaS Product Center Director, Tencent Cloud</td>
+<td style="text-align:center">[Slides]</td>
+<td style="text-align:right"><a href="https://www.youtube.com/watch?v=WVYeKDDWl-o&amp;list=PLj6h78yzYM2OfjgVxnn5gEm3D7w_9YYiG&amp;index=11&amp;t=0s" target="_blank" rel="noopener">Video</a></td>
+<td style="text-align:center">🔴</td>
+</tr>
+<tr>
+<td>Keynote: Accelerating Genome Sequencing via Containers and Kubernetes – Chao Wang, CTO, X-Turing &amp; Anni Lai, Head of Global Business Development, VP of Strategy &amp; Business Development, Huawei &amp; Governing Board…</td>
+<td style="text-align:center">[Slides]</td>
+<td style="text-align:right"><a href="https://www.youtube.com/watch?v=pht4DqwfgHA&amp;list=PLj6h78yzYM2OfjgVxnn5gEm3D7w_9YYiG&amp;index=12&amp;t=0s" target="_blank" rel="noopener">Video</a></td>
+<td style="text-align:center">🔴</td>
+</tr>
+<tr>
+<td>Keynote: End User Awards - Chris Aniszczyk, CTO/COO, Cloud Native Computing Foundation</td>
+<td style="text-align:center">[Slides]</td>
+<td style="text-align:right"><a href="https://www.youtube.com/watch?v=mEr6DTYdhZY&amp;list=PLj6h78yzYM2OfjgVxnn5gEm3D7w_9YYiG&amp;index=13&amp;t=0s" target="_blank" rel="noopener">Video</a></td>
+<td style="text-align:center"></td>
+</tr>
+<tr>
+<td>Keynote: Closing Remarks - Liz Rice, Technology Evangelist, Aqua Security &amp; Janet Kuo, Software Engineer, Google</td>
+<td style="text-align:center">[Slides]</td>
+<td style="text-align:right">[Video]</td>
+<td style="text-align:center">🔴</td>
+</tr>
+</tbody>
+</table>
+<h3 id="Application-and-Development"><a href="#Application-and-Development" class="headerlink" title="Application and Development"></a>Application and Development</h3><table>
+<thead>
+<tr>
+<th>Topic</th>
+<th style="text-align:center">Presentation</th>
+<th style="text-align:right">Video</th>
+<th style="text-align:center">🌕 ⚫ 🔴 🔵 ⚪</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Migrating Enterprise Microservices From Cloud Foundry to Kubernetes – Tony Erwin &amp; Jonathan Schweikhart, IBM</td>
+<td style="text-align:center"><a href="https://schd.ws/hosted_files/kccncchina2018english/b2/KubeCon_China_MigrationOfMicroservicesFromCFtoKube.pdf" target="_blank" rel="noopener">Slides</a></td>
+<td style="text-align:right"><a href="https://www.youtube.com/watch?v=d33W5Ks3-sM&amp;index=30&amp;list=PLj6h78yzYM2OK087kzLgc4jTPVbZjuNfs" target="_blank" rel="noopener">Video</a></td>
+<td style="text-align:center">⚪</td>
+</tr>
+<tr>
+<td>Containerizing Java Applications for Kubernetes With Jib - Qingyang Chen &amp; Appu Goundan, Google</td>
+<td style="text-align:center"><a href="https://schd.ws/hosted_files/kccncchina2018english/14/Jib%20Kubecon%202018%20Talk.pdf" target="_blank" rel="noopener">Slides</a></td>
+<td style="text-align:right"><a href="https://www.youtube.com/watch?v=ug3NqPcjjsk&amp;list=PLj6h78yzYM2OK087kzLgc4jTPVbZjuNfs&amp;index=33" target="_blank" rel="noopener">Video</a></td>
+<td style="text-align:center">⚪</td>
+</tr>
+<tr>
+<td>Stop Hitting Yourself! - Michael Russell, Elastic</td>
+<td style="text-align:center"><a href="https://schd.ws/hosted_files/kccncchina2018english/6b/KubeCon%20China%20-%20Michael%20Russell%20-%20Stop%20Hitting%20Yourself%21.pdf" target="_blank" rel="noopener">Slides</a></td>
+<td style="text-align:right"><a href="https://www.youtube.com/watch?v=6qkyxHIbFKk&amp;index=31&amp;list=PLj6h78yzYM2OK087kzLgc4jTPVbZjuNfs" target="_blank" rel="noopener">Video</a></td>
+<td style="text-align:center">⚪</td>
+</tr>
+<tr>
+<td>Rust and Skaffold for Iterative Development on Kubernetes - Gastón Kleiman &amp; Gilbert Song, Mesosphere</td>
+<td style="text-align:center"><a href="https://schd.ws/hosted_files/kccncchina2018english/f3/KubeCon%20Shanghai%202018%20-%20Rust%20and%20Skaffold%20for%20Iterative%20Development%20on%20Kubernetes.pdf" target="_blank" rel="noopener">Slides</a></td>
+<td style="text-align:right"><a href="https://www.youtube.com/watch?v=9S1-69Rp1vQ&amp;list=PLj6h78yzYM2OK087kzLgc4jTPVbZjuNfs&amp;index=36" target="_blank" rel="noopener">Video</a></td>
+<td style="text-align:center">⚪</td>
+</tr>
+<tr>
+<td>Rage Against the API-Machinery: Writing an Operator for Production - Tom Manville, Kasten &amp; Ilya Kislenko, Kasten</td>
+<td style="text-align:center"><a href="https://schd.ws/hosted_files/kccncchina2018english/50/kubecon_Tom_Ilya_CRDs.pdf" target="_blank" rel="noopener">Slides</a></td>
+<td style="text-align:right"><a href="https://www.youtube.com/watch?v=GvPglb8hlvY&amp;list=PLj6h78yzYM2OK087kzLgc4jTPVbZjuNfs&amp;index=27" target="_blank" rel="noopener">Video</a></td>
+<td style="text-align:center">🔵</td>
+</tr>
+<tr>
+<td>Protecting Stateful Workloads With CSI Snapshot - Xing Yang, Huawei &amp; Jing Xu, Google</td>
+<td style="text-align:center"><a href="https://schd.ws/hosted_files/kccncchina2018english/d0/2018%20KubeCon%20Shanghai%20-%20K8S%20Snapshot%20-%20Final.pdf" target="_blank" rel="noopener">Slides</a></td>
+<td style="text-align:right"><a href="https://www.youtube.com/watch?v=kOJ3qnTen3Q&amp;index=34&amp;list=PLj6h78yzYM2OK087kzLgc4jTPVbZjuNfs" target="_blank" rel="noopener">Video</a></td>
+<td style="text-align:center">🔵 ⚪</td>
+</tr>
+<tr>
+<td>Kustomize: Template-Free Configuration Customization for Kubernetes - Jeffrey Regan, Google</td>
+<td style="text-align:center"><a href="https://schd.ws/hosted_files/kccncchina2018english/c4/kubeconShanghai2018.pdf" target="_blank" rel="noopener">Slides</a></td>
+<td style="text-align:right"><a href="https://www.youtube.com/watch?v=EZ7kxa2GKYQ&amp;list=PLj6h78yzYM2OK087kzLgc4jTPVbZjuNfs&amp;index=97" target="_blank" rel="noopener">Video</a></td>
+<td style="text-align:center">⚪</td>
+</tr>
+<tr>
+<td>From Containerized Application to Secure and Scaling With Kubernetes - Shikha Srivastava &amp; Erica Brown, IBM</td>
+<td style="text-align:center"><a href="https://schd.ws/hosted_files/kccncchina2018english/fd/KubeCon_Shanghai_2018_v2.pdf" target="_blank" rel="noopener">Slides</a></td>
+<td style="text-align:right"><a href="https://www.youtube.com/watch?v=elAe4e3L5Sw&amp;list=PLj6h78yzYM2OK087kzLgc4jTPVbZjuNfs&amp;index=127" target="_blank" rel="noopener">Video</a></td>
+<td style="text-align:center">🔴</td>
+</tr>
+<tr>
+<td>Challenges and Solutions of Using Kubernetes for Blockchain Applications - Tong Li, IBM</td>
+<td style="text-align:center"><a href="https://schd.ws/hosted_files/kccncchina2018english/d8/KubeConChina.pdf" target="_blank" rel="noopener">Slides</a></td>
+<td style="text-align:right"><a href="https://www.youtube.com/watch?v=mnomqYXcLNk&amp;index=99&amp;list=PLj6h78yzYM2OK087kzLgc4jTPVbZjuNfs" target="_blank" rel="noopener">Video</a></td>
+<td style="text-align:center">⚪</td>
+</tr>
+<tr>
+<td>Run Cluster Autoscaler on Your Own Cloud; or, Why Do We Need Cluster API? - Aleksandra Malinowska, Google</td>
+<td style="text-align:center">[Slides]</td>
+<td style="text-align:right"><a href="https://www.youtube.com/watch?v=bhm8_-zpqw8&amp;index=98&amp;list=PLj6h78yzYM2OK087kzLgc4jTPVbZjuNfs" target="_blank" rel="noopener">Video</a></td>
+<td style="text-align:center">🔴</td>
+</tr>
+<tr>
+<td>Running Blockchain as a Service on Kubernetes - Shan Yu, Alibaba Cloud</td>
+<td style="text-align:center"><a href="https://schd.ws/hosted_files/kccncchina2018english/9d/KubeCon_Running%20BaaS%20on%20K8S_EN.pdf" target="_blank" rel="noopener">Slides</a></td>
+<td style="text-align:right"><a href="https://www.youtube.com/watch?v=MPQmszKKaWQ&amp;index=102&amp;list=PLj6h78yzYM2OK087kzLgc4jTPVbZjuNfs" target="_blank" rel="noopener">Video</a></td>
+<td style="text-align:center">⚪</td>
+</tr>
+<tr>
+<td>Auto-Deployment of Ceph Cluster With Rook on Top of Kubernetes - Dennis Chen, Arm</td>
+<td style="text-align:center"><a href="https://schd.ws/hosted_files/kccncchina2018english/a7/kubecon-audo-deployment-ceph-rook.pdf" target="_blank" rel="noopener">Slides</a></td>
+<td style="text-align:right">[Video]</td>
+<td style="text-align:center">⚪</td>
+</tr>
+</tbody>
+</table>
+<h3 id="Case-Studies"><a href="#Case-Studies" class="headerlink" title="Case Studies"></a>Case Studies</h3><table>
+<thead>
+<tr>
+<th>Topic</th>
+<th style="text-align:center">Presentation</th>
+<th style="text-align:right">Video</th>
+<th style="text-align:center">🌕 ⚫ 🔴 🔵 ⚪</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Using Kubernetes for Handling Second Screen Experience of European TV Show - Jan-Erik Revsbech &amp; Thomas Hector, Peytz &amp; Co</td>
+<td style="text-align:center"><a href="https://schd.ws/hosted_files/kccncchina2018english/18/KubeCon%20-%20PDF%20Presentation.pdf" target="_blank" rel="noopener">Slides</a></td>
+<td style="text-align:right"><a href="https://www.youtube.com/watch?v=zyRfC-_DqsI&amp;list=PLj6h78yzYM2OK087kzLgc4jTPVbZjuNfs&amp;index=65" target="_blank" rel="noopener">Video</a></td>
+<td style="text-align:center">🔴</td>
+</tr>
+<tr>
+<td>When Distributed Database Meets Cloud - Lessons Learned - Yanqing Weng, Pivotal</td>
+<td style="text-align:center"><a href="https://schd.ws/hosted_files/kccncchina2018english/a4/When%20Distributed%20Database%20Meets%20Cloud%20-%20Lessons%20Learned%20.pdf" target="_blank" rel="noopener">Slides</a></td>
+<td style="text-align:right"><a href="https://www.youtube.com/watch?v=9zfPUFJ0j-0&amp;list=PLj6h78yzYM2OK087kzLgc4jTPVbZjuNfs&amp;index=66" target="_blank" rel="noopener">Video</a></td>
+<td style="text-align:center">🔴</td>
+</tr>
+<tr>
+<td>.Net Framework to .Net Core Microservices With Windows and Linux Containers - Hongxi Ma, Cloud To Go Inc. Ltd.</td>
+<td style="text-align:center">[Slides]</td>
+<td style="text-align:right"><a href="https://www.youtube.com/watch?v=_glNKwRehx0&amp;index=143&amp;list=PLj6h78yzYM2OK087kzLgc4jTPVbZjuNfs" target="_blank" rel="noopener">Video</a></td>
+<td style="text-align:center"></td>
+</tr>
+<tr>
+<td>Istio in Production: Real Customers, Real Solutions - Craig Box, Google</td>
+<td style="text-align:center">[Slides]</td>
+<td style="text-align:right"><a href="https://www.youtube.com/watch?v=cV6JFq8XNZQ&amp;index=139&amp;list=PLj6h78yzYM2OK087kzLgc4jTPVbZjuNfs" target="_blank" rel="noopener">Video</a></td>
+<td style="text-align:center">⚪</td>
+</tr>
+<tr>
+<td>Running Vitess on Kubernetes at Massive Scale: JD.com Case Study - Jiten Vaidya, PlanetScale &amp; Xin Lv, JD.com</td>
+<td style="text-align:center"><a href="https://schd.ws/hosted_files/kccncchina2018english/97/Shanghai%20Kubecon%20%281%29.pdf" target="_blank" rel="noopener">Slides</a></td>
+<td style="text-align:right"><a href="https://www.youtube.com/watch?v=I5g4EEJhRWQ&amp;list=PLj6h78yzYM2OK087kzLgc4jTPVbZjuNfs&amp;index=136" target="_blank" rel="noopener">Video</a></td>
+<td style="text-align:center"></td>
+</tr>
+<tr>
+<td>PetroChina: Big Oil’s Information System on Cloud Native Technology – Hui Chi, PetroChina &amp; Kai Chen, Alauda</td>
+<td style="text-align:center"><a href="https://schd.ws/hosted_files/kccncchina2018english/8c/%E7%9F%B3%E6%B2%B9%E5%B7%A8%E5%A4%B4%E4%B8%8EKubernetes%2C%20Microservice%20%26%20DevOps%E5%85%B1%E8%88%9E1114%E6%9C%80%E7%BB%88%E7%89%88.pdf" target="_blank" rel="noopener">Slides</a></td>
+<td style="text-align:right"><a href="https://www.youtube.com/watch?v=-ecjnLppGC8&amp;list=PLj6h78yzYM2OK087kzLgc4jTPVbZjuNfs&amp;index=133" target="_blank" rel="noopener">Video</a></td>
+<td style="text-align:center">🔴</td>
+</tr>
+<tr>
+<td>From Mesos to Kubernetes - Yin Sun, Xiaomi Inc.</td>
+<td style="text-align:center">[Slides]</td>
+<td style="text-align:right"><a href="https://www.youtube.com/watch?v=hU86Spqa7-g&amp;list=PLj6h78yzYM2OK087kzLgc4jTPVbZjuNfs&amp;index=130" target="_blank" rel="noopener">Video</a></td>
+<td style="text-align:center">⚪</td>
+</tr>
+<tr>
+<td>Kubernetes on Supporting 1 Million Bike-Taxi Drivers in Indonesia - Giri Kuncoro &amp; Iqbal Farabi, GO-JEK</td>
+<td style="text-align:center"><a href="https://schd.ws/hosted_files/kccncchina2018english/a0/Kubernetes%20on%20Supporting%201%20Million%20Bike-Taxi%20Drivers%20in%20Indonesia.pdf" target="_blank" rel="noopener">Slides</a></td>
+<td style="text-align:right"><a href="https://www.youtube.com/watch?v=7mIM-6gQ3fo&amp;list=PLj6h78yzYM2OK087kzLgc4jTPVbZjuNfs&amp;index=128" target="_blank" rel="noopener">Video</a></td>
+<td style="text-align:center">⚪</td>
+</tr>
+</tbody>
+</table>
+<h3 id="CI-CD"><a href="#CI-CD" class="headerlink" title="CI/CD"></a>CI/CD</h3><table>
+<thead>
+<tr>
+<th>Topic</th>
+<th style="text-align:center">Presentation</th>
+<th style="text-align:right">Video</th>
+<th style="text-align:center">🌕 ⚫ 🔴 🔵 ⚪</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Kubernetes Native DevOps Practice - Lei Wang, TenxCloud</td>
+<td style="text-align:center"><a href="https://schd.ws/hosted_files/kccncchina2018english/04/CNCF_TenxCloud_Kubernetes_Native_DevOps_Practice_v1.2.pdf" target="_blank" rel="noopener">Slides</a></td>
+<td style="text-align:right">[Video]</td>
+<td style="text-align:center">🔴</td>
+</tr>
+<tr>
+<td>Testing Kubernetes CRDs - Christie Wilson, Google</td>
+<td style="text-align:center"><a href="https://schd.ws/hosted_files/kccncchina2018english/3b/Testing%20CRDs.pdf" target="_blank" rel="noopener">Slides</a></td>
+<td style="text-align:right"><a href="https://www.youtube.com/watch?v=T4EB0KB1-fc&amp;index=56&amp;list=PLj6h78yzYM2OK087kzLgc4jTPVbZjuNfs" target="_blank" rel="noopener">Video</a></td>
+<td style="text-align:center">🌕</td>
+</tr>
+<tr>
+<td>Securing the Perimeter - CFCR/CFAR Chain of Custody With CI/CD Pipelines - Keith Strini &amp; Shaozhen Ding, Pivotal</td>
+<td style="text-align:center"><a href="https://schd.ws/hosted_files/kccncchina2018english/b2/Securing_the_Perimeter_KubeCon_China.pdf" target="_blank" rel="noopener">Slides</a></td>
+<td style="text-align:right"><a href="https://www.youtube.com/watch?v=G-L8Ovsonok&amp;list=PLj6h78yzYM2OK087kzLgc4jTPVbZjuNfs&amp;index=55" target="_blank" rel="noopener">Video</a></td>
+<td style="text-align:center"></td>
+</tr>
+<tr>
+<td>Kubernetes CICD Hacks with MicroK8s and Kubeflow - Land Lu &amp; Zhang Lei Mao, Canonical</td>
+<td style="text-align:center"><a href="https://schd.ws/hosted_files/kccncchina2018english/0a/Kubecon%20Shanghai%20-%20CICD%20Hacks_Canonical.pdf" target="_blank" rel="noopener">Slides</a></td>
+<td style="text-align:right">[Video]</td>
+<td style="text-align:center">🔴</td>
+</tr>
+<tr>
+<td>Compliance as Code - Lessons Learned From Regulated Organizations - Sergiu Bodiu, Standard Chartered</td>
+<td style="text-align:center"><a href="https://schd.ws/hosted_files/kccncchina2018english/5c/Compliance%20as%20Code%20-%20Lessons%20Learned%20from%20Regulated%20Organizations.pdf" target="_blank" rel="noopener">Slides</a></td>
+<td style="text-align:right"><a href="https://www.youtube.com/watch?v=MI8iFuEHZiA&amp;list=PLj6h78yzYM2OK087kzLgc4jTPVbZjuNfs&amp;index=57" target="_blank" rel="noopener">Video</a></td>
+<td style="text-align:center">🔴</td>
+</tr>
+<tr>
+<td>Let Developers and Operators Focus on What They Know Best - Rafal Gajdulewicz &amp; Julie Zhuying Li, Google</td>
+<td style="text-align:center"><a href="https://schd.ws/hosted_files/kccncchina2018english/43/KubeConShanghai_Draft.pdf" target="_blank" rel="noopener">Slides</a></td>
+<td style="text-align:right"><a href="https://www.youtube.com/watch?v=yuKqLZTq6pk&amp;index=89&amp;list=PLj6h78yzYM2OK087kzLgc4jTPVbZjuNfs" target="_blank" rel="noopener">Video</a></td>
+<td style="text-align:center">⚪</td>
+</tr>
+</tbody>
+</table>
+<h3 id="Customizing-Extending-Contributing"><a href="#Customizing-Extending-Contributing" class="headerlink" title="Customizing+Extending+Contributing"></a>Customizing+Extending+Contributing</h3><table>
+<thead>
+<tr>
+<th>Topic</th>
+<th style="text-align:center">Presentation</th>
+<th style="text-align:right">Video</th>
+<th style="text-align:center">🌕 ⚫ 🔴 🔵 ⚪</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Deep Customized Kubernetes for Machine Learning in Tencent - Shengbo Song, Tencent</td>
+<td style="text-align:center"><a href="https://schd.ws/hosted_files/kccncchina2018english/fc/KubeCon_China_ppt.pdf" target="_blank" rel="noopener">Slides</a></td>
+<td style="text-align:right"><a href="https://www.youtube.com/watch?v=MrnWhRU8MrM&amp;list=PLj6h78yzYM2OK087kzLgc4jTPVbZjuNfs&amp;index=63" target="_blank" rel="noopener">Video</a></td>
+<td style="text-align:center">⚪ 🌕</td>
+</tr>
+<tr>
+<td>Managing Edge Nodes With “KubeEdge” - Yulin Sun &amp; Li Xing, Huawei</td>
+<td style="text-align:center"><a href>Slides</a></td>
+<td style="text-align:right">[Video]</td>
+<td style="text-align:center"></td>
+</tr>
+<tr>
+<td>Kubebuilder: SDK for Extending Kubernetes - Fan Zhang, VMware Inc &amp; Mengqi Yu, Google</td>
+<td style="text-align:center"><a href>Slides</a></td>
+<td style="text-align:right">[Video]</td>
+<td style="text-align:center">🔴</td>
+</tr>
+<tr>
+<td>Managing and Securing Blockchain Applications on Kubernetes - Haining Zhang &amp; Yang Yu, Vmware</td>
+<td style="text-align:center"><a href>Slides</a></td>
+<td style="text-align:right"><a href>Video</a></td>
+<td style="text-align:center">🔴</td>
+</tr>
+<tr>
+<td>One-on-One Discussion: Quinton Hoole, Huawei &amp; Chris Aniszczyk, CNCF</td>
+<td style="text-align:center">[Slides]</td>
+<td style="text-align:right"><a href="https://www.youtube.com/watch?v=prhqztKCFvU&amp;list=PLj6h78yzYM2OK087kzLgc4jTPVbZjuNfs&amp;index=39" target="_blank" rel="noopener">Video</a></td>
+<td style="text-align:center"></td>
+</tr>
+<tr>
+<td>Provisioning the Distributed Database TiDB on Kubernetes - Shuan Deng, PingCAP</td>
+<td style="text-align:center"><a href="https://schd.ws/hosted_files/kccncchina2018english/ab/TiDB%20on%20Kubernetes%20-%20KubeCon.pdf" target="_blank" rel="noopener">Slides</a></td>
+<td style="text-align:right"><a href="https://www.youtube.com/watch?v=O-vFoiVIGwU&amp;list=PLj6h78yzYM2OK087kzLgc4jTPVbZjuNfs&amp;index=62" target="_blank" rel="noopener">Video</a></td>
+<td style="text-align:center">⚪</td>
+</tr>
+<tr>
+<td>Managing RBAC Cross Multiple Kubernetes Clusters - Alena Prokharchyk, Rancher Labs, Inc.</td>
+<td style="text-align:center"><a href="https://schd.ws/hosted_files/kccncchina2018english/9f/AlenaProkharchykPresentation.pdf" target="_blank" rel="noopener">Slides</a></td>
+<td style="text-align:right"><a href="https://www.youtube.com/watch?v=kUXexTc9kHU&amp;index=64&amp;list=PLj6h78yzYM2OK087kzLgc4jTPVbZjuNfs" target="_blank" rel="noopener">Video</a></td>
+<td style="text-align:center">⚪</td>
+</tr>
+<tr>
+<td>Evolving Sigma: Adapting Kubernetes at Alibaba - Xiang Li, Alibaba</td>
+<td style="text-align:center"><a href="https://schd.ws/hosted_files/kccncchina2018english/0f/kubecon-1811.pdf" target="_blank" rel="noopener">Slides</a></td>
+<td style="text-align:right">[Video]</td>
+<td style="text-align:center">🔴</td>
+</tr>
+<tr>
+<td>Operator Framework to Manage Production Grade Stateful Workloads in eBay - Xin Xu &amp; Xinglang Wang, eBay</td>
+<td style="text-align:center"><a href="https://schd.ws/hosted_files/kccncchina2018english/69/Operator%20Framework%20to%20manage%20stateful%20workloads.pdf" target="_blank" rel="noopener">Slides</a></td>
+<td style="text-align:right"><a href="https://www.youtube.com/watch?v=a34zzP2B6PA&amp;list=PLj6h78yzYM2OK087kzLgc4jTPVbZjuNfs&amp;index=144" target="_blank" rel="noopener">Video</a></td>
+<td style="text-align:center">⚪</td>
+</tr>
+<tr>
+<td>Cluster API Deep Dive With a Tencent Case Study - Feng Min, Google &amp; Zhiguo Hong, Tencent</td>
+<td style="text-align:center"><a href="https://schd.ws/hosted_files/kccncchina2018english/d9/Cluster%20API%20Deep%20Dive%20With%20a%20Tencent%20Case%20Study.pdf" target="_blank" rel="noopener">Slides</a></td>
+<td style="text-align:right"><a href="https://www.youtube.com/watch?v=Pgd1t_PjPmI&amp;index=141&amp;list=PLj6h78yzYM2OK087kzLgc4jTPVbZjuNfs" target="_blank" rel="noopener">Video</a></td>
+<td style="text-align:center">⚪</td>
+</tr>
+<tr>
+<td>Adventures in Conformance - Aaron Crickenberger, Google</td>
+<td style="text-align:center"><a href="https://schd.ws/hosted_files/kccncchina2018english/d6/KubeCon%20China%202018%20-%20Adventures%20in%20Conformance.pdf" target="_blank" rel="noopener">Slides</a></td>
+<td style="text-align:right"><a href="https://www.youtube.com/watch?v=sA6hcxBhJdo&amp;index=137&amp;list=PLj6h78yzYM2OK087kzLgc4jTPVbZjuNfs" target="_blank" rel="noopener">Video</a></td>
+<td style="text-align:center">⚪</td>
+</tr>
+<tr>
+<td>Kubernetes: Use it, Contribute to it, and Enjoy it! - Peter Zhao &amp; Yuan Ji, ZTE Corporation</td>
+<td style="text-align:center"><a href="https://schd.ws/hosted_files/kccncchina2018english/93/Kubernetes%20Use%20it%2C%20Contribute%20to%20it%2C%20and%20Enjoy%20it%21.pdf" target="_blank" rel="noopener">Slides</a></td>
+<td style="text-align:right"><a href="https://www.youtube.com/watch?v=r590u_vSdQU&amp;list=PLj6h78yzYM2OK087kzLgc4jTPVbZjuNfs&amp;index=134" target="_blank" rel="noopener">Video</a></td>
+<td style="text-align:center">⚪</td>
+</tr>
+<tr>
+<td>State of the UI: Leveraging Kubernetes Dashboard and Shaping its Future - Dan Romlein &amp; Spencer Sugarman, Google</td>
+<td style="text-align:center"><a href="https://schd.ws/hosted_files/kccncchina2018english/5e/State%20of%20the%20UI_%20Leveraging%20Kubernetes%20Dashboard%20and%20Shaping%20its%20Future.pdf" target="_blank" rel="noopener">Slides</a></td>
+<td style="text-align:right"><a href="https://www.youtube.com/watch?v=_AIL1QENv04&amp;list=PLj6h78yzYM2OK087kzLgc4jTPVbZjuNfs&amp;index=131" target="_blank" rel="noopener">Video</a></td>
+<td style="text-align:center">⚪</td>
+</tr>
+</tbody>
+</table>
+<h3 id="Demo-Theater"><a href="#Demo-Theater" class="headerlink" title="Demo Theater"></a>Demo Theater</h3><table>
+<thead>
+<tr>
+<th>Topic</th>
+<th style="text-align:center">Presentation</th>
+<th style="text-align:right">Video</th>
+<th style="text-align:center">🌕 ⚫ 🔴 🔵 ⚪</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Jenkins X: CI/CD Solution of Modern Cloud Application Based on Kubernetes - Xiaojie Zhao, Alauda</td>
+<td style="text-align:center">[Slides]</td>
+<td style="text-align:right">[Video]</td>
+<td style="text-align:center">🔴</td>
+</tr>
+<tr>
+<td>Flowkube: GPU Resource Management On JDOS - Liang Yongqing, JD.com</td>
+<td style="text-align:center">[Slides]</td>
+<td style="text-align:right">[Video]</td>
+<td style="text-align:center">🔴</td>
+</tr>
+<tr>
+<td>Container &amp; AI Platform on Kubernetes: How Caicloud Help Enterprises to Embrace Digital and Intelligent Transformation - Qin Xiao, Caicloud</td>
+<td style="text-align:center"><a href="https://schd.ws/hosted_files/kccncchina2018english/1b/KubeCon-Caicloud-EN.pdf" target="_blank" rel="noopener">Slides</a></td>
+<td style="text-align:right">[Video]</td>
+<td style="text-align:center">🔴</td>
+</tr>
+<tr>
+<td>Container Portfolio at VMware - Dan Cheng, VMware</td>
+<td style="text-align:center">[Slides]</td>
+<td style="text-align:right">[Video]</td>
+<td style="text-align:center"></td>
+</tr>
+<tr>
+<td>Zero to Hero: Get Your First K8S Application Running in 5 Minutes! - Peter Lees, SUSE</td>
+<td style="text-align:center">[Slides]</td>
+<td style="text-align:right">[Video]</td>
+<td style="text-align:center"></td>
+</tr>
+<tr>
+<td>Keep K8S Simple and Fun - Wei Zhang, Alibaba</td>
+<td style="text-align:center">[Slides]</td>
+<td style="text-align:right">[Video]</td>
+<td style="text-align:center">🔴</td>
+</tr>
+<tr>
+<td>Distributed Video Transcoding on Cloud - Yang Rong, Intel</td>
+<td style="text-align:center">[Slides]</td>
+<td style="text-align:right">[Video]</td>
+<td style="text-align:center"></td>
+</tr>
+<tr>
+<td>Live Demo of Using KubeEdge and KubeGene - Jun Du &amp; Shengjun Tang, Huawei</td>
+<td style="text-align:center">[Slides]</td>
+<td style="text-align:right">[Video]</td>
+<td style="text-align:center"></td>
+</tr>
+<tr>
+<td>Tencent Big Data AI on K8S Best Practice - Junjie Chen &amp; Shengbo Song, Tencent</td>
+<td style="text-align:center">[Slides]</td>
+<td style="text-align:right">[Video]</td>
+<td style="text-align:center">🔴</td>
+</tr>
+<tr>
+<td>Easy Way to Manage Kubernetes Clusters - Peng Jiang, Rancher Labs</td>
+<td style="text-align:center">[Slides]</td>
+<td style="text-align:right">[Video]</td>
+<td style="text-align:center">🔴</td>
+</tr>
+<tr>
+<td>Cloud Native Application Management and Service Mesh Across Multi-Cloud - Liu Guang Ya, IBM</td>
+<td style="text-align:center">[Slides]</td>
+<td style="text-align:right">[Video]</td>
+<td style="text-align:center">🔴</td>
+</tr>
+</tbody>
+</table>
+<h3 id="Machine-Learning-amp-Data"><a href="#Machine-Learning-amp-Data" class="headerlink" title="Machine Learning &amp; Data"></a>Machine Learning &amp; Data</h3><table>
+<thead>
+<tr>
+<th>Topic</th>
+<th style="text-align:center">Presentation</th>
+<th style="text-align:right">Video</th>
+<th style="text-align:center">🌕 ⚫ 🔴 🔵 ⚪</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>A Day in the Life of a Data Scientist. Conquer ML Lifecycle on Kubernetes - Rita Zhang &amp; Brian Redmond, Microsoft</td>
+<td style="text-align:center"><a href="https://schd.ws/hosted_files/kccncchina2018english/e7/KubeCon_China_ML-Lifecycle.pdf" target="_blank" rel="noopener">Slides</a></td>
+<td style="text-align:right"><a href="https://www.youtube.com/watch?v=wQsWRgNQCfQ&amp;list=PLj6h78yzYM2OK087kzLgc4jTPVbZjuNfs&amp;index=24" target="_blank" rel="noopener">Video</a></td>
+<td style="text-align:center">🔴 🔵 ⚪</td>
+</tr>
+<tr>
+<td>Serverless Kubernetes Boosts AI Business - Jian Huang, Huawei</td>
+<td style="text-align:center"><a href="https://schd.ws/hosted_files/kccncchina2018english/d4/Serverless%20Kubernetes%20boosts%20AI%20Business.pdf" target="_blank" rel="noopener">Slides</a></td>
+<td style="text-align:right"><a href="https://www.youtube.com/watch?v=JShIq3D0s6I&amp;index=25&amp;list=PLj6h78yzYM2OK087kzLgc4jTPVbZjuNfs" target="_blank" rel="noopener">Video</a></td>
+<td style="text-align:center">🔴</td>
+</tr>
+<tr>
+<td>A Year of Democratizing ML With Kubernetes &amp; Kubeflow - David Aronchick &amp; Fei Xue, Google</td>
+<td style="text-align:center">[Slides]</td>
+<td style="text-align:right"><a href="https://www.youtube.com/watch?v=oMlddDdJgEg&amp;list=PLj6h78yzYM2OK087kzLgc4jTPVbZjuNfs&amp;index=26" target="_blank" rel="noopener">Video</a></td>
+<td style="text-align:center">⚪</td>
+</tr>
+<tr>
+<td>“KubeGene” a Genome Sequencing Workflow Management Framework - Shenjun Tang, Huawei</td>
+<td style="text-align:center"><a href="https://schd.ws/hosted_files/kccncchina2018english/8f/KubeGene%EF%BC%8C%E4%B8%80%E7%A7%8D%E5%9F%BA%E5%9B%A0%E6%B5%8B%E5%BA%8F%E6%B5%81%E7%A8%8B%E7%AE%A1%E7%90%86%E6%A1%86%E6%9E%B6.pdf" target="_blank" rel="noopener">Slides</a></td>
+<td style="text-align:right"><a href="https://www.youtube.com/watch?v=ooDwlABbQdk&amp;index=29&amp;list=PLj6h78yzYM2OK087kzLgc4jTPVbZjuNfs" target="_blank" rel="noopener">Video</a></td>
+<td style="text-align:center">🔴</td>
+</tr>
+<tr>
+<td>A Hybrid Container Cloud With Kubernetes and Hadoop YARN - Jian He &amp; Bushuang Gao, Alibaba</td>
+<td style="text-align:center"><a href="https://schd.ws/hosted_files/kccncchina2018english/96/kubecon-china-2018.pdf" target="_blank" rel="noopener">Slides</a></td>
+<td style="text-align:right"><a href="https://www.youtube.com/watch?v=EjaqB2wdFOM&amp;list=PLj6h78yzYM2OK087kzLgc4jTPVbZjuNfs&amp;index=28" target="_blank" rel="noopener">Video</a></td>
+<td style="text-align:center">🔴</td>
+</tr>
+<tr>
+<td>Benchmarking Machine Learning Workloads on Kubeflow - Xinyuan Huang, Cisco Systems, Inc. &amp; Ce Gao, Caicloud</td>
+<td style="text-align:center"><a href="https://schd.ws/hosted_files/kccncchina2018english/17/Kubebench_KubeCon2018China.pdf" target="_blank" rel="noopener">Slides</a></td>
+<td style="text-align:right">[Video]</td>
+<td style="text-align:center">🔴</td>
+</tr>
+<tr>
+<td>Modern Data Science in a Cloud Native World - Samuel Kreter, Microsoft</td>
+<td style="text-align:center"><a href="https://schd.ws/hosted_files/kccncchina2018english/18/KubeConAsia2018Final.pdf" target="_blank" rel="noopener">Slides</a></td>
+<td style="text-align:right">[Video]</td>
+<td style="text-align:center"></td>
+</tr>
+<tr>
+<td>Operating Deep Learning Pipelines Anywhere Using Kubeflow - Jörg Schad &amp; Gilbert Song, Mesosphere</td>
+<td style="text-align:center"><a href="https://schd.ws/hosted_files/kccncchina2018english/fe/Kubecon%20KubeFlow%2B%2B%20Summit.pdf" target="_blank" rel="noopener">Slides</a></td>
+<td style="text-align:right"><a href="https://www.youtube.com/watch?v=63HJgZK27mU&amp;index=92&amp;list=PLj6h78yzYM2OK087kzLgc4jTPVbZjuNfs" target="_blank" rel="noopener">Video</a></td>
+<td style="text-align:center">🔵 ⚪</td>
+</tr>
+<tr>
+<td>Kubeflow From the End User’s Perspective: The Good, The Bad, and The Ugly - Xin Zhang, Caicloud</td>
+<td style="text-align:center">[Slides]</td>
+<td style="text-align:right"><a href="https://www.youtube.com/watch?v=x0CKhyoV9aI&amp;index=93&amp;list=PLj6h78yzYM2OK087kzLgc4jTPVbZjuNfs" target="_blank" rel="noopener">Video</a></td>
+<td style="text-align:center"></td>
+</tr>
+<tr>
+<td>Machine Learning on Kubernetes Birds of a Feather - David Aronchick</td>
+<td style="text-align:center">[Slides]</td>
+<td style="text-align:right"><a href="https://www.youtube.com/watch?v=0eEAZ7lmLbo&amp;list=PLj6h78yzYM2OK087kzLgc4jTPVbZjuNfs&amp;index=94" target="_blank" rel="noopener">Video</a></td>
+<td style="text-align:center">⚪</td>
+</tr>
+<tr>
+<td>Discovering the Untold User Stories of Kubernetes With Applied Anthropology - Hippie Hacker &amp; Indigo Phillips, ii.coop</td>
+<td style="text-align:center"><a href="https://schd.ws/hosted_files/kccncchina2018english/c3/APISnoop.pdf" target="_blank" rel="noopener">Slides</a></td>
+<td style="text-align:right"><a href="https://www.youtube.com/watch?v=D-mqeCQNvU0&amp;list=PLj6h78yzYM2OK087kzLgc4jTPVbZjuNfs&amp;index=95" target="_blank" rel="noopener">Video</a></td>
+<td style="text-align:center"></td>
+</tr>
+<tr>
+<td>Apache Spark on Kubernetes: A Technical Deep Dive - Yinan Li, Google</td>
+<td style="text-align:center"><a href="https://schd.ws/hosted_files/kccncchina2018english/f1/Apache%20Spark%20on%20Kubernetes_%20A%20Technical%20Deep%20Dive.pdf" target="_blank" rel="noopener">Slides</a></td>
+<td style="text-align:right"><a href="https://www.youtube.com/watch?v=5-4X3HylQQo&amp;index=96&amp;list=PLj6h78yzYM2OK087kzLgc4jTPVbZjuNfs" target="_blank" rel="noopener">Video</a></td>
+<td style="text-align:center">🔴</td>
+</tr>
+</tbody>
+</table>
+<h3 id="Maintainers-Track"><a href="#Maintainers-Track" class="headerlink" title="Maintainers Track"></a>Maintainers Track</h3><table>
+<thead>
+<tr>
+<th>Topic</th>
+<th style="text-align:center">Presentation</th>
+<th style="text-align:right">Video</th>
+<th style="text-align:center">🌕 ⚫ 🔴 🔵 ⚪</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Intro: CNCF Interactive Landscape - Dan Kohn, Cloud Native Computing Foundation</td>
+<td style="text-align:center">[Slides]</td>
+<td style="text-align:right"><a href="https://www.youtube.com/watch?v=v6h8NH3vvbo&amp;list=PLj6h78yzYM2OK087kzLgc4jTPVbZjuNfs&amp;index=32" target="_blank" rel="noopener">Video</a></td>
+<td style="text-align:center">⚪</td>
+</tr>
+<tr>
+<td>Intro: CNCF Storage WG - Xing Yang &amp; Quinton Hoole, Huawei</td>
+<td style="text-align:center"><a href="https://schd.ws/hosted_files/kccncchina2018english/a7/2018%20KubeCon%20Shanghai%20-%20Intro%20-%20Storage%20WG%20-%20Final.pdf" target="_blank" rel="noopener">Slides</a></td>
+<td style="text-align:right">[Video]</td>
+<td style="text-align:center"></td>
+</tr>
+<tr>
+<td>Intro: containerd - Derek McGowan, Docker &amp; Mike Brown, IBM</td>
+<td style="text-align:center"><a href="https://schd.ws/hosted_files/kccncchina2018english/a8/intro-slides.pdf" target="_blank" rel="noopener">Slides</a></td>
+<td style="text-align:right"><a href="https://www.youtube.com/watch?v=cwOGVrkdPkA&amp;list=PLj6h78yzYM2OK087kzLgc4jTPVbZjuNfs&amp;index=69" target="_blank" rel="noopener">Video</a></td>
+<td style="text-align:center">🔵</td>
+</tr>
+<tr>
+<td>Intro: Fluentd - Eduardo Silva &amp; Masahiro Nakagawa, Treasure Data</td>
+<td style="text-align:center"><a href="https://schd.ws/hosted_files/kccncchina2018english/88/2018-11-14-Intro_to_Prometheus.pdf" target="_blank" rel="noopener">Slides</a></td>
+<td style="text-align:right"><a href="https://www.youtube.com/watch?v=NEGEy6mruR0&amp;list=PLj6h78yzYM2OK087kzLgc4jTPVbZjuNfs&amp;index=90" target="_blank" rel="noopener">Video</a></td>
+<td style="text-align:center"></td>
+</tr>
+<tr>
+<td>Intro: SIG Service Catalog - Doug Davis &amp; Jonathan Berkhahn, IBM</td>
+<td style="text-align:center"><a href="https://schd.ws/hosted_files/kccncchina2018english/68/SIG-ServiceCatalog-Intro.pdf" target="_blank" rel="noopener">Slides</a></td>
+<td style="text-align:right"><a href="https://www.youtube.com/watch?v=wWgyL51s8Js&amp;list=PLj6h78yzYM2OK087kzLgc4jTPVbZjuNfs&amp;index=50" target="_blank" rel="noopener">Video</a></td>
+<td style="text-align:center"></td>
+</tr>
+<tr>
+<td>Intro: Harbor - Henry Zhang &amp; Jia Zou, VMware</td>
+<td style="text-align:center">[Slides]</td>
+<td style="text-align:right">[Video]</td>
+<td style="text-align:center">🔴</td>
+</tr>
+<tr>
+<td>Intro: Prometheus – Richard “RichiH” Hartmann, SpaceNet &amp; Ben “SuperQ” Kochie, GitLab</td>
+<td style="text-align:center"><a href="https://schd.ws/hosted_files/kccncchina2018english/88/2018-11-14-Intro_to_Prometheus.pdf" target="_blank" rel="noopener">Slides</a></td>
+<td style="text-align:right"><a href="https://www.youtube.com/watch?v=LSzyP_xfFRg&amp;index=42&amp;list=PLj6h78yzYM2OK087kzLgc4jTPVbZjuNfs" target="_blank" rel="noopener">Video</a></td>
+<td style="text-align:center">⚪</td>
+</tr>
+<tr>
+<td>Intro: SIG Apps - Janet Kuo, Google Intro: SIG Cloud Provider - Andrew Sy Kim, DigitalOcean</td>
+<td style="text-align:center"><a href="https://schd.ws/hosted_files/kccncchina2018english/6f/SIG%20Apps%20Introduction.pdf" target="_blank" rel="noopener">Slides</a></td>
+<td style="text-align:right"><a href="https://www.youtube.com/watch?v=f_bDFaN1jtU&amp;list=PLj6h78yzYM2OK087kzLgc4jTPVbZjuNfs&amp;index=150" target="_blank" rel="noopener">Video</a></td>
+<td style="text-align:center">🔴</td>
+</tr>
+<tr>
+<td>Meet the Maintainer: Vitess – Adrianna Tan, PlanetScale</td>
+<td style="text-align:center">[Slides]</td>
+<td style="text-align:right">[Video]</td>
+<td style="text-align:center"></td>
+</tr>
+<tr>
+<td>Intro: CNCF Serverless WG / CloudEvents - Doug Davis, IBM &amp; Cathy Zhang, Huawei</td>
+<td style="text-align:center"><a href="https://schd.ws/hosted_files/kccncchina2018english/f9/Serverless%20WG%20Intro%20Session%20-%20Shanghai%202018.pdf" target="_blank" rel="noopener">Slides</a></td>
+<td style="text-align:right"><a href="https://www.youtube.com/watch?v=n0QcZqUTnHg&amp;list=PLj6h78yzYM2OK087kzLgc4jTPVbZjuNfs&amp;index=48" target="_blank" rel="noopener">Video</a></td>
+<td style="text-align:center">🔴</td>
+</tr>
+<tr>
+<td>Intro: Kubernetes Policy WG - Zhipeng Huang &amp; Hui Wang, Huawei</td>
+<td style="text-align:center">[Slides]</td>
+<td style="text-align:right">[Video]</td>
+<td style="text-align:center"></td>
+</tr>
+<tr>
+<td>Intro: Kubernetes SIG Multicluster - Quinton Hoole &amp; Irfan Ur Rehman, Huawei</td>
+<td style="text-align:center">[Slides]</td>
+<td style="text-align:right"><a href="https://www.youtube.com/watch?v=deaHZ2Rv3PI&amp;list=PLj6h78yzYM2OK087kzLgc4jTPVbZjuNfs&amp;index=40" target="_blank" rel="noopener">Video</a></td>
+<td style="text-align:center">⚪</td>
+</tr>
+<tr>
+<td>Intro: Rook - Jared Watts, Upbound</td>
+<td style="text-align:center"><a href="https://schd.ws/hosted_files/kccncchina2018english/ce/Rook%20Intro%20-%20Kubecon%20China%202018.pdf" target="_blank" rel="noopener">Slides</a></td>
+<td style="text-align:right"><a href="https://www.youtube.com/watch?v=hjEq1n7Ow44&amp;list=PLj6h78yzYM2OK087kzLgc4jTPVbZjuNfs&amp;index=43" target="_blank" rel="noopener">Video</a></td>
+<td style="text-align:center">⚪</td>
+</tr>
+<tr>
+<td>Intro: SAFE (A Cloud Native Security Working Group) - Liz Rice, Aqua Security</td>
+<td style="text-align:center">[Slides]</td>
+<td style="text-align:right"><a href="https://www.youtube.com/watch?v=Rdtp6fc9eR0&amp;list=PLj6h78yzYM2OK087kzLgc4jTPVbZjuNfs&amp;index=148" target="_blank" rel="noopener">Video</a></td>
+<td style="text-align:center"></td>
+</tr>
+<tr>
+<td>Meet the Maintainer: Vitess – Adrianna Tan, PlanetScale</td>
+<td style="text-align:center"><a href>Slides</a></td>
+<td style="text-align:right">[Video]</td>
+<td style="text-align:center"></td>
+</tr>
+<tr>
+<td>Intro: Falco - Jorge Salamero Sanz, Sysdig Intro: Jaeger - Prithvi Raj Venkat Raj &amp; Won Jun Jang, Uber</td>
+<td style="text-align:center">[Slides]</td>
+<td style="text-align:right">[Video]</td>
+<td style="text-align:center"></td>
+</tr>
+<tr>
+<td>Intro: Open Policy Agent - Torin Sandall, Styra</td>
+<td style="text-align:center"><a href="https://schd.ws/hosted_files/kccncchina2018english/4f/OPAIntroduction.pdf" target="_blank" rel="noopener">Slides</a></td>
+<td style="text-align:right"><a href="https://www.youtube.com/watch?v=qFI04tksNBQ&amp;index=125&amp;list=PLj6h78yzYM2OK087kzLgc4jTPVbZjuNfs" target="_blank" rel="noopener">Video</a></td>
+<td style="text-align:center">🔴</td>
+</tr>
+<tr>
+<td>Intro: SIG Autoscaling - Marcin Wielgus &amp; Maciej Pytel, Google</td>
+<td style="text-align:center">[Slides]</td>
+<td style="text-align:right"><a href="https://www.youtube.com/watch?v=teDn7QpcxRw&amp;index=44&amp;list=PLj6h78yzYM2OK087kzLgc4jTPVbZjuNfs" target="_blank" rel="noopener">Video</a></td>
+<td style="text-align:center">🔴</td>
+</tr>
+<tr>
+<td>Intro: SIG Release - Tim Pepper, VMware</td>
+<td style="text-align:center"><a href="https://schd.ws/hosted_files/kccncchina2018english/05/2018%20KubeCon%20China%20-%20SIG%20Release%20Intro.pdf" target="_blank" rel="noopener">Slides</a></td>
+<td style="text-align:right"><a href="https://www.youtube.com/watch?v=EzCNK1fsTFQ&amp;list=PLj6h78yzYM2OK087kzLgc4jTPVbZjuNfs&amp;index=147" target="_blank" rel="noopener">Video</a></td>
+<td style="text-align:center">🔴</td>
+</tr>
+<tr>
+<td>Meet the Maintainer: Fluentd / Fluent Bit - Eduardo Silva, Treasure Data Meet the Maintainer: Rook - Jared Watts, Upbound</td>
+<td style="text-align:center"><a href>Slides</a></td>
+<td style="text-align:right"><a href>Video</a></td>
+<td style="text-align:center"></td>
+</tr>
+<tr>
+<td>Intro: CoreDNS - Yong Tang, Infoblox</td>
+<td style="text-align:center"><a href="https://schd.ws/hosted_files/kccncchina2018english/7f/KubeCon%20-%20CoreDNS%20Intro.pdf" target="_blank" rel="noopener">Slides</a></td>
+<td style="text-align:right"><a href="https://www.youtube.com/watch?v=0VQzo6CWVCU&amp;list=PLj6h78yzYM2OK087kzLgc4jTPVbZjuNfs&amp;index=146" target="_blank" rel="noopener">Video</a></td>
+<td style="text-align:center">⚪</td>
+</tr>
+<tr>
+<td>Intro: Helm - Taylor Thomas, Microsoft</td>
+<td style="text-align:center"><a href="https://schd.ws/hosted_files/kccncchina2018english/95/Take%20the%20Helm.pdf" target="_blank" rel="noopener">Slides</a></td>
+<td style="text-align:right"><a href="https://www.youtube.com/watch?v=32Ohn_DnBjo&amp;index=23&amp;list=PLj6h78yzYM2OK087kzLgc4jTPVbZjuNfs" target="_blank" rel="noopener">Video</a></td>
+<td style="text-align:center">⚪</td>
+</tr>
+<tr>
+<td>Intro: SIG IBMCloud - Sahdev Zala &amp; Doug Davis, IBM</td>
+<td style="text-align:center">[Slides]</td>
+<td style="text-align:right"><a href="https://www.youtube.com/watch?v=NhNFkagDH9s&amp;list=PLj6h78yzYM2OK087kzLgc4jTPVbZjuNfs&amp;index=51" target="_blank" rel="noopener">Video</a></td>
+<td style="text-align:center">⚪</td>
+</tr>
+<tr>
+<td>Intro: SIG Scheduling - Da Ma, IBM</td>
+<td style="text-align:center"><a href>Slides</a></td>
+<td style="text-align:right">[Video]</td>
+<td style="text-align:center">🔴</td>
+</tr>
+<tr>
+<td>Meet the Maintainer: Jaeger – Won Jun Jang, Uber</td>
+<td style="text-align:center">[Slides]</td>
+<td style="text-align:right">[Video]</td>
+<td style="text-align:center"></td>
+</tr>
+<tr>
+<td>Intro: CNCF Cross-Cloud CI - W. Watson, Vulk</td>
+<td style="text-align:center"><a href="https://schd.ws/hosted_files/kccncchina2018english/f6/KubeCon%20China%202018%20Cross-cloud%20CI%20Intro%20slides.pdf" target="_blank" rel="noopener">Slides</a></td>
+<td style="text-align:right"><a href="https://www.youtube.com/watch?v=_0I_A5f9UCk&amp;list=PLj6h78yzYM2OfjgVxnn5gEm3D7w_9YYiG&amp;index=49&amp;t=0s" target="_blank" rel="noopener">Video</a></td>
+<td style="text-align:center"></td>
+</tr>
+<tr>
+<td>Intro: CNCF K8s-Conformance WG - Zefeng Wang, Huawei &amp; Aaron Crickenberger, Google</td>
+<td style="text-align:center"><a href="https://schd.ws/hosted_files/kccncchina2018english/9d/CNCF-conformance-wg-intro.pdf" target="_blank" rel="noopener">Slides</a></td>
+<td style="text-align:right"><a href="https://www.youtube.com/watch?v=VferOM34OGw&amp;list=PLj6h78yzYM2OK087kzLgc4jTPVbZjuNfs&amp;index=46" target="_blank" rel="noopener">Video</a></td>
+<td style="text-align:center">⚪</td>
+</tr>
+<tr>
+<td>Intro: SIG Testing - Jessie Zhu &amp; Sen Lu, Google</td>
+<td style="text-align:center"><a href="https://schd.ws/hosted_files/kccncchina2018english/97/KubeCon%20China%20SIG%20Testing%20Intro%20%281%29.pdf" target="_blank" rel="noopener">Slides</a></td>
+<td style="text-align:right"><a href="https://www.youtube.com/watch?v=WFvC_VdkDFk&amp;list=PLj6h78yzYM2OK087kzLgc4jTPVbZjuNfs&amp;index=145" target="_blank" rel="noopener">Video</a></td>
+<td style="text-align:center"></td>
+</tr>
+<tr>
+<td>Intro: SIG VMware - Fabio Rapposelli &amp; Steve Wong, VMware</td>
+<td style="text-align:center"><a href="https://schd.ws/hosted_files/kccncchina2018english/cf/vmware-sig-intro-KubeCon_2018_NA_ppt-1.pdf" target="_blank" rel="noopener">Slides</a></td>
+<td style="text-align:right"><a href="https://www.youtube.com/watch?v=5hp9St0NrwI&amp;index=126&amp;list=PLj6h78yzYM2OK087kzLgc4jTPVbZjuNfs" target="_blank" rel="noopener">Video</a></td>
+<td style="text-align:center"></td>
+</tr>
+<tr>
+<td>Deep Dive: CNCF Storage WG - Xing Yang &amp; Quinton Hoole, Huawei</td>
+<td style="text-align:center"><a href="https://schd.ws/hosted_files/kccncchina2018english/b0/2018%20KubeCon%20Shanghai%20-%20Deep%20Dive%20-%20Storage%20WG%20-%20Final.pdf" target="_blank" rel="noopener">Slides</a></td>
+<td style="text-align:right"><a href="https://www.youtube.com/watch?v=2qoynPoDOdk&amp;list=PLj6h78yzYM2OK087kzLgc4jTPVbZjuNfs&amp;index=71" target="_blank" rel="noopener">Video</a></td>
+<td style="text-align:center">🔴</td>
+</tr>
+<tr>
+<td>Deep Dive: Fluent Bit - Eduardo Silva &amp; Masahiro Nakagawa, Treasure Data</td>
+<td style="text-align:center">[Slides]</td>
+<td style="text-align:right"><a href="https://www.youtube.com/watch?v=v46iUnAcKbA&amp;list=PLj6h78yzYM2OK087kzLgc4jTPVbZjuNfs&amp;index=118" target="_blank" rel="noopener">Video</a></td>
+<td style="text-align:center">🔵</td>
+</tr>
+<tr>
+<td>Deep Dive: SIG Autoscaling - Marcin Wielgus &amp; Maciej Pytel, Google</td>
+<td style="text-align:center">[Slides]</td>
+<td style="text-align:right"><a href="https://www.youtube.com/watch?v=Op-g6pO4A_I&amp;index=78&amp;list=PLj6h78yzYM2OK087kzLgc4jTPVbZjuNfs" target="_blank" rel="noopener">Video</a></td>
+<td style="text-align:center">🔴</td>
+</tr>
+<tr>
+<td>Deep Dive: SIG Service Catalog - Doug Davis &amp; Jonathan Berkhahn, IBM</td>
+<td style="text-align:center"><a href="https://schd.ws/hosted_files/kccncchina2018english/3e/SIG-ServiceCatalog-DeepDive.pdf" target="_blank" rel="noopener">Slides</a></td>
+<td style="text-align:right"><a href="https://www.youtube.com/watch?v=20ZkvPn4Nwg&amp;index=120&amp;list=PLj6h78yzYM2OK087kzLgc4jTPVbZjuNfs" target="_blank" rel="noopener">Video</a></td>
+<td style="text-align:center"></td>
+</tr>
+<tr>
+<td>Intro: SIG PM (Kubernetes) - Ihor Dvoretskyi, Cloud Native Computing Foundation &amp; Dustin Kirkland, Google</td>
+<td style="text-align:center">[Slides]</td>
+<td style="text-align:right"><a href="https://www.youtube.com/watch?v=zlZYg83Yd_8&amp;list=PLj6h78yzYM2OK087kzLgc4jTPVbZjuNfs&amp;index=142" target="_blank" rel="noopener">Video</a></td>
+<td style="text-align:center">🔴</td>
+</tr>
+<tr>
+<td>Deep Dive: Harbor - Daniel Jiang &amp; Steven Zou, VMware</td>
+<td style="text-align:center">[Slides]</td>
+<td style="text-align:right"><a href="https://www.youtube.com/watch?v=b0GbtxtuDv8&amp;list=PLj6h78yzYM2OK087kzLgc4jTPVbZjuNfs&amp;index=74" target="_blank" rel="noopener">Video</a></td>
+<td style="text-align:center">⚪</td>
+</tr>
+<tr>
+<td>Deep Dive: Prometheus – Richard “RichiH” Hartmann, SpaceNet &amp; Ben “SuperQ” Kochie, GitLab</td>
+<td style="text-align:center"><a href="https://schd.ws/hosted_files/kccncchina2018english/80/2018-11-15-Prometheus_Deep_Dive.pdf" target="_blank" rel="noopener">Slides</a></td>
+<td style="text-align:right"><a href="https://www.youtube.com/watch?v=z-g-hUnl9YU&amp;index=68&amp;list=PLj6h78yzYM2OK087kzLgc4jTPVbZjuNfs" target="_blank" rel="noopener">Video</a></td>
+<td style="text-align:center">🔴</td>
+</tr>
+<tr>
+<td>Deep Dive: SIG Apps - Janet Kuo, Google</td>
+<td style="text-align:center"><a href>Slides</a></td>
+<td style="text-align:right"><a href="https://www.youtube.com/watch?v=wC51mBVo1u0&amp;list=PLj6h78yzYM2OK087kzLgc4jTPVbZjuNfs&amp;index=119" target="_blank" rel="noopener">Video</a></td>
+<td style="text-align:center"></td>
+</tr>
+<tr>
+<td>Deep Dive: SIG Cloud Provider - Andrew Sy Kim, DigitalOcean</td>
+<td style="text-align:center"><a href="https://schd.ws/hosted_files/kccncchina2018english/05/Deep%20Dive_%20SIG%20Cloud%20Provider.pdf" target="_blank" rel="noopener">Slides</a></td>
+<td style="text-align:right"><a href="https://www.youtube.com/watch?v=TsljWxvQquU&amp;list=PLj6h78yzYM2OK087kzLgc4jTPVbZjuNfs&amp;index=122" target="_blank" rel="noopener">Video</a></td>
+<td style="text-align:center">🔴</td>
+</tr>
+<tr>
+<td>Intro: SIG Cluster Lifecycle - Lucas Käldström, Independent; Di Xu, Ant Financial &amp; Alexander Kanevskiy, Intel</td>
+<td style="text-align:center"><a href="https://schd.ws/hosted_files/kccncchina2018english/5d/SIG%20Cluster%20Lifecycle%20Intro%20-%20KubeCon%20China%202018%20v1.0%20-%2020181115.pdf" target="_blank" rel="noopener">Slides</a></td>
+<td style="text-align:right"><a href="https://www.youtube.com/watch?v=925v4QmEGR8&amp;index=140&amp;list=PLj6h78yzYM2OK087kzLgc4jTPVbZjuNfs" target="_blank" rel="noopener">Video</a></td>
+<td style="text-align:center"></td>
+</tr>
+<tr>
+<td>Meet the Maintainer: Prometheus - Ben Kochie, GitLab &amp; Richard Hartmann, SpaceNet AG</td>
+<td style="text-align:center"><a href>Slides</a></td>
+<td style="text-align:right"><a href>Video</a></td>
+<td style="text-align:center">🔴</td>
+</tr>
+<tr>
+<td>Deep Dive: Jaeger - Prithvi Raj Venkat Raj &amp; Won Jun Jang, Uber</td>
+<td style="text-align:center"><a href="https://schd.ws/hosted_files/kccncchina2018english/28/KubeCon%20CN18%20Jaeger%20Deep%20Dive.pdf" target="_blank" rel="noopener">Slides</a></td>
+<td style="text-align:right"><a href="https://www.youtube.com/watch?v=B5v4UvO2hCs&amp;index=121&amp;list=PLj6h78yzYM2OK087kzLgc4jTPVbZjuNfs" target="_blank" rel="noopener">Video</a></td>
+<td style="text-align:center"></td>
+</tr>
+<tr>
+<td>Deep Dive: Kubernetes Policy WG - Torin Sandall, Styra &amp; Da Ma, Zhipeng Huang, Huawei</td>
+<td style="text-align:center">[Slides]</td>
+<td style="text-align:right"><a href="https://www.youtube.com/watch?v=SPsVjLapkzQ&amp;list=PLj6h78yzYM2OK087kzLgc4jTPVbZjuNfs&amp;index=138" target="_blank" rel="noopener">Video</a></td>
+<td style="text-align:center">🔵</td>
+</tr>
+<tr>
+<td>Deep Dive: Kubernetes SIG Multicluster - Quinton Hoole &amp; Irfan Ur Rehman, Huawei</td>
+<td style="text-align:center">[Slides]</td>
+<td style="text-align:right"><a href="https://www.youtube.com/watch?v=_gfOURlrAKQ&amp;index=72&amp;list=PLj6h78yzYM2OK087kzLgc4jTPVbZjuNfs" target="_blank" rel="noopener">Video</a></td>
+<td style="text-align:center">🔴</td>
+</tr>
+<tr>
+<td>Deep Dive: Rook - Jared Watts, Upbound</td>
+<td style="text-align:center"><a href="https://schd.ws/hosted_files/kccncchina2018english/b9/Rook%20Deep%20Dive%20Kubecon%20China%202018.pdf" target="_blank" rel="noopener">Slides</a></td>
+<td style="text-align:right"><a href="https://www.youtube.com/watch?v=9MQphnWAEY8&amp;index=75&amp;list=PLj6h78yzYM2OK087kzLgc4jTPVbZjuNfs" target="_blank" rel="noopener">Video</a></td>
+<td style="text-align:center">⚪</td>
+</tr>
+<tr>
+<td>Meet the Maintainer: Prometheus - Ben Kochie, GitLab &amp; Richard Hartmann, SpaceNet AG</td>
+<td style="text-align:center">[Slides]</td>
+<td style="text-align:right">[Video]</td>
+<td style="text-align:center"></td>
+</tr>
+<tr>
+<td>Deep Dive: CNCF Serverless WG / CloudEvents - Doug Davis, IBM &amp; Clemens Vasters, Microsoft</td>
+<td style="text-align:center"><a href="https://schd.ws/hosted_files/kccncchina2018english/cb/Serverless%20WG%20Deep-Dive%20Session%20-%20Shanghai%202018.pdf.pdf" target="_blank" rel="noopener">Slides</a></td>
+<td style="text-align:right"><a href="https://www.youtube.com/watch?v=K7sSw5IK2Zc&amp;index=151&amp;list=PLj6h78yzYM2OK087kzLgc4jTPVbZjuNfs" target="_blank" rel="noopener">Video</a></td>
+<td style="text-align:center"></td>
+</tr>
+<tr>
+<td>Deep Dive: containerd - Derek McGowan, Docker &amp; Mike Brown, IBM</td>
+<td style="text-align:center">[Slides]</td>
+<td style="text-align:right"><a href="https://www.youtube.com/watch?v=xJouQtsq32c&amp;index=76&amp;list=PLj6h78yzYM2OK087kzLgc4jTPVbZjuNfs" target="_blank" rel="noopener">Video</a></td>
+<td style="text-align:center">🔵</td>
+</tr>
+<tr>
+<td>Deep Dive: Falco - Jorge Salamero Sanz, Sysdig</td>
+<td style="text-align:center">[Slides]</td>
+<td style="text-align:right"><a href="https://www.youtube.com/watch?v=JQxtY0966xo&amp;list=PLj6h78yzYM2OK087kzLgc4jTPVbZjuNfs&amp;index=73" target="_blank" rel="noopener">Video</a></td>
+<td style="text-align:center"></td>
+</tr>
+<tr>
+<td>Deep Dive: gRPC - Yuxuan Li, Google</td>
+<td style="text-align:center">[Slides]</td>
+<td style="text-align:right"><a href="https://www.youtube.com/watch?v=vom_vLKfVkc&amp;list=PLj6h78yzYM2OK087kzLgc4jTPVbZjuNfs&amp;index=135" target="_blank" rel="noopener">Video</a></td>
+<td style="text-align:center">🌕</td>
+</tr>
+<tr>
+<td>Deep Dive: SIG Release - Tim Pepper, VMware</td>
+<td style="text-align:center"><a href="https://schd.ws/hosted_files/kccncchina2018english/5e/2018%20KubeCon%20China%20-%20SIG%20Release%20Deep%20Dive.pdf" target="_blank" rel="noopener">Slides</a></td>
+<td style="text-align:right">[Video]</td>
+<td style="text-align:center"></td>
+</tr>
+<tr>
+<td>Deep Dive: CoreDNS - Yong Tang, Infoblox</td>
+<td style="text-align:center"><a href="https://schd.ws/hosted_files/kccncchina2018english/db/KubeCon%20-%20CoreDNS%20Deep%20Dive.pdf" target="_blank" rel="noopener">Slides</a></td>
+<td style="text-align:right"><a href="https://www.youtube.com/watch?v=Yj0cj2oymqY&amp;index=152&amp;list=PLj6h78yzYM2OK087kzLgc4jTPVbZjuNfs" target="_blank" rel="noopener">Video</a></td>
+<td style="text-align:center">🌕</td>
+</tr>
+<tr>
+<td>Deep Dive: Helm - Taylor Thomas, Microsoft</td>
+<td style="text-align:center"><a href="https://schd.ws/hosted_files/kccncchina2018english/3e/Helm%203%20Deep%20Dive.pdf" target="_blank" rel="noopener">Slides</a></td>
+<td style="text-align:right"><a href="https://www.youtube.com/watch?v=8zLAD9Agr2g&amp;index=132&amp;list=PLj6h78yzYM2OK087kzLgc4jTPVbZjuNfs" target="_blank" rel="noopener">Video</a></td>
+<td style="text-align:center">🔵</td>
+</tr>
+<tr>
+<td>Deep Dive: SIG IBMCloud - Sahdev Zala &amp; Guang Ya Liu, IBM</td>
+<td style="text-align:center">[Slides]</td>
+<td style="text-align:right"><a href="https://www.youtube.com/watch?v=jzgyT63_Nss&amp;list=PLj6h78yzYM2OK087kzLgc4jTPVbZjuNfs&amp;index=124" target="_blank" rel="noopener">Video</a></td>
+<td style="text-align:center"></td>
+</tr>
+<tr>
+<td>Deep Dive: SIG Scheduling - Da Ma, IBM</td>
+<td style="text-align:center">[Slides]</td>
+<td style="text-align:right"><a href="https://www.youtube.com/watch?v=h9e7pukQhm8&amp;list=PLj6h78yzYM2OK087kzLgc4jTPVbZjuNfs&amp;index=77" target="_blank" rel="noopener">Video</a></td>
+<td style="text-align:center">🔵</td>
+</tr>
+<tr>
+<td>Deep Dive: CNCF K8s-Conformance WG - Zefeng Wang, Huawei &amp; Srinivas Brahmaroutu, IBM</td>
+<td style="text-align:center"><a href="https://schd.ws/hosted_files/kccncchina2018english/80/CNCF-conformance-wg-deepdive.pdf" target="_blank" rel="noopener">Slides</a></td>
+<td style="text-align:right"><a href="https://www.youtube.com/watch?v=4WrpvcW7qrA&amp;list=PLj6h78yzYM2OK087kzLgc4jTPVbZjuNfs&amp;index=123" target="_blank" rel="noopener">Video</a></td>
+<td style="text-align:center"></td>
+</tr>
+<tr>
+<td>Deep Dive: SIG Cluster Lifecycle - Di Xu, Ant Financial &amp; Alexander Kanevskiy, Intel</td>
+<td style="text-align:center"><a href="https://schd.ws/hosted_files/kccncchina2018english/f7/SIG%20Cluster%20Lifecycle%20Deep%20Dive%20-%20KubeCon%20China%202018.pdf" target="_blank" rel="noopener">Slides</a></td>
+<td style="text-align:right">[Video]</td>
+<td style="text-align:center"></td>
+</tr>
+<tr>
+<td>Deep Dive: SIG VMware - Steve Wong &amp; Hui Lou, VMware</td>
+<td style="text-align:center"><a href="https://schd.ws/hosted_files/kccncchina2018english/b8/Kubernetes%20on%20vSphere%20Deep%20Dive%20KubeCon%20China%20VMware%20SIG.pdf" target="_blank" rel="noopener">Slides</a></td>
+<td style="text-align:right"><a href="https://www.youtube.com/watch?v=5hp9St0NrwI&amp;index=126&amp;list=PLj6h78yzYM2OK087kzLgc4jTPVbZjuNfs" target="_blank" rel="noopener">Video</a></td>
+</tr>
+</tbody>
+</table>
+<h3 id="Observability"><a href="#Observability" class="headerlink" title="Observability"></a>Observability</h3><table>
+<thead>
+<tr>
+<th style="text-align:left">Topic</th>
+<th style="text-align:center">Presentation</th>
+<th style="text-align:right">Video</th>
+<th style="text-align:center">🌕 ⚫ 🔴 🔵 ⚪</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">Getting Started With Logging in Kubernetes - Eduardo Silva, Treasure Data</td>
+<td style="text-align:center">[Slides]</td>
+<td style="text-align:right"><a href="https://www.youtube.com/watch?v=XoudmP9a2zc&amp;list=PLj6h78yzYM2OK087kzLgc4jTPVbZjuNfs&amp;index=58" target="_blank" rel="noopener">Video</a></td>
+<td style="text-align:center">⚪</td>
+</tr>
+<tr>
+<td style="text-align:left">Navigating the Distributed Systems Execution Maze With OpenTracing - Ashlie Martinez &amp; Ilya Kislenko, Kasten</td>
+<td style="text-align:center"><a href="https://schd.ws/hosted_files/kccncchina2018english/f0/kubecon-2018-tracing-ashlie-ilya.pdf" target="_blank" rel="noopener">Slides</a></td>
+<td style="text-align:right"><a href="https://www.youtube.com/watch?v=VQRpIYtLB4Q&amp;index=60&amp;list=PLj6h78yzYM2OK087kzLgc4jTPVbZjuNfs" target="_blank" rel="noopener">Video</a></td>
+<td style="text-align:center">🔵 ⚪</td>
+</tr>
+<tr>
+<td style="text-align:left">Seamless Integration - Take Kubernetes into your Existing Monitoring Stack - Shaojun Ding, IBM</td>
+<td style="text-align:center"><a href="https://schd.ws/hosted_files/kccncchina2018english/16/seamless-integration.pdf" target="_blank" rel="noopener">Slides</a></td>
+<td style="text-align:right"><a href="https://www.youtube.com/watch?v=qCygmuFOZBw&amp;index=61&amp;list=PLj6h78yzYM2OK087kzLgc4jTPVbZjuNfs" target="_blank" rel="noopener">Video</a></td>
+<td style="text-align:center">⚪</td>
+</tr>
+<tr>
+<td style="text-align:left">Production Cluster Monitoring and Remediation for High Reliability at eBay - Shijun Qian &amp; YingKe Liu, eBay</td>
+<td style="text-align:center"><a href="https://schd.ws/hosted_files/kccncchina2018english/ef/Production%20Cluster%20Monitoring%20and%20Remediation%20for%20High%20Reliability%20at%20eBay.pdf" target="_blank" rel="noopener">Slides</a></td>
+<td style="text-align:right">[Video]</td>
+<td style="text-align:center">🔴</td>
+</tr>
+</tbody>
+</table>
+<h3 id="Operations"><a href="#Operations" class="headerlink" title="Operations"></a>Operations</h3><table>
+<thead>
+<tr>
+<th>Topic</th>
+<th style="text-align:center">Presentation</th>
+<th style="text-align:right">Video</th>
+<th style="text-align:center">🌕 ⚫ 🔴 🔵 ⚪</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Kube-Arbitrator: A Batch System of Kubernetes - Da Ma, IBM &amp; Ti Zhou</td>
+<td style="text-align:center">[Slides]</td>
+<td style="text-align:right">[Video]</td>
+<td style="text-align:center"></td>
+</tr>
+<tr>
+<td>Music Matched to Different Ways to Scale in K8s, What Could Go Wrong? - Ria Bhatia, Microsoft</td>
+<td style="text-align:center">[Slides]</td>
+<td style="text-align:right"><a href="https://www.youtube.com/watch?v=8rzY4oeqjBU&amp;index=35&amp;list=PLj6h78yzYM2OK087kzLgc4jTPVbZjuNfs" target="_blank" rel="noopener">Video</a></td>
+<td style="text-align:center"></td>
+</tr>
+<tr>
+<td>Becoming an Expert of Diagnosing a Kubernetes Control Plane Problem - Wenjia Zhang &amp; Joe Betz, Google</td>
+<td style="text-align:center"><a href="https://schd.ws/hosted_files/kccncchina2018english/80/KubeCon%20China%20%2718_%20Becoming%20an%20Expert%20of%20Diagnosing%20a%20Kubernetes%20Control%20Plane%20Problem.pdf" target="_blank" rel="noopener">Slides</a></td>
+<td style="text-align:right"><a href="https://www.youtube.com/watch?v=sEOZVKpvbV8&amp;index=37&amp;list=PLj6h78yzYM2OK087kzLgc4jTPVbZjuNfs" target="_blank" rel="noopener">Video</a></td>
+<td style="text-align:center">🌕 🔴</td>
+</tr>
+<tr>
+<td>Node Operator: Kubernetes Node Management Made Simple - Joe Chen, Ant Financial</td>
+<td style="text-align:center"><a href="https://schd.ws/hosted_files/kccncchina2018english/22/KubeCon_%E9%99%88%E4%BF%8A_Node-Operator.pdf" target="_blank" rel="noopener">Slides</a></td>
+<td style="text-align:right">[Video]</td>
+<td style="text-align:center">🔴</td>
+</tr>
+<tr>
+<td>Configuring Your Kubernetes Cluster on the Next Level - Lucas Käldström, Independent</td>
+<td style="text-align:center"><a href="https://schd.ws/hosted_files/kccncchina2018english/32/Configuring%20Your%20Kubernetes%20Cluster%20on%20the%20Next%20Level%20%282%29.pdf" target="_blank" rel="noopener">Slides</a></td>
+<td style="text-align:right"><a href="https://www.youtube.com/watch?v=klHBzISZkCw&amp;list=PLj6h78yzYM2OK087kzLgc4jTPVbZjuNfs&amp;index=38" target="_blank" rel="noopener">Video</a></td>
+<td style="text-align:center">⚪</td>
+</tr>
+<tr>
+<td>Kubernetes VM Solutions for Multi-Tennant Applications - Guangxu Li &amp; Yanqiang Miao, ZTE Corporation</td>
+<td style="text-align:center"><a href="https://schd.ws/hosted_files/kccncchina2018english/01/Kubernetes%20VM%20Solutions%20for%20Multi-Tenant%20Applications.pdf" target="_blank" rel="noopener">Slides</a></td>
+<td style="text-align:right"><a href="https://www.youtube.com/watch?v=bFfq9S0QtyA&amp;index=41&amp;list=PLj6h78yzYM2OK087kzLgc4jTPVbZjuNfs" target="_blank" rel="noopener">Video</a></td>
+<td style="text-align:center">🌕 🔵 ⚪</td>
+</tr>
+<tr>
+<td>Safely Upgrading Kubernetes Clusters - Chao Xu &amp; Yu Liao, Google</td>
+<td style="text-align:center"><a href="https://schd.ws/hosted_files/kccncchina2018english/80/Safely%20upgrading%20Kubernetes%20clusters.pdf" target="_blank" rel="noopener">Slides</a></td>
+<td style="text-align:right"><a href="https://www.youtube.com/watch?v=lYzpjM94XrE&amp;index=100&amp;list=PLj6h78yzYM2OK087kzLgc4jTPVbZjuNfs" target="_blank" rel="noopener">Video</a></td>
+<td style="text-align:center">🔵</td>
+</tr>
+<tr>
+<td>Large-Scale K8s Cluster Operation and Management - Lv Jiangzhao, JD</td>
+<td style="text-align:center">[Slides]</td>
+<td style="text-align:right"><a href="https://www.youtube.com/watch?v=bz9RMqcVCD4&amp;list=PLj6h78yzYM2OK087kzLgc4jTPVbZjuNfs&amp;index=101" target="_blank" rel="noopener">Video</a></td>
+<td style="text-align:center">⚪</td>
+</tr>
+<tr>
+<td>Model and Operate Datacenter by Kubernetes at eBay - Xiaogang Xin &amp; Tommy Mei, eBay</td>
+<td style="text-align:center"><a href="https://schd.ws/hosted_files/kccncchina2018english/89/KubeCon_China_2018_Model%20and%20Operate%20Datacenter%20by%20Kubernetes%20at%20eBay%20%28%E6%8F%90%E4%BA%A4%E7%89%88%29.pdf" target="_blank" rel="noopener">Slides</a></td>
+<td style="text-align:right"><a href="https://www.youtube.com/watch?v=fA_jT0MCc1Q&amp;index=103&amp;list=PLj6h78yzYM2OK087kzLgc4jTPVbZjuNfs" target="_blank" rel="noopener">Video</a></td>
+<td style="text-align:center">⚪</td>
+</tr>
+<tr>
+<td>Experiences From Running Istio in a K8s Production Environment - Line Moseng, Norwegian Labour and Welfare Administration &amp; Johnny Horvi, NAV</td>
+<td style="text-align:center"><a href="https://schd.ws/hosted_files/kccncchina2018english/d0/istio-kubecon%20%281%29.pdf" target="_blank" rel="noopener">Slides</a></td>
+<td style="text-align:right"><a href="https://www.youtube.com/watch?v=5qrR01n9JyY&amp;list=PLj6h78yzYM2OK087kzLgc4jTPVbZjuNfs&amp;index=104" target="_blank" rel="noopener">Video</a></td>
+<td style="text-align:center">⚪</td>
+</tr>
+<tr>
+<td>Spark on Kubernetes: Best Practice and Performance - Junjie Chen &amp; Jerry Shao, Tencent</td>
+<td style="text-align:center"><a href="https://schd.ws/hosted_files/kccncchina2018english/1f/Spark%20on%20Kubernetes%20Best%20Practice%20%20draft.pdf" target="_blank" rel="noopener">Slides</a></td>
+<td style="text-align:right"><a href="https://www.youtube.com/watch?v=hUp9ag9rY5M&amp;list=PLj6h78yzYM2OK087kzLgc4jTPVbZjuNfs&amp;index=105" target="_blank" rel="noopener">Video</a></td>
+<td style="text-align:center"></td>
+</tr>
+<tr>
+<td>Linux Container in Windows 10 or Windows 2016 Deep Dive - Mark Peng, DaoCloud Shanghai</td>
+<td style="text-align:center">[Slides]</td>
+<td style="text-align:right"><a href="https://www.youtube.com/watch?v=YkouJ3rXbTU&amp;list=PLj6h78yzYM2OK087kzLgc4jTPVbZjuNfs&amp;index=106" target="_blank" rel="noopener">Video</a></td>
+</tr>
+</tbody>
+</table>
+<h3 id="Runtimes-amp-Networking"><a href="#Runtimes-amp-Networking" class="headerlink" title="Runtimes &amp; Networking"></a>Runtimes &amp; Networking</h3><table>
+<thead>
+<tr>
+<th>Topic</th>
+<th style="text-align:center">Presentation</th>
+<th style="text-align:right">Video</th>
+<th style="text-align:center">🌕 ⚫ 🔴 🔵 ⚪</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Handling Edge Cloud Network Using “KubeEdgeBus” - Yulin Sun &amp; Weijin Xu, Huawei</td>
+<td style="text-align:center">[Slides]</td>
+<td style="text-align:right">[Video]</td>
+<td style="text-align:center"></td>
+</tr>
+<tr>
+<td>Comprehensive Performance Benchmark on Various Well-Known CNI Plugins - Giri Kuncoro &amp; Vijay Dhama, GO-JEK</td>
+<td style="text-align:center"><a href="https://schd.ws/hosted_files/kccncchina2018english/1b/Benchmarking%20Various%20CNI%20Plugins.pdf" target="_blank" rel="noopener">Slides</a></td>
+<td style="text-align:right"><a href="https://www.youtube.com/watch?v=6DvLOXsHwd4&amp;list=PLj6h78yzYM2OK087kzLgc4jTPVbZjuNfs&amp;index=59" target="_blank" rel="noopener">Video</a></td>
+<td style="text-align:center">🔴 ⚪</td>
+</tr>
+<tr>
+<td>Who’s Running My Pods? A Deep Dive into the K8s Container Runtime Interface - Phil Estes, IBM</td>
+<td style="text-align:center"><a href="https://schd.ws/hosted_files/kccncchina2018english/22/KubeCon-China-2018-Kubernetes-CRI-Runtimes-Containerd.pdf" target="_blank" rel="noopener">Slides</a></td>
+<td style="text-align:right"><a href="https://www.youtube.com/watch?v=f4x8Yk5rhUg&amp;index=115&amp;list=PLj6h78yzYM2OK087kzLgc4jTPVbZjuNfs" target="_blank" rel="noopener">Video</a></td>
+<td style="text-align:center">⚫ 🌕</td>
+</tr>
+<tr>
+<td>More Than Secure: Containerd + KataContainers as Kubernetes Runtime - Lei Zhang, Alibaba &amp; Fupan Li, HyperHQ</td>
+<td style="text-align:center"><a href="https://schd.ws/hosted_files/kccncchina2018english/b9/Lei-Zhang-kubecon2018-shanghai.pdf" target="_blank" rel="noopener">Slides</a></td>
+<td style="text-align:right"><a href="https://www.youtube.com/watch?v=dc1HtReuNzQ&amp;index=114&amp;list=PLj6h78yzYM2OK087kzLgc4jTPVbZjuNfs" target="_blank" rel="noopener">Video</a></td>
+<td style="text-align:center">🌕 ⚪</td>
+</tr>
+<tr>
+<td>Deep Dive of Windows Containers on Kubernetes - Pengfei Ni, Microsoft</td>
+<td style="text-align:center"><a href="https://schd.ws/hosted_files/kccncchina2018english/b9/windows-containers.pdf" target="_blank" rel="noopener">Slides</a></td>
+<td style="text-align:right"><a href="https://www.youtube.com/watch?v=eGrKN3F48XU&amp;list=PLj6h78yzYM2OK087kzLgc4jTPVbZjuNfs&amp;index=113" target="_blank" rel="noopener">Video</a></td>
+<td style="text-align:center"></td>
+</tr>
+<tr>
+<td>Understanding Windows Container Network in Kubernetes Using a Real Story - Cindy Xing, Huawei &amp; Dinesh Kumar Govindasamy , Microsoft</td>
+<td style="text-align:center">[Slides]</td>
+<td style="text-align:right"><a href="https://www.youtube.com/watch?v=tTZFoiLObX4&amp;list=PLj6h78yzYM2OK087kzLgc4jTPVbZjuNfs&amp;index=117" target="_blank" rel="noopener">Video</a></td>
+<td style="text-align:center"></td>
+</tr>
+<tr>
+<td>A Cloud Native Networking Solution Based on Kube-router and VPP-DPDK - Hongjun Ni, Intel</td>
+<td style="text-align:center"><a href="https://schd.ws/hosted_files/kccncchina2018english/76/A%20Cloud%20Native%20Networking%20Solution%20Based%20on%20Kube-router%20and%20VPP-DPDK.pdf" target="_blank" rel="noopener">Slides</a></td>
+<td style="text-align:right">[Video]</td>
+<td style="text-align:center">🔴</td>
+</tr>
+<tr>
+<td>Network QoS Support for Kubernetes Applications - Jun Du, Huawei</td>
+<td style="text-align:center">[Slides]</td>
+<td style="text-align:right"><a href="https://www.youtube.com/watch?v=3A1FtjnUd7c&amp;list=PLj6h78yzYM2OK087kzLgc4jTPVbZjuNfs&amp;index=116" target="_blank" rel="noopener">Video</a></td>
+<td style="text-align:center">🔴</td>
+</tr>
+</tbody>
+</table>
+<h3 id="Security-Identity-Policy"><a href="#Security-Identity-Policy" class="headerlink" title="Security+Identity+Policy"></a>Security+Identity+Policy</h3><table>
+<thead>
+<tr>
+<th>Topic</th>
+<th style="text-align:center">Presentation</th>
+<th style="text-align:right">Video</th>
+<th style="text-align:center">🌕 ⚫ 🔴 🔵 ⚪</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Three Years of Lessons Running Potentially Malicious Code Inside Containers - Ben Hall, Katacoda</td>
+<td style="text-align:center"><a href="https://schd.ws/hosted_files/kccncchina2018english/29/HackingAttempts%20-%20Kubecon.pdf" target="_blank" rel="noopener">Slides</a></td>
+<td style="text-align:right">[Video]</td>
+<td style="text-align:center"></td>
+</tr>
+<tr>
+<td>Turtles All the Way Down: Securely Managing Kubernetes Secrets With Secrets - Maya Kaczorowski &amp; Alexandr Tcherniakhovski, Google</td>
+<td style="text-align:center"><a href="https://schd.ws/hosted_files/kccncchina2018english/6a/Turtles%20all%20the%20way%20down%20-%20Securely%20managing%20Kubernetes%20Secrets.pdf" target="_blank" rel="noopener">Slides</a></td>
+<td style="text-align:right">[Video]</td>
+<td style="text-align:center"></td>
+</tr>
+<tr>
+<td>Securing the Deploy Pipeline - Felix Glaser, Shopify</td>
+<td style="text-align:center"><a href="https://schd.ws/hosted_files/kccncchina2018english/40/Securing%20the%20Deploy%20Pipeline.pdf" target="_blank" rel="noopener">Slides</a></td>
+<td style="text-align:right"><a href="https://www.youtube.com/watch?v=CZi9zV7OcyM&amp;list=PLj6h78yzYM2OK087kzLgc4jTPVbZjuNfs&amp;index=67" target="_blank" rel="noopener">Video</a></td>
+<td style="text-align:center"></td>
+</tr>
+<tr>
+<td>Access Policies for Hybrid Cloud Environments - Ruiyi Wang, Google</td>
+<td style="text-align:center"><a href="https://schd.ws/hosted_files/kccncchina2018english/66/Kubecon%20China%202018%20-%20Hybrid%20Access%20Policies.pdf" target="_blank" rel="noopener">Slides</a></td>
+<td style="text-align:right"><a href="https://www.youtube.com/watch?v=i-UZZogra8E&amp;index=70&amp;list=PLj6h78yzYM2OK087kzLgc4jTPVbZjuNfs" target="_blank" rel="noopener">Video</a></td>
+<td style="text-align:center">🌕</td>
+</tr>
+<tr>
+<td>Layers of Isolation in Kubernetes - Tim Allclair, Google</td>
+<td style="text-align:center"><a href="https://schd.ws/hosted_files/kccncchina2018english/32/KubeCon%20Shanghai%20China%202018%20-%20Final.pdf" target="_blank" rel="noopener">Slides</a></td>
+<td style="text-align:right"><a href="https://www.youtube.com/watch?v=dM0lyNmt2L8&amp;index=107&amp;list=PLj6h78yzYM2OK087kzLgc4jTPVbZjuNfs" target="_blank" rel="noopener">Video</a></td>
+<td style="text-align:center">⚪</td>
+</tr>
+<tr>
+<td>Hardening Multi-Cloud Kubernetes Clusters as a Service – Dirk Marwinski, SAP SE &amp; Alban Crequy, Kinvolk GmBH</td>
+<td style="text-align:center"><a href="https://schd.ws/hosted_files/kccncchina2018english/45/Hardening-Muti-Cloud-7.pdf" target="_blank" rel="noopener">Slides</a></td>
+<td style="text-align:right"><a href="https://www.youtube.com/watch?v=ze1vgh8sjlE&amp;list=PLj6h78yzYM2OK087kzLgc4jTPVbZjuNfs&amp;index=108" target="_blank" rel="noopener">Video</a></td>
+<td style="text-align:center"></td>
+</tr>
+<tr>
+<td>Istio Certificate Management Through Vault - Lei Tang &amp; Yonggang Liu, Google</td>
+<td style="text-align:center"><a href="https://schd.ws/hosted_files/kccncchina2018english/f5/Istio%20Certificate%20Management%20Through%20Vault.pdf" target="_blank" rel="noopener">Slides</a></td>
+<td style="text-align:right"><a href="https://www.youtube.com/watch?v=U4AJTEnUdkU&amp;index=109&amp;list=PLj6h78yzYM2OK087kzLgc4jTPVbZjuNfs" target="_blank" rel="noopener">Video</a></td>
+<td style="text-align:center">🔴</td>
+</tr>
+<tr>
+<td>The State of Your Supply Chain - Andrew Martin, ControlPlane &amp; Maya Kaczorowski, Google</td>
+<td style="text-align:center"><a href="https://schd.ws/hosted_files/kccncchina2018english/45/The%20State%20of%20your%20Supply%20Chain%20%28KubeCon%20Shanghai%2C%20Dec%202018%29.pdf" target="_blank" rel="noopener">Slides</a></td>
+<td style="text-align:right"><a href="https://www.youtube.com/watch?v=uDWXKKEO8NU&amp;index=110&amp;list=PLj6h78yzYM2OK087kzLgc4jTPVbZjuNfs" target="_blank" rel="noopener">Video</a></td>
+<td style="text-align:center"></td>
+</tr>
+<tr>
+<td>Implementing Authorization - Torin Sandall, Styra</td>
+<td style="text-align:center"><a href="https://schd.ws/hosted_files/kccncchina2018english/fd/ImplementingAuthorization.pdf" target="_blank" rel="noopener">Slides</a></td>
+<td style="text-align:right"><a href="https://www.youtube.com/watch?v=hvDrpDEu2L4&amp;index=111&amp;list=PLj6h78yzYM2OK087kzLgc4jTPVbZjuNfs" target="_blank" rel="noopener">Video</a></td>
+<td style="text-align:center">🔴</td>
+</tr>
+<tr>
+<td>Nabla Containers: A New Approach to Container Isolation - Brandon Lum &amp; Ricardo Koller, IBM</td>
+<td style="text-align:center"><a href="https://schd.ws/hosted_files/kccncchina2018english/ad/k8sChina2018-nabla.pdf" target="_blank" rel="noopener">Slides</a></td>
+<td style="text-align:right"><a href="https://www.youtube.com/watch?v=YIsM0zoRzrE&amp;index=112&amp;list=PLj6h78yzYM2OK087kzLgc4jTPVbZjuNfs" target="_blank" rel="noopener">Video</a></td>
+<td style="text-align:center">🔵 ⚪</td>
+</tr>
+</tbody>
+</table>
+<h3 id="Serverless"><a href="#Serverless" class="headerlink" title="Serverless"></a>Serverless</h3><table>
+<thead>
+<tr>
+<th>Topic</th>
+<th style="text-align:center">Presentation</th>
+<th style="text-align:right">Video</th>
+<th style="text-align:center">🌕 ⚫ 🔴 🔵 ⚪</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Serverless Performance on a Budget - Erwin van Eyk, Platform9</td>
+<td style="text-align:center">[Slides]</td>
+<td style="text-align:right"><a href="https://www.youtube.com/watch?v=l6-o0jIj6nk&amp;list=PLj6h78yzYM2OfjgVxnn5gEm3D7w_9YYiG&amp;index=5&amp;t=0s" target="_blank" rel="noopener">Video</a></td>
+<td style="text-align:center">🔴</td>
+</tr>
+<tr>
+<td>Serverless Workflow: Key to Wide Serverless Adoption - Cathy Zhang, Huawei</td>
+<td style="text-align:center">[Slides]</td>
+<td style="text-align:right"><a href="https://www.youtube.com/watch?v=015zaIk1g6o&amp;list=PLj6h78yzYM2OfjgVxnn5gEm3D7w_9YYiG&amp;index=4&amp;t=0s" target="_blank" rel="noopener">Video</a></td>
+<td style="text-align:center">⚪</td>
+</tr>
+<tr>
+<td>Serverless Computing for E-Commerce Applications on JD Kubernetes Platform - Yuan Chen &amp; Xin Tong, JD.com</td>
+<td style="text-align:center"><a href="https://schd.ws/hosted_files/kccncchina2018english/1d/KubeCon_Fibonacci_v8.pdf" target="_blank" rel="noopener">Slides</a></td>
+<td style="text-align:right"><a href="https://www.youtube.com/watch?v=ZF_Ymn4Aurw&amp;list=PLj6h78yzYM2OfjgVxnn5gEm3D7w_9YYiG&amp;index=3&amp;t=0s" target="_blank" rel="noopener">Video</a></td>
+<td style="text-align:center">🔴</td>
+</tr>
+<tr>
+<td>Botless: A Serverless Chatbot Framework - Scott Nichols, Google</td>
+<td style="text-align:center"><a href="https://schd.ws/hosted_files/kccncchina2018english/8d/botless-framework.pdf" target="_blank" rel="noopener">Slides</a></td>
+<td style="text-align:right"><a href="https://www.youtube.com/watch?v=erttH2WklS0&amp;list=PLj6h78yzYM2OfjgVxnn5gEm3D7w_9YYiG&amp;index=2&amp;t=0s" target="_blank" rel="noopener">Video</a></td>
+<td style="text-align:center">🔴</td>
+</tr>
+<tr>
+<td>Serverless Kubernetes: Container in Cloud Native Way - Wei Zhang, Alibaba</td>
+<td style="text-align:center">[Slides]</td>
+<td style="text-align:right"><a href="https://www.youtube.com/watch?v=Aa2uey4xDUk&amp;list=PLj6h78yzYM2OfjgVxnn5gEm3D7w_9YYiG&amp;index=7&amp;t=0s" target="_blank" rel="noopener">Video</a></td>
+<td style="text-align:center"></td>
+</tr>
+<tr>
+<td>Smart Workload: Automated Routing, Scaling of K8s and Serverless Functions - Enlin Xu, Turbonomic</td>
+<td style="text-align:center"><a href="https://schd.ws/hosted_files/kccncchina2018english/8a/KubeCon_China_ppt_Enlin.pdf" target="_blank" rel="noopener">Slides</a></td>
+<td style="text-align:right"><a href="https://www.youtube.com/watch?v=Pw9xCI4_cjE&amp;list=PLj6h78yzYM2OfjgVxnn5gEm3D7w_9YYiG&amp;index=6&amp;t=0s" target="_blank" rel="noopener">Video</a></td>
+<td style="text-align:center">🔴</td>
+</tr>
+</tbody>
+</table>
+<h3 id="Service-Mesh"><a href="#Service-Mesh" class="headerlink" title="Service Mesh"></a>Service Mesh</h3><table>
+<thead>
+<tr>
+<th>Topic</th>
+<th style="text-align:center">Presentation</th>
+<th style="text-align:right">Video</th>
+<th style="text-align:center">🌕 ⚫ 🔴 🔵 ⚪</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Container Networking Untangling Services Meshes and SDNs - Gregory Elkinbard, GSE Software</td>
+<td style="text-align:center">[Slides]</td>
+<td style="text-align:right"><a href="https://www.youtube.com/watch?v=FxxHDHhMdGA&amp;index=53&amp;list=PLj6h78yzYM2OK087kzLgc4jTPVbZjuNfs" target="_blank" rel="noopener">Video</a></td>
+<td style="text-align:center">⚪</td>
+</tr>
+<tr>
+<td>How HP Uses Istio to Manage Network Traffic - Xi He &amp; Zhoujian Zhang, HP</td>
+<td style="text-align:center"><a href="https://schd.ws/hosted_files/kccncchina2018english/04/How%20HP%20uses%20Istio%20manage%20network%20traffic.pdf" target="_blank" rel="noopener">Slides</a></td>
+<td style="text-align:right">[Video]</td>
+<td style="text-align:center"></td>
+</tr>
+<tr>
+<td>Navigating the Service Mesh Ecosystem - George Miranda, Buoyant, Inc., &amp; Diogenes Rittori, Pivotal</td>
+<td style="text-align:center">[Slides]</td>
+<td style="text-align:right"><a href="https://www.youtube.com/watch?v=VQRpIYtLB4Q&amp;list=PLj6h78yzYM2OK087kzLgc4jTPVbZjuNfs&amp;index=60" target="_blank" rel="noopener">Video</a></td>
+<td style="text-align:center">🔴</td>
+</tr>
+<tr>
+<td>Mesher: The Practice of a Production-Level Service Mesh - Xiaoliang Tian, Huawei</td>
+<td style="text-align:center">[Slides]</td>
+<td style="text-align:right">[Video]</td>
+<td style="text-align:center"></td>
+</tr>
+<tr>
+<td>Extending Istio - Develop a New Mixer Adapter for Your Monitoring Solution - Wen Tao Zhang &amp; Yang Yang, IBM</td>
+<td style="text-align:center"><a href="https://schd.ws/hosted_files/kccncchina2018english/a6/extending_istio_v1.pdf" target="_blank" rel="noopener">Slides</a></td>
+<td style="text-align:right"><a href="https://www.youtube.com/watch?v=qqmY2WdKkgw&amp;list=PLj6h78yzYM2OK087kzLgc4jTPVbZjuNfs&amp;index=22" target="_blank" rel="noopener">Video</a></td>
+<td style="text-align:center">⚪ 🔵</td>
+</tr>
+<tr>
+<td>Modern Service Networking With Consul Connect, Envoy and Kubernetes - Nic Jackson, HashiCorp</td>
+<td style="text-align:center"><a href="https://schd.ws/hosted_files/kccncchina2018english/4d/Consul%20-%20Modern%20Service%20Networking%20%28KubeCon%29.pdf" target="_blank" rel="noopener">Slides</a></td>
+<td style="text-align:right"><a href="https://www.youtube.com/watch?v=vt1Gk1jWfbc&amp;list=PLj6h78yzYM2OK087kzLgc4jTPVbZjuNfs&amp;index=52" target="_blank" rel="noopener">Video</a></td>
+<td style="text-align:center">⚪</td>
+</tr>
+</tbody>
+</table>
+<h2 id="References"><a href="#References" class="headerlink" title="References"></a>References</h2><ul>
+<li><a href="https://www.youtube.com/watch?v=WS0OcCUt4io&amp;list=PLj6h78yzYM2NDs-iu8WU5fMxINxHXlien" target="_blank" rel="noopener">KubeCon + CloudNativeCon 2019 - San Diego</a></li>
+<li><a href="https://www.youtube.com/playlist?list=PLj6h78yzYM2PpmMAnvpvsnR4c27wJePh3" target="_blank" rel="noopener">KubeCon + CloudNativeCon 2019 - Barcelona</a></li>
+<li><a href="https://www.youtube.com/playlist?list=PLj6h78yzYM2OK087kzLgc4jTPVbZjuNfs" target="_blank" rel="noopener">Shanghai ‘18: KubeCon + CloudNativeCon</a></li>
+<li><a href="https://www.youtube.com/playlist?list=PLj6h78yzYM2N8GdbjmhVU65KYm_68qBmo" target="_blank" rel="noopener">Copenhagen ‘18: KubeCon + CloudNativeCon</a></li>
+<li><a href="https://www.youtube.com/playlist?list=PLj6h78yzYM2P-3-xqvmWaZbbI1sW-ulZb" target="_blank" rel="noopener">KubeCon + CloudNativeCon 2017 - Austin</a></li>
+<li><a href="https://www.youtube.com/playlist?list=PLj6h78yzYM2PAavlbv0iZkod4IVh_iGqV" target="_blank" rel="noopener">CloudNativeCon + KubeCon 2017 - Berlin</a></li>
+<li><a href="https://github.com/cncf/presentations/blob/master/chinese/2016Seattle.md" target="_blank" rel="noopener">KubeCon + CloudNativeCon 2016 - Seattle</a></li>
+<li><a href="https://github.com/cloudyuga/kubecon18-china" target="_blank" rel="noopener">cloudyuga/kubecon18-china</a></li>
+<li><a href="https://github.com/warmchang/KubeCon-North-America-2018" target="_blank" rel="noopener">warmchang/KubeCon-North-America-2018</a></li>
+<li><a href="https://github.com/bbotte/cncf-presentations" target="_blank" rel="noopener">bbotte/cncf-presentations</a></li>
+</ul>
+
+      
+    </div>
+
+    <div>
+      
+        
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/k8s/" rel="tag">#k8s</a>
+          
+            <a href="/tags/Golang/" rel="tag">#Golang</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/07/28/KubeCon 视频 2018-Copenhagen/" rel="next" title="KubeCon 视频 2018-Copenhagen">
+                <i class="fa fa-chevron-left"></i> KubeCon 视频 2018-Copenhagen
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/07/28/KubeCon 视频 2017-Austin/" rel="prev" title="KubeCon 视频 2017-Austin">
+                KubeCon 视频 2017-Austin <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+      <div id="disqus_thread">
+        <noscript>
+          Please enable JavaScript to view the
+          <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a>
+        </noscript>
+      </div>
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel ">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image" src="https://avatars1.githubusercontent.com/u/6964284?v=3&s=460" alt="Frank">
+          <p class="site-author-name" itemprop="name">Frank</p>
+          <p class="site-description motion-element" itemprop="description"></p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">390</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+          
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">207</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/knarfeh" target="_blank">
+                  
+                    <i class="fa fa-github"></i> GitHub
+                  
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://twitter.com/knarfeh" target="_blank">
+                  
+                    <i class="fa fa-globe"></i> Twitter
+                  
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+          <div class="cc-license motion-element" itemprop="license">
+            <a href="http://creativecommons.org/licenses/by-sa/4.0" class="cc-opacity" target="_blank">
+              <img src="/images/cc-by-sa.svg" alt="Creative Commons">
+            </a>
+          </div>
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+      </section>
+
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc-indicator-top post-toc-indicator">
+            <i class="fa fa-angle-double-up"></i>
+          </div>
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Shanghai-‘18-KubeCon-CloudNativeCon"><span class="nav-number">1.</span> <span class="nav-text">Shanghai ‘18: KubeCon + CloudNativeCon</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Missing"><span class="nav-number">1.1.</span> <span class="nav-text">Missing</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Keynote"><span class="nav-number">1.2.</span> <span class="nav-text">Keynote</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Application-and-Development"><span class="nav-number">1.3.</span> <span class="nav-text">Application and Development</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Case-Studies"><span class="nav-number">1.4.</span> <span class="nav-text">Case Studies</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#CI-CD"><span class="nav-number">1.5.</span> <span class="nav-text">CI/CD</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Customizing-Extending-Contributing"><span class="nav-number">1.6.</span> <span class="nav-text">Customizing+Extending+Contributing</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Demo-Theater"><span class="nav-number">1.7.</span> <span class="nav-text">Demo Theater</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Machine-Learning-amp-Data"><span class="nav-number">1.8.</span> <span class="nav-text">Machine Learning &amp; Data</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Maintainers-Track"><span class="nav-number">1.9.</span> <span class="nav-text">Maintainers Track</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Observability"><span class="nav-number">1.10.</span> <span class="nav-text">Observability</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Operations"><span class="nav-number">1.11.</span> <span class="nav-text">Operations</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Runtimes-amp-Networking"><span class="nav-number">1.12.</span> <span class="nav-text">Runtimes &amp; Networking</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Security-Identity-Policy"><span class="nav-number">1.13.</span> <span class="nav-text">Security+Identity+Policy</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Serverless"><span class="nav-number">1.14.</span> <span class="nav-text">Serverless</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Service-Mesh"><span class="nav-number">1.15.</span> <span class="nav-text">Service Mesh</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#References"><span class="nav-number">2.</span> <span class="nav-text">References</span></a></li></ol></div>
+            
+          </div>
+          <div class="post-toc-indicator-bottom post-toc-indicator">
+            <i class="fa fa-angle-double-down"></i>
+          </div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">
+  
+  &copy;  2015 - 
+  <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Frank</span>
+</div>
+
+<div class="powered-by">
+  由 <a class="theme-link" href="http://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Muse
+  </a>
+</div>
+
+
+
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+
+  
+
+
+
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+  <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
+
+  <script type="text/javascript" src="/vendors/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  <script type="text/javascript" src="/vendors/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  <script type="text/javascript" src="/vendors/velocity/velocity.min.js"></script>
+
+  <script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js"></script>
+
+  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=0.5.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=0.5.0"></script>
+
+
+
+  
+  
+
+  
+  
+<script type="text/javascript" src="/js/src/scrollspy.js?v=0.5.0"></script>
+
+<script type="text/javascript" id="sidebar.toc.highlight">
+  $(document).ready(function () {
+    var tocSelector = '.post-toc';
+    var $tocSelector = $(tocSelector);
+    var activeCurrentSelector = '.active-current';
+
+    $tocSelector
+      .on('activate.bs.scrollspy', function () {
+        var $currentActiveElement = $(tocSelector + ' .active').last();
+
+        removeCurrentActiveClass();
+        $currentActiveElement.addClass('active-current');
+
+        $tocSelector[0].scrollTop = $currentActiveElement.position().top;
+      })
+      .on('clear.bs.scrollspy', function () {
+        removeCurrentActiveClass();
+      });
+
+    function removeCurrentActiveClass () {
+      $(tocSelector + ' ' + activeCurrentSelector)
+        .removeClass(activeCurrentSelector.substring(1));
+    }
+
+    function processTOC () {
+      getTOCMaxHeight();
+      toggleTOCOverflowIndicators();
+    }
+
+    function getTOCMaxHeight () {
+      var height = $('.sidebar').height() -
+                   $tocSelector.position().top -
+                   $('.post-toc-indicator-bottom').height();
+
+      $tocSelector.css('height', height);
+
+      return height;
+    }
+
+    function toggleTOCOverflowIndicators () {
+      tocOverflowIndicator(
+        '.post-toc-indicator-top',
+        $tocSelector.scrollTop() > 0 ? 'show' : 'hide'
+      );
+
+      tocOverflowIndicator(
+        '.post-toc-indicator-bottom',
+        $tocSelector.scrollTop() >= $tocSelector.find('ol').height() - $tocSelector.height() ? 'hide' : 'show'
+      )
+    }
+
+    $(document).on('sidebar.motion.complete', function () {
+      processTOC();
+    });
+
+    $('body').scrollspy({ target: tocSelector });
+    $(window).on('resize', function () {
+      if ( $('.sidebar').hasClass('sidebar-active') ) {
+        processTOC();
+      }
+    });
+
+    onScroll($tocSelector);
+
+    function onScroll (element) {
+      element.on('mousewheel DOMMouseScroll', function (event) {
+          var oe = event.originalEvent;
+          var delta = oe.wheelDelta || -oe.detail;
+
+          this.scrollTop += ( delta < 0 ? 1 : -1 ) * 30;
+          event.preventDefault();
+
+          toggleTOCOverflowIndicators();
+      });
+    }
+
+    function tocOverflowIndicator (indicator, action) {
+      var $indicator = $(indicator);
+      var opacity = action === 'show' ? 1 : 0;
+      $indicator.velocity ?
+        $indicator.velocity('stop').velocity({
+          opacity: opacity
+        }, { duration: 100 }) :
+        $indicator.stop().animate({
+          opacity: opacity
+        }, 100);
+    }
+
+  });
+</script>
+
+<script type="text/javascript" id="sidebar.nav">
+  $(document).ready(function () {
+    var html = $('html');
+    var TAB_ANIMATE_DURATION = 200;
+    var hasVelocity = $.isFunction(html.velocity);
+
+    $('.sidebar-nav li').on('click', function () {
+      var item = $(this);
+      var activeTabClassName = 'sidebar-nav-active';
+      var activePanelClassName = 'sidebar-panel-active';
+      if (item.hasClass(activeTabClassName)) {
+        return;
+      }
+
+      var currentTarget = $('.' + activePanelClassName);
+      var target = $('.' + item.data('target'));
+
+      hasVelocity ?
+        currentTarget.velocity('transition.slideUpOut', TAB_ANIMATE_DURATION, function () {
+          target
+            .velocity('stop')
+            .velocity('transition.slideDownIn', TAB_ANIMATE_DURATION)
+            .addClass(activePanelClassName);
+        }) :
+        currentTarget.animate({ opacity: 0 }, TAB_ANIMATE_DURATION, function () {
+          currentTarget.hide();
+          target
+            .stop()
+            .css({'opacity': 0, 'display': 'block'})
+            .animate({ opacity: 1 }, TAB_ANIMATE_DURATION, function () {
+              currentTarget.removeClass(activePanelClassName);
+              target.addClass(activePanelClassName);
+            });
+        });
+
+      item.siblings().removeClass(activeTabClassName);
+      item.addClass(activeTabClassName);
+    });
+
+    $('.post-toc a').on('click', function (e) {
+      e.preventDefault();
+      var targetSelector = NexT.utils.escapeSelector(this.getAttribute('href'));
+      var offset = $(targetSelector).offset().top;
+      hasVelocity ?
+        html.velocity('stop').velocity('scroll', {
+          offset: offset  + 'px',
+          mobileHA: false
+        }) :
+        $('html, body').stop().animate({
+          scrollTop: offset
+        }, 500);
+    });
+
+    // Expand sidebar on post detail page by default, when post has a toc.
+    NexT.motion.middleWares.sidebar = function () {
+      var $tocContent = $('.post-toc-content');
+
+      if (CONFIG.scheme !== 'Pisces' && (CONFIG.sidebar.display === 'post' || CONFIG.sidebar.display === 'always')) {
+        if ($tocContent.length > 0 && $tocContent.html().trim().length > 0) {
+          NexT.utils.displaySidebar();
+        }
+      }
+    };
+  });
+</script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=0.5.0"></script>
+
+
+
+  
+
+
+
+  
+
+    <script type="text/javascript">
+      var disqus_shortname = 'knarfeh';
+      var disqus_identifier = '2018/07/28/KubeCon 视频 2018-Shanghai/';
+      var disqus_title = 'KubeCon 视频 2018-Shanghai';
+      var disqus_url = 'http://knarfeh.github.io/2018/07/28/KubeCon 视频 2018-Shanghai/';
+
+      function run_disqus_script(disqus_script){
+        var dsq = document.createElement('script');
+        dsq.type = 'text/javascript';
+        dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/' + disqus_script;
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+      }
+
+      run_disqus_script('count.js');
+      
+        run_disqus_script('embed.js');
+      
+    </script>
+  
+
+
+
+  
+  
+  
+  <script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+      }
+    });
+  </script>
+
+  <script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+      var all = MathJax.Hub.getAllJax(), i;
+      for (i=0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';
+      }
+    });
+  </script>
+
+  
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js"></script>
+    <script type="text/javascript" async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML">
+</script>
+  
+
+
+  
+
+  <script type="text/javascript" src="/js/src/custom.js"></script>
+</body>
+</html>

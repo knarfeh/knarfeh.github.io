@@ -6,19 +6,15 @@
 
 
 <html class="theme-next muse use-motion">
-<head>
-  <meta charset="UTF-8"/>
-<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
 
 
-<meta http-equiv="Cache-Control" content="no-transform" />
-<meta http-equiv="Cache-Control" content="no-siteapp" />
-
-
-
-
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
 
 
 
@@ -27,7 +23,11 @@
 
 
 
-  <link href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css"/>
+
+
+
+
+  <link href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
 
 
 
@@ -36,21 +36,21 @@
 
 
 
-<link href="/vendors/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+<link href="/vendors/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css">
 
-<link href="/css/main.css?v=0.5.0" rel="stylesheet" type="text/css" />
-
-
-  <meta name="keywords" content="Hexo, NexT" />
+<link href="/css/main.css?v=0.5.0" rel="stylesheet" type="text/css">
 
 
+  <meta name="keywords" content="Hexo, NexT">
 
 
 
 
 
 
-  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=0.5.0" />
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=0.5.0">
 
 
 
@@ -119,7 +119,7 @@
   
 
   <div class="custom-logo-site-title">
-    <a href="/"  class="brand" rel="start">
+    <a href="/" class="brand" rel="start">
       <span class="logo-line-before"><i></i></span>
       <span class="site-title">knarfeh's logbook</span>
       <span class="logo-line-after"><i></i></span>
@@ -146,7 +146,7 @@
         <li class="menu-item menu-item-home">
           <a href="/" rel="section">
             
-              <i class="menu-item-icon fa fa-home fa-fw"></i> <br />
+              <i class="menu-item-icon fa fa-home fa-fw"></i> <br>
             
             首页
           </a>
@@ -156,7 +156,7 @@
         <li class="menu-item menu-item-archives">
           <a href="/archives" rel="section">
             
-              <i class="menu-item-icon fa fa-archive fa-fw"></i> <br />
+              <i class="menu-item-icon fa fa-archive fa-fw"></i> <br>
             
             归档
           </a>
@@ -166,7 +166,7 @@
         <li class="menu-item menu-item-tags">
           <a href="/tags" rel="section">
             
-              <i class="menu-item-icon fa fa-tags fa-fw"></i> <br />
+              <i class="menu-item-icon fa fa-tags fa-fw"></i> <br>
             
             标签
           </a>
@@ -211,8 +211,8 @@
             
               
                 
-                <a class="post-title-link" href="/2014/03/11/leetcode/Algorithms/leetcode-985-Sum-of-Even-Numbers-After-Queries/" itemprop="url">
-                  leetcode-985-Sum-of-Even-Numbers-After-Queries
+                <a class="post-title-link" href="/2015/05/07/局域网内 IP 地址冲突检测-version2/" itemprop="url">
+                  局域网内IP地址冲突检测-version2
                 </a>
               
             
@@ -225,8 +225,8 @@
               <i class="fa fa-calendar-o"></i>
             </span>
             <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2014-03-11T00:33:34+08:00" content="2014-03-11">
-              2014-03-11
+            <time itemprop="dateCreated" datetime="2015-05-07T09:00:00+08:00" content="2015-05-07">
+              2015-05-07
             </time>
           </span>
 
@@ -236,8 +236,8 @@
             
               <span class="post-comments-count">
                 &nbsp; | &nbsp;
-                <a href="/2014/03/11/leetcode/Algorithms/leetcode-985-Sum-of-Even-Numbers-After-Queries/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2014/03/11/leetcode/Algorithms/leetcode-985-Sum-of-Even-Numbers-After-Queries/" itemprop="commentsCount"></span>
+                <a href="/2015/05/07/局域网内 IP 地址冲突检测-version2/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2015/05/07/局域网内 IP 地址冲突检测-version2/" itemprop="commentsCount"></span>
                 </a>
               </span>
             
@@ -260,23 +260,308 @@
 
       
         
-          <h3 id="描述"><a href="#描述" class="headerlink" title="描述"></a>描述</h3><hr>
-<p>We have an array <code>A</code> of integers, and an array <code>queries</code> of queries.</p>
-<p>For the <code>i</code>-th query <code>val = queries[i][0], index = queries[i][1]</code>, we add val to <code>A[index]</code>.  Then, the answer to the <code>i</code>-th query is the sum of the even values of <code>A</code>.</p>
-<p><em>(Here, the given index = queries[i][1] is a 0-based index, and each query permanently modifies the array A.)</em></p>
-<p>Return the answer to all queries.  Your <code>answer</code> array should have <code>answer[i]</code> as the answer to the <code>i</code>-th query.</p>
-<p><strong>Example 1:</strong></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">Input: A = [1,2,3,4], queries = [[1,0],[-3,1],[-4,0],[2,3]]</div><div class="line">Output: [8,6,2,4]</div><div class="line">Explanation: </div><div class="line">At the beginning, the array is [1,2,3,4].</div><div class="line">After adding 1 to A[0], the array is [2,2,3,4], and the sum of even values is 2 + 2 + 4 = 8.</div><div class="line">After adding -3 to A[1], the array is [2,-1,3,4], and the sum of even values is 2 + 4 = 6.</div><div class="line">After adding -4 to A[0], the array is [-2,-1,3,4], and the sum of even values is -2 + 4 = 2.</div><div class="line">After adding 2 to A[3], the array is [-2,-1,3,6], and the sum of even values is -2 + 6 = 4.</div></pre></td></tr></table></figure>
-<p><strong>Note:</strong></p>
+          <p>计算机网络的课程设计，编写一个程序，或利用某些程序，检测局域网内的IP地址冲突，思路如下：</p>
+<p>自己不是IP地址的冲突者，但是有可能引起冲突，利用scapy包的arp函数，发送arp报文，获得局域网内所有IP，以及对应的Mac地址，当然，这个arp请求必须发送多次，如果只发送一次的话，那么可能只有一个相同IP的主机返回了，无法判断冲突，可以在较短时间内多次发送（不可能每次都是相同IP的同一个主机返回），如果这个时间段内，同一个IP地址对应多个Mac地址，那么存在IP地址冲突。</p>
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2015/05/07/局域网内 IP 地址冲突检测-version2/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2015/04/10/【译】用 Java 生成字符画/" itemprop="url">
+                  【译】用Java生成字符画
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2015-04-10T19:58:07+08:00" content="2015-04-10">
+              2015-04-10
+            </time>
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2015/04/10/【译】用 Java 生成字符画/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2015/04/10/【译】用 Java 生成字符画/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <p>原文：<a href="http://korhner.github.io/java/image-processing/ascii-art-generator/" target="_blank" rel="noopener">Ascii art generator in Java</a><br><a href="https://github.com/korhner/asciimg" target="_blank" rel="noopener">github源码地址</a><br>
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2015/04/10/【译】用 Java 生成字符画/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+        
+      
+    </p></div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2015/04/09/一个Python 程序员点技能树的过程/" itemprop="url">
+                  一个Python 程序员点技能树的过程
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2015-04-09T22:38:32+08:00" content="2015-04-09">
+              2015-04-09
+            </time>
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2015/04/09/一个Python 程序员点技能树的过程/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2015/04/09/一个Python 程序员点技能树的过程/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <p>这一篇算是<strong>自己</strong>的awosome python。记录一下自己学习Python过程中接触的知识点，以便自己可以随时复习，同时也便于队友的学习，让新手少走弯路。不定期更新。   </p>
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2015/04/09/一个Python 程序员点技能树的过程/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2015/03/25/局域网内 IP 地址冲突检测-version1/" itemprop="url">
+                  局域网内IP地址冲突检测-version1
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2015-03-25T14:33:34+08:00" content="2015-03-25">
+              2015-03-25
+            </time>
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2015/03/25/局域网内 IP 地址冲突检测-version1/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2015/03/25/局域网内 IP 地址冲突检测-version1/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <p>计算机网络的课程设计，编写一个程序，或利用某些程序，检测局域网内的IP地址冲突，现将思路整理如下：<br>分两种情况，一个是，自己是IP地址的冲突者，也就是有人跟自己的IP地址一样。另一个是，自己不是IP地址的冲突者，但是局域网内有IP地址的冲突。</p>
 <ol>
-<li><code>1 &lt;= A.length &lt;= 10000</code></li>
-<li><code>-10000 &lt;= A[i] &lt;= 10000</code></li>
-<li><code>1 &lt;= queries.length &lt;= 10000</code></li>
-<li><code>-10000 &lt;= queries[i][0] &lt;= 10000</code></li>
-<li><code>0 &lt;= queries[i][1] &lt; A.length</code></li>
+<li>自己是IP地址的冲突者，向局域网内发送arp报文，内容是自己的IP地址，请求IP地址对应的Mac地址，如果返回了Mac地址，和自己的Mac地址不一样，那么就存在IP地址冲突，而且自己是冲突的一方。</li>
+<li>自己不是IP地址的冲突者，利用scapy的arp函数，发送arp报文，获得局域网内所有IP，以及对应的Mac地址，当然，这个arp请求必须发送多次，如果只发送一次的话，那么可能只有一个相同IP的主机返回了，无法判断冲突，可以在较短时间内多次发送（不可能每次都是相同IP的同一个主机返回），如果这个时间段内，同一个IP地址对应多个Mac地址，那么存在IP地址冲突。   </li>
 </ol>
           <div class="post-more-link text-center">
-            <a class="btn" href="/2014/03/11/leetcode/Algorithms/leetcode-985-Sum-of-Even-Numbers-After-Queries/#more" rel="contents">
+            <a class="btn" href="/2015/03/25/局域网内 IP 地址冲突检测-version1/#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
@@ -323,8 +608,8 @@
             
               
                 
-                <a class="post-title-link" href="/2014/03/11/leetcode/Database/leetcode-177-Nth-Highest-Salary/" itemprop="url">
-                  leetcode-177-Nth-Highest-Salary
+                <a class="post-title-link" href="/2015/03/19/Algorithms/算法设计与分析基础-chap3-蛮力法/" itemprop="url">
+                  算法设计与分析基础 chap3 蛮力法
                 </a>
               
             
@@ -337,8 +622,8 @@
               <i class="fa fa-calendar-o"></i>
             </span>
             <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2014-03-11T00:33:34+08:00" content="2014-03-11">
-              2014-03-11
+            <time itemprop="dateCreated" datetime="2015-03-19T00:33:34+08:00" content="2015-03-19">
+              2015-03-19
             </time>
           </span>
 
@@ -348,8 +633,8 @@
             
               <span class="post-comments-count">
                 &nbsp; | &nbsp;
-                <a href="/2014/03/11/leetcode/Database/leetcode-177-Nth-Highest-Salary/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2014/03/11/leetcode/Database/leetcode-177-Nth-Highest-Salary/" itemprop="commentsCount"></span>
+                <a href="/2015/03/19/Algorithms/算法设计与分析基础-chap3-蛮力法/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2015/03/19/Algorithms/算法设计与分析基础-chap3-蛮力法/" itemprop="commentsCount"></span>
                 </a>
               </span>
             
@@ -372,12 +657,9 @@
 
       
         
-          <h3 id="描述"><a href="#描述" class="headerlink" title="描述"></a>描述</h3><hr>
-<p>Write a SQL query to get the second highest salary from the <code>Employee</code> table.</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">+----+--------+</div><div class="line">| Id | Salary |</div><div class="line">+----+--------+</div><div class="line">| 1  | 100    |</div><div class="line">| 2  | 200    |</div><div class="line">| 3  | 300    |</div><div class="line">+----+--------+</div></pre></td></tr></table></figure>
-<p>For example, given the above Employee table, the $n^{th}$ highest salary where n = 2 is <strong>200</strong>. If there is no $n{th}$ highest salary, then the query should return <strong>null</strong>.<br>
+          <p>蛮力法（也叫穷举法），是一种直接解决问题的方法，常常直接基于问题的描述和所涉及的概念及定义。<br>显然蛮力法经常不是一个最好的算法选择，但当我们想不出别的更好的办法时，它也是一种有效的解决问题的方法。</p>
           <div class="post-more-link text-center">
-            <a class="btn" href="/2014/03/11/leetcode/Database/leetcode-177-Nth-Highest-Salary/#more" rel="contents">
+            <a class="btn" href="/2015/03/19/Algorithms/算法设计与分析基础-chap3-蛮力法/#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
@@ -424,8 +706,8 @@
             
               
                 
-                <a class="post-title-link" href="/2014/03/11/leetcode/Database/leetcode-181-Employees-Earning-More-Than-Their-Managers/" itemprop="url">
-                  leetcode-181-Employees-Earning-More-Than-Their-Managers
+                <a class="post-title-link" href="/2015/03/19/Algorithms/算法设计与分析基础-chap1-introduction/" itemprop="url">
+                  算法设计与分析基础 chap1 introduction
                 </a>
               
             
@@ -438,8 +720,8 @@
               <i class="fa fa-calendar-o"></i>
             </span>
             <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2014-03-11T00:33:34+08:00" content="2014-03-11">
-              2014-03-11
+            <time itemprop="dateCreated" datetime="2015-03-19T00:33:34+08:00" content="2015-03-19">
+              2015-03-19
             </time>
           </span>
 
@@ -449,8 +731,8 @@
             
               <span class="post-comments-count">
                 &nbsp; | &nbsp;
-                <a href="/2014/03/11/leetcode/Database/leetcode-181-Employees-Earning-More-Than-Their-Managers/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2014/03/11/leetcode/Database/leetcode-181-Employees-Earning-More-Than-Their-Managers/" itemprop="commentsCount"></span>
+                <a href="/2015/03/19/Algorithms/算法设计与分析基础-chap1-introduction/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2015/03/19/Algorithms/算法设计与分析基础-chap1-introduction/" itemprop="commentsCount"></span>
                 </a>
               </span>
             
@@ -473,13 +755,9 @@
 
       
         
-          <h3 id="描述"><a href="#描述" class="headerlink" title="描述"></a>描述</h3><hr>
-<p>The <code>Employee</code> table holds all employees including their managers. Every employee has an Id, and there is also a column for the manager Id.</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">+----+-------+--------+-----------+</div><div class="line">| Id | Name  | Salary | ManagerId |</div><div class="line">+----+-------+--------+-----------+</div><div class="line">| 1  | Joe   | 70000  | 3         |</div><div class="line">| 2  | Henry | 80000  | 4         |</div><div class="line">| 3  | Sam   | 60000  | NULL      |</div><div class="line">| 4  | Max   | 90000  | NULL      |</div><div class="line">+----+-------+--------+-----------+</div></pre></td></tr></table></figure>
-<p>Given the <code>Employee</code> table, write a SQL query that finds out employees who earn more than their managers. For the above table, Joe is the only employee who earns more than his manager.</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">+----------+</div><div class="line">| Employee |</div><div class="line">+----------+</div><div class="line">| Joe      |</div><div class="line">+----------+</div></pre></td></tr></table></figure>
+          <p>算法是问题的程序化解决方法。</p>
           <div class="post-more-link text-center">
-            <a class="btn" href="/2014/03/11/leetcode/Database/leetcode-181-Employees-Earning-More-Than-Their-Managers/#more" rel="contents">
+            <a class="btn" href="/2015/03/19/Algorithms/算法设计与分析基础-chap1-introduction/#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
@@ -526,8 +804,8 @@
             
               
                 
-                <a class="post-title-link" href="/2014/03/11/leetcode/Database/leetcode-182-Duplicate-Emails/" itemprop="url">
-                  leetcode-182-Duplicate-Emails
+                <a class="post-title-link" href="/2015/03/19/C++STL 表示邻接链表求简单路径/" itemprop="url">
+                  C++STL表示邻接链表求简单路径
                 </a>
               
             
@@ -540,8 +818,8 @@
               <i class="fa fa-calendar-o"></i>
             </span>
             <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2014-03-11T00:33:34+08:00" content="2014-03-11">
-              2014-03-11
+            <time itemprop="dateCreated" datetime="2015-03-19T00:20:34+08:00" content="2015-03-19">
+              2015-03-19
             </time>
           </span>
 
@@ -551,8 +829,8 @@
             
               <span class="post-comments-count">
                 &nbsp; | &nbsp;
-                <a href="/2014/03/11/leetcode/Database/leetcode-182-Duplicate-Emails/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2014/03/11/leetcode/Database/leetcode-182-Duplicate-Emails/" itemprop="commentsCount"></span>
+                <a href="/2015/03/19/C++STL 表示邻接链表求简单路径/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2015/03/19/C++STL 表示邻接链表求简单路径/" itemprop="commentsCount"></span>
                 </a>
               </span>
             
@@ -575,13 +853,10 @@
 
       
         
-          <h3 id="描述"><a href="#描述" class="headerlink" title="描述"></a>描述</h3><hr>
-<p>Write a SQL query to find all duplicate emails in a table named <code>Person</code>.</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">+----+---------+</div><div class="line">| Id | Email   |</div><div class="line">+----+---------+</div><div class="line">| 1  | a@b.com |</div><div class="line">| 2  | c@d.com |</div><div class="line">| 3  | a@b.com |</div><div class="line">+----+---------+</div></pre></td></tr></table></figure>
-<p>For example, your query should return the following for the above table:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">+---------+</div><div class="line">| Email   |</div><div class="line">+---------+</div><div class="line">| a@b.com |</div><div class="line">+---------+</div></pre></td></tr></table></figure>
+          <p>算法课的第一道课后作业(其实用STL反而显得杀鸡用牛刀)：  </p>
+<p><img src="https://knarfeh-1254074221.cos.na-siliconvalley.myqcloud.com/2015-3-19/homework.png"></p>
           <div class="post-more-link text-center">
-            <a class="btn" href="/2014/03/11/leetcode/Database/leetcode-182-Duplicate-Emails/#more" rel="contents">
+            <a class="btn" href="/2015/03/19/C++STL 表示邻接链表求简单路径/#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
@@ -628,8 +903,8 @@
             
               
                 
-                <a class="post-title-link" href="/2014/03/11/leetcode/Database/leetcode-183-Customers-Who-Never-Order/" itemprop="url">
-                  leetcode-183-Customers-Who-Never-Order
+                <a class="post-title-link" href="/2015/03/18/first/" itemprop="url">
+                  first
                 </a>
               
             
@@ -642,8 +917,8 @@
               <i class="fa fa-calendar-o"></i>
             </span>
             <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2014-03-11T00:33:34+08:00" content="2014-03-11">
-              2014-03-11
+            <time itemprop="dateCreated" datetime="2015-03-18T21:31:21+08:00" content="2015-03-18">
+              2015-03-18
             </time>
           </span>
 
@@ -653,8 +928,8 @@
             
               <span class="post-comments-count">
                 &nbsp; | &nbsp;
-                <a href="/2014/03/11/leetcode/Database/leetcode-183-Customers-Who-Never-Order/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2014/03/11/leetcode/Database/leetcode-183-Customers-Who-Never-Order/" itemprop="commentsCount"></span>
+                <a href="/2015/03/18/first/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2015/03/18/first/" itemprop="commentsCount"></span>
                 </a>
               </span>
             
@@ -677,433 +952,10 @@
 
       
         
-          <h3 id="描述"><a href="#描述" class="headerlink" title="描述"></a>描述</h3><hr>
-<p>Suppose that a website contains two tables, the <code>Customers</code> table and the <code>Orders</code> table. Write a SQL query to find all customers who never order anything.</p>
-<p>Table: <code>Customers</code>.</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">+----+-------+</div><div class="line">| Id | Name  |</div><div class="line">+----+-------+</div><div class="line">| 1  | Joe   |</div><div class="line">| 2  | Henry |</div><div class="line">| 3  | Sam   |</div><div class="line">| 4  | Max   |</div><div class="line">+----+-------+</div></pre></td></tr></table></figure>
-<p>Table: Orders.</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">+----+------------+</div><div class="line">| Id | CustomerId |</div><div class="line">+----+------------+</div><div class="line">| 1  | 3          |</div><div class="line">| 2  | 1          |</div><div class="line">+----+------------+</div></pre></td></tr></table></figure>
-<p>Using the above tables as example, return the following:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">+-----------+</div><div class="line">| Customers |</div><div class="line">+-----------+</div><div class="line">| Henry     |</div><div class="line">| Max       |</div><div class="line">+-----------+</div></pre></td></tr></table></figure>
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2014/03/11/leetcode/Database/leetcode-183-Customers-Who-Never-Order/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2014/03/11/leetcode/Database/leetcode-184-Department-Highest-Salary/" itemprop="url">
-                  leetcode-184-Department-Highest-Salary
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2014-03-11T00:33:34+08:00" content="2014-03-11">
-              2014-03-11
-            </time>
-          </span>
-
           
-
+            <p>终于受不了了SAE+WordPress的龟速！第一篇当然是helloworld哈哈哈哈！！！</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">print &quot;hello world!&quot;</span><br></pre></td></tr></table></figure>
           
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2014/03/11/leetcode/Database/leetcode-184-Department-Highest-Salary/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2014/03/11/leetcode/Database/leetcode-184-Department-Highest-Salary/" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <h3 id="描述"><a href="#描述" class="headerlink" title="描述"></a>描述</h3><hr>
-<p>The Employee table holds all employees. Every employee has an Id, a salary, and there is also a column for the department Id.</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">+----+-------+--------+--------------+</div><div class="line">| Id | Name  | Salary | DepartmentId |</div><div class="line">+----+-------+--------+--------------+</div><div class="line">| 1  | Joe   | 70000  | 1            |</div><div class="line">| 2  | Henry | 80000  | 2            |</div><div class="line">| 3  | Sam   | 60000  | 2            |</div><div class="line">| 4  | Max   | 90000  | 1            |</div><div class="line">+----+-------+--------+--------------+</div></pre></td></tr></table></figure>
-<p>The Department table holds all departments of the company.</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">+----+----------+</div><div class="line">| Id | Name     |</div><div class="line">+----+----------+</div><div class="line">| 1  | IT       |</div><div class="line">| 2  | Sales    |</div><div class="line">+----+----------+</div></pre></td></tr></table></figure>
-<p>Write a SQL query to find employees who have the highest salary in each of the departments. For the above tables, Max has the highest salary in the IT department and Henry has the highest salary in the Sales department.</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">+------------+----------+--------+</div><div class="line">| Department | Employee | Salary |</div><div class="line">+------------+----------+--------+</div><div class="line">| IT         | Max      | 90000  |</div><div class="line">| Sales      | Henry    | 80000  |</div><div class="line">+------------+----------+--------+</div></pre></td></tr></table></figure>
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2014/03/11/leetcode/Database/leetcode-184-Department-Highest-Salary/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2014/03/11/leetcode/Database/leetcode-185-Department-Top-Three-Salaries/" itemprop="url">
-                  leetcode-185-Department-Top-Three-Salaries
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2014-03-11T00:33:34+08:00" content="2014-03-11">
-              2014-03-11
-            </time>
-          </span>
-
-          
-
-          
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2014/03/11/leetcode/Database/leetcode-185-Department-Top-Three-Salaries/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2014/03/11/leetcode/Database/leetcode-185-Department-Top-Three-Salaries/" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <h3 id="描述"><a href="#描述" class="headerlink" title="描述"></a>描述</h3><hr>
-<p>The Employee table holds all employees. Every employee has an Id, and there is also a column for the department Id.</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">+----+-------+--------+--------------+</div><div class="line">| Id | Name  | Salary | DepartmentId |</div><div class="line">+----+-------+--------+--------------+</div><div class="line">| 1  | Joe   | 70000  | 1            |</div><div class="line">| 2  | Henry | 80000  | 2            |</div><div class="line">| 3  | Sam   | 60000  | 2            |</div><div class="line">| 4  | Max   | 90000  | 1            |</div><div class="line">| 5  | Janet | 69000  | 1            |</div><div class="line">| 6  | Randy | 85000  | 1            |</div><div class="line">+----+-------+--------+--------------+</div></pre></td></tr></table></figure>
-<p>The Department table holds all departments of the company.</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">+----+----------+</div><div class="line">| Id | Name     |</div><div class="line">+----+----------+</div><div class="line">| 1  | IT       |</div><div class="line">| 2  | Sales    |</div><div class="line">+----+----------+</div></pre></td></tr></table></figure>
-<p>Write a SQL query to find employees who earn the top three salaries in each of the department. For the above tables, your SQL query should return the following rows.</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">+------------+----------+--------+</div><div class="line">| Department | Employee | Salary |</div><div class="line">+------------+----------+--------+</div><div class="line">| IT         | Max      | 90000  |</div><div class="line">| IT         | Randy    | 85000  |</div><div class="line">| IT         | Joe      | 70000  |</div><div class="line">| Sales      | Henry    | 80000  |</div><div class="line">| Sales      | Sam      | 60000  |</div><div class="line">+------------+----------+--------+</div></pre></td></tr></table></figure>
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2014/03/11/leetcode/Database/leetcode-185-Department-Top-Three-Salaries/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2014/03/11/leetcode/Database/leetcode-196-Delete-Duplicate-Emails/" itemprop="url">
-                  leetcode-196-Delete-Duplicate-Emails
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2014-03-11T00:33:34+08:00" content="2014-03-11">
-              2014-03-11
-            </time>
-          </span>
-
-          
-
-          
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2014/03/11/leetcode/Database/leetcode-196-Delete-Duplicate-Emails/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2014/03/11/leetcode/Database/leetcode-196-Delete-Duplicate-Emails/" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <h3 id="描述"><a href="#描述" class="headerlink" title="描述"></a>描述</h3><hr>
-<p>Write a SQL query to delete all duplicate email entries in a table named Person, keeping only unique emails based on its smallest Id.</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">+----+------------------+</div><div class="line">| Id | Email            |</div><div class="line">+----+------------------+</div><div class="line">| 1  | john@example.com |</div><div class="line">| 2  | bob@example.com  |</div><div class="line">| 3  | john@example.com |</div><div class="line">+----+------------------+</div><div class="line">Id is the primary key column for this table.</div></pre></td></tr></table></figure>
-<p>For example, after running your query, the above Person table should have the following rows:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">+----+------------------+</div><div class="line">| Id | Email            |</div><div class="line">+----+------------------+</div><div class="line">| 1  | john@example.com |</div><div class="line">| 2  | bob@example.com  |</div><div class="line">+----+------------------+</div></pre></td></tr></table></figure>
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2014/03/11/leetcode/Database/leetcode-196-Delete-Duplicate-Emails/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2014/03/11/leetcode/Database/leetcode-262-Trips-And-Users/" itemprop="url">
-                  leetcode-262-Trips-And-Users
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2014-03-11T00:33:34+08:00" content="2014-03-11">
-              2014-03-11
-            </time>
-          </span>
-
-          
-
-          
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2014/03/11/leetcode/Database/leetcode-262-Trips-And-Users/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2014/03/11/leetcode/Database/leetcode-262-Trips-And-Users/" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <h3 id="描述"><a href="#描述" class="headerlink" title="描述"></a>描述</h3><hr>
-<p>The Trips table holds all taxi trips. Each trip has a unique Id, while Client_Id and Driver_Id are both foreign keys to the Users_Id at the Users table. Status is an ENUM type of (‘completed’, ‘cancelled_by_driver’, ‘cancelled_by_client’).</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line">+----+-----------+-----------+---------+--------------------+----------+</div><div class="line">| Id | Client_Id | Driver_Id | City_Id |        Status      |Request_at|</div><div class="line">+----+-----------+-----------+---------+--------------------+----------+</div><div class="line">| 1  |     1     |    10     |    1    |     completed      |2013-10-01|</div><div class="line">| 2  |     2     |    11     |    1    | cancelled_by_driver|2013-10-01|</div><div class="line">| 3  |     3     |    12     |    6    |     completed      |2013-10-01|</div><div class="line">| 4  |     4     |    13     |    6    | cancelled_by_client|2013-10-01|</div><div class="line">| 5  |     1     |    10     |    1    |     completed      |2013-10-02|</div><div class="line">| 6  |     2     |    11     |    6    |     completed      |2013-10-02|</div><div class="line">| 7  |     3     |    12     |    6    |     completed      |2013-10-02|</div><div class="line">| 8  |     2     |    12     |    12   |     completed      |2013-10-03|</div><div class="line">| 9  |     3     |    10     |    12   |     completed      |2013-10-03| </div><div class="line">| 10 |     4     |    13     |    12   | cancelled_by_driver|2013-10-03|</div><div class="line">+----+-----------+-----------+---------+--------------------+----------+</div></pre></td></tr></table></figure>
-<p>The Users table holds all users. Each user has an unique Users_Id, and Role is an ENUM type of (‘client’, ‘driver’, ‘partner’).</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">+----------+--------+--------+</div><div class="line">| Users_Id | Banned |  Role  |</div><div class="line">+----------+--------+--------+</div><div class="line">|    1     |   No   | client |</div><div class="line">|    2     |   Yes  | client |</div><div class="line">|    3     |   No   | client |</div><div class="line">|    4     |   No   | client |</div><div class="line">|    10    |   No   | driver |</div><div class="line">|    11    |   No   | driver |</div><div class="line">|    12    |   No   | driver |</div><div class="line">|    13    |   No   | driver |</div><div class="line">+----------+--------+--------+</div></pre></td></tr></table></figure>
-<p>Write a SQL query to find the cancellation rate of requests made by unbanned clients between Oct 1, 2013 and Oct 3, 2013. For the above tables, your SQL query should return the following rows with the cancellation rate being rounded to two decimal places.</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">+------------+-------------------+</div><div class="line">|     Day    | Cancellation Rate |</div><div class="line">+------------+-------------------+</div><div class="line">| 2013-10-01 |       0.33        |</div><div class="line">| 2013-10-02 |       0.00        |</div><div class="line">| 2013-10-03 |       0.50        |</div><div class="line">+------------+-------------------+</div></pre></td></tr></table></figure>
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2014/03/11/leetcode/Database/leetcode-262-Trips-And-Users/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
         
       
     </div>
@@ -1198,11 +1050,115 @@
         
           <h3 id="描述"><a href="#描述" class="headerlink" title="描述"></a>描述</h3><hr>
 <p>Given a <code>Weather</code> table, write a SQL query to find all dates’ Ids with higher temperature compared to its previous (yesterday’s) dates.</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">+---------+------------+------------------+</div><div class="line">| Id(INT) | Date(DATE) | Temperature(INT) |</div><div class="line">+---------+------------+------------------+</div><div class="line">|       1 | 2015-01-01 |               10 |</div><div class="line">|       2 | 2015-01-02 |               25 |</div><div class="line">|       3 | 2015-01-03 |               20 |</div><div class="line">|       4 | 2015-01-04 |               30 |</div><div class="line">+---------+------------+------------------+</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">+---------+------------+------------------+</span><br><span class="line">| Id(INT) | Date(DATE) | Temperature(INT) |</span><br><span class="line">+---------+------------+------------------+</span><br><span class="line">|       1 | 2015-01-01 |               10 |</span><br><span class="line">|       2 | 2015-01-02 |               25 |</span><br><span class="line">|       3 | 2015-01-03 |               20 |</span><br><span class="line">|       4 | 2015-01-04 |               30 |</span><br><span class="line">+---------+------------+------------------+</span><br></pre></td></tr></table></figure>
 <p>For example, return the following Ids for the above Weather table:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">+----+</div><div class="line">| Id |</div><div class="line">+----+</div><div class="line">|  2 |</div><div class="line">|  4 |</div><div class="line">+----+</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">+----+</span><br><span class="line">| Id |</span><br><span class="line">+----+</span><br><span class="line">|  2 |</span><br><span class="line">|  4 |</span><br><span class="line">+----+</span><br></pre></td></tr></table></figure>
           <div class="post-more-link text-center">
             <a class="btn" href="/2014/03/11/leetcode/Database/leetcode-197-Rising-Temperature/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2014/03/11/leetcode/Database/leetcode-601-Human-Traffic-of-Stadium/" itemprop="url">
+                  leetcode-601-Human-Traffic-of-Stadium
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2014-03-11T00:33:34+08:00" content="2014-03-11">
+              2014-03-11
+            </time>
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2014/03/11/leetcode/Database/leetcode-601-Human-Traffic-of-Stadium/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2014/03/11/leetcode/Database/leetcode-601-Human-Traffic-of-Stadium/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <h3 id="描述"><a href="#描述" class="headerlink" title="描述"></a>描述</h3><hr>
+<p>X city built a new stadium, each day many people visit it and the stats are saved as these columns: <strong>id</strong>, <strong>date</strong>, <strong>people</strong></p>
+<p>Please write a query to display the records which have 3 or more consecutive rows and the amount of people more than 100(inclusive).</p>
+<p>For example, the table <code>stadium</code>:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">+------+------------+-----------+</span><br><span class="line">| id   | date       | people    |</span><br><span class="line">+------+------------+-----------+</span><br><span class="line">| 1    | 2017-01-01 | 10        |</span><br><span class="line">| 2    | 2017-01-02 | 109       |</span><br><span class="line">| 3    | 2017-01-03 | 150       |</span><br><span class="line">| 4    | 2017-01-04 | 99        |</span><br><span class="line">| 5    | 2017-01-05 | 145       |</span><br><span class="line">| 6    | 2017-01-06 | 1455      |</span><br><span class="line">| 7    | 2017-01-07 | 199       |</span><br><span class="line">| 8    | 2017-01-08 | 188       |</span><br><span class="line">+------+------------+-----------+</span><br></pre></td></tr></table></figure>
+<p>For the sample data above, the output is:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">+------+------------+-----------+</span><br><span class="line">| id   | date       | people    |</span><br><span class="line">+------+------------+-----------+</span><br><span class="line">| 5    | 2017-01-05 | 145       |</span><br><span class="line">| 6    | 2017-01-06 | 1455      |</span><br><span class="line">| 7    | 2017-01-07 | 199       |</span><br><span class="line">| 8    | 2017-01-08 | 188       |</span><br><span class="line">+------+------------+-----------+</span><br></pre></td></tr></table></figure>
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2014/03/11/leetcode/Database/leetcode-601-Human-Traffic-of-Stadium/#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
@@ -1232,7 +1188,7 @@
 
   
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/page/6/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/6/">6</a><span class="page-number current">7</span><a class="page-number" href="/page/8/">8</a><span class="space">&hellip;</span><a class="page-number" href="/page/37/">37</a><a class="extend next" rel="next" href="/page/8/"><i class="fa fa-angle-right"></i></a>
+    <a class="extend prev" rel="prev" href="/page/6/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/6/">6</a><span class="page-number current">7</span><a class="page-number" href="/page/8/">8</a><span class="space">&hellip;</span><a class="page-number" href="/page/39/">39</a><a class="extend next" rel="next" href="/page/8/"><i class="fa fa-angle-right"></i></a>
   </nav>
 
 
@@ -1264,16 +1220,14 @@
 
       <section class="site-overview sidebar-panel  sidebar-panel-active ">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
-          <img class="site-author-image" itemprop="image"
-               src="https://avatars1.githubusercontent.com/u/6964284?v=3&s=460"
-               alt="Frank" />
+          <img class="site-author-image" itemprop="image" src="https://avatars1.githubusercontent.com/u/6964284?v=3&s=460" alt="Frank">
           <p class="site-author-name" itemprop="name">Frank</p>
           <p class="site-description motion-element" itemprop="description"></p>
         </div>
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">365</span>
+              <span class="site-state-item-count">390</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -1283,7 +1237,7 @@
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">135</span>
+                <span class="site-state-item-count">207</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
@@ -1319,7 +1273,7 @@
         
           <div class="cc-license motion-element" itemprop="license">
             <a href="http://creativecommons.org/licenses/by-sa/4.0" class="cc-opacity" target="_blank">
-              <img src="/images/cc-by-sa.svg" alt="Creative Commons" />
+              <img src="/images/cc-by-sa.svg" alt="Creative Commons">
             </a>
           </div>
         
@@ -1342,10 +1296,10 @@
 
     <footer id="footer" class="footer">
       <div class="footer-inner">
-        <div class="copyright" >
+        <div class="copyright">
   
   &copy;  2015 - 
-  <span itemprop="copyrightYear">2019</span>
+  <span itemprop="copyrightYear">2021</span>
   <span class="with-love">
     <i class="fa fa-heart"></i>
   </span>

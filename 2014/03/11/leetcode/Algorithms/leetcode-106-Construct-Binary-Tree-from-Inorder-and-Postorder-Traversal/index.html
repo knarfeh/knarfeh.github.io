@@ -6,19 +6,15 @@
 
 
 <html class="theme-next muse use-motion">
-<head>
-  <meta charset="UTF-8"/>
-<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
 
 
-<meta http-equiv="Cache-Control" content="no-transform" />
-<meta http-equiv="Cache-Control" content="no-siteapp" />
-
-
-
-
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
 
 
 
@@ -27,7 +23,11 @@
 
 
 
-  <link href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css"/>
+
+
+
+
+  <link href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
 
 
 
@@ -36,21 +36,21 @@
 
 
 
-<link href="/vendors/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+<link href="/vendors/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css">
 
-<link href="/css/main.css?v=0.5.0" rel="stylesheet" type="text/css" />
-
-
-  <meta name="keywords" content="algorithms,leetcode,Depth-first-Search,Tree,Array," />
+<link href="/css/main.css?v=0.5.0" rel="stylesheet" type="text/css">
 
 
+  <meta name="keywords" content="algorithms,leetcode,Array,Tree,Depth-first-Search,">
 
 
 
 
 
 
-  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=0.5.0" />
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=0.5.0">
 
 
 
@@ -58,14 +58,14 @@
 
 
 <meta name="description" content="描述 Given inorder and postorder traversal of a tree, construct the binary tree. Note:You may assume that duplicates do not exist in the tree.">
-<meta name="keywords" content="algorithms,leetcode,Depth-first-Search,Tree,Array">
+<meta name="keywords" content="algorithms,leetcode,Array,Tree,Depth-first-Search">
 <meta property="og:type" content="article">
 <meta property="og:title" content="leetcode-106-Construct-Binary-Tree-from-Inorder-and-Postorder-Traversal">
 <meta property="og:url" content="http://knarfeh.github.io/2014/03/11/leetcode/Algorithms/leetcode-106-Construct-Binary-Tree-from-Inorder-and-Postorder-Traversal/index.html">
 <meta property="og:site_name" content="knarfeh&#39;s logbook">
 <meta property="og:description" content="描述 Given inorder and postorder traversal of a tree, construct the binary tree. Note:You may assume that duplicates do not exist in the tree.">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-03-05T14:06:09.479Z">
+<meta property="og:updated_time" content="2020-04-02T03:51:40.392Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="leetcode-106-Construct-Binary-Tree-from-Inorder-and-Postorder-Traversal">
 <meta name="twitter:description" content="描述 Given inorder and postorder traversal of a tree, construct the binary tree. Note:You may assume that duplicates do not exist in the tree.">
@@ -122,7 +122,7 @@
   
 
   <div class="custom-logo-site-title">
-    <a href="/"  class="brand" rel="start">
+    <a href="/" class="brand" rel="start">
       <span class="logo-line-before"><i></i></span>
       <span class="site-title">knarfeh's logbook</span>
       <span class="logo-line-after"><i></i></span>
@@ -149,7 +149,7 @@
         <li class="menu-item menu-item-home">
           <a href="/" rel="section">
             
-              <i class="menu-item-icon fa fa-home fa-fw"></i> <br />
+              <i class="menu-item-icon fa fa-home fa-fw"></i> <br>
             
             首页
           </a>
@@ -159,7 +159,7 @@
         <li class="menu-item menu-item-archives">
           <a href="/archives" rel="section">
             
-              <i class="menu-item-icon fa fa-archive fa-fw"></i> <br />
+              <i class="menu-item-icon fa fa-archive fa-fw"></i> <br>
             
             归档
           </a>
@@ -169,7 +169,7 @@
         <li class="menu-item menu-item-tags">
           <a href="/tags" rel="section">
             
-              <i class="menu-item-icon fa fa-tags fa-fw"></i> <br />
+              <i class="menu-item-icon fa fa-tags fa-fw"></i> <br>
             
             标签
           </a>
@@ -263,16 +263,18 @@
 <p>Given inorder and postorder traversal of a tree, construct the binary tree.</p>
 <p><strong>Note</strong>:<br>You may assume that duplicates do not exist in the tree.<br><a id="more"></a></p>
 <h3 id="分析"><a href="#分析" class="headerlink" title="分析"></a>分析</h3><hr>
-<p>基本上思路跟 <a href="TODO">105-Construct-Binary-Tree-from-Preorder-and-Inorder-Traversal</a> 是一样的，还是用那个二叉树的例子，这里的后序遍历输出序列是 C, E, F, D, B, H, G, A，A 显而易见是根节点，根据中序遍历序列 C, B, E, D, F, A, H, G ，根节点 A 左边是 C, E, F, D, B，右边是 H, G。</p>
+<p>基本上思路跟 <a href="https://knarfeh.com/2014/03/11/leetcode/Algorithms/leetcode-105-Construct-Binary-Tree-from-Preorder-and-Inorder-Traversal/" target="_blank" rel="noopener">105-Construct-Binary-Tree-from-Preorder-and-Inorder-Traversal</a> 是一样的，还是用那个二叉树的例子，这里的后序遍历输出序列是 C, E, F, D, B, H, G, A，A 显而易见是根节点，根据中序遍历序列 C, B, E, D, F, A, H, G ，根节点 A 左边是 C, E, F, D, B，右边是 H, G。</p>
 <h3 id="解决方案1-C"><a href="#解决方案1-C" class="headerlink" title="解决方案1(C++)"></a>解决方案1(C++)</h3><hr>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div></pre></td><td class="code"><pre><div class="line"><span class="comment">/**</span></div><div class="line"> * Definition for a binary tree node.</div><div class="line"> * struct TreeNode &#123;</div><div class="line"> *     int val;</div><div class="line"> *     TreeNode *left;</div><div class="line"> *     TreeNode *right;</div><div class="line"> *     TreeNode(int x) : val(x), left(NULL), right(NULL) &#123;&#125;</div><div class="line"> * &#125;;</div><div class="line"> */</div><div class="line"><span class="keyword">class</span> Solution &#123;</div><div class="line"><span class="keyword">public</span>:</div><div class="line">    <span class="function">TreeNode* <span class="title">buildTree</span><span class="params">(<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&amp; inorder, <span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&amp; postorder)</span> </span>&#123;</div><div class="line">        <span class="keyword">return</span> buildTreeWithInandPost(inorder, postorder, <span class="number">0</span>, inorder.size()<span class="number">-1</span>, <span class="number">0</span>, postorder.size()<span class="number">-1</span>);</div><div class="line">    &#125;</div><div class="line">    </div><div class="line">    <span class="function">TreeNode* <span class="title">buildTreeWithInandPost</span><span class="params">(<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&amp; inorder, <span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&amp; postorder, <span class="keyword">int</span> in_start, <span class="keyword">int</span> in_end, <span class="keyword">int</span> post_start, <span class="keyword">int</span> post_end)</span> </span>&#123;</div><div class="line">        <span class="keyword">if</span>(post_start &gt; post_end) &#123;</div><div class="line">            <span class="keyword">return</span> <span class="literal">NULL</span>;</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">int</span> post_last_result = postorder[post_end];</div><div class="line">        <span class="keyword">int</span> root_position = in_start;</div><div class="line">        <span class="keyword">for</span> (; root_position &lt; in_end; root_position++) &#123;</div><div class="line">            <span class="keyword">if</span>(inorder[root_position] == post_last_result) &#123;</div><div class="line">                <span class="keyword">break</span>;</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">        TreeNode* node = <span class="keyword">new</span> TreeNode(post_last_result);</div><div class="line">        <span class="keyword">int</span> left_length = root_position - in_start;</div><div class="line">        <span class="keyword">int</span> right_length = in_end - root_position;</div><div class="line">        node-&gt;left = buildTreeWithInandPost(inorder, postorder, in_start, root_position<span class="number">-1</span>, post_start, post_start+left_length<span class="number">-1</span>);</div><div class="line">        node-&gt;right = buildTreeWithInandPost(inorder, postorder, root_position+<span class="number">1</span>, in_end, post_end-right_length, post_end<span class="number">-1</span>);</div><div class="line">        <span class="keyword">return</span> node;</div><div class="line">    &#125;</div><div class="line">&#125;;</div></pre></td></tr></table></figure>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Definition for a binary tree node.</span></span><br><span class="line"><span class="comment"> * struct TreeNode &#123;</span></span><br><span class="line"><span class="comment"> *     int val;</span></span><br><span class="line"><span class="comment"> *     TreeNode *left;</span></span><br><span class="line"><span class="comment"> *     TreeNode *right;</span></span><br><span class="line"><span class="comment"> *     TreeNode(int x) : val(x), left(NULL), right(NULL) &#123;&#125;</span></span><br><span class="line"><span class="comment"> * &#125;;</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function">TreeNode* <span class="title">buildTree</span><span class="params">(<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&amp; inorder, <span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&amp; postorder)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> buildTreeWithInandPost(inorder, postorder, <span class="number">0</span>, inorder.size()<span class="number">-1</span>, <span class="number">0</span>, postorder.size()<span class="number">-1</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="function">TreeNode* <span class="title">buildTreeWithInandPost</span><span class="params">(<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&amp; inorder, <span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&amp; postorder, <span class="keyword">int</span> in_start, <span class="keyword">int</span> in_end, <span class="keyword">int</span> post_start, <span class="keyword">int</span> post_end)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(post_start &gt; post_end) &#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="literal">NULL</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">int</span> post_last_result = postorder[post_end];</span><br><span class="line">        <span class="keyword">int</span> root_position = in_start;</span><br><span class="line">        <span class="keyword">for</span> (; root_position &lt; in_end; root_position++) &#123;</span><br><span class="line">            <span class="keyword">if</span>(inorder[root_position] == post_last_result) &#123;</span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        TreeNode* node = <span class="keyword">new</span> TreeNode(post_last_result);</span><br><span class="line">        <span class="keyword">int</span> left_length = root_position - in_start;</span><br><span class="line">        <span class="keyword">int</span> right_length = in_end - root_position;</span><br><span class="line">        node-&gt;left = buildTreeWithInandPost(inorder, postorder, in_start, root_position<span class="number">-1</span>, post_start, post_start+left_length<span class="number">-1</span>);</span><br><span class="line">        node-&gt;right = buildTreeWithInandPost(inorder, postorder, root_position+<span class="number">1</span>, in_end, post_end-right_length, post_end<span class="number">-1</span>);</span><br><span class="line">        <span class="keyword">return</span> node;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
 <h3 id="解决方案2-Java"><a href="#解决方案2-Java" class="headerlink" title="解决方案2(Java)"></a>解决方案2(Java)</h3><hr>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div></pre></td><td class="code"><pre><div class="line"><span class="comment">/**</span></div><div class="line"> * Definition for a binary tree node.</div><div class="line"> * public class TreeNode &#123;</div><div class="line"> *     int val;</div><div class="line"> *     TreeNode left;</div><div class="line"> *     TreeNode right;</div><div class="line"> *     TreeNode(int x) &#123; val = x; &#125;</div><div class="line"> * &#125;</div><div class="line"> */</div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</div><div class="line">    <span class="function"><span class="keyword">public</span> TreeNode <span class="title">buildTree</span><span class="params">(<span class="keyword">int</span>[] inorder, <span class="keyword">int</span>[] postorder)</span> </span>&#123;</div><div class="line">        <span class="keyword">return</span> buildTreeWithPreandIn(inorder, postorder, <span class="number">0</span>, inorder.length-<span class="number">1</span>, <span class="number">0</span>, postorder.length-<span class="number">1</span>);</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">public</span> TreeNode <span class="title">buildTreeWithPreandIn</span><span class="params">(<span class="keyword">int</span>[] inorder, <span class="keyword">int</span>[] postorder, <span class="keyword">int</span> in_start, <span class="keyword">int</span> in_end, <span class="keyword">int</span> post_start, <span class="keyword">int</span> post_end)</span> </span>&#123;</div><div class="line">        <span class="keyword">if</span> (post_start &gt; post_end) &#123;</div><div class="line">            <span class="keyword">return</span> <span class="keyword">null</span>;</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">int</span> post_last_result = postorder[post_end];</div><div class="line">        <span class="keyword">int</span> root_position = in_start;</div><div class="line">        <span class="keyword">for</span> (; root_position &lt; in_end; root_position++) &#123;</div><div class="line">            <span class="keyword">if</span>(inorder[root_position] == post_last_result) &#123;</div><div class="line">                <span class="keyword">break</span>;</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">        </div><div class="line">        TreeNode node = <span class="keyword">new</span> TreeNode(post_last_result);</div><div class="line">        <span class="keyword">int</span> left_length = root_position - in_start;</div><div class="line">        <span class="keyword">int</span> right_length = in_end - root_position;</div><div class="line">        </div><div class="line">        node.left = buildTreeWithPreandIn(inorder, postorder, in_start, root_position-<span class="number">1</span>, post_start, post_start+left_length-<span class="number">1</span>);</div><div class="line">        node.right = buildTreeWithPreandIn(inorder, postorder, root_position+<span class="number">1</span>, in_end, post_end-right_length, post_end-<span class="number">1</span>);</div><div class="line">        <span class="keyword">return</span> node;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Definition for a binary tree node.</span></span><br><span class="line"><span class="comment"> * public class TreeNode &#123;</span></span><br><span class="line"><span class="comment"> *     int val;</span></span><br><span class="line"><span class="comment"> *     TreeNode left;</span></span><br><span class="line"><span class="comment"> *     TreeNode right;</span></span><br><span class="line"><span class="comment"> *     TreeNode(int x) &#123; val = x; &#125;</span></span><br><span class="line"><span class="comment"> * &#125;</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> TreeNode <span class="title">buildTree</span><span class="params">(<span class="keyword">int</span>[] inorder, <span class="keyword">int</span>[] postorder)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> buildTreeWithPreandIn(inorder, postorder, <span class="number">0</span>, inorder.length-<span class="number">1</span>, <span class="number">0</span>, postorder.length-<span class="number">1</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> TreeNode <span class="title">buildTreeWithPreandIn</span><span class="params">(<span class="keyword">int</span>[] inorder, <span class="keyword">int</span>[] postorder, <span class="keyword">int</span> in_start, <span class="keyword">int</span> in_end, <span class="keyword">int</span> post_start, <span class="keyword">int</span> post_end)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (post_start &gt; post_end) &#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">null</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">int</span> post_last_result = postorder[post_end];</span><br><span class="line">        <span class="keyword">int</span> root_position = in_start;</span><br><span class="line">        <span class="keyword">for</span> (; root_position &lt; in_end; root_position++) &#123;</span><br><span class="line">            <span class="keyword">if</span>(inorder[root_position] == post_last_result) &#123;</span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        TreeNode node = <span class="keyword">new</span> TreeNode(post_last_result);</span><br><span class="line">        <span class="keyword">int</span> left_length = root_position - in_start;</span><br><span class="line">        <span class="keyword">int</span> right_length = in_end - root_position;</span><br><span class="line">        </span><br><span class="line">        node.left = buildTreeWithPreandIn(inorder, postorder, in_start, root_position-<span class="number">1</span>, post_start, post_start+left_length-<span class="number">1</span>);</span><br><span class="line">        node.right = buildTreeWithPreandIn(inorder, postorder, root_position+<span class="number">1</span>, in_end, post_end-right_length, post_end-<span class="number">1</span>);</span><br><span class="line">        <span class="keyword">return</span> node;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <h3 id="解决方案3-Golang"><a href="#解决方案3-Golang" class="headerlink" title="解决方案3(Golang)"></a>解决方案3(Golang)</h3><hr>
-<figure class="highlight golang"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div></pre></td><td class="code"><pre><div class="line"><span class="comment">/**</span></div><div class="line"> * Definition for a binary tree node.</div><div class="line"> * type TreeNode struct &#123;</div><div class="line"> *     Val int</div><div class="line"> *     Left *TreeNode</div><div class="line"> *     Right *TreeNode</div><div class="line"> * &#125;</div><div class="line"> */</div><div class="line"><span class="function"><span class="keyword">func</span> <span class="title">buildTree</span><span class="params">(inorder []<span class="keyword">int</span>, postorder []<span class="keyword">int</span>)</span> *<span class="title">TreeNode</span></span> &#123;</div><div class="line">    <span class="keyword">if</span> <span class="built_in">len</span>(inorder) == <span class="number">0</span> &#123;</div><div class="line">        <span class="keyword">return</span> <span class="literal">nil</span></div><div class="line">    &#125;</div><div class="line">    </div><div class="line">    res := &amp;TreeNode &#123;</div><div class="line">        Val: postorder[<span class="built_in">len</span>(postorder)<span class="number">-1</span>],</div><div class="line">    &#125;</div><div class="line">    </div><div class="line">    <span class="keyword">if</span> <span class="built_in">len</span>(inorder) == <span class="number">1</span> &#123;</div><div class="line">        <span class="keyword">return</span> res</div><div class="line">    &#125;</div><div class="line">    </div><div class="line">    index := indexOf(res.Val, inorder)</div><div class="line">    res.Left = buildTree(inorder[:index], postorder[:index])</div><div class="line">    res.Right = buildTree(inorder[index+<span class="number">1</span>:], postorder[index:<span class="built_in">len</span>(postorder)<span class="number">-1</span>])</div><div class="line">    <span class="keyword">return</span> res</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">func</span> <span class="title">indexOf</span><span class="params">(val <span class="keyword">int</span>, nums []<span class="keyword">int</span>)</span> <span class="title">int</span></span> &#123;</div><div class="line">    <span class="keyword">for</span> i, v := <span class="keyword">range</span> nums &#123;</div><div class="line">        <span class="keyword">if</span> v == val &#123;</div><div class="line">            <span class="keyword">return</span> i</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">return</span> <span class="number">0</span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<figure class="highlight golang"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Definition for a binary tree node.</span></span><br><span class="line"><span class="comment"> * type TreeNode struct &#123;</span></span><br><span class="line"><span class="comment"> *     Val int</span></span><br><span class="line"><span class="comment"> *     Left *TreeNode</span></span><br><span class="line"><span class="comment"> *     Right *TreeNode</span></span><br><span class="line"><span class="comment"> * &#125;</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">buildTree</span><span class="params">(inorder []<span class="keyword">int</span>, postorder []<span class="keyword">int</span>)</span> *<span class="title">TreeNode</span></span> &#123;</span><br><span class="line">    <span class="keyword">if</span> <span class="built_in">len</span>(inorder) == <span class="number">0</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">nil</span></span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    res := &amp;TreeNode &#123;</span><br><span class="line">        Val: postorder[<span class="built_in">len</span>(postorder)<span class="number">-1</span>],</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">if</span> <span class="built_in">len</span>(inorder) == <span class="number">1</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> res</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    index := indexOf(res.Val, inorder)</span><br><span class="line">    res.Left = buildTree(inorder[:index], postorder[:index])</span><br><span class="line">    res.Right = buildTree(inorder[index+<span class="number">1</span>:], postorder[index:<span class="built_in">len</span>(postorder)<span class="number">-1</span>])</span><br><span class="line">    <span class="keyword">return</span> res</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">indexOf</span><span class="params">(val <span class="keyword">int</span>, nums []<span class="keyword">int</span>)</span> <span class="title">int</span></span> &#123;</span><br><span class="line">    <span class="keyword">for</span> i, v := <span class="keyword">range</span> nums &#123;</span><br><span class="line">        <span class="keyword">if</span> v == val &#123;</span><br><span class="line">            <span class="keyword">return</span> i</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <h3 id="相关问题"><a href="#相关问题" class="headerlink" title="相关问题"></a>相关问题</h3><hr>
-<p><a href="https://leetcode.com/problems/construct-binary-tree-from-preorder-and-inorder-traversal/" target="_blank" rel="external">(M) Construct Binary Tree from Preorder and Inorder Traversal</a>   </p>
-<h3 id="题目来源"><a href="#题目来源" class="headerlink" title="题目来源"></a><a href="https://leetcode.com/problems/construct-binary-tree-from-inorder-and-postorder-traversal/" target="_blank" rel="external">题目来源</a></h3>
+<ul>
+<li><a href="https://leetcode.com/problems/construct-binary-tree-from-preorder-and-inorder-traversal/" target="_blank" rel="noopener">(M) Construct Binary Tree from Preorder and Inorder Traversal</a>   </li>
+</ul>
+<h3 id="题目来源"><a href="#题目来源" class="headerlink" title="题目来源"></a><a href="https://leetcode.com/problems/construct-binary-tree-from-inorder-and-postorder-traversal/" target="_blank" rel="noopener">题目来源</a></h3>
       
     </div>
 
@@ -290,11 +292,11 @@
           
             <a href="/tags/leetcode/" rel="tag">#leetcode</a>
           
-            <a href="/tags/Depth-first-Search/" rel="tag">#Depth-first-Search</a>
+            <a href="/tags/Array/" rel="tag">#Array</a>
           
             <a href="/tags/Tree/" rel="tag">#Tree</a>
           
-            <a href="/tags/Array/" rel="tag">#Array</a>
+            <a href="/tags/Depth-first-Search/" rel="tag">#Depth-first-Search</a>
           
         </div>
       
@@ -303,16 +305,16 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2014/03/11/leetcode/Algorithms/leetcode-11-Container-With-Most-Water/" rel="next" title="leetcode-11-Container-With-Most-Water">
-                <i class="fa fa-chevron-left"></i> leetcode-11-Container-With-Most-Water
+              <a href="/2014/03/11/leetcode/Algorithms/leetcode-111-Minimum-Depth-of-Binary-Tree/" rel="next" title="leetcode-111-Minimum-Depth-of-Binary-Tree">
+                <i class="fa fa-chevron-left"></i> leetcode-111-Minimum-Depth-of-Binary-Tree
               </a>
             
           </div>
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2014/03/11/leetcode/Algorithms/leetcode-107-Binary-Tree-Level-Order-Traversal-II/" rel="prev" title="leetcode-107-Binary-Tree-Level-Order-Traversal-II">
-                leetcode-107-Binary-Tree-Level-Order-Traversal-II <i class="fa fa-chevron-right"></i>
+              <a href="/2014/03/11/leetcode/Algorithms/leetcode-105-Construct-Binary-Tree-from-Preorder-and-Inorder-Traversal/" rel="prev" title="leetcode-105-Construct-Binary-Tree-from-Preorder-and-Inorder-Traversal">
+                leetcode-105-Construct-Binary-Tree-from-Preorder-and-Inorder-Traversal <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -368,7 +370,7 @@
 
       
         <ul class="sidebar-nav motion-element">
-          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
             文章目录
           </li>
           <li class="sidebar-nav-overview" data-target="site-overview">
@@ -379,16 +381,14 @@
 
       <section class="site-overview sidebar-panel ">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
-          <img class="site-author-image" itemprop="image"
-               src="https://avatars1.githubusercontent.com/u/6964284?v=3&s=460"
-               alt="Frank" />
+          <img class="site-author-image" itemprop="image" src="https://avatars1.githubusercontent.com/u/6964284?v=3&s=460" alt="Frank">
           <p class="site-author-name" itemprop="name">Frank</p>
           <p class="site-description motion-element" itemprop="description"></p>
         </div>
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">365</span>
+              <span class="site-state-item-count">390</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -398,7 +398,7 @@
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">135</span>
+                <span class="site-state-item-count">207</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
@@ -434,7 +434,7 @@
         
           <div class="cc-license motion-element" itemprop="license">
             <a href="http://creativecommons.org/licenses/by-sa/4.0" class="cc-opacity" target="_blank">
-              <img src="/images/cc-by-sa.svg" alt="Creative Commons" />
+              <img src="/images/cc-by-sa.svg" alt="Creative Commons">
             </a>
           </div>
         
@@ -474,10 +474,10 @@
 
     <footer id="footer" class="footer">
       <div class="footer-inner">
-        <div class="copyright" >
+        <div class="copyright">
   
   &copy;  2015 - 
-  <span itemprop="copyrightYear">2019</span>
+  <span itemprop="copyrightYear">2021</span>
   <span class="with-love">
     <i class="fa fa-heart"></i>
   </span>

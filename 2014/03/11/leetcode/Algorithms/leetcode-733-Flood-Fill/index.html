@@ -6,19 +6,15 @@
 
 
 <html class="theme-next muse use-motion">
-<head>
-  <meta charset="UTF-8"/>
-<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
 
 
-<meta http-equiv="Cache-Control" content="no-transform" />
-<meta http-equiv="Cache-Control" content="no-siteapp" />
-
-
-
-
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
 
 
 
@@ -27,7 +23,11 @@
 
 
 
-  <link href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css"/>
+
+
+
+
+  <link href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
 
 
 
@@ -36,21 +36,21 @@
 
 
 
-<link href="/vendors/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+<link href="/vendors/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css">
 
-<link href="/css/main.css?v=0.5.0" rel="stylesheet" type="text/css" />
-
-
-  <meta name="keywords" content="algorithms,leetcode,Array," />
+<link href="/css/main.css?v=0.5.0" rel="stylesheet" type="text/css">
 
 
+  <meta name="keywords" content="algorithms,leetcode,Array,">
 
 
 
 
 
 
-  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=0.5.0" />
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=0.5.0">
 
 
 
@@ -122,7 +122,7 @@
   
 
   <div class="custom-logo-site-title">
-    <a href="/"  class="brand" rel="start">
+    <a href="/" class="brand" rel="start">
       <span class="logo-line-before"><i></i></span>
       <span class="site-title">knarfeh's logbook</span>
       <span class="logo-line-after"><i></i></span>
@@ -149,7 +149,7 @@
         <li class="menu-item menu-item-home">
           <a href="/" rel="section">
             
-              <i class="menu-item-icon fa fa-home fa-fw"></i> <br />
+              <i class="menu-item-icon fa fa-home fa-fw"></i> <br>
             
             首页
           </a>
@@ -159,7 +159,7 @@
         <li class="menu-item menu-item-archives">
           <a href="/archives" rel="section">
             
-              <i class="menu-item-icon fa fa-archive fa-fw"></i> <br />
+              <i class="menu-item-icon fa fa-archive fa-fw"></i> <br>
             
             归档
           </a>
@@ -169,7 +169,7 @@
         <li class="menu-item menu-item-tags">
           <a href="/tags" rel="section">
             
-              <i class="menu-item-icon fa fa-tags fa-fw"></i> <br />
+              <i class="menu-item-icon fa fa-tags fa-fw"></i> <br>
             
             标签
           </a>
@@ -265,7 +265,7 @@
 <p>To perform a “flood fill”, consider the starting pixel, plus any pixels connected 4-directionally to the starting pixel of the same color as the starting pixel, plus any pixels connected 4-directionally to those pixels (also with the same color as the starting pixel), and so on. Replace the color of all of the aforementioned pixels with the newColor.</p>
 <p>At the end, return the modified image.</p>
 <p><strong>Example 1:</strong></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">Input: </div><div class="line">image = [[1,1,1],[1,1,0],[1,0,1]]</div><div class="line">sr = 1, sc = 1, newColor = 2</div><div class="line">Output: [[2,2,2],[2,2,0],[2,0,1]]</div><div class="line">Explanation: </div><div class="line">From the center of the image (with position (sr, sc) = (1, 1)), all pixels connected </div><div class="line">by a path of the same color as the starting pixel are colored with the new color.</div><div class="line">Note the bottom corner is not colored 2, because it is not 4-directionally connected</div><div class="line">to the starting pixel.</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">Input: </span><br><span class="line">image = [[1,1,1],[1,1,0],[1,0,1]]</span><br><span class="line">sr = 1, sc = 1, newColor = 2</span><br><span class="line">Output: [[2,2,2],[2,2,0],[2,0,1]]</span><br><span class="line">Explanation: </span><br><span class="line">From the center of the image (with position (sr, sc) = (1, 1)), all pixels connected </span><br><span class="line">by a path of the same color as the starting pixel are colored with the new color.</span><br><span class="line">Note the bottom corner is not colored 2, because it is not 4-directionally connected</span><br><span class="line">to the starting pixel.</span><br></pre></td></tr></table></figure>
 <p><strong>Note:</strong></p>
 <p>The length of <code>image</code> and <code>image[0]</code> will be in the range <code>[1, 50]</code>.</p>
 <p>The given starting pixel will satisfy <code>0 &lt;= sr &lt; image.length</code> and <code>0 &lt;= sc &lt; image[0].length</code>.</p>
@@ -274,12 +274,12 @@
 <h3 id="分析"><a href="#分析" class="headerlink" title="分析"></a>分析</h3><hr>
 <p>这题有个坑，传入的 newColor 有可能跟原来的 Color 是一样的。</p>
 <h3 id="解决方案1-Java"><a href="#解决方案1-Java" class="headerlink" title="解决方案1(Java)"></a>解决方案1(Java)</h3><hr>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</div><div class="line">    <span class="keyword">public</span> <span class="keyword">int</span>[][] floodFill(<span class="keyword">int</span>[][] image, <span class="keyword">int</span> sr, <span class="keyword">int</span> sc, <span class="keyword">int</span> newColor) &#123;</div><div class="line">        <span class="keyword">int</span> color = image[sr][sc];</div><div class="line">        <span class="keyword">if</span> (color != newColor) &#123;</div><div class="line">            dfs(image, sr, sc, color, newColor);</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">return</span> image;</div><div class="line">    &#125;</div><div class="line">    </div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">dfs</span><span class="params">(<span class="keyword">int</span>[][] image, <span class="keyword">int</span> r, <span class="keyword">int</span> c, <span class="keyword">int</span> color, <span class="keyword">int</span> newColor)</span> </span>&#123;</div><div class="line">        <span class="keyword">if</span> (image[r][c] == color) &#123;</div><div class="line">            image[r][c] = newColor;</div><div class="line">            <span class="keyword">if</span> (r &gt;= <span class="number">1</span>) &#123;</div><div class="line">                dfs(image, r-<span class="number">1</span>, c, color, newColor);</div><div class="line">            &#125;</div><div class="line">            <span class="keyword">if</span> (c &gt;= <span class="number">1</span>) &#123;</div><div class="line">                dfs(image, r, c-<span class="number">1</span>, color, newColor);</div><div class="line">            &#125;</div><div class="line">            <span class="keyword">if</span> (r+<span class="number">1</span> &lt; image.length) &#123;</div><div class="line">                dfs(image, r+<span class="number">1</span>, c, color, newColor);</div><div class="line">            &#125;</div><div class="line">            <span class="keyword">if</span> (c+<span class="number">1</span> &lt; image[<span class="number">0</span>].length) &#123;</div><div class="line">                dfs(image, r, c+<span class="number">1</span>, color, newColor);</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">int</span>[][] floodFill(<span class="keyword">int</span>[][] image, <span class="keyword">int</span> sr, <span class="keyword">int</span> sc, <span class="keyword">int</span> newColor) &#123;</span><br><span class="line">        <span class="keyword">int</span> color = image[sr][sc];</span><br><span class="line">        <span class="keyword">if</span> (color != newColor) &#123;</span><br><span class="line">            dfs(image, sr, sc, color, newColor);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> image;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">dfs</span><span class="params">(<span class="keyword">int</span>[][] image, <span class="keyword">int</span> r, <span class="keyword">int</span> c, <span class="keyword">int</span> color, <span class="keyword">int</span> newColor)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (image[r][c] == color) &#123;</span><br><span class="line">            image[r][c] = newColor;</span><br><span class="line">            <span class="keyword">if</span> (r &gt;= <span class="number">1</span>) &#123;</span><br><span class="line">                dfs(image, r-<span class="number">1</span>, c, color, newColor);</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">if</span> (c &gt;= <span class="number">1</span>) &#123;</span><br><span class="line">                dfs(image, r, c-<span class="number">1</span>, color, newColor);</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">if</span> (r+<span class="number">1</span> &lt; image.length) &#123;</span><br><span class="line">                dfs(image, r+<span class="number">1</span>, c, color, newColor);</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">if</span> (c+<span class="number">1</span> &lt; image[<span class="number">0</span>].length) &#123;</span><br><span class="line">                dfs(image, r, c+<span class="number">1</span>, color, newColor);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <h3 id="相关问题"><a href="#相关问题" class="headerlink" title="相关问题"></a>相关问题</h3><hr>
 <ul>
-<li><a href="https://leetcode.com/problems/island-perimeter" target="_blank" rel="external">(E) Island Perimeter</a>   </li>
+<li><a href="https://leetcode.com/problems/island-perimeter" target="_blank" rel="noopener">(E) Island Perimeter</a>   </li>
 </ul>
-<h3 id="题目来源"><a href="#题目来源" class="headerlink" title="题目来源"></a><a href="https://leetcode.com/problems/flood-fill/description/" target="_blank" rel="external">题目来源</a></h3>
+<h3 id="题目来源"><a href="#题目来源" class="headerlink" title="题目来源"></a><a href="https://leetcode.com/problems/flood-fill/description/" target="_blank" rel="noopener">题目来源</a></h3>
       
     </div>
 
@@ -306,16 +306,16 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2014/03/11/leetcode/Algorithms/leetcode-73-Set-Matrix-Zeroes/" rel="next" title="leetcode-73-Set-Matrix-Zeroes">
-                <i class="fa fa-chevron-left"></i> leetcode-73-Set-Matrix-Zeroes
+              <a href="/2014/03/11/leetcode/Algorithms/leetcode-739-Daily-Temperatures/" rel="next" title="leetcode-739-Daily-Temperatures">
+                <i class="fa fa-chevron-left"></i> leetcode-739-Daily-Temperatures
               </a>
             
           </div>
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2014/03/11/leetcode/Algorithms/leetcode-728-Self-Dividing-Numbers/" rel="prev" title="leetcode-728-Self-Dividing-Numbers">
-                leetcode-728-Self-Dividing-Numbers <i class="fa fa-chevron-right"></i>
+              <a href="/2014/03/11/leetcode/Algorithms/leetcode-73-Set-Matrix-Zeroes/" rel="prev" title="leetcode-73-Set-Matrix-Zeroes">
+                leetcode-73-Set-Matrix-Zeroes <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -371,7 +371,7 @@
 
       
         <ul class="sidebar-nav motion-element">
-          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
             文章目录
           </li>
           <li class="sidebar-nav-overview" data-target="site-overview">
@@ -382,16 +382,14 @@
 
       <section class="site-overview sidebar-panel ">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
-          <img class="site-author-image" itemprop="image"
-               src="https://avatars1.githubusercontent.com/u/6964284?v=3&s=460"
-               alt="Frank" />
+          <img class="site-author-image" itemprop="image" src="https://avatars1.githubusercontent.com/u/6964284?v=3&s=460" alt="Frank">
           <p class="site-author-name" itemprop="name">Frank</p>
           <p class="site-description motion-element" itemprop="description"></p>
         </div>
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">365</span>
+              <span class="site-state-item-count">390</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -401,7 +399,7 @@
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">135</span>
+                <span class="site-state-item-count">207</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
@@ -437,7 +435,7 @@
         
           <div class="cc-license motion-element" itemprop="license">
             <a href="http://creativecommons.org/licenses/by-sa/4.0" class="cc-opacity" target="_blank">
-              <img src="/images/cc-by-sa.svg" alt="Creative Commons" />
+              <img src="/images/cc-by-sa.svg" alt="Creative Commons">
             </a>
           </div>
         
@@ -477,10 +475,10 @@
 
     <footer id="footer" class="footer">
       <div class="footer-inner">
-        <div class="copyright" >
+        <div class="copyright">
   
   &copy;  2015 - 
-  <span itemprop="copyrightYear">2019</span>
+  <span itemprop="copyrightYear">2021</span>
   <span class="with-love">
     <i class="fa fa-heart"></i>
   </span>

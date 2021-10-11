@@ -6,19 +6,15 @@
 
 
 <html class="theme-next muse use-motion">
-<head>
-  <meta charset="UTF-8"/>
-<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
 
 
-<meta http-equiv="Cache-Control" content="no-transform" />
-<meta http-equiv="Cache-Control" content="no-siteapp" />
-
-
-
-
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
 
 
 
@@ -27,7 +23,11 @@
 
 
 
-  <link href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css"/>
+
+
+
+
+  <link href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
 
 
 
@@ -36,21 +36,21 @@
 
 
 
-<link href="/vendors/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+<link href="/vendors/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css">
 
-<link href="/css/main.css?v=0.5.0" rel="stylesheet" type="text/css" />
-
-
-  <meta name="keywords" content="algorithms,leetcode,Heap," />
+<link href="/css/main.css?v=0.5.0" rel="stylesheet" type="text/css">
 
 
+  <meta name="keywords" content="algorithms,leetcode,Heap,">
 
 
 
 
 
 
-  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=0.5.0" />
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=0.5.0">
 
 
 
@@ -122,7 +122,7 @@
   
 
   <div class="custom-logo-site-title">
-    <a href="/"  class="brand" rel="start">
+    <a href="/" class="brand" rel="start">
       <span class="logo-line-before"><i></i></span>
       <span class="site-title">knarfeh's logbook</span>
       <span class="logo-line-after"><i></i></span>
@@ -149,7 +149,7 @@
         <li class="menu-item menu-item-home">
           <a href="/" rel="section">
             
-              <i class="menu-item-icon fa fa-home fa-fw"></i> <br />
+              <i class="menu-item-icon fa fa-home fa-fw"></i> <br>
             
             首页
           </a>
@@ -159,7 +159,7 @@
         <li class="menu-item menu-item-archives">
           <a href="/archives" rel="section">
             
-              <i class="menu-item-icon fa fa-archive fa-fw"></i> <br />
+              <i class="menu-item-icon fa fa-archive fa-fw"></i> <br>
             
             归档
           </a>
@@ -169,7 +169,7 @@
         <li class="menu-item menu-item-tags">
           <a href="/tags" rel="section">
             
-              <i class="menu-item-icon fa fa-tags fa-fw"></i> <br />
+              <i class="menu-item-icon fa fa-tags fa-fw"></i> <br>
             
             标签
           </a>
@@ -263,18 +263,18 @@
 <p>Design a class to find the <strong>k</strong>th largest element in a stream. Note that it is the kth largest element in the sorted order, not the kth distinct element.</p>
 <p>Your <code>KthLargest</code> class will have a constructor which accepts an integer <code>k</code> and an integer array <code>nums</code>, which contains initial elements from the stream. For each call to the method <code>KthLargest.add</code>, return the element representing the kth largest element in the stream.</p>
 <p><strong>Example:</strong></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">int k = 3;</div><div class="line">int[] arr = [4,5,8,2];</div><div class="line">KthLargest kthLargest = new KthLargest(3, arr);</div><div class="line">kthLargest.add(3);   // returns 4</div><div class="line">kthLargest.add(5);   // returns 5</div><div class="line">kthLargest.add(10);  // returns 5</div><div class="line">kthLargest.add(9);   // returns 8</div><div class="line">kthLargest.add(4);   // returns 8</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">int k = 3;</span><br><span class="line">int[] arr = [4,5,8,2];</span><br><span class="line">KthLargest kthLargest = new KthLargest(3, arr);</span><br><span class="line">kthLargest.add(3);   // returns 4</span><br><span class="line">kthLargest.add(5);   // returns 5</span><br><span class="line">kthLargest.add(10);  // returns 5</span><br><span class="line">kthLargest.add(9);   // returns 8</span><br><span class="line">kthLargest.add(4);   // returns 8</span><br></pre></td></tr></table></figure>
 <p><strong>Note:</strong><br>You may assume that <code>nums</code>‘ length ≥ <code>k-1</code> and <code>k</code> ≥ 1.</p>
 <a id="more"></a>
 <h3 id="分析"><a href="#分析" class="headerlink" title="分析"></a>分析</h3><hr>
-<p>用优先队列解决，类似的题目还有 <a href="https://leetcode.com/problems/kth-smallest-element-in-a-sorted-matrix" target="_blank" rel="external">Kth Smallest Element in a Sorted Matrix</a>，<a href="https://leetcode.com/problems/kth-largest-element-in-an-array" target="_blank" rel="external">Kth Largest Element in an Array</a>。</p>
+<p>用优先队列解决，类似的题目还有 <a href="https://leetcode.com/problems/kth-smallest-element-in-a-sorted-matrix" target="_blank" rel="noopener">Kth Smallest Element in a Sorted Matrix</a>，<a href="https://leetcode.com/problems/kth-largest-element-in-an-array" target="_blank" rel="noopener">Kth Largest Element in an Array</a>。</p>
 <h3 id="解决方案1-Java"><a href="#解决方案1-Java" class="headerlink" title="解决方案1(Java)"></a>解决方案1(Java)</h3><hr>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">KthLargest</span> </span>&#123;</div><div class="line">    </div><div class="line">    <span class="keyword">private</span> PriorityQueue&lt;Integer&gt; heap;</div><div class="line">    <span class="keyword">private</span> <span class="keyword">int</span> k;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="title">KthLargest</span><span class="params">(<span class="keyword">int</span> k, <span class="keyword">int</span>[] nums)</span> </span>&#123;</div><div class="line">        <span class="keyword">this</span>.k = k;</div><div class="line">        heap = <span class="keyword">new</span> PriorityQueue&lt;Integer&gt;(k);</div><div class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> a: nums) &#123;</div><div class="line">            add(a);</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">    </div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">add</span><span class="params">(<span class="keyword">int</span> val)</span> </span>&#123;</div><div class="line">        heap.offer(val);</div><div class="line">        <span class="keyword">if</span> (heap.size() &gt; k) &#123;</div><div class="line">            heap.poll();</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">return</span> heap.peek();</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="comment">/**</span></div><div class="line"> * Your KthLargest object will be instantiated and called as such:</div><div class="line"> * KthLargest obj = new KthLargest(k, nums);</div><div class="line"> * int param_1 = obj.add(val);</div><div class="line"> */</div></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">KthLargest</span> </span>&#123;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">private</span> PriorityQueue&lt;Integer&gt; heap;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">int</span> k;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">KthLargest</span><span class="params">(<span class="keyword">int</span> k, <span class="keyword">int</span>[] nums)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.k = k;</span><br><span class="line">        heap = <span class="keyword">new</span> PriorityQueue&lt;Integer&gt;(k);</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> a: nums) &#123;</span><br><span class="line">            add(a);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">add</span><span class="params">(<span class="keyword">int</span> val)</span> </span>&#123;</span><br><span class="line">        heap.offer(val);</span><br><span class="line">        <span class="keyword">if</span> (heap.size() &gt; k) &#123;</span><br><span class="line">            heap.poll();</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> heap.peek();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Your KthLargest object will be instantiated and called as such:</span></span><br><span class="line"><span class="comment"> * KthLargest obj = new KthLargest(k, nums);</span></span><br><span class="line"><span class="comment"> * int param_1 = obj.add(val);</span></span><br><span class="line"><span class="comment"> */</span></span><br></pre></td></tr></table></figure>
 <h3 id="相关问题"><a href="#相关问题" class="headerlink" title="相关问题"></a>相关问题</h3><hr>
 <ul>
-<li><a href="https://leetcode.com/problems/kth-largest-element-in-an-array" target="_blank" rel="external">(M) Kth Largest Element in an Array</a>   </li>
+<li><a href="https://leetcode.com/problems/kth-largest-element-in-an-array" target="_blank" rel="noopener">(M) Kth Largest Element in an Array</a>   </li>
 </ul>
-<h3 id="题目来源"><a href="#题目来源" class="headerlink" title="题目来源"></a><a href="https://leetcode.com/problems/kth-largest-element-in-a-stream/description/" target="_blank" rel="external">题目来源</a></h3>
+<h3 id="题目来源"><a href="#题目来源" class="headerlink" title="题目来源"></a><a href="https://leetcode.com/problems/kth-largest-element-in-a-stream/description/" target="_blank" rel="noopener">题目来源</a></h3>
       
     </div>
 
@@ -301,16 +301,16 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2014/03/11/leetcode/Algorithms/leetcode-706-Design-HashMap/" rel="next" title="leetcode-706-Design-HashMap">
-                <i class="fa fa-chevron-left"></i> leetcode-706-Design-HashMap
+              <a href="/2014/03/11/leetcode/Algorithms/leetcode-70-Climbing-Stairs/" rel="next" title="leetcode-70-Climbing-Stairs">
+                <i class="fa fa-chevron-left"></i> leetcode-70-Climbing-Stairs
               </a>
             
           </div>
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2014/03/11/leetcode/Algorithms/leetcode-70-Climbing-Stairs/" rel="prev" title="leetcode-70-Climbing-Stairs">
-                leetcode-70-Climbing-Stairs <i class="fa fa-chevron-right"></i>
+              <a href="/2014/03/11/leetcode/Algorithms/leetcode-700-Search-in-a-Binary-Search-Tree/" rel="prev" title="leetcode-700-Search-in-a-Binary-Search-Tree">
+                leetcode-700-Search-in-a-Binary-Search-Tree <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -366,7 +366,7 @@
 
       
         <ul class="sidebar-nav motion-element">
-          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
             文章目录
           </li>
           <li class="sidebar-nav-overview" data-target="site-overview">
@@ -377,16 +377,14 @@
 
       <section class="site-overview sidebar-panel ">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
-          <img class="site-author-image" itemprop="image"
-               src="https://avatars1.githubusercontent.com/u/6964284?v=3&s=460"
-               alt="Frank" />
+          <img class="site-author-image" itemprop="image" src="https://avatars1.githubusercontent.com/u/6964284?v=3&s=460" alt="Frank">
           <p class="site-author-name" itemprop="name">Frank</p>
           <p class="site-description motion-element" itemprop="description"></p>
         </div>
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">365</span>
+              <span class="site-state-item-count">390</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -396,7 +394,7 @@
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">135</span>
+                <span class="site-state-item-count">207</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
@@ -432,7 +430,7 @@
         
           <div class="cc-license motion-element" itemprop="license">
             <a href="http://creativecommons.org/licenses/by-sa/4.0" class="cc-opacity" target="_blank">
-              <img src="/images/cc-by-sa.svg" alt="Creative Commons" />
+              <img src="/images/cc-by-sa.svg" alt="Creative Commons">
             </a>
           </div>
         
@@ -472,10 +470,10 @@
 
     <footer id="footer" class="footer">
       <div class="footer-inner">
-        <div class="copyright" >
+        <div class="copyright">
   
   &copy;  2015 - 
-  <span itemprop="copyrightYear">2019</span>
+  <span itemprop="copyrightYear">2021</span>
   <span class="with-love">
     <i class="fa fa-heart"></i>
   </span>

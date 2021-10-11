@@ -6,19 +6,15 @@
 
 
 <html class="theme-next muse use-motion">
-<head>
-  <meta charset="UTF-8"/>
-<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
 
 
-<meta http-equiv="Cache-Control" content="no-transform" />
-<meta http-equiv="Cache-Control" content="no-siteapp" />
-
-
-
-
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
 
 
 
@@ -27,7 +23,11 @@
 
 
 
-  <link href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css"/>
+
+
+
+
+  <link href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
 
 
 
@@ -36,21 +36,21 @@
 
 
 
-<link href="/vendors/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+<link href="/vendors/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css">
 
-<link href="/css/main.css?v=0.5.0" rel="stylesheet" type="text/css" />
-
-
-  <meta name="keywords" content="Golang,Design,algorithms,leetcode," />
+<link href="/css/main.css?v=0.5.0" rel="stylesheet" type="text/css">
 
 
+  <meta name="keywords" content="algorithms,Golang,leetcode,Design,">
 
 
 
 
 
 
-  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=0.5.0" />
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=0.5.0">
 
 
 
@@ -58,7 +58,7 @@
 
 
 <meta name="description" content="描述 Design and implement a data structure for Least Recently Used (LRU) cache. It should support the following operations: get and put. get(key) - Get the value (will always be positive) of the key if">
-<meta name="keywords" content="Golang,Design,algorithms,leetcode">
+<meta name="keywords" content="algorithms,Golang,leetcode,Design">
 <meta property="og:type" content="article">
 <meta property="og:title" content="leetcode-146-LRU-Cache">
 <meta property="og:url" content="http://knarfeh.github.io/2014/03/11/leetcode/Algorithms/leetcode-146-LRU-Cache/index.html">
@@ -122,7 +122,7 @@
   
 
   <div class="custom-logo-site-title">
-    <a href="/"  class="brand" rel="start">
+    <a href="/" class="brand" rel="start">
       <span class="logo-line-before"><i></i></span>
       <span class="site-title">knarfeh's logbook</span>
       <span class="logo-line-after"><i></i></span>
@@ -149,7 +149,7 @@
         <li class="menu-item menu-item-home">
           <a href="/" rel="section">
             
-              <i class="menu-item-icon fa fa-home fa-fw"></i> <br />
+              <i class="menu-item-icon fa fa-home fa-fw"></i> <br>
             
             首页
           </a>
@@ -159,7 +159,7 @@
         <li class="menu-item menu-item-archives">
           <a href="/archives" rel="section">
             
-              <i class="menu-item-icon fa fa-archive fa-fw"></i> <br />
+              <i class="menu-item-icon fa fa-archive fa-fw"></i> <br>
             
             归档
           </a>
@@ -169,7 +169,7 @@
         <li class="menu-item menu-item-tags">
           <a href="/tags" rel="section">
             
-              <i class="menu-item-icon fa fa-tags fa-fw"></i> <br />
+              <i class="menu-item-icon fa fa-tags fa-fw"></i> <br>
             
             标签
           </a>
@@ -260,27 +260,27 @@
 
       
         <h3 id="描述"><a href="#描述" class="headerlink" title="描述"></a>描述</h3><hr>
-<p>Design and implement a data structure for <a href="https://en.wikipedia.org/wiki/Cache_replacement_policies#LRU" target="_blank" rel="external">Least Recently Used (LRU) cache</a>. It should support the following operations: <code>get</code> and <code>put</code>.</p>
+<p>Design and implement a data structure for <a href="https://en.wikipedia.org/wiki/Cache_replacement_policies#LRU" target="_blank" rel="noopener">Least Recently Used (LRU) cache</a>. It should support the following operations: <code>get</code> and <code>put</code>.</p>
 <p><code>get(key)</code> - Get the value (will always be positive) of the key if the key exists in the cache, otherwise return -1.<br><code>put(key, value)</code> - Set or insert the value if the key is not already present. When the cache reached its capacity, it should invalidate the least recently used item before inserting a new item.</p>
 <p><strong>Follow up</strong>:<br>Could you do both operations in <strong>O(1)</strong> time complexity?</p>
 <p><strong>Example</strong>:</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">LRUCache cache = <span class="keyword">new</span> LRUCache( <span class="number">2</span> <span class="comment">/* capacity */</span> );</div><div class="line"></div><div class="line">cache.put(<span class="number">1</span>, <span class="number">1</span>);</div><div class="line">cache.put(<span class="number">2</span>, <span class="number">2</span>);</div><div class="line">cache.get(<span class="number">1</span>);       <span class="comment">// returns 1</span></div><div class="line">cache.put(<span class="number">3</span>, <span class="number">3</span>);    <span class="comment">// evicts key 2</span></div><div class="line">cache.get(<span class="number">2</span>);       <span class="comment">// returns -1 (not found)</span></div><div class="line">cache.put(<span class="number">4</span>, <span class="number">4</span>);    <span class="comment">// evicts key 1</span></div><div class="line">cache.get(<span class="number">1</span>);       <span class="comment">// returns -1 (not found)</span></div><div class="line">cache.get(<span class="number">3</span>);       <span class="comment">// returns 3</span></div><div class="line">cache.get(<span class="number">4</span>);       <span class="comment">// returns 4</span></div></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">LRUCache cache = <span class="keyword">new</span> LRUCache( <span class="number">2</span> <span class="comment">/* capacity */</span> );</span><br><span class="line"></span><br><span class="line">cache.put(<span class="number">1</span>, <span class="number">1</span>);</span><br><span class="line">cache.put(<span class="number">2</span>, <span class="number">2</span>);</span><br><span class="line">cache.get(<span class="number">1</span>);       <span class="comment">// returns 1</span></span><br><span class="line">cache.put(<span class="number">3</span>, <span class="number">3</span>);    <span class="comment">// evicts key 2</span></span><br><span class="line">cache.get(<span class="number">2</span>);       <span class="comment">// returns -1 (not found)</span></span><br><span class="line">cache.put(<span class="number">4</span>, <span class="number">4</span>);    <span class="comment">// evicts key 1</span></span><br><span class="line">cache.get(<span class="number">1</span>);       <span class="comment">// returns -1 (not found)</span></span><br><span class="line">cache.get(<span class="number">3</span>);       <span class="comment">// returns 3</span></span><br><span class="line">cache.get(<span class="number">4</span>);       <span class="comment">// returns 4</span></span><br></pre></td></tr></table></figure>
 <a id="more"></a>
 <h3 id="分析"><a href="#分析" class="headerlink" title="分析"></a>分析</h3><hr>
 <p>LRU 即 Least Recently Used, 这是操作系统的内存管理中比较重要的内存页面置换算法，在其他的程序中也经常用到，LRU 算法的原则是：如果一段数据在很长一段时间内没有被访问到，那么将来它被访问的可能性也很小。在这个算法中，我们应该维护一个数据集，当数据集满时，我们应该将最久未被访问的数据淘汰。那么用什么数据结构来实现 LRU 算法呢，这个问题的要求实际上是需要维护一个有序数据集，每次命中时，该数据项需要排在第一位，插入时，也应该放在数据集的第一位，如果数据集满了再插入，需移除数据集的最后一位，将问题描述清楚了，是不是就发现最佳的数据结构是双向链表？</p>
 <p>如果用 hash map 来维护数据节点，将数据节点组成一个双向链表，更新，查询操作的复杂度都是 <code>O(1)</code></p>
 <h3 id="解决方案1-Golang"><a href="#解决方案1-Golang" class="headerlink" title="解决方案1(Golang)"></a>解决方案1(Golang)</h3><hr>
-<figure class="highlight go"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div><div class="line">80</div><div class="line">81</div><div class="line">82</div><div class="line">83</div><div class="line">84</div><div class="line">85</div><div class="line">86</div><div class="line">87</div><div class="line">88</div><div class="line">89</div><div class="line">90</div><div class="line">91</div><div class="line">92</div><div class="line">93</div><div class="line">94</div><div class="line">95</div><div class="line">96</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">type</span> node <span class="keyword">struct</span> &#123;</div><div class="line">    prev *node</div><div class="line">    val <span class="keyword">int</span></div><div class="line">    key <span class="keyword">int</span></div><div class="line">    next *node</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="keyword">type</span> dList <span class="keyword">struct</span> &#123;</div><div class="line">    head *node</div><div class="line">    tail *node</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">func</span> <span class="params">(root *dList)</span> <span class="title">PushFront</span><span class="params">(key, value <span class="keyword">int</span>)</span></span> &#123;</div><div class="line">    newNode := <span class="built_in">new</span>(node)</div><div class="line">    newNode.val = value</div><div class="line">    newNode.key = key</div><div class="line">    <span class="keyword">if</span> root.head == <span class="literal">nil</span> &#123;</div><div class="line">        root.head = newNode</div><div class="line">        root.tail = newNode</div><div class="line">    &#125; <span class="keyword">else</span> &#123;</div><div class="line">        newNode.next = root.head</div><div class="line">        root.head.prev = newNode</div><div class="line">        root.head = newNode</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">func</span> <span class="params">(root *dList)</span> <span class="title">EvictTail</span><span class="params">()</span></span> &#123;</div><div class="line">    <span class="keyword">if</span> root.tail != <span class="literal">nil</span> &#123;</div><div class="line">        <span class="keyword">if</span> root.tail.prev == <span class="literal">nil</span> &#123;</div><div class="line">            root.head = <span class="literal">nil</span></div><div class="line">            root.tail = <span class="literal">nil</span></div><div class="line">        &#125; <span class="keyword">else</span> &#123;</div><div class="line">            root.tail.prev.next = <span class="literal">nil</span></div><div class="line">            root.tail = root.tail.prev</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">func</span> <span class="params">(root *dList)</span> <span class="title">MoveToFront</span><span class="params">(n *node)</span></span> &#123;</div><div class="line">    <span class="keyword">if</span> n.prev != <span class="literal">nil</span> &#123;</div><div class="line">        <span class="keyword">if</span> n.next == <span class="literal">nil</span> &#123;</div><div class="line">            n.prev.next = <span class="literal">nil</span></div><div class="line">            root.tail = n.prev</div><div class="line">        &#125; <span class="keyword">else</span> &#123;</div><div class="line">            n.prev.next = n.next</div><div class="line">            n.next.prev = n.prev</div><div class="line">        &#125;</div><div class="line">        n.prev = <span class="literal">nil</span></div><div class="line">        root.head.prev = n</div><div class="line">        n.next = root.head</div><div class="line">        root.head = n</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="keyword">type</span> LRUCache <span class="keyword">struct</span> &#123;</div><div class="line">    maxCap <span class="keyword">int</span></div><div class="line">    curCap <span class="keyword">int</span></div><div class="line">    vMap <span class="keyword">map</span>[<span class="keyword">int</span>]*node</div><div class="line">    dNode *dList</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">func</span> <span class="title">Constructor</span><span class="params">(capacity <span class="keyword">int</span>)</span> <span class="title">LRUCache</span></span> &#123;</div><div class="line">    newCache := <span class="built_in">new</span>(LRUCache)</div><div class="line">    newCache.maxCap = capacity</div><div class="line">    newCache.vMap = <span class="built_in">make</span>(<span class="keyword">map</span>[<span class="keyword">int</span>]*node)</div><div class="line">    newCache.dNode = <span class="built_in">new</span>(dList)</div><div class="line">    <span class="keyword">return</span> *newCache</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">func</span> <span class="params">(this *LRUCache)</span> <span class="title">Get</span><span class="params">(key <span class="keyword">int</span>)</span> <span class="title">int</span></span> &#123;</div><div class="line">    <span class="keyword">if</span> valNode, ok := this.vMap[key]; ok &#123;</div><div class="line">        this.dNode.MoveToFront(valNode)</div><div class="line">        <span class="keyword">return</span> valNode.val</div><div class="line">    &#125; <span class="keyword">else</span> &#123;</div><div class="line">        <span class="keyword">return</span> <span class="number">-1</span></div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">func</span> <span class="params">(this *LRUCache)</span> <span class="title">Put</span><span class="params">(key, value <span class="keyword">int</span>)</span></span> &#123;</div><div class="line">    <span class="keyword">if</span> this.maxCap == <span class="number">0</span> &#123;</div><div class="line">        <span class="keyword">return</span></div><div class="line">    &#125;</div><div class="line">    <span class="keyword">if</span> valNode, ok := this.vMap[key]; ok &#123;</div><div class="line">        valNode.val = value</div><div class="line">        this.dNode.MoveToFront(valNode)</div><div class="line">    &#125; <span class="keyword">else</span> &#123;</div><div class="line">        <span class="keyword">if</span> this.curCap &lt; this.maxCap &#123;</div><div class="line">            this.curCap += <span class="number">1</span></div><div class="line">        &#125; <span class="keyword">else</span> &#123;</div><div class="line">            <span class="built_in">delete</span>(this.vMap, this.dNode.tail.key)</div><div class="line">            this.dNode.EvictTail()</div><div class="line">        &#125;</div><div class="line">        this.dNode.PushFront(key, value)</div><div class="line">        this.vMap[key] = this.dNode.head</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">type</span> node <span class="keyword">struct</span> &#123;</span><br><span class="line">    prev *node</span><br><span class="line">    val <span class="keyword">int</span></span><br><span class="line">    key <span class="keyword">int</span></span><br><span class="line">    next *node</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">type</span> dList <span class="keyword">struct</span> &#123;</span><br><span class="line">    head *node</span><br><span class="line">    tail *node</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="params">(root *dList)</span> <span class="title">PushFront</span><span class="params">(key, value <span class="keyword">int</span>)</span></span> &#123;</span><br><span class="line">    newNode := <span class="built_in">new</span>(node)</span><br><span class="line">    newNode.val = value</span><br><span class="line">    newNode.key = key</span><br><span class="line">    <span class="keyword">if</span> root.head == <span class="literal">nil</span> &#123;</span><br><span class="line">        root.head = newNode</span><br><span class="line">        root.tail = newNode</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        newNode.next = root.head</span><br><span class="line">        root.head.prev = newNode</span><br><span class="line">        root.head = newNode</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="params">(root *dList)</span> <span class="title">EvictTail</span><span class="params">()</span></span> &#123;</span><br><span class="line">    <span class="keyword">if</span> root.tail != <span class="literal">nil</span> &#123;</span><br><span class="line">        <span class="keyword">if</span> root.tail.prev == <span class="literal">nil</span> &#123;</span><br><span class="line">            root.head = <span class="literal">nil</span></span><br><span class="line">            root.tail = <span class="literal">nil</span></span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            root.tail.prev.next = <span class="literal">nil</span></span><br><span class="line">            root.tail = root.tail.prev</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="params">(root *dList)</span> <span class="title">MoveToFront</span><span class="params">(n *node)</span></span> &#123;</span><br><span class="line">    <span class="keyword">if</span> n.prev != <span class="literal">nil</span> &#123;</span><br><span class="line">        <span class="keyword">if</span> n.next == <span class="literal">nil</span> &#123;</span><br><span class="line">            n.prev.next = <span class="literal">nil</span></span><br><span class="line">            root.tail = n.prev</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            n.prev.next = n.next</span><br><span class="line">            n.next.prev = n.prev</span><br><span class="line">        &#125;</span><br><span class="line">        n.prev = <span class="literal">nil</span></span><br><span class="line">        root.head.prev = n</span><br><span class="line">        n.next = root.head</span><br><span class="line">        root.head = n</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">type</span> LRUCache <span class="keyword">struct</span> &#123;</span><br><span class="line">    maxCap <span class="keyword">int</span></span><br><span class="line">    curCap <span class="keyword">int</span></span><br><span class="line">    vMap <span class="keyword">map</span>[<span class="keyword">int</span>]*node</span><br><span class="line">    dNode *dList</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">Constructor</span><span class="params">(capacity <span class="keyword">int</span>)</span> <span class="title">LRUCache</span></span> &#123;</span><br><span class="line">    newCache := <span class="built_in">new</span>(LRUCache)</span><br><span class="line">    newCache.maxCap = capacity</span><br><span class="line">    newCache.vMap = <span class="built_in">make</span>(<span class="keyword">map</span>[<span class="keyword">int</span>]*node)</span><br><span class="line">    newCache.dNode = <span class="built_in">new</span>(dList)</span><br><span class="line">    <span class="keyword">return</span> *newCache</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="params">(this *LRUCache)</span> <span class="title">Get</span><span class="params">(key <span class="keyword">int</span>)</span> <span class="title">int</span></span> &#123;</span><br><span class="line">    <span class="keyword">if</span> valNode, ok := this.vMap[key]; ok &#123;</span><br><span class="line">        this.dNode.MoveToFront(valNode)</span><br><span class="line">        <span class="keyword">return</span> valNode.val</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="number">-1</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="params">(this *LRUCache)</span> <span class="title">Put</span><span class="params">(key, value <span class="keyword">int</span>)</span></span> &#123;</span><br><span class="line">    <span class="keyword">if</span> this.maxCap == <span class="number">0</span> &#123;</span><br><span class="line">        <span class="keyword">return</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span> valNode, ok := this.vMap[key]; ok &#123;</span><br><span class="line">        valNode.val = value</span><br><span class="line">        this.dNode.MoveToFront(valNode)</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        <span class="keyword">if</span> this.curCap &lt; this.maxCap &#123;</span><br><span class="line">            this.curCap += <span class="number">1</span></span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            <span class="built_in">delete</span>(this.vMap, this.dNode.tail.key)</span><br><span class="line">            this.dNode.EvictTail()</span><br><span class="line">        &#125;</span><br><span class="line">        this.dNode.PushFront(key, value)</span><br><span class="line">        this.vMap[key] = this.dNode.head</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>leetcode 提交的代码貌似不能引入标准库，所以这里需要维护一个双向链表，否则的话，在 Golang 中我们可以使用 <code>container/list</code>。</p>
-<p>lru 是一个很常用的算法，已经有很多工业级的实现，<a href="https://github.com/hashicorp/golang-lru/blob/master/simplelru/lru.go" target="_blank" rel="external">hashicorp/golang-lru</a> 和 <a href="https://github.com/syndtr/goleveldb/blob/master/leveldb/cache/lru.go" target="_blank" rel="external">syndtr/goleveldb</a> 都是非常好的学习资料。</p>
+<p>lru 是一个很常用的算法，已经有很多工业级的实现，<a href="https://github.com/hashicorp/golang-lru/blob/master/simplelru/lru.go" target="_blank" rel="noopener">hashicorp/golang-lru</a> 和 <a href="https://github.com/syndtr/goleveldb/blob/master/leveldb/cache/lru.go" target="_blank" rel="noopener">syndtr/goleveldb</a> 都是非常好的学习资料。</p>
 <h3 id="相关问题"><a href="#相关问题" class="headerlink" title="相关问题"></a>相关问题</h3><ul>
-<li><a href="https://leetcode.com/problems/lfu-cache" target="_blank" rel="external">(H)LFU Cache</a></li>
-<li><a href="https://leetcode.com/problems/design-in-memory-file-system" target="_blank" rel="external">(H)Design In-Memory File System</a></li>
-<li><a href="https://leetcode.com/problems/design-compressed-string-iterator" target="_blank" rel="external">(E)Design Compressed String Iterator</a></li>
+<li><a href="https://leetcode.com/problems/lfu-cache" target="_blank" rel="noopener">(H)LFU Cache</a></li>
+<li><a href="https://leetcode.com/problems/design-in-memory-file-system" target="_blank" rel="noopener">(H)Design In-Memory File System</a></li>
+<li><a href="https://leetcode.com/problems/design-compressed-string-iterator" target="_blank" rel="noopener">(E)Design Compressed String Iterator</a></li>
 </ul>
-<h3 id="题目来源"><a href="#题目来源" class="headerlink" title="题目来源"></a><a href="https://leetcode.com/problems/lru-cache/" target="_blank" rel="external">题目来源</a></h3><h3 id="References"><a href="#References" class="headerlink" title="References"></a>References</h3><ul>
-<li><a href="https://github.com/hashicorp/golang-lru/blob/master/simplelru/lru.go" target="_blank" rel="external">hashicorp/golang-lru</a></li>
-<li><a href="https://en.wikipedia.org/wiki/Cache_replacement_policies#LRU" target="_blank" rel="external">wiki/Cache_replacement_policies#LRU</a></li>
+<h3 id="题目来源"><a href="#题目来源" class="headerlink" title="题目来源"></a><a href="https://leetcode.com/problems/lru-cache/" target="_blank" rel="noopener">题目来源</a></h3><h3 id="References"><a href="#References" class="headerlink" title="References"></a>References</h3><ul>
+<li><a href="https://github.com/hashicorp/golang-lru/blob/master/simplelru/lru.go" target="_blank" rel="noopener">hashicorp/golang-lru</a></li>
+<li><a href="https://en.wikipedia.org/wiki/Cache_replacement_policies#LRU" target="_blank" rel="noopener">wiki/Cache_replacement_policies#LRU</a></li>
 </ul>
 
       
@@ -296,13 +296,13 @@
       
         <div class="post-tags">
           
-            <a href="/tags/Golang/" rel="tag">#Golang</a>
-          
-            <a href="/tags/Design/" rel="tag">#Design</a>
-          
             <a href="/tags/algorithms/" rel="tag">#algorithms</a>
           
+            <a href="/tags/Golang/" rel="tag">#Golang</a>
+          
             <a href="/tags/leetcode/" rel="tag">#leetcode</a>
+          
+            <a href="/tags/Design/" rel="tag">#Design</a>
           
         </div>
       
@@ -311,16 +311,16 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2014/03/11/leetcode/Algorithms/leetcode-16-3Sum-Closest/" rel="next" title="leetcode-16-3Sum-Closest">
-                <i class="fa fa-chevron-left"></i> leetcode-16-3Sum-Closest
+              <a href="/2014/03/11/leetcode/Algorithms/leetcode-141-Linked-List-Cycle/" rel="next" title="leetcode-141-Linked-List-Cycle">
+                <i class="fa fa-chevron-left"></i> leetcode-141-Linked-List-Cycle
               </a>
             
           </div>
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2014/03/11/leetcode/Algorithms/leetcode-147-Insertion-Sort-List/" rel="prev" title="leetcode-147-Insertion-Sort-List">
-                leetcode-147-Insertion-Sort-List <i class="fa fa-chevron-right"></i>
+              <a href="/2014/03/11/leetcode/Algorithms/leetcode-144-Binary-Tree-Preorder-Traversal/" rel="prev" title="leetcode-144-Binary-Tree-Preorder-Traversal">
+                leetcode-144-Binary-Tree-Preorder-Traversal <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -376,7 +376,7 @@
 
       
         <ul class="sidebar-nav motion-element">
-          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
             文章目录
           </li>
           <li class="sidebar-nav-overview" data-target="site-overview">
@@ -387,16 +387,14 @@
 
       <section class="site-overview sidebar-panel ">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
-          <img class="site-author-image" itemprop="image"
-               src="https://avatars1.githubusercontent.com/u/6964284?v=3&s=460"
-               alt="Frank" />
+          <img class="site-author-image" itemprop="image" src="https://avatars1.githubusercontent.com/u/6964284?v=3&s=460" alt="Frank">
           <p class="site-author-name" itemprop="name">Frank</p>
           <p class="site-description motion-element" itemprop="description"></p>
         </div>
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">365</span>
+              <span class="site-state-item-count">390</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -406,7 +404,7 @@
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">135</span>
+                <span class="site-state-item-count">207</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
@@ -442,7 +440,7 @@
         
           <div class="cc-license motion-element" itemprop="license">
             <a href="http://creativecommons.org/licenses/by-sa/4.0" class="cc-opacity" target="_blank">
-              <img src="/images/cc-by-sa.svg" alt="Creative Commons" />
+              <img src="/images/cc-by-sa.svg" alt="Creative Commons">
             </a>
           </div>
         
@@ -482,10 +480,10 @@
 
     <footer id="footer" class="footer">
       <div class="footer-inner">
-        <div class="copyright" >
+        <div class="copyright">
   
   &copy;  2015 - 
-  <span itemprop="copyrightYear">2019</span>
+  <span itemprop="copyrightYear">2021</span>
   <span class="with-love">
     <i class="fa fa-heart"></i>
   </span>

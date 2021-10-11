@@ -6,19 +6,15 @@
 
 
 <html class="theme-next muse use-motion">
-<head>
-  <meta charset="UTF-8"/>
-<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
 
 
-<meta http-equiv="Cache-Control" content="no-transform" />
-<meta http-equiv="Cache-Control" content="no-siteapp" />
-
-
-
-
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
 
 
 
@@ -27,7 +23,11 @@
 
 
 
-  <link href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css"/>
+
+
+
+
+  <link href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
 
 
 
@@ -36,21 +36,21 @@
 
 
 
-<link href="/vendors/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+<link href="/vendors/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css">
 
-<link href="/css/main.css?v=0.5.0" rel="stylesheet" type="text/css" />
-
-
-  <meta name="keywords" content="Design,algorithms,leetcode,Array,Hash-Table," />
+<link href="/css/main.css?v=0.5.0" rel="stylesheet" type="text/css">
 
 
+  <meta name="keywords" content="algorithms,leetcode,Design,Array,Hash-Table,">
 
 
 
 
 
 
-  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=0.5.0" />
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=0.5.0">
 
 
 
@@ -58,7 +58,7 @@
 
 
 <meta name="description" content="描述 Design a data structure that supports all following operations in average O(1) time. Note: Duplicate elements are allowed.  insert(val): Inserts an item val to the collection. remove(val): Removes">
-<meta name="keywords" content="Design,algorithms,leetcode,Array,Hash-Table">
+<meta name="keywords" content="algorithms,leetcode,Design,Array,Hash-Table">
 <meta property="og:type" content="article">
 <meta property="og:title" content="leetcode-381-Insert-Delete-GetRandom-O(1)-Duplicates-allowed">
 <meta property="og:url" content="http://knarfeh.github.io/2014/03/11/leetcode/Algorithms/leetcode-381-Insert-Delete-GetRandom-O(1)-Duplicates-allowed/index.html">
@@ -122,7 +122,7 @@
   
 
   <div class="custom-logo-site-title">
-    <a href="/"  class="brand" rel="start">
+    <a href="/" class="brand" rel="start">
       <span class="logo-line-before"><i></i></span>
       <span class="site-title">knarfeh's logbook</span>
       <span class="logo-line-after"><i></i></span>
@@ -149,7 +149,7 @@
         <li class="menu-item menu-item-home">
           <a href="/" rel="section">
             
-              <i class="menu-item-icon fa fa-home fa-fw"></i> <br />
+              <i class="menu-item-icon fa fa-home fa-fw"></i> <br>
             
             首页
           </a>
@@ -159,7 +159,7 @@
         <li class="menu-item menu-item-archives">
           <a href="/archives" rel="section">
             
-              <i class="menu-item-icon fa fa-archive fa-fw"></i> <br />
+              <i class="menu-item-icon fa fa-archive fa-fw"></i> <br>
             
             归档
           </a>
@@ -169,7 +169,7 @@
         <li class="menu-item menu-item-tags">
           <a href="/tags" rel="section">
             
-              <i class="menu-item-icon fa fa-tags fa-fw"></i> <br />
+              <i class="menu-item-icon fa fa-tags fa-fw"></i> <br>
             
             标签
           </a>
@@ -268,15 +268,15 @@
 <li><code>getRandom</code>: Returns a random element from current collection of elements. The probability of each element being returned is <strong>linearly related</strong> to the number of same value the collection contains.</li>
 </ol>
 <p><strong>Example:</strong></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div></pre></td><td class="code"><pre><div class="line">// Init an empty collection.</div><div class="line">RandomizedCollection collection = new RandomizedCollection();</div><div class="line"></div><div class="line">// Inserts 1 to the collection. Returns true as the collection did not contain 1.</div><div class="line">collection.insert(1);</div><div class="line"></div><div class="line">// Inserts another 1 to the collection. Returns false as the collection contained 1. Collection now contains [1,1].</div><div class="line">collection.insert(1);</div><div class="line"></div><div class="line">// Inserts 2 to the collection, returns true. Collection now contains [1,1,2].</div><div class="line">collection.insert(2);</div><div class="line"></div><div class="line">// getRandom should return 1 with the probability 2/3, and returns 2 with the probability 1/3.</div><div class="line">collection.getRandom();</div><div class="line"></div><div class="line">// Removes 1 from the collection, returns true. Collection now contains [1,2].</div><div class="line">collection.remove(1);</div><div class="line"></div><div class="line">// getRandom should return 1 and 2 both equally likely.</div><div class="line">collection.getRandom();</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">// Init an empty collection.</span><br><span class="line">RandomizedCollection collection = new RandomizedCollection();</span><br><span class="line"></span><br><span class="line">// Inserts 1 to the collection. Returns true as the collection did not contain 1.</span><br><span class="line">collection.insert(1);</span><br><span class="line"></span><br><span class="line">// Inserts another 1 to the collection. Returns false as the collection contained 1. Collection now contains [1,1].</span><br><span class="line">collection.insert(1);</span><br><span class="line"></span><br><span class="line">// Inserts 2 to the collection, returns true. Collection now contains [1,1,2].</span><br><span class="line">collection.insert(2);</span><br><span class="line"></span><br><span class="line">// getRandom should return 1 with the probability 2/3, and returns 2 with the probability 1/3.</span><br><span class="line">collection.getRandom();</span><br><span class="line"></span><br><span class="line">// Removes 1 from the collection, returns true. Collection now contains [1,2].</span><br><span class="line">collection.remove(1);</span><br><span class="line"></span><br><span class="line">// getRandom should return 1 and 2 both equally likely.</span><br><span class="line">collection.getRandom();</span><br></pre></td></tr></table></figure>
 <a id="more"></a>
 <h3 id="分析"><a href="#分析" class="headerlink" title="分析"></a>分析</h3><hr>
-<p>这题紧接上一题 <a href="https://leetcode.com/problems/insert-delete-getrandom-o1/description/" target="_blank" rel="external">380. Insert Delete GetRandom O(1)</a>，但要求允许插入重复值。由于允许插入重复值，哈希表的结构应该是 value-list 这样的对应关系，其中 list 记录的是数组中的索引值，插入，删除的逻辑大致一样，但我们需要有一个方法可以从数组中找到哈希表的列表中的某个值，因此需要记录哈希表中 list 的索引，因此引入 Element 数据结构，除了保存本身的值外，还记录哈希表中 list 的索引，这样就能找到数组和 Map 的对应关系了。</p>
+<p>这题紧接上一题 <a href="https://leetcode.com/problems/insert-delete-getrandom-o1/description/" target="_blank" rel="noopener">380. Insert Delete GetRandom O(1)</a>，但要求允许插入重复值。由于允许插入重复值，哈希表的结构应该是 value-list 这样的对应关系，其中 list 记录的是数组中的索引值，插入，删除的逻辑大致一样，但我们需要有一个方法可以从数组中找到哈希表的列表中的某个值，因此需要记录哈希表中 list 的索引，因此引入 Element 数据结构，除了保存本身的值外，还记录哈希表中 list 的索引，这样就能找到数组和 Map 的对应关系了。</p>
 <h3 id="解决方案1-Java"><a href="#解决方案1-Java" class="headerlink" title="解决方案1(Java)"></a>解决方案1(Java)</h3><hr>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">RandomizedCollection</span> </span>&#123;</div><div class="line">    <span class="keyword">private</span> HashMap&lt;Integer, List&lt;Integer&gt;&gt; hashIndexListMap;</div><div class="line">    <span class="keyword">private</span> ArrayList&lt;Element&gt; elementList;</div><div class="line">    <span class="keyword">private</span> java.util.Random rand = <span class="keyword">new</span> java.util.Random();</div><div class="line">    <span class="keyword">private</span> <span class="keyword">int</span> size;</div><div class="line"></div><div class="line">    <span class="comment">/** Initialize your data structure here. */</span></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="title">RandomizedCollection</span><span class="params">()</span> </span>&#123;</div><div class="line">        <span class="keyword">this</span>.elementList = <span class="keyword">new</span> ArrayList&lt;Element&gt;();</div><div class="line">        <span class="keyword">this</span>.hashIndexListMap = <span class="keyword">new</span> HashMap&lt;Integer, List&lt;Integer&gt;&gt;();</div><div class="line">        <span class="keyword">this</span>.size = <span class="number">0</span>;</div><div class="line">    &#125;</div><div class="line">    </div><div class="line">    <span class="comment">/** Inserts a value to the collection. Returns true if the collection did not already contain the specified element. */</span></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">insert</span><span class="params">(<span class="keyword">int</span> val)</span> </span>&#123;</div><div class="line">        List&lt;Integer&gt; indexList = <span class="keyword">this</span>.hashIndexListMap.getOrDefault(val, <span class="keyword">new</span> ArrayList&lt;&gt;());</div><div class="line">        <span class="keyword">this</span>.elementList.add(<span class="keyword">new</span> Element(val, indexList.size()));</div><div class="line">        indexList.add(<span class="keyword">this</span>.size);</div><div class="line">        <span class="keyword">this</span>.hashIndexListMap.put(val, indexList);</div><div class="line">        <span class="keyword">this</span>.size++;</div><div class="line">        <span class="keyword">return</span> indexList.size() == <span class="number">1</span>;</div><div class="line">    &#125;</div><div class="line">    </div><div class="line">    <span class="comment">/** Removes a value from the collection. Returns true if the collection contained the specified element. */</span></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">remove</span><span class="params">(<span class="keyword">int</span> val)</span> </span>&#123;</div><div class="line">        List&lt;Integer&gt; indexList = <span class="keyword">this</span>.hashIndexListMap.get(val);</div><div class="line">        <span class="keyword">if</span> (indexList == <span class="keyword">null</span>) &#123;</div><div class="line">            <span class="keyword">return</span> <span class="keyword">false</span>;</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">int</span> elementIndex = indexList.get(indexList.size() - <span class="number">1</span>);</div><div class="line">        Element lastElement = <span class="keyword">this</span>.elementList.get(<span class="keyword">this</span>.elementList.size() - <span class="number">1</span>);</div><div class="line">        </div><div class="line">        List&lt;Integer&gt; lastElementIndexList = <span class="keyword">this</span>.hashIndexListMap.get(lastElement.value);</div><div class="line">        lastElementIndexList.set(lastElement.index, elementIndex);</div><div class="line">        <span class="keyword">this</span>.elementList.set(elementIndex, lastElement);</div><div class="line">        </div><div class="line">        <span class="keyword">this</span>.elementList.remove(<span class="keyword">this</span>.elementList.size() - <span class="number">1</span>);</div><div class="line">        indexList.remove(indexList.size() - <span class="number">1</span>);</div><div class="line">        <span class="keyword">if</span> (indexList.isEmpty()) &#123;</div><div class="line">            <span class="keyword">this</span>.hashIndexListMap.remove(val);</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">this</span>.size--;</div><div class="line">        <span class="keyword">return</span> <span class="keyword">true</span>;</div><div class="line">    &#125;</div><div class="line">    </div><div class="line">    <span class="comment">/** Get a random element from the collection. */</span></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">getRandom</span><span class="params">()</span> </span>&#123;</div><div class="line">        <span class="keyword">return</span> <span class="keyword">this</span>.elementList.get(rand.nextInt(<span class="keyword">this</span>.elementList.size())).value;</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Element</span> </span>&#123;</div><div class="line">    <span class="keyword">int</span> value;</div><div class="line">    <span class="keyword">int</span> index;</div><div class="line">    </div><div class="line">    Element(<span class="keyword">int</span> value, <span class="keyword">int</span> index) &#123;</div><div class="line">        <span class="keyword">this</span>.value = value;</div><div class="line">        <span class="keyword">this</span>.index = index;</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="comment">/**</span></div><div class="line"> * Your RandomizedCollection object will be instantiated and called as such:</div><div class="line"> * RandomizedCollection obj = new RandomizedCollection();</div><div class="line"> * boolean param_1 = obj.insert(val);</div><div class="line"> * boolean param_2 = obj.remove(val);</div><div class="line"> * int param_3 = obj.getRandom();</div><div class="line"> */</div></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">RandomizedCollection</span> </span>&#123;</span><br><span class="line">    <span class="keyword">private</span> HashMap&lt;Integer, List&lt;Integer&gt;&gt; hashIndexListMap;</span><br><span class="line">    <span class="keyword">private</span> ArrayList&lt;Element&gt; elementList;</span><br><span class="line">    <span class="keyword">private</span> java.util.Random rand = <span class="keyword">new</span> java.util.Random();</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">int</span> size;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/** Initialize your data structure here. */</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">RandomizedCollection</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.elementList = <span class="keyword">new</span> ArrayList&lt;Element&gt;();</span><br><span class="line">        <span class="keyword">this</span>.hashIndexListMap = <span class="keyword">new</span> HashMap&lt;Integer, List&lt;Integer&gt;&gt;();</span><br><span class="line">        <span class="keyword">this</span>.size = <span class="number">0</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="comment">/** Inserts a value to the collection. Returns true if the collection did not already contain the specified element. */</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">insert</span><span class="params">(<span class="keyword">int</span> val)</span> </span>&#123;</span><br><span class="line">        List&lt;Integer&gt; indexList = <span class="keyword">this</span>.hashIndexListMap.getOrDefault(val, <span class="keyword">new</span> ArrayList&lt;&gt;());</span><br><span class="line">        <span class="keyword">this</span>.elementList.add(<span class="keyword">new</span> Element(val, indexList.size()));</span><br><span class="line">        indexList.add(<span class="keyword">this</span>.size);</span><br><span class="line">        <span class="keyword">this</span>.hashIndexListMap.put(val, indexList);</span><br><span class="line">        <span class="keyword">this</span>.size++;</span><br><span class="line">        <span class="keyword">return</span> indexList.size() == <span class="number">1</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="comment">/** Removes a value from the collection. Returns true if the collection contained the specified element. */</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">remove</span><span class="params">(<span class="keyword">int</span> val)</span> </span>&#123;</span><br><span class="line">        List&lt;Integer&gt; indexList = <span class="keyword">this</span>.hashIndexListMap.get(val);</span><br><span class="line">        <span class="keyword">if</span> (indexList == <span class="keyword">null</span>) &#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">int</span> elementIndex = indexList.get(indexList.size() - <span class="number">1</span>);</span><br><span class="line">        Element lastElement = <span class="keyword">this</span>.elementList.get(<span class="keyword">this</span>.elementList.size() - <span class="number">1</span>);</span><br><span class="line">        </span><br><span class="line">        List&lt;Integer&gt; lastElementIndexList = <span class="keyword">this</span>.hashIndexListMap.get(lastElement.value);</span><br><span class="line">        lastElementIndexList.set(lastElement.index, elementIndex);</span><br><span class="line">        <span class="keyword">this</span>.elementList.set(elementIndex, lastElement);</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">this</span>.elementList.remove(<span class="keyword">this</span>.elementList.size() - <span class="number">1</span>);</span><br><span class="line">        indexList.remove(indexList.size() - <span class="number">1</span>);</span><br><span class="line">        <span class="keyword">if</span> (indexList.isEmpty()) &#123;</span><br><span class="line">            <span class="keyword">this</span>.hashIndexListMap.remove(val);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">this</span>.size--;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="comment">/** Get a random element from the collection. */</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">getRandom</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">this</span>.elementList.get(rand.nextInt(<span class="keyword">this</span>.elementList.size())).value;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Element</span> </span>&#123;</span><br><span class="line">    <span class="keyword">int</span> value;</span><br><span class="line">    <span class="keyword">int</span> index;</span><br><span class="line">    </span><br><span class="line">    Element(<span class="keyword">int</span> value, <span class="keyword">int</span> index) &#123;</span><br><span class="line">        <span class="keyword">this</span>.value = value;</span><br><span class="line">        <span class="keyword">this</span>.index = index;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Your RandomizedCollection object will be instantiated and called as such:</span></span><br><span class="line"><span class="comment"> * RandomizedCollection obj = new RandomizedCollection();</span></span><br><span class="line"><span class="comment"> * boolean param_1 = obj.insert(val);</span></span><br><span class="line"><span class="comment"> * boolean param_2 = obj.remove(val);</span></span><br><span class="line"><span class="comment"> * int param_3 = obj.getRandom();</span></span><br><span class="line"><span class="comment"> */</span></span><br></pre></td></tr></table></figure>
 <h3 id="相关问题"><a href="#相关问题" class="headerlink" title="相关问题"></a>相关问题</h3><hr>
-<p><a href="https://leetcode.com/problems/insert-delete-getrandom-o1" target="_blank" rel="external">(M) Insert Delete GetRandom O(1)</a>   </p>
-<h3 id="题目来源"><a href="#题目来源" class="headerlink" title="题目来源"></a><a href="https://leetcode.com/problems/insert-delete-getrandom-o1-duplicates-allowed/description/" target="_blank" rel="external">题目来源</a></h3>
+<p><a href="https://leetcode.com/problems/insert-delete-getrandom-o1" target="_blank" rel="noopener">(M) Insert Delete GetRandom O(1)</a>   </p>
+<h3 id="题目来源"><a href="#题目来源" class="headerlink" title="题目来源"></a><a href="https://leetcode.com/problems/insert-delete-getrandom-o1-duplicates-allowed/description/" target="_blank" rel="noopener">题目来源</a></h3>
       
     </div>
 
@@ -290,11 +290,11 @@
       
         <div class="post-tags">
           
-            <a href="/tags/Design/" rel="tag">#Design</a>
-          
             <a href="/tags/algorithms/" rel="tag">#algorithms</a>
           
             <a href="/tags/leetcode/" rel="tag">#leetcode</a>
+          
+            <a href="/tags/Design/" rel="tag">#Design</a>
           
             <a href="/tags/Array/" rel="tag">#Array</a>
           
@@ -315,8 +315,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2014/03/11/leetcode/Algorithms/leetcode-38-Count-and-Say/" rel="prev" title="leetcode-38-Count-and-Say">
-                leetcode-38-Count-and-Say <i class="fa fa-chevron-right"></i>
+              <a href="/2014/03/11/leetcode/Algorithms/leetcode-378-Kth-Smallest-Element-in-a-Sorted-Matrix/" rel="prev" title="leetcode-378-Kth-Smallest-Element-in-a-Sorted-Matrix">
+                leetcode-378-Kth-Smallest-Element-in-a-Sorted-Matrix <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -372,7 +372,7 @@
 
       
         <ul class="sidebar-nav motion-element">
-          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
             文章目录
           </li>
           <li class="sidebar-nav-overview" data-target="site-overview">
@@ -383,16 +383,14 @@
 
       <section class="site-overview sidebar-panel ">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
-          <img class="site-author-image" itemprop="image"
-               src="https://avatars1.githubusercontent.com/u/6964284?v=3&s=460"
-               alt="Frank" />
+          <img class="site-author-image" itemprop="image" src="https://avatars1.githubusercontent.com/u/6964284?v=3&s=460" alt="Frank">
           <p class="site-author-name" itemprop="name">Frank</p>
           <p class="site-description motion-element" itemprop="description"></p>
         </div>
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">365</span>
+              <span class="site-state-item-count">390</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -402,7 +400,7 @@
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">135</span>
+                <span class="site-state-item-count">207</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
@@ -438,7 +436,7 @@
         
           <div class="cc-license motion-element" itemprop="license">
             <a href="http://creativecommons.org/licenses/by-sa/4.0" class="cc-opacity" target="_blank">
-              <img src="/images/cc-by-sa.svg" alt="Creative Commons" />
+              <img src="/images/cc-by-sa.svg" alt="Creative Commons">
             </a>
           </div>
         
@@ -478,10 +476,10 @@
 
     <footer id="footer" class="footer">
       <div class="footer-inner">
-        <div class="copyright" >
+        <div class="copyright">
   
   &copy;  2015 - 
-  <span itemprop="copyrightYear">2019</span>
+  <span itemprop="copyrightYear">2021</span>
   <span class="with-love">
     <i class="fa fa-heart"></i>
   </span>

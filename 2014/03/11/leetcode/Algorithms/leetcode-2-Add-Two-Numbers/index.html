@@ -6,19 +6,15 @@
 
 
 <html class="theme-next muse use-motion">
-<head>
-  <meta charset="UTF-8"/>
-<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
 
 
-<meta http-equiv="Cache-Control" content="no-transform" />
-<meta http-equiv="Cache-Control" content="no-siteapp" />
-
-
-
-
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
 
 
 
@@ -27,7 +23,11 @@
 
 
 
-  <link href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css"/>
+
+
+
+
+  <link href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
 
 
 
@@ -36,21 +36,21 @@
 
 
 
-<link href="/vendors/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+<link href="/vendors/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css">
 
-<link href="/css/main.css?v=0.5.0" rel="stylesheet" type="text/css" />
-
-
-  <meta name="keywords" content="algorithms,leetcode,Linked-List,Math," />
+<link href="/css/main.css?v=0.5.0" rel="stylesheet" type="text/css">
 
 
+  <meta name="keywords" content="algorithms,leetcode,Math,Linked-List,">
 
 
 
 
 
 
-  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=0.5.0" />
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=0.5.0">
 
 
 
@@ -58,7 +58,7 @@
 
 
 <meta name="description" content="描述 You are given two linked lists representing two non-negative numbers. The digits are stored in reverse order and each of their nodes contain a single digit. Add the two numbers and return it as a l">
-<meta name="keywords" content="algorithms,leetcode,Linked-List,Math">
+<meta name="keywords" content="algorithms,leetcode,Math,Linked-List">
 <meta property="og:type" content="article">
 <meta property="og:title" content="leetcode-2-Add-Two-Numbers">
 <meta property="og:url" content="http://knarfeh.github.io/2014/03/11/leetcode/Algorithms/leetcode-2-Add-Two-Numbers/index.html">
@@ -122,7 +122,7 @@
   
 
   <div class="custom-logo-site-title">
-    <a href="/"  class="brand" rel="start">
+    <a href="/" class="brand" rel="start">
       <span class="logo-line-before"><i></i></span>
       <span class="site-title">knarfeh's logbook</span>
       <span class="logo-line-after"><i></i></span>
@@ -149,7 +149,7 @@
         <li class="menu-item menu-item-home">
           <a href="/" rel="section">
             
-              <i class="menu-item-icon fa fa-home fa-fw"></i> <br />
+              <i class="menu-item-icon fa fa-home fa-fw"></i> <br>
             
             首页
           </a>
@@ -159,7 +159,7 @@
         <li class="menu-item menu-item-archives">
           <a href="/archives" rel="section">
             
-              <i class="menu-item-icon fa fa-archive fa-fw"></i> <br />
+              <i class="menu-item-icon fa fa-archive fa-fw"></i> <br>
             
             归档
           </a>
@@ -169,7 +169,7 @@
         <li class="menu-item menu-item-tags">
           <a href="/tags" rel="section">
             
-              <i class="menu-item-icon fa fa-tags fa-fw"></i> <br />
+              <i class="menu-item-icon fa fa-tags fa-fw"></i> <br>
             
             标签
           </a>
@@ -265,19 +265,19 @@
 <h3 id="分析"><a href="#分析" class="headerlink" title="分析"></a>分析</h3><hr>
 <p>刚看这题的时候还以为是反方向的，看了半天，原来就跟普通加法的算法一样，直接相加，用一个变量记录进位即可，需要注意边界情况。</p>
 <h3 id="解决方案1-C"><a href="#解决方案1-C" class="headerlink" title="解决方案1(C++)"></a>解决方案1(C++)</h3><hr>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div></pre></td><td class="code"><pre><div class="line"><span class="comment">/**</span></div><div class="line"> * Definition for singly-linked list.</div><div class="line"> * struct ListNode &#123;</div><div class="line"> *     int val;</div><div class="line"> *     ListNode *next;</div><div class="line"> *     ListNode(int x) : val(x), next(NULL) &#123;&#125;</div><div class="line"> * &#125;;</div><div class="line"> */</div><div class="line"><span class="keyword">class</span> Solution &#123;</div><div class="line"><span class="keyword">public</span>:</div><div class="line">    <span class="function">ListNode* <span class="title">addTwoNumbers</span><span class="params">(ListNode* l1, ListNode* l2)</span> </span>&#123;</div><div class="line">        ListNode* dummy = <span class="keyword">new</span> ListNode(<span class="number">0</span>);</div><div class="line">        ListNode *p = dummy;</div><div class="line">        <span class="keyword">int</span> carry = <span class="number">0</span>;</div><div class="line">        </div><div class="line">        <span class="keyword">while</span>(l1 || l2 || carry) &#123;</div><div class="line">            <span class="keyword">if</span>(l1) &#123;</div><div class="line">                carry += l1-&gt;val;</div><div class="line">                l1 = l1-&gt;next;</div><div class="line">            &#125;</div><div class="line">            <span class="keyword">if</span>(l2) &#123;</div><div class="line">                carry += l2-&gt;val;</div><div class="line">                l2 = l2-&gt;next;</div><div class="line">            &#125;</div><div class="line">            p-&gt;next = <span class="keyword">new</span> ListNode(carry % <span class="number">10</span>);</div><div class="line">            carry /= <span class="number">10</span>;</div><div class="line">            p = p-&gt;next;</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">return</span> dummy-&gt;next;</div><div class="line">    &#125;</div><div class="line">&#125;;</div></pre></td></tr></table></figure>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Definition for singly-linked list.</span></span><br><span class="line"><span class="comment"> * struct ListNode &#123;</span></span><br><span class="line"><span class="comment"> *     int val;</span></span><br><span class="line"><span class="comment"> *     ListNode *next;</span></span><br><span class="line"><span class="comment"> *     ListNode(int x) : val(x), next(NULL) &#123;&#125;</span></span><br><span class="line"><span class="comment"> * &#125;;</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function">ListNode* <span class="title">addTwoNumbers</span><span class="params">(ListNode* l1, ListNode* l2)</span> </span>&#123;</span><br><span class="line">        ListNode* dummy = <span class="keyword">new</span> ListNode(<span class="number">0</span>);</span><br><span class="line">        ListNode *p = dummy;</span><br><span class="line">        <span class="keyword">int</span> carry = <span class="number">0</span>;</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">while</span>(l1 || l2 || carry) &#123;</span><br><span class="line">            <span class="keyword">if</span>(l1) &#123;</span><br><span class="line">                carry += l1-&gt;val;</span><br><span class="line">                l1 = l1-&gt;next;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">if</span>(l2) &#123;</span><br><span class="line">                carry += l2-&gt;val;</span><br><span class="line">                l2 = l2-&gt;next;</span><br><span class="line">            &#125;</span><br><span class="line">            p-&gt;next = <span class="keyword">new</span> ListNode(carry % <span class="number">10</span>);</span><br><span class="line">            carry /= <span class="number">10</span>;</span><br><span class="line">            p = p-&gt;next;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> dummy-&gt;next;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
 <h3 id="解决方案2-Golang"><a href="#解决方案2-Golang" class="headerlink" title="解决方案2(Golang)"></a>解决方案2(Golang)</h3><hr>
-<figure class="highlight go"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div></pre></td><td class="code"><pre><div class="line"><span class="comment">/**</span></div><div class="line"> * Definition for singly-linked list.</div><div class="line"> * type ListNode struct &#123;</div><div class="line"> *     Val int</div><div class="line"> *     Next *ListNode</div><div class="line"> * &#125;</div><div class="line"> */</div><div class="line"><span class="function"><span class="keyword">func</span> <span class="title">addTwoNumbers</span><span class="params">(l1 *ListNode, l2 *ListNode)</span> *<span class="title">ListNode</span></span> &#123;</div><div class="line">    head := &amp;ListNode&#123;&#125;</div><div class="line">    res := head</div><div class="line">    </div><div class="line">    carry, sum := <span class="number">0</span>, <span class="number">0</span></div><div class="line">    </div><div class="line">    <span class="keyword">for</span> l1 != <span class="literal">nil</span> || l2 != <span class="literal">nil</span> || carry != <span class="number">0</span> &#123;</div><div class="line">        head.Next = &amp;ListNode&#123;&#125;</div><div class="line">        head = head.Next</div><div class="line">        </div><div class="line">        sum = carry</div><div class="line">        <span class="keyword">if</span> l1 != <span class="literal">nil</span> &#123;</div><div class="line">            sum += l1.Val</div><div class="line">            l1 = l1.Next</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">if</span> l2 != <span class="literal">nil</span> &#123;</div><div class="line">            sum += l2.Val</div><div class="line">            l2 = l2.Next</div><div class="line">        &#125;</div><div class="line">        head.Val, carry = sum%<span class="number">10</span>, sum/<span class="number">10</span></div><div class="line">    &#125;</div><div class="line">    </div><div class="line">    <span class="keyword">return</span> res.Next</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Definition for singly-linked list.</span></span><br><span class="line"><span class="comment"> * type ListNode struct &#123;</span></span><br><span class="line"><span class="comment"> *     Val int</span></span><br><span class="line"><span class="comment"> *     Next *ListNode</span></span><br><span class="line"><span class="comment"> * &#125;</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">addTwoNumbers</span><span class="params">(l1 *ListNode, l2 *ListNode)</span> *<span class="title">ListNode</span></span> &#123;</span><br><span class="line">    head := &amp;ListNode&#123;&#125;</span><br><span class="line">    res := head</span><br><span class="line">    </span><br><span class="line">    carry, sum := <span class="number">0</span>, <span class="number">0</span></span><br><span class="line">    </span><br><span class="line">    <span class="keyword">for</span> l1 != <span class="literal">nil</span> || l2 != <span class="literal">nil</span> || carry != <span class="number">0</span> &#123;</span><br><span class="line">        head.Next = &amp;ListNode&#123;&#125;</span><br><span class="line">        head = head.Next</span><br><span class="line">        </span><br><span class="line">        sum = carry</span><br><span class="line">        <span class="keyword">if</span> l1 != <span class="literal">nil</span> &#123;</span><br><span class="line">            sum += l1.Val</span><br><span class="line">            l1 = l1.Next</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span> l2 != <span class="literal">nil</span> &#123;</span><br><span class="line">            sum += l2.Val</span><br><span class="line">            l2 = l2.Next</span><br><span class="line">        &#125;</span><br><span class="line">        head.Val, carry = sum%<span class="number">10</span>, sum/<span class="number">10</span></span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">return</span> res.Next</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <h3 id="解决方案3-Javascript"><a href="#解决方案3-Javascript" class="headerlink" title="解决方案3(Javascript)"></a>解决方案3(Javascript)</h3><hr>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div></pre></td><td class="code"><pre><div class="line"><span class="comment">/**</span></div><div class="line"> * Definition for singly-linked list.</div><div class="line"> * function ListNode(val) &#123;</div><div class="line"> *     this.val = val;</div><div class="line"> *     this.next = null;</div><div class="line"> * &#125;</div><div class="line"> */</div><div class="line"><span class="comment">/**</span></div><div class="line"> * @param &#123;ListNode&#125; l1</div><div class="line"> * @param &#123;ListNode&#125; l2</div><div class="line"> * @return &#123;ListNode&#125;</div><div class="line"> */</div><div class="line"><span class="keyword">var</span> addTwoNumbers = <span class="function"><span class="keyword">function</span>(<span class="params">l1, l2</span>) </span>&#123;</div><div class="line">    <span class="keyword">var</span> dummy = <span class="keyword">new</span> ListNode(<span class="number">0</span>);</div><div class="line">    <span class="keyword">var</span> p = dummy;</div><div class="line">    <span class="keyword">var</span> carry = <span class="number">0</span>;</div><div class="line">    </div><div class="line">    <span class="keyword">while</span> (l1 !== <span class="literal">null</span> || l2 !== <span class="literal">null</span> || carry &gt; <span class="number">0</span>) &#123;</div><div class="line">        <span class="keyword">if</span> (l1 !== <span class="literal">null</span>) &#123;</div><div class="line">            carry += l1.val;</div><div class="line">            l1 = l1.next;</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">if</span> (l2 !== <span class="literal">null</span>) &#123;</div><div class="line">            carry += l2.val;</div><div class="line">            l2 = l2.next;</div><div class="line">        &#125;</div><div class="line">        p.next = <span class="keyword">new</span> ListNode(carry % <span class="number">10</span>);</div><div class="line">        carry = <span class="built_in">Math</span>.floor(carry/<span class="number">10</span>);</div><div class="line">        p = p.next;</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">return</span> dummy.next;</div><div class="line">&#125;;</div></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Definition for singly-linked list.</span></span><br><span class="line"><span class="comment"> * function ListNode(val) &#123;</span></span><br><span class="line"><span class="comment"> *     this.val = val;</span></span><br><span class="line"><span class="comment"> *     this.next = null;</span></span><br><span class="line"><span class="comment"> * &#125;</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param <span class="type">&#123;ListNode&#125;</span> <span class="variable">l1</span></span></span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param <span class="type">&#123;ListNode&#125;</span> <span class="variable">l2</span></span></span></span><br><span class="line"><span class="comment"> * <span class="doctag">@return <span class="type">&#123;ListNode&#125;</span></span></span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">var</span> addTwoNumbers = <span class="function"><span class="keyword">function</span>(<span class="params">l1, l2</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> dummy = <span class="keyword">new</span> ListNode(<span class="number">0</span>);</span><br><span class="line">    <span class="keyword">var</span> p = dummy;</span><br><span class="line">    <span class="keyword">var</span> carry = <span class="number">0</span>;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">while</span> (l1 !== <span class="literal">null</span> || l2 !== <span class="literal">null</span> || carry &gt; <span class="number">0</span>) &#123;</span><br><span class="line">        <span class="keyword">if</span> (l1 !== <span class="literal">null</span>) &#123;</span><br><span class="line">            carry += l1.val;</span><br><span class="line">            l1 = l1.next;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span> (l2 !== <span class="literal">null</span>) &#123;</span><br><span class="line">            carry += l2.val;</span><br><span class="line">            l2 = l2.next;</span><br><span class="line">        &#125;</span><br><span class="line">        p.next = <span class="keyword">new</span> ListNode(carry % <span class="number">10</span>);</span><br><span class="line">        carry = <span class="built_in">Math</span>.floor(carry/<span class="number">10</span>);</span><br><span class="line">        p = p.next;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> dummy.next;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
 <h3 id="解决方案4-Rust"><a href="#解决方案4-Rust" class="headerlink" title="解决方案4(Rust)"></a>解决方案4(Rust)</h3><hr>
-<figure class="highlight rust"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// Definition for singly-linked list.</span></div><div class="line"><span class="comment">// #[derive(PartialEq, Eq, Debug)]</span></div><div class="line"><span class="comment">// pub struct ListNode &#123;</span></div><div class="line"><span class="comment">//   pub val: i32,</span></div><div class="line"><span class="comment">//   pub next: Option&lt;Box&lt;ListNode&gt;&gt;</span></div><div class="line"><span class="comment">// &#125;</span></div><div class="line"><span class="comment">// </span></div><div class="line"><span class="comment">// impl ListNode &#123;</span></div><div class="line"><span class="comment">//   #[inline]</span></div><div class="line"><span class="comment">//   fn new(val: i32) -&gt; Self &#123;</span></div><div class="line"><span class="comment">//     ListNode &#123;</span></div><div class="line"><span class="comment">//       next: None,</span></div><div class="line"><span class="comment">//       val</span></div><div class="line"><span class="comment">//     &#125;</span></div><div class="line"><span class="comment">//   &#125;</span></div><div class="line"><span class="comment">// &#125;</span></div><div class="line"><span class="keyword">impl</span> Solution &#123;</div><div class="line">    <span class="keyword">pub</span> <span class="function"><span class="keyword">fn</span> <span class="title">add_two_numbers</span></span>(l1: <span class="built_in">Option</span>&lt;<span class="built_in">Box</span>&lt;ListNode&gt;&gt;, l2: <span class="built_in">Option</span>&lt;<span class="built_in">Box</span>&lt;ListNode&gt;&gt;) -&gt; <span class="built_in">Option</span>&lt;<span class="built_in">Box</span>&lt;ListNode&gt;&gt; &#123;</div><div class="line">        <span class="keyword">let</span> <span class="keyword">mut</span> l1_unwrap = l1.unwrap();</div><div class="line">        <span class="keyword">let</span> <span class="keyword">mut</span> l2_unwrap = l2.unwrap();</div><div class="line">        <span class="keyword">let</span> <span class="keyword">mut</span> dummy = ListNode::new(<span class="number">0</span>);</div><div class="line">        </div><div class="line">        <span class="keyword">let</span> <span class="keyword">mut</span> res = Solution::make_node(l1_unwrap.val + l2_unwrap.val);</div><div class="line">        dummy.next.get_or_insert(<span class="built_in">Box</span>::new(res.<span class="number">0</span>));</div><div class="line">        </div><div class="line">        <span class="keyword">let</span> <span class="keyword">mut</span> p = &amp;<span class="keyword">mut</span> dummy.next;</div><div class="line">        </div><div class="line">        <span class="keyword">while</span> l1_unwrap.next.is_some() || l2_unwrap.next.is_some() &#123;</div><div class="line">            <span class="keyword">match</span> p &#123;</div><div class="line">                <span class="literal">None</span> =&gt; <span class="keyword">break</span>,</div><div class="line">                <span class="literal">Some</span>(now) =&gt; &#123;</div><div class="line">                    l1_unwrap = l1_unwrap.next.or(<span class="literal">Some</span>(<span class="built_in">Box</span>::new(ListNode::new(<span class="number">0</span>)))).unwrap();</div><div class="line">                    l2_unwrap = l2_unwrap.next.or(<span class="literal">Some</span>(<span class="built_in">Box</span>::new(ListNode::new(<span class="number">0</span>)))).unwrap();</div><div class="line">                    res = Solution::make_node(l1_unwrap.val + l2_unwrap.val + res.<span class="number">1</span>);</div><div class="line">                    now.next.get_or_insert(<span class="built_in">Box</span>::new(res.<span class="number">0</span>));</div><div class="line">                    p = &amp;<span class="keyword">mut</span> now.next;</div><div class="line">                &#125;</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">        </div><div class="line">        <span class="keyword">if</span> res.<span class="number">1</span> &gt; <span class="number">0</span> &#123;</div><div class="line">            <span class="keyword">if</span> <span class="keyword">let</span> <span class="literal">Some</span>(now) = p &#123;</div><div class="line">                now.next.get_or_insert(<span class="built_in">Box</span>::new(ListNode::new(res.<span class="number">1</span>)));</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">        dummy.next</div><div class="line">        </div><div class="line">    &#125;</div><div class="line">    </div><div class="line">    <span class="function"><span class="keyword">fn</span> <span class="title">make_node</span></span>(<span class="keyword">mut</span> result: <span class="keyword">i32</span>) -&gt; (ListNode, <span class="keyword">i32</span>) &#123;</div><div class="line">        <span class="keyword">let</span> carry;</div><div class="line">        <span class="keyword">if</span> result &gt; <span class="number">9</span> &#123;</div><div class="line">            carry = <span class="number">1</span>;</div><div class="line">            result = result - <span class="number">10</span>;</div><div class="line">        &#125; <span class="keyword">else</span> &#123;</div><div class="line">            carry = <span class="number">0</span>;</div><div class="line">        &#125;</div><div class="line">        (ListNode::new(result), carry)</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<figure class="highlight rust"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// Definition for singly-linked list.</span></span><br><span class="line"><span class="comment">// #[derive(PartialEq, Eq, Debug)]</span></span><br><span class="line"><span class="comment">// pub struct ListNode &#123;</span></span><br><span class="line"><span class="comment">//   pub val: i32,</span></span><br><span class="line"><span class="comment">//   pub next: Option&lt;Box&lt;ListNode&gt;&gt;</span></span><br><span class="line"><span class="comment">// &#125;</span></span><br><span class="line"><span class="comment">// </span></span><br><span class="line"><span class="comment">// impl ListNode &#123;</span></span><br><span class="line"><span class="comment">//   #[inline]</span></span><br><span class="line"><span class="comment">//   fn new(val: i32) -&gt; Self &#123;</span></span><br><span class="line"><span class="comment">//     ListNode &#123;</span></span><br><span class="line"><span class="comment">//       next: None,</span></span><br><span class="line"><span class="comment">//       val</span></span><br><span class="line"><span class="comment">//     &#125;</span></span><br><span class="line"><span class="comment">//   &#125;</span></span><br><span class="line"><span class="comment">// &#125;</span></span><br><span class="line"><span class="keyword">impl</span> Solution &#123;</span><br><span class="line">    <span class="keyword">pub</span> <span class="function"><span class="keyword">fn</span> <span class="title">add_two_numbers</span></span>(l1: <span class="built_in">Option</span>&lt;<span class="built_in">Box</span>&lt;ListNode&gt;&gt;, l2: <span class="built_in">Option</span>&lt;<span class="built_in">Box</span>&lt;ListNode&gt;&gt;) -&gt; <span class="built_in">Option</span>&lt;<span class="built_in">Box</span>&lt;ListNode&gt;&gt; &#123;</span><br><span class="line">        <span class="keyword">let</span> <span class="keyword">mut</span> l1_unwrap = l1.unwrap();</span><br><span class="line">        <span class="keyword">let</span> <span class="keyword">mut</span> l2_unwrap = l2.unwrap();</span><br><span class="line">        <span class="keyword">let</span> <span class="keyword">mut</span> dummy = ListNode::new(<span class="number">0</span>);</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">let</span> <span class="keyword">mut</span> res = Solution::make_node(l1_unwrap.val + l2_unwrap.val);</span><br><span class="line">        dummy.next.get_or_insert(<span class="built_in">Box</span>::new(res.<span class="number">0</span>));</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">let</span> <span class="keyword">mut</span> p = &amp;<span class="keyword">mut</span> dummy.next;</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">while</span> l1_unwrap.next.is_some() || l2_unwrap.next.is_some() &#123;</span><br><span class="line">            <span class="keyword">match</span> p &#123;</span><br><span class="line">                <span class="literal">None</span> =&gt; <span class="keyword">break</span>,</span><br><span class="line">                <span class="literal">Some</span>(now) =&gt; &#123;</span><br><span class="line">                    l1_unwrap = l1_unwrap.next.or(<span class="literal">Some</span>(<span class="built_in">Box</span>::new(ListNode::new(<span class="number">0</span>)))).unwrap();</span><br><span class="line">                    l2_unwrap = l2_unwrap.next.or(<span class="literal">Some</span>(<span class="built_in">Box</span>::new(ListNode::new(<span class="number">0</span>)))).unwrap();</span><br><span class="line">                    res = Solution::make_node(l1_unwrap.val + l2_unwrap.val + res.<span class="number">1</span>);</span><br><span class="line">                    now.next.get_or_insert(<span class="built_in">Box</span>::new(res.<span class="number">0</span>));</span><br><span class="line">                    p = &amp;<span class="keyword">mut</span> now.next;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">if</span> res.<span class="number">1</span> &gt; <span class="number">0</span> &#123;</span><br><span class="line">            <span class="keyword">if</span> <span class="keyword">let</span> <span class="literal">Some</span>(now) = p &#123;</span><br><span class="line">                now.next.get_or_insert(<span class="built_in">Box</span>::new(ListNode::new(res.<span class="number">1</span>)));</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        dummy.next</span><br><span class="line">        </span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="keyword">fn</span> <span class="title">make_node</span></span>(<span class="keyword">mut</span> result: <span class="built_in">i32</span>) -&gt; (ListNode, <span class="built_in">i32</span>) &#123;</span><br><span class="line">        <span class="keyword">let</span> carry;</span><br><span class="line">        <span class="keyword">if</span> result &gt; <span class="number">9</span> &#123;</span><br><span class="line">            carry = <span class="number">1</span>;</span><br><span class="line">            result = result - <span class="number">10</span>;</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            carry = <span class="number">0</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        (ListNode::new(result), carry)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <h3 id="相关问题"><a href="#相关问题" class="headerlink" title="相关问题"></a>相关问题</h3><hr>
 <ul>
-<li><a href="https://leetcode.com/problems/add-binary/" target="_blank" rel="external">(E) Add Binary</a>   </li>
-<li><a href="https://leetcode.com/problems/multiply-strings/" target="_blank" rel="external">(M) Multiply Strings</a>   </li>
+<li><a href="https://leetcode.com/problems/add-binary/" target="_blank" rel="noopener">(E) Add Binary</a>   </li>
+<li><a href="https://leetcode.com/problems/multiply-strings/" target="_blank" rel="noopener">(M) Multiply Strings</a>   </li>
 </ul>
-<h3 id="题目来源"><a href="#题目来源" class="headerlink" title="题目来源"></a><a href="https://leetcode.com/problems/add-two-numbers/" target="_blank" rel="external">题目来源</a></h3>
+<h3 id="题目来源"><a href="#题目来源" class="headerlink" title="题目来源"></a><a href="https://leetcode.com/problems/add-two-numbers/" target="_blank" rel="noopener">题目来源</a></h3>
       
     </div>
 
@@ -295,9 +295,9 @@
           
             <a href="/tags/leetcode/" rel="tag">#leetcode</a>
           
-            <a href="/tags/Linked-List/" rel="tag">#Linked-List</a>
-          
             <a href="/tags/Math/" rel="tag">#Math</a>
+          
+            <a href="/tags/Linked-List/" rel="tag">#Linked-List</a>
           
         </div>
       
@@ -306,16 +306,16 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2014/03/11/leetcode/Algorithms/leetcode-191-Number-of-1-Bits/" rel="next" title="leetcode-191-Number-of-1-Bits">
-                <i class="fa fa-chevron-left"></i> leetcode-191-Number-of-1-Bits
+              <a href="/2014/03/11/leetcode/Algorithms/leetcode-208-Implement-Trie-(Prefix-Tree)/" rel="next" title="leetcode-208-Implement-Trie-(Prefix-Tree)">
+                <i class="fa fa-chevron-left"></i> leetcode-208-Implement-Trie-(Prefix-Tree)
               </a>
             
           </div>
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2014/03/11/leetcode/Algorithms/leetcode-190-Reverse-Bits/" rel="prev" title="leetcode-190-Reverse-Bits">
-                leetcode-190-Reverse-Bits <i class="fa fa-chevron-right"></i>
+              <a href="/2014/03/11/leetcode/Algorithms/leetcode-199-Binary-Tree-Right-Side-View/" rel="prev" title="leetcode-199-Binary-Tree-Right-Side-View">
+                leetcode-199-Binary-Tree-Right-Side-View <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -371,7 +371,7 @@
 
       
         <ul class="sidebar-nav motion-element">
-          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
             文章目录
           </li>
           <li class="sidebar-nav-overview" data-target="site-overview">
@@ -382,16 +382,14 @@
 
       <section class="site-overview sidebar-panel ">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
-          <img class="site-author-image" itemprop="image"
-               src="https://avatars1.githubusercontent.com/u/6964284?v=3&s=460"
-               alt="Frank" />
+          <img class="site-author-image" itemprop="image" src="https://avatars1.githubusercontent.com/u/6964284?v=3&s=460" alt="Frank">
           <p class="site-author-name" itemprop="name">Frank</p>
           <p class="site-description motion-element" itemprop="description"></p>
         </div>
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">365</span>
+              <span class="site-state-item-count">390</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -401,7 +399,7 @@
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">135</span>
+                <span class="site-state-item-count">207</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
@@ -437,7 +435,7 @@
         
           <div class="cc-license motion-element" itemprop="license">
             <a href="http://creativecommons.org/licenses/by-sa/4.0" class="cc-opacity" target="_blank">
-              <img src="/images/cc-by-sa.svg" alt="Creative Commons" />
+              <img src="/images/cc-by-sa.svg" alt="Creative Commons">
             </a>
           </div>
         
@@ -477,10 +475,10 @@
 
     <footer id="footer" class="footer">
       <div class="footer-inner">
-        <div class="copyright" >
+        <div class="copyright">
   
   &copy;  2015 - 
-  <span itemprop="copyrightYear">2019</span>
+  <span itemprop="copyrightYear">2021</span>
   <span class="with-love">
     <i class="fa fa-heart"></i>
   </span>

@@ -6,19 +6,15 @@
 
 
 <html class="theme-next muse use-motion">
-<head>
-  <meta charset="UTF-8"/>
-<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
 
 
-<meta http-equiv="Cache-Control" content="no-transform" />
-<meta http-equiv="Cache-Control" content="no-siteapp" />
-
-
-
-
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
 
 
 
@@ -27,7 +23,11 @@
 
 
 
-  <link href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css"/>
+
+
+
+
+  <link href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
 
 
 
@@ -36,21 +36,21 @@
 
 
 
-<link href="/vendors/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+<link href="/vendors/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css">
 
-<link href="/css/main.css?v=0.5.0" rel="stylesheet" type="text/css" />
-
-
-  <meta name="keywords" content="hacking," />
+<link href="/css/main.css?v=0.5.0" rel="stylesheet" type="text/css">
 
 
+  <meta name="keywords" content="hacking,">
 
 
 
 
 
 
-  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=0.5.0" />
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=0.5.0">
 
 
 
@@ -132,7 +132,7 @@
   
 
   <div class="custom-logo-site-title">
-    <a href="/"  class="brand" rel="start">
+    <a href="/" class="brand" rel="start">
       <span class="logo-line-before"><i></i></span>
       <span class="site-title">knarfeh's logbook</span>
       <span class="logo-line-after"><i></i></span>
@@ -159,7 +159,7 @@
         <li class="menu-item menu-item-home">
           <a href="/" rel="section">
             
-              <i class="menu-item-icon fa fa-home fa-fw"></i> <br />
+              <i class="menu-item-icon fa fa-home fa-fw"></i> <br>
             
             首页
           </a>
@@ -169,7 +169,7 @@
         <li class="menu-item menu-item-archives">
           <a href="/archives" rel="section">
             
-              <i class="menu-item-icon fa fa-archive fa-fw"></i> <br />
+              <i class="menu-item-icon fa fa-archive fa-fw"></i> <br>
             
             归档
           </a>
@@ -179,7 +179,7 @@
         <li class="menu-item menu-item-tags">
           <a href="/tags" rel="section">
             
-              <i class="menu-item-icon fa fa-tags fa-fw"></i> <br />
+              <i class="menu-item-icon fa fa-tags fa-fw"></i> <br>
             
             标签
           </a>
@@ -269,12 +269,12 @@
       
 
       
-        <p>前段时间发现了 <a href="https://github.com/csu/quora-api" target="_blank" rel="external">quora-api</a> 这个项目，当时心想我应该写个知乎的版本试试，正好可以用用flask，然后因为毕业论文和答辩的事情就一直拖着，现在终于开始动手了。</p>
+        <p>前段时间发现了 <a href="https://github.com/csu/quora-api" target="_blank" rel="noopener">quora-api</a> 这个项目，当时心想我应该写个知乎的版本试试，正好可以用用flask，然后因为毕业论文和答辩的事情就一直拖着，现在终于开始动手了。</p>
 <a id="more"></a>
-<p>稍稍瞄了一眼 <a href="https://github.com/csu/quora-api" target="_blank" rel="external">quora-api</a> 这个项目，发现这个项目跟我想的思路是一样的，写爬虫获得数据，再通过 flask 搭建 api 服务即可，从 commit 的记录来看，quora 的爬虫部分最开始是写在 <a href="https://github.com/csu/quora-api" target="_blank" rel="external">quora-api</a> 里面的，后来作者把这部分分离出去:  </p>
+<p>稍稍瞄了一眼 <a href="https://github.com/csu/quora-api" target="_blank" rel="noopener">quora-api</a> 这个项目，发现这个项目跟我想的思路是一样的，写爬虫获得数据，再通过 flask 搭建 api 服务即可，从 commit 的记录来看，quora 的爬虫部分最开始是写在 <a href="https://github.com/csu/quora-api" target="_blank" rel="noopener">quora-api</a> 里面的，后来作者把这部分分离出去:  </p>
 <p><img src="https://knarfeh-1254074221.cos.na-siliconvalley.myqcloud.com/movepyquora.png" alt="pyquora">  </p>
-<p>单独打了一个包：<a href="https://github.com/csu/pyquora" target="_blank" rel="external">pyquora</a>。  </p>
-<p>我想我也应该如此，毕竟已经写过不少爬虫了，重点在于熟悉flask，就用现成的吧，把爬虫的部分分离出去，也便于维护。比较了几个关于知乎爬虫的repo，找到了 <a href="https://github.com/7sDream/zhihu-oauth" target="_blank" rel="external">zhihu-oauth</a>，其实 <a href="https://github.com/7sDream" target="_blank" rel="external">7sDream</a> 在新建这个 repo 的时候我就 star 了，但并没有仔细看，现在看来这个并不是简单的爬虫。我从这篇游戏攻略开始了旅程：<a href="http://zhihu-oauth.readthedocs.io/zh_CN/latest/for-dev/oauth/game.html" target="_blank" rel="external">zhihu-oauth-doc</a>  </p>
+<p>单独打了一个包：<a href="https://github.com/csu/pyquora" target="_blank" rel="noopener">pyquora</a>。  </p>
+<p>我想我也应该如此，毕竟已经写过不少爬虫了，重点在于熟悉flask，就用现成的吧，把爬虫的部分分离出去，也便于维护。比较了几个关于知乎爬虫的repo，找到了 <a href="https://github.com/7sDream/zhihu-oauth" target="_blank" rel="noopener">zhihu-oauth</a>，其实 <a href="https://github.com/7sDream" target="_blank" rel="noopener">7sDream</a> 在新建这个 repo 的时候我就 star 了，但并没有仔细看，现在看来这个并不是简单的爬虫。我从这篇游戏攻略开始了旅程：<a href="http://zhihu-oauth.readthedocs.io/zh_CN/latest/for-dev/oauth/game.html" target="_blank" rel="noopener">zhihu-oauth-doc</a>  </p>
 <p>7sDream 在文档里写着：「本来想的是写一篇博客的，但是果然还是不要太张扬，写在文档里算了」，我却在博客里宣传了，好像不是很道德？嗯，还是不要给自己加那么多束缚吧。我不打算把攻略重写一遍，只是记录一下遇到的坑，反正我的博客基本没人知道，没几个人看，github 对百度搜索引擎做了限制，百度爬取不到，Google 倒是可以，但是用 Google 搜中文资料的也太少了吧？如果影响不好我就删掉这篇。</p>
 <p>我照着这篇攻略开始了。攻略里写的准备工作是：  </p>
 <blockquote>
@@ -286,7 +286,7 @@
 </ul>
 <p>在 Android 设备上安装上知乎客户端，如果已经安装了的话就强行停止， 然后清除数据和缓存。</p>
 </blockquote>
-<p>手边暂时没有 Android 设备，用的是 iPhone ，在 iPhone 上抓包好像挺麻烦？果断用电脑抓包啊，也便于分析，如果不是抓https协议的内容，只抓http协议的内容，用 Wireshark 就够了，有过这样的尝试，见<a href="http://weibo.com/2753500945/DeXd83CZf?from=page_1005052753500945_profile&amp;wvr=6&amp;mod=weibotime&amp;type=comment#_rnd1464658571029" target="_blank" rel="external">这条微博</a>。要保证安全性，APP的数据传输一般会用https，因为可以用ssl层来加密，知乎客户端用的是https。Wireshark 当然可以抓https协议的内容，但抓手机端的就有点麻烦，见<a href="https://imququ.com/post/http2-traffic-in-wireshark.html" target="_blank" rel="external">这篇博客</a>，果断跳过这个坑。我的方案是用 <a href="https://www.charlesproxy.com://www.charlesproxy.com/" target="_blank" rel="external">charles for mac</a> + iPhone。</p>
+<p>手边暂时没有 Android 设备，用的是 iPhone ，在 iPhone 上抓包好像挺麻烦？果断用电脑抓包啊，也便于分析，如果不是抓https协议的内容，只抓http协议的内容，用 Wireshark 就够了，有过这样的尝试，见<a href="http://weibo.com/2753500945/DeXd83CZf?from=page_1005052753500945_profile&amp;wvr=6&amp;mod=weibotime&amp;type=comment#_rnd1464658571029" target="_blank" rel="noopener">这条微博</a>。要保证安全性，APP的数据传输一般会用https，因为可以用ssl层来加密，知乎客户端用的是https。Wireshark 当然可以抓https协议的内容，但抓手机端的就有点麻烦，见<a href="https://imququ.com/post/http2-traffic-in-wireshark.html" target="_blank" rel="noopener">这篇博客</a>，果断跳过这个坑。我的方案是用 <a href="https://www.charlesproxy.com://www.charlesproxy.com/" target="_blank" rel="noopener">charles for mac</a> + iPhone。</p>
 <p>用 charles 抓取 APP 网络请求的大致步骤是：  </p>
 <ul>
 <li>手机和电脑连接同一个局域网</li>
@@ -299,13 +299,13 @@
 <p>在手机上改成对应的即可：  </p>
 <p><img src="https://knarfeh-1254074221.cos.na-siliconvalley.myqcloud.com/iPhoneproxysetting.jpg" alt="iPhoneproxysetting"></p>
 <ul>
-<li><p>在手机上需要打开 <a href="http://www.charlesproxy.com/documentation/additional/legacy-ssl-proxying/" target="_blank" rel="external">legacy-ssl-proxying</a>，安装 SSL 证书</p>
+<li><p>在手机上需要打开 <a href="http://www.charlesproxy.com/documentation/additional/legacy-ssl-proxying/" target="_blank" rel="noopener">legacy-ssl-proxying</a>，安装 SSL 证书</p>
 </li>
 <li><p>在 Charles SSL Proxying 设置界面打开 ssl 的 抓取：  </p>
 </li>
 </ul>
 <p><img src="https://knarfeh-1254074221.cos.na-siliconvalley.myqcloud.com/ssl%20proxying%20setting.png" alt="SSL Proxying setting"></p>
-<p>与 Wireshark 不同的是，Charles 打开即开始抓包，抓去过程中我遇到一个坑，是编码问题，有不少乱码，搜索了一下，有这样的方案：<a href="http://iam42.iteye.com/blog/2186630" target="_blank" rel="external">使用Charles，在mac环境下对android app抓包</a>，但我的 info.plist 并没有 vmoptions，看来我用的 Charles 比较新，求助 google，最终解决了，info.plist 改动的部分：  </p>
+<p>与 Wireshark 不同的是，Charles 打开即开始抓包，抓去过程中我遇到一个坑，是编码问题，有不少乱码，搜索了一下，有这样的方案：<a href="http://iam42.iteye.com/blog/2186630" target="_blank" rel="noopener">使用Charles，在mac环境下对android app抓包</a>，但我的 info.plist 并没有 vmoptions，看来我用的 Charles 比较新，求助 google，最终解决了，info.plist 改动的部分：  </p>
 <p><img src="https://knarfeh-1254074221.cos.na-siliconvalley.myqcloud.com/jvmoptions.png" alt="jvmoptions">  </p>
 <p>解决了乱码问题。  </p>
 <p>实现了抓包，就可以开始分析知乎的 api 到底怎么用了。</p>
@@ -330,16 +330,16 @@
 </ul>
 <p>除了请求签名，其他都是很容易构造的，所以最关键的就是搞定知乎的加密算法了。  </p>
 <p>（写到这，真的挺佩服7sDream，貌似是天津大学的大三学生？曾跟他聊过几句，非常有极客风范，而且他还比我小，唉真是惭愧，要好好加油。）  </p>
-<p>文档中记录了破解加密算法的过程。总结一下，掌握一定的逆向工程技术是必须的，7sDream 用 jadx 这个工具反编译了知乎的 Android 应用包，找到了 Authorisation.java 中的 createBaseAuthorisation 方法，根据代码尝试，然后推测知乎用的是 Google 推荐的 OAuth 的签名方法，文档在这：<a href="https://developers.google.com/maps/documentation/static-maps/get-api-key#url-" target="_blank" rel="external">get-api-key</a>。思路非常棒，不过他说的「大概一晚上加一早上吧」 我是真的不信。。。。。</p>
+<p>文档中记录了破解加密算法的过程。总结一下，掌握一定的逆向工程技术是必须的，7sDream 用 jadx 这个工具反编译了知乎的 Android 应用包，找到了 Authorisation.java 中的 createBaseAuthorisation 方法，根据代码尝试，然后推测知乎用的是 Google 推荐的 OAuth 的签名方法，文档在这：<a href="https://developers.google.com/maps/documentation/static-maps/get-api-key#url-" target="_blank" rel="noopener">get-api-key</a>。思路非常棒，不过他说的「大概一晚上加一早上吧」 我是真的不信。。。。。</p>
 <p>搞定加密算法，用程序模拟客户端发送请求即可，可以收到客户端返回的结果：  </p>
 <p><img src="https://knarfeh-1254074221.cos.na-siliconvalley.myqcloud.com/login_response.jpg" alt="login_response">  </p>
 <p>接下来请求 api 数据的时候只需要加上 access_token 这个值即可获取，例如请求首页的数据：  </p>
 <p><img src="https://knarfeh-1254074221.cos.na-siliconvalley.myqcloud.com/zhihu_top_story.png" alt="top_story"></p>
 <p>玩到这，游戏基本就通关了。登陆操作其实还有一个隐含关卡，攻略中写了知乎 OAuth 的验证码策略的6点，不知道作者获悉这6点的思路是什么，其实试错的价值也很大，这里需要自己好好研究一下，暂时还没遇到这种情况，遇到了再 hack 一下。</p>
-<p>好了，搞定了这些，写代码模拟这个过程就行了。<a href="https://github.com/7sDream/zhihu-oauth" target="_blank" rel="external">zhihu-oauth</a> 的代码基本上就是模拟这个过程。源代码也很有研究价值。</p>
+<p>好了，搞定了这些，写代码模拟这个过程就行了。<a href="https://github.com/7sDream/zhihu-oauth" target="_blank" rel="noopener">zhihu-oauth</a> 的代码基本上就是模拟这个过程。源代码也很有研究价值。</p>
 <h2 id="总结一下"><a href="#总结一下" class="headerlink" title="总结一下"></a>总结一下</h2><p>这份攻略干货十足，它完整地记录了如何破解手机应用 api ，我想不仅仅是知乎，对于其他的应用，比如quora 啊，豆瓣等，都可以借鉴这种思路。这里面大概有这么一些技能点：http 传输协议，逆向工程能力，基本加密方法和应用，都值得更进一步学习。  </p>
 <p>说起来，不知道那些快30，快40的老一辈程序员会不会不屑于干这种事情，这种事当然算不上光彩，是破坏商业规则的行为，触碰了商业公司的利益，但我觉得非常有意思，这种探索让我感到兴奋，希望自己在30、40岁的时候仍然可以保持这种钻研精神。  </p>
-<p>接下来的计划是：好好读读 <a href="https://github.com/7sDream/zhihu-oauth" target="_blank" rel="external">zhihu-oauth</a> 的源代码，利用 <a href="https://github.com/7sDream/zhihu-oauth" target="_blank" rel="external">zhihu-oauth</a> 的功能实现与<a href="https://github.com/csu/quora-api" target="_blank" rel="external">quora-api</a> 类似的知乎的版本（repo 地址在<a href="https://github.com/knarfeh/zhihu-api" target="_blank" rel="external">这</a>），再接下来，我大概会把 <a href="http://github.com/knarfeh/EE-Book" target="_blank" rel="external">EE-Book</a> 中知乎爬虫的部分去掉，改用已经破解的知乎api，再接下来，还有什么好玩的事情呢？</p>
+<p>接下来的计划是：好好读读 <a href="https://github.com/7sDream/zhihu-oauth" target="_blank" rel="noopener">zhihu-oauth</a> 的源代码，利用 <a href="https://github.com/7sDream/zhihu-oauth" target="_blank" rel="noopener">zhihu-oauth</a> 的功能实现与<a href="https://github.com/csu/quora-api" target="_blank" rel="noopener">quora-api</a> 类似的知乎的版本（repo 地址在<a href="https://github.com/knarfeh/zhihu-api" target="_blank" rel="noopener">这</a>），再接下来，我大概会把 <a href="http://github.com/knarfeh/EE-Book" target="_blank" rel="noopener">EE-Book</a> 中知乎爬虫的部分去掉，改用已经破解的知乎api，再接下来，还有什么好玩的事情呢？</p>
 
       
     </div>
@@ -428,7 +428,7 @@
 
       
         <ul class="sidebar-nav motion-element">
-          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
             文章目录
           </li>
           <li class="sidebar-nav-overview" data-target="site-overview">
@@ -439,16 +439,14 @@
 
       <section class="site-overview sidebar-panel ">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
-          <img class="site-author-image" itemprop="image"
-               src="https://avatars1.githubusercontent.com/u/6964284?v=3&s=460"
-               alt="Frank" />
+          <img class="site-author-image" itemprop="image" src="https://avatars1.githubusercontent.com/u/6964284?v=3&s=460" alt="Frank">
           <p class="site-author-name" itemprop="name">Frank</p>
           <p class="site-description motion-element" itemprop="description"></p>
         </div>
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">365</span>
+              <span class="site-state-item-count">390</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -458,7 +456,7 @@
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">135</span>
+                <span class="site-state-item-count">207</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
@@ -494,7 +492,7 @@
         
           <div class="cc-license motion-element" itemprop="license">
             <a href="http://creativecommons.org/licenses/by-sa/4.0" class="cc-opacity" target="_blank">
-              <img src="/images/cc-by-sa.svg" alt="Creative Commons" />
+              <img src="/images/cc-by-sa.svg" alt="Creative Commons">
             </a>
           </div>
         
@@ -534,10 +532,10 @@
 
     <footer id="footer" class="footer">
       <div class="footer-inner">
-        <div class="copyright" >
+        <div class="copyright">
   
   &copy;  2015 - 
-  <span itemprop="copyrightYear">2019</span>
+  <span itemprop="copyrightYear">2021</span>
   <span class="with-love">
     <i class="fa fa-heart"></i>
   </span>

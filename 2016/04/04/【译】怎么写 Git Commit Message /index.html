@@ -6,19 +6,15 @@
 
 
 <html class="theme-next muse use-motion">
-<head>
-  <meta charset="UTF-8"/>
-<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
 
 
-<meta http-equiv="Cache-Control" content="no-transform" />
-<meta http-equiv="Cache-Control" content="no-siteapp" />
-
-
-
-
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
 
 
 
@@ -27,7 +23,11 @@
 
 
 
-  <link href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css"/>
+
+
+
+
+  <link href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
 
 
 
@@ -36,21 +36,21 @@
 
 
 
-<link href="/vendors/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+<link href="/vendors/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css">
 
-<link href="/css/main.css?v=0.5.0" rel="stylesheet" type="text/css" />
-
-
-  <meta name="keywords" content="git,Translate,Tips," />
+<link href="/css/main.css?v=0.5.0" rel="stylesheet" type="text/css">
 
 
+  <meta name="keywords" content="git,Translate,Tips,">
 
 
 
 
 
 
-  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=0.5.0" />
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=0.5.0">
 
 
 
@@ -125,7 +125,7 @@
   
 
   <div class="custom-logo-site-title">
-    <a href="/"  class="brand" rel="start">
+    <a href="/" class="brand" rel="start">
       <span class="logo-line-before"><i></i></span>
       <span class="site-title">knarfeh's logbook</span>
       <span class="logo-line-after"><i></i></span>
@@ -152,7 +152,7 @@
         <li class="menu-item menu-item-home">
           <a href="/" rel="section">
             
-              <i class="menu-item-icon fa fa-home fa-fw"></i> <br />
+              <i class="menu-item-icon fa fa-home fa-fw"></i> <br>
             
             首页
           </a>
@@ -162,7 +162,7 @@
         <li class="menu-item menu-item-archives">
           <a href="/archives" rel="section">
             
-              <i class="menu-item-icon fa fa-archive fa-fw"></i> <br />
+              <i class="menu-item-icon fa fa-archive fa-fw"></i> <br>
             
             归档
           </a>
@@ -172,7 +172,7 @@
         <li class="menu-item menu-item-tags">
           <a href="/tags" rel="section">
             
-              <i class="menu-item-icon fa fa-tags fa-fw"></i> <br />
+              <i class="menu-item-icon fa fa-tags fa-fw"></i> <br>
             
             标签
           </a>
@@ -262,17 +262,17 @@
       
 
       
-        <p>原文：<a href="http://chris.beams.io/posts/git-commit/" target="_blank" rel="external">How to Write a Git Commit Message</a><br><a id="more"></a></p>
+        <p>原文：<a href="http://chris.beams.io/posts/git-commit/" target="_blank" rel="noopener">How to Write a Git Commit Message</a><br><a id="more"></a></p>
 <h2 id="导论：为什么说-commit-messages-很重要"><a href="#导论：为什么说-commit-messages-很重要" class="headerlink" title="导论：为什么说 commit messages 很重要"></a>导论：为什么说 commit messages 很重要</h2><p>如果你翻看某个 git repo 的 log 信息，你可能会发现它的 commit messages 是一团毛线，比如，看看我在早期在Spring项目中提交的「稀世珍宝」:   </p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">$ git log --oneline -5 --author cbeams --before &quot;Fri Mar 26 2009&quot;</div><div class="line"></div><div class="line">e5f4b49 Re-adding ConfigurationPostProcessorTests after its brief removal in r814. @Ignore-ing the testCglibClassesAreLoadedJustInTimeForEnhancement() method as it turns out this was one of the culprits in the recent build breakage. The classloader hacking causes subtle downstream effects, breaking unrelated tests. The test method is still useful, but should only be run on a manual basis to ensure CGLIB is not prematurely classloaded, and should not be run as part of the automated build.</div><div class="line">2db0f12 fixed two build-breaking issues: + reverted ClassMetadataReadingVisitor to revision 794 + eliminated ConfigurationPostProcessorTests until further investigation determines why it causes downstream tests to fail (such as the seemingly unrelated ClassPathXmlApplicationContextTests)</div><div class="line">147709f Tweaks to package-info.java files</div><div class="line">22b25e0 Consolidated Util and MutableAnnotationUtils classes into existing AsmUtils</div><div class="line">7f96f57 polishing</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">$ git log --oneline -5 --author cbeams --before &quot;Fri Mar 26 2009&quot;</span><br><span class="line"></span><br><span class="line">e5f4b49 Re-adding ConfigurationPostProcessorTests after its brief removal in r814. @Ignore-ing the testCglibClassesAreLoadedJustInTimeForEnhancement() method as it turns out this was one of the culprits in the recent build breakage. The classloader hacking causes subtle downstream effects, breaking unrelated tests. The test method is still useful, but should only be run on a manual basis to ensure CGLIB is not prematurely classloaded, and should not be run as part of the automated build.</span><br><span class="line">2db0f12 fixed two build-breaking issues: + reverted ClassMetadataReadingVisitor to revision 794 + eliminated ConfigurationPostProcessorTests until further investigation determines why it causes downstream tests to fail (such as the seemingly unrelated ClassPathXmlApplicationContextTests)</span><br><span class="line">147709f Tweaks to package-info.java files</span><br><span class="line">22b25e0 Consolidated Util and MutableAnnotationUtils classes into existing AsmUtils</span><br><span class="line">7f96f57 polishing</span><br></pre></td></tr></table></figure>
 <p>噫。比较一下最近提交的 commit messages 吧:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">$ git log --oneline -5 --author pwebb --before &quot;Sat Aug 30 2014&quot;</div><div class="line"></div><div class="line">5ba3db6 Fix failing CompositePropertySourceTests</div><div class="line">84564a0 Rework @PropertySource early parsing logic</div><div class="line">e142fd1 Add tests for ImportSelector meta-data</div><div class="line">887815f Update docbook dependency and generate epub</div><div class="line">ac8326d Polish mockito usage</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">$ git log --oneline -5 --author pwebb --before &quot;Sat Aug 30 2014&quot;</span><br><span class="line"></span><br><span class="line">5ba3db6 Fix failing CompositePropertySourceTests</span><br><span class="line">84564a0 Rework @PropertySource early parsing logic</span><br><span class="line">e142fd1 Add tests for ImportSelector meta-data</span><br><span class="line">887815f Update docbook dependency and generate epub</span><br><span class="line">ac8326d Polish mockito usage</span><br></pre></td></tr></table></figure>
 <p>你想读哪一种呢？  </p>
 <p>前一种又臭又长；后一种精准一致。前一种来自「不假思索」，而后一种来自「精心组织」。  </p>
-<p>很多的 repo 的 log 信息都是前一种风格，然而很多却不是。比如 <a href="https://github.com/torvalds/linux/commits/master" target="_blank" rel="external">Linux kernel</a> 和 <a href="https://github.com/git/git/commits/master" target="_blank" rel="external">git 本身</a>都是很好的例子。再看看 <a href="https://github.com/spring-projects/spring-boot/commits/master" target="_blank" rel="external">Spring Boot</a> 项目，以及所有 <a href="https://github.com/tpope/vim-pathogen/commits/master" target="_blank" rel="external">Tim Pope</a> 领导的项目吧。  </p>
-<p>这些项目的贡献者都清楚，与项目开发者们(当然也包括了自己)沟通的最好方式是构建一个精巧的 commit messages 结构。diff 会告诉你哪些文件改动了，但只有 commit message 能告诉你其中的原因。Peter Hutterer 很好地抓住了<a href="http://who-t.blogspot.co.at/2009/12/on-commit-messages.html" target="_blank" rel="external">要点</a>：  </p>
+<p>很多的 repo 的 log 信息都是前一种风格，然而很多却不是。比如 <a href="https://github.com/torvalds/linux/commits/master" target="_blank" rel="noopener">Linux kernel</a> 和 <a href="https://github.com/git/git/commits/master" target="_blank" rel="noopener">git 本身</a>都是很好的例子。再看看 <a href="https://github.com/spring-projects/spring-boot/commits/master" target="_blank" rel="noopener">Spring Boot</a> 项目，以及所有 <a href="https://github.com/tpope/vim-pathogen/commits/master" target="_blank" rel="noopener">Tim Pope</a> 领导的项目吧。  </p>
+<p>这些项目的贡献者都清楚，与项目开发者们(当然也包括了自己)沟通的最好方式是构建一个精巧的 commit messages 结构。diff 会告诉你哪些文件改动了，但只有 commit message 能告诉你其中的原因。Peter Hutterer 很好地抓住了<a href="http://who-t.blogspot.co.at/2009/12/on-commit-messages.html" target="_blank" rel="noopener">要点</a>：  </p>
 <blockquote>
-<p>重构代码是很浪费时间的。这一点我们完全无法避免，所以我们应该尽可能地<a href="http://www.osnews.com/story/19266/WTFs_m" target="_blank" rel="external">减少它</a>，commit messages 就是为了解决这个问题而诞生，而且，它能看出一个开发者是不是一个很好的合作者。</p>
+<p>重构代码是很浪费时间的。这一点我们完全无法避免，所以我们应该尽可能地<a href="http://www.osnews.com/story/19266/WTFs_m" target="_blank" rel="noopener">减少它</a>，commit messages 就是为了解决这个问题而诞生，而且，它能看出一个开发者是不是一个很好的合作者。</p>
 </blockquote>
 <p>如果你还没有好好想过一个好的 commit message 是什么样子，那可能是因为你没在 git log 以及相关的工具上花很多时间。有一个这样的怪圈：因为 commit 的历史没有结构性、连续性，没有人使用或关注这个项目。而又因为没有人使用、关注这个项目，commit messages 的历史一直保持着无结构、不连续的。  </p>
 <p>但一个细心维护的 log 具有美感，并且能起作用。git blame, revert, rebase, log, shortlog 以及其他的子命令来源于生活。审查别人的 commits，pull request 是很有价值的事情，现在却变成了独立的行为。理解几个月或几年前这些是怎么发生的不仅是有可能的，也是有作用的。  </p>
@@ -297,29 +297,29 @@
 <li><a href="#7">在正文部分解释什么，为什么，以及怎么做的</a></li>
 </ol>
 <p>举个例子</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line"> 用不超过50个字简述一下有哪些改变  </div><div class="line"></div><div class="line"> 如果必要的话，写更多的细节。每行不要超过72个字。第一行被视为 commit 信息以及余下正文的主题。空行分开概要和正文是非常必要的（除非你不写正文）；如果你把 log, shortlog, rebase 这样的工具混着用会让人迷惑。</div><div class="line"></div><div class="line"> 解释一下这个 commit 解决了什么问题。专注于为什么这么做而不是怎么做的（代码已经解释了）。这个改变是否有副作用或其他不直观的后果。这里就是解释这些事情的地方。</div><div class="line"></div><div class="line"> 空行之后还有段落。</div><div class="line"></div><div class="line">  - 要点符号也是可以的</div><div class="line"></div><div class="line">  - 通常用连字符，星号来表示要点符号。用一个空格起头，用空行隔开，当然，惯例没有这么详细</div><div class="line"></div><div class="line">如果你用了 issue tracker， 把这些引用放在底部，就像这样：</div><div class="line"></div><div class="line">解决了：#123</div><div class="line">参考： #456, #789</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"> 用不超过50个字简述一下有哪些改变  </span><br><span class="line"></span><br><span class="line"> 如果必要的话，写更多的细节。每行不要超过72个字。第一行被视为 commit 信息以及余下正文的主题。空行分开概要和正文是非常必要的（除非你不写正文）；如果你把 log, shortlog, rebase 这样的工具混着用会让人迷惑。</span><br><span class="line"></span><br><span class="line"> 解释一下这个 commit 解决了什么问题。专注于为什么这么做而不是怎么做的（代码已经解释了）。这个改变是否有副作用或其他不直观的后果。这里就是解释这些事情的地方。</span><br><span class="line"></span><br><span class="line"> 空行之后还有段落。</span><br><span class="line"></span><br><span class="line">  - 要点符号也是可以的</span><br><span class="line"></span><br><span class="line">  - 通常用连字符，星号来表示要点符号。用一个空格起头，用空行隔开，当然，惯例没有这么详细</span><br><span class="line"></span><br><span class="line">如果你用了 issue tracker， 把这些引用放在底部，就像这样：</span><br><span class="line"></span><br><span class="line">解决了：#123</span><br><span class="line">参考： #456, #789</span><br></pre></td></tr></table></figure>
 <h3 id="1-用空行分开主题和正文"><a href="#1-用空行分开主题和正文" class="headerlink" title="1. 用空行分开主题和正文"></a><span id="1">1. 用空行分开主题和正文</span></h3><p>来自git commit的帮助文档：</p>
 <blockquote>
 <p>虽不强求，用一个单行（不超过50个字）概述一下改动，跟着一个空行，更多一点描述，这就很好。在第一个空行上的文字会被作为 commit 的标题，git 中会使用到。举个例子，git-format-patch 命令可以把 commit 转为邮件，标题就会作为邮件的主题，正文就会当做邮件的正文。  </p>
 </blockquote>
 <p>首先，并不是每一个 commit 都需要标题，正文。有时候一行也可以的，特别是改动比较小，不需要更多的信息的时候。举个例子：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">修改用户导读中的拼写错误</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">修改用户导读中的拼写错误</span><br></pre></td></tr></table></figure>
 <p>不需要说太多；如果读者想知道什么拼写错误，他可以自己看改动，即，用 <code>git show</code>，<code>git diff</code> 或 <code>git log -p</code>  </p>
 <p>如果你在命令行终端中提交，用 <code>git commit -m</code> 就很简单：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">git commit -m&quot;Fix typo in introduction to user guide&quot;</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git commit -m&quot;Fix typo in introduction to user guide&quot;</span><br></pre></td></tr></table></figure>
 <p>但是，如果你的 commit 需要一点点解释文字，你就需要写正文了，比如：  </p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">Derezz the master control program</div><div class="line"></div><div class="line">MCP turned out to be evil and had become intent on world domination.</div><div class="line">This commit throws Tron&apos;s disc into MCP (causing its deresolution)</div><div class="line">and turns it back into a chess game.</div></pre></td></tr></table></figure>
-<p>这个用 -m 就没那么容易了。你需要一个合适的编辑器，如果你还没有在终端中给 git 设置编辑器，读<a href="http://git-scm.com/book/ch7-1.html#Basic-Client-Configuration" target="_blank" rel="external">Pro Git 的这一章</a>。  </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">Derezz the master control program</span><br><span class="line"></span><br><span class="line">MCP turned out to be evil and had become intent on world domination.</span><br><span class="line">This commit throws Tron&apos;s disc into MCP (causing its deresolution)</span><br><span class="line">and turns it back into a chess game.</span><br></pre></td></tr></table></figure>
+<p>这个用 -m 就没那么容易了。你需要一个合适的编辑器，如果你还没有在终端中给 git 设置编辑器，读<a href="http://git-scm.com/book/ch7-1.html#Basic-Client-Configuration" target="_blank" rel="noopener">Pro Git 的这一章</a>。  </p>
 <p>在任何情况下，看 log 的时候，主题和正文是分开的。这有个完整的 log：  </p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">$ git log</div><div class="line">commit 42e769bdf4894310333942ffc5a15151222a87be</div><div class="line">Author: Kevin Flynn &lt;kevin@flynnsarcade.com&gt;</div><div class="line">Date:   Fri Jan 01 00:00:00 1982 -0200</div><div class="line"></div><div class="line"> Derezz the master control program</div><div class="line"></div><div class="line"> MCP turned out to be evil and had become intent on world domination.</div><div class="line"> This commit throws Tron&apos;s disc into MCP (causing its deresolution)</div><div class="line"> and turns it back into a chess game.</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">$ git log</span><br><span class="line">commit 42e769bdf4894310333942ffc5a15151222a87be</span><br><span class="line">Author: Kevin Flynn &lt;kevin@flynnsarcade.com&gt;</span><br><span class="line">Date:   Fri Jan 01 00:00:00 1982 -0200</span><br><span class="line"></span><br><span class="line"> Derezz the master control program</span><br><span class="line"></span><br><span class="line"> MCP turned out to be evil and had become intent on world domination.</span><br><span class="line"> This commit throws Tron&apos;s disc into MCP (causing its deresolution)</span><br><span class="line"> and turns it back into a chess game.</span><br></pre></td></tr></table></figure>
 <p>如果是 <code>git log --oneline</code>， 只输出主题行：  </p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">$ git log --oneline</div><div class="line">42e769 Derezz the master control program</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ git log --oneline</span><br><span class="line">42e769 Derezz the master control program</span><br></pre></td></tr></table></figure>
 <p>或者，用 <code>git shortlog</code>, 按照贡献者分组，按行输出主题：  </p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line">$ git shortlog</div><div class="line">Kevin Flynn (1):</div><div class="line">      Derezz the master control program</div><div class="line"></div><div class="line">Alan Bradley (1):</div><div class="line">      Introduce security program &quot;Tron&quot;</div><div class="line"></div><div class="line">Ed Dillinger (3):</div><div class="line">      Rename chess program to &quot;MCP&quot;</div><div class="line">      Modify chess program</div><div class="line">      Upgrade chess program</div><div class="line"></div><div class="line">Walter Gibbs (1):</div><div class="line">      Introduce protoype chess program</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">$ git shortlog</span><br><span class="line">Kevin Flynn (1):</span><br><span class="line">      Derezz the master control program</span><br><span class="line"></span><br><span class="line">Alan Bradley (1):</span><br><span class="line">      Introduce security program &quot;Tron&quot;</span><br><span class="line"></span><br><span class="line">Ed Dillinger (3):</span><br><span class="line">      Rename chess program to &quot;MCP&quot;</span><br><span class="line">      Modify chess program</span><br><span class="line">      Upgrade chess program</span><br><span class="line"></span><br><span class="line">Walter Gibbs (1):</span><br><span class="line">      Introduce protoype chess program</span><br></pre></td></tr></table></figure>
 <p>git 中有一些命令可以将主题和正文区分开   —-但主题、正文没有空行可不行。</p>
 <h3 id="2-限制主题在50个字母"><a href="#2-限制主题在50个字母" class="headerlink" title="2. 限制主题在50个字母"></a><span id="2">2. 限制主题在50个字母</span></h3><p>50个字不是硬性标准，只是一个大致的准则。确保主题行是可读的，让开发者一眼就知道有哪些改变。</p>
 <blockquote>
-<p>小技巧：如果你概述的时候发现很困难。可能是因为你一次 commit 太多改动了。尽可能做到 <a href="http://www.freshconsulting.com/atomic-commits/" target="_blank" rel="external">atomic commits</a>(每次post一个主题)</p>
+<p>小技巧：如果你概述的时候发现很困难。可能是因为你一次 commit 太多改动了。尽可能做到 <a href="http://www.freshconsulting.com/atomic-commits/" target="_blank" rel="noopener">atomic commits</a>(每次post一个主题)</p>
 </blockquote>
 <p>GitHub 的用户界面很注意这些惯例。如果你超过了50个字的限制它会警告你：  </p>
 <p><img src="http://i.imgur.com/zyBU2l6.png" alt="github_commit_changes"></p>
@@ -352,11 +352,11 @@
 <p>你正在读的七条准则就是祈使语气（例如，正文部分每行72个字）</p>
 <p>祈使语气听起来有点粗鲁；所以我们不常用。但 git commit 的主题行就很合适，一个理由是：<strong>无论何时你创建commit，git 本身就是祈使语气的</strong></p>
 <p>比如，<code>git merge</code> 创建的默认信息是：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">Merge branch &apos;myfeature&apos;</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Merge branch &apos;myfeature&apos;</span><br></pre></td></tr></table></figure>
 <p>当你用 <code>git revert</code> 时:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">Revert &quot;Add the thing with the stuff&quot;</div><div class="line"></div><div class="line">This reverts commit cc87791524aedd593cff5a74532befe7ab69ce9d.</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Revert &quot;Add the thing with the stuff&quot;</span><br><span class="line"></span><br><span class="line">This reverts commit cc87791524aedd593cff5a74532befe7ab69ce9d.</span><br></pre></td></tr></table></figure>
 <p>在 GitHub 上 pull request 点「Merge」按钮的时候:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">Merge pull request #123 from someuser/somebranch</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Merge pull request #123 from someuser/somebranch</span><br></pre></td></tr></table></figure>
 <p>所以，当你以祈使语气 commit messages 的时候，你遵循的正是 git 自身的传统。 比如：</p>
 <ul>
 <li>Refactor subsystem X for readability (重构子系统X，增强可读性)</li>
@@ -399,17 +399,17 @@
 </blockquote>
 <h3 id="6-每行72个字"><a href="#6-每行72个字" class="headerlink" title="6. 每行72个字"></a><span id="6">6. 每行72个字</span></h3><p>Git 不会自动折行，当你写 commit message 的正文时，你必须考虑右边的长度，人工地折行。  </p>
 <p>推荐每72个字就折行，让 git 满足80个字的限制的时候有足够的空间缩进正文。  </p>
-<p>一个好的编辑器就起作用了。配置 Vim 是很简单的, 比如，设置折行为72个字。一般来说，IDE在智能折行上表现就很糟糕了（在近期的版本中，IntelliJ IDEA 终于有了<a href="http://youtrack.jetbrains.com/issue/IDEA-53615#comment=27-448299" target="_blank" rel="external">比较好的支持</a>）</p>
-<h3 id="7-在正文部分解释什么，为什么，以及怎么做的"><a href="#7-在正文部分解释什么，为什么，以及怎么做的" class="headerlink" title="7. 在正文部分解释什么，为什么，以及怎么做的"></a><span id="7">7. 在正文部分解释什么，为什么，以及怎么做的</span></h3><p>这一<a href="https://github.com/bitcoin/bitcoin/commit/eb0b56b19017ab5c16c745e6da39c53126924ed6" target="_blank" rel="external">Bitcoin Core 的commit</a>很好的说明了什么改动了，以及为什么改动：  </p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div></pre></td><td class="code"><pre><div class="line">commit eb0b56b19017ab5c16c745e6da39c53126924ed6</div><div class="line">Author: Pieter Wuille &lt;pieter.wuille@gmail.com&gt;</div><div class="line">Date:   Fri Aug 1 22:57:55 2014 +0200</div><div class="line"></div><div class="line">   Simplify serialize.h&apos;s exception handling</div><div class="line"></div><div class="line">   Remove the &apos;state&apos; and &apos;exceptmask&apos; from serialize.h&apos;s stream</div><div class="line">   implementations, as well as related methods.</div><div class="line"></div><div class="line">   As exceptmask always included &apos;failbit&apos;, and setstate was always</div><div class="line">   called with bits = failbit, all it did was immediately raise an</div><div class="line">   exception. Get rid of those variables, and replace the setstate</div><div class="line">   with direct exception throwing (which also removes some dead</div><div class="line">   code).</div><div class="line"></div><div class="line">   As a result, good() is never reached after a failure (there are</div><div class="line">   only 2 calls, one of which is in tests), and can just be replaced</div><div class="line">   by !eof().</div><div class="line"></div><div class="line">   fail(), clear(n) and exceptions() are just never called. Delete</div><div class="line">   them.</div></pre></td></tr></table></figure>
-<p>看看<a href="https://github.com/bitcoin/bitcoin/commit/eb0b56b19017ab5c16c745e6da39c53126924ed6" target="_blank" rel="external">完整的 diff</a>，想想这个 commit message 给队友以及后继的开发者节约了多少时间吧。如果他没有这样写，这些变动可能就永远都看不到了。   </p>
+<p>一个好的编辑器就起作用了。配置 Vim 是很简单的, 比如，设置折行为72个字。一般来说，IDE在智能折行上表现就很糟糕了（在近期的版本中，IntelliJ IDEA 终于有了<a href="http://youtrack.jetbrains.com/issue/IDEA-53615#comment=27-448299" target="_blank" rel="noopener">比较好的支持</a>）</p>
+<h3 id="7-在正文部分解释什么，为什么，以及怎么做的"><a href="#7-在正文部分解释什么，为什么，以及怎么做的" class="headerlink" title="7. 在正文部分解释什么，为什么，以及怎么做的"></a><span id="7">7. 在正文部分解释什么，为什么，以及怎么做的</span></h3><p>这一<a href="https://github.com/bitcoin/bitcoin/commit/eb0b56b19017ab5c16c745e6da39c53126924ed6" target="_blank" rel="noopener">Bitcoin Core 的commit</a>很好的说明了什么改动了，以及为什么改动：  </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">commit eb0b56b19017ab5c16c745e6da39c53126924ed6</span><br><span class="line">Author: Pieter Wuille &lt;pieter.wuille@gmail.com&gt;</span><br><span class="line">Date:   Fri Aug 1 22:57:55 2014 +0200</span><br><span class="line"></span><br><span class="line">   Simplify serialize.h&apos;s exception handling</span><br><span class="line"></span><br><span class="line">   Remove the &apos;state&apos; and &apos;exceptmask&apos; from serialize.h&apos;s stream</span><br><span class="line">   implementations, as well as related methods.</span><br><span class="line"></span><br><span class="line">   As exceptmask always included &apos;failbit&apos;, and setstate was always</span><br><span class="line">   called with bits = failbit, all it did was immediately raise an</span><br><span class="line">   exception. Get rid of those variables, and replace the setstate</span><br><span class="line">   with direct exception throwing (which also removes some dead</span><br><span class="line">   code).</span><br><span class="line"></span><br><span class="line">   As a result, good() is never reached after a failure (there are</span><br><span class="line">   only 2 calls, one of which is in tests), and can just be replaced</span><br><span class="line">   by !eof().</span><br><span class="line"></span><br><span class="line">   fail(), clear(n) and exceptions() are just never called. Delete</span><br><span class="line">   them.</span><br></pre></td></tr></table></figure>
+<p>看看<a href="https://github.com/bitcoin/bitcoin/commit/eb0b56b19017ab5c16c745e6da39c53126924ed6" target="_blank" rel="noopener">完整的 diff</a>，想想这个 commit message 给队友以及后继的开发者节约了多少时间吧。如果他没有这样写，这些变动可能就永远都看不到了。   </p>
 <p>在大多数情况下，你可以忽略变动的细节，代码基本上是不言自明的（如果代码很复杂，就需要文字解释，这就需要注释了），首先说清楚改动的原因—-改动前代码是怎么工作的（有什么问题），现在又是怎样的，你为什么要解决这个问题，又是怎么解决的。  </p>
 <p>未来感谢你的软件维护者可能就是你自己！  </p>
 <h2 id="小技巧"><a href="#小技巧" class="headerlink" title="小技巧"></a>小技巧</h2><h3 id="享受命令行，远离IDE"><a href="#享受命令行，远离IDE" class="headerlink" title="享受命令行，远离IDE"></a>享受命令行，远离IDE</h3><p>git 有很多子命令是不无理由的，拥抱命令行是明智的选择。Git 太TM强大了；IDE 当然也是，但每一种有不同的方式。我每天都用IDE（IntelliJ IDEA），也用其他（如Eclipse）， 但我从没见过能与强大、简单的终端媲美的集成了git的IDE(你懂得)</p>
 <p>诚然，集成了 git 的IDE 很难得，比如可以删除文件时调用<code>git rm</code>，重命名文件是调用相关的git命令。但要完成 commit, merge, rebase，或复杂的历史版本分析时，IDE就捉襟见肘了。</p>
 <p>要想充分发挥 git 的威力，那就必须命令行满屏幕飞了。   </p>
-<p>记着，不管是用 Bash 或是 Z shell，<a href="http://git-scm.com/book/en/Git-Basics-Tips-and-Tricks" target="_blank" rel="external">Tab 补全</a>能让你减轻记命令的痛苦。</p>
-<h3 id="读《Pro-Git》"><a href="#读《Pro-Git》" class="headerlink" title="读《Pro Git》"></a>读《Pro Git》</h3><p><a href="http://git-scm.com/book" target="_blank" rel="external">Pro Git</a>是在线，免费的，真是极好的。好好利用！</p>
+<p>记着，不管是用 Bash 或是 Z shell，<a href="http://git-scm.com/book/en/Git-Basics-Tips-and-Tricks" target="_blank" rel="noopener">Tab 补全</a>能让你减轻记命令的痛苦。</p>
+<h3 id="读《Pro-Git》"><a href="#读《Pro-Git》" class="headerlink" title="读《Pro Git》"></a>读《Pro Git》</h3><p><a href="http://git-scm.com/book" target="_blank" rel="noopener">Pro Git</a>是在线，免费的，真是极好的。好好利用！</p>
 
       
     </div>
@@ -502,7 +502,7 @@
 
       
         <ul class="sidebar-nav motion-element">
-          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
             文章目录
           </li>
           <li class="sidebar-nav-overview" data-target="site-overview">
@@ -513,16 +513,14 @@
 
       <section class="site-overview sidebar-panel ">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
-          <img class="site-author-image" itemprop="image"
-               src="https://avatars1.githubusercontent.com/u/6964284?v=3&s=460"
-               alt="Frank" />
+          <img class="site-author-image" itemprop="image" src="https://avatars1.githubusercontent.com/u/6964284?v=3&s=460" alt="Frank">
           <p class="site-author-name" itemprop="name">Frank</p>
           <p class="site-description motion-element" itemprop="description"></p>
         </div>
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">365</span>
+              <span class="site-state-item-count">390</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -532,7 +530,7 @@
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">135</span>
+                <span class="site-state-item-count">207</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
@@ -568,7 +566,7 @@
         
           <div class="cc-license motion-element" itemprop="license">
             <a href="http://creativecommons.org/licenses/by-sa/4.0" class="cc-opacity" target="_blank">
-              <img src="/images/cc-by-sa.svg" alt="Creative Commons" />
+              <img src="/images/cc-by-sa.svg" alt="Creative Commons">
             </a>
           </div>
         
@@ -608,10 +606,10 @@
 
     <footer id="footer" class="footer">
       <div class="footer-inner">
-        <div class="copyright" >
+        <div class="copyright">
   
   &copy;  2015 - 
-  <span itemprop="copyrightYear">2019</span>
+  <span itemprop="copyrightYear">2021</span>
   <span class="with-love">
     <i class="fa fa-heart"></i>
   </span>

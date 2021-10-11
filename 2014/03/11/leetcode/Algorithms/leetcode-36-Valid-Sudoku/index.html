@@ -6,19 +6,15 @@
 
 
 <html class="theme-next muse use-motion">
-<head>
-  <meta charset="UTF-8"/>
-<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
 
 
-<meta http-equiv="Cache-Control" content="no-transform" />
-<meta http-equiv="Cache-Control" content="no-siteapp" />
-
-
-
-
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
 
 
 
@@ -27,7 +23,11 @@
 
 
 
-  <link href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css"/>
+
+
+
+
+  <link href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
 
 
 
@@ -36,21 +36,21 @@
 
 
 
-<link href="/vendors/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+<link href="/vendors/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css">
 
-<link href="/css/main.css?v=0.5.0" rel="stylesheet" type="text/css" />
-
-
-  <meta name="keywords" content="algorithms,leetcode,Hash-Table,review," />
+<link href="/css/main.css?v=0.5.0" rel="stylesheet" type="text/css">
 
 
+  <meta name="keywords" content="algorithms,leetcode,Hash-Table,review,">
 
 
 
 
 
 
-  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=0.5.0" />
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=0.5.0">
 
 
 
@@ -124,7 +124,7 @@
   
 
   <div class="custom-logo-site-title">
-    <a href="/"  class="brand" rel="start">
+    <a href="/" class="brand" rel="start">
       <span class="logo-line-before"><i></i></span>
       <span class="site-title">knarfeh's logbook</span>
       <span class="logo-line-after"><i></i></span>
@@ -151,7 +151,7 @@
         <li class="menu-item menu-item-home">
           <a href="/" rel="section">
             
-              <i class="menu-item-icon fa fa-home fa-fw"></i> <br />
+              <i class="menu-item-icon fa fa-home fa-fw"></i> <br>
             
             首页
           </a>
@@ -161,7 +161,7 @@
         <li class="menu-item menu-item-archives">
           <a href="/archives" rel="section">
             
-              <i class="menu-item-icon fa fa-archive fa-fw"></i> <br />
+              <i class="menu-item-icon fa fa-archive fa-fw"></i> <br>
             
             归档
           </a>
@@ -171,7 +171,7 @@
         <li class="menu-item menu-item-tags">
           <a href="/tags" rel="section">
             
-              <i class="menu-item-icon fa fa-tags fa-fw"></i> <br />
+              <i class="menu-item-icon fa fa-tags fa-fw"></i> <br>
             
             标签
           </a>
@@ -262,19 +262,19 @@
 
       
         <h3 id="描述"><a href="#描述" class="headerlink" title="描述"></a>描述</h3><hr>
-<p>Determine if a Sudoku is valid, according to: <a href="http://sudoku.com.au/TheRules.aspx" target="_blank" rel="external">Sudoku Puzzles - The Rules.</a></p>
+<p>Determine if a Sudoku is valid, according to: <a href="http://sudoku.com.au/TheRules.aspx" target="_blank" rel="noopener">Sudoku Puzzles - The Rules.</a></p>
 <p>The Sudoku board could be partially filled, where empty cells are filled with the character ‘.’.</p>
 <p><img src="http://upload.wikimedia.org/wikipedia/commons/thumb/f/ff/Sudoku-by-L2G-20050714.svg/250px-Sudoku-by-L2G-20050714.svg.png" alt="sudoku"></p>
 <a id="more"></a>
 <h3 id="分析"><a href="#分析" class="headerlink" title="分析"></a>分析</h3><hr>
 <p>数独的规则只有3条，每一行，每一列，每一个小方块（一共9个小方块），1-9九个数字最多只能出现一次。细节题，按照条件判断即可。</p>
 <h3 id="解决方案1（C-）"><a href="#解决方案1（C-）" class="headerlink" title="解决方案1（C++）"></a>解决方案1（C++）</h3><hr>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">class</span> Solution &#123;  </div><div class="line"><span class="keyword">public</span>: </div><div class="line">    <span class="function"><span class="keyword">bool</span> <span class="title">isValidSudoku</span><span class="params">(<span class="built_in">vector</span>&lt;<span class="built_in">vector</span>&lt;<span class="keyword">char</span>&gt; &gt; &amp;board)</span> </span>&#123;  </div><div class="line">        <span class="keyword">int</span> rows[<span class="number">9</span>];</div><div class="line">        <span class="keyword">int</span> cols[<span class="number">9</span>];</div><div class="line">        <span class="keyword">int</span> block[<span class="number">9</span>];</div><div class="line">        </div><div class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="number">9</span>; i++) &#123;</div><div class="line">            <span class="built_in">memset</span>(rows, <span class="number">0</span>, <span class="keyword">sizeof</span>(<span class="keyword">int</span>)*<span class="number">9</span>);</div><div class="line">            <span class="built_in">memset</span>(cols, <span class="number">0</span>, <span class="keyword">sizeof</span>(<span class="keyword">int</span>)*<span class="number">9</span>);</div><div class="line">            </div><div class="line">            <span class="keyword">for</span>(<span class="keyword">int</span> j = <span class="number">0</span>; j &lt; <span class="number">9</span>; j++) &#123;</div><div class="line">                <span class="keyword">if</span>(board[i][j] != <span class="string">'.'</span>) &#123;</div><div class="line">                    <span class="keyword">if</span>(rows[board[i][j]-<span class="string">'1'</span>] &gt; <span class="number">0</span>)&#123;</div><div class="line">                        <span class="keyword">return</span> <span class="literal">false</span>;</div><div class="line">                    &#125;<span class="keyword">else</span>&#123;</div><div class="line">                        rows[board[i][j]-<span class="string">'1'</span>]++;</div><div class="line">                    &#125;</div><div class="line">                &#125;</div><div class="line">                </div><div class="line">                <span class="keyword">if</span>(board[j][i] != <span class="string">'.'</span>) &#123;</div><div class="line">                    <span class="keyword">if</span>(cols[board[j][i]-<span class="string">'1'</span>] &gt; <span class="number">0</span>) &#123;</div><div class="line">                        <span class="keyword">return</span> <span class="literal">false</span>;</div><div class="line">                    &#125;<span class="keyword">else</span> &#123;</div><div class="line">                        cols[board[j][i]-<span class="string">'1'</span>]++;</div><div class="line">                    &#125;</div><div class="line">                &#125;</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">        </div><div class="line">        </div><div class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="number">3</span>; i++) &#123;</div><div class="line">            <span class="keyword">for</span>(<span class="keyword">int</span> j = <span class="number">0</span>; j &lt; <span class="number">3</span>; j++) &#123;  </div><div class="line">                <span class="built_in">memset</span>(block, <span class="number">0</span>, <span class="keyword">sizeof</span>(<span class="keyword">int</span>)*<span class="number">9</span>);  </div><div class="line">                <span class="keyword">for</span>(<span class="keyword">int</span> a = <span class="number">0</span>; a &lt; <span class="number">3</span>; a++)  &#123;</div><div class="line">                    <span class="keyword">for</span>(<span class="keyword">int</span> b = <span class="number">0</span>; b &lt; <span class="number">3</span>; b++) &#123;</div><div class="line">                        <span class="keyword">if</span>(board[<span class="number">3</span>*i+a][<span class="number">3</span>*j+b] != <span class="string">'.'</span>) &#123;  </div><div class="line">                            <span class="keyword">if</span>(block[board[<span class="number">3</span>*i+a][<span class="number">3</span>*j+b]-<span class="string">'1'</span>]&gt;<span class="number">0</span>)<span class="keyword">return</span> <span class="literal">false</span>;  </div><div class="line">                            <span class="keyword">else</span> block[board[<span class="number">3</span>*i+a][<span class="number">3</span>*j+b]-<span class="string">'1'</span>]++;  </div><div class="line">                        &#125;  </div><div class="line">                    &#125; </div><div class="line">                &#125;</div><div class="line">            &#125;          </div><div class="line">        &#125;  </div><div class="line">         </div><div class="line">        <span class="keyword">return</span> <span class="literal">true</span>;</div><div class="line">    &#125;  </div><div class="line">        </div><div class="line">&#125;;</div></pre></td></tr></table></figure>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span>  </span><br><span class="line"><span class="keyword">public</span>: </span><br><span class="line">    <span class="function"><span class="keyword">bool</span> <span class="title">isValidSudoku</span><span class="params">(<span class="built_in">vector</span>&lt;<span class="built_in">vector</span>&lt;<span class="keyword">char</span>&gt; &gt; &amp;board)</span> </span>&#123;  </span><br><span class="line">        <span class="keyword">int</span> rows[<span class="number">9</span>];</span><br><span class="line">        <span class="keyword">int</span> cols[<span class="number">9</span>];</span><br><span class="line">        <span class="keyword">int</span> block[<span class="number">9</span>];</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="number">9</span>; i++) &#123;</span><br><span class="line">            <span class="built_in">memset</span>(rows, <span class="number">0</span>, <span class="keyword">sizeof</span>(<span class="keyword">int</span>)*<span class="number">9</span>);</span><br><span class="line">            <span class="built_in">memset</span>(cols, <span class="number">0</span>, <span class="keyword">sizeof</span>(<span class="keyword">int</span>)*<span class="number">9</span>);</span><br><span class="line">            </span><br><span class="line">            <span class="keyword">for</span>(<span class="keyword">int</span> j = <span class="number">0</span>; j &lt; <span class="number">9</span>; j++) &#123;</span><br><span class="line">                <span class="keyword">if</span>(board[i][j] != <span class="string">'.'</span>) &#123;</span><br><span class="line">                    <span class="keyword">if</span>(rows[board[i][j]-<span class="string">'1'</span>] &gt; <span class="number">0</span>)&#123;</span><br><span class="line">                        <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">                    &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">                        rows[board[i][j]-<span class="string">'1'</span>]++;</span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;</span><br><span class="line">                </span><br><span class="line">                <span class="keyword">if</span>(board[j][i] != <span class="string">'.'</span>) &#123;</span><br><span class="line">                    <span class="keyword">if</span>(cols[board[j][i]-<span class="string">'1'</span>] &gt; <span class="number">0</span>) &#123;</span><br><span class="line">                        <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">                    &#125;<span class="keyword">else</span> &#123;</span><br><span class="line">                        cols[board[j][i]-<span class="string">'1'</span>]++;</span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        </span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="number">3</span>; i++) &#123;</span><br><span class="line">            <span class="keyword">for</span>(<span class="keyword">int</span> j = <span class="number">0</span>; j &lt; <span class="number">3</span>; j++) &#123;  </span><br><span class="line">                <span class="built_in">memset</span>(block, <span class="number">0</span>, <span class="keyword">sizeof</span>(<span class="keyword">int</span>)*<span class="number">9</span>);  </span><br><span class="line">                <span class="keyword">for</span>(<span class="keyword">int</span> a = <span class="number">0</span>; a &lt; <span class="number">3</span>; a++)  &#123;</span><br><span class="line">                    <span class="keyword">for</span>(<span class="keyword">int</span> b = <span class="number">0</span>; b &lt; <span class="number">3</span>; b++) &#123;</span><br><span class="line">                        <span class="keyword">if</span>(board[<span class="number">3</span>*i+a][<span class="number">3</span>*j+b] != <span class="string">'.'</span>) &#123;  </span><br><span class="line">                            <span class="keyword">if</span>(block[board[<span class="number">3</span>*i+a][<span class="number">3</span>*j+b]-<span class="string">'1'</span>]&gt;<span class="number">0</span>)<span class="keyword">return</span> <span class="literal">false</span>;  </span><br><span class="line">                            <span class="keyword">else</span> block[board[<span class="number">3</span>*i+a][<span class="number">3</span>*j+b]-<span class="string">'1'</span>]++;  </span><br><span class="line">                        &#125;  </span><br><span class="line">                    &#125; </span><br><span class="line">                &#125;</span><br><span class="line">            &#125;          </span><br><span class="line">        &#125;  </span><br><span class="line">         </span><br><span class="line">        <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">    &#125;  </span><br><span class="line">        </span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
 <p>「先解决，再优化」：一共9个小块，可以用i，j表示，在两层循环中，第a个小块可以表示为(i/3)*3+j/3，时间复杂度$O(n^2)$，空间复杂度$O(1)$</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div></pre></td><td class="code"><pre><div class="line">class Solution &#123;  </div><div class="line">public: </div><div class="line">    bool isValidSudoku(vector&lt;vector&lt;char&gt; &gt; &amp;board) &#123;  </div><div class="line">        vector&lt;vector&lt;bool&gt;&gt; rows(9, vector&lt;bool&gt;(9,false));  </div><div class="line">        vector&lt;vector&lt;bool&gt;&gt; cols(9, vector&lt;bool&gt;(9,false));  </div><div class="line">        vector&lt;vector&lt;bool&gt;&gt; block(9, vector&lt;bool&gt;(9,false));  </div><div class="line">  </div><div class="line">        for(int i = 0; i &lt; 9; i++) &#123;</div><div class="line">            for(int j = 0; j &lt; 9; j++)  &#123;  </div><div class="line">                if(board[i][j] != &apos;.&apos;) &#123;</div><div class="line">                    int num = board[i][j] - &apos;1&apos;;  </div><div class="line">                    if(rows[i][num] || cols[j][num] || block[(i/3)*3+j/3][num]) &#123;</div><div class="line">                        return false;  </div><div class="line">                    &#125; </div><div class="line">                    rows[i][num] = cols[j][num] = block[(i/3)*3+j/3][num] = true;  </div><div class="line">                &#125;</div><div class="line">                </div><div class="line">            &#125; </div><div class="line">        &#125;</div><div class="line">        return true;  </div><div class="line">    &#125;  </div><div class="line">&#125;;</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">class Solution &#123;  </span><br><span class="line">public: </span><br><span class="line">    bool isValidSudoku(vector&lt;vector&lt;char&gt; &gt; &amp;board) &#123;  </span><br><span class="line">        vector&lt;vector&lt;bool&gt;&gt; rows(9, vector&lt;bool&gt;(9,false));  </span><br><span class="line">        vector&lt;vector&lt;bool&gt;&gt; cols(9, vector&lt;bool&gt;(9,false));  </span><br><span class="line">        vector&lt;vector&lt;bool&gt;&gt; block(9, vector&lt;bool&gt;(9,false));  </span><br><span class="line">  </span><br><span class="line">        for(int i = 0; i &lt; 9; i++) &#123;</span><br><span class="line">            for(int j = 0; j &lt; 9; j++)  &#123;  </span><br><span class="line">                if(board[i][j] != &apos;.&apos;) &#123;</span><br><span class="line">                    int num = board[i][j] - &apos;1&apos;;  </span><br><span class="line">                    if(rows[i][num] || cols[j][num] || block[(i/3)*3+j/3][num]) &#123;</span><br><span class="line">                        return false;  </span><br><span class="line">                    &#125; </span><br><span class="line">                    rows[i][num] = cols[j][num] = block[(i/3)*3+j/3][num] = true;  </span><br><span class="line">                &#125;</span><br><span class="line">                </span><br><span class="line">            &#125; </span><br><span class="line">        &#125;</span><br><span class="line">        return true;  </span><br><span class="line">    &#125;  </span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
 <h3 id="相关问题"><a href="#相关问题" class="headerlink" title="相关问题"></a>相关问题</h3><hr>
-<p><a href="https://leetcode.com/problems/sudoku-solver/" target="_blank" rel="external">sudoku solver</a></p>
-<h3 id="题目来源"><a href="#题目来源" class="headerlink" title="题目来源"></a><a href="https://leetcode.com/problems/valid-sudoku/" target="_blank" rel="external">题目来源</a></h3>
+<p><a href="https://leetcode.com/problems/sudoku-solver/" target="_blank" rel="noopener">sudoku solver</a></p>
+<h3 id="题目来源"><a href="#题目来源" class="headerlink" title="题目来源"></a><a href="https://leetcode.com/problems/valid-sudoku/" target="_blank" rel="noopener">题目来源</a></h3>
       
     </div>
 
@@ -303,16 +303,16 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2014/03/11/leetcode/Algorithms/leetcode-371-Sum-of-Two-Integers/" rel="next" title="leetcode-237-Delete-Node-in-a-Linked-List">
-                <i class="fa fa-chevron-left"></i> leetcode-237-Delete-Node-in-a-Linked-List
+              <a href="/2014/03/11/leetcode/Algorithms/leetcode-367-Valid-Perfect-Square/" rel="next" title="leetcode-367-Valid-Perfect-Square">
+                <i class="fa fa-chevron-left"></i> leetcode-367-Valid-Perfect-Square
               </a>
             
           </div>
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2014/03/11/leetcode/Database/leetcode-178-Rank-Scores/" rel="prev" title="leetcode-178-Rank-Scores">
-                leetcode-178-Rank-Scores <i class="fa fa-chevron-right"></i>
+              <a href="/2014/03/11/leetcode/Algorithms/leetcode-349-Intersection-of-Two-Arrays/" rel="prev" title="leetcode-349-Intersection-of-Two-Arrays">
+                leetcode-349-Intersection-of-Two-Arrays <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -368,7 +368,7 @@
 
       
         <ul class="sidebar-nav motion-element">
-          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
             文章目录
           </li>
           <li class="sidebar-nav-overview" data-target="site-overview">
@@ -379,16 +379,14 @@
 
       <section class="site-overview sidebar-panel ">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
-          <img class="site-author-image" itemprop="image"
-               src="https://avatars1.githubusercontent.com/u/6964284?v=3&s=460"
-               alt="Frank" />
+          <img class="site-author-image" itemprop="image" src="https://avatars1.githubusercontent.com/u/6964284?v=3&s=460" alt="Frank">
           <p class="site-author-name" itemprop="name">Frank</p>
           <p class="site-description motion-element" itemprop="description"></p>
         </div>
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">365</span>
+              <span class="site-state-item-count">390</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -398,7 +396,7 @@
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">135</span>
+                <span class="site-state-item-count">207</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
@@ -434,7 +432,7 @@
         
           <div class="cc-license motion-element" itemprop="license">
             <a href="http://creativecommons.org/licenses/by-sa/4.0" class="cc-opacity" target="_blank">
-              <img src="/images/cc-by-sa.svg" alt="Creative Commons" />
+              <img src="/images/cc-by-sa.svg" alt="Creative Commons">
             </a>
           </div>
         
@@ -474,10 +472,10 @@
 
     <footer id="footer" class="footer">
       <div class="footer-inner">
-        <div class="copyright" >
+        <div class="copyright">
   
   &copy;  2015 - 
-  <span itemprop="copyrightYear">2019</span>
+  <span itemprop="copyrightYear">2021</span>
   <span class="with-love">
     <i class="fa fa-heart"></i>
   </span>

@@ -6,19 +6,15 @@
 
 
 <html class="theme-next muse use-motion">
-<head>
-  <meta charset="UTF-8"/>
-<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
 
 
-<meta http-equiv="Cache-Control" content="no-transform" />
-<meta http-equiv="Cache-Control" content="no-siteapp" />
-
-
-
-
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
 
 
 
@@ -27,7 +23,11 @@
 
 
 
-  <link href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css"/>
+
+
+
+
+  <link href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
 
 
 
@@ -36,21 +36,21 @@
 
 
 
-<link href="/vendors/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+<link href="/vendors/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css">
 
-<link href="/css/main.css?v=0.5.0" rel="stylesheet" type="text/css" />
-
-
-  <meta name="keywords" content="algorithms,leetcode,Array,Two-Pointers,review," />
+<link href="/css/main.css?v=0.5.0" rel="stylesheet" type="text/css">
 
 
+  <meta name="keywords" content="algorithms,leetcode,Array,review,Two-Pointers,">
 
 
 
 
 
 
-  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=0.5.0" />
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=0.5.0">
 
 
 
@@ -58,14 +58,14 @@
 
 
 <meta name="description" content="描述 Given an array S of n integers, are there elements a, b, c in S such that a + b + c = 0? Find all unique triplets in the array which gives the sum of zero. Note:     Elements in a triplet (a,b,c) m">
-<meta name="keywords" content="algorithms,leetcode,Array,Two-Pointers,review">
+<meta name="keywords" content="algorithms,leetcode,Array,review,Two-Pointers">
 <meta property="og:type" content="article">
 <meta property="og:title" content="leetcode-15-3Sum">
 <meta property="og:url" content="http://knarfeh.github.io/2014/03/11/leetcode/Algorithms/leetcode-15-3Sum/index.html">
 <meta property="og:site_name" content="knarfeh&#39;s logbook">
 <meta property="og:description" content="描述 Given an array S of n integers, are there elements a, b, c in S such that a + b + c = 0? Find all unique triplets in the array which gives the sum of zero. Note:     Elements in a triplet (a,b,c) m">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-10-14T09:46:58.958Z">
+<meta property="og:updated_time" content="2020-04-02T03:51:40.402Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="leetcode-15-3Sum">
 <meta name="twitter:description" content="描述 Given an array S of n integers, are there elements a, b, c in S such that a + b + c = 0? Find all unique triplets in the array which gives the sum of zero. Note:     Elements in a triplet (a,b,c) m">
@@ -122,7 +122,7 @@
   
 
   <div class="custom-logo-site-title">
-    <a href="/"  class="brand" rel="start">
+    <a href="/" class="brand" rel="start">
       <span class="logo-line-before"><i></i></span>
       <span class="site-title">knarfeh's logbook</span>
       <span class="logo-line-after"><i></i></span>
@@ -149,7 +149,7 @@
         <li class="menu-item menu-item-home">
           <a href="/" rel="section">
             
-              <i class="menu-item-icon fa fa-home fa-fw"></i> <br />
+              <i class="menu-item-icon fa fa-home fa-fw"></i> <br>
             
             首页
           </a>
@@ -159,7 +159,7 @@
         <li class="menu-item menu-item-archives">
           <a href="/archives" rel="section">
             
-              <i class="menu-item-icon fa fa-archive fa-fw"></i> <br />
+              <i class="menu-item-icon fa fa-archive fa-fw"></i> <br>
             
             归档
           </a>
@@ -169,7 +169,7 @@
         <li class="menu-item menu-item-tags">
           <a href="/tags" rel="section">
             
-              <i class="menu-item-icon fa fa-tags fa-fw"></i> <br />
+              <i class="menu-item-icon fa fa-tags fa-fw"></i> <br>
             
             标签
           </a>
@@ -270,13 +270,20 @@
 <h3 id="分析"><a href="#分析" class="headerlink" title="分析"></a>分析</h3><hr>
 <p>思路：先给数组排序，按从左至右从小到大得顺序排列，通过第一层循环确定第一个数，其他两个在第一个数的右边（都比第一个数大）取，两个数从两侧向中间靠拢，如果三数相加大于0，第三个数向左移动（减小），三数相加小于0，第二个数向右移动。跳过相同的数字。时间复杂度$O(n^2)$，空间复杂度是$O(1)$</p>
 <h3 id="解决方案1-C"><a href="#解决方案1-C" class="headerlink" title="解决方案1(C++)"></a>解决方案1(C++)</h3><hr>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">class</span> Solution &#123;</div><div class="line"><span class="keyword">public</span>:</div><div class="line">    <span class="built_in">vector</span>&lt;<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&gt; threeSum(<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&amp; nums) &#123;</div><div class="line">        <span class="built_in">vector</span>&lt;<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&gt; result;</div><div class="line">    </div><div class="line">        <span class="keyword">int</span> size = nums.size();</div><div class="line">        sort(nums.begin(), nums.end());</div><div class="line">    </div><div class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; size; i++) &#123;</div><div class="line">            <span class="keyword">while</span>(i &gt; <span class="number">0</span> &amp;&amp; i &lt; size &amp;&amp; nums[i] == nums[i<span class="number">-1</span>]) &#123;</div><div class="line">                i++;</div><div class="line">            &#125;</div><div class="line">    </div><div class="line">            <span class="keyword">int</span> j = i + <span class="number">1</span>;</div><div class="line">            <span class="keyword">int</span> k = size<span class="number">-1</span>;</div><div class="line">    </div><div class="line">            <span class="keyword">while</span>(j &lt; k) &#123;</div><div class="line">                <span class="keyword">int</span> sum = nums[i] + nums[j] + nums[k];</div><div class="line">                <span class="keyword">if</span>(sum == <span class="number">0</span>) &#123;</div><div class="line">                    <span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; now(<span class="number">3</span>);</div><div class="line">                    now[<span class="number">0</span>] = nums[i];</div><div class="line">                    now[<span class="number">1</span>] = nums[j];</div><div class="line">                    now[<span class="number">2</span>] = nums[k];</div><div class="line">    </div><div class="line">                    result.push_back(now);</div><div class="line">                    j++;</div><div class="line">                    k--;</div><div class="line">                    <span class="keyword">while</span>(j &lt; k &amp;&amp; nums[j] == nums[j<span class="number">-1</span>]) &#123;</div><div class="line">                        j++;</div><div class="line">                    &#125;</div><div class="line">                    <span class="keyword">while</span>(j &lt; k &amp;&amp; nums[k] == nums[k+<span class="number">1</span>]) &#123;</div><div class="line">                        k--;</div><div class="line">                    &#125;</div><div class="line">                &#125;<span class="keyword">else</span> <span class="keyword">if</span>(sum &gt; <span class="number">0</span>)&#123;</div><div class="line">                    k--;</div><div class="line">                &#125;<span class="keyword">else</span> &#123;</div><div class="line">                    j++;</div><div class="line">                &#125;</div><div class="line">            &#125;</div><div class="line">    </div><div class="line">        &#125;</div><div class="line">        <span class="keyword">return</span> result;</div><div class="line">    &#125;</div><div class="line">&#125;;</div></pre></td></tr></table></figure>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="built_in">vector</span>&lt;<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&gt; <span class="title">threeSum</span><span class="params">(<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&amp; nums)</span> </span>&#123;</span><br><span class="line">        <span class="built_in">vector</span>&lt;<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&gt; result;</span><br><span class="line">    </span><br><span class="line">        <span class="keyword">int</span> size = nums.size();</span><br><span class="line">        sort(nums.begin(), nums.end());</span><br><span class="line">    </span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; size; i++) &#123;</span><br><span class="line">            <span class="keyword">while</span>(i &gt; <span class="number">0</span> &amp;&amp; i &lt; size &amp;&amp; nums[i] == nums[i<span class="number">-1</span>]) &#123;</span><br><span class="line">                i++;</span><br><span class="line">            &#125;</span><br><span class="line">    </span><br><span class="line">            <span class="keyword">int</span> j = i + <span class="number">1</span>;</span><br><span class="line">            <span class="keyword">int</span> k = size<span class="number">-1</span>;</span><br><span class="line">    </span><br><span class="line">            <span class="keyword">while</span>(j &lt; k) &#123;</span><br><span class="line">                <span class="keyword">int</span> sum = nums[i] + nums[j] + nums[k];</span><br><span class="line">                <span class="keyword">if</span>(sum == <span class="number">0</span>) &#123;</span><br><span class="line">                    <span class="function"><span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; <span class="title">now</span><span class="params">(<span class="number">3</span>)</span></span>;</span><br><span class="line">                    now[<span class="number">0</span>] = nums[i];</span><br><span class="line">                    now[<span class="number">1</span>] = nums[j];</span><br><span class="line">                    now[<span class="number">2</span>] = nums[k];</span><br><span class="line">    </span><br><span class="line">                    result.push_back(now);</span><br><span class="line">                    j++;</span><br><span class="line">                    k--;</span><br><span class="line">                    <span class="keyword">while</span>(j &lt; k &amp;&amp; nums[j] == nums[j<span class="number">-1</span>]) &#123;</span><br><span class="line">                        j++;</span><br><span class="line">                    &#125;</span><br><span class="line">                    <span class="keyword">while</span>(j &lt; k &amp;&amp; nums[k] == nums[k+<span class="number">1</span>]) &#123;</span><br><span class="line">                        k--;</span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;<span class="keyword">else</span> <span class="keyword">if</span>(sum &gt; <span class="number">0</span>)&#123;</span><br><span class="line">                    k--;</span><br><span class="line">                &#125;<span class="keyword">else</span> &#123;</span><br><span class="line">                    j++;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">    </span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> result;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
 <h3 id="解决方案2-Python"><a href="#解决方案2-Python" class="headerlink" title="解决方案2(Python)"></a>解决方案2(Python)</h3><hr>
 <p>思路和C++的版本是一样的</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span><span class="params">(object)</span>:</span></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">threeSum</span><span class="params">(self, nums)</span>:</span></div><div class="line">        <span class="string">"""</span></div><div class="line">        :type nums: List[int]</div><div class="line">        :rtype: List[List[int]]</div><div class="line">        """</div><div class="line">        nums.sort()</div><div class="line">        result = []</div><div class="line">    </div><div class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> range(len(nums)<span class="number">-2</span>):</div><div class="line">            <span class="keyword">if</span> i==<span class="number">0</span> <span class="keyword">or</span> i != <span class="number">0</span> <span class="keyword">and</span> nums[i<span class="number">-1</span>]!=nums[i]:</div><div class="line">                left = i + <span class="number">1</span></div><div class="line">                right = len(nums) - <span class="number">1</span></div><div class="line">                <span class="keyword">while</span> left &lt; right:</div><div class="line">                    s = nums[i] + nums[left] + nums[right]</div><div class="line">                    <span class="keyword">if</span> s == <span class="number">0</span>:</div><div class="line">                        result.append([nums[i], nums[left], nums[right]])</div><div class="line">                        left += <span class="number">1</span></div><div class="line">                        right -= <span class="number">1</span></div><div class="line">                        <span class="keyword">while</span> left &lt; right <span class="keyword">and</span> nums[left] == nums[left<span class="number">-1</span>]:</div><div class="line">                            left += <span class="number">1</span></div><div class="line">                        <span class="keyword">while</span> left &lt; right <span class="keyword">and</span> nums[right] == nums[right+<span class="number">1</span>]:</div><div class="line">                            right -= <span class="number">1</span></div><div class="line">                    <span class="keyword">elif</span> s &gt; <span class="number">0</span>:</div><div class="line">                        right -= <span class="number">1</span></div><div class="line">                    <span class="keyword">else</span>:</div><div class="line">                        left += <span class="number">1</span></div><div class="line">        <span class="keyword">return</span> result</div></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span><span class="params">(object)</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">threeSum</span><span class="params">(self, nums)</span>:</span></span><br><span class="line">        <span class="string">"""</span></span><br><span class="line"><span class="string">        :type nums: List[int]</span></span><br><span class="line"><span class="string">        :rtype: List[List[int]]</span></span><br><span class="line"><span class="string">        """</span></span><br><span class="line">        nums.sort()</span><br><span class="line">        result = []</span><br><span class="line">    </span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> range(len(nums)<span class="number">-2</span>):</span><br><span class="line">            <span class="keyword">if</span> i==<span class="number">0</span> <span class="keyword">or</span> i != <span class="number">0</span> <span class="keyword">and</span> nums[i<span class="number">-1</span>]!=nums[i]:</span><br><span class="line">                left = i + <span class="number">1</span></span><br><span class="line">                right = len(nums) - <span class="number">1</span></span><br><span class="line">                <span class="keyword">while</span> left &lt; right:</span><br><span class="line">                    s = nums[i] + nums[left] + nums[right]</span><br><span class="line">                    <span class="keyword">if</span> s == <span class="number">0</span>:</span><br><span class="line">                        result.append([nums[i], nums[left], nums[right]])</span><br><span class="line">                        left += <span class="number">1</span></span><br><span class="line">                        right -= <span class="number">1</span></span><br><span class="line">                        <span class="keyword">while</span> left &lt; right <span class="keyword">and</span> nums[left] == nums[left<span class="number">-1</span>]:</span><br><span class="line">                            left += <span class="number">1</span></span><br><span class="line">                        <span class="keyword">while</span> left &lt; right <span class="keyword">and</span> nums[right] == nums[right+<span class="number">1</span>]:</span><br><span class="line">                            right -= <span class="number">1</span></span><br><span class="line">                    <span class="keyword">elif</span> s &gt; <span class="number">0</span>:</span><br><span class="line">                        right -= <span class="number">1</span></span><br><span class="line">                    <span class="keyword">else</span>:</span><br><span class="line">                        left += <span class="number">1</span></span><br><span class="line">        <span class="keyword">return</span> result</span><br></pre></td></tr></table></figure>
+<h3 id="解决方案3-Rust"><a href="#解决方案3-Rust" class="headerlink" title="解决方案3(Rust)"></a>解决方案3(Rust)</h3><hr>
+<figure class="highlight rust"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">pub</span> <span class="class"><span class="keyword">struct</span> <span class="title">Solution</span></span> &#123;&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">impl</span> Solution &#123;</span><br><span class="line">    <span class="keyword">pub</span> <span class="function"><span class="keyword">fn</span> <span class="title">three_sum</span></span>(nums: <span class="built_in">Vec</span>&lt;<span class="built_in">i32</span>&gt;) -&gt; <span class="built_in">Vec</span>&lt;<span class="built_in">Vec</span>&lt;<span class="built_in">i32</span>&gt;&gt; &#123;</span><br><span class="line">        <span class="keyword">let</span> len = nums.len();</span><br><span class="line">        <span class="keyword">if</span> len &lt; <span class="number">3</span> &#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="built_in">vec!</span>[]</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">let</span> <span class="keyword">mut</span> nums = nums;</span><br><span class="line">        nums.sort();</span><br><span class="line">        <span class="keyword">let</span> <span class="keyword">mut</span> i = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">let</span> <span class="keyword">mut</span> result: <span class="built_in">Vec</span>&lt;<span class="built_in">Vec</span>&lt;<span class="built_in">i32</span>&gt;&gt; = <span class="built_in">Vec</span>::new();</span><br><span class="line">        <span class="keyword">let</span> <span class="keyword">mut</span> previous = nums[<span class="number">0</span>] - <span class="number">1</span>;</span><br><span class="line">        <span class="keyword">while</span> i &lt; len - <span class="number">2</span> &#123;</span><br><span class="line">            <span class="keyword">if</span> nums[i] == previous &#123;</span><br><span class="line">                i += <span class="number">1</span>;</span><br><span class="line">                <span class="keyword">continue</span>;</span><br><span class="line">            &#125;</span><br><span class="line">            previous = nums[i];</span><br><span class="line">            <span class="keyword">let</span> vec = Solution::two_sum(&amp;nums[(i+<span class="number">1</span>)..len], <span class="number">0</span> - nums[i]);</span><br><span class="line">            <span class="keyword">for</span> t <span class="keyword">in</span> vec.iter() &#123;</span><br><span class="line">                result.push(<span class="built_in">vec!</span>[nums[i], t.<span class="number">0</span>, t.<span class="number">1</span>]);</span><br><span class="line">            &#125;</span><br><span class="line">            i += <span class="number">1</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        result</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">#[inline(always)]</span></span><br><span class="line">    <span class="function"><span class="keyword">fn</span> <span class="title">two_sum</span></span>(nums: &amp;[<span class="built_in">i32</span>], sum: <span class="built_in">i32</span>) -&gt; <span class="built_in">Vec</span>&lt;(<span class="built_in">i32</span>, <span class="built_in">i32</span>)&gt; &#123;</span><br><span class="line">        <span class="keyword">let</span> (<span class="keyword">mut</span> i, <span class="keyword">mut</span> j) = (<span class="number">0_usize</span>, nums.len() - <span class="number">1</span>);</span><br><span class="line">        <span class="keyword">let</span> <span class="keyword">mut</span> result = <span class="built_in">Vec</span>::new();</span><br><span class="line">        <span class="keyword">while</span> i &lt; j &#123;</span><br><span class="line">            <span class="keyword">if</span> nums[i] + nums[j] &lt; sum &#123;</span><br><span class="line">                i += <span class="number">1</span>;</span><br><span class="line">            &#125; <span class="keyword">else</span> <span class="keyword">if</span> nums[i] + nums[j] &gt; sum &#123;</span><br><span class="line">                j -= <span class="number">1</span></span><br><span class="line">            &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                result.push((nums[i], nums[j]));</span><br><span class="line">                i = Solution::next_unique(nums, i, <span class="literal">true</span>);</span><br><span class="line">                j = Solution::next_unique(nums, j, <span class="literal">false</span>);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        result</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">#[inline(always)]</span></span><br><span class="line">    <span class="function"><span class="keyword">fn</span> <span class="title">next_unique</span></span>(nums: &amp;[<span class="built_in">i32</span>], idx: <span class="built_in">usize</span>, forward: <span class="built_in">bool</span>) -&gt; <span class="built_in">usize</span> &#123;</span><br><span class="line">        <span class="keyword">let</span> current = nums[idx];</span><br><span class="line">        <span class="keyword">let</span> <span class="keyword">mut</span> i = idx;</span><br><span class="line">        <span class="keyword">while</span> i &gt; <span class="number">0</span> &amp;&amp; i &lt; nums.len() &amp;&amp; nums[i] == current &#123;</span><br><span class="line">            i = <span class="keyword">if</span> forward &#123; i + <span class="number">1</span> &#125; <span class="keyword">else</span> &#123; i - <span class="number">1</span> &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        i</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="meta">#[cfg(test)]</span></span><br><span class="line"><span class="keyword">mod</span> tests &#123;</span><br><span class="line">    <span class="keyword">use</span> super::*;</span><br><span class="line"></span><br><span class="line">    <span class="meta">#[test]</span></span><br><span class="line">    <span class="function"><span class="keyword">fn</span> <span class="title">test_leetcode_15</span></span>() &#123;</span><br><span class="line">        <span class="built_in">assert_eq!</span>(Solution::three_sum(<span class="built_in">vec!</span>[-<span class="number">1</span>, <span class="number">0</span>, <span class="number">1</span>, <span class="number">2</span>, -<span class="number">1</span>, -<span class="number">4</span>]), <span class="built_in">vec!</span>[<span class="built_in">vec!</span>[-<span class="number">1</span>, -<span class="number">1</span>, <span class="number">2</span>], <span class="built_in">vec!</span>[-<span class="number">1</span>, <span class="number">0</span>, <span class="number">1</span>]]);</span><br><span class="line">        <span class="keyword">let</span> empty_vec: <span class="built_in">Vec</span>&lt;<span class="built_in">Vec</span>&lt;<span class="built_in">i32</span>&gt;&gt; = <span class="built_in">vec!</span>[];</span><br><span class="line">        <span class="built_in">assert_eq!</span>(Solution::three_sum(<span class="built_in">vec!</span>[]), empty_vec);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <h3 id="相关问题"><a href="#相关问题" class="headerlink" title="相关问题"></a>相关问题</h3><hr>
-<p><a href="https://leetcode.com/problems/3sum-smaller/" target="_blank" rel="external">(M) 3Sum Smaller</a><br><a href="https://leetcode.com/problems/4sum/" target="_blank" rel="external">(M) 4Sum</a><br><a href="https://leetcode.com/problems/two-sum/" target="_blank" rel="external">(E) Two Sum</a><br><a href="https://leetcode.com/problems/3sum-closest/" target="_blank" rel="external">(M) 3Sum Closest</a>   </p>
-<h3 id="题目来源"><a href="#题目来源" class="headerlink" title="题目来源"></a><a href="https://leetcode.com/problems/3sum/" target="_blank" rel="external">题目来源</a></h3>
+<ul>
+<li><a href="https://leetcode.com/problems/3sum-smaller/" target="_blank" rel="noopener">(M) 3Sum Smaller</a>   </li>
+<li><a href="https://leetcode.com/problems/4sum/" target="_blank" rel="noopener">(M) 4Sum</a>   </li>
+<li><a href="https://leetcode.com/problems/two-sum/" target="_blank" rel="noopener">(E) Two Sum</a>   </li>
+<li><a href="https://leetcode.com/problems/3sum-closest/" target="_blank" rel="noopener">(M) 3Sum Closest</a>   </li>
+</ul>
+<h3 id="题目来源"><a href="#题目来源" class="headerlink" title="题目来源"></a><a href="https://leetcode.com/problems/3sum/" target="_blank" rel="noopener">题目来源</a></h3>
       
     </div>
 
@@ -296,9 +303,9 @@
           
             <a href="/tags/Array/" rel="tag">#Array</a>
           
-            <a href="/tags/Two-Pointers/" rel="tag">#Two-Pointers</a>
-          
             <a href="/tags/review/" rel="tag">#review</a>
+          
+            <a href="/tags/Two-Pointers/" rel="tag">#Two-Pointers</a>
           
         </div>
       
@@ -307,16 +314,16 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2014/03/11/leetcode/Algorithms/leetcode-169-Majority-Element/" rel="next" title="leetcode-169-Majority-Element">
-                <i class="fa fa-chevron-left"></i> leetcode-169-Majority-Element
+              <a href="/2014/03/11/leetcode/Algorithms/leetcode-148-Sort-List/" rel="next" title="leetcode-148-Sort-List">
+                <i class="fa fa-chevron-left"></i> leetcode-148-Sort-List
               </a>
             
           </div>
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2014/03/11/leetcode/Algorithms/leetcode-168-Excel-Sheet-Column-Title/" rel="prev" title="leetcode-168-Excel-Sheet-Column-Title">
-                leetcode-168-Excel-Sheet-Column-Title <i class="fa fa-chevron-right"></i>
+              <a href="/2014/03/11/leetcode/Algorithms/leetcode-147-Insertion-Sort-List/" rel="prev" title="leetcode-147-Insertion-Sort-List">
+                leetcode-147-Insertion-Sort-List <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -372,7 +379,7 @@
 
       
         <ul class="sidebar-nav motion-element">
-          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
             文章目录
           </li>
           <li class="sidebar-nav-overview" data-target="site-overview">
@@ -383,16 +390,14 @@
 
       <section class="site-overview sidebar-panel ">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
-          <img class="site-author-image" itemprop="image"
-               src="https://avatars1.githubusercontent.com/u/6964284?v=3&s=460"
-               alt="Frank" />
+          <img class="site-author-image" itemprop="image" src="https://avatars1.githubusercontent.com/u/6964284?v=3&s=460" alt="Frank">
           <p class="site-author-name" itemprop="name">Frank</p>
           <p class="site-description motion-element" itemprop="description"></p>
         </div>
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">365</span>
+              <span class="site-state-item-count">390</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -402,7 +407,7 @@
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">135</span>
+                <span class="site-state-item-count">207</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
@@ -438,7 +443,7 @@
         
           <div class="cc-license motion-element" itemprop="license">
             <a href="http://creativecommons.org/licenses/by-sa/4.0" class="cc-opacity" target="_blank">
-              <img src="/images/cc-by-sa.svg" alt="Creative Commons" />
+              <img src="/images/cc-by-sa.svg" alt="Creative Commons">
             </a>
           </div>
         
@@ -459,7 +464,7 @@
               
             
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#描述"><span class="nav-number">1.</span> <span class="nav-text">描述</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#分析"><span class="nav-number">2.</span> <span class="nav-text">分析</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#解决方案1-C"><span class="nav-number">3.</span> <span class="nav-text">解决方案1(C++)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#解决方案2-Python"><span class="nav-number">4.</span> <span class="nav-text">解决方案2(Python)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#相关问题"><span class="nav-number">5.</span> <span class="nav-text">相关问题</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#题目来源"><span class="nav-number">6.</span> <span class="nav-text">题目来源</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#描述"><span class="nav-number">1.</span> <span class="nav-text">描述</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#分析"><span class="nav-number">2.</span> <span class="nav-text">分析</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#解决方案1-C"><span class="nav-number">3.</span> <span class="nav-text">解决方案1(C++)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#解决方案2-Python"><span class="nav-number">4.</span> <span class="nav-text">解决方案2(Python)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#解决方案3-Rust"><span class="nav-number">5.</span> <span class="nav-text">解决方案3(Rust)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#相关问题"><span class="nav-number">6.</span> <span class="nav-text">相关问题</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#题目来源"><span class="nav-number">7.</span> <span class="nav-text">题目来源</span></a></li></ol></div>
             
           </div>
           <div class="post-toc-indicator-bottom post-toc-indicator">
@@ -478,10 +483,10 @@
 
     <footer id="footer" class="footer">
       <div class="footer-inner">
-        <div class="copyright" >
+        <div class="copyright">
   
   &copy;  2015 - 
-  <span itemprop="copyrightYear">2019</span>
+  <span itemprop="copyrightYear">2021</span>
   <span class="with-love">
     <i class="fa fa-heart"></i>
   </span>

@@ -1,0 +1,782 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion">
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+  <link href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+  <link href="//fonts.googleapis.com/css?family=Lato:300,400,700,400italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+
+
+
+<link href="/vendors/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=0.5.0" rel="stylesheet" type="text/css">
+
+
+  <meta name="keywords" content="k8s,Golang,">
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=0.5.0">
+
+
+
+
+
+
+<meta name="description" content="endpoint 是一组 Pod 的集合的抽象，是 Kubernetes 里内置的资源类型，可以通过 Service 的 label 进行筛选得到。endpoint 往往伴随 service 诞生，对于定义 ExternalName 的 Service 或 clusterIP 直接定义为 None 的 Service(Headless Service) 来说，endpoint 也可以是不存在的。">
+<meta name="keywords" content="k8s,Golang">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Kubernetes 源码笔记（kube-controller-endpoint-controller）">
+<meta property="og:url" content="http://knarfeh.github.io/2018/07/28/Kubernetes 源码笔记（kube-controller-endpoint-controller）/index.html">
+<meta property="og:site_name" content="knarfeh&#39;s logbook">
+<meta property="og:description" content="endpoint 是一组 Pod 的集合的抽象，是 Kubernetes 里内置的资源类型，可以通过 Service 的 label 进行筛选得到。endpoint 往往伴随 service 诞生，对于定义 ExternalName 的 Service 或 clusterIP 直接定义为 None 的 Service(Headless Service) 来说，endpoint 也可以是不存在的。">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2020-04-02T03:51:40.382Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Kubernetes 源码笔记（kube-controller-endpoint-controller）">
+<meta name="twitter:description" content="endpoint 是一组 Pod 的集合的抽象，是 Kubernetes 里内置的资源类型，可以通过 Service 的 label 进行筛选得到。endpoint 往往伴随 service 诞生，对于定义 ExternalName 的 Service 或 clusterIP 直接定义为 None 的 Service(Headless Service) 来说，endpoint 也可以是不存在的。">
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    scheme: 'Muse',
+    sidebar: {"display":"hide"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: 0,
+      author: '博主'
+    }
+  };
+</script>
+
+  <title> Kubernetes 源码笔记（kube-controller-endpoint-controller） | knarfeh's logbook </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+            (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+          m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-75002639-1', 'auto');
+  ga('send', 'pageview');
+</script>
+
+
+
+
+
+
+
+
+
+  
+  
+
+  <div class="container one-collumn  page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">knarfeh's logbook</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle"></p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-home fa-fw"></i> <br>
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-archive fa-fw"></i> <br>
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-tags fa-fw"></i> <br>
+            
+            标签
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                Kubernetes 源码笔记（kube-controller-endpoint-controller）
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2018-07-28T00:15:05+08:00" content="2018-07-28">
+              2018-07-28
+            </time>
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2018/07/28/Kubernetes 源码笔记（kube-controller-endpoint-controller）/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2018/07/28/Kubernetes 源码笔记（kube-controller-endpoint-controller）/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>endpoint 是一组 Pod 的集合的抽象，是 Kubernetes 里内置的资源类型，可以通过 Service 的 label 进行筛选得到。endpoint 往往伴随 service 诞生，对于定义 ExternalName 的 Service 或 clusterIP 直接定义为 None 的 Service(Headless Service) 来说，endpoint 也可以是不存在的。 endpoint 可以用来筛选出同 service 关联的所有 pod，将流量导入到 service 后，经过负载均衡的处理发送到这些 pod 上。</p>
+<p>也可以单独定义 Endpoint 和 Service. 如果我们需要将 Kubernetes 集群之外的外部服务定义为 Kubernetes 内部的一个服务，可以分别定义 Service 和 Endpoints，Service 不需要定义标签选择器，定义一个与 Service 同名的 Endpoints，就可以与之关联。Endpoints 中的 subsets 中可以定义需要连接的外部服务器的 IP 和端口。</p>
+<a id="more"></a>
+<p>endpoint-controller 的基本逻辑是通过 informer 获取 Service，再根据 labels selector 筛选出相应的 pod，接着创建或更新 endpoints 对象，endpoints 其实就是一组 pod 的集合，只不过其中包括了 Node 的信息，而它的 name 属性即为 service 的 name。</p>
+<h2 id="初始化"><a href="#初始化" class="headerlink" title="初始化"></a>初始化</h2><p>这部分代码在 <code>cmd/kube-controller-manager/app/core.go</code> 中，跟其他的 controller 类似，通过 goroutine 创建 Controller，调用 <code>Run</code> 方法</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">startEndpointController</span><span class="params">(ctx ControllerContext)</span> <span class="params">(http.Handler, <span class="keyword">bool</span>, error)</span></span> &#123;</span><br><span class="line">	<span class="keyword">go</span> endpointcontroller.NewEndpointController(</span><br><span class="line">		ctx.InformerFactory.Core().V1().Pods(),</span><br><span class="line">		ctx.InformerFactory.Core().V1().Services(),</span><br><span class="line">		ctx.InformerFactory.Core().V1().Endpoints(),</span><br><span class="line">		ctx.ClientBuilder.ClientOrDie(<span class="string">"endpoint-controller"</span>),</span><br><span class="line">	).Run(<span class="keyword">int</span>(ctx.ComponentConfig.EndpointController.ConcurrentEndpointSyncs), ctx.Stop)</span><br><span class="line">	<span class="keyword">return</span> <span class="literal">nil</span>, <span class="literal">true</span>, <span class="literal">nil</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>可以看到 endpoint 初始化时，会注册三个 informer, 分别是 podInformer, serviceInformer, endpointsInformer, 在 <code>NewEndpointController</code> 方法中，会对 service, pod 资源进行 watch 操作，注册对应的 add, update, delete 等操作，这里就不给出代码了。举例来说，如果监听到了 add pod 的操作，就调用 <code>addPod</code> 方法。</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="params">(e *EndpointController)</span> <span class="title">getPodServiceMemberships</span><span class="params">(pod *v1.Pod)</span> <span class="params">(sets.String, error)</span></span> &#123;</span><br><span class="line">	set := sets.String&#123;&#125;</span><br><span class="line">	services, err := e.serviceLister.GetPodServices(pod)</span><br><span class="line">	<span class="keyword">if</span> err != <span class="literal">nil</span> &#123;</span><br><span class="line">		<span class="comment">// don't log this error because this function makes pointless</span></span><br><span class="line">		<span class="comment">// errors when no services match.</span></span><br><span class="line">		<span class="keyword">return</span> set, <span class="literal">nil</span></span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">for</span> i := <span class="keyword">range</span> services &#123;</span><br><span class="line">		key, err := controller.KeyFunc(services[i])</span><br><span class="line">		<span class="keyword">if</span> err != <span class="literal">nil</span> &#123;</span><br><span class="line">			<span class="keyword">return</span> <span class="literal">nil</span>, err</span><br><span class="line">		&#125;</span><br><span class="line">		set.Insert(key)</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> set, <span class="literal">nil</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// When a pod is added, figure out what services it will be a member of and</span></span><br><span class="line"><span class="comment">// enqueue them. obj must have *v1.Pod type.</span></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="params">(e *EndpointController)</span> <span class="title">addPod</span><span class="params">(obj <span class="keyword">interface</span>&#123;&#125;)</span></span> &#123;</span><br><span class="line">	pod := obj.(*v1.Pod)</span><br><span class="line">	services, err := e.getPodServiceMemberships(pod)</span><br><span class="line">	<span class="keyword">if</span> err != <span class="literal">nil</span> &#123;</span><br><span class="line">		utilruntime.HandleError(fmt.Errorf(<span class="string">"Unable to get pod %s/%s's service memberships: %v"</span>, pod.Namespace, pod.Name, err))</span><br><span class="line">		<span class="keyword">return</span></span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">for</span> key := <span class="keyword">range</span> services &#123;</span><br><span class="line">		e.queue.AddAfter(key, e.endpointUpdatesBatchPeriod)</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>在 <code>addPod</code> 中，首先实例化一个 pod 对象，找到它属于哪一个 service, 然后将 service 的集合以 namespace/name 为 key 加入到队列中。</p>
+<h2 id="启动"><a href="#启动" class="headerlink" title="启动"></a>启动</h2><p><code>Run</code> 方法</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="params">(e *EndpointController)</span> <span class="title">Run</span><span class="params">(workers <span class="keyword">int</span>, stopCh &lt;-<span class="keyword">chan</span> <span class="keyword">struct</span>&#123;&#125;)</span></span> &#123;</span><br><span class="line">	<span class="comment">// ...</span></span><br><span class="line">	<span class="keyword">if</span> !controller.WaitForCacheSync(<span class="string">"endpoint"</span>, stopCh, e.podsSynced, e.servicesSynced, e.endpointsSynced) &#123;</span><br><span class="line">		<span class="keyword">return</span></span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="keyword">for</span> i := <span class="number">0</span>; i &lt; workers; i++ &#123;</span><br><span class="line">		<span class="keyword">go</span> wait.Until(e.worker, e.workerLoopPeriod, stopCh)</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="keyword">go</span> <span class="function"><span class="keyword">func</span><span class="params">()</span></span> &#123;</span><br><span class="line">		<span class="keyword">defer</span> utilruntime.HandleCrash()</span><br><span class="line">		e.checkLeftoverEndpoints()</span><br><span class="line">	&#125;()</span><br><span class="line"></span><br><span class="line">	&lt;-stopCh</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>通过 <code>WaitForCacheSync</code> 等待 pod，service，endpoint 的缓存同步完之后，根据配置启动相应数量（由 <code>kube-controller-manager</code> 启动参数中的 <code>--concurrent-endpoint-syncs</code> 决定）的 worker 进行处理，我们接着看 worker 方法。</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="params">(e *EndpointController)</span> <span class="title">worker</span><span class="params">()</span></span> &#123;</span><br><span class="line">	<span class="keyword">for</span> e.processNextWorkItem() &#123;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="params">(e *EndpointController)</span> <span class="title">processNextWorkItem</span><span class="params">()</span> <span class="title">bool</span></span> &#123;</span><br><span class="line">	eKey, quit := e.queue.Get()</span><br><span class="line">	<span class="keyword">if</span> quit &#123;</span><br><span class="line">		<span class="keyword">return</span> <span class="literal">false</span></span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">defer</span> e.queue.Done(eKey)</span><br><span class="line"></span><br><span class="line">	err := e.syncService(eKey.(<span class="keyword">string</span>))</span><br><span class="line">	e.handleErr(err, eKey)</span><br><span class="line"></span><br><span class="line">	<span class="keyword">return</span> <span class="literal">true</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>很简单的逻辑，从队列中取出 key，根据这个 key 可以获取 namespace，service name, 调用 <code>syncService</code> 方法进行处理。基本上 <code>syncService</code> 就是 endpoint-controller 的主体逻辑。</p>
+<h2 id="主体逻辑"><a href="#主体逻辑" class="headerlink" title="主体逻辑"></a>主体逻辑</h2><figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="params">(e *EndpointController)</span> <span class="title">syncService</span><span class="params">(key <span class="keyword">string</span>)</span> <span class="title">error</span></span> &#123;</span><br><span class="line">	<span class="comment">// ...</span></span><br><span class="line">	namespace, name, err := cache.SplitMetaNamespaceKey(key)</span><br><span class="line">	<span class="keyword">if</span> err != <span class="literal">nil</span> &#123;</span><br><span class="line">		<span class="keyword">return</span> err</span><br><span class="line">	&#125;</span><br><span class="line">	service, err := e.serviceLister.Services(namespace).Get(name)</span><br><span class="line">	<span class="keyword">if</span> err != <span class="literal">nil</span> &#123;</span><br><span class="line">		<span class="comment">// service 已经删除了，删除对应的 endpoint</span></span><br><span class="line">		err = e.client.CoreV1().Endpoints(namespace).Delete(name, <span class="literal">nil</span>)</span><br><span class="line">		<span class="keyword">if</span> err != <span class="literal">nil</span> &amp;&amp; !errors.IsNotFound(err) &#123;</span><br><span class="line">			<span class="keyword">return</span> err</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">return</span> <span class="literal">nil</span></span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="keyword">if</span> service.Spec.Selector == <span class="literal">nil</span> &#123;</span><br><span class="line">		<span class="keyword">return</span> <span class="literal">nil</span></span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	glog.V(<span class="number">5</span>).Infof(<span class="string">"About to update endpoints for service %q"</span>, key)</span><br><span class="line">	pods, err := e.podLister.Pods(service.Namespace).List(labels.Set(service.Spec.Selector).AsSelectorPreValidated())</span><br><span class="line">	<span class="keyword">if</span> err != <span class="literal">nil</span> &#123;</span><br><span class="line">		<span class="keyword">return</span> err</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="comment">// TolerateUnreadyEndpointsAnnotation ...</span></span><br><span class="line"></span><br><span class="line">	subsets := []v1.EndpointSubset&#123;&#125;</span><br><span class="line">	<span class="keyword">var</span> totalReadyEps <span class="keyword">int</span> = <span class="number">0</span></span><br><span class="line">	<span class="keyword">var</span> totalNotReadyEps <span class="keyword">int</span> = <span class="number">0</span></span><br><span class="line"></span><br><span class="line">	<span class="keyword">for</span> _, pod := <span class="keyword">range</span> pods &#123;</span><br><span class="line">		<span class="comment">// 如果 pod 的 ip 为空，继续循环</span></span><br><span class="line">		<span class="keyword">if</span> <span class="built_in">len</span>(pod.Status.PodIP) == <span class="number">0</span> &#123;</span><br><span class="line">			glog.V(<span class="number">5</span>).Infof(<span class="string">"Failed to find an IP for pod %s/%s"</span>, pod.Namespace, pod.Name)</span><br><span class="line">			<span class="keyword">continue</span></span><br><span class="line">		&#125;</span><br><span class="line">		<span class="comment">// 如果 pod 正在被删除，继续循环</span></span><br><span class="line">		<span class="keyword">if</span> !tolerateUnreadyEndpoints &amp;&amp; pod.DeletionTimestamp != <span class="literal">nil</span> &#123;</span><br><span class="line">			glog.V(<span class="number">5</span>).Infof(<span class="string">"Pod is being deleted %s/%s"</span>, pod.Namespace, pod.Name)</span><br><span class="line">			<span class="keyword">continue</span></span><br><span class="line">		&#125;</span><br><span class="line"></span><br><span class="line">		epa := *podToEndpointAddress(pod)</span><br><span class="line"></span><br><span class="line">		hostname := pod.Spec.Hostname</span><br><span class="line">		<span class="keyword">if</span> <span class="built_in">len</span>(hostname) &gt; <span class="number">0</span> &amp;&amp; pod.Spec.Subdomain == service.Name &amp;&amp; service.Namespace == pod.Namespace &#123;</span><br><span class="line">			epa.Hostname = hostname</span><br><span class="line">		&#125;</span><br><span class="line"></span><br><span class="line">		<span class="comment">// headless service 可以没有端口</span></span><br><span class="line">		<span class="keyword">if</span> <span class="built_in">len</span>(service.Spec.Ports) == <span class="number">0</span> &#123;</span><br><span class="line">			<span class="keyword">if</span> service.Spec.ClusterIP == api.ClusterIPNone &#123;</span><br><span class="line">				subsets, totalReadyEps, totalNotReadyEps = addEndpointSubset(subsets, pod, epa, <span class="literal">nil</span>, tolerateUnreadyEndpoints)</span><br><span class="line">				<span class="comment">// No need to repack subsets for headless service without ports.</span></span><br><span class="line">			&#125;</span><br><span class="line">		&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">		  <span class="comment">// 遍历 service 的端口</span></span><br><span class="line">			<span class="keyword">for</span> i := <span class="keyword">range</span> service.Spec.Ports &#123;</span><br><span class="line">				servicePort := &amp;service.Spec.Ports[i]</span><br><span class="line"></span><br><span class="line">				portName := servicePort.Name</span><br><span class="line">				portProto := servicePort.Protocol</span><br><span class="line">				portNum, err := podutil.FindPort(pod, servicePort)</span><br><span class="line">				<span class="keyword">if</span> err != <span class="literal">nil</span> &#123;</span><br><span class="line">					glog.V(<span class="number">4</span>).Infof(<span class="string">"Failed to find port for service %s/%s: %v"</span>, service.Namespace, service.Name, err)</span><br><span class="line">					<span class="keyword">continue</span></span><br><span class="line">				&#125;</span><br><span class="line"></span><br><span class="line">				<span class="keyword">var</span> readyEps, notReadyEps <span class="keyword">int</span></span><br><span class="line">				epp := &amp;v1.EndpointPort&#123;Name: portName, Port: <span class="keyword">int32</span>(portNum), Protocol: portProto&#125;</span><br><span class="line">				subsets, readyEps, notReadyEps = addEndpointSubset(subsets, pod, epa, epp, tolerateUnreadyEndpoints)</span><br><span class="line">				totalReadyEps = totalReadyEps + readyEps</span><br><span class="line">				totalNotReadyEps = totalNotReadyEps + notReadyEps</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	subsets = endpoints.RepackSubsets(subsets)</span><br><span class="line"></span><br><span class="line">  <span class="comment">// 如果 endpoint 不存在，重新创建一个</span></span><br><span class="line">	currentEndpoints, err := e.endpointsLister.Endpoints(service.Namespace).Get(service.Name)</span><br><span class="line">	<span class="keyword">if</span> err != <span class="literal">nil</span> &#123;</span><br><span class="line">		<span class="keyword">if</span> errors.IsNotFound(err) &#123;</span><br><span class="line">			currentEndpoints = &amp;v1.Endpoints&#123;</span><br><span class="line">				ObjectMeta: metav1.ObjectMeta&#123;</span><br><span class="line">					Name:   service.Name,</span><br><span class="line">					Labels: service.Labels,</span><br><span class="line">				&#125;,</span><br><span class="line">			&#125;</span><br><span class="line">		&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">			<span class="keyword">return</span> err</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">  <span class="comment">// currentEndpoints 的版本为空，表明需要创建 endpoint</span></span><br><span class="line">	createEndpoints := <span class="built_in">len</span>(currentEndpoints.ResourceVersion) == <span class="number">0</span></span><br><span class="line">  <span class="comment">// 如果 currentEndpoints 的 subset 和整理后的 subsets 相等，并且 label 与 service 的 label 一致，则忽略本次更新操作</span></span><br><span class="line">	<span class="keyword">if</span> !createEndpoints &amp;&amp;</span><br><span class="line">		apiequality.Semantic.DeepEqual(currentEndpoints.Subsets, subsets) &amp;&amp;</span><br><span class="line">		apiequality.Semantic.DeepEqual(currentEndpoints.Labels, service.Labels) &#123;</span><br><span class="line">		glog.V(<span class="number">5</span>).Infof(<span class="string">"endpoints are equal for %s/%s, skipping update"</span>, service.Namespace, service.Name)</span><br><span class="line">		<span class="keyword">return</span> <span class="literal">nil</span></span><br><span class="line">	&#125;</span><br><span class="line">	newEndpoints := currentEndpoints.DeepCopy()</span><br><span class="line">	newEndpoints.Subsets = subsets</span><br><span class="line">	newEndpoints.Labels = service.Labels</span><br><span class="line">	<span class="keyword">if</span> newEndpoints.Annotations == <span class="literal">nil</span> &#123;</span><br><span class="line">		newEndpoints.Annotations = <span class="built_in">make</span>(<span class="keyword">map</span>[<span class="keyword">string</span>]<span class="keyword">string</span>)</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	glog.V(<span class="number">4</span>).Infof(<span class="string">"Update endpoints for %v/%v, ready: %d not ready: %d"</span>, service.Namespace, service.Name, totalReadyEps, totalNotReadyEps)</span><br><span class="line">	<span class="keyword">if</span> createEndpoints &#123;</span><br><span class="line">	  <span class="comment">// 如果没有同一个命名空间下没有同名的 endpoint, 则生成新的 endpoint</span></span><br><span class="line">		_, err = e.client.CoreV1().Endpoints(service.Namespace).Create(newEndpoints)</span><br><span class="line">	&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">	  <span class="comment">// 如果已经存在，就更新</span></span><br><span class="line">		_, err = e.client.CoreV1().Endpoints(service.Namespace).Update(newEndpoints)</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">if</span> err != <span class="literal">nil</span> &#123;</span><br><span class="line">		<span class="comment">// ...</span></span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> <span class="literal">nil</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>首先通过 namespace，name 获取 service，如果 service 不存在，说明 service 已经被删除了，删除对应的 endpoint，这里有个没能解决的 bug 是，如果 service 删除了，但是这时 endpoint 刚好挂了，那么对应的 endpoint 就没法删除。<code>Run</code> 方法中调用的 <code>checkLeftoverEndpoints</code> 方法在 endpoint-controller 的启动阶段会做一次清理工作，它会拉取所有的 endpoint 的资源对象，遍历一遍，如果发现没有对应的 service, 把 endpoint 的 name 当做 key 传入队列，这时进入循环后会发现这个 endpoint 不能获取对应的 service name, 就会被删除。</p>
+<p>接着通过 namespace，Selector 获取对应的 Pod 的集合，遍历这些 Pod，一一构建 endpoint 的 Subset，其中包括 Pod 的 IP 地址，Hostname，所在的 Node name 等信息。遍历结束后，通过 Service 的 Namespace 和 Name 获取当前的 Endpoint，与构建的新的 endpoint 进行比较，决定创建还是更新 endpoint 对象，通过 client 进行相应的调用。对于没有 Selector 的 Service，不需要创建相应的 endpoint。</p>
+<p>简单来说，使用 Kubernetes 的时候我们不需要刻意关注 endpoint 资源对象，只有创建 service 的时候使用了 selector, 就可以自动创建 endpoint. 如果单独创建一个不绑定 service 的 endpoint, 它会 Kubernetes 自动清理的。</p>
+<h2 id="References"><a href="#References" class="headerlink" title="References"></a>References</h2><ul>
+<li><a href="https://www.quora.com/What-is-an-endpoint-object-in-terms-of-Kubernetes" target="_blank" rel="noopener">What is an ‘endpoint’ object in terms of Kubernetes?</a></li>
+<li><a href="https://kubernetes.io/docs/concepts/services-networking/service/#headless-services" target="_blank" rel="noopener">Headless services</a></li>
+<li><a href="https://www.quora.com/What-is-the-use-of-a-headless-service-in-Kubernetes" target="_blank" rel="noopener">What is the use of a headless service in Kubernetes?</a></li>
+</ul>
+
+      
+    </div>
+
+    <div>
+      
+        
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/k8s/" rel="tag">#k8s</a>
+          
+            <a href="/tags/Golang/" rel="tag">#Golang</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/03/20/Telegram Bot 的长轮询 VS Webhook/" rel="next" title="Telegram Bot 的长轮询 VS Webhook">
+                <i class="fa fa-chevron-left"></i> Telegram Bot 的长轮询 VS Webhook
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/07/28/kubernetes 源码笔记（kubeadm）/" rel="prev" title="Kubernetes 源码笔记（kubeadm）">
+                Kubernetes 源码笔记（kubeadm） <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+      <div id="disqus_thread">
+        <noscript>
+          Please enable JavaScript to view the
+          <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a>
+        </noscript>
+      </div>
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel ">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image" src="https://avatars1.githubusercontent.com/u/6964284?v=3&s=460" alt="Frank">
+          <p class="site-author-name" itemprop="name">Frank</p>
+          <p class="site-description motion-element" itemprop="description"></p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">390</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+          
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">207</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/knarfeh" target="_blank">
+                  
+                    <i class="fa fa-github"></i> GitHub
+                  
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://twitter.com/knarfeh" target="_blank">
+                  
+                    <i class="fa fa-globe"></i> Twitter
+                  
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+          <div class="cc-license motion-element" itemprop="license">
+            <a href="http://creativecommons.org/licenses/by-sa/4.0" class="cc-opacity" target="_blank">
+              <img src="/images/cc-by-sa.svg" alt="Creative Commons">
+            </a>
+          </div>
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+      </section>
+
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc-indicator-top post-toc-indicator">
+            <i class="fa fa-angle-double-up"></i>
+          </div>
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#初始化"><span class="nav-number">1.</span> <span class="nav-text">初始化</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#启动"><span class="nav-number">2.</span> <span class="nav-text">启动</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#主体逻辑"><span class="nav-number">3.</span> <span class="nav-text">主体逻辑</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#References"><span class="nav-number">4.</span> <span class="nav-text">References</span></a></li></ol></div>
+            
+          </div>
+          <div class="post-toc-indicator-bottom post-toc-indicator">
+            <i class="fa fa-angle-double-down"></i>
+          </div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">
+  
+  &copy;  2015 - 
+  <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Frank</span>
+</div>
+
+<div class="powered-by">
+  由 <a class="theme-link" href="http://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Muse
+  </a>
+</div>
+
+
+
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+
+  
+
+
+
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+  <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
+
+  <script type="text/javascript" src="/vendors/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  <script type="text/javascript" src="/vendors/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  <script type="text/javascript" src="/vendors/velocity/velocity.min.js"></script>
+
+  <script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js"></script>
+
+  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=0.5.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=0.5.0"></script>
+
+
+
+  
+  
+
+  
+  
+<script type="text/javascript" src="/js/src/scrollspy.js?v=0.5.0"></script>
+
+<script type="text/javascript" id="sidebar.toc.highlight">
+  $(document).ready(function () {
+    var tocSelector = '.post-toc';
+    var $tocSelector = $(tocSelector);
+    var activeCurrentSelector = '.active-current';
+
+    $tocSelector
+      .on('activate.bs.scrollspy', function () {
+        var $currentActiveElement = $(tocSelector + ' .active').last();
+
+        removeCurrentActiveClass();
+        $currentActiveElement.addClass('active-current');
+
+        $tocSelector[0].scrollTop = $currentActiveElement.position().top;
+      })
+      .on('clear.bs.scrollspy', function () {
+        removeCurrentActiveClass();
+      });
+
+    function removeCurrentActiveClass () {
+      $(tocSelector + ' ' + activeCurrentSelector)
+        .removeClass(activeCurrentSelector.substring(1));
+    }
+
+    function processTOC () {
+      getTOCMaxHeight();
+      toggleTOCOverflowIndicators();
+    }
+
+    function getTOCMaxHeight () {
+      var height = $('.sidebar').height() -
+                   $tocSelector.position().top -
+                   $('.post-toc-indicator-bottom').height();
+
+      $tocSelector.css('height', height);
+
+      return height;
+    }
+
+    function toggleTOCOverflowIndicators () {
+      tocOverflowIndicator(
+        '.post-toc-indicator-top',
+        $tocSelector.scrollTop() > 0 ? 'show' : 'hide'
+      );
+
+      tocOverflowIndicator(
+        '.post-toc-indicator-bottom',
+        $tocSelector.scrollTop() >= $tocSelector.find('ol').height() - $tocSelector.height() ? 'hide' : 'show'
+      )
+    }
+
+    $(document).on('sidebar.motion.complete', function () {
+      processTOC();
+    });
+
+    $('body').scrollspy({ target: tocSelector });
+    $(window).on('resize', function () {
+      if ( $('.sidebar').hasClass('sidebar-active') ) {
+        processTOC();
+      }
+    });
+
+    onScroll($tocSelector);
+
+    function onScroll (element) {
+      element.on('mousewheel DOMMouseScroll', function (event) {
+          var oe = event.originalEvent;
+          var delta = oe.wheelDelta || -oe.detail;
+
+          this.scrollTop += ( delta < 0 ? 1 : -1 ) * 30;
+          event.preventDefault();
+
+          toggleTOCOverflowIndicators();
+      });
+    }
+
+    function tocOverflowIndicator (indicator, action) {
+      var $indicator = $(indicator);
+      var opacity = action === 'show' ? 1 : 0;
+      $indicator.velocity ?
+        $indicator.velocity('stop').velocity({
+          opacity: opacity
+        }, { duration: 100 }) :
+        $indicator.stop().animate({
+          opacity: opacity
+        }, 100);
+    }
+
+  });
+</script>
+
+<script type="text/javascript" id="sidebar.nav">
+  $(document).ready(function () {
+    var html = $('html');
+    var TAB_ANIMATE_DURATION = 200;
+    var hasVelocity = $.isFunction(html.velocity);
+
+    $('.sidebar-nav li').on('click', function () {
+      var item = $(this);
+      var activeTabClassName = 'sidebar-nav-active';
+      var activePanelClassName = 'sidebar-panel-active';
+      if (item.hasClass(activeTabClassName)) {
+        return;
+      }
+
+      var currentTarget = $('.' + activePanelClassName);
+      var target = $('.' + item.data('target'));
+
+      hasVelocity ?
+        currentTarget.velocity('transition.slideUpOut', TAB_ANIMATE_DURATION, function () {
+          target
+            .velocity('stop')
+            .velocity('transition.slideDownIn', TAB_ANIMATE_DURATION)
+            .addClass(activePanelClassName);
+        }) :
+        currentTarget.animate({ opacity: 0 }, TAB_ANIMATE_DURATION, function () {
+          currentTarget.hide();
+          target
+            .stop()
+            .css({'opacity': 0, 'display': 'block'})
+            .animate({ opacity: 1 }, TAB_ANIMATE_DURATION, function () {
+              currentTarget.removeClass(activePanelClassName);
+              target.addClass(activePanelClassName);
+            });
+        });
+
+      item.siblings().removeClass(activeTabClassName);
+      item.addClass(activeTabClassName);
+    });
+
+    $('.post-toc a').on('click', function (e) {
+      e.preventDefault();
+      var targetSelector = NexT.utils.escapeSelector(this.getAttribute('href'));
+      var offset = $(targetSelector).offset().top;
+      hasVelocity ?
+        html.velocity('stop').velocity('scroll', {
+          offset: offset  + 'px',
+          mobileHA: false
+        }) :
+        $('html, body').stop().animate({
+          scrollTop: offset
+        }, 500);
+    });
+
+    // Expand sidebar on post detail page by default, when post has a toc.
+    NexT.motion.middleWares.sidebar = function () {
+      var $tocContent = $('.post-toc-content');
+
+      if (CONFIG.scheme !== 'Pisces' && (CONFIG.sidebar.display === 'post' || CONFIG.sidebar.display === 'always')) {
+        if ($tocContent.length > 0 && $tocContent.html().trim().length > 0) {
+          NexT.utils.displaySidebar();
+        }
+      }
+    };
+  });
+</script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=0.5.0"></script>
+
+
+
+  
+
+
+
+  
+
+    <script type="text/javascript">
+      var disqus_shortname = 'knarfeh';
+      var disqus_identifier = '2018/07/28/Kubernetes 源码笔记（kube-controller-endpoint-controller）/';
+      var disqus_title = 'Kubernetes 源码笔记（kube-controller-endpoint-controller）';
+      var disqus_url = 'http://knarfeh.github.io/2018/07/28/Kubernetes 源码笔记（kube-controller-endpoint-controller）/';
+
+      function run_disqus_script(disqus_script){
+        var dsq = document.createElement('script');
+        dsq.type = 'text/javascript';
+        dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/' + disqus_script;
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+      }
+
+      run_disqus_script('count.js');
+      
+        run_disqus_script('embed.js');
+      
+    </script>
+  
+
+
+
+  
+  
+  
+  <script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+      }
+    });
+  </script>
+
+  <script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+      var all = MathJax.Hub.getAllJax(), i;
+      for (i=0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';
+      }
+    });
+  </script>
+
+  
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js"></script>
+    <script type="text/javascript" async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML">
+</script>
+  
+
+
+  
+
+  <script type="text/javascript" src="/js/src/custom.js"></script>
+</body>
+</html>

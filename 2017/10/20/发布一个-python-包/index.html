@@ -6,19 +6,15 @@
 
 
 <html class="theme-next muse use-motion">
-<head>
-  <meta charset="UTF-8"/>
-<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
 
 
-<meta http-equiv="Cache-Control" content="no-transform" />
-<meta http-equiv="Cache-Control" content="no-siteapp" />
-
-
-
-
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
 
 
 
@@ -27,7 +23,11 @@
 
 
 
-  <link href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css"/>
+
+
+
+
+  <link href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
 
 
 
@@ -36,21 +36,21 @@
 
 
 
-<link href="/vendors/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+<link href="/vendors/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css">
 
-<link href="/css/main.css?v=0.5.0" rel="stylesheet" type="text/css" />
-
-
-  <meta name="keywords" content="Python," />
+<link href="/css/main.css?v=0.5.0" rel="stylesheet" type="text/css">
 
 
+  <meta name="keywords" content="Python,">
 
 
 
 
 
 
-  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=0.5.0" />
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=0.5.0">
 
 
 
@@ -122,7 +122,7 @@
   
 
   <div class="custom-logo-site-title">
-    <a href="/"  class="brand" rel="start">
+    <a href="/" class="brand" rel="start">
       <span class="logo-line-before"><i></i></span>
       <span class="site-title">knarfeh's logbook</span>
       <span class="logo-line-after"><i></i></span>
@@ -149,7 +149,7 @@
         <li class="menu-item menu-item-home">
           <a href="/" rel="section">
             
-              <i class="menu-item-icon fa fa-home fa-fw"></i> <br />
+              <i class="menu-item-icon fa fa-home fa-fw"></i> <br>
             
             首页
           </a>
@@ -159,7 +159,7 @@
         <li class="menu-item menu-item-archives">
           <a href="/archives" rel="section">
             
-              <i class="menu-item-icon fa fa-archive fa-fw"></i> <br />
+              <i class="menu-item-icon fa fa-archive fa-fw"></i> <br>
             
             归档
           </a>
@@ -169,7 +169,7 @@
         <li class="menu-item menu-item-tags">
           <a href="/tags" rel="section">
             
-              <i class="menu-item-icon fa fa-tags fa-fw"></i> <br />
+              <i class="menu-item-icon fa fa-tags fa-fw"></i> <br>
             
             标签
           </a>
@@ -261,30 +261,30 @@
       
         <p>总结一下发布一个 Python 包这件事。<br><a id="more"></a></p>
 <p>这篇文章的目标读者是想要发布一个 Python 包的 Python 新手，以及我自己 – 一个时不时查看自己笔记的人。</p>
-<p>对于发布一个 Python 包这件事，最佳实践应该是直接查看官方文档：<a href="https://packaging.python.org/tutorials/distributing-packages/" target="_blank" rel="external">Packaging and Distributing Projects</a> 因为这里是二手知识，只是一份总结，记录了一些要点，一些坑。</p>
+<p>对于发布一个 Python 包这件事，最佳实践应该是直接查看官方文档：<a href="https://packaging.python.org/tutorials/distributing-packages/" target="_blank" rel="noopener">Packaging and Distributing Projects</a> 因为这里是二手知识，只是一份总结，记录了一些要点，一些坑。</p>
 <p>会尽可能与最新的，最佳实践同步。</p>
 <h2 id="Requirements-前提条件"><a href="#Requirements-前提条件" class="headerlink" title="Requirements / 前提条件"></a>Requirements / 前提条件</h2><h3 id="工具"><a href="#工具" class="headerlink" title="工具"></a>工具</h3><ul>
-<li><a href="https://github.com/pypa/pip" target="_blank" rel="external">pip</a></li>
-<li><a href="https://github.com/pypa/setuptools" target="_blank" rel="external">setuptools</a></li>
-<li><a href="https://bitbucket.org/pypa/wheel" target="_blank" rel="external">wheel</a></li>
-<li><a href="https://github.com/pypa/twine" target="_blank" rel="external">twine</a> 用于上传 Python 包</li>
+<li><a href="https://github.com/pypa/pip" target="_blank" rel="noopener">pip</a></li>
+<li><a href="https://github.com/pypa/setuptools" target="_blank" rel="noopener">setuptools</a></li>
+<li><a href="https://bitbucket.org/pypa/wheel" target="_blank" rel="noopener">wheel</a></li>
+<li><a href="https://github.com/pypa/twine" target="_blank" rel="noopener">twine</a> 用于上传 Python 包</li>
 </ul>
-<h2 id="具体步骤"><a href="#具体步骤" class="headerlink" title="具体步骤"></a>具体步骤</h2><h3 id="打包"><a href="#打包" class="headerlink" title="打包"></a>打包</h3><h4 id="直接使用源码发布"><a href="#直接使用源码发布" class="headerlink" title="直接使用源码发布"></a>直接使用源码发布</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">python setup.py sdist</div></pre></td></tr></table></figure>
+<h2 id="具体步骤"><a href="#具体步骤" class="headerlink" title="具体步骤"></a>具体步骤</h2><h3 id="打包"><a href="#打包" class="headerlink" title="打包"></a>打包</h3><h4 id="直接使用源码发布"><a href="#直接使用源码发布" class="headerlink" title="直接使用源码发布"></a>直接使用源码发布</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">python setup.py sdist</span><br></pre></td></tr></table></figure>
 <p>安装的时候进行编译，安装包会比较小。</p>
-<h4 id="使用-wheels-发布"><a href="#使用-wheels-发布" class="headerlink" title="使用 wheels 发布"></a>使用 wheels 发布</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">python setup.py bdist_wheel --universal  # Universal Wheels</div><div class="line">python setup.py bdist_wheel  # Pure Python Wheels 或 Platform Wheels</div></pre></td></tr></table></figure>
+<h4 id="使用-wheels-发布"><a href="#使用-wheels-发布" class="headerlink" title="使用 wheels 发布"></a>使用 wheels 发布</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">python setup.py bdist_wheel --universal  # Universal Wheels</span><br><span class="line">python setup.py bdist_wheel  # Pure Python Wheels 或 Platform Wheels</span><br></pre></td></tr></table></figure>
 <p>打包 Python 代码和扩展 C 语言的一个相对新的方法，它发布的是已经编译好的包，安装包相对源码发布要大，但是安装时不需要编译，所以安装更快。它包括了通用 Wheels，纯 Python Wheels 以及平台 Wheels 这几种类型的 Wheels。通用 Wheels 不包含编译模块扩展，同时支持 Python2 Python3，纯 Python Wheels 不包含编译模块扩展，选择性支持 Python2 和 Python3，平台 Wheels 选择性支持 Linux，macOS，Windows 平台。</p>
-<p>更详细的介绍请查阅：<a href="https://packaging.python.org/tutorials/distributing-packages/#wheels" target="_blank" rel="external">https://packaging.python.org/tutorials/distributing-packages/#wheels</a></p>
+<p>更详细的介绍请查阅：<a href="https://packaging.python.org/tutorials/distributing-packages/#wheels" target="_blank" rel="noopener">https://packaging.python.org/tutorials/distributing-packages/#wheels</a></p>
 <h3 id="上传"><a href="#上传" class="headerlink" title="上传"></a>上传</h3><p>Python 社区推荐使用 twine 进行上传，可以通过 <code>pip install twine</code> 安装。</p>
-<h4 id="pypi-账户"><a href="#pypi-账户" class="headerlink" title="pypi 账户"></a>pypi 账户</h4><p>在官网注册一个 ID: <a href="https://pypi.python.org/pypi?:action=register_form" target="_blank" rel="external">https://pypi.python.org/pypi?:action=register_form</a></p>
+<h4 id="pypi-账户"><a href="#pypi-账户" class="headerlink" title="pypi 账户"></a>pypi 账户</h4><p>在官网注册一个 ID: <a href="https://pypi.python.org/pypi?:action=register_form" target="_blank" rel="noopener">https://pypi.python.org/pypi?:action=register_form</a></p>
 <p>账户信息可以写到 <code>~/.pypirc</code> 里面</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">[distutils]</div><div class="line">index-servers=pypi</div><div class="line"></div><div class="line">[pypi]</div><div class="line">repository = https://upload.pypi.org/legacy/</div><div class="line">username = &lt;username&gt;</div></pre></td></tr></table></figure>
-<h4 id="上传-Python-包"><a href="#上传-Python-包" class="headerlink" title="上传 Python 包"></a>上传 Python 包</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">twine upload dist/*</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">[distutils]</span><br><span class="line">index-servers=pypi</span><br><span class="line"></span><br><span class="line">[pypi]</span><br><span class="line">repository = https://upload.pypi.org/legacy/</span><br><span class="line">username = &lt;username&gt;</span><br></pre></td></tr></table></figure>
+<h4 id="上传-Python-包"><a href="#上传-Python-包" class="headerlink" title="上传 Python 包"></a>上传 Python 包</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">twine upload dist/*</span><br></pre></td></tr></table></figure>
 <h2 id="注意事项"><a href="#注意事项" class="headerlink" title="注意事项"></a>注意事项</h2><ul>
 <li>400 Client Error: This filename has previously been used, you should use a different version.</li>
 </ul>
 <p>包名加版本号是这个互联网上关于你这个包的唯一标示，你的包一旦上传了，如果你进行了修改，除了更新版本号再上传没有其他办法，即使你在 pypi 的后台页面删除了该版本也不行，上传的包名是永久的。其实很容易理解，你总不想你的用户们抱怨在不同时间段下载了同一个版本的包，但运行行为不一样吧？版本号按照 <code>&lt;major&gt;.&lt;minor&gt;.&lt;patch&gt;</code> 的格式，修改一下版本号再上传就行。</p>
 <h2 id="Reference-参考文档"><a href="#Reference-参考文档" class="headerlink" title="Reference / 参考文档"></a>Reference / 参考文档</h2><ul>
-<li><a href="https://packaging.python.org/tutorials/distributing-packages/" target="_blank" rel="external">Packaging and Distributing Projects</a></li>
+<li><a href="https://packaging.python.org/tutorials/distributing-packages/" target="_blank" rel="noopener">Packaging and Distributing Projects</a></li>
 </ul>
 
       
@@ -317,8 +317,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2017/11/03/【podcast】The Changelog/" rel="prev" title="【podcast】The Changelog">
-                【podcast】The Changelog <i class="fa fa-chevron-right"></i>
+              <a href="/2017/11/03/【podcast】JS Party/" rel="prev" title="【podcast】JS Party">
+                【podcast】JS Party <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -374,7 +374,7 @@
 
       
         <ul class="sidebar-nav motion-element">
-          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
             文章目录
           </li>
           <li class="sidebar-nav-overview" data-target="site-overview">
@@ -385,16 +385,14 @@
 
       <section class="site-overview sidebar-panel ">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
-          <img class="site-author-image" itemprop="image"
-               src="https://avatars1.githubusercontent.com/u/6964284?v=3&s=460"
-               alt="Frank" />
+          <img class="site-author-image" itemprop="image" src="https://avatars1.githubusercontent.com/u/6964284?v=3&s=460" alt="Frank">
           <p class="site-author-name" itemprop="name">Frank</p>
           <p class="site-description motion-element" itemprop="description"></p>
         </div>
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">365</span>
+              <span class="site-state-item-count">390</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -404,7 +402,7 @@
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">135</span>
+                <span class="site-state-item-count">207</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
@@ -440,7 +438,7 @@
         
           <div class="cc-license motion-element" itemprop="license">
             <a href="http://creativecommons.org/licenses/by-sa/4.0" class="cc-opacity" target="_blank">
-              <img src="/images/cc-by-sa.svg" alt="Creative Commons" />
+              <img src="/images/cc-by-sa.svg" alt="Creative Commons">
             </a>
           </div>
         
@@ -480,10 +478,10 @@
 
     <footer id="footer" class="footer">
       <div class="footer-inner">
-        <div class="copyright" >
+        <div class="copyright">
   
   &copy;  2015 - 
-  <span itemprop="copyrightYear">2019</span>
+  <span itemprop="copyrightYear">2021</span>
   <span class="with-love">
     <i class="fa fa-heart"></i>
   </span>

@@ -6,19 +6,15 @@
 
 
 <html class="theme-next muse use-motion">
-<head>
-  <meta charset="UTF-8"/>
-<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
 
 
-<meta http-equiv="Cache-Control" content="no-transform" />
-<meta http-equiv="Cache-Control" content="no-siteapp" />
-
-
-
-
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
 
 
 
@@ -27,7 +23,11 @@
 
 
 
-  <link href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css"/>
+
+
+
+
+  <link href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
 
 
 
@@ -36,21 +36,21 @@
 
 
 
-<link href="/vendors/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+<link href="/vendors/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css">
 
-<link href="/css/main.css?v=0.5.0" rel="stylesheet" type="text/css" />
-
-
-  <meta name="keywords" content="Docker,k8s," />
+<link href="/css/main.css?v=0.5.0" rel="stylesheet" type="text/css">
 
 
+  <meta name="keywords" content="Docker,k8s,">
 
 
 
 
 
 
-  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=0.5.0" />
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=0.5.0">
 
 
 
@@ -122,7 +122,7 @@
   
 
   <div class="custom-logo-site-title">
-    <a href="/"  class="brand" rel="start">
+    <a href="/" class="brand" rel="start">
       <span class="logo-line-before"><i></i></span>
       <span class="site-title">knarfeh's logbook</span>
       <span class="logo-line-after"><i></i></span>
@@ -149,7 +149,7 @@
         <li class="menu-item menu-item-home">
           <a href="/" rel="section">
             
-              <i class="menu-item-icon fa fa-home fa-fw"></i> <br />
+              <i class="menu-item-icon fa fa-home fa-fw"></i> <br>
             
             首页
           </a>
@@ -159,7 +159,7 @@
         <li class="menu-item menu-item-archives">
           <a href="/archives" rel="section">
             
-              <i class="menu-item-icon fa fa-archive fa-fw"></i> <br />
+              <i class="menu-item-icon fa fa-archive fa-fw"></i> <br>
             
             归档
           </a>
@@ -169,7 +169,7 @@
         <li class="menu-item menu-item-tags">
           <a href="/tags" rel="section">
             
-              <i class="menu-item-icon fa fa-tags fa-fw"></i> <br />
+              <i class="menu-item-icon fa fa-tags fa-fw"></i> <br>
             
             标签
           </a>
@@ -261,39 +261,39 @@
       
         <p>本文对释放 Docker 占的磁盘，网络，数据卷的命令做一个整理。内容部分来自网络，一部分来自自己的总结。</p>
 <a id="more"></a>
-<h2 id="Volumn"><a href="#Volumn" class="headerlink" title="Volumn"></a>Volumn</h2><p>来自 <a href="https://github.com/chadoe/docker-cleanup-volumes" target="_blank" rel="external">chadoe/docker-cleanup-volumes</a></p>
+<h2 id="Volumn"><a href="#Volumn" class="headerlink" title="Volumn"></a>Volumn</h2><p>来自 <a href="https://github.com/chadoe/docker-cleanup-volumes" target="_blank" rel="noopener">chadoe/docker-cleanup-volumes</a></p>
 <p>清理所有没有打标签的 volume：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ docker volume rm $(docker volume ls -qf dangling=true)</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ docker volume rm $(docker volume ls -qf dangling=true)</span><br></pre></td></tr></table></figure>
 <p>或：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ docker volume ls -qf dangling=true | xargs -r docker volume rm</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ docker volume ls -qf dangling=true | xargs -r docker volume rm</span><br></pre></td></tr></table></figure>
 <h2 id="Networks"><a href="#Networks" class="headerlink" title="Networks"></a>Networks</h2><p>列出本机创建的所有 network：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ docker network ls</div></pre></td></tr></table></figure>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ docker network ls | grep &quot;bridge&quot;</div></pre></td></tr></table></figure>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ docker network rm $(docker network ls | grep &quot;bridge&quot; | awk &apos;/ / &#123; print $1 &#125;&apos;)</div></pre></td></tr></table></figure>
-<h2 id="Images"><a href="#Images" class="headerlink" title="Images"></a>Images</h2><p>来自 <a href="http://stackoverflow.com/questions/32723111/how-to-remove-old-and-unused-docker-images" target="_blank" rel="external">how-to-remove-old-and-unused-docker-images</a></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">$ docker images</div><div class="line">$ docker rmi $(docker images --filter &quot;dangling=true&quot; -q --no-trunc)</div></pre></td></tr></table></figure>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">$ docker images | grep &quot;none&quot;</div><div class="line">$ docker rmi $(docker images | grep &quot;none&quot; | awk &apos;/ / &#123; print $3 &#125;&apos;)</div></pre></td></tr></table></figure>
-<h2 id="Containers"><a href="#Containers" class="headerlink" title="Containers"></a>Containers</h2><p>来自 <a href="http://stackoverflow.com/questions/32723111/how-to-remove-old-and-unused-docker-images" target="_blank" rel="external">how-to-remove-old-and-unused-docker-images</a></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ docker network ls</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ docker network ls | grep &quot;bridge&quot;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ docker network rm $(docker network ls | grep &quot;bridge&quot; | awk &apos;/ / &#123; print $1 &#125;&apos;)</span><br></pre></td></tr></table></figure>
+<h2 id="Images"><a href="#Images" class="headerlink" title="Images"></a>Images</h2><p>来自 <a href="http://stackoverflow.com/questions/32723111/how-to-remove-old-and-unused-docker-images" target="_blank" rel="noopener">how-to-remove-old-and-unused-docker-images</a></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ docker images</span><br><span class="line">$ docker rmi $(docker images --filter &quot;dangling=true&quot; -q --no-trunc)</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ docker images | grep &quot;none&quot;</span><br><span class="line">$ docker rmi $(docker images | grep &quot;none&quot; | awk &apos;/ / &#123; print $3 &#125;&apos;)</span><br></pre></td></tr></table></figure>
+<h2 id="Containers"><a href="#Containers" class="headerlink" title="Containers"></a>Containers</h2><p>来自 <a href="http://stackoverflow.com/questions/32723111/how-to-remove-old-and-unused-docker-images" target="_blank" rel="noopener">how-to-remove-old-and-unused-docker-images</a></p>
 <p>删除所有已经退出的容器</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ docker rm $(docker ps -qa --no-trunc --filter &quot;status=exited&quot;)</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ docker rm $(docker ps -qa --no-trunc --filter &quot;status=exited&quot;)</span><br></pre></td></tr></table></figure>
 <p>或</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">docker rm `docker ps -a | grep -i &apos;exited&apos; | awk &#123;&apos;print $1&apos;&#125;`</div></pre></td></tr></table></figure>
-<h2 id="内置命令"><a href="#内置命令" class="headerlink" title="内置命令"></a>内置命令</h2><p>从<a href="https://github.com/moby/moby/blob/master/CHANGELOG.md#1130-2017-01-18" target="_blank" rel="external">1.13.0</a>版本开始，docker 引入了 <code>docker system prune</code> 命令，可以用来清理主机的磁盘空间。该命令可以一键清理所有已停止的容器；所有未被容器引用的 volume（dangling volume）；所有未被容器引用的网络；所有 dangling 的镜像。命令执行完后可以看到释放的空间的大小。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">docker system prune</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker rm `docker ps -a | grep -i &apos;exited&apos; | awk &#123;&apos;print $1&apos;&#125;`</span><br></pre></td></tr></table></figure>
+<h2 id="内置命令"><a href="#内置命令" class="headerlink" title="内置命令"></a>内置命令</h2><p>从<a href="https://github.com/moby/moby/blob/master/CHANGELOG.md#1130-2017-01-18" target="_blank" rel="noopener">1.13.0</a>版本开始，docker 引入了 <code>docker system prune</code> 命令，可以用来清理主机的磁盘空间。该命令可以一键清理所有已停止的容器；所有未被容器引用的 volume（dangling volume）；所有未被容器引用的网络；所有 dangling 的镜像。命令执行完后可以看到释放的空间的大小。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker system prune</span><br></pre></td></tr></table></figure>
 <p>如果要移除所有未被使用的镜像（不仅仅是 dangling 的），可以使用</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">docker system prune -a</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker system prune -a</span><br></pre></td></tr></table></figure>
 <p>dangling 的镜像的定义是未被其他镜像引用的镜像，如果构建了新的镜像，但该镜像没有被打上一个新的标签，那么之前打了这个标签的镜像就是 dangling 镜像，它的 name 属性是 none。总的来说，如果一个镜像与任何一个打上标签的镜像没有关联，它就是 dangling 镜像。如果镜像的 repository 和 tag 都是 none，称为 intermediate 镜像。</p>
-<p>prune 方法的实现在 <a href="https://github.com/moby/moby/blob/master/daemon/prune.go" target="_blank" rel="external"><code>https://github.com/moby/moby/blob/master/daemon/prune.go</code></a> 里，有兴趣的话可以看看这个方法的实现。</p>
-<h3 id="清理镜像"><a href="#清理镜像" class="headerlink" title="清理镜像"></a>清理镜像</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">docker image prune</div></pre></td></tr></table></figure>
-<h2 id="k8s-的-PodGC"><a href="#k8s-的-PodGC" class="headerlink" title="k8s 的 PodGC"></a>k8s 的 PodGC</h2><p><a href="https://kubernetes.io/docs/concepts/workloads/controllers/garbage-collection/" target="_blank" rel="external">Garbage Collection</a></p>
+<p>prune 方法的实现在 <a href="https://github.com/moby/moby/blob/master/daemon/prune.go" target="_blank" rel="noopener"><code>https://github.com/moby/moby/blob/master/daemon/prune.go</code></a> 里，有兴趣的话可以看看这个方法的实现。</p>
+<h3 id="清理镜像"><a href="#清理镜像" class="headerlink" title="清理镜像"></a>清理镜像</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker image prune</span><br></pre></td></tr></table></figure>
+<h2 id="k8s-的-PodGC"><a href="#k8s-的-PodGC" class="headerlink" title="k8s 的 PodGC"></a>k8s 的 PodGC</h2><p><a href="https://kubernetes.io/docs/concepts/workloads/controllers/garbage-collection/" target="_blank" rel="noopener">Garbage Collection</a></p>
 <h2 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h2><ul>
-<li><a href="https://www.calazan.com/docker-cleanup-commands/" target="_blank" rel="external">docker-cleanup-commands</a></li>
-<li><a href="https://github.com/chadoe/docker-cleanup-volumes" target="_blank" rel="external">chadoe/docker-cleanup-volumes</a></li>
-<li><a href="https://gist.github.com/bastman/5b57ddb3c11942094f8d0a97d461b430" target="_blank" rel="external">Docker - How to cleanup (unused) resources</a></li>
-<li><a href="http://stackoverflow.com/questions/32723111/how-to-remove-old-and-unused-docker-images" target="_blank" rel="external">how-to-remove-old-and-unused-docker-images</a></li>
-<li><a href="https://github.com/spotify/docker-gc" target="_blank" rel="external">spotify/docker-gc</a></li>
-<li><a href="https://blog.docker.com/2017/01/whats-new-in-docker-1-13/" target="_blank" rel="external">whats-new-in-docker-1-13</a></li>
-<li><a href="https://stackoverflow.com/questions/45142528/docker-what-is-a-dangling-image-and-what-is-an-unused-image" target="_blank" rel="external">Docker: What is a dangling image and what is an unused image?</a></li>
+<li><a href="https://www.calazan.com/docker-cleanup-commands/" target="_blank" rel="noopener">docker-cleanup-commands</a></li>
+<li><a href="https://github.com/chadoe/docker-cleanup-volumes" target="_blank" rel="noopener">chadoe/docker-cleanup-volumes</a></li>
+<li><a href="https://gist.github.com/bastman/5b57ddb3c11942094f8d0a97d461b430" target="_blank" rel="noopener">Docker - How to cleanup (unused) resources</a></li>
+<li><a href="http://stackoverflow.com/questions/32723111/how-to-remove-old-and-unused-docker-images" target="_blank" rel="noopener">how-to-remove-old-and-unused-docker-images</a></li>
+<li><a href="https://github.com/spotify/docker-gc" target="_blank" rel="noopener">spotify/docker-gc</a></li>
+<li><a href="https://blog.docker.com/2017/01/whats-new-in-docker-1-13/" target="_blank" rel="noopener">whats-new-in-docker-1-13</a></li>
+<li><a href="https://stackoverflow.com/questions/45142528/docker-what-is-a-dangling-image-and-what-is-an-unused-image" target="_blank" rel="noopener">Docker: What is a dangling image and what is an unused image?</a></li>
 </ul>
 
       
@@ -385,7 +385,7 @@
 
       
         <ul class="sidebar-nav motion-element">
-          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
             文章目录
           </li>
           <li class="sidebar-nav-overview" data-target="site-overview">
@@ -396,16 +396,14 @@
 
       <section class="site-overview sidebar-panel ">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
-          <img class="site-author-image" itemprop="image"
-               src="https://avatars1.githubusercontent.com/u/6964284?v=3&s=460"
-               alt="Frank" />
+          <img class="site-author-image" itemprop="image" src="https://avatars1.githubusercontent.com/u/6964284?v=3&s=460" alt="Frank">
           <p class="site-author-name" itemprop="name">Frank</p>
           <p class="site-description motion-element" itemprop="description"></p>
         </div>
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">365</span>
+              <span class="site-state-item-count">390</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -415,7 +413,7 @@
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">135</span>
+                <span class="site-state-item-count">207</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
@@ -451,7 +449,7 @@
         
           <div class="cc-license motion-element" itemprop="license">
             <a href="http://creativecommons.org/licenses/by-sa/4.0" class="cc-opacity" target="_blank">
-              <img src="/images/cc-by-sa.svg" alt="Creative Commons" />
+              <img src="/images/cc-by-sa.svg" alt="Creative Commons">
             </a>
           </div>
         
@@ -491,10 +489,10 @@
 
     <footer id="footer" class="footer">
       <div class="footer-inner">
-        <div class="copyright" >
+        <div class="copyright">
   
   &copy;  2015 - 
-  <span itemprop="copyrightYear">2019</span>
+  <span itemprop="copyrightYear">2021</span>
   <span class="with-love">
     <i class="fa fa-heart"></i>
   </span>

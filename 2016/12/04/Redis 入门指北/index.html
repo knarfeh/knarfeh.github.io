@@ -6,19 +6,15 @@
 
 
 <html class="theme-next muse use-motion">
-<head>
-  <meta charset="UTF-8"/>
-<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
 
 
-<meta http-equiv="Cache-Control" content="no-transform" />
-<meta http-equiv="Cache-Control" content="no-siteapp" />
-
-
-
-
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
 
 
 
@@ -27,7 +23,11 @@
 
 
 
-  <link href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css"/>
+
+
+
+
+  <link href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
 
 
 
@@ -36,21 +36,21 @@
 
 
 
-<link href="/vendors/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+<link href="/vendors/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css">
 
-<link href="/css/main.css?v=0.5.0" rel="stylesheet" type="text/css" />
-
-
-  <meta name="keywords" content="Redis," />
+<link href="/css/main.css?v=0.5.0" rel="stylesheet" type="text/css">
 
 
+  <meta name="keywords" content="Redis,">
 
 
 
 
 
 
-  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=0.5.0" />
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=0.5.0">
 
 
 
@@ -131,7 +131,7 @@
   
 
   <div class="custom-logo-site-title">
-    <a href="/"  class="brand" rel="start">
+    <a href="/" class="brand" rel="start">
       <span class="logo-line-before"><i></i></span>
       <span class="site-title">knarfeh's logbook</span>
       <span class="logo-line-after"><i></i></span>
@@ -158,7 +158,7 @@
         <li class="menu-item menu-item-home">
           <a href="/" rel="section">
             
-              <i class="menu-item-icon fa fa-home fa-fw"></i> <br />
+              <i class="menu-item-icon fa fa-home fa-fw"></i> <br>
             
             首页
           </a>
@@ -168,7 +168,7 @@
         <li class="menu-item menu-item-archives">
           <a href="/archives" rel="section">
             
-              <i class="menu-item-icon fa fa-archive fa-fw"></i> <br />
+              <i class="menu-item-icon fa fa-archive fa-fw"></i> <br>
             
             归档
           </a>
@@ -178,7 +178,7 @@
         <li class="menu-item menu-item-tags">
           <a href="/tags" rel="section">
             
-              <i class="menu-item-icon fa fa-tags fa-fw"></i> <br />
+              <i class="menu-item-icon fa fa-tags fa-fw"></i> <br>
             
             标签
           </a>
@@ -268,9 +268,9 @@
       
 
       
-        <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>这篇文章是团队内部分享 <a href="http://knarfeh.com/Introduction-to-Redis/#/" target="_blank" rel="external">Introduction-to-Redis</a> 之后的总结。不是完整的演讲稿，与演讲的内容有一定出入。</p>
+        <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>这篇文章是团队内部分享 <a href="http://knarfeh.com/Introduction-to-Redis/#/" target="_blank" rel="noopener">Introduction-to-Redis</a> 之后的总结。不是完整的演讲稿，与演讲的内容有一定出入。</p>
 <a id="more"></a>
-<h2 id="Redis-是什么"><a href="#Redis-是什么" class="headerlink" title="Redis 是什么"></a><a href="https://zh.wikipedia.org/wiki/Redis" target="_blank" rel="external">Redis</a> 是什么</h2><p>Redis 最开始是 <a href="https://github.com/antirez" target="_blank" rel="external">Salvatore Sanfilippo</a> 个人开发的项目，09年开发完成，到现在也不过7年时间，目前已经是最流行的键值对存储数据库。Redis 的作者 antirez 对 Redis 的定义是：一种实现了 TCP 协议的，操作抽象数据类型的守护进程。</p>
+<h2 id="Redis-是什么"><a href="#Redis-是什么" class="headerlink" title="Redis 是什么"></a><a href="https://zh.wikipedia.org/wiki/Redis" target="_blank" rel="noopener">Redis</a> 是什么</h2><p>Redis 最开始是 <a href="https://github.com/antirez" target="_blank" rel="noopener">Salvatore Sanfilippo</a> 个人开发的项目，09年开发完成，到现在也不过7年时间，目前已经是最流行的键值对存储数据库。Redis 的作者 antirez 对 Redis 的定义是：一种实现了 TCP 协议的，操作抽象数据类型的守护进程。</p>
 <h2 id="为什么要学习，使用-Redis"><a href="#为什么要学习，使用-Redis" class="headerlink" title="为什么要学习，使用 Redis"></a>为什么要学习，使用 Redis</h2><p>Redis 作为一个开源、支持网络、基于内存、键值对存储的数据库，有以下特点 </p>
 <ul>
 <li>简单，稳定，却不失灵活</li>
@@ -284,8 +284,8 @@
 </li>
 <li>基本只使用内存，可以高速读写</li>
 </ul>
-<p>更进一步的，我们也可以钻研一下 Redis 的源代码，甚至加入到这个项目来。Redis 正在持续的开发中，就在昨天，antriz 还在他的博客上发了一篇文章：<a href="http://antirez.com/news/110" target="_blank" rel="external">The first release candidate of Redis 4.0 is out</a>。就我个人来说，当我接触一个工具，我会学会怎么使用它，除此之外我还会想要知道它内部的原理。Redis 是一个很有意思的东西，这个项目时间不长，源代码也不多，而且文档丰富。代码很有价值，深入研读一下 redis 的源代码，造造轮子练习一下，当然是很好玩的，这里就不扩展了，之后有更多积累了再写写 Redis 实现的细节。  </p>
-<h2 id="Redis-宣言"><a href="#Redis-宣言" class="headerlink" title="Redis 宣言"></a><a href="http://oldblog.antirez.com/post/redis-manifesto.html" target="_blank" rel="external">Redis 宣言</a></h2><p>正式学习前，先来了解一下 Redis 的『内核』吧，antriz 曾经在他的博客上写了几点<a href="http://oldblog.antirez.com/post/redis-manifesto.html" target="_blank" rel="external">关于 Redis 的原则</a>：</p>
+<p>更进一步的，我们也可以钻研一下 Redis 的源代码，甚至加入到这个项目来。Redis 正在持续的开发中，就在昨天，antriz 还在他的博客上发了一篇文章：<a href="http://antirez.com/news/110" target="_blank" rel="noopener">The first release candidate of Redis 4.0 is out</a>。就我个人来说，当我接触一个工具，我会学会怎么使用它，除此之外我还会想要知道它内部的原理。Redis 是一个很有意思的东西，这个项目时间不长，源代码也不多，而且文档丰富。代码很有价值，深入研读一下 redis 的源代码，造造轮子练习一下，当然是很好玩的，这里就不扩展了，之后有更多积累了再写写 Redis 实现的细节。  </p>
+<h2 id="Redis-宣言"><a href="#Redis-宣言" class="headerlink" title="Redis 宣言"></a><a href="http://oldblog.antirez.com/post/redis-manifesto.html" target="_blank" rel="noopener">Redis 宣言</a></h2><p>正式学习前，先来了解一下 Redis 的『内核』吧，antriz 曾经在他的博客上写了几点<a href="http://oldblog.antirez.com/post/redis-manifesto.html" target="_blank" rel="noopener">关于 Redis 的原则</a>：</p>
 <ul>
 <li>Redis 是一种实现了 TCP 协议的，操作抽象数据类型的守护进程，本质上是 DSL(Domain Specific language)</li>
 </ul>
@@ -331,29 +331,29 @@
 <li>同时获得/设置多个键值</li>
 <li>位操作</li>
 </ol>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">$ redis-cli</div><div class="line">127.0.0.1:6379&gt; set hello &quot;world&quot;</div><div class="line">OK</div><div class="line">127.0.0.1:6379&gt; get hello</div><div class="line">&quot;world&quot;</div><div class="line">127.0.0.1:6379&gt; del hello</div><div class="line">(integer) 1</div><div class="line">127.0.0.1:6379&gt; get hello</div><div class="line">(nil)</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">$ redis-cli</span><br><span class="line">127.0.0.1:6379&gt; set hello &quot;world&quot;</span><br><span class="line">OK</span><br><span class="line">127.0.0.1:6379&gt; get hello</span><br><span class="line">&quot;world&quot;</span><br><span class="line">127.0.0.1:6379&gt; del hello</span><br><span class="line">(integer) 1</span><br><span class="line">127.0.0.1:6379&gt; get hello</span><br><span class="line">(nil)</span><br></pre></td></tr></table></figure>
 <p>这是最简单也最常用的 key，value 的对应，你可以令一个 key 对应一个 value，通过 key 拿到 value 的值，删除这个 key-value，简单来说就是，set 可以设置存储在给定键中的值，get 可以获取给定键中的值，del 删除存储在给定键中的值，</p>
 <p>当然你的 value 也可以是整数的形式。可以通过 mget 获得多个键的值。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">127.0.0.1:6379&gt; set foo bar</div><div class="line">OK</div><div class="line">127.0.0.1:6379&gt; getset foo baz</div><div class="line">&quot;bar&quot;</div><div class="line">127.0.0.1:6379&gt; get foo</div><div class="line">&quot;baz&quot;</div></pre></td></tr></table></figure>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">127.0.0.1:6379&gt; setnx foo bar</div><div class="line">(integer) 1</div><div class="line">127.0.0.1:6379&gt; setnx foo baz</div><div class="line">(integer) 0</div><div class="line">127.0.0.1:6379&gt; get foo</div><div class="line">&quot;bar&quot;</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">127.0.0.1:6379&gt; set foo bar</span><br><span class="line">OK</span><br><span class="line">127.0.0.1:6379&gt; getset foo baz</span><br><span class="line">&quot;bar&quot;</span><br><span class="line">127.0.0.1:6379&gt; get foo</span><br><span class="line">&quot;baz&quot;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">127.0.0.1:6379&gt; setnx foo bar</span><br><span class="line">(integer) 1</span><br><span class="line">127.0.0.1:6379&gt; setnx foo baz</span><br><span class="line">(integer) 0</span><br><span class="line">127.0.0.1:6379&gt; get foo</span><br><span class="line">&quot;bar&quot;</span><br></pre></td></tr></table></figure>
 <p>我们有时候需要一些命令的组合，一般的组合命令在 redis 中已经有原生的实现了，可以直接用这些原子操作。比如 get 了一个值，set 一个新的值，你可以用 getset 方法；如果某个键不存在，才进行 set 操作(setnx 是 Set if Not eXists)</p>
 <h3 id="列表"><a href="#列表" class="headerlink" title="列表"></a>列表</h3><p>接下来我们讲一下列表，redis 支持链表的操作，这里有几个比较典型的命令，你可以在左右两端进行 push，pop 的操作，时间复杂度是O(n)</p>
-<p>rpush, lrange, lindex, lpop<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div></pre></td><td class="code"><pre><div class="line">127.0.0.1:6379&gt; rpush list-key item</div><div class="line">(integer) 1</div><div class="line">127.0.0.1:6379&gt; rpush list-key item1</div><div class="line">(integer) 2</div><div class="line">127.0.0.1:6379&gt; rpush list-key item2</div><div class="line">(integer) 3</div><div class="line">127.0.0.1:6379&gt; lrange list-key 0 -1</div><div class="line">1) &quot;item&quot;</div><div class="line">2) &quot;item1&quot;</div><div class="line">3) &quot;item2&quot;</div><div class="line">127.0.0.1:6379&gt; lindex list-key 1</div><div class="line">&quot;item1&quot;</div><div class="line">127.0.0.1:6379&gt; lpop list-key</div><div class="line">&quot;item&quot;</div><div class="line">127.0.0.1:6379&gt; lrange list-key 0 -1</div><div class="line">1) &quot;item1&quot;</div><div class="line">2) &quot;item2&quot;</div><div class="line">127.0.0.1:6379&gt; RPOP list-key</div><div class="line">&quot;item2&quot;</div><div class="line">127.0.0.1:6379&gt; lrange list-key 0 -1</div><div class="line">1) &quot;item1&quot;</div></pre></td></tr></table></figure></p>
+<p>rpush, lrange, lindex, lpop<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">127.0.0.1:6379&gt; rpush list-key item</span><br><span class="line">(integer) 1</span><br><span class="line">127.0.0.1:6379&gt; rpush list-key item1</span><br><span class="line">(integer) 2</span><br><span class="line">127.0.0.1:6379&gt; rpush list-key item2</span><br><span class="line">(integer) 3</span><br><span class="line">127.0.0.1:6379&gt; lrange list-key 0 -1</span><br><span class="line">1) &quot;item&quot;</span><br><span class="line">2) &quot;item1&quot;</span><br><span class="line">3) &quot;item2&quot;</span><br><span class="line">127.0.0.1:6379&gt; lindex list-key 1</span><br><span class="line">&quot;item1&quot;</span><br><span class="line">127.0.0.1:6379&gt; lpop list-key</span><br><span class="line">&quot;item&quot;</span><br><span class="line">127.0.0.1:6379&gt; lrange list-key 0 -1</span><br><span class="line">1) &quot;item1&quot;</span><br><span class="line">2) &quot;item2&quot;</span><br><span class="line">127.0.0.1:6379&gt; RPOP list-key</span><br><span class="line">&quot;item2&quot;</span><br><span class="line">127.0.0.1:6379&gt; lrange list-key 0 -1</span><br><span class="line">1) &quot;item1&quot;</span><br></pre></td></tr></table></figure></p>
 <h3 id="集合"><a href="#集合" class="headerlink" title="集合"></a>集合</h3><p>然后是集合，Redis 的集合和列表都可以存储多个字符串，它们之间的不同在于，列表可以存储多个相同的字符串，而集合通过散列表来保证自己存储的每个字符串都是各不相同的。集合采用的是无序方式存储元素。sadd 可以给集合增加元素，smembers 可以获取包含所有元素的集合，通过 sismember 判断某个元素是不是某个集合里的，使用 srem 移除元素时，会返回被移除元素的数量。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div></pre></td><td class="code"><pre><div class="line">127.0.0.1:6379&gt; sadd set-key item</div><div class="line">(integer) 1</div><div class="line">127.0.0.1:6379&gt; sadd set-key item1</div><div class="line">(integer) 1</div><div class="line">127.0.0.1:6379&gt; sadd set-key item2</div><div class="line">(integer) 1</div><div class="line">127.0.0.1:6379&gt; sadd set-key item</div><div class="line">(integer) 0</div><div class="line">127.0.0.1:6379&gt; smembers set-key</div><div class="line">1) &quot;item&quot;</div><div class="line">2) &quot;item2&quot;</div><div class="line">3) &quot;item1&quot;</div><div class="line">127.0.0.1:6379&gt; sismember set-key item3</div><div class="line">(integer) 0</div><div class="line">127.0.0.1:6379&gt; sismember set-key item</div><div class="line">(integer) 1</div><div class="line">127.0.0.1:6379&gt; srem set-key item1</div><div class="line">(integer) 1</div><div class="line">127.0.0.1:6379&gt; srem set-key item1</div><div class="line">(integer) 0</div><div class="line">127.0.0.1:6379&gt; smembers set-key</div><div class="line">1) &quot;item&quot;</div><div class="line">2) &quot;item2&quot;</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">127.0.0.1:6379&gt; sadd set-key item</span><br><span class="line">(integer) 1</span><br><span class="line">127.0.0.1:6379&gt; sadd set-key item1</span><br><span class="line">(integer) 1</span><br><span class="line">127.0.0.1:6379&gt; sadd set-key item2</span><br><span class="line">(integer) 1</span><br><span class="line">127.0.0.1:6379&gt; sadd set-key item</span><br><span class="line">(integer) 0</span><br><span class="line">127.0.0.1:6379&gt; smembers set-key</span><br><span class="line">1) &quot;item&quot;</span><br><span class="line">2) &quot;item2&quot;</span><br><span class="line">3) &quot;item1&quot;</span><br><span class="line">127.0.0.1:6379&gt; sismember set-key item3</span><br><span class="line">(integer) 0</span><br><span class="line">127.0.0.1:6379&gt; sismember set-key item</span><br><span class="line">(integer) 1</span><br><span class="line">127.0.0.1:6379&gt; srem set-key item1</span><br><span class="line">(integer) 1</span><br><span class="line">127.0.0.1:6379&gt; srem set-key item1</span><br><span class="line">(integer) 0</span><br><span class="line">127.0.0.1:6379&gt; smembers set-key</span><br><span class="line">1) &quot;item&quot;</span><br><span class="line">2) &quot;item2&quot;</span><br></pre></td></tr></table></figure>
 <h3 id="散列"><a href="#散列" class="headerlink" title="散列"></a>散列</h3><p>Redis 的散列可以存储多个键值对之间的映射。散列其实像是一个缩略版的 Redis，看起来也像是关系数据库中的行。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div></pre></td><td class="code"><pre><div class="line">127.0.0.1:6379&gt; hset hash-key sub-key0 value0</div><div class="line">(integer) 1</div><div class="line">127.0.0.1:6379&gt; hset hash-key sub-key1 value1</div><div class="line">(integer) 1</div><div class="line">127.0.0.1:6379&gt; hset hash-key sub-key2 value2</div><div class="line">(integer) 1</div><div class="line">127.0.0.1:6379&gt; hgetall hash-key</div><div class="line">1) &quot;sub-key0&quot;</div><div class="line">2) &quot;value0&quot;</div><div class="line">3) &quot;sub-key1&quot;</div><div class="line">4) &quot;value1&quot;</div><div class="line">5) &quot;sub-key2&quot;</div><div class="line">6) &quot;value2&quot;</div><div class="line">127.0.0.1:6379&gt; hdel hash-key sub-key1</div><div class="line">(integer) 1</div><div class="line">127.0.0.1:6379&gt; hgetall hash-key</div><div class="line">1) &quot;sub-key0&quot;</div><div class="line">2) &quot;value0&quot;</div><div class="line">3) &quot;sub-key2&quot;</div><div class="line">4) &quot;value2&quot;</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">127.0.0.1:6379&gt; hset hash-key sub-key0 value0</span><br><span class="line">(integer) 1</span><br><span class="line">127.0.0.1:6379&gt; hset hash-key sub-key1 value1</span><br><span class="line">(integer) 1</span><br><span class="line">127.0.0.1:6379&gt; hset hash-key sub-key2 value2</span><br><span class="line">(integer) 1</span><br><span class="line">127.0.0.1:6379&gt; hgetall hash-key</span><br><span class="line">1) &quot;sub-key0&quot;</span><br><span class="line">2) &quot;value0&quot;</span><br><span class="line">3) &quot;sub-key1&quot;</span><br><span class="line">4) &quot;value1&quot;</span><br><span class="line">5) &quot;sub-key2&quot;</span><br><span class="line">6) &quot;value2&quot;</span><br><span class="line">127.0.0.1:6379&gt; hdel hash-key sub-key1</span><br><span class="line">(integer) 1</span><br><span class="line">127.0.0.1:6379&gt; hgetall hash-key</span><br><span class="line">1) &quot;sub-key0&quot;</span><br><span class="line">2) &quot;value0&quot;</span><br><span class="line">3) &quot;sub-key2&quot;</span><br><span class="line">4) &quot;value2&quot;</span><br></pre></td></tr></table></figure>
 <h3 id="有序集合"><a href="#有序集合" class="headerlink" title="有序集合"></a>有序集合</h3><p>有序集合和散列有点像，都存储键值对，但是有序集合的键叫做成员（member），每个成员都是各不相同的，有序集合的值称为分值，分值必须为浮点数。注意，有序集合的键和值跟集合的键和值的位置是相反的。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line">127.0.0.1:6379&gt; zadd zset-key 728 member1</div><div class="line">(integer) 1</div><div class="line">127.0.0.1:6379&gt; zadd zset-key 729 member0</div><div class="line">(integer) 1</div><div class="line">127.0.0.1:6379&gt; zadd zset-key 729 member0</div><div class="line">(integer) 0</div><div class="line">127.0.0.1:6379&gt; zadd zset-key 730 member2</div><div class="line">(integer) 1</div><div class="line">127.0.0.1:6379&gt; zrange zset-key 0 -1 withscores</div><div class="line">1) &quot;member1&quot;</div><div class="line">2) &quot;728&quot;</div><div class="line">3) &quot;member0&quot;</div><div class="line">4) &quot;729&quot;</div><div class="line">5) &quot;member2&quot;</div><div class="line">6) &quot;730&quot;</div></pre></td></tr></table></figure>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div></pre></td><td class="code"><pre><div class="line">127.0.0.1:6379&gt; zrangebyscore zset-key 0 800 withscores</div><div class="line">1) &quot;member1&quot;</div><div class="line">2) &quot;728&quot;</div><div class="line">3) &quot;member0&quot;</div><div class="line">4) &quot;729&quot;</div><div class="line">5) &quot;member2&quot;</div><div class="line">6) &quot;730&quot;</div><div class="line">127.0.0.1:6379&gt; zrangebyscore zset-key 0 729 withscores</div><div class="line">1) &quot;member1&quot;</div><div class="line">2) &quot;728&quot;</div><div class="line">3) &quot;member0&quot;</div><div class="line">4) &quot;729&quot;</div><div class="line">127.0.0.1:6379&gt; zrem zset-key member1</div><div class="line">(integer) 1</div><div class="line">127.0.0.1:6379&gt; zrem zset-key member1</div><div class="line">(integer) 0</div><div class="line">127.0.0.1:6379&gt; zrange zset-key 0 -1 withscores</div><div class="line">1) &quot;member0&quot;</div><div class="line">2) &quot;729&quot;</div><div class="line">3) &quot;member2&quot;</div><div class="line">4) &quot;730&quot;</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">127.0.0.1:6379&gt; zadd zset-key 728 member1</span><br><span class="line">(integer) 1</span><br><span class="line">127.0.0.1:6379&gt; zadd zset-key 729 member0</span><br><span class="line">(integer) 1</span><br><span class="line">127.0.0.1:6379&gt; zadd zset-key 729 member0</span><br><span class="line">(integer) 0</span><br><span class="line">127.0.0.1:6379&gt; zadd zset-key 730 member2</span><br><span class="line">(integer) 1</span><br><span class="line">127.0.0.1:6379&gt; zrange zset-key 0 -1 withscores</span><br><span class="line">1) &quot;member1&quot;</span><br><span class="line">2) &quot;728&quot;</span><br><span class="line">3) &quot;member0&quot;</span><br><span class="line">4) &quot;729&quot;</span><br><span class="line">5) &quot;member2&quot;</span><br><span class="line">6) &quot;730&quot;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">127.0.0.1:6379&gt; zrangebyscore zset-key 0 800 withscores</span><br><span class="line">1) &quot;member1&quot;</span><br><span class="line">2) &quot;728&quot;</span><br><span class="line">3) &quot;member0&quot;</span><br><span class="line">4) &quot;729&quot;</span><br><span class="line">5) &quot;member2&quot;</span><br><span class="line">6) &quot;730&quot;</span><br><span class="line">127.0.0.1:6379&gt; zrangebyscore zset-key 0 729 withscores</span><br><span class="line">1) &quot;member1&quot;</span><br><span class="line">2) &quot;728&quot;</span><br><span class="line">3) &quot;member0&quot;</span><br><span class="line">4) &quot;729&quot;</span><br><span class="line">127.0.0.1:6379&gt; zrem zset-key member1</span><br><span class="line">(integer) 1</span><br><span class="line">127.0.0.1:6379&gt; zrem zset-key member1</span><br><span class="line">(integer) 0</span><br><span class="line">127.0.0.1:6379&gt; zrange zset-key 0 -1 withscores</span><br><span class="line">1) &quot;member0&quot;</span><br><span class="line">2) &quot;729&quot;</span><br><span class="line">3) &quot;member2&quot;</span><br><span class="line">4) &quot;730&quot;</span><br></pre></td></tr></table></figure>
 <p>通过 zrangebyscore，指定分数的范围，就可以获得对应的有序集合。其他的操作和集合，散列的命令类似，这里就不多说了。了解了有序集合是什么，我们就能想到它能做什么了，比如像 hackernews，twitter 这样的页面，就可以用到。</p>
 <h2 id="更进一步"><a href="#更进一步" class="headerlink" title="更进一步"></a>更进一步</h2><p>简单介绍了 redis 的5种数据类型，字符串，列表，集合，散列，有序集合，我们来说说更好玩的。</p>
-<h3 id="Expires"><a href="#Expires" class="headerlink" title="Expires"></a>Expires</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">127.0.0.1:6379&gt; expire foo 20</div><div class="line">(integer) 1</div><div class="line">127.0.0.1:6379&gt; ttl foo</div><div class="line">(integer) 18</div><div class="line">127.0.0.1:6379&gt; ttl foo</div><div class="line">(integer) 10</div><div class="line">127.0.0.1:6379&gt; ttl foo</div><div class="line">(integer) 7</div><div class="line">127.0.0.1:6379&gt; ttl foo</div><div class="line">(integer) -2</div></pre></td></tr></table></figure>
+<h3 id="Expires"><a href="#Expires" class="headerlink" title="Expires"></a>Expires</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">127.0.0.1:6379&gt; expire foo 20</span><br><span class="line">(integer) 1</span><br><span class="line">127.0.0.1:6379&gt; ttl foo</span><br><span class="line">(integer) 18</span><br><span class="line">127.0.0.1:6379&gt; ttl foo</span><br><span class="line">(integer) 10</span><br><span class="line">127.0.0.1:6379&gt; ttl foo</span><br><span class="line">(integer) 7</span><br><span class="line">127.0.0.1:6379&gt; ttl foo</span><br><span class="line">(integer) -2</span><br></pre></td></tr></table></figure>
 <p>我们在实际的开发中经常会遇到一些有时效的数据，比如限时的优惠活动、缓存、验证码等，这些数据可能过了一定时间就要删除。如果是用关系型数据库，需要一个额外的字段来记录到期的时间，定期检测过期的数据，在 Redis 中可以用 expire 来设置一个键的过期时间，到时间后 Redis 会自动删除</p>
 <h3 id="发布-订阅"><a href="#发布-订阅" class="headerlink" title="发布/订阅"></a>发布/订阅</h3><p>发布</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">127.0.0.1:6379&gt; publish channel1.1 &apos;hello&apos;</div><div class="line">(integer) 1</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">127.0.0.1:6379&gt; publish channel1.1 &apos;hello&apos;</span><br><span class="line">(integer) 1</span><br></pre></td></tr></table></figure>
 <p>订阅</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">127.0.0.1:6379&gt; subscribe channel1.1</div><div class="line">Reading messages... (press Ctrl-C to quit)</div><div class="line">1) &quot;subscribe&quot;</div><div class="line">2) &quot;channel1.1&quot;</div><div class="line">3) (integer) 1</div><div class="line">1) &quot;message&quot;</div><div class="line">2) &quot;channel1.1&quot;</div><div class="line">3) &quot;hello&quot;</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">127.0.0.1:6379&gt; subscribe channel1.1</span><br><span class="line">Reading messages... (press Ctrl-C to quit)</span><br><span class="line">1) &quot;subscribe&quot;</span><br><span class="line">2) &quot;channel1.1&quot;</span><br><span class="line">3) (integer) 1</span><br><span class="line">1) &quot;message&quot;</span><br><span class="line">2) &quot;channel1.1&quot;</span><br><span class="line">3) &quot;hello&quot;</span><br></pre></td></tr></table></figure>
 <p>Redis 提供了一组命令让开发者实现『发布/订阅』模式，订阅者可以订阅一个或多个频道（可以通过 pattern 进行订阅），发布者可以向指定的频道发送消息，所有订阅该频道的订阅者都会收到此消息。需要注意的是，这里发布的消息是不会持久化的。订阅的复杂度是：O(1)，发布消息的复杂度是 O(n)</p>
 <h3 id="lua-脚本"><a href="#lua-脚本" class="headerlink" title="lua 脚本"></a>lua 脚本</h3><p>Redis 的脚本功能在2.6版推出，它允许开发者写 lua 脚本上传到 redis server 端执行，使用 lua 脚本的好处有：</p>
 <ol>
@@ -361,8 +361,8 @@
 <li>原子操作</li>
 <li>可以复用脚本</li>
 </ol>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line">$ cat random_list.lua</div><div class="line">--[[</div><div class="line">Random lpush a list key-value</div><div class="line">KEYS[1]:key name</div><div class="line">ARGV[1]:ramdom seed value</div><div class="line">ARGV[2]:add element count</div><div class="line">--]]</div><div class="line"></div><div class="line">math.randomseed(ARGV[1]);</div><div class="line">for i=1, ARGV[2], 1 do</div><div class="line">    redis.call(&quot;lpush&quot;, KEYS[1], math.random());</div><div class="line">end</div><div class="line">redis.log(redis.LOG_NOTICE, &quot;lpush &quot; .. KEYS[1]);</div><div class="line">return true;</div><div class="line">$ redis-cli --eval random_list.lua r_list , 3 6</div></pre></td></tr></table></figure>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">$ redis-cli lrange r_list 0 -1</div><div class="line">1) &quot;0.43370221947957865&quot;</div><div class="line">2) &quot;0.54186119723220416&quot;</div><div class="line">3) &quot;0.26702763618297298&quot;</div><div class="line">4) &quot;0.31170834336043723&quot;</div><div class="line">5) &quot;0.86367337352767282&quot;</div><div class="line">6) &quot;0.7832349621612742&quot;</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">$ cat random_list.lua</span><br><span class="line">--[[</span><br><span class="line">Random lpush a list key-value</span><br><span class="line">KEYS[1]:key name</span><br><span class="line">ARGV[1]:ramdom seed value</span><br><span class="line">ARGV[2]:add element count</span><br><span class="line">--]]</span><br><span class="line"></span><br><span class="line">math.randomseed(ARGV[1]);</span><br><span class="line">for i=1, ARGV[2], 1 do</span><br><span class="line">    redis.call(&quot;lpush&quot;, KEYS[1], math.random());</span><br><span class="line">end</span><br><span class="line">redis.log(redis.LOG_NOTICE, &quot;lpush &quot; .. KEYS[1]);</span><br><span class="line">return true;</span><br><span class="line">$ redis-cli --eval random_list.lua r_list , 3 6</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">$ redis-cli lrange r_list 0 -1</span><br><span class="line">1) &quot;0.43370221947957865&quot;</span><br><span class="line">2) &quot;0.54186119723220416&quot;</span><br><span class="line">3) &quot;0.26702763618297298&quot;</span><br><span class="line">4) &quot;0.31170834336043723&quot;</span><br><span class="line">5) &quot;0.86367337352767282&quot;</span><br><span class="line">6) &quot;0.7832349621612742&quot;</span><br></pre></td></tr></table></figure>
 <h3 id="持久化"><a href="#持久化" class="headerlink" title="持久化"></a>持久化</h3><ul>
 <li>RDB</li>
 <li>AOF</li>
@@ -447,25 +447,25 @@
 </ul>
 <h3 id="如何使用好-Redis"><a href="#如何使用好-Redis" class="headerlink" title="如何使用好 Redis"></a>如何使用好 Redis</h3><p>最后，抛砖引玉，说说我们可以怎么最大程度地利用好 Redis？</p>
 <p><img src="https://knarfeh-1254074221.cos.na-siliconvalley.myqcloud.com/2016-12-13/lizi.jpg" alt="example"></p>
-<h4 id="在首页列出最新的评论"><a href="#在首页列出最新的评论" class="headerlink" title="在首页列出最新的评论"></a>在首页列出最新的评论</h4><p>没有 Redis<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">SELECT * FROM foo WHERE ... ORDER BY time DESC LIMIT 10</div></pre></td></tr></table></figure></p>
-<p>使用 Redis<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">FUNCTION get_latest_comments(start,num_items):</div><div class="line">    id_list = redis.lrange(&quot;latest.comments&quot;,start,start+num_items-1)</div><div class="line">    IF id_list.length &lt; num_items</div><div class="line">        id_list = SQL_DB(&quot;SELECT ... ORDER BY time LIMIT ...&quot;)</div><div class="line">    END</div><div class="line">    RETURN id_list</div><div class="line">END</div></pre></td></tr></table></figure></p>
+<h4 id="在首页列出最新的评论"><a href="#在首页列出最新的评论" class="headerlink" title="在首页列出最新的评论"></a>在首页列出最新的评论</h4><p>没有 Redis<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">SELECT * FROM foo WHERE ... ORDER BY time DESC LIMIT 10</span><br></pre></td></tr></table></figure></p>
+<p>使用 Redis<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">FUNCTION get_latest_comments(start,num_items):</span><br><span class="line">    id_list = redis.lrange(&quot;latest.comments&quot;,start,start+num_items-1)</span><br><span class="line">    IF id_list.length &lt; num_items</span><br><span class="line">        id_list = SQL_DB(&quot;SELECT ... ORDER BY time LIMIT ...&quot;)</span><br><span class="line">    END</span><br><span class="line">    RETURN id_list</span><br><span class="line">END</span><br></pre></td></tr></table></figure></p>
 <p>比如有这样一类问题，我们需要查询最新的10条数据，这里就抽象为最新的10条评论吧，如果没有 Redis，我们每次都需要从数据库里面查询数据，如果我们用 Redis 的话，可以将最新的评论保存在 Redis 的列表里，有新的评论就 push 进入，当然 push 进 Redis 的列表后也需要写数据库，取最新评论的时候从 Redis 去取就行了。</p>
-<h3 id="实时排名相关问题"><a href="#实时排名相关问题" class="headerlink" title="实时排名相关问题"></a>实时排名相关问题</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">ZADD leaderboard &lt;score&gt; &lt;username&gt;</div></pre></td></tr></table></figure>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">ZRANK leaderboard &lt;username&gt;</div></pre></td></tr></table></figure>
+<h3 id="实时排名相关问题"><a href="#实时排名相关问题" class="headerlink" title="实时排名相关问题"></a>实时排名相关问题</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ZADD leaderboard &lt;score&gt; &lt;username&gt;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ZRANK leaderboard &lt;username&gt;</span><br></pre></td></tr></table></figure>
 <p>Redis 还可以解决跟排名相关的应用，利用 Redis 我们可以高效地实现排序，比如游戏榜单的实时排序，我们可以用一个有序集合来存储，有一个新的数据时，可以用 ZADD 添加数据，需要获得某个用户的排名时，可以用 ZRANK 来获得。 如果只用数据库，比如苹果的 game center，热门的游戏可能有几百万人在玩，如果查数据库的话，实时排名基本就不可能了。</p>
 <h4 id="根据用户点赞行为和事件排序的问题"><a href="#根据用户点赞行为和事件排序的问题" class="headerlink" title="根据用户点赞行为和事件排序的问题"></a>根据用户点赞行为和事件排序的问题</h4><p>Redis 可以实时对所有数据进行排序，比如 hacker news，通过一定的公式来对所有的文章进行排序。</p>
-<h4 id="计数相关问题"><a href="#计数相关问题" class="headerlink" title="计数相关问题"></a>计数相关问题</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">INCR ip:&lt;id&gt;</div><div class="line">EXPIRE ip:&lt;id&gt; 60</div></pre></td></tr></table></figure>
+<h4 id="计数相关问题"><a href="#计数相关问题" class="headerlink" title="计数相关问题"></a>计数相关问题</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">INCR ip:&lt;id&gt;</span><br><span class="line">EXPIRE ip:&lt;id&gt; 60</span><br></pre></td></tr></table></figure>
 <p>我相信大家都有过这样的需求：给某个值加一个计数器。有一个跟我们平台相关的例子，比如我们需要统计某个时间段内的注册人数，如果5分钟内有几千个注册用户，那么很有可能是被人攻击了，或者我们要分析某个被频繁请求的 api 是否正常，我们可以统计60秒内的独立 ip 访问次数，如果是恶意的请求，我们可以把这个 ip 加入黑名单。如果是存数据库的话，我们确实可以加一个字段，但这是一个频繁写的操作，会比较影响性能。如果是用 Redis 的话，可以很简单地实现这个功能，而且性能比较高</p>
-<h4 id="给定时间内的唯一值"><a href="#给定时间内的唯一值" class="headerlink" title="给定时间内的唯一值"></a>给定时间内的唯一值</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">SADD page:day1:&lt;page_id&gt; &lt;user_id&gt;</div></pre></td></tr></table></figure>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">SCARD page:day1:&lt;page_id&gt;</div></pre></td></tr></table></figure>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">SISMEMBER page:day1:&lt;page_id&gt; &lt;user_id&gt;</div></pre></td></tr></table></figure>
+<h4 id="给定时间内的唯一值"><a href="#给定时间内的唯一值" class="headerlink" title="给定时间内的唯一值"></a>给定时间内的唯一值</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">SADD page:day1:&lt;page_id&gt; &lt;user_id&gt;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">SCARD page:day1:&lt;page_id&gt;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">SISMEMBER page:day1:&lt;page_id&gt; &lt;user_id&gt;</span><br></pre></td></tr></table></figure>
 <p>当我们需要判断一个时间段内某个集合内是否已经存在某个值，比如记录今天访问过某个页面的用户，我们可以用一个集合来记录，当一个用户访问了某个页面，我们把这个值记录在集合里，当我们需要知道某个页面的独立用户个数，可以用：SCARD，当我们需要了解某个用户是否访问过某个页面，可以用：SISMEMBER </p>
 <h4 id="数据实时分析，反垃圾"><a href="#数据实时分析，反垃圾" class="headerlink" title="数据实时分析，反垃圾"></a>数据实时分析，反垃圾</h4><p>像这种实时分析的服务，一般不需要考虑数据的持久化的问题，但你可能需要大量缓存数据。所以我们可以用 redis 进行数据的实时分析。</p>
 <h4 id="Pub-Sub"><a href="#Pub-Sub" class="headerlink" title="Pub/Sub"></a>Pub/Sub</h4><blockquote>
 <p>Redis Pub/Sub is very very simple to use, stable, and fast, with support for pattern matching, ability to subscribe/unsubscribe to channels on the run,</p>
 </blockquote>
 <p>这个前面有提到，Redis 的订阅/发布功能非常容易使用，简单的订阅/发布功能可以用 redis</p>
-<h4 id="队列"><a href="#队列" class="headerlink" title="队列"></a>队列</h4><p>A common usage of Redis as a queue is the <a href="https://github.com/blog/542-introducing-resque" target="_blank" rel="external">Resque</a> library, implemented and popularized by Github’s folks.</p>
+<h4 id="队列"><a href="#队列" class="headerlink" title="队列"></a>队列</h4><p>A common usage of Redis as a queue is the <a href="https://github.com/blog/542-introducing-resque" target="_blank" rel="noopener">Resque</a> library, implemented and popularized by Github’s folks.</p>
 <p>Redis 可以当做队列使用。github 的 resque 就是基于 Redis 实现的队列系统，这个东西是 ruby 栈的。 </p>
 <h2 id="管理-Redis"><a href="#管理-Redis" class="headerlink" title="管理 Redis"></a>管理 Redis</h2><h3 id="安全层面"><a href="#安全层面" class="headerlink" title="安全层面"></a>安全层面</h3><p>还记得 antirz 的 Redis 宣言吗？以简洁为美。在安全层面，Redis 并没有做太多工作。你可以给 Redis 设置一个密码，只需要更改 redis.conf 文件，修改 requirepass 参数的值。</p>
 <p>需要注意的是，Redis 的性能极高，并且输入密码错误后 Redis 并不会主动延迟，所以攻击者可以通过穷举的方式破解 Redis 的密码（一秒钟十几万次）。</p>
@@ -475,15 +475,15 @@
 <li>Rdbtools</li>
 </ul>
 <h2 id="更多资源"><a href="#更多资源" class="headerlink" title="更多资源"></a>更多资源</h2><h3 id="书"><a href="#书" class="headerlink" title="书"></a>书</h3><p>推荐三本书</p>
-<p><a href="https://book.douban.com/subject/26419240/" target="_blank" rel="external"><img src="https://img3.doubanio.com/lpic/s28104066.jpg" alt="Redis 入门指南"></a></p>
-<p><a href="https://book.douban.com/subject/26612779/" target="_blank" rel="external"><img src="https://img3.doubanio.com/lpic/s28296984.jpg" alt="Redis 实战"></a></p>
-<p><a href="https://book.douban.com/subject/25900156/" target="_blank" rel="external"><img src="https://img1.doubanio.com/lpic/s27297117.jpg" alt="Redis 设计与实现"></a></p>
+<p><a href="https://book.douban.com/subject/26419240/" target="_blank" rel="noopener"><img src="https://img3.doubanio.com/lpic/s28104066.jpg" alt="Redis 入门指南"></a></p>
+<p><a href="https://book.douban.com/subject/26612779/" target="_blank" rel="noopener"><img src="https://img3.doubanio.com/lpic/s28296984.jpg" alt="Redis 实战"></a></p>
+<p><a href="https://book.douban.com/subject/25900156/" target="_blank" rel="noopener"><img src="https://img1.doubanio.com/lpic/s27297117.jpg" alt="Redis 设计与实现"></a></p>
 <p>一本入门，打开新世界的大门，一本实战，教你怎么使用这门功夫，一本内功心法，教你如何融会贯通。</p>
 <h3 id="一些常用链接"><a href="#一些常用链接" class="headerlink" title="一些常用链接"></a>一些常用链接</h3><ul>
-<li><a href="https://redis.io/" target="_blank" rel="external">redis.io</a></li>
-<li><a href="https://redisdoc.com/" target="_blank" rel="external">中文文档</a></li>
-<li><a href="http://antirez.com/latest/0" target="_blank" rel="external">antirez.com</a></li>
-<li><a href="https://github.com/antirez/redis" target="_blank" rel="external">source code</a></li>
+<li><a href="https://redis.io/" target="_blank" rel="noopener">redis.io</a></li>
+<li><a href="https://redisdoc.com/" target="_blank" rel="noopener">中文文档</a></li>
+<li><a href="http://antirez.com/latest/0" target="_blank" rel="noopener">antirez.com</a></li>
+<li><a href="https://github.com/antirez/redis" target="_blank" rel="noopener">source code</a></li>
 </ul>
 
       
@@ -573,7 +573,7 @@
 
       
         <ul class="sidebar-nav motion-element">
-          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
             文章目录
           </li>
           <li class="sidebar-nav-overview" data-target="site-overview">
@@ -584,16 +584,14 @@
 
       <section class="site-overview sidebar-panel ">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
-          <img class="site-author-image" itemprop="image"
-               src="https://avatars1.githubusercontent.com/u/6964284?v=3&s=460"
-               alt="Frank" />
+          <img class="site-author-image" itemprop="image" src="https://avatars1.githubusercontent.com/u/6964284?v=3&s=460" alt="Frank">
           <p class="site-author-name" itemprop="name">Frank</p>
           <p class="site-description motion-element" itemprop="description"></p>
         </div>
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">365</span>
+              <span class="site-state-item-count">390</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -603,7 +601,7 @@
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">135</span>
+                <span class="site-state-item-count">207</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
@@ -639,7 +637,7 @@
         
           <div class="cc-license motion-element" itemprop="license">
             <a href="http://creativecommons.org/licenses/by-sa/4.0" class="cc-opacity" target="_blank">
-              <img src="/images/cc-by-sa.svg" alt="Creative Commons" />
+              <img src="/images/cc-by-sa.svg" alt="Creative Commons">
             </a>
           </div>
         
@@ -679,10 +677,10 @@
 
     <footer id="footer" class="footer">
       <div class="footer-inner">
-        <div class="copyright" >
+        <div class="copyright">
   
   &copy;  2015 - 
-  <span itemprop="copyrightYear">2019</span>
+  <span itemprop="copyrightYear">2021</span>
   <span class="with-love">
     <i class="fa fa-heart"></i>
   </span>

@@ -6,19 +6,15 @@
 
 
 <html class="theme-next muse use-motion">
-<head>
-  <meta charset="UTF-8"/>
-<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
 
 
-<meta http-equiv="Cache-Control" content="no-transform" />
-<meta http-equiv="Cache-Control" content="no-siteapp" />
-
-
-
-
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
 
 
 
@@ -27,7 +23,11 @@
 
 
 
-  <link href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css"/>
+
+
+
+
+  <link href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
 
 
 
@@ -36,21 +36,21 @@
 
 
 
-<link href="/vendors/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+<link href="/vendors/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css">
 
-<link href="/css/main.css?v=0.5.0" rel="stylesheet" type="text/css" />
-
-
-  <meta name="keywords" content="Python,code," />
+<link href="/css/main.css?v=0.5.0" rel="stylesheet" type="text/css">
 
 
+  <meta name="keywords" content="Python,code,">
 
 
 
 
 
 
-  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=0.5.0" />
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=0.5.0">
 
 
 
@@ -122,7 +122,7 @@
   
 
   <div class="custom-logo-site-title">
-    <a href="/"  class="brand" rel="start">
+    <a href="/" class="brand" rel="start">
       <span class="logo-line-before"><i></i></span>
       <span class="site-title">knarfeh's logbook</span>
       <span class="logo-line-after"><i></i></span>
@@ -149,7 +149,7 @@
         <li class="menu-item menu-item-home">
           <a href="/" rel="section">
             
-              <i class="menu-item-icon fa fa-home fa-fw"></i> <br />
+              <i class="menu-item-icon fa fa-home fa-fw"></i> <br>
             
             首页
           </a>
@@ -159,7 +159,7 @@
         <li class="menu-item menu-item-archives">
           <a href="/archives" rel="section">
             
-              <i class="menu-item-icon fa fa-archive fa-fw"></i> <br />
+              <i class="menu-item-icon fa fa-archive fa-fw"></i> <br>
             
             归档
           </a>
@@ -169,7 +169,7 @@
         <li class="menu-item menu-item-tags">
           <a href="/tags" rel="section">
             
-              <i class="menu-item-icon fa fa-tags fa-fw"></i> <br />
+              <i class="menu-item-icon fa fa-tags fa-fw"></i> <br>
             
             标签
           </a>
@@ -259,53 +259,53 @@
       
 
       
-        <p>稍稍多接触一些 Python 代码，就避不开修饰器的使用。比如在 <a href="http://flask.pocoo.org/" target="_blank" rel="external">flask</a> 中，不可避免地就会遇到 <code>@login_required</code>, <code>@app.route(&quot;/&quot;)</code> 这样的代码，这个就是 Python 的修饰器。<br><a id="more"></a></p>
+        <p>稍稍多接触一些 Python 代码，就避不开修饰器的使用。比如在 <a href="http://flask.pocoo.org/" target="_blank" rel="noopener">flask</a> 中，不可避免地就会遇到 <code>@login_required</code>, <code>@app.route(&quot;/&quot;)</code> 这样的代码，这个就是 Python 的修饰器。<br><a id="more"></a></p>
 <p>在 Python 中，函数是对象，函数对象可以赋值给变量，因此，通过变量可以调用这个函数：  </p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">In [6]: def now():</div><div class="line">   ...:     print &quot;12:00&quot;</div><div class="line">   ...:</div><div class="line"></div><div class="line">In [7]: f=now</div><div class="line"></div><div class="line">In [8]: f()</div><div class="line">12:00</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">In [6]: def now():</span><br><span class="line">   ...:     print &quot;12:00&quot;</span><br><span class="line">   ...:</span><br><span class="line"></span><br><span class="line">In [7]: f=now</span><br><span class="line"></span><br><span class="line">In [8]: f()</span><br><span class="line">12:00</span><br></pre></td></tr></table></figure>
 <p>我们知道，函数对象中有一个属性 <code>__name__</code>，我们可以通过它拿到函数的名称：  </p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">In [9]: now.__name__</div><div class="line">Out[9]: &apos;now&apos;</div><div class="line"></div><div class="line">In [10]: f.__name__</div><div class="line">Out[10]: &apos;now&apos;</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">In [9]: now.__name__</span><br><span class="line">Out[9]: &apos;now&apos;</span><br><span class="line"></span><br><span class="line">In [10]: f.__name__</span><br><span class="line">Out[10]: &apos;now&apos;</span><br></pre></td></tr></table></figure>
 <p>现在我们有个 now 函数了。目前我们有一个这样的需求，我想要在代码中得到执行 now 函数的日志，例如输出运行前，运行后打印时间戳等等，但是，now 函数是不能修改的(因为项目中这种类似的代码非常多，如果改动的话引入 bug 的可能性非常大)，我们需要在代码运行期间动态给函数增加功能，这时候修饰器（decorator）就派上用场了。 我们可以用装饰器来装饰原有的函数，以实现不修改原函数却能增强原函数功能。</p>
 <p>本质上，修饰器（decorator）是一个返回函数的高阶函数，利用装饰器，我们可以这样实现上面提到的日志函数：  </p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">def log(func):</div><div class="line">    def wrapper(*args, **kwargs):</div><div class="line">        print &apos;call %s():&apos; % func.__name__</div><div class="line">        return func(*args, **kwargs)</div><div class="line">    return wrapper</div><div class="line"></div><div class="line">@log</div><div class="line">def now():</div><div class="line">    print u&quot;this is now&quot;</div><div class="line"></div><div class="line">now()</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">def log(func):</span><br><span class="line">    def wrapper(*args, **kwargs):</span><br><span class="line">        print &apos;call %s():&apos; % func.__name__</span><br><span class="line">        return func(*args, **kwargs)</span><br><span class="line">    return wrapper</span><br><span class="line"></span><br><span class="line">@log</span><br><span class="line">def now():</span><br><span class="line">    print u&quot;this is now&quot;</span><br><span class="line"></span><br><span class="line">now()</span><br></pre></td></tr></table></figure>
 <p>修饰器函数以修饰的函数作为参数，并且返回一个函数，上面的代码运行结果是：  </p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">$ python testdecorator.py</div><div class="line">$ call now():</div><div class="line">$ this is now</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ python testdecorator.py</span><br><span class="line">$ call now():</span><br><span class="line">$ this is now</span><br></pre></td></tr></table></figure>
 <p>实际等同于：  </p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">def log(func):</div><div class="line">    def wrapper(*args, **kw):</div><div class="line">        print &apos;call %s():&apos; % func.__name__</div><div class="line">        return func(*args, **kw)</div><div class="line">    return wrapper</div><div class="line"></div><div class="line">def now():</div><div class="line">    print u&quot;this is now&quot;</div><div class="line"></div><div class="line">new_now = log(now)</div><div class="line">new_now()</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">def log(func):</span><br><span class="line">    def wrapper(*args, **kw):</span><br><span class="line">        print &apos;call %s():&apos; % func.__name__</span><br><span class="line">        return func(*args, **kw)</span><br><span class="line">    return wrapper</span><br><span class="line"></span><br><span class="line">def now():</span><br><span class="line">    print u&quot;this is now&quot;</span><br><span class="line"></span><br><span class="line">new_now = log(now)</span><br><span class="line">new_now()</span><br></pre></td></tr></table></figure>
 <p>这两段代码输出的结果是一样的。log 函数是一个修饰器，返回的是一个函数，因此，now()函数仍然存在，现在是同名的 now 变量指向了这个函数，用 now() 就能调用这个函数，即 log() 返回的 wrapper() 函数，wrapper 的参数定义是 <code>*args, **kwargs</code>， 因此可以接受任何参数，如果修饰器本身也需要参数，则需要编写一个返回 decorator 的高阶函数，如：  </p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">def log(text):</div><div class="line">    def decorator(func):</div><div class="line">        def wrapper(*args, **kwargs):</div><div class="line">            print &apos;%s %s():&apos; % (text, func.__name__)</div><div class="line">            return func(*args, **kwargs)</div><div class="line">        return wrapper</div><div class="line">    return decorator</div><div class="line"></div><div class="line">@log(&apos;run!!!&apos;)</div><div class="line">def now():</div><div class="line">    print u&quot;this is now&quot;</div><div class="line"></div><div class="line">now()</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">def log(text):</span><br><span class="line">    def decorator(func):</span><br><span class="line">        def wrapper(*args, **kwargs):</span><br><span class="line">            print &apos;%s %s():&apos; % (text, func.__name__)</span><br><span class="line">            return func(*args, **kwargs)</span><br><span class="line">        return wrapper</span><br><span class="line">    return decorator</span><br><span class="line"></span><br><span class="line">@log(&apos;run!!!&apos;)</span><br><span class="line">def now():</span><br><span class="line">    print u&quot;this is now&quot;</span><br><span class="line"></span><br><span class="line">now()</span><br></pre></td></tr></table></figure>
 <p>输出结果为：  </p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">$ python testdecorator.py</div><div class="line">run!!! now():</div><div class="line">this is now</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ python testdecorator.py</span><br><span class="line">run!!! now():</span><br><span class="line">this is now</span><br></pre></td></tr></table></figure>
 <p>上面的代码就相当于：  </p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line">$ cat testdecorator.py</div><div class="line">def log(text):</div><div class="line">    def decorator(func):</div><div class="line">        def wrapper(*args, **kw):</div><div class="line">            print &apos;%s %s():&apos; % (text, func.__name__)</div><div class="line">            return func(*args, **kw)</div><div class="line">        return wrapper</div><div class="line">    return decorator</div><div class="line"></div><div class="line">def now():</div><div class="line">    print u&quot;this is now&quot;</div><div class="line"></div><div class="line"></div><div class="line">new_now = log(&quot;run!!!&quot;)(now)</div><div class="line">new_now()</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">$ cat testdecorator.py</span><br><span class="line">def log(text):</span><br><span class="line">    def decorator(func):</span><br><span class="line">        def wrapper(*args, **kw):</span><br><span class="line">            print &apos;%s %s():&apos; % (text, func.__name__)</span><br><span class="line">            return func(*args, **kw)</span><br><span class="line">        return wrapper</span><br><span class="line">    return decorator</span><br><span class="line"></span><br><span class="line">def now():</span><br><span class="line">    print u&quot;this is now&quot;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">new_now = log(&quot;run!!!&quot;)(now)</span><br><span class="line">new_now()</span><br></pre></td></tr></table></figure>
 <p>实际上就相当于，先执行 <code>log(&quot;run!!!&quot;)</code>，返回 <code>decorator</code> 函数，此时参数是 <code>now</code>，输出了 <code>run!!!now()</code>, 返回了 <code>wrapper</code>，即 <code>now</code> 函数，通过 <code>new_now()</code> 的调用，输出了 <code>this is now</code>。  </p>
 <p>但是这里还有一个问题，前面讲到，函数有 <code>__name__</code> 属性，但是经过装饰器装饰器之后的函数，<code>__name__</code> 已经从原来的 <code>now</code> 变成了 <code>wrapper</code>:  </p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">In [1]: from testdecorator import now</div><div class="line"></div><div class="line">In [2]: now.__name__</div><div class="line">Out[2]: &apos;wrapper&apos;</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">In [1]: from testdecorator import now</span><br><span class="line"></span><br><span class="line">In [2]: now.__name__</span><br><span class="line">Out[2]: &apos;wrapper&apos;</span><br></pre></td></tr></table></figure>
 <p>这是因为返回的那个 <code>decorator</code> 函数名字就是 <code>decorator</code>， 这个问题很有解决的必要，否则有些依赖函数签名的代码就会出错，我们需要把原始代码的 <code>__name__</code> 复制到 <code>wrapper()</code> 函数中，用 Python 内置的 <code>functiontools.wraps</code> 就能解决这个问题。上面的两段代码的装饰器可以分别修改为：   </p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line">import functools</div><div class="line"></div><div class="line">def log(func):</div><div class="line">    @functools.wraps(func)</div><div class="line">    def wrapper(*args, **kwargs):</div><div class="line">        print &apos;call %s():&apos; % func.__name__</div><div class="line">        return func(*args, **kwargs)</div><div class="line">    return wrapper</div><div class="line"></div><div class="line">@log</div><div class="line">def now():</div><div class="line">    print u&quot;this is now&quot;</div><div class="line"></div><div class="line">now()</div></pre></td></tr></table></figure>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line">import functools</div><div class="line"></div><div class="line">def log(text):</div><div class="line">    def decorator(func):</div><div class="line">        @functools.wraps(func)</div><div class="line">        def wrapper(*args, **kwargs):</div><div class="line">            print &apos;%s %s():&apos; % (text, func.__name__)</div><div class="line">            return func(*args, **kwargs)</div><div class="line">        return wrapper</div><div class="line">    return decorator</div><div class="line"></div><div class="line">@log(&apos;run!!!&apos;)</div><div class="line">def now():</div><div class="line">    print u&quot;this is now&quot;</div><div class="line"></div><div class="line">now()</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">import functools</span><br><span class="line"></span><br><span class="line">def log(func):</span><br><span class="line">    @functools.wraps(func)</span><br><span class="line">    def wrapper(*args, **kwargs):</span><br><span class="line">        print &apos;call %s():&apos; % func.__name__</span><br><span class="line">        return func(*args, **kwargs)</span><br><span class="line">    return wrapper</span><br><span class="line"></span><br><span class="line">@log</span><br><span class="line">def now():</span><br><span class="line">    print u&quot;this is now&quot;</span><br><span class="line"></span><br><span class="line">now()</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">import functools</span><br><span class="line"></span><br><span class="line">def log(text):</span><br><span class="line">    def decorator(func):</span><br><span class="line">        @functools.wraps(func)</span><br><span class="line">        def wrapper(*args, **kwargs):</span><br><span class="line">            print &apos;%s %s():&apos; % (text, func.__name__)</span><br><span class="line">            return func(*args, **kwargs)</span><br><span class="line">        return wrapper</span><br><span class="line">    return decorator</span><br><span class="line"></span><br><span class="line">@log(&apos;run!!!&apos;)</span><br><span class="line">def now():</span><br><span class="line">    print u&quot;this is now&quot;</span><br><span class="line"></span><br><span class="line">now()</span><br></pre></td></tr></table></figure>
 <p>写到这里，Python 装饰器的套路基本上就很清晰了。</p>
 <p>最后，留下两个示例：  </p>
 <ul>
 <li>编写一个 decorator，能在函数调用的前后打印出 ‘begin call’ 和 ‘end call’ 的日志。</li>
 </ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line">import functools</div><div class="line"></div><div class="line">def log(text):</div><div class="line">    def decorator(func):</div><div class="line">        @functools.wraps(func)</div><div class="line">        def wrapper(*args, **kwargs):</div><div class="line">            print &apos;begin call: &apos; + func.__name__</div><div class="line">            func(*args, **kwargs)</div><div class="line">            print &apos;end call: &apos; + func.__name__</div><div class="line">        return wrapper</div><div class="line">    return decorator</div><div class="line"></div><div class="line">@log(&apos;run!!!&apos;)</div><div class="line">def now():</div><div class="line">    print u&quot;this is now&quot;</div><div class="line"></div><div class="line">now()</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">import functools</span><br><span class="line"></span><br><span class="line">def log(text):</span><br><span class="line">    def decorator(func):</span><br><span class="line">        @functools.wraps(func)</span><br><span class="line">        def wrapper(*args, **kwargs):</span><br><span class="line">            print &apos;begin call: &apos; + func.__name__</span><br><span class="line">            func(*args, **kwargs)</span><br><span class="line">            print &apos;end call: &apos; + func.__name__</span><br><span class="line">        return wrapper</span><br><span class="line">    return decorator</span><br><span class="line"></span><br><span class="line">@log(&apos;run!!!&apos;)</span><br><span class="line">def now():</span><br><span class="line">    print u&quot;this is now&quot;</span><br><span class="line"></span><br><span class="line">now()</span><br></pre></td></tr></table></figure>
 <ul>
 <li>编写一个 decorator， 使之支持：  </li>
 </ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">@log</div><div class="line">def f():</div><div class="line">    pass</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">@log</span><br><span class="line">def f():</span><br><span class="line">    pass</span><br></pre></td></tr></table></figure>
 <p>和</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">@log(&apos;execute&apos;)</div><div class="line">def f():</div><div class="line">    pass</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">@log(&apos;execute&apos;)</span><br><span class="line">def f():</span><br><span class="line">    pass</span><br></pre></td></tr></table></figure>
 <p>这里的难点在于，当我们用 log 修饰 f() 这个函数式，实际上上面的两种情况就相当于 <code>new_f = log(f), new_f()</code>和 <code>new_f = log(&#39;execute&#39;)(f), new_f()</code>, 因此我们需要判断 log 中的参数是否是一个函数</p>
 <p>可以利用 callable 判断参数是否是函数，答案：     </p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div></pre></td><td class="code"><pre><div class="line">import functools</div><div class="line">def log(text):</div><div class="line">    if callable(text):</div><div class="line">        @functools.wraps(text)</div><div class="line">        def wrapper(*args, **kwargs):</div><div class="line">            print &apos;begin call: &apos; + text.__name__</div><div class="line">            text(*args, **kwargs)</div><div class="line">            print &apos;end call: &apos; + text.__name__</div><div class="line">        return wrapper</div><div class="line">    else:</div><div class="line">        def decorator(func):</div><div class="line">            @functools.wraps(func)</div><div class="line">            def wrapper(*args, **kwargs):</div><div class="line">                print &apos;begin call: &apos; + text</div><div class="line">                func(*args, **kwargs)</div><div class="line">                print &apos;end call: &apos; + text</div><div class="line">            return wrapper</div><div class="line">        return decorator</div><div class="line"></div><div class="line">@log</div><div class="line">def  now1():</div><div class="line">    print &apos;doing1...&apos;</div><div class="line"></div><div class="line">@log(&apos;text&apos;)</div><div class="line">def now2():</div><div class="line">    print &apos;doing2...&apos;</div><div class="line"></div><div class="line">now1()</div><div class="line">now2()</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line">import functools</span><br><span class="line">def log(text):</span><br><span class="line">    if callable(text):</span><br><span class="line">        @functools.wraps(text)</span><br><span class="line">        def wrapper(*args, **kwargs):</span><br><span class="line">            print &apos;begin call: &apos; + text.__name__</span><br><span class="line">            text(*args, **kwargs)</span><br><span class="line">            print &apos;end call: &apos; + text.__name__</span><br><span class="line">        return wrapper</span><br><span class="line">    else:</span><br><span class="line">        def decorator(func):</span><br><span class="line">            @functools.wraps(func)</span><br><span class="line">            def wrapper(*args, **kwargs):</span><br><span class="line">                print &apos;begin call: &apos; + text</span><br><span class="line">                func(*args, **kwargs)</span><br><span class="line">                print &apos;end call: &apos; + text</span><br><span class="line">            return wrapper</span><br><span class="line">        return decorator</span><br><span class="line"></span><br><span class="line">@log</span><br><span class="line">def  now1():</span><br><span class="line">    print &apos;doing1...&apos;</span><br><span class="line"></span><br><span class="line">@log(&apos;text&apos;)</span><br><span class="line">def now2():</span><br><span class="line">    print &apos;doing2...&apos;</span><br><span class="line"></span><br><span class="line">now1()</span><br><span class="line">now2()</span><br></pre></td></tr></table></figure>
 <ul>
 <li>编写一个 decorator，使之支持自定义被装饰的方法的重试次数</li>
 </ul>
 <p>这种需求可能比较常见，例如我们可能遇到这样的场景：某个方法是用来发送邮件的，邮件服务器不一定稳定，我们需要实现一个重试该方法的策略，连接不上服务器的时候可以重试几次，为了追求轻量级，不能使用 celery 这样的框架，这时我们就可以通过装饰器来解决：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div></pre></td><td class="code"><pre><div class="line">import system</div><div class="line">from time import sleep</div><div class="line"></div><div class="line">def example_exc_handler(tries_remaining, exception, delay):</div><div class="line">    @staticmethod</div><div class="line">    def default_exc_handler(tries_remaining, exception, delay):</div><div class="line">        &quot;&quot;&quot;</div><div class="line">        default exception handler</div><div class="line">        &quot;&quot;&quot;</div><div class="line">        print((&quot;[default_exc_handler] Caught &apos;%s&apos;, %d tries remaining, &quot;</div><div class="line">                      &quot;sleeping for %s seconds&quot;) % (exception, tries_remaining, delay))</div><div class="line"></div><div class="line">def retries(max_tries, delay=1, backoff=2, exceptions=(Exception,), hook=None):</div><div class="line">    def dec(func):</div><div class="line">        def f2(*args, **kwargs):</div><div class="line">            mydelay = delay</div><div class="line">            tries = range(max_tries)</div><div class="line">            tries.reverse()</div><div class="line">            for tries_remaining in tries:</div><div class="line">                try:</div><div class="line">                   return func(*args, **kwargs)</div><div class="line">                except exceptions as e:</div><div class="line">                    if tries_remaining &gt; 0:</div><div class="line">                        if hook is not None:</div><div class="line">                            hook(tries_remaining, e, mydelay)</div><div class="line">                        sleep(mydelay)</div><div class="line">                        mydelay = mydelay * backoff</div><div class="line">                    else:</div><div class="line">                        raise</div><div class="line">                else:</div><div class="line">                    break</div><div class="line">        return f2</div><div class="line">    return dec</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line">import system</span><br><span class="line">from time import sleep</span><br><span class="line"></span><br><span class="line">def example_exc_handler(tries_remaining, exception, delay):</span><br><span class="line">    @staticmethod</span><br><span class="line">    def default_exc_handler(tries_remaining, exception, delay):</span><br><span class="line">        &quot;&quot;&quot;</span><br><span class="line">        default exception handler</span><br><span class="line">        &quot;&quot;&quot;</span><br><span class="line">        print((&quot;[default_exc_handler] Caught &apos;%s&apos;, %d tries remaining, &quot;</span><br><span class="line">                      &quot;sleeping for %s seconds&quot;) % (exception, tries_remaining, delay))</span><br><span class="line"></span><br><span class="line">def retries(max_tries, delay=1, backoff=2, exceptions=(Exception,), hook=None):</span><br><span class="line">    def dec(func):</span><br><span class="line">        def f2(*args, **kwargs):</span><br><span class="line">            mydelay = delay</span><br><span class="line">            tries = range(max_tries)</span><br><span class="line">            tries.reverse()</span><br><span class="line">            for tries_remaining in tries:</span><br><span class="line">                try:</span><br><span class="line">                   return func(*args, **kwargs)</span><br><span class="line">                except exceptions as e:</span><br><span class="line">                    if tries_remaining &gt; 0:</span><br><span class="line">                        if hook is not None:</span><br><span class="line">                            hook(tries_remaining, e, mydelay)</span><br><span class="line">                        sleep(mydelay)</span><br><span class="line">                        mydelay = mydelay * backoff</span><br><span class="line">                    else:</span><br><span class="line">                        raise</span><br><span class="line">                else:</span><br><span class="line">                    break</span><br><span class="line">        return f2</span><br><span class="line">    return dec</span><br></pre></td></tr></table></figure>
 <p> 一份简单的测试代码是：</p>
- <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">if __name__ == &quot;__main__&quot;:</div><div class="line"></div><div class="line">   # @retries(max_tries=2, delay=1, backoff=2)</div><div class="line">   def test_print(*args, **kwargs):</div><div class="line">       print(&quot;test&quot;)</div><div class="line">       raise Exception</div><div class="line"></div><div class="line">   test_print()</div></pre></td></tr></table></figure>
-<p>参考：<a href="https://gist.github.com/n1ywb/2570004" target="_blank" rel="external">https://gist.github.com/n1ywb/2570004</a></p>
+ <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">if __name__ == &quot;__main__&quot;:</span><br><span class="line"></span><br><span class="line">   # @retries(max_tries=2, delay=1, backoff=2)</span><br><span class="line">   def test_print(*args, **kwargs):</span><br><span class="line">       print(&quot;test&quot;)</span><br><span class="line">       raise Exception</span><br><span class="line"></span><br><span class="line">   test_print()</span><br></pre></td></tr></table></figure>
+<p>参考：<a href="https://gist.github.com/n1ywb/2570004" target="_blank" rel="noopener">https://gist.github.com/n1ywb/2570004</a></p>
 
       
     </div>
@@ -396,7 +396,7 @@
 
       
         <ul class="sidebar-nav motion-element">
-          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
             文章目录
           </li>
           <li class="sidebar-nav-overview" data-target="site-overview">
@@ -407,16 +407,14 @@
 
       <section class="site-overview sidebar-panel ">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
-          <img class="site-author-image" itemprop="image"
-               src="https://avatars1.githubusercontent.com/u/6964284?v=3&s=460"
-               alt="Frank" />
+          <img class="site-author-image" itemprop="image" src="https://avatars1.githubusercontent.com/u/6964284?v=3&s=460" alt="Frank">
           <p class="site-author-name" itemprop="name">Frank</p>
           <p class="site-description motion-element" itemprop="description"></p>
         </div>
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">365</span>
+              <span class="site-state-item-count">390</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -426,7 +424,7 @@
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">135</span>
+                <span class="site-state-item-count">207</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
@@ -462,7 +460,7 @@
         
           <div class="cc-license motion-element" itemprop="license">
             <a href="http://creativecommons.org/licenses/by-sa/4.0" class="cc-opacity" target="_blank">
-              <img src="/images/cc-by-sa.svg" alt="Creative Commons" />
+              <img src="/images/cc-by-sa.svg" alt="Creative Commons">
             </a>
           </div>
         
@@ -502,10 +500,10 @@
 
     <footer id="footer" class="footer">
       <div class="footer-inner">
-        <div class="copyright" >
+        <div class="copyright">
   
   &copy;  2015 - 
-  <span itemprop="copyrightYear">2019</span>
+  <span itemprop="copyrightYear">2021</span>
   <span class="with-love">
     <i class="fa fa-heart"></i>
   </span>

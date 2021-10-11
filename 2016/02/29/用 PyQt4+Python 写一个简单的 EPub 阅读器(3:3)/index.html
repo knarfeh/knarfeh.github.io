@@ -6,19 +6,15 @@
 
 
 <html class="theme-next muse use-motion">
-<head>
-  <meta charset="UTF-8"/>
-<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
 
 
-<meta http-equiv="Cache-Control" content="no-transform" />
-<meta http-equiv="Cache-Control" content="no-siteapp" />
-
-
-
-
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
 
 
 
@@ -27,7 +23,11 @@
 
 
 
-  <link href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css"/>
+
+
+
+
+  <link href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
 
 
 
@@ -36,21 +36,21 @@
 
 
 
-<link href="/vendors/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+<link href="/vendors/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css">
 
-<link href="/css/main.css?v=0.5.0" rel="stylesheet" type="text/css" />
-
-
-  <meta name="keywords" content="Python,EPub,PyQt," />
+<link href="/css/main.css?v=0.5.0" rel="stylesheet" type="text/css">
 
 
+  <meta name="keywords" content="EPub,Python,PyQt,">
 
 
 
 
 
 
-  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=0.5.0" />
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=0.5.0">
 
 
 
@@ -58,7 +58,7 @@
 
 
 <meta name="description" content="最后一篇，这次我们加上几个函数，使得这个阅读器能够按照章节阅读电子书，前两篇我们将完成了Book模块，实现了电子书的数据抽象，然后写了GUI，完成了一个简单的功能，在仓库中插入图书，把LibraryTableWidget刷新，使得图书在library呈现，可以看到书名，作者。接下来我们完善这个程序。">
-<meta name="keywords" content="Python,EPub,PyQt">
+<meta name="keywords" content="EPub,Python,PyQt">
 <meta property="og:type" content="article">
 <meta property="og:title" content="用PyQt4+Python写一个简单的EPub阅读器(3&#x2F;3)">
 <meta property="og:url" content="http://knarfeh.github.io/2016/02/29/用 PyQt4+Python 写一个简单的 EPub 阅读器(3:3)/index.html">
@@ -125,7 +125,7 @@
   
 
   <div class="custom-logo-site-title">
-    <a href="/"  class="brand" rel="start">
+    <a href="/" class="brand" rel="start">
       <span class="logo-line-before"><i></i></span>
       <span class="site-title">knarfeh's logbook</span>
       <span class="logo-line-after"><i></i></span>
@@ -152,7 +152,7 @@
         <li class="menu-item menu-item-home">
           <a href="/" rel="section">
             
-              <i class="menu-item-icon fa fa-home fa-fw"></i> <br />
+              <i class="menu-item-icon fa fa-home fa-fw"></i> <br>
             
             首页
           </a>
@@ -162,7 +162,7 @@
         <li class="menu-item menu-item-archives">
           <a href="/archives" rel="section">
             
-              <i class="menu-item-icon fa fa-archive fa-fw"></i> <br />
+              <i class="menu-item-icon fa fa-archive fa-fw"></i> <br>
             
             归档
           </a>
@@ -172,7 +172,7 @@
         <li class="menu-item menu-item-tags">
           <a href="/tags" rel="section">
             
-              <i class="menu-item-icon fa fa-tags fa-fw"></i> <br />
+              <i class="menu-item-icon fa fa-tags fa-fw"></i> <br>
             
             标签
           </a>
@@ -274,7 +274,7 @@
         self.chapter_list.addItem(chapter[0])
     self.chapter_list.setCurrentRow(0)
 </code></pre><p>根据book_id（也就是epub文件名），刷新chapter_list的内容，把每个章节的名称作为QListWidget的item添加进来。   </p>
-<p>然后，什么时候让这个函数起作用，怎么让这个函数起作用？我们要求的逻辑是双击Library的Item，然后载入这本书的章节。这里就要用到Qt的信号槽机制了，网上关于Qt信号槽机制的文章很多，书本上也有介绍，大多都是balabala说一大堆，堆概念堆名词，我尝试用几句话来说说这个机制的核心。其实它跟<a href="https://ifttt.com/recipes" target="_blank" rel="external">IFTTT</a>（if this then that）这个工具是很像的，一个对象发送信号，另一个对象接收到信号就做出相应的动作，为什么要这样设计呢？其实我们可以尝试思考Qt设计者的初衷，因为这个过程是符合人类思考过程的，能够让编程更简单，如果了解了其他的GUI库的事件处理方式，如Java的监听机制，WFT的消息映射，就能发觉Qt的signal/slot机制有多好了，理解了这一点，再去看这方面的资料就能得心应手。   </p>
+<p>然后，什么时候让这个函数起作用，怎么让这个函数起作用？我们要求的逻辑是双击Library的Item，然后载入这本书的章节。这里就要用到Qt的信号槽机制了，网上关于Qt信号槽机制的文章很多，书本上也有介绍，大多都是balabala说一大堆，堆概念堆名词，我尝试用几句话来说说这个机制的核心。其实它跟<a href="https://ifttt.com/recipes" target="_blank" rel="noopener">IFTTT</a>（if this then that）这个工具是很像的，一个对象发送信号，另一个对象接收到信号就做出相应的动作，为什么要这样设计呢？其实我们可以尝试思考Qt设计者的初衷，因为这个过程是符合人类思考过程的，能够让编程更简单，如果了解了其他的GUI库的事件处理方式，如Java的监听机制，WFT的消息映射，就能发觉Qt的signal/slot机制有多好了，理解了这一点，再去看这方面的资料就能得心应手。   </p>
 <p>这里没有谈Qt信号槽的细节，我只是提出一种思考方式，因为我也是初学者，但这种思考方式能让我们在遇到稍特别的细节时会不感到诧异，比如，连接信号和槽的connect函数可以使得信号和信号连接，一个button发送了一个click()信号，于是asignal()信号也发送了，就如一个人头疼，他没有直接叫医生，而是通知了朋友，让朋友帮忙叫医生，又比如一个信号可以和多个槽连接，就如一个人头疼，他发了一条朋友圈，于是当医生的朋友都来了。。。。这些过程都是容易理解的，是符合人类思考过程的。  </p>
 <p>好了，瞎扯淡环节结束，我们继续。让chapter_list的双击Item事件与book_view的load_book函数绑定，我们可以在LibraryTableWidget中加上：  </p>
 <pre><code>def create_connections(self):
@@ -324,7 +324,7 @@ def view_book(self):
     self.connect(page, SIGNAL(&quot;linkClicked(const QUrl&amp;)&quot;),
                  self.link_clicked)
 </code></pre><p>最终的效果：<br><img src="https://knarfeh-1254074221.cos.na-siliconvalley.myqcloud.com/2016-02-29-2016-03-02chapter2web_view.gif" class="full-image"></p>
-<p>最后，给出<a href="https://github.com/knarfeh/Simple_EReader" target="_blank" rel="external">源代码地址</a></p>
+<p>最后，给出<a href="https://github.com/knarfeh/Simple_EReader" target="_blank" rel="noopener">源代码地址</a></p>
 
       
     </div>
@@ -339,9 +339,9 @@ def view_book(self):
       
         <div class="post-tags">
           
-            <a href="/tags/Python/" rel="tag">#Python</a>
-          
             <a href="/tags/EPub/" rel="tag">#EPub</a>
+          
+            <a href="/tags/Python/" rel="tag">#Python</a>
           
             <a href="/tags/PyQt/" rel="tag">#PyQt</a>
           
@@ -417,7 +417,7 @@ def view_book(self):
 
       
         <ul class="sidebar-nav motion-element">
-          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
             文章目录
           </li>
           <li class="sidebar-nav-overview" data-target="site-overview">
@@ -428,16 +428,14 @@ def view_book(self):
 
       <section class="site-overview sidebar-panel ">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
-          <img class="site-author-image" itemprop="image"
-               src="https://avatars1.githubusercontent.com/u/6964284?v=3&s=460"
-               alt="Frank" />
+          <img class="site-author-image" itemprop="image" src="https://avatars1.githubusercontent.com/u/6964284?v=3&s=460" alt="Frank">
           <p class="site-author-name" itemprop="name">Frank</p>
           <p class="site-description motion-element" itemprop="description"></p>
         </div>
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">365</span>
+              <span class="site-state-item-count">390</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -447,7 +445,7 @@ def view_book(self):
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">135</span>
+                <span class="site-state-item-count">207</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
@@ -483,7 +481,7 @@ def view_book(self):
         
           <div class="cc-license motion-element" itemprop="license">
             <a href="http://creativecommons.org/licenses/by-sa/4.0" class="cc-opacity" target="_blank">
-              <img src="/images/cc-by-sa.svg" alt="Creative Commons" />
+              <img src="/images/cc-by-sa.svg" alt="Creative Commons">
             </a>
           </div>
         
@@ -523,10 +521,10 @@ def view_book(self):
 
     <footer id="footer" class="footer">
       <div class="footer-inner">
-        <div class="copyright" >
+        <div class="copyright">
   
   &copy;  2015 - 
-  <span itemprop="copyrightYear">2019</span>
+  <span itemprop="copyrightYear">2021</span>
   <span class="with-love">
     <i class="fa fa-heart"></i>
   </span>

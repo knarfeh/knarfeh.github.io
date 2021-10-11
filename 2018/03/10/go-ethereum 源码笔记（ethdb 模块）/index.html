@@ -6,19 +6,15 @@
 
 
 <html class="theme-next muse use-motion">
-<head>
-  <meta charset="UTF-8"/>
-<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
 
 
-<meta http-equiv="Cache-Control" content="no-transform" />
-<meta http-equiv="Cache-Control" content="no-siteapp" />
-
-
-
-
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
 
 
 
@@ -27,7 +23,11 @@
 
 
 
-  <link href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css"/>
+
+
+
+
+  <link href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
 
 
 
@@ -36,21 +36,21 @@
 
 
 
-<link href="/vendors/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+<link href="/vendors/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css">
 
-<link href="/css/main.css?v=0.5.0" rel="stylesheet" type="text/css" />
-
-
-  <meta name="keywords" content="Golang,cryptocurrency,geth," />
+<link href="/css/main.css?v=0.5.0" rel="stylesheet" type="text/css">
 
 
+  <meta name="keywords" content="Golang,cryptocurrency,geth,">
 
 
 
 
 
 
-  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=0.5.0" />
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=0.5.0">
 
 
 
@@ -122,7 +122,7 @@
   
 
   <div class="custom-logo-site-title">
-    <a href="/"  class="brand" rel="start">
+    <a href="/" class="brand" rel="start">
       <span class="logo-line-before"><i></i></span>
       <span class="site-title">knarfeh's logbook</span>
       <span class="logo-line-after"><i></i></span>
@@ -149,7 +149,7 @@
         <li class="menu-item menu-item-home">
           <a href="/" rel="section">
             
-              <i class="menu-item-icon fa fa-home fa-fw"></i> <br />
+              <i class="menu-item-icon fa fa-home fa-fw"></i> <br>
             
             首页
           </a>
@@ -159,7 +159,7 @@
         <li class="menu-item menu-item-archives">
           <a href="/archives" rel="section">
             
-              <i class="menu-item-icon fa fa-archive fa-fw"></i> <br />
+              <i class="menu-item-icon fa fa-archive fa-fw"></i> <br>
             
             归档
           </a>
@@ -169,7 +169,7 @@
         <li class="menu-item menu-item-tags">
           <a href="/tags" rel="section">
             
-              <i class="menu-item-icon fa fa-tags fa-fw"></i> <br />
+              <i class="menu-item-icon fa fa-tags fa-fw"></i> <br>
             
             标签
           </a>
@@ -261,7 +261,7 @@
       
         <p>通过前面的文章，我们知道了有工作量证明的区块链是怎么构建的，然而区块链一直在内存中当然是不行的，我们需要将区块链持久化到数据库中。<br><a id="more"></a></p>
 <p>区块链的本质是一个分布式数据库，尽管如此，底层使用的数据库并没有太大要求，不需要分布式，分片等等特性，这些特性是在数据库的上层做的。所有的节点都是一个完整的实例，是它们组成了一个分布式系统。就实现业务来说，我们只需要一个简单的 k-v 数据库就够了。</p>
-<p>geth 采用的是 LevelDB，回头来看这个选择还是有很多可以反思的地方，LevelDB 在顺序读写的场景下性能很好，但 geth 在运行智能合约时，面临的更多的场景是大量时间耗费在世界状态的读写上，通过前面对 MPT 的分析我们知道，这些 IO 大多是离散随机的，这导致了 geth 的性能瓶颈，特别是在合约里的数据大量分布在 Storage Trie 的情况下，因为树的高度可能很高，而每加载一个节点都需要进行一次 IO。这一点在<a href="https://zhuanlan.zhihu.com/p/39262324" target="_blank" rel="external">以太坊(Ethereum) 的执行交易性能瓶颈</a>这篇文章中有论述。<a href="https://www.weibo.com/dcaoyuan" target="_blank" rel="external">邓草原</a> 正在开发的 Kesque 也可以关注一下。这不是本文重点，就不展开了。</p>
+<p>geth 采用的是 LevelDB，回头来看这个选择还是有很多可以反思的地方，LevelDB 在顺序读写的场景下性能很好，但 geth 在运行智能合约时，面临的更多的场景是大量时间耗费在世界状态的读写上，通过前面对 MPT 的分析我们知道，这些 IO 大多是离散随机的，这导致了 geth 的性能瓶颈，特别是在合约里的数据大量分布在 Storage Trie 的情况下，因为树的高度可能很高，而每加载一个节点都需要进行一次 IO。这一点在<a href="https://zhuanlan.zhihu.com/p/39262324" target="_blank" rel="noopener">以太坊(Ethereum) 的执行交易性能瓶颈</a>这篇文章中有论述。<a href="https://www.weibo.com/dcaoyuan" target="_blank" rel="noopener">邓草原</a> 正在开发的 Kesque 也可以关注一下。这不是本文重点，就不展开了。</p>
 <p>中本聪的最初论文并没有提具体要用什么数据库，尽管如此，社区使用最多的参考实现 Bitcoin Core 最初使用的是 Berkeley DB，后来转而使用 levelDB 存区块链索引，以太坊的 Go，C++, Python 实现的客户端使用的是 LevelDB 数据库，Rust 客户端 Parity 使用的是 RocksDB。</p>
 <p>go-ethereum 对 LevelDB 的增删改查是通过 ethdb 这个模块来交互的。ethdb 实际上是对 github.com/syndtr/goleveldb/leveldb 这个库的封装，其中增加了收集 metric 的功能。</p>
 <p>如果想要对 LevelDB 有更深层次的了解可以自行查询相关资料。</p>
@@ -272,20 +272,20 @@
 <li>memory_database.go 基于内存的数据库，不会持久化到文件，只在测试时使用</li>
 <li>database_test.go 测试用例</li>
 </ul>
-<h2 id="interface-go"><a href="#interface-go" class="headerlink" title="interface.go"></a>interface.go</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">type Database interface &#123;</div><div class="line">	Putter</div><div class="line">	Get(key []byte) ([]byte, error)</div><div class="line">	Has(key []byte) (bool, error)</div><div class="line">	Delete(key []byte) error</div><div class="line">	Close()</div><div class="line">	NewBatch() Batch</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h2 id="interface-go"><a href="#interface-go" class="headerlink" title="interface.go"></a>interface.go</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">type Database interface &#123;</span><br><span class="line">	Putter</span><br><span class="line">	Get(key []byte) ([]byte, error)</span><br><span class="line">	Has(key []byte) (bool, error)</span><br><span class="line">	Delete(key []byte) error</span><br><span class="line">	Close()</span><br><span class="line">	NewBatch() Batch</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>Database 接口定义了所有数据库操作，Putter 接口定义批量操作和普通操作的接口。批量操作不能多线程同时使用。</p>
-<h2 id="memory-database-go"><a href="#memory-database-go" class="headerlink" title="memory_database.go"></a>memory_database.go</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">type MemDatabase struct &#123;</div><div class="line">	db   map[string][]byte</div><div class="line">	lock sync.RWMutex</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h2 id="memory-database-go"><a href="#memory-database-go" class="headerlink" title="memory_database.go"></a>memory_database.go</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">type MemDatabase struct &#123;</span><br><span class="line">	db   map[string][]byte</span><br><span class="line">	lock sync.RWMutex</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>这个文件跟 LevelDB 没什么关系，它只是封装了内存里的 key-value 结构，暴露的增删改查的接口(Put，Has，Get，Keys，Delete 等等)跟对 LevelDB 的封装基本一致。加了锁以在多线程的情况下对资源进行保护。</p>
 <h2 id="database-go"><a href="#database-go" class="headerlink" title="database.go"></a>database.go</h2><p>封装了 levelDB 接口，在 go-ethereum 中大量使用。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line">type LDBDatabase struct &#123;</div><div class="line">	fn string</div><div class="line">	db *leveldb.DB</div><div class="line"></div><div class="line">	compTimeMeter  metrics.Meter</div><div class="line">	compReadMeter  metrics.Meter</div><div class="line">	compWriteMeter metrics.Meter</div><div class="line">	diskReadMeter  metrics.Meter</div><div class="line">	diskWriteMeter metrics.Meter</div><div class="line"></div><div class="line">	quitLock sync.Mutex</div><div class="line">	quitChan chan chan error</div><div class="line"></div><div class="line">	log log.Logger</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">type LDBDatabase struct &#123;</span><br><span class="line">	fn string</span><br><span class="line">	db *leveldb.DB</span><br><span class="line"></span><br><span class="line">	compTimeMeter  metrics.Meter</span><br><span class="line">	compReadMeter  metrics.Meter</span><br><span class="line">	compWriteMeter metrics.Meter</span><br><span class="line">	diskReadMeter  metrics.Meter</span><br><span class="line">	diskWriteMeter metrics.Meter</span><br><span class="line"></span><br><span class="line">	quitLock sync.Mutex</span><br><span class="line">	quitChan chan chan error</span><br><span class="line"></span><br><span class="line">	log log.Logger</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>Path, Put, Has, Get 等方法是对 levelDB 的封装，没有什么特别的，也不需要用锁，因为 github.com/syndtr/goleveldb/leveldb 支持多线程访问。</p>
-<h3 id="Path"><a href="#Path" class="headerlink" title="Path"></a>Path</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">func (db *LDBDatabase) Path() string &#123;</div><div class="line">	return db.fn</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<h3 id="Put"><a href="#Put" class="headerlink" title="Put"></a>Put</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">func (db *LDBDatabase) Put(key []byte, value []byte) error &#123;</div><div class="line">	return db.db.Put(key, value, nil)</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<h3 id="Has"><a href="#Has" class="headerlink" title="Has"></a>Has</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">func (db *LDBDatabase) Has(key []byte) (bool, error) &#123;</div><div class="line">	return db.db.Has(key, nil)</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<h3 id="Get"><a href="#Get" class="headerlink" title="Get"></a>Get</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">func (db *LDBDatabase) Get(key []byte) ([]byte, error) &#123;</div><div class="line">	dat, err := db.db.Get(key, nil)</div><div class="line">	if err != nil &#123;</div><div class="line">		return nil, err</div><div class="line">	&#125;</div><div class="line">	return dat, nil</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<h3 id="Delete"><a href="#Delete" class="headerlink" title="Delete"></a>Delete</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">func (db *LDBDatabase) Delete(key []byte) error &#123;</div><div class="line">	return db.db.Delete(key, nil)</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h3 id="Path"><a href="#Path" class="headerlink" title="Path"></a>Path</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">func (db *LDBDatabase) Path() string &#123;</span><br><span class="line">	return db.fn</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="Put"><a href="#Put" class="headerlink" title="Put"></a>Put</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">func (db *LDBDatabase) Put(key []byte, value []byte) error &#123;</span><br><span class="line">	return db.db.Put(key, value, nil)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="Has"><a href="#Has" class="headerlink" title="Has"></a>Has</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">func (db *LDBDatabase) Has(key []byte) (bool, error) &#123;</span><br><span class="line">	return db.db.Has(key, nil)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="Get"><a href="#Get" class="headerlink" title="Get"></a>Get</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">func (db *LDBDatabase) Get(key []byte) ([]byte, error) &#123;</span><br><span class="line">	dat, err := db.db.Get(key, nil)</span><br><span class="line">	if err != nil &#123;</span><br><span class="line">		return nil, err</span><br><span class="line">	&#125;</span><br><span class="line">	return dat, nil</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="Delete"><a href="#Delete" class="headerlink" title="Delete"></a>Delete</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">func (db *LDBDatabase) Delete(key []byte) error &#123;</span><br><span class="line">	return db.db.Delete(key, nil)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <h3 id="Metrics"><a href="#Metrics" class="headerlink" title="Metrics"></a>Metrics</h3><p><code>compTimeMeter</code>, <code>compReadMeter</code>, <code>compWriteMeter</code>, <code>diskReadMeter</code>, <code>diskWriteMeter</code> 这几个方法都通过 <code>metrics.NewRegisteredMeter</code> 注册得到。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line">func (db *LDBDatabase) Meter(prefix string) &#123;</div><div class="line">	if !metrics.Enabled &#123;</div><div class="line">		return</div><div class="line">	&#125;</div><div class="line">	db.compTimeMeter = metrics.NewRegisteredMeter(prefix+&quot;compact/time&quot;, nil)</div><div class="line">	db.compReadMeter = metrics.NewRegisteredMeter(prefix+&quot;compact/input&quot;, nil)</div><div class="line">	db.compWriteMeter = metrics.NewRegisteredMeter(prefix+&quot;compact/output&quot;, nil)</div><div class="line">	db.diskReadMeter = metrics.NewRegisteredMeter(prefix+&quot;disk/read&quot;, nil)</div><div class="line">	db.diskWriteMeter = metrics.NewRegisteredMeter(prefix+&quot;disk/write&quot;, nil)</div><div class="line"></div><div class="line">	db.quitLock.Lock()</div><div class="line">	db.quitChan = make(chan chan error)</div><div class="line">	db.quitLock.Unlock()</div><div class="line"></div><div class="line">	go db.meter(3 * time.Second)</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">func (db *LDBDatabase) Meter(prefix string) &#123;</span><br><span class="line">	if !metrics.Enabled &#123;</span><br><span class="line">		return</span><br><span class="line">	&#125;</span><br><span class="line">	db.compTimeMeter = metrics.NewRegisteredMeter(prefix+&quot;compact/time&quot;, nil)</span><br><span class="line">	db.compReadMeter = metrics.NewRegisteredMeter(prefix+&quot;compact/input&quot;, nil)</span><br><span class="line">	db.compWriteMeter = metrics.NewRegisteredMeter(prefix+&quot;compact/output&quot;, nil)</span><br><span class="line">	db.diskReadMeter = metrics.NewRegisteredMeter(prefix+&quot;disk/read&quot;, nil)</span><br><span class="line">	db.diskWriteMeter = metrics.NewRegisteredMeter(prefix+&quot;disk/write&quot;, nil)</span><br><span class="line"></span><br><span class="line">	db.quitLock.Lock()</span><br><span class="line">	db.quitChan = make(chan chan error)</span><br><span class="line">	db.quitLock.Unlock()</span><br><span class="line"></span><br><span class="line">	go db.meter(3 * time.Second)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>最后通过一个 goroutine 调用 db.meter。</p>
 <p>该方法是一个死循环，过三秒钟就通过 <code>db.db.GetProperty(&quot;leveldb.iostats&quot;)</code> 获取一次 leveldb 的 stats，然后发到 metrics 系统。如果收到 quitChan 的信号就退出死循环。</p>
 <h2 id="业务相关代码"><a href="#业务相关代码" class="headerlink" title="业务相关代码"></a>业务相关代码</h2><p>与业务直接相关的代码在 <code>core/rawdb</code> 目录下，基本上所有与底层数据库交互的代码都在这里，没有很复杂的内容，不过了解这些底层的数据结构对于理解业务很有帮助，可以自行浏览。</p>
@@ -342,11 +342,11 @@
 </tbody>
 </table>
 <h2 id="References"><a href="#References" class="headerlink" title="References"></a>References</h2><ul>
-<li><a href="https://github.com/syndtr/goleveldb" target="_blank" rel="external">LevelDB 的 Golang 实现</a></li>
-<li><a href="https://github.com/google/leveldb" target="_blank" rel="external">LevelDB 的 C++ 实现</a></li>
-<li><a href="https://www.zhihu.com/question/19887265/answer/78839142" target="_blank" rel="external">LSM 算法的原理是什么？</a></li>
-<li><a href="http://www.benstopford.com/2015/02/14/log-structured-merge-trees/" target="_blank" rel="external">Log Structured Merge Trees</a></li>
-<li><a href="https://zhuanlan.zhihu.com/p/39262324" target="_blank" rel="external">以太坊(Ethereum) 的执行交易性能瓶颈</a></li>
+<li><a href="https://github.com/syndtr/goleveldb" target="_blank" rel="noopener">LevelDB 的 Golang 实现</a></li>
+<li><a href="https://github.com/google/leveldb" target="_blank" rel="noopener">LevelDB 的 C++ 实现</a></li>
+<li><a href="https://www.zhihu.com/question/19887265/answer/78839142" target="_blank" rel="noopener">LSM 算法的原理是什么？</a></li>
+<li><a href="http://www.benstopford.com/2015/02/14/log-structured-merge-trees/" target="_blank" rel="noopener">Log Structured Merge Trees</a></li>
+<li><a href="https://zhuanlan.zhihu.com/p/39262324" target="_blank" rel="noopener">以太坊(Ethereum) 的执行交易性能瓶颈</a></li>
 </ul>
 
       
@@ -440,7 +440,7 @@
 
       
         <ul class="sidebar-nav motion-element">
-          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
             文章目录
           </li>
           <li class="sidebar-nav-overview" data-target="site-overview">
@@ -451,16 +451,14 @@
 
       <section class="site-overview sidebar-panel ">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
-          <img class="site-author-image" itemprop="image"
-               src="https://avatars1.githubusercontent.com/u/6964284?v=3&s=460"
-               alt="Frank" />
+          <img class="site-author-image" itemprop="image" src="https://avatars1.githubusercontent.com/u/6964284?v=3&s=460" alt="Frank">
           <p class="site-author-name" itemprop="name">Frank</p>
           <p class="site-description motion-element" itemprop="description"></p>
         </div>
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">365</span>
+              <span class="site-state-item-count">390</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -470,7 +468,7 @@
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">135</span>
+                <span class="site-state-item-count">207</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
@@ -506,7 +504,7 @@
         
           <div class="cc-license motion-element" itemprop="license">
             <a href="http://creativecommons.org/licenses/by-sa/4.0" class="cc-opacity" target="_blank">
-              <img src="/images/cc-by-sa.svg" alt="Creative Commons" />
+              <img src="/images/cc-by-sa.svg" alt="Creative Commons">
             </a>
           </div>
         
@@ -527,7 +525,7 @@
               
             
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#interface-go"><span class="nav-number">1.</span> <span class="nav-text">interface.go</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#memory-database-go"><span class="nav-number">2.</span> <span class="nav-text">memory_database.go</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#database-go"><span class="nav-number">3.</span> <span class="nav-text">database.go</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Path"><span class="nav-number">3.1.</span> <span class="nav-text">Path</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Put"><span class="nav-number">3.2.</span> <span class="nav-text">Put</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Has"><span class="nav-number">3.3.</span> <span class="nav-text">Has</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Get"><span class="nav-number">3.4.</span> <span class="nav-text">Get</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Delete"><span class="nav-number">3.5.</span> <span class="nav-text">Delete</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Metrics"><span class="nav-number">3.6.</span> <span class="nav-text">Metrics</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#业务相关代码"><span class="nav-number">4.</span> <span class="nav-text">业务相关代码</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#key-gt-value"><span class="nav-number">5.</span> <span class="nav-text">key->value</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#References"><span class="nav-number">6.</span> <span class="nav-text">References</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#interface-go"><span class="nav-number">1.</span> <span class="nav-text">interface.go</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#memory-database-go"><span class="nav-number">2.</span> <span class="nav-text">memory_database.go</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#database-go"><span class="nav-number">3.</span> <span class="nav-text">database.go</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Path"><span class="nav-number">3.1.</span> <span class="nav-text">Path</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Put"><span class="nav-number">3.2.</span> <span class="nav-text">Put</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Has"><span class="nav-number">3.3.</span> <span class="nav-text">Has</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Get"><span class="nav-number">3.4.</span> <span class="nav-text">Get</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Delete"><span class="nav-number">3.5.</span> <span class="nav-text">Delete</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Metrics"><span class="nav-number">3.6.</span> <span class="nav-text">Metrics</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#业务相关代码"><span class="nav-number">4.</span> <span class="nav-text">业务相关代码</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#key-gt-value"><span class="nav-number">5.</span> <span class="nav-text">key-&gt;value</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#References"><span class="nav-number">6.</span> <span class="nav-text">References</span></a></li></ol></div>
             
           </div>
           <div class="post-toc-indicator-bottom post-toc-indicator">
@@ -546,10 +544,10 @@
 
     <footer id="footer" class="footer">
       <div class="footer-inner">
-        <div class="copyright" >
+        <div class="copyright">
   
   &copy;  2015 - 
-  <span itemprop="copyrightYear">2019</span>
+  <span itemprop="copyrightYear">2021</span>
   <span class="with-love">
     <i class="fa fa-heart"></i>
   </span>

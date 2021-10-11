@@ -6,19 +6,15 @@
 
 
 <html class="theme-next muse use-motion">
-<head>
-  <meta charset="UTF-8"/>
-<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
 
 
-<meta http-equiv="Cache-Control" content="no-transform" />
-<meta http-equiv="Cache-Control" content="no-siteapp" />
-
-
-
-
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
 
 
 
@@ -27,7 +23,11 @@
 
 
 
-  <link href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css"/>
+
+
+
+
+  <link href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
 
 
 
@@ -36,21 +36,21 @@
 
 
 
-<link href="/vendors/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+<link href="/vendors/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css">
 
-<link href="/css/main.css?v=0.5.0" rel="stylesheet" type="text/css" />
-
-
-  <meta name="keywords" content="Design,algorithms,leetcode,review,stack,queues," />
+<link href="/css/main.css?v=0.5.0" rel="stylesheet" type="text/css">
 
 
+  <meta name="keywords" content="algorithms,leetcode,Design,review,stack,queues,">
 
 
 
 
 
 
-  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=0.5.0" />
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=0.5.0">
 
 
 
@@ -58,14 +58,14 @@
 
 
 <meta name="description" content="描述 Implement the following operations of a stack using queues.  push(x) – Push element x onto stack. pop() – Removes the element on top of the stack. top() – Get the top element. empty() – Return whet">
-<meta name="keywords" content="Design,algorithms,leetcode,review,stack,queues">
+<meta name="keywords" content="algorithms,leetcode,Design,review,stack,queues">
 <meta property="og:type" content="article">
 <meta property="og:title" content="leetcode-225-Implement-Stack-using-Queues">
 <meta property="og:url" content="http://knarfeh.github.io/2014/03/11/leetcode/Algorithms/leetcode-225-Implement-Stack-using-Queues/index.html">
 <meta property="og:site_name" content="knarfeh&#39;s logbook">
 <meta property="og:description" content="描述 Implement the following operations of a stack using queues.  push(x) – Push element x onto stack. pop() – Removes the element on top of the stack. top() – Get the top element. empty() – Return whet">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-03-14T12:07:18.014Z">
+<meta property="og:updated_time" content="2020-04-02T03:51:40.408Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="leetcode-225-Implement-Stack-using-Queues">
 <meta name="twitter:description" content="描述 Implement the following operations of a stack using queues.  push(x) – Push element x onto stack. pop() – Removes the element on top of the stack. top() – Get the top element. empty() – Return whet">
@@ -122,7 +122,7 @@
   
 
   <div class="custom-logo-site-title">
-    <a href="/"  class="brand" rel="start">
+    <a href="/" class="brand" rel="start">
       <span class="logo-line-before"><i></i></span>
       <span class="site-title">knarfeh's logbook</span>
       <span class="logo-line-after"><i></i></span>
@@ -149,7 +149,7 @@
         <li class="menu-item menu-item-home">
           <a href="/" rel="section">
             
-              <i class="menu-item-icon fa fa-home fa-fw"></i> <br />
+              <i class="menu-item-icon fa fa-home fa-fw"></i> <br>
             
             首页
           </a>
@@ -159,7 +159,7 @@
         <li class="menu-item menu-item-archives">
           <a href="/archives" rel="section">
             
-              <i class="menu-item-icon fa fa-archive fa-fw"></i> <br />
+              <i class="menu-item-icon fa fa-archive fa-fw"></i> <br>
             
             归档
           </a>
@@ -169,7 +169,7 @@
         <li class="menu-item menu-item-tags">
           <a href="/tags" rel="section">
             
-              <i class="menu-item-icon fa fa-tags fa-fw"></i> <br />
+              <i class="menu-item-icon fa fa-tags fa-fw"></i> <br>
             
             标签
           </a>
@@ -269,12 +269,14 @@
 </ul>
 <a id="more"></a>
 <h3 id="分析"><a href="#分析" class="headerlink" title="分析"></a>分析</h3><hr>
-<p>用队列实现堆栈，与<a href="TODO:建立自己讲解的链接索引" target="_blank" rel="external">leetcode-232-Implement-Queue-using-Stacks</a>相关联。队列的特点是先进先出，所以入队的元素总是在队尾，出队的元素总是在队首，而堆栈的特点是后进先出，要实现这一点，我们可以让后面进的元素排在队首。如何实现呢，用两个队列实现，一个队列始终是空的，当入队时，元素进空的队列，另一个队列的所有元素排在它的后面（实现插队）。出栈操作，即让有元素的队列出队即可，判断栈空，两个队列都为空即为栈空。</p>
+<p>用队列实现堆栈，与<a href="TODO:建立自己讲解的链接索引" target="_blank" rel="noopener">leetcode-232-Implement-Queue-using-Stacks</a>相关联。队列的特点是先进先出，所以入队的元素总是在队尾，出队的元素总是在队首，而堆栈的特点是后进先出，要实现这一点，我们可以让后面进的元素排在队首。如何实现呢，用两个队列实现，一个队列始终是空的，当入队时，元素进空的队列，另一个队列的所有元素排在它的后面（实现插队）。出栈操作，即让有元素的队列出队即可，判断栈空，两个队列都为空即为栈空。</p>
 <h3 id="解决方案（C-）"><a href="#解决方案（C-）" class="headerlink" title="解决方案（C++）"></a>解决方案（C++）</h3><hr>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">class</span> Stack &#123;</div><div class="line"><span class="keyword">public</span>:</div><div class="line">    <span class="comment">// Push element x onto stack.</span></div><div class="line">    <span class="function"><span class="keyword">void</span> <span class="title">push</span><span class="params">(<span class="keyword">int</span> x)</span> </span>&#123;</div><div class="line">        <span class="keyword">if</span>(q1.empty()) &#123;</div><div class="line">            q1.push(x);</div><div class="line">            <span class="keyword">while</span>(!q2.empty())&#123;</div><div class="line">                <span class="keyword">int</span> temp = q2.front();</div><div class="line">                q2.pop();</div><div class="line">                q1.push(temp);</div><div class="line">            &#125;</div><div class="line">        &#125;<span class="keyword">else</span> &#123;</div><div class="line">            q2.push(x);</div><div class="line">            <span class="keyword">while</span>(!q1.empty()) &#123;</div><div class="line">                <span class="keyword">int</span> temp = q1.front();</div><div class="line">                q1.pop();</div><div class="line">                q2.push(temp);</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="comment">// Removes the element on top of the stack.</span></div><div class="line">    <span class="function"><span class="keyword">void</span> <span class="title">pop</span><span class="params">()</span> </span>&#123;</div><div class="line">        <span class="keyword">if</span> (!q1.empty())&#123;</div><div class="line">            q1.pop();  </div><div class="line">        &#125;  </div><div class="line">        <span class="keyword">if</span> (!q2.empty()) &#123;</div><div class="line">            q2.pop(); </div><div class="line">        &#125; </div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="comment">// Get the top element.</span></div><div class="line">    <span class="function"><span class="keyword">int</span> <span class="title">top</span><span class="params">()</span> </span>&#123;</div><div class="line">        <span class="keyword">if</span>(!q1.empty()) &#123;</div><div class="line">            <span class="keyword">return</span> q1.front();</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">if</span>(!q2.empty()) &#123;</div><div class="line">            <span class="keyword">return</span> q2.front();</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="comment">// Return whether the stack is empty.</span></div><div class="line">    <span class="function"><span class="keyword">bool</span> <span class="title">empty</span><span class="params">()</span> </span>&#123;</div><div class="line">        <span class="keyword">return</span> q1.empty() &amp;&amp; q2.empty();</div><div class="line">    &#125;</div><div class="line"><span class="keyword">private</span>:</div><div class="line"><span class="built_in">queue</span>&lt;<span class="keyword">int</span>&gt; q1, q2;</div><div class="line">&#125;;</div></pre></td></tr></table></figure>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Stack</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="comment">// Push element x onto stack.</span></span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">push</span><span class="params">(<span class="keyword">int</span> x)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(q1.empty()) &#123;</span><br><span class="line">            q1.push(x);</span><br><span class="line">            <span class="keyword">while</span>(!q2.empty())&#123;</span><br><span class="line">                <span class="keyword">int</span> temp = q2.front();</span><br><span class="line">                q2.pop();</span><br><span class="line">                q1.push(temp);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;<span class="keyword">else</span> &#123;</span><br><span class="line">            q2.push(x);</span><br><span class="line">            <span class="keyword">while</span>(!q1.empty()) &#123;</span><br><span class="line">                <span class="keyword">int</span> temp = q1.front();</span><br><span class="line">                q1.pop();</span><br><span class="line">                q2.push(temp);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// Removes the element on top of the stack.</span></span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">pop</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (!q1.empty())&#123;</span><br><span class="line">            q1.pop();  </span><br><span class="line">        &#125;  </span><br><span class="line">        <span class="keyword">if</span> (!q2.empty()) &#123;</span><br><span class="line">            q2.pop(); </span><br><span class="line">        &#125; </span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// Get the top element.</span></span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">top</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(!q1.empty()) &#123;</span><br><span class="line">            <span class="keyword">return</span> q1.front();</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span>(!q2.empty()) &#123;</span><br><span class="line">            <span class="keyword">return</span> q2.front();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// Return whether the stack is empty.</span></span><br><span class="line">    <span class="function"><span class="keyword">bool</span> <span class="title">empty</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> q1.empty() &amp;&amp; q2.empty();</span><br><span class="line">    &#125;</span><br><span class="line"><span class="keyword">private</span>:</span><br><span class="line"><span class="built_in">queue</span>&lt;<span class="keyword">int</span>&gt; q1, q2;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
 <h3 id="相关问题"><a href="#相关问题" class="headerlink" title="相关问题"></a>相关问题</h3><hr>
-<p><a href="https://leetcode.com/problems/implement-queue-using-stacks/" target="_blank" rel="external">(E) Implement Queue using Stacks</a>   </p>
-<h3 id="题目来源"><a href="#题目来源" class="headerlink" title="题目来源"></a><a href="https://leetcode.com/problems/implement-stack-using-queues/" target="_blank" rel="external">题目来源</a></h3>
+<ul>
+<li><a href="https://leetcode.com/problems/implement-queue-using-stacks/" target="_blank" rel="noopener">(E) Implement Queue using Stacks</a>   </li>
+</ul>
+<h3 id="题目来源"><a href="#题目来源" class="headerlink" title="题目来源"></a><a href="https://leetcode.com/problems/implement-stack-using-queues/" target="_blank" rel="noopener">题目来源</a></h3>
       
     </div>
 
@@ -288,11 +290,11 @@
       
         <div class="post-tags">
           
-            <a href="/tags/Design/" rel="tag">#Design</a>
-          
             <a href="/tags/algorithms/" rel="tag">#algorithms</a>
           
             <a href="/tags/leetcode/" rel="tag">#leetcode</a>
+          
+            <a href="/tags/Design/" rel="tag">#Design</a>
           
             <a href="/tags/review/" rel="tag">#review</a>
           
@@ -307,16 +309,16 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2014/03/11/leetcode/Algorithms/leetcode-230-Kth-Smallest-Element-in-a-BST/" rel="next" title="leetcode-230-Kth-Smallest-Element-in-a-BST">
-                <i class="fa fa-chevron-left"></i> leetcode-230-Kth-Smallest-Element-in-a-BST
+              <a href="/2014/03/11/leetcode/Algorithms/leetcode-231-Power-of-Two/" rel="next" title="leetcode-231-Power-of-Two">
+                <i class="fa fa-chevron-left"></i> leetcode-231-Power-of-Two
               </a>
             
           </div>
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2014/03/11/leetcode/Algorithms/leetcode-226-Invert-Binary-Tree/" rel="prev" title="leetcode-226-Invert-Binary-Tree">
-                leetcode-226-Invert-Binary-Tree <i class="fa fa-chevron-right"></i>
+              <a href="/2014/03/11/leetcode/Algorithms/leetcode-223-Rectangle-Area/" rel="prev" title="leetcode-223-Rectangle-Area">
+                leetcode-223-Rectangle-Area <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -372,7 +374,7 @@
 
       
         <ul class="sidebar-nav motion-element">
-          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
             文章目录
           </li>
           <li class="sidebar-nav-overview" data-target="site-overview">
@@ -383,16 +385,14 @@
 
       <section class="site-overview sidebar-panel ">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
-          <img class="site-author-image" itemprop="image"
-               src="https://avatars1.githubusercontent.com/u/6964284?v=3&s=460"
-               alt="Frank" />
+          <img class="site-author-image" itemprop="image" src="https://avatars1.githubusercontent.com/u/6964284?v=3&s=460" alt="Frank">
           <p class="site-author-name" itemprop="name">Frank</p>
           <p class="site-description motion-element" itemprop="description"></p>
         </div>
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">365</span>
+              <span class="site-state-item-count">390</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -402,7 +402,7 @@
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">135</span>
+                <span class="site-state-item-count">207</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
@@ -438,7 +438,7 @@
         
           <div class="cc-license motion-element" itemprop="license">
             <a href="http://creativecommons.org/licenses/by-sa/4.0" class="cc-opacity" target="_blank">
-              <img src="/images/cc-by-sa.svg" alt="Creative Commons" />
+              <img src="/images/cc-by-sa.svg" alt="Creative Commons">
             </a>
           </div>
         
@@ -478,10 +478,10 @@
 
     <footer id="footer" class="footer">
       <div class="footer-inner">
-        <div class="copyright" >
+        <div class="copyright">
   
   &copy;  2015 - 
-  <span itemprop="copyrightYear">2019</span>
+  <span itemprop="copyrightYear">2021</span>
   <span class="with-love">
     <i class="fa fa-heart"></i>
   </span>

@@ -6,19 +6,15 @@
 
 
 <html class="theme-next muse use-motion">
-<head>
-  <meta charset="UTF-8"/>
-<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
 
 
-<meta http-equiv="Cache-Control" content="no-transform" />
-<meta http-equiv="Cache-Control" content="no-siteapp" />
-
-
-
-
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
 
 
 
@@ -27,7 +23,11 @@
 
 
 
-  <link href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css"/>
+
+
+
+
+  <link href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
 
 
 
@@ -36,21 +36,21 @@
 
 
 
-<link href="/vendors/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+<link href="/vendors/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css">
 
-<link href="/css/main.css?v=0.5.0" rel="stylesheet" type="text/css" />
-
-
-  <meta name="keywords" content="Design,algorithms,leetcode,Queue," />
+<link href="/css/main.css?v=0.5.0" rel="stylesheet" type="text/css">
 
 
+  <meta name="keywords" content="algorithms,leetcode,Design,Queue,">
 
 
 
 
 
 
-  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=0.5.0" />
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=0.5.0">
 
 
 
@@ -58,7 +58,7 @@
 
 
 <meta name="description" content="描述 Design your implementation of the circular double-ended queue (deque). Your implementation should support following operations:  MyCircularDeque(k): Constructor, set the size of the deque to be k.">
-<meta name="keywords" content="Design,algorithms,leetcode,Queue">
+<meta name="keywords" content="algorithms,leetcode,Design,Queue">
 <meta property="og:type" content="article">
 <meta property="og:title" content="leetcode-641-Design-Circular-Deque">
 <meta property="og:url" content="http://knarfeh.github.io/2014/03/11/leetcode/Algorithms/leetcode-641-Design-Circular-Deque/index.html">
@@ -122,7 +122,7 @@
   
 
   <div class="custom-logo-site-title">
-    <a href="/"  class="brand" rel="start">
+    <a href="/" class="brand" rel="start">
       <span class="logo-line-before"><i></i></span>
       <span class="site-title">knarfeh's logbook</span>
       <span class="logo-line-after"><i></i></span>
@@ -149,7 +149,7 @@
         <li class="menu-item menu-item-home">
           <a href="/" rel="section">
             
-              <i class="menu-item-icon fa fa-home fa-fw"></i> <br />
+              <i class="menu-item-icon fa fa-home fa-fw"></i> <br>
             
             首页
           </a>
@@ -159,7 +159,7 @@
         <li class="menu-item menu-item-archives">
           <a href="/archives" rel="section">
             
-              <i class="menu-item-icon fa fa-archive fa-fw"></i> <br />
+              <i class="menu-item-icon fa fa-archive fa-fw"></i> <br>
             
             归档
           </a>
@@ -169,7 +169,7 @@
         <li class="menu-item menu-item-tags">
           <a href="/tags" rel="section">
             
-              <i class="menu-item-icon fa fa-tags fa-fw"></i> <br />
+              <i class="menu-item-icon fa fa-tags fa-fw"></i> <br>
             
             标签
           </a>
@@ -274,7 +274,7 @@
 <li><code>isFull()</code>: Checks whether Deque is full or not.</li>
 </ul>
 <p><strong>Example:</strong></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">MyCircularDeque circularDeque = new MycircularDeque(3); // set the size to be 3</div><div class="line">circularDeque.insertLast(1);			// return true</div><div class="line">circularDeque.insertLast(2);			// return true</div><div class="line">circularDeque.insertFront(3);			// return true</div><div class="line">circularDeque.insertFront(4);			// return false, the queue is full</div><div class="line">circularDeque.getRear();  			// return 2</div><div class="line">circularDeque.isFull();				// return true</div><div class="line">circularDeque.deleteLast();			// return true</div><div class="line">circularDeque.insertFront(4);			// return true</div><div class="line">circularDeque.getFront();			// return 4</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">MyCircularDeque circularDeque = new MycircularDeque(3); // set the size to be 3</span><br><span class="line">circularDeque.insertLast(1);			// return true</span><br><span class="line">circularDeque.insertLast(2);			// return true</span><br><span class="line">circularDeque.insertFront(3);			// return true</span><br><span class="line">circularDeque.insertFront(4);			// return false, the queue is full</span><br><span class="line">circularDeque.getRear();  			// return 2</span><br><span class="line">circularDeque.isFull();				// return true</span><br><span class="line">circularDeque.deleteLast();			// return true</span><br><span class="line">circularDeque.insertFront(4);			// return true</span><br><span class="line">circularDeque.getFront();			// return 4</span><br></pre></td></tr></table></figure>
 <p><strong>Note:</strong></p>
 <ul>
 <li>All values will be in the range of [0, 1000].</li>
@@ -284,14 +284,14 @@
 <a id="more"></a>
 <h3 id="分析"><a href="#分析" class="headerlink" title="分析"></a>分析</h3><hr>
 <p>实现双向队列的常用接口，这道题可以当做很多链表类问题的模板。题目里虽然要求环形，实际上实现对应接口就行了，不一定非得是环形。</p>
-<p>类似的问题还有：<a href="https://leetcode.com/problems/design-circular-queue/description/" target="_blank" rel="external">622. Design Circular Queue</a>，那道题只需要实现单向的先进先出队列。</p>
+<p>类似的问题还有：<a href="https://leetcode.com/problems/design-circular-queue/description/" target="_blank" rel="noopener">622. Design Circular Queue</a>，那道题只需要实现单向的先进先出队列。</p>
 <h3 id="解决方案1-Java"><a href="#解决方案1-Java" class="headerlink" title="解决方案1(Java)"></a>解决方案1(Java)</h3><hr>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div><div class="line">80</div><div class="line">81</div><div class="line">82</div><div class="line">83</div><div class="line">84</div><div class="line">85</div><div class="line">86</div><div class="line">87</div><div class="line">88</div><div class="line">89</div><div class="line">90</div><div class="line">91</div><div class="line">92</div><div class="line">93</div><div class="line">94</div><div class="line">95</div><div class="line">96</div><div class="line">97</div><div class="line">98</div><div class="line">99</div><div class="line">100</div><div class="line">101</div><div class="line">102</div><div class="line">103</div><div class="line">104</div><div class="line">105</div><div class="line">106</div><div class="line">107</div><div class="line">108</div><div class="line">109</div><div class="line">110</div><div class="line">111</div><div class="line">112</div><div class="line">113</div><div class="line">114</div><div class="line">115</div><div class="line">116</div><div class="line">117</div><div class="line">118</div><div class="line">119</div><div class="line">120</div><div class="line">121</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">MyCircularDeque</span> </span>&#123;</div><div class="line">    Node head, rear;</div><div class="line">    <span class="keyword">int</span> size, k;</div><div class="line"></div><div class="line">    <span class="comment">/** Initialize your data structure here. Set the size of the deque to be k. */</span></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="title">MyCircularDeque</span><span class="params">(<span class="keyword">int</span> k)</span> </span>&#123;</div><div class="line">        <span class="keyword">this</span>.head = <span class="keyword">new</span> Node(-<span class="number">1</span>);</div><div class="line">        <span class="keyword">this</span>.rear = head;</div><div class="line">        <span class="keyword">this</span>.size = <span class="number">0</span>;</div><div class="line">        <span class="keyword">this</span>.k = k;</div><div class="line">    &#125;</div><div class="line">    </div><div class="line">    <span class="comment">/** Adds an item at the front of Deque. Return true if the operation is successful. */</span></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">insertFront</span><span class="params">(<span class="keyword">int</span> value)</span> </span>&#123;</div><div class="line">        <span class="keyword">if</span> (isFull()) &#123;</div><div class="line">            <span class="keyword">return</span> <span class="keyword">false</span>;</div><div class="line">        &#125;</div><div class="line">        Node toInsert = <span class="keyword">new</span> Node(value);</div><div class="line">        toInsert.next = head.next;</div><div class="line">        <span class="keyword">this</span>.head.next = toInsert;</div><div class="line">        toInsert.pre = head;</div><div class="line">        <span class="keyword">if</span> (toInsert.next == <span class="keyword">null</span>) &#123;</div><div class="line">            <span class="keyword">this</span>.rear = toInsert;</div><div class="line">        &#125; <span class="keyword">else</span> &#123;</div><div class="line">            toInsert.next.pre = toInsert;</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">this</span>.size++;</div><div class="line">        <span class="keyword">return</span> <span class="keyword">true</span>;</div><div class="line">    &#125;</div><div class="line">    </div><div class="line">    <span class="comment">/** Adds an item at the rear of Deque. Return true if the operation is successful. */</span></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">insertLast</span><span class="params">(<span class="keyword">int</span> value)</span> </span>&#123;</div><div class="line">        <span class="keyword">if</span> (isFull()) &#123;</div><div class="line">            <span class="keyword">return</span> <span class="keyword">false</span>;</div><div class="line">        &#125;</div><div class="line">        Node toInsert = <span class="keyword">new</span> Node(value);</div><div class="line">        toInsert.pre = rear;</div><div class="line">        <span class="keyword">this</span>.rear.next = toInsert;</div><div class="line">        <span class="keyword">this</span>.rear = toInsert;</div><div class="line">        <span class="keyword">this</span>.size++;</div><div class="line">        <span class="keyword">return</span> <span class="keyword">true</span>;</div><div class="line">    &#125;</div><div class="line">    </div><div class="line">    <span class="comment">/** Deletes an item from the front of Deque. Return true if the operation is successful. */</span></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">deleteFront</span><span class="params">()</span> </span>&#123;</div><div class="line">        <span class="keyword">if</span> (isEmpty()) &#123;</div><div class="line">            <span class="keyword">return</span> <span class="keyword">false</span>;</div><div class="line">        &#125;</div><div class="line">        Node toDelete = head.next;</div><div class="line">        <span class="keyword">this</span>.head.next = toDelete.next;</div><div class="line">        <span class="keyword">if</span> (toDelete == rear) &#123;</div><div class="line">            <span class="keyword">this</span>.rear = head;</div><div class="line">        &#125; <span class="keyword">else</span> &#123;</div><div class="line">            toDelete.next.pre = head;</div><div class="line">        &#125;</div><div class="line">        toDelete.next = <span class="keyword">null</span>;</div><div class="line">        toDelete.pre = <span class="keyword">null</span>;</div><div class="line">        <span class="keyword">this</span>.size--;</div><div class="line">        <span class="keyword">return</span> <span class="keyword">true</span>;</div><div class="line">    &#125;</div><div class="line">    </div><div class="line">    <span class="comment">/** Deletes an item from the rear of Deque. Return true if the operation is successful. */</span></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">deleteLast</span><span class="params">()</span> </span>&#123;</div><div class="line">        <span class="keyword">if</span> (isEmpty()) &#123;</div><div class="line">            <span class="keyword">return</span> <span class="keyword">false</span>;</div><div class="line">        &#125;</div><div class="line">        Node toDeletePre = rear.pre;</div><div class="line">        toDeletePre.next = <span class="keyword">null</span>;</div><div class="line">        <span class="keyword">if</span> (toDeletePre == head) &#123;</div><div class="line">            <span class="keyword">this</span>.rear = head;</div><div class="line">        &#125; <span class="keyword">else</span> &#123;</div><div class="line">            <span class="keyword">this</span>.rear = toDeletePre;</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">this</span>.size--;</div><div class="line">        <span class="keyword">return</span> <span class="keyword">true</span>;</div><div class="line">    &#125;</div><div class="line">    </div><div class="line">    <span class="comment">/** Get the front item from the deque. */</span></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">getFront</span><span class="params">()</span> </span>&#123;</div><div class="line">        <span class="keyword">return</span> isEmpty() ? -<span class="number">1</span> : <span class="keyword">this</span>.head.next.value;</div><div class="line">    &#125;</div><div class="line">    </div><div class="line">    <span class="comment">/** Get the last item from the deque. */</span></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">getRear</span><span class="params">()</span> </span>&#123;</div><div class="line">        <span class="keyword">return</span> isEmpty() ? -<span class="number">1</span> : <span class="keyword">this</span>.rear.value;</div><div class="line">    &#125;</div><div class="line">    </div><div class="line">    <span class="comment">/** Checks whether the circular deque is empty or not. */</span></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">isEmpty</span><span class="params">()</span> </span>&#123;</div><div class="line">        <span class="keyword">return</span> <span class="keyword">this</span>.size == <span class="number">0</span>;</div><div class="line">    &#125;</div><div class="line">    </div><div class="line">    <span class="comment">/** Checks whether the circular deque is full or not. */</span></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">isFull</span><span class="params">()</span> </span>&#123;</div><div class="line">        <span class="keyword">return</span> <span class="keyword">this</span>.size &gt;= <span class="keyword">this</span>.k;</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Node</span> </span>&#123;</div><div class="line">    <span class="keyword">int</span> value;</div><div class="line">    Node next;</div><div class="line">    Node pre;</div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="title">Node</span><span class="params">(<span class="keyword">int</span> value)</span> </span>&#123;</div><div class="line">        <span class="keyword">this</span>.value = value;</div><div class="line">        <span class="keyword">this</span>.next = <span class="keyword">null</span>;</div><div class="line">        <span class="keyword">this</span>.pre = <span class="keyword">null</span>;</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="comment">/**</span></div><div class="line"> * Your MyCircularDeque object will be instantiated and called as such:</div><div class="line"> * MyCircularDeque obj = new MyCircularDeque(k);</div><div class="line"> * boolean param_1 = obj.insertFront(value);</div><div class="line"> * boolean param_2 = obj.insertLast(value);</div><div class="line"> * boolean param_3 = obj.deleteFront();</div><div class="line"> * boolean param_4 = obj.deleteLast();</div><div class="line"> * int param_5 = obj.getFront();</div><div class="line"> * int param_6 = obj.getRear();</div><div class="line"> * boolean param_7 = obj.isEmpty();</div><div class="line"> * boolean param_8 = obj.isFull();</div><div class="line"> */</div></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">MyCircularDeque</span> </span>&#123;</span><br><span class="line">    Node head, rear;</span><br><span class="line">    <span class="keyword">int</span> size, k;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/** Initialize your data structure here. Set the size of the deque to be k. */</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">MyCircularDeque</span><span class="params">(<span class="keyword">int</span> k)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.head = <span class="keyword">new</span> Node(-<span class="number">1</span>);</span><br><span class="line">        <span class="keyword">this</span>.rear = head;</span><br><span class="line">        <span class="keyword">this</span>.size = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">this</span>.k = k;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="comment">/** Adds an item at the front of Deque. Return true if the operation is successful. */</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">insertFront</span><span class="params">(<span class="keyword">int</span> value)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (isFull()) &#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        Node toInsert = <span class="keyword">new</span> Node(value);</span><br><span class="line">        toInsert.next = head.next;</span><br><span class="line">        <span class="keyword">this</span>.head.next = toInsert;</span><br><span class="line">        toInsert.pre = head;</span><br><span class="line">        <span class="keyword">if</span> (toInsert.next == <span class="keyword">null</span>) &#123;</span><br><span class="line">            <span class="keyword">this</span>.rear = toInsert;</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            toInsert.next.pre = toInsert;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">this</span>.size++;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="comment">/** Adds an item at the rear of Deque. Return true if the operation is successful. */</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">insertLast</span><span class="params">(<span class="keyword">int</span> value)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (isFull()) &#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        Node toInsert = <span class="keyword">new</span> Node(value);</span><br><span class="line">        toInsert.pre = rear;</span><br><span class="line">        <span class="keyword">this</span>.rear.next = toInsert;</span><br><span class="line">        <span class="keyword">this</span>.rear = toInsert;</span><br><span class="line">        <span class="keyword">this</span>.size++;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="comment">/** Deletes an item from the front of Deque. Return true if the operation is successful. */</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">deleteFront</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (isEmpty()) &#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        Node toDelete = head.next;</span><br><span class="line">        <span class="keyword">this</span>.head.next = toDelete.next;</span><br><span class="line">        <span class="keyword">if</span> (toDelete == rear) &#123;</span><br><span class="line">            <span class="keyword">this</span>.rear = head;</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            toDelete.next.pre = head;</span><br><span class="line">        &#125;</span><br><span class="line">        toDelete.next = <span class="keyword">null</span>;</span><br><span class="line">        toDelete.pre = <span class="keyword">null</span>;</span><br><span class="line">        <span class="keyword">this</span>.size--;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="comment">/** Deletes an item from the rear of Deque. Return true if the operation is successful. */</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">deleteLast</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (isEmpty()) &#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        Node toDeletePre = rear.pre;</span><br><span class="line">        toDeletePre.next = <span class="keyword">null</span>;</span><br><span class="line">        <span class="keyword">if</span> (toDeletePre == head) &#123;</span><br><span class="line">            <span class="keyword">this</span>.rear = head;</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            <span class="keyword">this</span>.rear = toDeletePre;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">this</span>.size--;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="comment">/** Get the front item from the deque. */</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">getFront</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> isEmpty() ? -<span class="number">1</span> : <span class="keyword">this</span>.head.next.value;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="comment">/** Get the last item from the deque. */</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">getRear</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> isEmpty() ? -<span class="number">1</span> : <span class="keyword">this</span>.rear.value;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="comment">/** Checks whether the circular deque is empty or not. */</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">isEmpty</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">this</span>.size == <span class="number">0</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="comment">/** Checks whether the circular deque is full or not. */</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">isFull</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">this</span>.size &gt;= <span class="keyword">this</span>.k;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Node</span> </span>&#123;</span><br><span class="line">    <span class="keyword">int</span> value;</span><br><span class="line">    Node next;</span><br><span class="line">    Node pre;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">Node</span><span class="params">(<span class="keyword">int</span> value)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.value = value;</span><br><span class="line">        <span class="keyword">this</span>.next = <span class="keyword">null</span>;</span><br><span class="line">        <span class="keyword">this</span>.pre = <span class="keyword">null</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Your MyCircularDeque object will be instantiated and called as such:</span></span><br><span class="line"><span class="comment"> * MyCircularDeque obj = new MyCircularDeque(k);</span></span><br><span class="line"><span class="comment"> * boolean param_1 = obj.insertFront(value);</span></span><br><span class="line"><span class="comment"> * boolean param_2 = obj.insertLast(value);</span></span><br><span class="line"><span class="comment"> * boolean param_3 = obj.deleteFront();</span></span><br><span class="line"><span class="comment"> * boolean param_4 = obj.deleteLast();</span></span><br><span class="line"><span class="comment"> * int param_5 = obj.getFront();</span></span><br><span class="line"><span class="comment"> * int param_6 = obj.getRear();</span></span><br><span class="line"><span class="comment"> * boolean param_7 = obj.isEmpty();</span></span><br><span class="line"><span class="comment"> * boolean param_8 = obj.isFull();</span></span><br><span class="line"><span class="comment"> */</span></span><br></pre></td></tr></table></figure>
 <h3 id="相关问题"><a href="#相关问题" class="headerlink" title="相关问题"></a>相关问题</h3><hr>
 <ul>
-<li><a href="https://leetcode.com/problems/design-circular-queue" target="_blank" rel="external">(M) Design Circular Queue</a>   </li>
+<li><a href="https://leetcode.com/problems/design-circular-queue" target="_blank" rel="noopener">(M) Design Circular Queue</a>   </li>
 </ul>
-<h3 id="题目来源"><a href="#题目来源" class="headerlink" title="题目来源"></a><a href="https://leetcode.com/problems/design-circular-deque/description/" target="_blank" rel="external">题目来源</a></h3>
+<h3 id="题目来源"><a href="#题目来源" class="headerlink" title="题目来源"></a><a href="https://leetcode.com/problems/design-circular-deque/description/" target="_blank" rel="noopener">题目来源</a></h3>
       
     </div>
 
@@ -305,11 +305,11 @@
       
         <div class="post-tags">
           
-            <a href="/tags/Design/" rel="tag">#Design</a>
-          
             <a href="/tags/algorithms/" rel="tag">#algorithms</a>
           
             <a href="/tags/leetcode/" rel="tag">#leetcode</a>
+          
+            <a href="/tags/Design/" rel="tag">#Design</a>
           
             <a href="/tags/Queue/" rel="tag">#Queue</a>
           
@@ -320,16 +320,16 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2014/03/11/leetcode/Algorithms/leetcode-628-Maximum-Product-of-Three-Numbers/" rel="next" title="leetcode-628-Maximum-Product-of-Three-Numbers">
-                <i class="fa fa-chevron-left"></i> leetcode-628-Maximum-Product-of-Three-Numbers
+              <a href="/2014/03/11/leetcode/Algorithms/leetcode-655-Print-Binary-Tree/" rel="next" title="leetcode-655-Print-Binary-Tree">
+                <i class="fa fa-chevron-left"></i> leetcode-655-Print-Binary-Tree
               </a>
             
           </div>
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2014/03/11/leetcode/Algorithms/leetcode-622-Design-Circular-Queue/" rel="prev" title="leetcode-622-Design-Circular-Queue">
-                leetcode-622-Design-Circular-Queue <i class="fa fa-chevron-right"></i>
+              <a href="/2014/03/11/leetcode/Algorithms/leetcode-653-Two-Sum-IV-Input-is-a-BST/" rel="prev" title="leetcode-653-Two-Sum-IV-Input-is-a-BST">
+                leetcode-653-Two-Sum-IV-Input-is-a-BST <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -385,7 +385,7 @@
 
       
         <ul class="sidebar-nav motion-element">
-          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
             文章目录
           </li>
           <li class="sidebar-nav-overview" data-target="site-overview">
@@ -396,16 +396,14 @@
 
       <section class="site-overview sidebar-panel ">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
-          <img class="site-author-image" itemprop="image"
-               src="https://avatars1.githubusercontent.com/u/6964284?v=3&s=460"
-               alt="Frank" />
+          <img class="site-author-image" itemprop="image" src="https://avatars1.githubusercontent.com/u/6964284?v=3&s=460" alt="Frank">
           <p class="site-author-name" itemprop="name">Frank</p>
           <p class="site-description motion-element" itemprop="description"></p>
         </div>
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">365</span>
+              <span class="site-state-item-count">390</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -415,7 +413,7 @@
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">135</span>
+                <span class="site-state-item-count">207</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
@@ -451,7 +449,7 @@
         
           <div class="cc-license motion-element" itemprop="license">
             <a href="http://creativecommons.org/licenses/by-sa/4.0" class="cc-opacity" target="_blank">
-              <img src="/images/cc-by-sa.svg" alt="Creative Commons" />
+              <img src="/images/cc-by-sa.svg" alt="Creative Commons">
             </a>
           </div>
         
@@ -491,10 +489,10 @@
 
     <footer id="footer" class="footer">
       <div class="footer-inner">
-        <div class="copyright" >
+        <div class="copyright">
   
   &copy;  2015 - 
-  <span itemprop="copyrightYear">2019</span>
+  <span itemprop="copyrightYear">2021</span>
   <span class="with-love">
     <i class="fa fa-heart"></i>
   </span>

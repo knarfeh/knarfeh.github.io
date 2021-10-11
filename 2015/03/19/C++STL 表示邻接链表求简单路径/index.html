@@ -6,19 +6,15 @@
 
 
 <html class="theme-next muse use-motion">
-<head>
-  <meta charset="UTF-8"/>
-<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
 
 
-<meta http-equiv="Cache-Control" content="no-transform" />
-<meta http-equiv="Cache-Control" content="no-siteapp" />
-
-
-
-
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
 
 
 
@@ -27,7 +23,11 @@
 
 
 
-  <link href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css"/>
+
+
+
+
+  <link href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
 
 
 
@@ -36,21 +36,21 @@
 
 
 
-<link href="/vendors/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+<link href="/vendors/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css">
 
-<link href="/css/main.css?v=0.5.0" rel="stylesheet" type="text/css" />
-
-
-  <meta name="keywords" content="algorithms,data-structure,C++," />
+<link href="/css/main.css?v=0.5.0" rel="stylesheet" type="text/css">
 
 
+  <meta name="keywords" content="data-structure,algorithms,C++,">
 
 
 
 
 
 
-  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=0.5.0" />
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=0.5.0">
 
 
 
@@ -58,7 +58,7 @@
 
 
 <meta name="description" content="算法课的第一道课后作业(其实用STL反而显得杀鸡用牛刀)：">
-<meta name="keywords" content="algorithms,data-structure,C++">
+<meta name="keywords" content="data-structure,algorithms,C++">
 <meta property="og:type" content="article">
 <meta property="og:title" content="C++STL表示邻接链表求简单路径">
 <meta property="og:url" content="http://knarfeh.github.io/2015/03/19/C++STL 表示邻接链表求简单路径/index.html">
@@ -125,7 +125,7 @@
   
 
   <div class="custom-logo-site-title">
-    <a href="/"  class="brand" rel="start">
+    <a href="/" class="brand" rel="start">
       <span class="logo-line-before"><i></i></span>
       <span class="site-title">knarfeh's logbook</span>
       <span class="logo-line-after"><i></i></span>
@@ -152,7 +152,7 @@
         <li class="menu-item menu-item-home">
           <a href="/" rel="section">
             
-              <i class="menu-item-icon fa fa-home fa-fw"></i> <br />
+              <i class="menu-item-icon fa fa-home fa-fw"></i> <br>
             
             首页
           </a>
@@ -162,7 +162,7 @@
         <li class="menu-item menu-item-archives">
           <a href="/archives" rel="section">
             
-              <i class="menu-item-icon fa fa-archive fa-fw"></i> <br />
+              <i class="menu-item-icon fa fa-archive fa-fw"></i> <br>
             
             归档
           </a>
@@ -172,7 +172,7 @@
         <li class="menu-item menu-item-tags">
           <a href="/tags" rel="section">
             
-              <i class="menu-item-icon fa fa-tags fa-fw"></i> <br />
+              <i class="menu-item-icon fa fa-tags fa-fw"></i> <br>
             
             标签
           </a>
@@ -265,7 +265,7 @@
         <p>算法课的第一道课后作业(其实用STL反而显得杀鸡用牛刀)：  </p>
 <p><img src="https://knarfeh-1254074221.cos.na-siliconvalley.myqcloud.com/2015-3-19/homework.png"></p>
 <a id="more"></a>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div><div class="line">80</div><div class="line">81</div><div class="line">82</div><div class="line">83</div><div class="line">84</div><div class="line">85</div><div class="line">86</div><div class="line">87</div><div class="line">88</div><div class="line">89</div><div class="line">90</div><div class="line">91</div><div class="line">92</div><div class="line">93</div><div class="line">94</div><div class="line">95</div><div class="line">96</div><div class="line">97</div><div class="line">98</div><div class="line">99</div><div class="line">100</div><div class="line">101</div><div class="line">102</div><div class="line">103</div><div class="line">104</div><div class="line">105</div><div class="line">106</div><div class="line">107</div><div class="line">108</div><div class="line">109</div><div class="line">110</div><div class="line">111</div><div class="line">112</div><div class="line">113</div><div class="line">114</div><div class="line">115</div><div class="line">116</div><div class="line">117</div><div class="line">118</div><div class="line">119</div><div class="line">120</div><div class="line">121</div></pre></td><td class="code"><pre><div class="line">/**</div><div class="line">*  Description :    算法设计课，课后作业，利用C++ STL表示邻接链表，找出简单路径</div><div class="line">*  Date        :    2015.03.11</div><div class="line">*  Author      :    knarfeh</div><div class="line">*  Version     :    0.01</div><div class="line">*/</div><div class="line">#define NNUM 4</div><div class="line">#include &lt;iostream&gt;</div><div class="line">#include &lt;string&gt;</div><div class="line">#include &lt;list&gt;</div><div class="line">#include &lt;array&gt;</div><div class="line"></div><div class="line">using namespace std;</div><div class="line"></div><div class="line">class UnionDataList&#123;</div><div class="line">public:</div><div class="line">	UnionDataList(char data, int weight) :nodeChar(data), weightInt(weight) &#123;&#125;</div><div class="line">	char getNode() &#123;</div><div class="line">		return nodeChar;</div><div class="line">	&#125;;</div><div class="line">	int getWeight() &#123;</div><div class="line">		return weightInt;</div><div class="line">	&#125;;</div><div class="line">private:</div><div class="line">	char nodeChar;</div><div class="line">	int weightInt;</div><div class="line">&#125;;</div><div class="line"></div><div class="line">list&lt;UnionDataList&gt; adjaList;</div><div class="line">list&lt;UnionDataList&gt;::iterator iterForGetIndex, iterForPrint;</div><div class="line">array&lt;list&lt;UnionDataList&gt;, NNUM&gt; adjaArray;</div><div class="line">UnionDataList tempData(&apos;0&apos;, 0);</div><div class="line">int visited[NNUM] = &#123; 0 &#125;;</div><div class="line"></div><div class="line">// 根据结点值返回邻接数组的下标值，如果没有返回-1</div><div class="line">int getIndexByNode(array&lt;list&lt;UnionDataList&gt;, NNUM&gt; a, char c) &#123;</div><div class="line">	for (unsigned int i = 0; i &lt; a.max_size(); i++) &#123;</div><div class="line">		iterForGetIndex = a[i].begin();</div><div class="line">		if ((*iterForGetIndex).getNode() == c) &#123;</div><div class="line">			return i;</div><div class="line">		&#125;</div><div class="line">	&#125;</div><div class="line">	return -1;</div><div class="line">&#125;</div><div class="line"></div><div class="line">// 输出邻接链表</div><div class="line">void dispAdjaList(array&lt;list&lt;UnionDataList&gt;, NNUM&gt; a) &#123;</div><div class="line">	UnionDataList tempDataForDisp(&apos;0&apos;, 0);</div><div class="line">	// cout &lt;&lt; a.max_size() &lt;&lt; endl;</div><div class="line">	for (unsigned int i = 0; i &lt; a.max_size(); i++) &#123;</div><div class="line">		for (iterForPrint = a[i].begin(); iterForPrint != a[i].end(); iterForPrint++) &#123;</div><div class="line">			if (iterForPrint == a[i].begin()) &#123;    // 邻接链表的第一个值</div><div class="line">				cout &lt;&lt; &quot;[&quot; &lt;&lt; i &lt;&lt; &quot;,&quot; &lt;&lt; (*iterForPrint).getNode() &lt;&lt; &quot;]&quot;;</div><div class="line">			&#125;</div><div class="line">			else &#123;</div><div class="line">				cout &lt;&lt; &quot;(&quot; &lt;&lt; (*iterForPrint).getNode() &lt;&lt; &quot;,&quot; &lt;&lt; (*iterForPrint).getWeight() &lt;&lt; &quot;)&quot;;</div><div class="line">			&#125;</div><div class="line">			cout &lt;&lt; &quot;-&gt;&quot;;</div><div class="line">		&#125;</div><div class="line">		cout &lt;&lt; &quot;^&quot; &lt;&lt; endl;</div><div class="line">	&#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line">// 输出nodeA到nodeB的所有简单路径</div><div class="line">void printPathAll(array&lt;list&lt;UnionDataList&gt;, NNUM&gt; a, char nodeA, char nodeB, char path[], int pathNum)&#123;</div><div class="line">	int nowIndex = getIndexByNode(a, nodeA);</div><div class="line">	visited[nowIndex] = 1;</div><div class="line">	path[pathNum++] = nodeA;</div><div class="line">	if (nodeA == nodeB) &#123;</div><div class="line">		int i;</div><div class="line">		for (i = 0; i &lt; pathNum - 1; i++) &#123;</div><div class="line">			cout &lt;&lt; path[i] &lt;&lt; &quot;-&gt;&quot;;</div><div class="line">		&#125;</div><div class="line">		cout &lt;&lt; path[i] &lt;&lt; endl;</div><div class="line">	&#125;</div><div class="line"></div><div class="line">	list&lt;UnionDataList&gt;::iterator iterForPrintAll;</div><div class="line">	for (iterForPrintAll = a[nowIndex].begin(); iterForPrintAll != a[nowIndex].end(); iterForPrintAll++) &#123;</div><div class="line">		if (0 == visited[getIndexByNode(a, (*iterForPrintAll).getNode())]) &#123;    // 没有访问过</div><div class="line">			printPathAll(a, (*iterForPrintAll).getNode(), nodeB, path, pathNum);</div><div class="line">		&#125;</div><div class="line">	&#125;</div><div class="line">	visited[nowIndex] = 0;</div><div class="line">	pathNum--;</div><div class="line">&#125;</div><div class="line"></div><div class="line">int main(int argc, char *argv[])&#123;</div><div class="line">	//list&lt;Mydata&gt; mylist;</div><div class="line"></div><div class="line">	UnionDataList nowData(&apos;a&apos;, 0);</div><div class="line">	// mylist.push_back(&#123; &apos;c&apos;, 1 &#125;);</div><div class="line">	//nowData = mylist.front();</div><div class="line">	//cout &lt;&lt; nowData.getNode() &lt;&lt; endl;</div><div class="line">	//cout &lt;&lt; nowData.getWeight() &lt;&lt; endl;</div><div class="line"></div><div class="line">	adjaArray[0].push_back(&#123; &apos;a&apos;, 0 &#125;);</div><div class="line">	adjaArray[0].push_back(&#123; &apos;b&apos;, 5 &#125;);</div><div class="line">	adjaArray[0].push_back(&#123; &apos;c&apos;, 1 &#125;);</div><div class="line"></div><div class="line">	adjaArray[1].push_back(&#123; &apos;b&apos;, 0 &#125;);</div><div class="line">	adjaArray[1].push_back(&#123; &apos;a&apos;, 5 &#125;);</div><div class="line">	adjaArray[1].push_back(&#123; &apos;c&apos;, 7 &#125;);</div><div class="line">	adjaArray[1].push_back(&#123; &apos;d&apos;, 4 &#125;);</div><div class="line"></div><div class="line">	adjaArray[2].push_back(&#123; &apos;c&apos;, 0 &#125;);</div><div class="line">	adjaArray[2].push_back(&#123; &apos;a&apos;, 1 &#125;);</div><div class="line">	adjaArray[2].push_back(&#123; &apos;b&apos;, 7 &#125;);</div><div class="line">	adjaArray[2].push_back(&#123; &apos;d&apos;, 2 &#125;);</div><div class="line"></div><div class="line">	adjaArray[3].push_back(&#123; &apos;d&apos;, 0 &#125;);</div><div class="line">	adjaArray[3].push_back(&#123; &apos;b&apos;, 4 &#125;);</div><div class="line">	adjaArray[3].push_back(&#123; &apos;c&apos;, 2 &#125;);</div><div class="line">	cout &lt;&lt; &quot;邻接链表为：&quot; &lt;&lt; endl;</div><div class="line">	dispAdjaList(adjaArray);</div><div class="line">	cout &lt;&lt; endl;</div><div class="line">	// cout &lt;&lt; getIndexByNode(adjaArray, &apos;c&apos;);</div><div class="line">	char path2Print[NNUM];</div><div class="line">	int pathNum = 0;</div><div class="line">	cout &lt;&lt; &quot;所有的简单路径：&quot; &lt;&lt; endl;</div><div class="line">	printPathAll(adjaArray, &apos;a&apos;, &apos;d&apos;, path2Print, pathNum);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br></pre></td><td class="code"><pre><span class="line">/**</span><br><span class="line">*  Description :    算法设计课，课后作业，利用C++ STL表示邻接链表，找出简单路径</span><br><span class="line">*  Date        :    2015.03.11</span><br><span class="line">*  Author      :    knarfeh</span><br><span class="line">*  Version     :    0.01</span><br><span class="line">*/</span><br><span class="line">#define NNUM 4</span><br><span class="line">#include &lt;iostream&gt;</span><br><span class="line">#include &lt;string&gt;</span><br><span class="line">#include &lt;list&gt;</span><br><span class="line">#include &lt;array&gt;</span><br><span class="line"></span><br><span class="line">using namespace std;</span><br><span class="line"></span><br><span class="line">class UnionDataList&#123;</span><br><span class="line">public:</span><br><span class="line">	UnionDataList(char data, int weight) :nodeChar(data), weightInt(weight) &#123;&#125;</span><br><span class="line">	char getNode() &#123;</span><br><span class="line">		return nodeChar;</span><br><span class="line">	&#125;;</span><br><span class="line">	int getWeight() &#123;</span><br><span class="line">		return weightInt;</span><br><span class="line">	&#125;;</span><br><span class="line">private:</span><br><span class="line">	char nodeChar;</span><br><span class="line">	int weightInt;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">list&lt;UnionDataList&gt; adjaList;</span><br><span class="line">list&lt;UnionDataList&gt;::iterator iterForGetIndex, iterForPrint;</span><br><span class="line">array&lt;list&lt;UnionDataList&gt;, NNUM&gt; adjaArray;</span><br><span class="line">UnionDataList tempData(&apos;0&apos;, 0);</span><br><span class="line">int visited[NNUM] = &#123; 0 &#125;;</span><br><span class="line"></span><br><span class="line">// 根据结点值返回邻接数组的下标值，如果没有返回-1</span><br><span class="line">int getIndexByNode(array&lt;list&lt;UnionDataList&gt;, NNUM&gt; a, char c) &#123;</span><br><span class="line">	for (unsigned int i = 0; i &lt; a.max_size(); i++) &#123;</span><br><span class="line">		iterForGetIndex = a[i].begin();</span><br><span class="line">		if ((*iterForGetIndex).getNode() == c) &#123;</span><br><span class="line">			return i;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	return -1;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">// 输出邻接链表</span><br><span class="line">void dispAdjaList(array&lt;list&lt;UnionDataList&gt;, NNUM&gt; a) &#123;</span><br><span class="line">	UnionDataList tempDataForDisp(&apos;0&apos;, 0);</span><br><span class="line">	// cout &lt;&lt; a.max_size() &lt;&lt; endl;</span><br><span class="line">	for (unsigned int i = 0; i &lt; a.max_size(); i++) &#123;</span><br><span class="line">		for (iterForPrint = a[i].begin(); iterForPrint != a[i].end(); iterForPrint++) &#123;</span><br><span class="line">			if (iterForPrint == a[i].begin()) &#123;    // 邻接链表的第一个值</span><br><span class="line">				cout &lt;&lt; &quot;[&quot; &lt;&lt; i &lt;&lt; &quot;,&quot; &lt;&lt; (*iterForPrint).getNode() &lt;&lt; &quot;]&quot;;</span><br><span class="line">			&#125;</span><br><span class="line">			else &#123;</span><br><span class="line">				cout &lt;&lt; &quot;(&quot; &lt;&lt; (*iterForPrint).getNode() &lt;&lt; &quot;,&quot; &lt;&lt; (*iterForPrint).getWeight() &lt;&lt; &quot;)&quot;;</span><br><span class="line">			&#125;</span><br><span class="line">			cout &lt;&lt; &quot;-&gt;&quot;;</span><br><span class="line">		&#125;</span><br><span class="line">		cout &lt;&lt; &quot;^&quot; &lt;&lt; endl;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">// 输出nodeA到nodeB的所有简单路径</span><br><span class="line">void printPathAll(array&lt;list&lt;UnionDataList&gt;, NNUM&gt; a, char nodeA, char nodeB, char path[], int pathNum)&#123;</span><br><span class="line">	int nowIndex = getIndexByNode(a, nodeA);</span><br><span class="line">	visited[nowIndex] = 1;</span><br><span class="line">	path[pathNum++] = nodeA;</span><br><span class="line">	if (nodeA == nodeB) &#123;</span><br><span class="line">		int i;</span><br><span class="line">		for (i = 0; i &lt; pathNum - 1; i++) &#123;</span><br><span class="line">			cout &lt;&lt; path[i] &lt;&lt; &quot;-&gt;&quot;;</span><br><span class="line">		&#125;</span><br><span class="line">		cout &lt;&lt; path[i] &lt;&lt; endl;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	list&lt;UnionDataList&gt;::iterator iterForPrintAll;</span><br><span class="line">	for (iterForPrintAll = a[nowIndex].begin(); iterForPrintAll != a[nowIndex].end(); iterForPrintAll++) &#123;</span><br><span class="line">		if (0 == visited[getIndexByNode(a, (*iterForPrintAll).getNode())]) &#123;    // 没有访问过</span><br><span class="line">			printPathAll(a, (*iterForPrintAll).getNode(), nodeB, path, pathNum);</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	visited[nowIndex] = 0;</span><br><span class="line">	pathNum--;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">int main(int argc, char *argv[])&#123;</span><br><span class="line">	//list&lt;Mydata&gt; mylist;</span><br><span class="line"></span><br><span class="line">	UnionDataList nowData(&apos;a&apos;, 0);</span><br><span class="line">	// mylist.push_back(&#123; &apos;c&apos;, 1 &#125;);</span><br><span class="line">	//nowData = mylist.front();</span><br><span class="line">	//cout &lt;&lt; nowData.getNode() &lt;&lt; endl;</span><br><span class="line">	//cout &lt;&lt; nowData.getWeight() &lt;&lt; endl;</span><br><span class="line"></span><br><span class="line">	adjaArray[0].push_back(&#123; &apos;a&apos;, 0 &#125;);</span><br><span class="line">	adjaArray[0].push_back(&#123; &apos;b&apos;, 5 &#125;);</span><br><span class="line">	adjaArray[0].push_back(&#123; &apos;c&apos;, 1 &#125;);</span><br><span class="line"></span><br><span class="line">	adjaArray[1].push_back(&#123; &apos;b&apos;, 0 &#125;);</span><br><span class="line">	adjaArray[1].push_back(&#123; &apos;a&apos;, 5 &#125;);</span><br><span class="line">	adjaArray[1].push_back(&#123; &apos;c&apos;, 7 &#125;);</span><br><span class="line">	adjaArray[1].push_back(&#123; &apos;d&apos;, 4 &#125;);</span><br><span class="line"></span><br><span class="line">	adjaArray[2].push_back(&#123; &apos;c&apos;, 0 &#125;);</span><br><span class="line">	adjaArray[2].push_back(&#123; &apos;a&apos;, 1 &#125;);</span><br><span class="line">	adjaArray[2].push_back(&#123; &apos;b&apos;, 7 &#125;);</span><br><span class="line">	adjaArray[2].push_back(&#123; &apos;d&apos;, 2 &#125;);</span><br><span class="line"></span><br><span class="line">	adjaArray[3].push_back(&#123; &apos;d&apos;, 0 &#125;);</span><br><span class="line">	adjaArray[3].push_back(&#123; &apos;b&apos;, 4 &#125;);</span><br><span class="line">	adjaArray[3].push_back(&#123; &apos;c&apos;, 2 &#125;);</span><br><span class="line">	cout &lt;&lt; &quot;邻接链表为：&quot; &lt;&lt; endl;</span><br><span class="line">	dispAdjaList(adjaArray);</span><br><span class="line">	cout &lt;&lt; endl;</span><br><span class="line">	// cout &lt;&lt; getIndexByNode(adjaArray, &apos;c&apos;);</span><br><span class="line">	char path2Print[NNUM];</span><br><span class="line">	int pathNum = 0;</span><br><span class="line">	cout &lt;&lt; &quot;所有的简单路径：&quot; &lt;&lt; endl;</span><br><span class="line">	printPathAll(adjaArray, &apos;a&apos;, &apos;d&apos;, path2Print, pathNum);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>结果：<br><img src="https://knarfeh-1254074221.cos.na-siliconvalley.myqcloud.com/2015-3-19-stl-adj/result.png"></p>
 
       
@@ -281,9 +281,9 @@
       
         <div class="post-tags">
           
-            <a href="/tags/algorithms/" rel="tag">#algorithms</a>
-          
             <a href="/tags/data-structure/" rel="tag">#data-structure</a>
+          
+            <a href="/tags/algorithms/" rel="tag">#algorithms</a>
           
             <a href="/tags/C/" rel="tag">#C++</a>
           
@@ -302,8 +302,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2015/03/19/Algorithms/算法设计与分析基础-chap3-蛮力法/" rel="prev" title="算法设计与分析基础 chap3 蛮力法">
-                算法设计与分析基础 chap3 蛮力法 <i class="fa fa-chevron-right"></i>
+              <a href="/2015/03/19/Algorithms/算法设计与分析基础-chap1-introduction/" rel="prev" title="算法设计与分析基础 chap1 introduction">
+                算法设计与分析基础 chap1 introduction <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -359,7 +359,7 @@
 
       
         <ul class="sidebar-nav motion-element">
-          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
             文章目录
           </li>
           <li class="sidebar-nav-overview" data-target="site-overview">
@@ -370,16 +370,14 @@
 
       <section class="site-overview sidebar-panel ">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
-          <img class="site-author-image" itemprop="image"
-               src="https://avatars1.githubusercontent.com/u/6964284?v=3&s=460"
-               alt="Frank" />
+          <img class="site-author-image" itemprop="image" src="https://avatars1.githubusercontent.com/u/6964284?v=3&s=460" alt="Frank">
           <p class="site-author-name" itemprop="name">Frank</p>
           <p class="site-description motion-element" itemprop="description"></p>
         </div>
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">365</span>
+              <span class="site-state-item-count">390</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -389,7 +387,7 @@
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">135</span>
+                <span class="site-state-item-count">207</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
@@ -425,7 +423,7 @@
         
           <div class="cc-license motion-element" itemprop="license">
             <a href="http://creativecommons.org/licenses/by-sa/4.0" class="cc-opacity" target="_blank">
-              <img src="/images/cc-by-sa.svg" alt="Creative Commons" />
+              <img src="/images/cc-by-sa.svg" alt="Creative Commons">
             </a>
           </div>
         
@@ -465,10 +463,10 @@
 
     <footer id="footer" class="footer">
       <div class="footer-inner">
-        <div class="copyright" >
+        <div class="copyright">
   
   &copy;  2015 - 
-  <span itemprop="copyrightYear">2019</span>
+  <span itemprop="copyrightYear">2021</span>
   <span class="with-love">
     <i class="fa fa-heart"></i>
   </span>

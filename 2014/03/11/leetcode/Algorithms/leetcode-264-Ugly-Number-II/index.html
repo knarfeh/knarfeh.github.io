@@ -6,19 +6,15 @@
 
 
 <html class="theme-next muse use-motion">
-<head>
-  <meta charset="UTF-8"/>
-<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
 
 
-<meta http-equiv="Cache-Control" content="no-transform" />
-<meta http-equiv="Cache-Control" content="no-siteapp" />
-
-
-
-
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
 
 
 
@@ -27,7 +23,11 @@
 
 
 
-  <link href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css"/>
+
+
+
+
+  <link href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
 
 
 
@@ -36,21 +36,21 @@
 
 
 
-<link href="/vendors/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+<link href="/vendors/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css">
 
-<link href="/css/main.css?v=0.5.0" rel="stylesheet" type="text/css" />
-
-
-  <meta name="keywords" content="algorithms,leetcode,Dynamic-Programming,Math,Heap," />
+<link href="/css/main.css?v=0.5.0" rel="stylesheet" type="text/css">
 
 
+  <meta name="keywords" content="algorithms,leetcode,Dynamic-Programming,Math,Heap,">
 
 
 
 
 
 
-  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=0.5.0" />
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=0.5.0">
 
 
 
@@ -122,7 +122,7 @@
   
 
   <div class="custom-logo-site-title">
-    <a href="/"  class="brand" rel="start">
+    <a href="/" class="brand" rel="start">
       <span class="logo-line-before"><i></i></span>
       <span class="site-title">knarfeh's logbook</span>
       <span class="logo-line-after"><i></i></span>
@@ -149,7 +149,7 @@
         <li class="menu-item menu-item-home">
           <a href="/" rel="section">
             
-              <i class="menu-item-icon fa fa-home fa-fw"></i> <br />
+              <i class="menu-item-icon fa fa-home fa-fw"></i> <br>
             
             首页
           </a>
@@ -159,7 +159,7 @@
         <li class="menu-item menu-item-archives">
           <a href="/archives" rel="section">
             
-              <i class="menu-item-icon fa fa-archive fa-fw"></i> <br />
+              <i class="menu-item-icon fa fa-archive fa-fw"></i> <br>
             
             归档
           </a>
@@ -169,7 +169,7 @@
         <li class="menu-item menu-item-tags">
           <a href="/tags" rel="section">
             
-              <i class="menu-item-icon fa fa-tags fa-fw"></i> <br />
+              <i class="menu-item-icon fa fa-tags fa-fw"></i> <br>
             
             标签
           </a>
@@ -263,7 +263,7 @@
 <p>Write a program to find the <code>n</code>-th ugly number.</p>
 <p>Ugly numbers are <strong>positive numbers</strong> whose prime factors only include <code>2, 3, 5</code>. </p>
 <p><strong>Example:</strong></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">Input: n = 10</div><div class="line">Output: 12</div><div class="line">Explanation: 1, 2, 3, 4, 5, 6, 8, 9, 10, 12 is the sequence of the first 10 ugly numbers.</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Input: n = 10</span><br><span class="line">Output: 12</span><br><span class="line">Explanation: 1, 2, 3, 4, 5, 6, 8, 9, 10, 12 is the sequence of the first 10 ugly numbers.</span><br></pre></td></tr></table></figure>
 <p><strong>Note:</strong>  </p>
 <ol>
 <li><code>1</code> is typically treated as an ugly number.</li>
@@ -271,21 +271,21 @@
 </ol>
 <a id="more"></a>
 <h3 id="分析"><a href="#分析" class="headerlink" title="分析"></a>分析</h3><hr>
-<p>ugle number 的序列中的 ugle number 总是可以由之前较小的一个 ugle number 乘以 2 或 3 或 5 得到。在题目的提示中也有：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">Assume you have Uk, the kth ugly number. Then Uk+1 must be Min(L1 * 2, L2 * 3, L3 * 5).</div></pre></td></tr></table></figure></p>
+<p>ugle number 的序列中的 ugle number 总是可以由之前较小的一个 ugle number 乘以 2 或 3 或 5 得到。在题目的提示中也有：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Assume you have Uk, the kth ugly number. Then Uk+1 must be Min(L1 * 2, L2 * 3, L3 * 5).</span><br></pre></td></tr></table></figure></p>
 <p>那么原序列可以分成三个子序列：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">2=1✘2 4=2✘2 6=3✘2 8=4✘2 10=5✘2...</div><div class="line">3=1✘3 6=2✘3 9=3✘3 12=4✘3 15=5✘3...</div><div class="line">5=1✘5 10=2✘5 15=3✘5 20=4✘5 25=5✘5...</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">2=1✘2 4=2✘2 6=3✘2 8=4✘2 10=5✘2...</span><br><span class="line">3=1✘3 6=2✘3 9=3✘3 12=4✘3 15=5✘3...</span><br><span class="line">5=1✘5 10=2✘5 15=3✘5 20=4✘5 25=5✘5...</span><br></pre></td></tr></table></figure>
 <p>用三个变量维护这三个子序列的索引，每次根据三个索引值得到三个子序列中的最小的那个，当子序列的某个值加入到结果的序列中后，该子序列的索引值加一。</p>
 <h3 id="解决方案1-Java"><a href="#解决方案1-Java" class="headerlink" title="解决方案1(Java)"></a>解决方案1(Java)</h3><hr>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">nthUglyNumber</span><span class="params">(<span class="keyword">int</span> n)</span> </span>&#123;</div><div class="line">        <span class="keyword">int</span> multiply2 = <span class="number">0</span>, multiply3 = <span class="number">0</span>, multiply5 = <span class="number">0</span>;</div><div class="line">        List&lt;Integer&gt; result = <span class="keyword">new</span> ArrayList&lt;Integer&gt;();</div><div class="line">        </div><div class="line">        result.add(<span class="number">1</span>);</div><div class="line">        <span class="keyword">while</span>(result.size() &lt; n) &#123;</div><div class="line">            <span class="keyword">int</span> newItem = Math.min(result.get(multiply2)*<span class="number">2</span>, Math.min(result.get(multiply3)*<span class="number">3</span>, result.get(multiply5)*<span class="number">5</span>));</div><div class="line">            result.add(newItem);</div><div class="line">            <span class="keyword">if</span> (result.get(multiply2) * <span class="number">2</span> == newItem) &#123;</div><div class="line">                multiply2++;</div><div class="line">            &#125; </div><div class="line">            <span class="keyword">if</span> (result.get(multiply3) * <span class="number">3</span> == newItem) &#123;</div><div class="line">                multiply3++;</div><div class="line">            &#125;</div><div class="line">            <span class="keyword">if</span> (result.get(multiply5) * <span class="number">5</span> == newItem) &#123;</div><div class="line">                multiply5++;</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">return</span> result.get(result.size()-<span class="number">1</span>);</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">nthUglyNumber</span><span class="params">(<span class="keyword">int</span> n)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> multiply2 = <span class="number">0</span>, multiply3 = <span class="number">0</span>, multiply5 = <span class="number">0</span>;</span><br><span class="line">        List&lt;Integer&gt; result = <span class="keyword">new</span> ArrayList&lt;Integer&gt;();</span><br><span class="line">        </span><br><span class="line">        result.add(<span class="number">1</span>);</span><br><span class="line">        <span class="keyword">while</span>(result.size() &lt; n) &#123;</span><br><span class="line">            <span class="keyword">int</span> newItem = Math.min(result.get(multiply2)*<span class="number">2</span>, Math.min(result.get(multiply3)*<span class="number">3</span>, result.get(multiply5)*<span class="number">5</span>));</span><br><span class="line">            result.add(newItem);</span><br><span class="line">            <span class="keyword">if</span> (result.get(multiply2) * <span class="number">2</span> == newItem) &#123;</span><br><span class="line">                multiply2++;</span><br><span class="line">            &#125; </span><br><span class="line">            <span class="keyword">if</span> (result.get(multiply3) * <span class="number">3</span> == newItem) &#123;</span><br><span class="line">                multiply3++;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">if</span> (result.get(multiply5) * <span class="number">5</span> == newItem) &#123;</span><br><span class="line">                multiply5++;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> result.get(result.size()-<span class="number">1</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <h3 id="相关问题"><a href="#相关问题" class="headerlink" title="相关问题"></a>相关问题</h3><hr>
 <ul>
-<li><a href="https://leetcode.com/problems/count-primes/" target="_blank" rel="external">(E) Count Primes</a>   </li>
-<li><a href="https://leetcode.com/problems/perfect-squares/" target="_blank" rel="external">(M) Perfect Squares</a>   </li>
-<li><a href="https://leetcode.com/problems/super-ugly-number/" target="_blank" rel="external">(M) Super Ugly Number</a>   </li>
-<li><a href="https://leetcode.com/problems/merge-k-sorted-lists/" target="_blank" rel="external">(H) Merge k Sorted Lists</a>   </li>
-<li><a href="https://leetcode.com/problems/ugly-number/" target="_blank" rel="external">(E) Ugly Number</a>   </li>
+<li><a href="https://leetcode.com/problems/count-primes/" target="_blank" rel="noopener">(E) Count Primes</a>   </li>
+<li><a href="https://leetcode.com/problems/perfect-squares/" target="_blank" rel="noopener">(M) Perfect Squares</a>   </li>
+<li><a href="https://leetcode.com/problems/super-ugly-number/" target="_blank" rel="noopener">(M) Super Ugly Number</a>   </li>
+<li><a href="https://leetcode.com/problems/merge-k-sorted-lists/" target="_blank" rel="noopener">(H) Merge k Sorted Lists</a>   </li>
+<li><a href="https://leetcode.com/problems/ugly-number/" target="_blank" rel="noopener">(E) Ugly Number</a>   </li>
 </ul>
-<h3 id="题目来源"><a href="#题目来源" class="headerlink" title="题目来源"></a><a href="https://leetcode.com/problems/ugly-number-ii/" target="_blank" rel="external">题目来源</a></h3>
+<h3 id="题目来源"><a href="#题目来源" class="headerlink" title="题目来源"></a><a href="https://leetcode.com/problems/ugly-number-ii/" target="_blank" rel="noopener">题目来源</a></h3>
       
     </div>
 
@@ -316,16 +316,16 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2014/03/11/leetcode/Algorithms/leetcode-28-Implement-strStr()/" rel="next" title="leetcode-28-Implement-strStr()">
-                <i class="fa fa-chevron-left"></i> leetcode-28-Implement-strStr()
+              <a href="/2014/03/11/leetcode/Algorithms/leetcode-278-First-Bad-Version/" rel="next" title="leetcode-278-First-Bad-Version">
+                <i class="fa fa-chevron-left"></i> leetcode-278-First-Bad-Version
               </a>
             
           </div>
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2014/03/11/leetcode/Algorithms/leetcode-274-H-Index/" rel="prev" title="leetcode-274-H-Index">
-                leetcode-274-H-Index <i class="fa fa-chevron-right"></i>
+              <a href="/2014/03/11/leetcode/Algorithms/leetcode-258-Add-Digits/" rel="prev" title="leetcode-258-Add-Digits">
+                leetcode-258-Add-Digits <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -381,7 +381,7 @@
 
       
         <ul class="sidebar-nav motion-element">
-          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
             文章目录
           </li>
           <li class="sidebar-nav-overview" data-target="site-overview">
@@ -392,16 +392,14 @@
 
       <section class="site-overview sidebar-panel ">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
-          <img class="site-author-image" itemprop="image"
-               src="https://avatars1.githubusercontent.com/u/6964284?v=3&s=460"
-               alt="Frank" />
+          <img class="site-author-image" itemprop="image" src="https://avatars1.githubusercontent.com/u/6964284?v=3&s=460" alt="Frank">
           <p class="site-author-name" itemprop="name">Frank</p>
           <p class="site-description motion-element" itemprop="description"></p>
         </div>
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">365</span>
+              <span class="site-state-item-count">390</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -411,7 +409,7 @@
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">135</span>
+                <span class="site-state-item-count">207</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
@@ -447,7 +445,7 @@
         
           <div class="cc-license motion-element" itemprop="license">
             <a href="http://creativecommons.org/licenses/by-sa/4.0" class="cc-opacity" target="_blank">
-              <img src="/images/cc-by-sa.svg" alt="Creative Commons" />
+              <img src="/images/cc-by-sa.svg" alt="Creative Commons">
             </a>
           </div>
         
@@ -487,10 +485,10 @@
 
     <footer id="footer" class="footer">
       <div class="footer-inner">
-        <div class="copyright" >
+        <div class="copyright">
   
   &copy;  2015 - 
-  <span itemprop="copyrightYear">2019</span>
+  <span itemprop="copyrightYear">2021</span>
   <span class="with-love">
     <i class="fa fa-heart"></i>
   </span>

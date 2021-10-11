@@ -1,0 +1,2536 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion">
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+  <link href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+  <link href="//fonts.googleapis.com/css?family=Lato:300,400,700,400italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+
+
+
+<link href="/vendors/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=0.5.0" rel="stylesheet" type="text/css">
+
+
+  <meta name="keywords" content="k8s,Golang,">
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=0.5.0">
+
+
+
+
+
+
+<meta name="description" content="Copenhagen ‘18: KubeCon + CloudNativeCon">
+<meta name="keywords" content="k8s,Golang">
+<meta property="og:type" content="article">
+<meta property="og:title" content="KubeCon 视频 2018-Copenhagen">
+<meta property="og:url" content="http://knarfeh.github.io/2018/07/28/KubeCon 视频 2018-Copenhagen/index.html">
+<meta property="og:site_name" content="knarfeh&#39;s logbook">
+<meta property="og:description" content="Copenhagen ‘18: KubeCon + CloudNativeCon">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2021-07-06T02:30:42.791Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="KubeCon 视频 2018-Copenhagen">
+<meta name="twitter:description" content="Copenhagen ‘18: KubeCon + CloudNativeCon">
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    scheme: 'Muse',
+    sidebar: {"display":"hide"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: 0,
+      author: '博主'
+    }
+  };
+</script>
+
+  <title> KubeCon 视频 2018-Copenhagen | knarfeh's logbook </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+            (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+          m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-75002639-1', 'auto');
+  ga('send', 'pageview');
+</script>
+
+
+
+
+
+
+
+
+
+  
+  
+
+  <div class="container one-collumn  page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">knarfeh's logbook</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle"></p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-home fa-fw"></i> <br>
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-archive fa-fw"></i> <br>
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-tags fa-fw"></i> <br>
+            
+            标签
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                KubeCon 视频 2018-Copenhagen
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2018-07-28T00:15:06+08:00" content="2018-07-28">
+              2018-07-28
+            </time>
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2018/07/28/KubeCon 视频 2018-Copenhagen/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2018/07/28/KubeCon 视频 2018-Copenhagen/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h2 id="Copenhagen-‘18-KubeCon-CloudNativeCon"><a href="#Copenhagen-‘18-KubeCon-CloudNativeCon" class="headerlink" title="Copenhagen ‘18: KubeCon + CloudNativeCon"></a><a href="https://www.youtube.com/playlist?list=PLj6h78yzYM2N8GdbjmhVU65KYm_68qBmo" target="_blank" rel="noopener">Copenhagen ‘18: KubeCon + CloudNativeCon</a></h2><a id="more"></a>
+<table>
+<thead>
+<tr>
+<th>Topic</th>
+<th style="text-align:center">YouTube</th>
+<th style="text-align:center">Tencent</th>
+<th style="text-align:center">🌕 ⚫ 🔴 🔵 ⚪</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>主题演讲：生产环境Kubernetes停运事件的剖析<br>Keynote: Anatomy of a Production Kubernetes Outage - Oliver Beattie, Head of Engineering, Monzo Bank</td>
+<td style="text-align:center"><a href="https://www.youtube.com/watch?v=OUYTNywPk-s" target="_blank" rel="noopener">Video</a></td>
+<td style="text-align:center"><a href="https://v.qq.com/x/page/f0660sas15s.html" target="_blank" rel="noopener">视频</a></td>
+<td style="text-align:center">🔴</td>
+</tr>
+<tr>
+<td>Practical and Useful Latency Analysis using Istio and OpenCensus - Varun Talwar-ME-EhOKqFOY</td>
+<td style="text-align:center"><a href="#">Video</a></td>
+<td style="text-align:center"><a href>视频</a></td>
+<td style="text-align:center">🔴 🔵 ⚪</td>
+</tr>
+<tr>
+<td>云原生景观简介（任何技术水平）<br>Cloud Native Landscape Intro – Dan Kohn, Cloud Native Computing Foundation (Any Skill Level)</td>
+<td style="text-align:center"><a href="https://www.youtube.com/watch?v=_CFgSksTT54" target="_blank" rel="noopener">Video</a></td>
+<td style="text-align:center"><a href="https://v.qq.com/x/page/r0660hnt8eg.html" target="_blank" rel="noopener">视频</a></td>
+<td style="text-align:center">⚪</td>
+</tr>
+<tr>
+<td>OpenStack的SIG介绍（任何技术水平）<br>OpenStack SIG Intro – Chris Hoge, OpenStack Foundation, &amp; David Lyle, Intel (Any Skill Level)</td>
+<td style="text-align:center"><a href="https://www.youtube.com/watch?v=_A7G5cpU4Xw" target="_blank" rel="noopener">Video</a></td>
+<td style="text-align:center"><a href="https://v.qq.com/x/page/d0660jlcyrz.html" target="_blank" rel="noopener">视频</a></td>
+<td style="text-align:center">🔴</td>
+</tr>
+<tr>
+<td>Kubernetes政策工作组简介（任何技术水平）<br>Kubernetes Policy WG Intro – Zhipeng Huang, Huawei (Any Skill Level)</td>
+<td style="text-align:center"><a href="https://www.youtube.com/watch?v=YprD0zoWXX0" target="_blank" rel="noopener">Video</a></td>
+<td style="text-align:center"><a href="https://v.qq.com/x/page/z0660mj20xg.html" target="_blank" rel="noopener">视频</a></td>
+<td style="text-align:center">🔴</td>
+</tr>
+<tr>
+<td>使用eBPF做低开销跟踪来观测Kubernetes应用和服务<br>Low-Overhead Tracing Using eBPF for Observability into Kubernetes Apps and Services - Gaurav Gupta</td>
+<td style="text-align:center"><a href="https://www.youtube.com/watch?v=ug3lYZdN0Bk" target="_blank" rel="noopener">Video</a></td>
+<td style="text-align:center"><a href="https://v.qq.com/x/page/r0660g3iw71.html" target="_blank" rel="noopener">视频</a></td>
+<td style="text-align:center">🔴</td>
+</tr>
+<tr>
+<td>使用普罗米修斯可扩展的监控Apache Spark<br>Scalable Monitoring Using Prometheus with Apache Spark - Diane Feddema &amp; Zak Hassan, Red Hat Inc</td>
+<td style="text-align:center"><a href="https://www.youtube.com/watch?v=oNBpZFhL94s" target="_blank" rel="noopener">Video</a></td>
+<td style="text-align:center"><a href="https://v.qq.com/x/page/x0660red54c.html" target="_blank" rel="noopener">视频</a></td>
+<td style="text-align:center">⚪</td>
+</tr>
+<tr>
+<td>如何从几乎任何导出普罗米修斯指标<br>How to Export Prometheus Metrics from Just About Anything - Matt Layher, DigitalOcean</td>
+<td style="text-align:center"><a href="https://www.youtube.com/watch?v=Zk09Mbu0YQk" target="_blank" rel="noopener">Video</a></td>
+<td style="text-align:center"><a href="https://v.qq.com/x/page/p06603xoy60.html" target="_blank" rel="noopener">视频</a></td>
+<td style="text-align:center">🌕 ⚪</td>
+</tr>
+<tr>
+<td>给开发的普罗米修斯（初级技术水平）<br>Prometheus for Devs - Hubert Ströbitzer, Freelancer (Beginner Skill Level)</td>
+<td style="text-align:center"><a href="https://www.youtube.com/watch?v=ZHCSmYvA_sg" target="_blank" rel="noopener">Video</a></td>
+<td style="text-align:center"><a href="https://v.qq.com/x/page/w0660ruu3f5.html" target="_blank" rel="noopener">视频</a></td>
+<td style="text-align:center">⚪</td>
+</tr>
+<tr>
+<td>使用Istio和OpenCenus作实际和有用的延时分析<br>Practical and Useful Latency Analysis using Istio and OpenCenus - Varun Talwar &amp; Morgan McLean</td>
+<td style="text-align:center"><a href="https://www.youtube.com/watch?v=Nxqd7y78h7Q" target="_blank" rel="noopener">Video</a></td>
+<td style="text-align:center"><a href="https://v.qq.com/x/page/y0660dt4i89.html" target="_blank" rel="noopener">视频</a></td>
+<td style="text-align:center">🔴</td>
+</tr>
+<tr>
+<td>主题演讲：软件的社区<br>Keynote: Software’s Community - Dave Zolotusky, Software Engineer, Spotify</td>
+<td style="text-align:center"><a href="https://www.youtube.com/watch?v=c_Pz6rhVfME" target="_blank" rel="noopener">Video</a></td>
+<td style="text-align:center"><a href="https://v.qq.com/x/page/h06606amjbp.html" target="_blank" rel="noopener">视频</a></td>
+<td style="text-align:center">⚪</td>
+</tr>
+<tr>
+<td>主题演讲：跳过焦虑发作 - Kubernetes打造安全应用<br>Keynote: Skip the Anxiety Attack - Build Secure Apps with Kubernetes, Jason McGee</td>
+<td style="text-align:center"><a href="https://www.youtube.com/watch?v=f0qWkCn04pw" target="_blank" rel="noopener">Video</a></td>
+<td style="text-align:center"><a href="https://v.qq.com/x/page/l066035hmow.html" target="_blank" rel="noopener">视频</a></td>
+<td style="text-align:center">🔴</td>
+</tr>
+<tr>
+<td>主题演讲：迁移150+微服务来Kubernetes的挑战<br>Keynote: The Challenges of Migrating 150+ Microservices to Kubernetes, Sarah Wells</td>
+<td style="text-align:center"><a href="https://www.youtube.com/watch?v=H06qrNmGqyE" target="_blank" rel="noopener">Video</a></td>
+<td style="text-align:center"><a href="https://v.qq.com/x/page/a0660lwf6rb.html" target="_blank" rel="noopener">视频</a></td>
+<td style="text-align:center">🔴</td>
+</tr>
+<tr>
+<td>主题演讲：加快Kubernetes原生应用程序<br>Keynote: Accelerating Kubernetes Native Applications - Brandon Philips, CTO of CoreOS, Red Hat</td>
+<td style="text-align:center"><a href="https://www.youtube.com/watch?v=8iQRJXJHiZ8" target="_blank" rel="noopener">Video</a></td>
+<td style="text-align:center"><a href="https://v.qq.com/x/page/v0660k5k5fh.html" target="_blank" rel="noopener">视频</a></td>
+<td style="text-align:center">⚪</td>
+</tr>
+<tr>
+<td>主题演讲：Kubernetes项目更新<br>Keynote: Kubernetes Project Update - Aparna Sinha, Group Product Manager, Kubernetes</td>
+<td style="text-align:center"><a href="https://www.youtube.com/watch?v=2eAOx8E6-5Q" target="_blank" rel="noopener">Video</a></td>
+<td style="text-align:center"><a href="https://v.qq.com/x/page/s0660l7xlnx.html" target="_blank" rel="noopener">视频</a></td>
+<td style="text-align:center">⚪</td>
+</tr>
+<tr>
+<td>主题演讲：容器原生开发和运维经验：正变得越来越容易和快速<br>Keynote: Container-Native Dev-and-ops Experience: It’s Getting Easier, Fast. - Ralph Squillace</td>
+<td style="text-align:center"><a href="https://www.youtube.com/watch?v=0sh2aWdfBxA" target="_blank" rel="noopener">Video</a></td>
+<td style="text-align:center"><a href="https://v.qq.com/x/page/f06601q70rk.html" target="_blank" rel="noopener">视频</a></td>
+<td style="text-align:center">🔴</td>
+</tr>
+<tr>
+<td>主题演讲：谷歌云的云原生观测及安全<br>Keynote: Cloud Native Observability &amp; Security from Google Cloud - Craig Box, Google</td>
+<td style="text-align:center"><a href="https://www.youtube.com/watch?v=8fSNDxA_irY" target="_blank" rel="noopener">Video</a></td>
+<td style="text-align:center"><a href="https://v.qq.com/x/page/y0660gijj49.html" target="_blank" rel="noopener">视频</a></td>
+<td style="text-align:center">🔴</td>
+</tr>
+<tr>
+<td>主题演讲：CNCF最终用户奖<br>Keynote: CNCF End User Awards - Presented by Chris Aniszczyk</td>
+<td style="text-align:center"><a href="https://www.youtube.com/watch?v=EJfsxbitiYI" target="_blank" rel="noopener">Video</a></td>
+<td style="text-align:center"><a href="https://v.qq.com/x/page/o0660atyjt9.html" target="_blank" rel="noopener">视频</a></td>
+<td style="text-align:center"></td>
+</tr>
+<tr>
+<td>主题演讲：普罗米修斯2.0 - 云原生监控的下一个规模<br>Keynote: Prometheus 2.0 – The Next Scale of Cloud Native Monitoring - Fabian Reinartz</td>
+<td style="text-align:center"><a href="https://www.youtube.com/watch?v=nDalewt4BOw" target="_blank" rel="noopener">Video</a></td>
+<td style="text-align:center"><a href="https://v.qq.com/x/page/u0660z3w53a.html" target="_blank" rel="noopener">视频</a></td>
+<td style="text-align:center">⚪ 🔵</td>
+</tr>
+<tr>
+<td>SPIFFE项目介绍（任何技术水平）<br>SPIFFE Project Intro - Andrew Jessup &amp; Emiliano Berenbaum, Scytale, Inc. (Any Skill Level)</td>
+<td style="text-align:center"><a href="https://www.youtube.com/watch?v=0LSaNrOabH4" target="_blank" rel="noopener">Video</a></td>
+<td style="text-align:center"><a href="https://v.qq.com/x/page/w0660tab1d6.html" target="_blank" rel="noopener">视频</a></td>
+<td style="text-align:center"></td>
+</tr>
+<tr>
+<td>TUF/Notary项目介绍（任何技术水平）<br>TUF / Notary Project Intro – David Lawrence, Docker, &amp; Justin Cappos, NYU, TUF (Any Skill Level)</td>
+<td style="text-align:center"><a href="https://www.youtube.com/watch?v=rHMOC6UH1Pg" target="_blank" rel="noopener">Video</a></td>
+<td style="text-align:center"><a href="https://v.qq.com/x/page/z0694joalug.html" target="_blank" rel="noopener">视频</a></td>
+<td style="text-align:center">🔴</td>
+</tr>
+<tr>
+<td>OpenTracing项目介绍（任何技术水平）<br>OpenTracing Project Intro – Priyanka Sharma &amp; Ted Young, LightStep (Any Skill Level)</td>
+<td style="text-align:center"><a href="https://www.youtube.com/watch?v=_jCXx2BX7nI" target="_blank" rel="noopener">Video</a></td>
+<td style="text-align:center"><a href="https://v.qq.com/x/page/g0660u4i01d.html" target="_blank" rel="noopener">视频</a></td>
+<td style="text-align:center">⚪</td>
+</tr>
+<tr>
+<td>Jenkins X：简单在K8s做CI/CD（中级技术水平）<br>Jenkins X: Easy CI/CD for Kubernetes - James Strachan, CloudBees (Intermediate Skill Level)</td>
+<td style="text-align:center"><a href="https://www.youtube.com/watch?v=uHe7R_iZSLU" target="_blank" rel="noopener">Video</a></td>
+<td style="text-align:center"><a href="https://v.qq.com/x/page/j0660db8428.html" target="_blank" rel="noopener">视频</a></td>
+<td style="text-align:center">🔵</td>
+</tr>
+<tr>
+<td>持续交付您的Kubernetes基础设施<br>Continuously Deliver your Kubernetes Infrastructure - Mikkel Larsen, Zalando SE</td>
+<td style="text-align:center"><a href="https://www.youtube.com/watch?v=1xHmCrd8Qn8" target="_blank" rel="noopener">Video</a></td>
+<td style="text-align:center"><a href="https://v.qq.com/x/page/j0660ge5cu2.html" target="_blank" rel="noopener">视频</a></td>
+<td style="text-align:center">⚪</td>
+</tr>
+<tr>
+<td>没有Docker构建Docker镜像（中级技术水平）<br>Building Docker Images Without Docker - Matt Rickard, Google (Intermediate Skill Level)</td>
+<td style="text-align:center"><a href="https://www.youtube.com/watch?v=qhykcC94ukg" target="_blank" rel="noopener">Video</a></td>
+<td style="text-align:center"><a href="https://v.qq.com/x/page/r0660193ri5.html" target="_blank" rel="noopener">视频</a></td>
+<td style="text-align:center">🔴</td>
+</tr>
+<tr>
+<td>Rook项目介绍（任何技术水平）<br>Rook Project Intro – Bassam Tabbara, Tony Allen &amp; Jared Watts, Upbound (Any Skill Level)</td>
+<td style="text-align:center"><a href="https://www.youtube.com/watch?v=To1ldyb_9NA" target="_blank" rel="noopener">Video</a></td>
+<td style="text-align:center"><a href="https://v.qq.com/x/page/l0660j09rlq.html" target="_blank" rel="noopener">视频</a></td>
+<td style="text-align:center">⚪</td>
+</tr>
+<tr>
+<td>不断发展一个持续交付工作流程<br>Evolving a Continuous Delivery Workflow - Gard Rimestad &amp; Øyvind Ingebrigtsen Øvergaard</td>
+<td style="text-align:center"><a href="https://www.youtube.com/watch?v=cen3dULhE1E" target="_blank" rel="noopener">Video</a></td>
+<td style="text-align:center"><a href="https://v.qq.com/x/page/m0660jjotwd.html" target="_blank" rel="noopener">视频</a></td>
+<td style="text-align:center">🔴</td>
+</tr>
+<tr>
+<td>持续交付遇到定制Kubernetes控制器<br>Continuous Delivery Meets Custom Kubernetes Controller - Suneeta Mall &amp; Simon Cochrane</td>
+<td style="text-align:center"><a href="https://www.youtube.com/watch?v=kBS_Wd41R8k" target="_blank" rel="noopener">Video</a></td>
+<td style="text-align:center"><a href="https://v.qq.com/x/page/u0660l8oq91.html" target="_blank" rel="noopener">视频</a></td>
+<td style="text-align:center">🔵 ⚪</td>
+</tr>
+<tr>
+<td>Git-push工作流程（使用GIT中的钩）用于应用程序部署<br>Git-push Workflows (using git hooks) for Deploying Applications - Tanmai Gopal &amp; Vamshi Surabhi Rao</td>
+<td style="text-align:center"><a href="https://www.youtube.com/watch?v=gDGT4Gf_4JM" target="_blank" rel="noopener">Video</a></td>
+<td style="text-align:center"><a href="https://v.qq.com/x/page/v0660akypf7.html" target="_blank" rel="noopener">视频</a></td>
+<td style="text-align:center">🔵</td>
+</tr>
+<tr>
+<td>Kubernetes在中国支持$8万亿卡支付<br>Kubernetes on Supporting $8 Trillion Card Payments in China - Xin Zhang &amp; Deyuan Deng</td>
+<td style="text-align:center"><a href="https://www.youtube.com/watch?v=OS5DKWffn9s" target="_blank" rel="noopener">Video</a></td>
+<td style="text-align:center"><a href="https://v.qq.com/x/page/p0660locsmy.html" target="_blank" rel="noopener">视频</a></td>
+<td style="text-align:center">🔴</td>
+</tr>
+<tr>
+<td>阿迪达斯全球推出Kubernetes的旅程<br>The Journey of Adidas to a Global Kubernetes Rollout - Daniel Eichten &amp; Oliver Thylmann</td>
+<td style="text-align:center"><a href="https://www.youtube.com/watch?v=dwDhHt1Llb8" target="_blank" rel="noopener">Video</a></td>
+<td style="text-align:center"><a href="https://v.qq.com/x/page/t0662zrokw5.html" target="_blank" rel="noopener">视频</a></td>
+<td style="text-align:center">🔴</td>
+</tr>
+<tr>
+<td>介绍在Booking.com使用基于Envoy的服务网格<br>Introducing Envoy-Based Service Mesh at Booking.com - Ivan Kruglov, Booking.com</td>
+<td style="text-align:center"><a href="https://www.youtube.com/watch?v=Pus2ytdEfrQ" target="_blank" rel="noopener">Video</a></td>
+<td style="text-align:center"><a href="https://v.qq.com/x/page/x06621iqyzm.html" target="_blank" rel="noopener">视频</a></td>
+<td style="text-align:center">🔴</td>
+</tr>
+<tr>
+<td>Istio服务网格的性能和规模<br>Performance and Scale @ Istio Service Mesh - Fawad Khaliq, Laurent Demailly &amp; Surya V Duggirala</td>
+<td style="text-align:center"><a href="https://www.youtube.com/watch?v=G4F5aRFEXnU" target="_blank" rel="noopener">Video</a></td>
+<td style="text-align:center"><a href="https://v.qq.com/x/page/l0662meva4j.html" target="_blank" rel="noopener">视频</a></td>
+<td style="text-align:center">⚪</td>
+</tr>
+<tr>
+<td>使用Istio构建混合云<br>Building Hybrid Clouds with Istio - Allan Naim, Google &amp; Rohit Agarwalla, Cisco</td>
+<td style="text-align:center"><a href="https://www.youtube.com/watch?v=bLJL53UIcqI" target="_blank" rel="noopener">Video</a></td>
+<td style="text-align:center"><a href="https://v.qq.com/x/page/t0662ozn3cr.html" target="_blank" rel="noopener">视频</a></td>
+<td style="text-align:center">🔵</td>
+</tr>
+<tr>
+<td>在交通控制系统使用Envoy更换NGINX<br>Replacing NGINX with Envoy in a Traffic Control System - Mark McBride, Turbine Labs, Inc</td>
+<td style="text-align:center"><a href="https://www.youtube.com/watch?v=MO_0bwcNEZY" target="_blank" rel="noopener">Video</a></td>
+<td style="text-align:center"><a href="https://v.qq.com/x/page/n06620y0tzv.html" target="_blank" rel="noopener">视频</a></td>
+<td style="text-align:center">⚪</td>
+</tr>
+<tr>
+<td>SRv6LB：利用IPv6、分段路由和VPP<br>SRv6LB: Leveraging IPv6, Segment Routing, and VPP - Pierre Pfister &amp; Mark Townsley</td>
+<td style="text-align:center"><a href="https://www.youtube.com/watch?v=RRKUeyFaqEA" target="_blank" rel="noopener">Video</a></td>
+<td style="text-align:center"><a href="https://v.qq.com/x/page/s0662ab5bqd.html" target="_blank" rel="noopener">视频</a></td>
+<td style="text-align:center">🔴</td>
+</tr>
+<tr>
+<td>未开发的服务能力 - 没有服务网格的L7负载平衡<br>The Untapped Power of Services - L7 Load Balancing Without a Service Mesh - Damien Lespiau</td>
+<td style="text-align:center"><a href="https://www.youtube.com/watch?v=PQnTBUr174M" target="_blank" rel="noopener">Video</a></td>
+<td style="text-align:center"><a href="https://v.qq.com/x/page/j0662n00tsb.html" target="_blank" rel="noopener">视频</a></td>
+<td style="text-align:center">🔴</td>
+</tr>
+<tr>
+<td>使用协议缓冲器和gRPC做高效的IoT（初级技术水平）<br>Efficient IoT with Protocol Buffers and gRPC - Vladimir Vivien, {code} (Beginner Skill Level)</td>
+<td style="text-align:center"><a href="https://www.youtube.com/watch?v=c9z_o5lu0dI" target="_blank" rel="noopener">Video</a></td>
+<td style="text-align:center"><a href="https://v.qq.com/x/page/e0662coegwz.html" target="_blank" rel="noopener">视频</a></td>
+<td style="text-align:center">⚪</td>
+</tr>
+<tr>
+<td>gRPC服务Brokerless REST接口<br>A Brokerless REST Interface for gRPC Services - Roman Zimine, Turbonomic</td>
+<td style="text-align:center"><a href="https://www.youtube.com/watch?v=eQvrr9U4I8o" target="_blank" rel="noopener">Video</a></td>
+<td style="text-align:center"><a href="https://v.qq.com/x/page/w0662xz2n11.html" target="_blank" rel="noopener">视频</a></td>
+<td style="text-align:center">🔴</td>
+</tr>
+<tr>
+<td>提高您的Kubernetes工作负载安全<br>Improving your Kubernetes Workload Security - Samuel Ortiz &amp; Fabian Deutsch</td>
+<td style="text-align:center"><a href="https://www.youtube.com/watch?v=T_NxDXAdbfo" target="_blank" rel="noopener">Video</a></td>
+<td style="text-align:center"><a href="https://v.qq.com/x/page/a06622e1v9o.html" target="_blank" rel="noopener">视频</a></td>
+<td style="text-align:center">🔴</td>
+</tr>
+<tr>
+<td>到底无根容器的航线（任何技术水平）<br>The Route To Rootless Containers - Ed King, Pivotal &amp; Julz Friedman, IBM (Any Skill Level)</td>
+<td style="text-align:center"><a href="https://www.youtube.com/watch?v=j4GO2d3YjmE" target="_blank" rel="noopener">Video</a></td>
+<td style="text-align:center"><a href="https://v.qq.com/x/page/e066206oltd.html" target="_blank" rel="noopener">视频</a></td>
+<td style="text-align:center">🔴</td>
+</tr>
+<tr>
+<td>云原生身份管理<br>Cloud Native Identity Management - Andreas Zitzelsberger &amp; Andrew Jessup</td>
+<td style="text-align:center"><a href="https://www.youtube.com/watch?v=eCLTdSp4JzE" target="_blank" rel="noopener">Video</a></td>
+<td style="text-align:center"><a href="https://v.qq.com/x/page/w0662gqkvap.html" target="_blank" rel="noopener">视频</a></td>
+<td style="text-align:center">⚪</td>
+</tr>
+<tr>
+<td>使用Notary和TUF保护您的Kubernetes交付管道<br>Securing your Kubernetes Delivery Pipelines with Notary and TUF - Liam White &amp; Michael Hough</td>
+<td style="text-align:center"><a href="https://www.youtube.com/watch?v=JK70k_B87mw" target="_blank" rel="noopener">Video</a></td>
+<td style="text-align:center"><a href="https://v.qq.com/x/page/o0662i19krx.html" target="_blank" rel="noopener">视频</a></td>
+<td style="text-align:center"></td>
+</tr>
+<tr>
+<td>自动缩放SIG简介（任何技术水平）<br>SIG Autoscaling Intro – Marcin Wielgus, Google, &amp; Solly Ross, Red Hat (Any Skill Level)</td>
+<td style="text-align:center"><a href="https://www.youtube.com/watch?v=oJyjW8Vz314" target="_blank" rel="noopener">Video</a></td>
+<td style="text-align:center"><a href="https://v.qq.com/x/page/y0662xwyy42.html" target="_blank" rel="noopener">视频</a></td>
+<td style="text-align:center">🔴</td>
+</tr>
+<tr>
+<td>仪器仪表SIG简介（任何技术水平）<br>SIG Instrumentation Intro – Frederic Branczyk, CoreOS, &amp; Piotr Szczesniak, Google (Any Skill Level)</td>
+<td style="text-align:center"><a href="https://www.youtube.com/watch?v=Qly7CMHmrV4" target="_blank" rel="noopener">Video</a></td>
+<td style="text-align:center"><a href="https://v.qq.com/x/page/c0662n0kbnw.html" target="_blank" rel="noopener">视频</a></td>
+<td style="text-align:center">🔴</td>
+</tr>
+<tr>
+<td>普罗米修斯项目介绍（任何技术水平）<br>Prometheus Project Intro – Julius Volz, Prometheus (Any Skill Level)</td>
+<td style="text-align:center"><a href="https://www.youtube.com/watch?v=sYMTY-SciUQ" target="_blank" rel="noopener">Video</a></td>
+<td style="text-align:center"><a href="https://v.qq.com/x/page/c0662szz77g.html" target="_blank" rel="noopener">视频</a></td>
+<td style="text-align:center">⚪</td>
+</tr>
+<tr>
+<td>Kubernetes一致性工作组简介（任何技术水平）<br>Kubernetes Conformance WG Intro – William Denniss, Google (Any Skill Level)</td>
+<td style="text-align:center"><a href="https://www.youtube.com/watch?v=cImwp_826JU" target="_blank" rel="noopener">Video</a></td>
+<td style="text-align:center"><a href="https://v.qq.com/x/page/r0662l13yho.html" target="_blank" rel="noopener">视频</a></td>
+<td style="text-align:center">🔴</td>
+</tr>
+<tr>
+<td>AWS SIG更新（任何技术水平）<br>SIG AWS Update - Justin Santa Barbara, FathomDB (Any Skill Level)</td>
+<td style="text-align:center"><a href="https://www.youtube.com/watch?v=yzWXuAZwJaw" target="_blank" rel="noopener">Video</a></td>
+<td style="text-align:center"><a href="https://v.qq.com/x/page/n0662kemfz5.html" target="_blank" rel="noopener">视频</a></td>
+<td style="text-align:center">⚪</td>
+</tr>
+<tr>
+<td>服务目录SIG简介（任何技术水平）<br>SIG Service-Catalog Intro – Doug Davis, Michael Kibbe &amp; Morgan Bauer (Any Skill Level)</td>
+<td style="text-align:center"><a href="https://www.youtube.com/watch?v=2tycz5_Bp-E" target="_blank" rel="noopener">Video</a></td>
+<td style="text-align:center"><a href="https://v.qq.com/x/page/w0662vwj5hx.html" target="_blank" rel="noopener">视频</a></td>
+<td style="text-align:center"></td>
+</tr>
+<tr>
+<td>Jaeger项目介绍（任何技术水平）<br>Jaeger Project Intro - Juraci Kröhling, Red Hat (Any Skill Level)</td>
+<td style="text-align:center"><a href="https://www.youtube.com/watch?v=D7XakRQaEk0" target="_blank" rel="noopener">Video</a></td>
+<td style="text-align:center"><a href="https://v.qq.com/x/page/t0662knp2d5.html" target="_blank" rel="noopener">视频</a></td>
+<td style="text-align:center">⚪</td>
+</tr>
+<tr>
+<td>贡献体验SIG介绍（任何技术水平）<br>SIG Contributor Experience Intro – Paris Pittman, Google &amp; Elsie Phillips, CoreOS (Any Skill Level)</td>
+<td style="text-align:center"><a href="https://www.youtube.com/watch?v=e3VKszwIokk" target="_blank" rel="noopener">Video</a></td>
+<td style="text-align:center"><a href="https://v.qq.com/x/page/m0662nb5mx4.html" target="_blank" rel="noopener">视频</a></td>
+<td style="text-align:center">⚪</td>
+</tr>
+<tr>
+<td>谁什么如何：通过DevStats了解Kubernetes发展<br>Who What How: Understanding Kubernetes Development through DevStats - Josh Berkus &amp; Łukasz Gryglicki</td>
+<td style="text-align:center"><a href="https://www.youtube.com/watch?v=D3CMuxQymR8" target="_blank" rel="noopener">Video</a></td>
+<td style="text-align:center"><a href="https://v.qq.com/x/page/m0662tpug9k.html" target="_blank" rel="noopener">视频</a></td>
+<td style="text-align:center">⚪ ⚫</td>
+</tr>
+<tr>
+<td>开源和利用社会媒体通讯建设在线社区<br>Open Source and Building Online Communities using Social Media and Communications - Kim McMahon</td>
+<td style="text-align:center"><a href="https://www.youtube.com/watch?v=V0qaU512zrg" target="_blank" rel="noopener">Video</a></td>
+<td style="text-align:center"><a href="https://v.qq.com/x/page/z0662zt2077.html" target="_blank" rel="noopener">视频</a></td>
+<td style="text-align:center"></td>
+</tr>
+<tr>
+<td>主题演讲：CNCF 20-20愿景<br>Keynote: CNCF 20-20 Vision - Alexis Richardson, Founder &amp; CEO, Weaveworks</td>
+<td style="text-align:center"><a href="https://www.youtube.com/watch?v=qUK-F40oLVQ" target="_blank" rel="noopener">Video</a></td>
+<td style="text-align:center"><a href="https://v.qq.com/x/page/s06640fav8r.html" target="_blank" rel="noopener">视频</a></td>
+<td style="text-align:center">🔴</td>
+</tr>
+<tr>
+<td>主题演讲：从创新到生产<br>Keynote: From Innovation to Production - Dirk Hohndel, VP &amp; Chief Open Source Officer, VMware</td>
+<td style="text-align:center"><a href="https://www.youtube.com/watch?v=X8E_FQ7CHiE" target="_blank" rel="noopener">Video</a></td>
+<td style="text-align:center"><a href="https://v.qq.com/x/page/h0664bm0pro.html" target="_blank" rel="noopener">视频</a></td>
+<td style="text-align:center">⚪</td>
+</tr>
+<tr>
+<td>主题演讲：CERN的经验<br>Keynote: CERN Experiences - Ricardo Rocha &amp; Clenimar Filemon</td>
+<td style="text-align:center"><a href="https://www.youtube.com/watch?v=2PRGUOxL36M" target="_blank" rel="noopener">Video</a></td>
+<td style="text-align:center"><a href="https://v.qq.com/x/page/a06647v8j77.html" target="_blank" rel="noopener">视频</a></td>
+<td style="text-align:center">⚪</td>
+</tr>
+<tr>
+<td>主题演讲：重新思考微服务的网络<br>Keynote: Re-thinking Networking for Microservices - Lew Tucker, VP/CTO Cloud Computing</td>
+<td style="text-align:center"><a href="https://www.youtube.com/watch?v=Qk2ZdHnHh0Y" target="_blank" rel="noopener">Video</a></td>
+<td style="text-align:center"><a href="https://v.qq.com/x/page/s066424xdhb.html" target="_blank" rel="noopener">视频</a></td>
+<td style="text-align:center">⚪</td>
+</tr>
+<tr>
+<td>主题演讲：CNCF项目更新<br>Keynote: CNCF Project Update - Liz Rice, Colin Sullivan, Andrew Jessup, Sugu Sougoumarane</td>
+<td style="text-align:center"><a href="https://www.youtube.com/watch?v=C1kwY0N4PUk" target="_blank" rel="noopener">Video</a></td>
+<td style="text-align:center"><a href="https://v.qq.com/x/page/y066417ymvu.html" target="_blank" rel="noopener">视频</a></td>
+<td style="text-align:center">🔴</td>
+</tr>
+<tr>
+<td>主题演讲：开幕致辞和你的代码有多好？<br>Keynote: Opening Remarks &amp; How Good is Your Code? - Dan Kohn, Executive Dir., CNCF</td>
+<td style="text-align:center"><a href="https://www.youtube.com/watch?v=S4SKOHmVD1U" target="_blank" rel="noopener">Video</a></td>
+<td style="text-align:center"><a href="https://v.qq.com/x/page/n0664omhwoq.html" target="_blank" rel="noopener">视频</a></td>
+<td style="text-align:center"></td>
+</tr>
+<tr>
+<td>Containerd，这对我来讲是什么意思（任何技术水平）<br>Containerd, What Does it Mean for Me - Scott Coulton, Puppet (Any Skill Level)</td>
+<td style="text-align:center"><a href="https://www.youtube.com/watch?v=dBm9n_nq-Uc" target="_blank" rel="noopener">Video</a></td>
+<td style="text-align:center"><a href="https://v.qq.com/x/page/x0664ka2vh6.html" target="_blank" rel="noopener">视频</a></td>
+<td style="text-align:center">🔵</td>
+</tr>
+<tr>
+<td>所有不同的容器运行引擎是怎么回事了？<br>What’s Up With All The Different Container Runtimes? - Ricardo Aravena, Branch Metrics</td>
+<td style="text-align:center"><a href="https://www.youtube.com/watch?v=lHv0LVEIPk8" target="_blank" rel="noopener">Video</a></td>
+<td style="text-align:center"><a href="https://v.qq.com/x/page/i0664f8xhv1.html" target="_blank" rel="noopener">视频</a></td>
+<td style="text-align:center">🌕 🔴</td>
+</tr>
+<tr>
+<td>系统设计进化：从不可靠的RPC到容错性好的Linkerd<br>Evolving Systems Design: From Unreliable rpc to Resilience with Linkerd - Edward Wilde, Form3</td>
+<td style="text-align:center"><a href="https://www.youtube.com/watch?v=2EqkvPqk7JU" target="_blank" rel="noopener">Video</a></td>
+<td style="text-align:center"><a href="https://v.qq.com/x/page/c0664shh001.html" target="_blank" rel="noopener">视频</a></td>
+<td style="text-align:center">🔴</td>
+</tr>
+<tr>
+<td>Istio配置介绍（初级技术水平）<br>Introduction to Istio Configuration - Joy Zhang, Google (Beginner Skill Level)</td>
+<td style="text-align:center"><a href="https://www.youtube.com/watch?v=x1Tyw8dFKjI" target="_blank" rel="noopener">Video</a></td>
+<td style="text-align:center"><a href="https://v.qq.com/x/page/p06647duuz2.html" target="_blank" rel="noopener">视频</a></td>
+<td style="text-align:center">⚪ 🔴</td>
+</tr>
+<tr>
+<td>在Kubernetes中建立镜像溯源和安全<br>Establishing Image Provenance and Security in Kubernetes - Adrian Mouat, Container Solutions</td>
+<td style="text-align:center"><a href="https://www.youtube.com/watch?v=zs-6YEUrJAM" target="_blank" rel="noopener">Video</a></td>
+<td style="text-align:center"><a href="https://v.qq.com/x/page/a0664lnb7ho.html" target="_blank" rel="noopener">视频</a></td>
+<td style="text-align:center">⚪</td>
+</tr>
+<tr>
+<td>通过开放建立开源社区实现创新<br>Building an Open Source Community to Achieve Innovation-Through-Openness - Jonas Rosland</td>
+<td style="text-align:center"><a href="https://www.youtube.com/watch?v=QhG_ZFTZ7kk" target="_blank" rel="noopener">Video</a></td>
+<td style="text-align:center"><a href="https://v.qq.com/x/page/k0665edtn0k.html" target="_blank" rel="noopener">视频</a></td>
+<td style="text-align:center">⚪</td>
+</tr>
+<tr>
+<td>自动化和Kubernetes贡献者体验<br>Automation and the Kubernetes Contributor Experience - Aaron Crickenberger, Samsung SDS</td>
+<td style="text-align:center"><a href="https://www.youtube.com/watch?v=BsIC7gPkH5M" target="_blank" rel="noopener">Video</a></td>
+<td style="text-align:center"><a href="https://v.qq.com/x/page/v0665al5qic.html" target="_blank" rel="noopener">视频</a></td>
+<td style="text-align:center">⚪</td>
+</tr>
+<tr>
+<td>我们如何建造Contour以及你可以学习我们的哪些经验<br>How We Built Contour, and What You Can Learn From Our Experience - Dave Cheney, Heptio</td>
+<td style="text-align:center"><a href="https://www.youtube.com/watch?v=4usXJE0EwHo" target="_blank" rel="noopener">Video</a></td>
+<td style="text-align:center"><a href="https://v.qq.com/x/page/q0665erorkq.html" target="_blank" rel="noopener">视频</a></td>
+<td style="text-align:center"></td>
+</tr>
+<tr>
+<td>Diffy - 服务中预测与抢占回归<br>Diffy - Predicting and Preempting Regressions in Services - Puneet Khanduri &amp; Prashant Khanduri</td>
+<td style="text-align:center"><a href="https://www.youtube.com/watch?v=adjhYJeX3c4" target="_blank" rel="noopener">Video</a></td>
+<td style="text-align:center"><a href="https://v.qq.com/x/page/r06650crri8.html" target="_blank" rel="noopener">视频</a></td>
+<td style="text-align:center">⚪</td>
+</tr>
+<tr>
+<td>OSS跟踪生态的调查（初级技术水平）<br>A Survey of the OSS Tracing Ecosystem - Ben Sigelman &amp; Ted Young, LightStep (Beginner Skill Level)</td>
+<td style="text-align:center"><a href="https://www.youtube.com/watch?v=-zLPPYYH_F8" target="_blank" rel="noopener">Video</a></td>
+<td style="text-align:center"><a href="https://v.qq.com/x/page/g0665od97ky.html" target="_blank" rel="noopener">视频</a></td>
+<td style="text-align:center">⚪</td>
+</tr>
+<tr>
+<td>SAFE工作组简介（任何技术水平）<br>SAFE WG Intro – Jeyappragash J J, padme.io, &amp; Ray Colline, Google (Any Skill Level)</td>
+<td style="text-align:center"><a href="https://www.youtube.com/watch?v=DRtl8wK9FwE" target="_blank" rel="noopener">Video</a></td>
+<td style="text-align:center"><a href="https://v.qq.com/x/page/s06655airao.html" target="_blank" rel="noopener">视频</a></td>
+<td style="text-align:center"></td>
+</tr>
+<tr>
+<td>集群生命周期SIG简介（任何技术水平）<br>SIG Cluster Lifecycle Intro – Justin Santa Barbara, FathomDB &amp; Lucas Käldström (Any Skill Level)</td>
+<td style="text-align:center"><a href="https://www.youtube.com/watch?v=GmD1KYsRD4Q" target="_blank" rel="noopener">Video</a></td>
+<td style="text-align:center"><a href="https://v.qq.com/x/page/e0665e28y5z.html" target="_blank" rel="noopener">视频</a></td>
+<td style="text-align:center">🔴</td>
+</tr>
+<tr>
+<td>多集群SIG简介（任何技术水平）<br>SIG Multi-Cluster Intro – Christian Bell, Madhu C.S., &amp; Nikhil Jindal, Google (Any Skill Level)</td>
+<td style="text-align:center"><a href="https://www.youtube.com/watch?v=vGZo5DaThQU" target="_blank" rel="noopener">Video</a></td>
+<td style="text-align:center"><a href="https://v.qq.com/x/page/f06652ie72b.html" target="_blank" rel="noopener">视频</a></td>
+<td style="text-align:center">🔴</td>
+</tr>
+<tr>
+<td>Envoy项目介绍（任何技术水平）<br>Envoy Project Intro – Matt Klein &amp; Jose Nino, Lyft (Any Skill Level)</td>
+<td style="text-align:center"><a href="https://www.youtube.com/watch?v=RUPgiHqUAZg" target="_blank" rel="noopener">Video</a></td>
+<td style="text-align:center"><a href="https://v.qq.com/x/page/e0665o26hrg.html" target="_blank" rel="noopener">视频</a></td>
+<td style="text-align:center">⚪</td>
+</tr>
+<tr>
+<td>CLI SIG简介（任何技术水平）<br>SIG CLI Intro - Phil Wittrock &amp; Mengqi Yu, Google (Any Skill Level)</td>
+<td style="text-align:center"><a href="https://www.youtube.com/watch?v=ak95fTtqMNU" target="_blank" rel="noopener">Video</a></td>
+<td style="text-align:center"><a href="https://v.qq.com/x/page/j06650nq83v.html" target="_blank" rel="noopener">视频</a></td>
+<td style="text-align:center">🔵</td>
+</tr>
+<tr>
+<td>Kubeflow简介（任何技术水平）<br>Kubeflow Intro – Michał Jastrzębski &amp; Ala Raddaoui, Intel (Any Skill Level)</td>
+<td style="text-align:center"><a href="https://www.youtube.com/watch?v=NrDpQks0e98" target="_blank" rel="noopener">Video</a></td>
+<td style="text-align:center"><a href="https://v.qq.com/x/page/r066570g14p.html" target="_blank" rel="noopener">视频</a></td>
+<td style="text-align:center">🔵 ⚪</td>
+</tr>
+<tr>
+<td>Kubernetes上gRPC的负载平衡（中级技术水平）<br>gRPC Load Balancing on Kubernetes - Jan Tattermusch, Google (Intermediate Skill Level)</td>
+<td style="text-align:center"><a href="https://www.youtube.com/watch?v=F2znfxn_5Hg" target="_blank" rel="noopener">Video</a></td>
+<td style="text-align:center"><a href="https://v.qq.com/x/page/d0665lnoywi.html" target="_blank" rel="noopener">视频</a></td>
+<td style="text-align:center">⚪ ⚫</td>
+</tr>
+<tr>
+<td>使大数据处理轻便：Apache Beam和gRPC的故事<br>Making Big Data Processing Portable. The Story of Apache Beam and gRPC - Ismaël Mejía</td>
+<td style="text-align:center"><a href="https://www.youtube.com/watch?v=7iALa6sFgb8" target="_blank" rel="noopener">Video</a></td>
+<td style="text-align:center"><a href="https://v.qq.com/x/page/q06653rxpwo.html" target="_blank" rel="noopener">视频</a></td>
+<td style="text-align:center">🔴</td>
+</tr>
+<tr>
+<td>多样午餐（Diversity Lunch）<br>Diversity Lunch</td>
+<td style="text-align:center"><a href="https://www.youtube.com/watch?v=WFlFmhKSnv0" target="_blank" rel="noopener">Video</a></td>
+<td style="text-align:center"><a href="https://v.qq.com/x/page/d066578q1nj.html" target="_blank" rel="noopener">视频</a></td>
+<td style="text-align:center"></td>
+</tr>
+<tr>
+<td>通过CNI插件在AWS容器使用云原生联网<br>Cloud Native Networking for Containers in AWS using CNI Plugins - Anirudh Aithal</td>
+<td style="text-align:center"><a href="https://www.youtube.com/watch?v=tsc17ZuV5iU" target="_blank" rel="noopener">Video</a></td>
+<td style="text-align:center"><a href="https://v.qq.com/x/page/j0665vnmu81.html" target="_blank" rel="noopener">视频</a></td>
+<td style="text-align:center">🔴</td>
+</tr>
+<tr>
+<td>在DigitalOcean布Kubernetes全球容器网络<br>Global Container Networks on Kubernetes at DigitalOcean - Andrew Sy Kim, DigitalOcean</td>
+<td style="text-align:center"><a href="https://www.youtube.com/watch?v=tHAkey-sZ9g" target="_blank" rel="noopener">Video</a></td>
+<td style="text-align:center"><a href="https://v.qq.com/x/page/u066518mkue.html" target="_blank" rel="noopener">视频</a></td>
+<td style="text-align:center">🔵</td>
+</tr>
+<tr>
+<td>“丝绸之路”道：从头开始构建CNI插件<br>The “Silk” Road: Building a CNI Plugin from Scratch - Usha Ramachandran &amp; Angela Chin</td>
+<td style="text-align:center"><a href="https://www.youtube.com/watch?v=RdpDvpA--nw" target="_blank" rel="noopener">Video</a></td>
+<td style="text-align:center"><a href="https://v.qq.com/x/page/n0665ko76pb.html" target="_blank" rel="noopener">视频</a></td>
+<td style="text-align:center">🔵</td>
+</tr>
+<tr>
+<td>Kubernetes和CNI：我们在哪里以及下一步是什么<br>Kubernetes and the CNI: Where We Are and What’s Next - Casey Callendrello, CoreOS</td>
+<td style="text-align:center"><a href="https://www.youtube.com/watch?v=Vn6KYkNevBQ" target="_blank" rel="noopener">Video</a></td>
+<td style="text-align:center"><a href="https://v.qq.com/x/page/r0665rgh4yu.html" target="_blank" rel="noopener">视频</a></td>
+<td style="text-align:center">🌕 🔴</td>
+</tr>
+<tr>
+<td>让Ingress-Nginx为你工作和社区（任何技术水平）<br>Make Ingress-Nginx Work for you, and the Community - Fernando Diaz, IBM (Any Skill Level)</td>
+<td style="text-align:center"><a href="https://www.youtube.com/watch?v=GDm-7BlmPPg" target="_blank" rel="noopener">Video</a></td>
+<td style="text-align:center"><a href="https://v.qq.com/x/page/k0665cdjv75.html" target="_blank" rel="noopener">视频</a></td>
+<td style="text-align:center">⚪</td>
+</tr>
+<tr>
+<td>揭示你Kubernetes最深入的指标<br>Reveal Your Deepest Kubernetes Metrics - Bob Cotton, Freshtracks.io</td>
+<td style="text-align:center"><a href="https://www.youtube.com/watch?v=1oJXMdVi0mM" target="_blank" rel="noopener">Video</a></td>
+<td style="text-align:center"><a href="https://v.qq.com/x/page/z0668ly9kjn.html" target="_blank" rel="noopener">视频</a></td>
+<td style="text-align:center">🔵 🔴</td>
+</tr>
+<tr>
+<td>Kubernetes记录入门（任何技术水平）<br>Getting Started with Logging in Kubernetes - Eduardo Silva, Treasure Data (Any Skill Level)</td>
+<td style="text-align:center"><a href="https://www.youtube.com/watch?v=7qL5wkAaSh4" target="_blank" rel="noopener">Video</a></td>
+<td style="text-align:center"><a href="https://v.qq.com/x/page/p0668jqc6gw.html" target="_blank" rel="noopener">视频</a></td>
+<td style="text-align:center">⚪</td>
+</tr>
+<tr>
+<td>TSDB：过去、现在和未来<br>TSDB: The Past, Present and the Future - Goutham Veeramachaneni, IIT Hyderabad</td>
+<td style="text-align:center"><a href="https://www.youtube.com/watch?v=0UvKEHFNu4Q" target="_blank" rel="noopener">Video</a></td>
+<td style="text-align:center"><a href="https://v.qq.com/x/page/p0668y0okup.html" target="_blank" rel="noopener">视频</a></td>
+<td style="text-align:center">🌕 🔵 ⚪</td>
+</tr>
+<tr>
+<td>我们如何使用Jaeger和普罗米修斯提供快如闪电的用户查询<br>How We Used Jaeger and Prometheus to Deliver Lightning-Fast User Queries - Bryan Boreham</td>
+<td style="text-align:center"><a href="https://www.youtube.com/watch?v=qg0ENOdP1Lo" target="_blank" rel="noopener">Video</a></td>
+<td style="text-align:center"><a href="https://v.qq.com/x/page/u06689ayrq7.html" target="_blank" rel="noopener">视频</a></td>
+<td style="text-align:center">⚪</td>
+</tr>
+<tr>
+<td>使用普罗米修斯指标进行Pod异常检测和驱逐<br>Pod Anomaly Detection and Eviction using Prometheus Metrics - David Benque &amp; Cedric Lamoriniere</td>
+<td style="text-align:center"><a href="https://www.youtube.com/watch?v=HIB_haT1z5M" target="_blank" rel="noopener">Video</a></td>
+<td style="text-align:center"><a href="https://v.qq.com/x/page/a0668tisp8e.html" target="_blank" rel="noopener">视频</a></td>
+<td style="text-align:center">🔴</td>
+</tr>
+<tr>
+<td>使用普罗米修斯自动缩放你的Kubernetes工作负载<br>Autoscale your Kubernetes Workload with Prometheus - Frederic Branczyk, CoreOS</td>
+<td style="text-align:center"><a href="https://www.youtube.com/watch?v=VQFoc0ukCvI" target="_blank" rel="noopener">Video</a></td>
+<td style="text-align:center"><a href="https://v.qq.com/x/page/x0668egsoql.html" target="_blank" rel="noopener">视频</a></td>
+<td style="text-align:center">⚪</td>
+</tr>
+<tr>
+<td>谁打毙了集群？Kubernetes的审核记录<br>Who Shot the Cluster? - Audit Logging in Kubernetes - Marian Lobur &amp; Mik Vyatskov, Google</td>
+<td style="text-align:center"><a href="https://www.youtube.com/watch?v=gDZxQBo-Zdc" target="_blank" rel="noopener">Video</a></td>
+<td style="text-align:center"><a href="https://v.qq.com/x/page/f06681q4drz.html" target="_blank" rel="noopener">视频</a></td>
+<td style="text-align:center">⚪</td>
+</tr>
+<tr>
+<td>Kubernetes集群注册表赋能多集群入口<br>Multicluster Ingress Powered by Kubernetes Cluster Registry - Greg Harmon &amp; Nikhil Jindal</td>
+<td style="text-align:center"><a href="https://www.youtube.com/watch?v=nCON0U2dZ_w" target="_blank" rel="noopener">Video</a></td>
+<td style="text-align:center"><a href="https://v.qq.com/x/page/c0668ft70pz.html" target="_blank" rel="noopener">视频</a></td>
+<td style="text-align:center">🔴</td>
+</tr>
+<tr>
+<td>通过系统调用的故事探索容器机制<br>Exploring Container Mechanisms Through the Story of a Syscall - Alban Crequy, Kinvolk</td>
+<td style="text-align:center"><a href="https://www.youtube.com/watch?v=1Tl-NURLoq4" target="_blank" rel="noopener">Video</a></td>
+<td style="text-align:center"><a href="https://v.qq.com/x/page/d0668e34jf5.html" target="_blank" rel="noopener">视频</a></td>
+<td style="text-align:center">🔵 ⚪</td>
+</tr>
+<tr>
+<td>了解在etcd和Kubernetes的分布式共识<br>Understanding Distributed Consensus in etcd and Kubernetes - Laura Frank, CloudBees</td>
+<td style="text-align:center"><a href="https://www.youtube.com/watch?v=n9VKAKwBj_0" target="_blank" rel="noopener">Video</a></td>
+<td style="text-align:center"><a href="https://v.qq.com/x/page/w0668iapkg7.html" target="_blank" rel="noopener">视频</a></td>
+<td style="text-align:center">🔵</td>
+</tr>
+<tr>
+<td>管理Kubernetes：你需要知道关于第2日的<br>Managing Kubernetes: What You Need to Know About Day 2 - Craig Tracey, Heptio</td>
+<td style="text-align:center"><a href="https://www.youtube.com/watch?v=0TBelL8UBQU" target="_blank" rel="noopener">Video</a></td>
+<td style="text-align:center"><a href="https://v.qq.com/x/page/h066860h4yb.html" target="_blank" rel="noopener">视频</a></td>
+<td style="text-align:center">🌕</td>
+</tr>
+<tr>
+<td>Fluentd项目介绍<br>Fluentd Project Intro – Eduardo Silva &amp; Masahiro Nakagawa, Treasure Data</td>
+<td style="text-align:center"><a href="https://www.youtube.com/watch?v=BtGOTIkxnGE" target="_blank" rel="noopener">Video</a></td>
+<td style="text-align:center"><a href="https://v.qq.com/x/page/b0668upihmq.html" target="_blank" rel="noopener">视频</a></td>
+<td style="text-align:center">⚪</td>
+</tr>
+<tr>
+<td>存储工作组简介<br>Storage WG Intro – Ben Hindman, Mesosphere, Clint Kitson, VMware &amp; Quinton Hoole, Huawei</td>
+<td style="text-align:center"><a href="https://www.youtube.com/watch?v=9Vt1B4vBvy8" target="_blank" rel="noopener">Video</a></td>
+<td style="text-align:center"><a href="https://v.qq.com/x/page/e06686strye.html" target="_blank" rel="noopener">视频</a></td>
+<td style="text-align:center">🔴</td>
+</tr>
+<tr>
+<td>使用Kubernetes过度设计我的家（任何技术水平）<br>Over-engineering my home with Kubernetes - Matthias Grüter, Spotify (Any Skill Level)</td>
+<td style="text-align:center"><a href="https://www.youtube.com/watch?v=z2h6Gx0dFog" target="_blank" rel="noopener">Video</a></td>
+<td style="text-align:center"><a href="https://v.qq.com/x/page/s0668t5m31q.html" target="_blank" rel="noopener">视频</a></td>
+<td style="text-align:center">🔴</td>
+</tr>
+<tr>
+<td>闪电讲座：我希望知道关于Fluentd和Kubernetes<br>Lightning Talk: What I Wish I’d Known about Fluentd with Kubernetes - Bryan Boreham, Weaveworks</td>
+<td style="text-align:center"><a href="https://www.youtube.com/watch?v=BQuBnXp31ZA" target="_blank" rel="noopener">Video</a></td>
+<td style="text-align:center"><a href="https://v.qq.com/x/page/b0668bxfbet.html" target="_blank" rel="noopener">视频</a></td>
+<td style="text-align:center">⚪</td>
+</tr>
+<tr>
+<td>闪电讲座：Istio示例（初级技术水平）<br>Lightning Talk: Istio by Example - Josef Adersberger, QAware (Beginner Skill Level)</td>
+<td style="text-align:center"><a href="https://www.youtube.com/watch?v=LYeAgVaJrm0" target="_blank" rel="noopener">Video</a></td>
+<td style="text-align:center"><a href="https://v.qq.com/x/page/h06943oqsuk.html" target="_blank" rel="noopener">视频</a></td>
+<td style="text-align:center">⚪ 🔵</td>
+</tr>
+<tr>
+<td>使用Envoy V2API扩展Istio服务网格<br>Extending Istio Service Mesh w/Envoy v2 APIs - Dmitri Chtchourov &amp; Tim Swanson</td>
+<td style="text-align:center"><a href="https://www.youtube.com/watch?v=yq-c3H1Cd1A" target="_blank" rel="noopener">Video</a></td>
+<td style="text-align:center"><a href="https://v.qq.com/x/page/r06681phm7e.html" target="_blank" rel="noopener">视频</a></td>
+<td style="text-align:center">⚪ 🔵</td>
+</tr>
+<tr>
+<td>通过CNI插件在AWS容器使用云原生网络<br>Cloud Native Networking for Containers in AWS using CNI Plugins - Anirudh Aithal</td>
+<td style="text-align:center"><a href="https://www.youtube.com/watch?v=tsc17ZuV5iU" target="_blank" rel="noopener">Video</a></td>
+<td style="text-align:center"><a href="https://v.qq.com/x/page/y0668sooapb.html" target="_blank" rel="noopener">视频</a></td>
+<td style="text-align:center">🔴</td>
+</tr>
+<tr>
+<td>项目管理SIG简介<br>SIG PM Intro - Ihor Dvoretskyi, Cloud Native Computing Foundation &amp; Aparna Sinha, Google</td>
+<td style="text-align:center"><a href="https://www.youtube.com/watch?v=Yj9IvSOC2I0" target="_blank" rel="noopener">Video</a></td>
+<td style="text-align:center"><a href="https://v.qq.com/x/page/w06682qzcrn.html" target="_blank" rel="noopener">视频</a></td>
+<td style="text-align:center">🔴</td>
+</tr>
+<tr>
+<td>Linkerd简介（任何技术水平）<br>Linkerd Intro – Andrew Seigner, Buoyant.io &amp; George Miranda (Any Skill Level)</td>
+<td style="text-align:center"><a href="https://www.youtube.com/watch?v=VAcvFMRd27I" target="_blank" rel="noopener">Video</a></td>
+<td style="text-align:center"><a href="https://v.qq.com/x/page/x0668r8yqzv.html" target="_blank" rel="noopener">视频</a></td>
+<td style="text-align:center">⚪</td>
+</tr>
+<tr>
+<td>Minikube简介（任何技术水平）<br>Minikube Intro – Dan Lorenc, Google (Any Skill Level)</td>
+<td style="text-align:center"><a href="https://www.youtube.com/watch?v=4x0CZmF_U5o" target="_blank" rel="noopener">Video</a></td>
+<td style="text-align:center"><a href="https://v.qq.com/x/page/u0668pu0hh1.html" target="_blank" rel="noopener">视频</a></td>
+<td style="text-align:center">⚪</td>
+</tr>
+<tr>
+<td>服务目录SIG深潜<br>SIG Service-Catalog Deep Dive – Doug Davis, Michael Kibbe &amp; Morgan Bauer</td>
+<td style="text-align:center"><a href="https://www.youtube.com/watch?v=knKSSKMkdHY" target="_blank" rel="noopener">Video</a></td>
+<td style="text-align:center"><a href="https://v.qq.com/x/page/g066804ippl.html" target="_blank" rel="noopener">视频</a></td>
+<td style="text-align:center"></td>
+</tr>
+<tr>
+<td>Kubespray简介（任何技术水平）<br>Kubespray Intro – Antoine Legrand, Red Hat, &amp; Matthew Mosesohn, Virtustream (Any Skill Level)</td>
+<td style="text-align:center"><a href="https://www.youtube.com/watch?v=hSMGlnXE-Q8" target="_blank" rel="noopener">Video</a></td>
+<td style="text-align:center"><a href="https://v.qq.com/x/page/a0668y4ga4g.html" target="_blank" rel="noopener">视频</a></td>
+<td style="text-align:center">🔴</td>
+</tr>
+<tr>
+<td>存储（K8S）SIG简介（任何技术水平）<br>SIG Storage (K8s) Intro - Saad Ali, Google (Any Skill Level)</td>
+<td style="text-align:center"><a href="https://www.youtube.com/watch?v=GvrTl2T-Tts" target="_blank" rel="noopener">Video</a></td>
+<td style="text-align:center"><a href="https://v.qq.com/x/page/q0668tge0ig.html" target="_blank" rel="noopener">视频</a></td>
+<td style="text-align:center">⚪</td>
+</tr>
+<tr>
+<td>rkt深潜（中级技术水平）<br>rkt Deep Dive – Alban Crequy &amp; Iago López Galeiras, Kinvolk (Intermediate Skill Level)</td>
+<td style="text-align:center"><a href="https://www.youtube.com/watch?v=n9eCJ_zjrKg" target="_blank" rel="noopener">Video</a></td>
+<td style="text-align:center"><a href="https://v.qq.com/x/page/t0669er8yzi.html" target="_blank" rel="noopener">视频</a></td>
+<td style="text-align:center">🔴</td>
+</tr>
+<tr>
+<td>NATS简介（任何技术水平）<br>NATS Intro – Colin Sullivan &amp; Waldemar Quevedo, Synadia (Any Skill Level)</td>
+<td style="text-align:center"><a href="https://www.youtube.com/watch?v=Y9bDY_oE80w" target="_blank" rel="noopener">Video</a></td>
+<td style="text-align:center"><a href="https://v.qq.com/x/page/n0669zuosli.html" target="_blank" rel="noopener">视频</a></td>
+<td style="text-align:center"></td>
+</tr>
+<tr>
+<td>SPIFFE深潜<br>SPIFFE Deep Dive - Andrew Jessup, Emiliano Berenbaum, Scytale, Inc., &amp; Neel Shah, VMware</td>
+<td style="text-align:center"><a href="https://www.youtube.com/watch?v=sXwFB34BBrM" target="_blank" rel="noopener">Video</a></td>
+<td style="text-align:center"><a href="https://v.qq.com/x/page/g0669vki6w4.html" target="_blank" rel="noopener">视频</a></td>
+<td style="text-align:center"></td>
+</tr>
+<tr>
+<td>rkt简介（任何技术水平）<br>rkt Intro – Alban Crequy &amp; Iago López Galeiras, Kinvolk (Any Skill Level)</td>
+<td style="text-align:center"><a href="https://www.youtube.com/watch?v=D8uMQDw4hVY" target="_blank" rel="noopener">Video</a></td>
+<td style="text-align:center"><a href="https://v.qq.com/x/page/d0669u41nq4.html" target="_blank" rel="noopener">视频</a></td>
+<td style="text-align:center">⚪</td>
+</tr>
+<tr>
+<td>调度SIG深潜<br>SIG Scheduling Deep Dive – Bobby Salamat &amp; Jonathan Basseri, Google</td>
+<td style="text-align:center"><a href="https://www.youtube.com/watch?v=_fja_lLFpfc" target="_blank" rel="noopener">Video</a></td>
+<td style="text-align:center"><a href="https://v.qq.com/x/page/d0669x5v7op.html" target="_blank" rel="noopener">视频</a></td>
+<td style="text-align:center">🌕 🔴</td>
+</tr>
+<tr>
+<td>Kubeflow深潜（中级技术水平）<br>Kubeflow Deep Dive – David Aronchick &amp; Jeremy Lewi, Google (Intermediate Skill Level)</td>
+<td style="text-align:center"><a href="https://www.youtube.com/watch?v=86GD1VzSnks" target="_blank" rel="noopener">Video</a></td>
+<td style="text-align:center"><a href="https://v.qq.com/x/page/r066995sfju.html" target="_blank" rel="noopener">视频</a></td>
+<td style="text-align:center">⚪ 🔵</td>
+</tr>
+<tr>
+<td>Source2Image简介（任何技术水平）<br>Source2Image Intro – Ben Parees, Red Hat &amp; Matt Moore, Google (Any Skill Level)</td>
+<td style="text-align:center"><a href="https://www.youtube.com/watch?v=fCV4dr_36cM" target="_blank" rel="noopener">Video</a></td>
+<td style="text-align:center"><a href="https://v.qq.com/x/page/a06691ok1ka.html" target="_blank" rel="noopener">视频</a></td>
+<td style="text-align:center">🔴</td>
+</tr>
+<tr>
+<td>普罗米修斯深潜（中级技术水平）<br>Prometheus Deep Dive – Julius Volz, Prometheus, &amp; Max Inden, Red Hat (Intermediate Skill Level)</td>
+<td style="text-align:center"><a href="https://www.youtube.com/watch?v=UAAT0tRmXP8" target="_blank" rel="noopener">Video</a></td>
+<td style="text-align:center"><a href="https://v.qq.com/x/page/s0669wpjzos.html" target="_blank" rel="noopener">视频</a></td>
+<td style="text-align:center">⚪ 🔴</td>
+</tr>
+<tr>
+<td>多集群SIG深潜<br>SIG Multi-Cluster Deep Dive – Christian Bell, Madhu C.S., &amp; Nikhil Jindal, Google</td>
+<td style="text-align:center"><a href="https://www.youtube.com/watch?v=q27rbaX5Jis" target="_blank" rel="noopener">Video</a></td>
+<td style="text-align:center"><a href="https://v.qq.com/x/page/x0669494uv6.html" target="_blank" rel="noopener">视频</a></td>
+<td style="text-align:center"></td>
+</tr>
+<tr>
+<td>Jaeger项目深潜（中级技术水平）<br>Jaeger Project Deep Dive - Juraci Kröhling, Red Hat (Intermediate Skill Level)</td>
+<td style="text-align:center"><a href="https://www.youtube.com/watch?v=tFZAHWl8y_I" target="_blank" rel="noopener">Video</a></td>
+<td style="text-align:center"><a href="https://v.qq.com/x/page/f0669ixcz4a.html" target="_blank" rel="noopener">视频</a></td>
+<td style="text-align:center">⚪</td>
+</tr>
+<tr>
+<td>CNI简介（任何技术水平）<br>CNI Intro – Bryan Boreham, Weaveworks, &amp; Casey Callendrello, CoreOS (Any Skill Level)</td>
+<td style="text-align:center"><a href="https://www.youtube.com/watch?v=7CeYAIlUY6s" target="_blank" rel="noopener">Video</a></td>
+<td style="text-align:center"><a href="https://v.qq.com/x/page/b0669bcf3ka.html" target="_blank" rel="noopener">视频</a></td>
+<td style="text-align:center">⚫</td>
+</tr>
+<tr>
+<td>云原生景观深潜<br>Cloud Native Landscape Deep Dive – Dan Kohn, Cloud Native Computing Foundation</td>
+<td style="text-align:center"><a href="https://www.youtube.com/watch?v=_s9Ho5pylB4" target="_blank" rel="noopener">Video</a></td>
+<td style="text-align:center"><a href="https://v.qq.com/x/page/o0669bfugo9.html" target="_blank" rel="noopener">视频</a></td>
+<td style="text-align:center">⚪</td>
+</tr>
+<tr>
+<td>资源管理工作组深潜（中级技术水平）<br>Resource Management WG Deep Dive – Vishnu Kannan, Google (Intermediate Skill Level)</td>
+<td style="text-align:center"><a href="https://www.youtube.com/watch?v=Oielqj7wIng" target="_blank" rel="noopener">Video</a></td>
+<td style="text-align:center"><a href="https://v.qq.com/x/page/f0669gqq90w.html" target="_blank" rel="noopener">视频</a></td>
+<td style="text-align:center">⚪</td>
+</tr>
+<tr>
+<td>应用SIG简介（任何技术水平）<br>SIG Apps Intro – Janet Kuo &amp; Kenneth Owens, Google (Any Skill Level)</td>
+<td style="text-align:center"><a href="https://www.youtube.com/watch?v=fZ9Bf7iEekU" target="_blank" rel="noopener">Video</a></td>
+<td style="text-align:center"><a href="https://v.qq.com/x/page/o0669pxwjj0.html" target="_blank" rel="noopener">视频</a></td>
+<td style="text-align:center">⚪ 🔴</td>
+</tr>
+<tr>
+<td>CNCF跨云持续集成简介<br>CNCF Cross-Cloud CI Intro – Denver Williams &amp; Taylor Carpenter</td>
+<td style="text-align:center"><a href="https://www.youtube.com/watch?v=wb7aCAk1VFU" target="_blank" rel="noopener">Video</a></td>
+<td style="text-align:center"><a href="https://v.qq.com/x/page/i0669n1bshn.html" target="_blank" rel="noopener">视频</a></td>
+<td style="text-align:center"></td>
+</tr>
+<tr>
+<td>NATS深潜（中级技术水平）<br>NATS Deep Dive – Colin Sullivan &amp; Waldemar Quevedo, Synadia (Intermediate Skill Level)</td>
+<td style="text-align:center"><a href="https://www.youtube.com/watch?v=MAKYz8oPRyw" target="_blank" rel="noopener">Video</a></td>
+<td style="text-align:center"><a href="https://v.qq.com/x/page/a0669ejuaxh.html" target="_blank" rel="noopener">视频</a></td>
+<td style="text-align:center"></td>
+</tr>
+<tr>
+<td>贡献者体验SIG深潜<br>SIG Contributor Experience Deep Dive – Paris Pittman, Google &amp; Tim Pepper, VMware</td>
+<td style="text-align:center"><a href="https://www.youtube.com/watch?v=2oPHolzhZHc" target="_blank" rel="noopener">Video</a></td>
+<td style="text-align:center"><a href="https://v.qq.com/x/page/l0669chrqle.html" target="_blank" rel="noopener">视频</a></td>
+<td style="text-align:center">🌕</td>
+</tr>
+<tr>
+<td>CoreDNS简介（任何技术水平）<br>CoreDNS Intro – Miek Gieben, Google (Any Skill Level)</td>
+<td style="text-align:center"><a href="https://www.youtube.com/watch?v=ZFEa2pDpvws" target="_blank" rel="noopener">Video</a></td>
+<td style="text-align:center"><a href="https://v.qq.com/x/page/k0669temw8d.html" target="_blank" rel="noopener">视频</a></td>
+<td style="text-align:center">🌕</td>
+</tr>
+<tr>
+<td>发布SIG简介（任何技术水平）<br>SIG Release Intro – Jaice Singer DuMars &amp; Caleb Miles, Google (Any Skill Level)</td>
+<td style="text-align:center"><a href="https://www.youtube.com/watch?v=3HZVVR2ukKI" target="_blank" rel="noopener">Video</a></td>
+<td style="text-align:center"><a href="https://v.qq.com/x/page/x0669zcga0w.html" target="_blank" rel="noopener">视频</a></td>
+<td style="text-align:center"></td>
+</tr>
+<tr>
+<td>OCI BoF（任何技术水平）<br>OCI BoF - Alban Crequy, Kinvolk &amp; Chris Aniszczyk, CNCF (Any Skill Level)</td>
+<td style="text-align:center"><a href="https://www.youtube.com/watch?v=4Kna9fjWmHk" target="_blank" rel="noopener">Video</a></td>
+<td style="text-align:center"><a href="https://v.qq.com/x/page/u0669p35kv8.html" target="_blank" rel="noopener">视频</a></td>
+<td style="text-align:center">⚪ 🔵</td>
+</tr>
+<tr>
+<td>VMware SIG简介（任何技术水平）<br>VMware SIG Intro – Fabio Rapposelli &amp; Steve Wong, VMware (Any Skill Level)</td>
+<td style="text-align:center"><a href="https://www.youtube.com/watch?v=Zn8NekAMJzs" target="_blank" rel="noopener">Video</a></td>
+<td style="text-align:center"><a href="https://v.qq.com/x/page/y0669j8a8ur.html" target="_blank" rel="noopener">视频</a></td>
+<td style="text-align:center">🔴</td>
+</tr>
+<tr>
+<td>使用Kubernetes和TensorFlow建立围棋AI<br>Building a Go AI with Kubernetes and TensorFlow - Andrew Jackson &amp; Josh Hoak, Google</td>
+<td style="text-align:center"><a href="https://www.youtube.com/watch?v=QR8tAyzkTdE" target="_blank" rel="noopener">Video</a></td>
+<td style="text-align:center"><a href="https://v.qq.com/x/page/o0671nlfxny.html" target="_blank" rel="noopener">视频</a></td>
+<td style="text-align:center">🌕</td>
+</tr>
+<tr>
+<td>使用Linkerd和Conduit观测和调试云原生应用程序<br>Observability and Debugging Cloud-Native Apps using Linkerd &amp; Conduit - Franziska von der Goltz</td>
+<td style="text-align:center"><a href="https://www.youtube.com/watch?v=RC_9ywj0yz8" target="_blank" rel="noopener">Video</a></td>
+<td style="text-align:center"><a href="https://v.qq.com/x/page/u0671j7mxy9.html" target="_blank" rel="noopener">视频</a></td>
+<td style="text-align:center">🔴</td>
+</tr>
+<tr>
+<td>小组讨论：问我们什么也可以：微服务和服务网<br>Panel Discussion: Ask Us Anything: Microservices and Service Mesh - Moderated by Jason McGee</td>
+<td style="text-align:center"><a href="https://www.youtube.com/watch?v=uWi-Fe4Rzhg" target="_blank" rel="noopener">Video</a></td>
+<td style="text-align:center"><a href="https://v.qq.com/x/page/c0671ynz4br.html" target="_blank" rel="noopener">视频</a></td>
+<td style="text-align:center">🔴</td>
+</tr>
+<tr>
+<td>Envoy内部深潜（高级技术水平）<br>Envoy Internals Deep Dive - Matt Klein, Lyft (Advanced Skill Level)</td>
+<td style="text-align:center"><a href="https://www.youtube.com/watch?v=gQF23Vw0keg" target="_blank" rel="noopener">Video</a></td>
+<td style="text-align:center"><a href="https://v.qq.com/x/page/n0671jwpswf.html" target="_blank" rel="noopener">视频</a></td>
+<td style="text-align:center"></td>
+</tr>
+<tr>
+<td>GitOps搭配Istio - 代码一样的管理Istio配置<br>GitOps for Istio - Manage Istio Config like Code - Varun Talwar &amp; Alexis Richardson</td>
+<td style="text-align:center"><a href="https://www.youtube.com/watch?v=VkKMf23ZokY" target="_blank" rel="noopener">Video</a></td>
+<td style="text-align:center"><a href="https://v.qq.com/x/page/p0671ilw8dj.html" target="_blank" rel="noopener">视频</a></td>
+<td style="text-align:center">🔴</td>
+</tr>
+<tr>
+<td>服务网格如何帮助我们建立生产级别的云原生服务<br>How a Service Mesh Helped Us Build Production Cloud-Native Services - Israel Sotomayor</td>
+<td style="text-align:center"><a href="https://www.youtube.com/watch?v=VoYAtCVz3Ig" target="_blank" rel="noopener">Video</a></td>
+<td style="text-align:center"><a href="https://v.qq.com/x/page/i06714l3dra.html" target="_blank" rel="noopener">视频</a></td>
+<td style="text-align:center">🔴</td>
+</tr>
+<tr>
+<td>如何交付服务网格到生产环境而没有被炒<br>How to Get a Service Mesh Into Prod without Getting Fired - William Morgan, Buoyant, Inc</td>
+<td style="text-align:center"><a href="https://www.youtube.com/watch?v=XA1aGpYzpYg" target="_blank" rel="noopener">Video</a></td>
+<td style="text-align:center"><a href="https://v.qq.com/x/page/v06717jzucv.html" target="_blank" rel="noopener">视频</a></td>
+<td style="text-align:center"></td>
+</tr>
+<tr>
+<td>权利：可以理解的容器安全控制<br>Entitlements: Understandable Container Security Controls - Justin Cormack &amp; Nassim Eddequiouaq</td>
+<td style="text-align:center"><a href="https://www.youtube.com/watch?v=Jbqxsli2tRw" target="_blank" rel="noopener">Video</a></td>
+<td style="text-align:center"><a href="https://v.qq.com/x/page/l06714puy5h.html" target="_blank" rel="noopener">视频</a></td>
+<td style="text-align:center"></td>
+</tr>
+<tr>
+<td>案例分析：容器如何使安全性和法规遵从瞬间更容易<br>Case study: How Containers Makes Security and Compliance Instantly Easier - John Morello</td>
+<td style="text-align:center"><a href="https://www.youtube.com/watch?v=I8tGZXPuIo0" target="_blank" rel="noopener">Video</a></td>
+<td style="text-align:center"><a href="https://v.qq.com/x/page/f06713hj0ll.html" target="_blank" rel="noopener">视频</a></td>
+<td style="text-align:center">⚪</td>
+</tr>
+<tr>
+<td>OPA：云原生政策引擎（中级技术水平）<br>OPA: The Cloud Native Policy Engine - Torin Sandall, Styra (Intermediate Skill Level)</td>
+<td style="text-align:center"><a href="https://www.youtube.com/watch?v=XEHeexPpgrA" target="_blank" rel="noopener">Video</a></td>
+<td style="text-align:center"><a href="https://v.qq.com/x/page/v0671h2ocnf.html" target="_blank" rel="noopener">视频</a></td>
+<td style="text-align:center"></td>
+</tr>
+<tr>
+<td>使用微服务大规模实现安全<br>Achieving High Security at Scale with Microservices - Zachary Arnold &amp; Austin Adams</td>
+<td style="text-align:center"><a href="https://www.youtube.com/watch?v=1YCIOEW5nGw" target="_blank" rel="noopener">Video</a></td>
+<td style="text-align:center"><a href="https://v.qq.com/x/page/o067155bgv4.html" target="_blank" rel="noopener">视频</a></td>
+<td style="text-align:center">⚪</td>
+</tr>
+<tr>
+<td>集群如牛：如何无缝跨Kubernetes集群迁移应用程序<br>Clusters as Cattle: How to Seamlessly Migrate Apps Across Kubernetes Clusters - Andy Goldstein</td>
+<td style="text-align:center"><a href="https://www.youtube.com/watch?v=5kMz2oJgV0A" target="_blank" rel="noopener">Video</a></td>
+<td style="text-align:center"><a href="https://v.qq.com/x/page/g0671ukr0j0.html" target="_blank" rel="noopener">视频</a></td>
+<td style="text-align:center"></td>
+</tr>
+<tr>
+<td>不使用联邦进行Kubernetes多群集操作<br>Kubernetes Multi-Cluster Operations without Federation - Rob Szumski, CoreOS</td>
+<td style="text-align:center"><a href="https://www.youtube.com/watch?v=zVOIk7nO_ts" target="_blank" rel="noopener">Video</a></td>
+<td style="text-align:center"><a href="https://v.qq.com/x/page/n0671cy3fjf.html" target="_blank" rel="noopener">视频</a></td>
+<td style="text-align:center">⚪</td>
+</tr>
+<tr>
+<td>101种方法打断和恢复Kubernetes集群<br>101 Ways to “Break and Recover” Kubernetes Cluster - Suresh Visvanathan &amp; Nandhakumar Venkatachalam</td>
+<td style="text-align:center"><a href="https://www.youtube.com/watch?v=likHm-KHGWQ" target="_blank" rel="noopener">Video</a></td>
+<td style="text-align:center"><a href="https://v.qq.com/x/page/z0671ncprn5.html" target="_blank" rel="noopener">视频</a></td>
+<td style="text-align:center">⚪ 🔵</td>
+</tr>
+<tr>
+<td>来自剧本的故事（任何技术水平）<br>Stories from the Playbook - Tina Zhang &amp; Fred van den Driessche, Google (Any Skill Level)</td>
+<td style="text-align:center"><a href="https://www.youtube.com/watch?v=N2JUGnwinbQ" target="_blank" rel="noopener">Video</a></td>
+<td style="text-align:center"><a href="https://v.qq.com/x/page/d0671fh98do.html" target="_blank" rel="noopener">视频</a></td>
+<td style="text-align:center">⚪</td>
+</tr>
+<tr>
+<td>建立cert-manager：迁移成千上万的用户到CRD<br>Building cert-manager: Migrating Thousands of Users from kube-lego to use CRDs - James Munnelly</td>
+<td style="text-align:center"><a href="https://www.youtube.com/watch?v=TuIycZeiNZM" target="_blank" rel="noopener">Video</a></td>
+<td style="text-align:center"><a href="https://v.qq.com/x/page/c0672t3jy0u.html" target="_blank" rel="noopener">视频</a></td>
+<td style="text-align:center">⚪ 🔵 🔴</td>
+</tr>
+<tr>
+<td>YAML是给计算机的；ksonnet是给人的（任何技术水平）<br>YAML is for Computers. ksonnet is for Humans - Bryan Liles, Heptio (Any Skill Level)</td>
+<td style="text-align:center"><a href="https://www.youtube.com/watch?v=FjdS21McgpE" target="_blank" rel="noopener">Video</a></td>
+<td style="text-align:center"><a href="https://v.qq.com/x/page/w0672uled1k.html" target="_blank" rel="noopener">视频</a></td>
+<td style="text-align:center">⚪</td>
+</tr>
+<tr>
+<td>使用Brigade建立事件驱动的管道<br>Building Event-Driven Pipelines with Brigade - Brian Redmond, Microsoft</td>
+<td style="text-align:center"><a href="https://www.youtube.com/watch?v=yhfc0FKdFc8" target="_blank" rel="noopener">Video</a></td>
+<td style="text-align:center"><a href="https://v.qq.com/x/page/y0672vdpumt.html" target="_blank" rel="noopener">视频</a></td>
+<td style="text-align:center"></td>
+</tr>
+<tr>
+<td>构建应用程序以增加采用Kubernetes，让生活更轻松<br>Building Applications to Increase Kubernetes Adoption, and Make Life Easier - Kate Kuchin, Heptio</td>
+<td style="text-align:center"><a href="https://www.youtube.com/watch?v=X2icFkQMg60" target="_blank" rel="noopener">Video</a></td>
+<td style="text-align:center"><a href="https://v.qq.com/x/page/w06721y5y9p.html" target="_blank" rel="noopener">视频</a></td>
+<td style="text-align:center">⚪</td>
+</tr>
+<tr>
+<td>编写云原生应用程序的挑战<br>Challenges to Writing Cloud Native Applications - Vallery Lancey, Checkfront</td>
+<td style="text-align:center"><a href="https://www.youtube.com/watch?v=di6oFceM_CQ" target="_blank" rel="noopener">Video</a></td>
+<td style="text-align:center"><a href="https://v.qq.com/x/page/k0672vqtt6j.html" target="_blank" rel="noopener">视频</a></td>
+<td style="text-align:center">⚪</td>
+</tr>
+<tr>
+<td>使用服务目录快乐Helming（中级技术水平）<br>Happy Helming with Service Catalog - Jeremy Rickard, Microsoft (Intermediate Skill Level)</td>
+<td style="text-align:center"><a href="https://www.youtube.com/watch?v=SuicCBXJRPg" target="_blank" rel="noopener">Video</a></td>
+<td style="text-align:center"><a href="https://v.qq.com/x/page/d0672p8djtm.html" target="_blank" rel="noopener">视频</a></td>
+<td style="text-align:center"></td>
+</tr>
+<tr>
+<td>从PaaS到K8s：结合K8s的力量和最具创新的特点<br>From PaaS to Kubernetes: Combining the Power of Kubernetes with the Most Innovative Features</td>
+<td style="text-align:center"><a href="https://www.youtube.com/watch?v=hLlGUSh_yAI" target="_blank" rel="noopener">Video</a></td>
+<td style="text-align:center"><a href="https://v.qq.com/x/page/z0672kozs3q.html" target="_blank" rel="noopener">视频</a></td>
+<td style="text-align:center">⚪</td>
+</tr>
+<tr>
+<td>水平Pod自动配置器重装 - 基于自定义指标缩放<br>Horizontal Pod Autoscaler Reloaded - Scale on Custom Metrics - Maciej Pytel &amp; Solly Ross</td>
+<td style="text-align:center"><a href="https://www.youtube.com/watch?v=1xm_ccAYO90" target="_blank" rel="noopener">Video</a></td>
+<td style="text-align:center"><a href="https://v.qq.com/x/page/x0672s4n5ze.html" target="_blank" rel="noopener">视频</a></td>
+<td style="text-align:center">⚪</td>
+</tr>
+<tr>
+<td>使用自定义度量构建Kubernetes调度程序<br>Building a Kubernetes Scheduler using Custom Metrics - Mateo Burillo, Sysdig</td>
+<td style="text-align:center"><a href="https://www.youtube.com/watch?v=4TaHQgG9wEg" target="_blank" rel="noopener">Video</a></td>
+<td style="text-align:center"><a href="https://v.qq.com/x/page/d0672564jcn.html" target="_blank" rel="noopener">视频</a></td>
+<td style="text-align:center">🔵</td>
+</tr>
+<tr>
+<td>给CRD编写Kubernetes控制器：挑战、方法和解决方案<br>Writing Kubernetes Controllers for CRDs: Challenges, Approaches and Solutions - Alena Prokharchyk</td>
+<td style="text-align:center"><a href="https://www.youtube.com/watch?v=7wdUa4Ulwxg" target="_blank" rel="noopener">Video</a></td>
+<td style="text-align:center"><a href="https://v.qq.com/x/page/k0672i1pbci.html" target="_blank" rel="noopener">视频</a></td>
+<td style="text-align:center">🔵</td>
+</tr>
+<tr>
+<td>来自未来的Kubernetes风格的API（任何技术水平）<br>Kubernetes-style APIs of the Future - Daniel Smith, Google (Any Skill Level)</td>
+<td style="text-align:center"><a href="https://www.youtube.com/watch?v=S2U8GNHewpk" target="_blank" rel="noopener">Video</a></td>
+<td style="text-align:center"><a href="https://v.qq.com/x/page/d0672lnk1vs.html" target="_blank" rel="noopener">视频</a></td>
+<td style="text-align:center">⚪</td>
+</tr>
+<tr>
+<td>大家来编写Kubernetes控制器（初级技术水平）<br>Writing Kube Controllers for Everyone - Maciej Szulik, Red Hat (Beginner Skill Level)</td>
+<td style="text-align:center"><a href="https://www.youtube.com/watch?v=AUNPLQVxvmw" target="_blank" rel="noopener">Video</a></td>
+<td style="text-align:center"><a href="https://v.qq.com/x/page/w0672rvtx8m.html" target="_blank" rel="noopener">视频</a></td>
+<td style="text-align:center">🔵</td>
+</tr>
+<tr>
+<td>使用Kubernetes自定义资源定义减少样板代码<br>Reducing Boilerplate With Kubernetes Custom Resource Definitions - James Bowes</td>
+<td style="text-align:center"><a href="https://www.youtube.com/watch?v=5VGJOW4QA3Q" target="_blank" rel="noopener">Video</a></td>
+<td style="text-align:center"><a href="https://v.qq.com/x/page/r0672dqvalj.html" target="_blank" rel="noopener">视频</a></td>
+<td style="text-align:center">⚪</td>
+</tr>
+<tr>
+<td>可扩展简介（任何技术水平）<br>Scalability Intro – Shyam Jeedigunta, Google &amp; Bob Wise, Samsung SDS (Any Skill Level)</td>
+<td style="text-align:center"><a href="https://www.youtube.com/watch?v=8cJ-zaLOVXc" target="_blank" rel="noopener">Video</a></td>
+<td style="text-align:center"><a href="https://v.qq.com/x/page/h06727084ra.html" target="_blank" rel="noopener">视频</a></td>
+<td style="text-align:center"></td>
+</tr>
+<tr>
+<td>主题演讲：无服务器，没有那么FaaS<br>Keynote: Serverless, Not So FaaS - Kelsey Hightower, Kubernetes Community Member, Google</td>
+<td style="text-align:center"><a href="https://www.youtube.com/watch?v=_1-5YFfJCqM" target="_blank" rel="noopener">Video</a></td>
+<td style="text-align:center"><a href="https://v.qq.com/x/page/g0672r5kevg.html" target="_blank" rel="noopener">视频</a></td>
+<td style="text-align:center"></td>
+</tr>
+<tr>
+<td>存储工作组深潜<br>Storage WG Deep Dive – Ben Hindman, Mesosphere, Clint Kitson, VMware &amp; Quinton Hoole, Huawei</td>
+<td style="text-align:center"><a href="https://www.youtube.com/watch?v=Nks3qOx8YcI" target="_blank" rel="noopener">Video</a></td>
+<td style="text-align:center"><a href="https://v.qq.com/x/page/q0672w38i7d.html" target="_blank" rel="noopener">视频</a></td>
+<td style="text-align:center"></td>
+</tr>
+<tr>
+<td>Kubernetes政策工作组深潜（中级技术水平）<br>Kubernetes Policy WG Deep Dive - Zhipeng Huang, Huawei (Intermediate Skill Level)</td>
+<td style="text-align:center"><a href="https://www.youtube.com/watch?v=SpCjXqDTCgU" target="_blank" rel="noopener">Video</a></td>
+<td style="text-align:center"><a href="https://v.qq.com/x/page/u0672o9ws28.html" target="_blank" rel="noopener">视频</a></td>
+<td style="text-align:center"></td>
+</tr>
+<tr>
+<td>盒子里有什么东西？Kubernetes中的资源管理<br>What’s in the Box? Resource Management in Kubernetes - Louise Daly &amp; Ivan Coughlan, Intel</td>
+<td style="text-align:center"><a href="https://www.youtube.com/watch?v=7CWH3KRk01U" target="_blank" rel="noopener">Video</a></td>
+<td style="text-align:center"><a href="https://v.qq.com/x/page/f0672d62l0y.html" target="_blank" rel="noopener">视频</a></td>
+<td style="text-align:center">⚪</td>
+</tr>
+<tr>
+<td>Kubernetes上的合规数据管理和机器学习<br>Compliant Data Management and Machine Learning on Kubernetes - Daniel Whitenack, Pachyderm</td>
+<td style="text-align:center"><a href="https://www.youtube.com/watch?v=eOzl-LFqYFM" target="_blank" rel="noopener">Video</a></td>
+<td style="text-align:center"><a href="https://v.qq.com/x/page/s06729lfxdh.html" target="_blank" rel="noopener">视频</a></td>
+<td style="text-align:center"></td>
+</tr>
+<tr>
+<td>把你的数据管道带到机器学习的时代<br>Bringing Your Data Pipeline into The Machine Learning Era - Chris Gaun &amp; Jörg Schad, Mesosphere</td>
+<td style="text-align:center"><a href="https://www.youtube.com/watch?v=f_-3rQoudnc" target="_blank" rel="noopener">Video</a></td>
+<td style="text-align:center"><a href="https://v.qq.com/x/page/i0672o7rahf.html" target="_blank" rel="noopener">视频</a></td>
+<td style="text-align:center">⚪ 🔵 🔴</td>
+</tr>
+<tr>
+<td>Kubernetes提供GPU即服务的路径（中级技术水平）<br>The Path to GPU as a Service in Kubernetes - Renaud Gaubert, NVIDIA (Intermediate Skill Level)</td>
+<td style="text-align:center"><a href="https://www.youtube.com/watch?v=8JGduez-8S0" target="_blank" rel="noopener">Video</a></td>
+<td style="text-align:center"><a href="https://v.qq.com/x/page/b0672quss7o.html" target="_blank" rel="noopener">视频</a></td>
+<td style="text-align:center">⚪ 🔵 🔴</td>
+</tr>
+<tr>
+<td>使用Kubeflow构建ML产品<br>Building ML Products With Kubeflow - Jeremy Lewi, Google &amp; Stephan Fabel, Canonical</td>
+<td style="text-align:center"><a href="https://www.youtube.com/watch?v=sC8Ce9vUggo" target="_blank" rel="noopener">Video</a></td>
+<td style="text-align:center"><a href="https://v.qq.com/x/page/s0672h28jil.html" target="_blank" rel="noopener">视频</a></td>
+<td style="text-align:center">⚪ 🔴 🌕</td>
+</tr>
+<tr>
+<td>使用Istio观察和故障排除您的微服务<br>Observing and Troubleshooting your Microservices with Istio - Isaiah Snell-feikema &amp; Douglas Reid</td>
+<td style="text-align:center"><a href="https://www.youtube.com/watch?v=TSEqxsctXVc" target="_blank" rel="noopener">Video</a></td>
+<td style="text-align:center"><a href="https://v.qq.com/x/page/i0672sxyxxz.html" target="_blank" rel="noopener">视频</a></td>
+<td style="text-align:center">⚪ 🔵</td>
+</tr>
+<tr>
+<td>使用Linux内核加快Envoy（高级技术水平）<br>Accelerating Envoy with the Linux Kernel - Thomas Graf, Covalent (Advanced Skill Level)</td>
+<td style="text-align:center"><a href="https://www.youtube.com/watch?v=ER9eIXL2_14" target="_blank" rel="noopener">Video</a></td>
+<td style="text-align:center"><a href="https://v.qq.com/x/page/z0672ujfdpq.html" target="_blank" rel="noopener">视频</a></td>
+<td style="text-align:center"></td>
+</tr>
+<tr>
+<td>Istio告诉我，我的服务响应时间过长，现在该怎么办？<br>Istio Tells me my Service has Slow Response Time, Now What? - Endre Sara &amp; Enlin Xu</td>
+<td style="text-align:center"><a href="https://www.youtube.com/watch?v=ZF-_LN9XYiQ" target="_blank" rel="noopener">Video</a></td>
+<td style="text-align:center"><a href="https://v.qq.com/x/page/n0672vqn2hd.html" target="_blank" rel="noopener">视频</a></td>
+<td style="text-align:center">⚪</td>
+</tr>
+<tr>
+<td>拉伸网格（任何技术水平）<br>Stretching the Mesh - John Joyce &amp; Robert Li, Cisco Systems (Any Skill Level)</td>
+<td style="text-align:center"><a href="https://www.youtube.com/watch?v=jM6ovJAWCvs" target="_blank" rel="noopener">Video</a></td>
+<td style="text-align:center"><a href="https://v.qq.com/x/page/l068171tceh.html" target="_blank" rel="noopener">视频</a></td>
+<td style="text-align:center"></td>
+</tr>
+<tr>
+<td>K8s、Istio和Envoy进行金丝雀部署（初级技术水平）<br>Canary Deploys with Kubernetes, Istio and Envoy - Jason Yee, Datadog (Beginner Skill Level)</td>
+<td style="text-align:center"><a href="https://www.youtube.com/watch?v=MGLDRKiXNf0" target="_blank" rel="noopener">Video</a></td>
+<td style="text-align:center"><a href="https://v.qq.com/x/page/a06816lkn0i.html" target="_blank" rel="noopener">视频</a></td>
+<td style="text-align:center">⚪</td>
+</tr>
+<tr>
+<td>Istio - 天气公司之旅（任何技术水平）<br>Istio - The Weather Company’s Journey - Nick Nellis &amp; Fabio Oliveira, IBM (Any Skill Level)</td>
+<td style="text-align:center"><a href="https://www.youtube.com/watch?v=0fKi3NeCsSE" target="_blank" rel="noopener">Video</a></td>
+<td style="text-align:center"><a href="https://v.qq.com/x/page/k06810v1jv4.html" target="_blank" rel="noopener">视频</a></td>
+<td style="text-align:center">⚪</td>
+</tr>
+<tr>
+<td>在Kubernetes实行多租户：当今最佳实践和未来方向<br>Multi-Tenancy in Kubernetes: Best Practices Today, and Future Directions - David Oppenheimer</td>
+<td style="text-align:center"><a href="https://www.youtube.com/watch?v=xygE8DbwJ7c" target="_blank" rel="noopener">Video</a></td>
+<td style="text-align:center"><a href="https://v.qq.com/x/page/k0681nn0kzc.html" target="_blank" rel="noopener">视频</a></td>
+<td style="text-align:center">⚪</td>
+</tr>
+<tr>
+<td>TL; DR NIST容器安全标准（初级技术水平）<br>TL;DR NIST Container Security Standards - Elsie Phillips, CoreOS (Beginner Skill Level)</td>
+<td style="text-align:center"><a href="https://www.youtube.com/watch?v=AqoDQaeuLXY" target="_blank" rel="noopener">Video</a></td>
+<td style="text-align:center"><a href="https://v.qq.com/x/page/d0681v9cp56.html" target="_blank" rel="noopener">视频</a></td>
+<td style="text-align:center"></td>
+</tr>
+<tr>
+<td>Kubernetes运行安全：如果容器变坏会发生什么？<br>Kubernetes Runtime Security: What Happens if a Container Goes Bad? - Jen Tong &amp; Maya Kaczorowski</td>
+<td style="text-align:center"><a href="https://www.youtube.com/watch?v=X7mBjas9vtE" target="_blank" rel="noopener">Video</a></td>
+<td style="text-align:center"><a href="https://v.qq.com/x/page/z0681annwry.html" target="_blank" rel="noopener">视频</a></td>
+<td style="text-align:center"></td>
+</tr>
+<tr>
+<td>黑客指南：Kubernetes和云（中级技术水平）<br>A Hacker’s Guide to Kubernetes and the Cloud - Rory McCune, NCC Group PLC (Intermediate Skill Level)</td>
+<td style="text-align:center"><a href="https://www.youtube.com/watch?v=dxKpCO2dAy8" target="_blank" rel="noopener">Video</a></td>
+<td style="text-align:center"><a href="https://v.qq.com/x/page/b0681gb8us0.html" target="_blank" rel="noopener">视频</a></td>
+<td style="text-align:center">🔵</td>
+</tr>
+<tr>
+<td>从Kubelet到Istio：K8s网络安全揭秘<br>From Kubelet to Istio: Kubernetes Network Security Demystified - Andrew Martin, ControlPlane</td>
+<td style="text-align:center"><a href="https://www.youtube.com/watch?v=Uocf67aD5QQ" target="_blank" rel="noopener">Video</a></td>
+<td style="text-align:center"><a href="https://v.qq.com/x/page/z0681v501nl.html" target="_blank" rel="noopener">视频</a></td>
+<td style="text-align:center">⚪ 🔵</td>
+</tr>
+<tr>
+<td>保障Pod的安全（高级技术水平）<br>Secure Pods - Tim Allclair, Google (Advanced Skill Level)</td>
+<td style="text-align:center"><a href="https://www.youtube.com/watch?v=GLwmJh-j3rs" target="_blank" rel="noopener">Video</a></td>
+<td style="text-align:center"><a href="https://v.qq.com/x/page/x0681sd297n.html" target="_blank" rel="noopener">视频</a></td>
+<td style="text-align:center">⚪ 🔵</td>
+</tr>
+<tr>
+<td>在裸机集群建设Kubernetes<br>Building a Kubernetes on Bare-Metal Cluster - Alexandros Kosiaris &amp; Guiseppe Lavagetto</td>
+<td style="text-align:center"><a href="https://www.youtube.com/watch?v=7rqvRwfZHF4" target="_blank" rel="noopener">Video</a></td>
+<td style="text-align:center"><a href="https://v.qq.com/x/page/g06812w2nnj.html" target="_blank" rel="noopener">视频</a></td>
+<td style="text-align:center">🔵</td>
+</tr>
+<tr>
+<td>Kubernetes里面资源管理（QoS）：来自实实战的教训<br>Inside Kubernetes Resource Management (QoS) – Mechanics and Lessons from the Field - Michael Gasch</td>
+<td style="text-align:center"><a href="https://www.youtube.com/watch?v=8-apJyr2gi0" target="_blank" rel="noopener">Video</a></td>
+<td style="text-align:center"><a href="https://v.qq.com/x/page/x0681rvh3e5.html" target="_blank" rel="noopener">视频</a></td>
+<td style="text-align:center">⚪</td>
+</tr>
+<tr>
+<td>亚马逊EKS介绍（初级技术水平）<br>Introducing Amazon EKS - Brandon Chavis &amp; Arun Gupta, AWS (Beginner Skill Level)</td>
+<td style="text-align:center"><a href="https://www.youtube.com/watch?v=FmubBIw_wSs" target="_blank" rel="noopener">Video</a></td>
+<td style="text-align:center"><a href="https://v.qq.com/x/page/h06815q4k1b.html" target="_blank" rel="noopener">视频</a></td>
+<td style="text-align:center">⚪</td>
+</tr>
+<tr>
+<td>使用Kubernetes进行云爆发<br>Cloudbursting with Kubernetes - Irfan Ur Rehman &amp; Quinton Hoole, Huawei Technologies</td>
+<td style="text-align:center"><a href="https://www.youtube.com/watch?v=AGQL4ItB3NM" target="_blank" rel="noopener">Video</a></td>
+<td style="text-align:center"><a href="https://v.qq.com/x/page/b0681zbhfa8.html" target="_blank" rel="noopener">视频</a></td>
+<td style="text-align:center"></td>
+</tr>
+<tr>
+<td>“生产就绪”对Kubernetes集群的真正含义是什么？<br>What Does “Production Ready” Really Mean for a Kubernetes Cluster? - Lucas Käldström</td>
+<td style="text-align:center"><a href="https://www.youtube.com/watch?v=EjSiZgGdRqk" target="_blank" rel="noopener">Video</a></td>
+<td style="text-align:center"><a href="https://v.qq.com/x/page/p0668xamr1v.html" target="_blank" rel="noopener">视频</a></td>
+<td style="text-align:center">⚪ ⚫</td>
+</tr>
+<tr>
+<td>Kubernetes 101：DIY工作坊（初级技术水平）<br>Kubernetes 101: DIY Workshop - Bridget Kromhout, Microsoft (Beginner Skill Level)</td>
+<td style="text-align:center"><a href="https://www.youtube.com/watch?v=mYsp_cGY2O0" target="_blank" rel="noopener">Video</a></td>
+<td style="text-align:center"><a href="https://v.qq.com/x/page/w0681896h7g.html" target="_blank" rel="noopener">视频</a></td>
+<td style="text-align:center">⚪</td>
+</tr>
+<tr>
+<td>使用Kubernetes构建给机器人的PaaS<br>Building a PaaS for Robotics with Kubernetes - Dhananajay Sathe, Rapyuta Robotics</td>
+<td style="text-align:center"><a href="https://www.youtube.com/watch?v=qMlgVr6qqzc" target="_blank" rel="noopener">Video</a></td>
+<td style="text-align:center"><a href="https://v.qq.com/x/page/p0682ip4jpg.html" target="_blank" rel="noopener">视频</a></td>
+<td style="text-align:center">⚪</td>
+</tr>
+<tr>
+<td>为什么在你的真空机器人运行kubelet（不）是一个好主意<br>Why Running kubelet on your Vacuum Robot is (not) a Good Idea - Christian Simon, Jetstack</td>
+<td style="text-align:center"><a href="https://www.youtube.com/watch?v=ea0UzDpk6PE" target="_blank" rel="noopener">Video</a></td>
+<td style="text-align:center"><a href="https://v.qq.com/x/page/o0682v0fkv1.html" target="_blank" rel="noopener">视频</a></td>
+<td style="text-align:center">⚪</td>
+</tr>
+<tr>
+<td>Kubernetes高级调度<br>Kubernetes Advanced Scheduling - Robert Carosi, Ad van der Veer &amp; Boris Mattijssen</td>
+<td style="text-align:center"><a href="https://www.youtube.com/watch?v=q8MFm2jwXpA" target="_blank" rel="noopener">Video</a></td>
+<td style="text-align:center"><a href="https://v.qq.com/x/page/b06820h97lb.html" target="_blank" rel="noopener">视频</a></td>
+<td style="text-align:center">🌕</td>
+</tr>
+<tr>
+<td>Kubernetes作为互联家庭的一个抽象层<br>Kubernetes as an Abstraction Layer for a Connected Home - Scott Nichols, Google</td>
+<td style="text-align:center"><a href="https://www.youtube.com/watch?v=l9g3-cnaBR4" target="_blank" rel="noopener">Video</a></td>
+<td style="text-align:center"><a href="https://v.qq.com/x/page/v06821scp1t.html" target="_blank" rel="noopener">视频</a></td>
+<td style="text-align:center">⚪</td>
+</tr>
+<tr>
+<td>在Kubernetes建立容错的资源控制器<br>Building a Fault-Tolerant Resources Controller on Kubernetes - Morgan Bauer &amp; Srinivas Brahmaroutu</td>
+<td style="text-align:center"><a href="https://www.youtube.com/watch?v=v2gAcKKDf9Y" target="_blank" rel="noopener">Video</a></td>
+<td style="text-align:center"><a href="https://v.qq.com/x/page/l0682lqhh8i.html" target="_blank" rel="noopener">视频</a></td>
+<td style="text-align:center">⚪</td>
+</tr>
+<tr>
+<td>一切你需要知道如何在Kubernetes使用GPU<br>Everything you Need to Know about using GPUs with Kubernetes - Rohit Agarwal, Google</td>
+<td style="text-align:center"><a href="https://www.youtube.com/watch?v=KplFFvj3XRk" target="_blank" rel="noopener">Video</a></td>
+<td style="text-align:center"><a href="https://v.qq.com/x/page/b0682fb9245.html" target="_blank" rel="noopener">视频</a></td>
+<td style="text-align:center">⚪ 🔴</td>
+</tr>
+<tr>
+<td>控制器：用于扩展您的基础设施的lambda函数<br>Controllers: Lambda Functions for Extending your Infrastructure - Ross Guarino &amp; Terin Stock</td>
+<td style="text-align:center"><a href="https://www.youtube.com/watch?v=TM-2GgQ6Q2A" target="_blank" rel="noopener">Video</a></td>
+<td style="text-align:center"><a href="https://v.qq.com/x/page/d0682szw8ak.html" target="_blank" rel="noopener">视频</a></td>
+<td style="text-align:center">⚪ 🌕 🔴</td>
+</tr>
+<tr>
+<td>Kubectl插件101<br>Kubectl Plugins 101 - Jonathan Berkhahn, IBM &amp; Carolyn Van Slyck, Microsoft</td>
+<td style="text-align:center"><a href="https://www.youtube.com/watch?v=PZmTPRRfW5M" target="_blank" rel="noopener">Video</a></td>
+<td style="text-align:center"><a href="https://v.qq.com/x/page/t0682e8xqn0.html" target="_blank" rel="noopener">视频</a></td>
+<td style="text-align:center">🔵</td>
+</tr>
+<tr>
+<td>监控：从最黑暗的角落跟随信息<br>Monitoring: Follow the Data from the Darkest Corners - Piotr Szczesniak &amp; Frederic Branczyk</td>
+<td style="text-align:center"><a href="https://www.youtube.com/watch?v=FAqwXX3Zt9s" target="_blank" rel="noopener">Video</a></td>
+<td style="text-align:center"><a href="https://v.qq.com/x/page/c0682werb94.html" target="_blank" rel="noopener">视频</a></td>
+<td style="text-align:center">⚪</td>
+</tr>
+<tr>
+<td>使用kubectl运行你的终端到终端的测试<br>Using kubectl to Run your End-to-End Tests - Amit Kumar Das &amp; Uday Kiran, MayaData</td>
+<td style="text-align:center"><a href="https://www.youtube.com/watch?v=YU9J4KH8X14" target="_blank" rel="noopener">Video</a></td>
+<td style="text-align:center"><a href="https://v.qq.com/x/page/b0682xwjpia.html" target="_blank" rel="noopener">视频</a></td>
+<td style="text-align:center">⚪</td>
+</tr>
+<tr>
+<td>仪器仪表SIG深潜<br>SIG Instrumentation Deep Dive – Frederic Branczyk, CoreOS, &amp; Piotr Szczesniak, Google</td>
+<td style="text-align:center"><a href="https://www.youtube.com/watch?v=SzLLzKWH2Gk" target="_blank" rel="noopener">Video</a></td>
+<td style="text-align:center"><a href="https://v.qq.com/x/page/r0682sf5jox.html" target="_blank" rel="noopener">视频</a></td>
+<td style="text-align:center">⚪ 🔵</td>
+</tr>
+<tr>
+<td>OPA深潜（中级技术水平）<br>Open Policy Agent Deep Dive – Tim Hinrichs &amp; Torin Sandall, Styra (Intermediate Skill Level)</td>
+<td style="text-align:center"><a href="https://www.youtube.com/watch?v=4mBJSIhs2xQ" target="_blank" rel="noopener">Video</a></td>
+<td style="text-align:center"><a href="https://v.qq.com/x/page/n06827wzzvp.html" target="_blank" rel="noopener">视频</a></td>
+<td style="text-align:center"></td>
+</tr>
+<tr>
+<td>小组讨论：现代应用安全需要容器<br>Panel Discussion: Modern App Security Requires Containers – Moderated by Sean Michael Kerner</td>
+<td style="text-align:center"><a href="https://www.youtube.com/watch?v=6bwt9SMLnmg" target="_blank" rel="noopener">Video</a></td>
+<td style="text-align:center"><a href="https://v.qq.com/x/page/c0682br6ss0.html" target="_blank" rel="noopener">视频</a></td>
+<td style="text-align:center"></td>
+</tr>
+<tr>
+<td>containerd深潜（中级技术水平）<br>containerd Deep Dive – Stephen Day, Docker (Intermediate Skill Level)</td>
+<td style="text-align:center"><a href="https://www.youtube.com/watch?v=3AynH3c0F8M" target="_blank" rel="noopener">Video</a></td>
+<td style="text-align:center"><a href="https://v.qq.com/x/page/n068252jyqm.html" target="_blank" rel="noopener">视频</a></td>
+<td style="text-align:center">⚫</td>
+</tr>
+<tr>
+<td>Linkerd深潜（中级技术水平）<br>Linkerd Deep Dive – George Miranda &amp; Thomas Rampelberg (Intermediate Skill Level)</td>
+<td style="text-align:center"><a href="https://www.youtube.com/watch?v=j0Kosjecx70" target="_blank" rel="noopener">Video</a></td>
+<td style="text-align:center"><a href="https://v.qq.com/x/page/l06820n3jyk.html" target="_blank" rel="noopener">视频</a></td>
+<td style="text-align:center"></td>
+</tr>
+<tr>
+<td>OpenTracing项目深潜<br>OpenTracing Project Deep Dive – Priyanka Sharma &amp; Ted Young, LightStep</td>
+<td style="text-align:center"><a href="https://www.youtube.com/watch?v=ySR_FVNX4bQ" target="_blank" rel="noopener">Video</a></td>
+<td style="text-align:center"><a href="https://v.qq.com/x/page/j0682213mjo.html" target="_blank" rel="noopener">视频</a></td>
+<td style="text-align:center">⚪ 🔵</td>
+</tr>
+<tr>
+<td>SAFE工作组深潜（中级技术水平）<br>SAFE WG Deep Dive – Ray Colline, Google (Intermediate Skill Level)</td>
+<td style="text-align:center"><a href="https://www.youtube.com/watch?v=RTYJ-yggDxs" target="_blank" rel="noopener">Video</a></td>
+<td style="text-align:center"><a href="https://v.qq.com/x/page/v0682reo44i.html" target="_blank" rel="noopener">视频</a></td>
+<td style="text-align:center"></td>
+</tr>
+<tr>
+<td>混沌工程工作组深潜（中级技术水平）<br>Chaos Engineering WG Deep Dive – Sylvain Hellegouarch, ChaosIQ (Intermediate Skill Level)</td>
+<td style="text-align:center"><a href="https://www.youtube.com/watch?v=Q6e3N7trcFI" target="_blank" rel="noopener">Video</a></td>
+<td style="text-align:center"><a href="https://v.qq.com/x/page/p0682tnaa35.html" target="_blank" rel="noopener">视频</a></td>
+<td style="text-align:center"></td>
+</tr>
+<tr>
+<td>应用程序定义工作组简介（任何技术水平）<br>WG App Def - Intro – Antoine Legrand, Red Hat &amp; Gareth Rushgrove, Docker (Any Skill Level)</td>
+<td style="text-align:center"><a href="https://www.youtube.com/watch?v=I3BU9pkTgRE" target="_blank" rel="noopener">Video</a></td>
+<td style="text-align:center"><a href="https://v.qq.com/x/page/c06823ah409.html" target="_blank" rel="noopener">视频</a></td>
+<td style="text-align:center"></td>
+</tr>
+<tr>
+<td>OpenStack SIG深潜<br>OpenStack SIG Deep Dive – Chris Hoge, OpenStack Foundation &amp; David Lyle, Intel</td>
+<td style="text-align:center"><a href="https://www.youtube.com/watch?v=l03heU_uG1s" target="_blank" rel="noopener">Video</a></td>
+<td style="text-align:center"><a href="https://v.qq.com/x/page/j0682ielecu.html" target="_blank" rel="noopener">视频</a></td>
+<td style="text-align:center"></td>
+</tr>
+<tr>
+<td>边缘计算和Kubernetes BOF（任何技术水平）<br>Edge Computing and Kubernetes BOF - Matthew Caulfield, Cisco (Any Skill Level)</td>
+<td style="text-align:center"><a href="https://www.youtube.com/watch?v=w_BvR8hZYe4" target="_blank" rel="noopener">Video</a></td>
+<td style="text-align:center"><a href="https://v.qq.com/x/page/c0685v6jz3k.html" target="_blank" rel="noopener">视频</a></td>
+<td style="text-align:center"></td>
+</tr>
+<tr>
+<td>CI/CD BoF：快速交付优质（任何技术水平）<br>CI/CD BoF: Delivering Quality Quickly - Brice Fernandes &amp; Marc Carré, Weaveworks (Any Skill Level)</td>
+<td style="text-align:center"><a href="https://www.youtube.com/watch?v=EheNmDFP19Q" target="_blank" rel="noopener">Video</a></td>
+<td style="text-align:center"><a href="https://v.qq.com/x/page/l0685iqe5is.html" target="_blank" rel="noopener">视频</a></td>
+<td style="text-align:center"></td>
+</tr>
+<tr>
+<td>CNCF跨云持续集成深潜<br>CNCF Cross-Cloud CI Deep Dive – Denver Williams &amp; Taylor Carpenter</td>
+<td style="text-align:center"><a href="https://www.youtube.com/watch?v=m-WK-pOs5TA" target="_blank" rel="noopener">Video</a></td>
+<td style="text-align:center"><a href="https://v.qq.com/x/page/j06856yogah.html" target="_blank" rel="noopener">视频</a></td>
+<td style="text-align:center"></td>
+</tr>
+<tr>
+<td>Fluentd深潜<br>Fluentd Deep Dive – Eduardo Silva &amp; Masahiro Nakagawa, Treasure Data</td>
+<td style="text-align:center"><a href="https://www.youtube.com/watch?v=TqW-b60AiNk" target="_blank" rel="noopener">Video</a></td>
+<td style="text-align:center"><a href="https://v.qq.com/x/page/g0685yn4ta5.html" target="_blank" rel="noopener">视频</a></td>
+<td style="text-align:center"></td>
+</tr>
+<tr>
+<td>Source2Image深潜（中级技术水平）<br>Source2Image Deep Dive – Ben Parees, Red Hat &amp; Matt Moore, Google (Intermediate Skill Level)</td>
+<td style="text-align:center"><a href="https://www.youtube.com/watch?v=AUx2e3BqBU8" target="_blank" rel="noopener">Video</a></td>
+<td style="text-align:center"><a href="https://v.qq.com/x/page/i0685klmja6.html" target="_blank" rel="noopener">视频</a></td>
+<td style="text-align:center">🔴</td>
+</tr>
+<tr>
+<td>kops介绍（任何技术水平）<br>kops Intro – Justin Santa Barbara, FathomDB (Any Skill Level)</td>
+<td style="text-align:center"><a href="https://www.youtube.com/watch?v=9CwkpEVDNMM" target="_blank" rel="noopener">Video</a></td>
+<td style="text-align:center"><a href="https://v.qq.com/x/page/j0685glyjdz.html" target="_blank" rel="noopener">视频</a></td>
+<td style="text-align:center">⚪</td>
+</tr>
+<tr>
+<td>Envoy深潜（中级技术水平）<br>Envoy Deep Dive – Matt Klein, Lyft (Intermediate Skill Level)</td>
+<td style="text-align:center"><a href="https://www.youtube.com/watch?v=odRR94jhNbU" target="_blank" rel="noopener">Video</a></td>
+<td style="text-align:center"><a href="https://v.qq.com/x/page/x06728hc9zj.html" target="_blank" rel="noopener">视频</a></td>
+<td style="text-align:center"></td>
+</tr>
+<tr>
+<td>TUF/Notary深潜<br>TUF / Notary Deep Dive – David Lawrence, Docker &amp; Justin Cappos, NYU, TUF</td>
+<td style="text-align:center"><a href="https://www.youtube.com/watch?v=_WFLEtDCMxA" target="_blank" rel="noopener">Video</a></td>
+<td style="text-align:center"><a href="https://v.qq.com/x/page/o0685gh46xc.html" target="_blank" rel="noopener">视频</a></td>
+<td style="text-align:center"></td>
+</tr>
+<tr>
+<td>Rook深潜<br>Rook Deep Dive – Bassam Tabbara, Tony Allen &amp; Jared Watts, Upbound</td>
+<td style="text-align:center"><a href="https://www.youtube.com/watch?v=yknGKzJw7_k" target="_blank" rel="noopener">Video</a></td>
+<td style="text-align:center"><a href="https://v.qq.com/x/page/q06858hwlca.html" target="_blank" rel="noopener">视频</a></td>
+<td style="text-align:center">⚪</td>
+</tr>
+<tr>
+<td>Istio多集群网格扩张BOF（任何技术水平）<br>Istio Multi-Cluster Mesh Expansion BOF - Sven Mawson, Google (Any Skill Level)</td>
+<td style="text-align:center"><a href="https://www.youtube.com/watch?v=_seY39zvgA4" target="_blank" rel="noopener">Video</a></td>
+<td style="text-align:center"><a href="https://v.qq.com/x/page/h0685evgd33.html" target="_blank" rel="noopener">视频</a></td>
+<td style="text-align:center"></td>
+</tr>
+<tr>
+<td>Kubernetes一致性深潜（中级技术水平）<br>Kubernetes Conformance Deep Dive – William Denniss, Google (Intermediate Skill Level)</td>
+<td style="text-align:center"><a href="https://www.youtube.com/watch?v=LAGhshWmJAs" target="_blank" rel="noopener">Video</a></td>
+<td style="text-align:center"><a href="https://v.qq.com/x/page/n0686l081h8.html" target="_blank" rel="noopener">视频</a></td>
+<td style="text-align:center"></td>
+</tr>
+<tr>
+<td>API机械SIG深潜（中级技术水平）<br>SIG API Machinery Deep Dive – Stefan Schimanski, Red Hat (Intermediate Skill Level)</td>
+<td style="text-align:center"><a href="https://www.youtube.com/watch?v=XsFH7OEIIvI" target="_blank" rel="noopener">Video</a></td>
+<td style="text-align:center"><a href="https://v.qq.com/x/page/x0686d4jsb8.html" target="_blank" rel="noopener">视频</a></td>
+<td style="text-align:center"></td>
+</tr>
+<tr>
+<td>测试SIG深潜（中级技术水平）<br>SIG Testing Deep Dive – Sen Lu, Google &amp; Cole Wagner (Intermediate Skill Level)</td>
+<td style="text-align:center"><a href="https://www.youtube.com/watch?v=M32NIHRKaOI" target="_blank" rel="noopener">Video</a></td>
+<td style="text-align:center"><a href="https://v.qq.com/x/page/j06863zbtgj.html" target="_blank" rel="noopener">视频</a></td>
+<td style="text-align:center"></td>
+</tr>
+<tr>
+<td>SIG发布深潜（中级技术水平）<br>SIG Release Deep Dive – Jaice Singer DuMars &amp; Caleb Miles, Google (Intermediate Skill Level)</td>
+<td style="text-align:center"><a href="https://www.youtube.com/watch?v=nJEzNLHsS1s" target="_blank" rel="noopener">Video</a></td>
+<td style="text-align:center"><a href="https://v.qq.com/x/page/s068629suds.html" target="_blank" rel="noopener">视频</a></td>
+<td style="text-align:center"></td>
+</tr>
+<tr>
+<td>节点SIG深潜（中级技术水平）<br>SIG Node Deep Dive – Dawn Chen, Google (Intermediate Skill Level)</td>
+<td style="text-align:center"><a href="https://www.youtube.com/watch?v=I4AchBfe49U" target="_blank" rel="noopener">Video</a></td>
+<td style="text-align:center"><a href="https://v.qq.com/x/page/h06863a8xq0.html" target="_blank" rel="noopener">视频</a></td>
+<td style="text-align:center">⚪</td>
+</tr>
+<tr>
+<td>自动缩放SIG深潜（中级技术水平）<br>SIG Autoscaling Deep Dive – Marcin Wielgus, Google, &amp; Solly Ross, Red Hat (Intermediate Skill Level)</td>
+<td style="text-align:center"><a href="https://www.youtube.com/watch?v=s2RKAYm9oJg" target="_blank" rel="noopener">Video</a></td>
+<td style="text-align:center"><a href="https://v.qq.com/x/page/h06698v9hdl.html" target="_blank" rel="noopener">视频</a></td>
+<td style="text-align:center"></td>
+</tr>
+<tr>
+<td>CoreDNS深潜（中级技术水平）<br>CoreDNS Deep Dive – Miek Gieben, Google (Intermediate Skill Level)</td>
+<td style="text-align:center"><a href="https://www.youtube.com/watch?v=ZnW3k6m5AY8" target="_blank" rel="noopener">Video</a></td>
+<td style="text-align:center"><a href="https://v.qq.com/x/page/a0686kr8bcc.html" target="_blank" rel="noopener">视频</a></td>
+<td style="text-align:center">🌕</td>
+</tr>
+<tr>
+<td>集群生命周期SIG：kubeadm深潜<br>SIG Cluster Lifecycle: kubeadm Deep Dive – Alexander Kanevskiy, Timothy St. Clair &amp; Luke Marsden</td>
+<td style="text-align:center"><a href="https://www.youtube.com/watch?v=3w5sZSxh4RI" target="_blank" rel="noopener">Video</a></td>
+<td style="text-align:center"><a href="https://v.qq.com/x/page/m0686fhcwll.html" target="_blank" rel="noopener">视频</a></td>
+<td style="text-align:center"></td>
+</tr>
+<tr>
+<td>多租户工作组深潜（中级技术水平）<br>Multi-Tenancy WG Deep Dive – David Oppenheimer, Google (Intermediate Skill Level)</td>
+<td style="text-align:center"><a href="https://www.youtube.com/watch?v=Vi3ptlNjZJE" target="_blank" rel="noopener">Video</a></td>
+<td style="text-align:center"><a href="https://v.qq.com/x/page/r0686zkq1qx.html" target="_blank" rel="noopener">视频</a></td>
+<td style="text-align:center"></td>
+</tr>
+<tr>
+<td>小组讨论：Kubernetes现场办公时间！<br>Panel: Kubernetes Office Hours Live! - Jorge Castro &amp; Ilya Dmitrichenko,</td>
+<td style="text-align:center"><a href="https://www.youtube.com/watch?v=M4L1nBaGhXI" target="_blank" rel="noopener">Video</a></td>
+<td style="text-align:center"><a href="https://v.qq.com/x/page/c0686tjlz9p.html" target="_blank" rel="noopener">视频</a></td>
+<td style="text-align:center"></td>
+</tr>
+<tr>
+<td>CLI SIG深潜（中级技术水平）<br>SIG CLI Deep Dive - Phil Wittrock, Google (Intermediate Skill Level)</td>
+<td style="text-align:center"><a href="https://www.youtube.com/watch?v=M2n08jsRRYs" target="_blank" rel="noopener">Video</a></td>
+<td style="text-align:center"><a href="https://v.qq.com/x/page/y06861uj32j.html" target="_blank" rel="noopener">视频</a></td>
+<td style="text-align:center">🔵</td>
+</tr>
+<tr>
+<td>无服务器API和计算的合流（中级技术水平）<br>Convergence of Serverless APIs &amp; Compute - Sarah Allen, Google (Intermediate Skill Level)</td>
+<td style="text-align:center"><a href="https://www.youtube.com/watch?v=c4ShcwgrKL4" target="_blank" rel="noopener">Video</a></td>
+<td style="text-align:center"><a href="https://v.qq.com/x/page/r06864xxeeq.html" target="_blank" rel="noopener">视频</a></td>
+<td style="text-align:center"></td>
+</tr>
+<tr>
+<td>OpenWhisk：K8s构建生产就绪的无服务器堆栈<br>Apache OpenWhisk: Building a Production-Ready Serverless Stack on/for Kubernetes - David Grove</td>
+<td style="text-align:center"><a href="https://www.youtube.com/watch?v=uPohj7qoigY" target="_blank" rel="noopener">Video</a></td>
+<td style="text-align:center"><a href="https://v.qq.com/x/page/x06868iptbv.html" target="_blank" rel="noopener">视频</a></td>
+<td style="text-align:center"></td>
+</tr>
+<tr>
+<td>Kubernetes上运行全球规模的FaaS<br>Operating a Global-Scale FaaS on Top of Kubernetes - Chad Arimura &amp; Matt Stephenson, Oracle</td>
+<td style="text-align:center"><a href="https://www.youtube.com/watch?v=SZL1N-2E3wI" target="_blank" rel="noopener">Video</a></td>
+<td style="text-align:center"><a href="https://v.qq.com/x/page/c06862n1k4d.html" target="_blank" rel="noopener">视频</a></td>
+<td style="text-align:center">⚪</td>
+</tr>
+<tr>
+<td>无服务器和事件驱动的未来（中级技术水平）<br>The Serverless and Event-Driven Future - Austen Collins, Serverless (Intermediate Skill Level)</td>
+<td style="text-align:center"><a href="https://www.youtube.com/watch?v=TZPPjAv12KU" target="_blank" rel="noopener">Video</a></td>
+<td style="text-align:center"><a href="https://v.qq.com/x/page/h0686aca02f.html" target="_blank" rel="noopener">视频</a></td>
+<td style="text-align:center"></td>
+</tr>
+<tr>
+<td>为跑在K8s上的普罗米修斯微服务应用喂养实战数据<br>Feeding Realworld Data into Prometheus Microservice Apps on Kubernetes - Burkhard Noltensmeier</td>
+<td style="text-align:center"><a href="https://www.youtube.com/watch?v=1rwBeDVdjyY" target="_blank" rel="noopener">Video</a></td>
+<td style="text-align:center"><a href="https://v.qq.com/x/page/h0686gw0bgj.html" target="_blank" rel="noopener">视频</a></td>
+<td style="text-align:center"></td>
+</tr>
+<tr>
+<td>使用普罗米修斯进行声明式的多集群监控<br>Declarative Multi-Cluster Monitoring with Prometheus - Matthias Loibl, Loodse &amp; Frederic Branczyk</td>
+<td style="text-align:center"><a href="https://www.youtube.com/watch?v=IpGfmmJ2hcw" target="_blank" rel="noopener">Video</a></td>
+<td style="text-align:center"><a href="https://v.qq.com/x/page/w0686ysmtez.html" target="_blank" rel="noopener">视频</a></td>
+<td style="text-align:center"></td>
+</tr>
+<tr>
+<td>大规模的进行联邦普罗米修斯监测<br>Federated Prometheus Monitoring at Scale - Nandhakumar Venkatachalam &amp; LungChih Tung</td>
+<td style="text-align:center"><a href="https://www.youtube.com/watch?v=Zm43VM7nKdU" target="_blank" rel="noopener">Video</a></td>
+<td style="text-align:center"><a href="https://v.qq.com/x/page/m0686z371ze.html" target="_blank" rel="noopener">视频</a></td>
+<td style="text-align:center">⚪</td>
+</tr>
+<tr>
+<td>使用Jsonnet打包仪表板、警报和出口商<br>Using Jsonnet to Package Together Dashboards, Alerts and Exporters - Tom Wilkie</td>
+<td style="text-align:center"><a href="https://www.youtube.com/watch?v=b7-DtFfsL6E" target="_blank" rel="noopener">Video</a></td>
+<td style="text-align:center"><a href="https://v.qq.com/x/page/b0686kdoei2.html" target="_blank" rel="noopener">视频</a></td>
+<td style="text-align:center"></td>
+</tr>
+<tr>
+<td>集成普罗米修斯和InfluxDB（中级技术水平）<br>Integrating Prometheus and InfluxDB - Paul Dix, InfluxData (Intermediate Skill Level)</td>
+<td style="text-align:center"><a href="https://www.youtube.com/watch?v=6UjVX-RTFmo" target="_blank" rel="noopener">Video</a></td>
+<td style="text-align:center"><a href="https://v.qq.com/x/page/h06865pj54u.html" target="_blank" rel="noopener">视频</a></td>
+<td style="text-align:center">⚪</td>
+</tr>
+<tr>
+<td>除了OpenTracing（中级技术水平）<br>Beyond OpenTracing - Allison Richardet, Asteris, LLC (Intermediate Skill Level)</td>
+<td style="text-align:center"><a href="https://www.youtube.com/watch?v=5uGGgMn2iq4" target="_blank" rel="noopener">Video</a></td>
+<td style="text-align:center"><a href="https://v.qq.com/x/page/f0686mdlu8t.html" target="_blank" rel="noopener">视频</a></td>
+<td style="text-align:center">⚪</td>
+</tr>
+<tr>
+<td>Vitess和K8s Operator（中级技术水平）<br>Vitess and a Kubernetes Operator - Sugu Sougoumarane, YouTube (Intermediate Skill Level)</td>
+<td style="text-align:center"><a href="https://www.youtube.com/watch?v=paOiIkASDjg" target="_blank" rel="noopener">Video</a></td>
+<td style="text-align:center"><a href="https://v.qq.com/x/page/c0686gdybg0.html" target="_blank" rel="noopener">视频</a></td>
+<td style="text-align:center"></td>
+</tr>
+<tr>
+<td>Kubernetes基于政策的卷快照管理<br>Policy-Based Volume Snapshots Management in Kubernetes - Jing Xu, Google</td>
+<td style="text-align:center"><a href="https://www.youtube.com/watch?v=_ZcooWc7Iyc" target="_blank" rel="noopener">Video</a></td>
+<td style="text-align:center"><a href="https://v.qq.com/x/page/d0686se0h2a.html" target="_blank" rel="noopener">视频</a></td>
+<td style="text-align:center"></td>
+</tr>
+<tr>
+<td>K8s能够在任何地方运行，但是你的数据能吗？（初级技术水平）<br>Kubernetes Runs Anywhere, but Does your Data? - Jared Watts, Upbound (Beginner Skill Level)</td>
+<td style="text-align:center"><a href="https://www.youtube.com/watch?v=Ot66g1WzXEU" target="_blank" rel="noopener">Video</a></td>
+<td style="text-align:center"><a href="https://v.qq.com/x/page/r0686q5ur11.html" target="_blank" rel="noopener">视频</a></td>
+<td style="text-align:center"></td>
+</tr>
+<tr>
+<td>容器存储接口：现在和未来<br>Container Storage Interface: Present and Future - Jie Yu, Mesosphere, Inc.</td>
+<td style="text-align:center"><a href="https://www.youtube.com/watch?v=ktwY1anKN58" target="_blank" rel="noopener">Video</a></td>
+<td style="text-align:center"><a href="https://v.qq.com/x/page/r0686fker2i.html" target="_blank" rel="noopener">视频</a></td>
+<td style="text-align:center">⚪ 🔵 🔴</td>
+</tr>
+<tr>
+<td>使用Kubernetes本地存储提供扩展存储服务<br>Using Kubernetes Local Storage for Scale-Out Storage Services - Michelle Au &amp; Ian Chakeres</td>
+<td style="text-align:center"><a href="https://www.youtube.com/watch?v=eqkgiPppZN8" target="_blank" rel="noopener">Video</a></td>
+<td style="text-align:center"><a href="https://v.qq.com/x/page/c06865uhz63.html" target="_blank" rel="noopener">视频</a></td>
+<td style="text-align:center">⚪ 🔵</td>
+</tr>
+<tr>
+<td>Kubernetes存储行话101（初级技术水平）<br>Kubernetes Storage Lingo 101 - Saad Ali, Google (Beginner Skill Level)</td>
+<td style="text-align:center"><a href="https://www.youtube.com/watch?v=uSxlgK1bCuA" target="_blank" rel="noopener">Video</a></td>
+<td style="text-align:center"><a href="https://v.qq.com/x/page/q0686ipq9xk.html" target="_blank" rel="noopener">视频</a></td>
+<td style="text-align:center">⚪ 🔵</td>
+</tr>
+<tr>
+<td>主题演讲：闭幕致辞<br>Keynote: Closing Remarks – Kelsey Hightower, Google &amp; Liz Rice, Aqua Security</td>
+<td style="text-align:center"><a href="https://www.youtube.com/watch?v=ehXiPfJR_3E" target="_blank" rel="noopener">Video</a></td>
+<td style="text-align:center"><a href="https://v.qq.com/x/page/f0686z0ud26.html" target="_blank" rel="noopener">视频</a></td>
+<td style="text-align:center">⚪ 🔵</td>
+</tr>
+<tr>
+<td>主题演讲：摸着石头过河<br>Keynote: Crossing the River by Feeling the Stones - Simon Wardley, Researcher, Leading Edge Forum</td>
+<td style="text-align:center"><a href="https://www.youtube.com/watch?v=xlNYYy8pzB4" target="_blank" rel="noopener">Video</a></td>
+<td style="text-align:center"><a href="https://v.qq.com/x/page/r0686q6lvoc.html" target="_blank" rel="noopener">视频</a></td>
+<td style="text-align:center"></td>
+</tr>
+<tr>
+<td>主题演讲：使用Kubernetes在生产环境缩放深度学习模型<br>Keynote: Scaling Deep Learning Models in Production Using Kubernetes - Sahil Dua</td>
+<td style="text-align:center"><a href="https://www.youtube.com/watch?v=gcij93d9st8" target="_blank" rel="noopener">Video</a></td>
+<td style="text-align:center"><a href="https://v.qq.com/x/page/k068667okiw.html" target="_blank" rel="noopener">视频</a></td>
+<td style="text-align:center">⚪ 🔵</td>
+</tr>
+<tr>
+<td>主题演讲：拿着剪刀奔跑<br>Keynote: Running with Scissors - Liz Rice, Technology Evangelist, Aqua Security</td>
+<td style="text-align:center"><a href="https://www.youtube.com/watch?v=ltrV-Qmh3oY" target="_blank" rel="noopener">Video</a></td>
+<td style="text-align:center"><a href="https://v.qq.com/x/page/c0686m0dwlo.html" target="_blank" rel="noopener">视频</a></td>
+<td style="text-align:center"></td>
+</tr>
+<tr>
+<td>主题演讲：Kubernetes上运行Kubeflow ML<br>Keynote: Kubeflow ML on Kubernetes - David Aronchick &amp;  Vishnu Kannan</td>
+<td style="text-align:center"><a href="https://www.youtube.com/watch?v=I6iMznIYwM8" target="_blank" rel="noopener">Video</a></td>
+<td style="text-align:center"><a href="https://v.qq.com/x/page/k0686n79lir.html" target="_blank" rel="noopener">视频</a></td>
+<td style="text-align:center"></td>
+</tr>
+<tr>
+<td>把云原生应用程序带到网络边缘<br>Bringing Cloud-Native Applications to the Edge of the Network - Megan O’Keefe &amp; Steve Louie</td>
+<td style="text-align:center"><a href="https://www.youtube.com/watch?v=UR8N6mIAFlM" target="_blank" rel="noopener">Video</a></td>
+<td style="text-align:center"><a href="https://v.qq.com/x/page/s06863ir85m.html" target="_blank" rel="noopener">视频</a></td>
+<td style="text-align:center"></td>
+</tr>
+<tr>
+<td>gRPC简介（任何技术水平）<br>gRPC Intro – Jayant Kolhe &amp; Sree Kuchibhotla, Google (Any Skill Level)</td>
+<td style="text-align:center"><a href="https://www.youtube.com/watch?v=OZ_Qmklc4zE" target="_blank" rel="noopener">Video</a></td>
+<td style="text-align:center"><a href="https://v.qq.com/x/page/l0686p615rb.html" target="_blank" rel="noopener">视频</a></td>
+<td style="text-align:center">⚪</td>
+</tr>
+<tr>
+<td>gRPC深潜（中级技术水平）<br>gRPC Deep Dive – Sree Kuchibhotla &amp; Jayant Kolhe, Google (Intermediate Skill Level)</td>
+<td style="text-align:center"><a href="https://www.youtube.com/watch?v=S7WIYLcPS1Y" target="_blank" rel="noopener">Video</a></td>
+<td style="text-align:center"><a href="https://v.qq.com/x/page/d0689ouj8do.html" target="_blank" rel="noopener">视频</a></td>
+<td style="text-align:center">⚫</td>
+</tr>
+<tr>
+<td>Kubernetes自动化GPU的基础设施<br>Automating GPU Infrastructure for Kubernetes - Lucas Servén Marín, CoreOS</td>
+<td style="text-align:center"><a href="https://www.youtube.com/watch?v=i6V4KPh_D5g" target="_blank" rel="noopener">Video</a></td>
+<td style="text-align:center"><a href="https://v.qq.com/x/page/r0689m999b6.html" target="_blank" rel="noopener">视频</a></td>
+<td style="text-align:center"></td>
+</tr>
+<tr>
+<td>使用Seldon和Kubeflow进行大规模ML模型服务<br>Serving ML Models at Scale with Seldon and Kubeflow - Clive Cox, Seldon.io</td>
+<td style="text-align:center"><a href="https://www.youtube.com/watch?v=pDlapGtecbY" target="_blank" rel="noopener">Video</a></td>
+<td style="text-align:center"><a href="https://v.qq.com/x/page/a0689njxlyv.html" target="_blank" rel="noopener">视频</a></td>
+<td style="text-align:center">⚪</td>
+</tr>
+<tr>
+<td>Kubernetes轻松部署SQL流处理<br>Deploying SQL Stream Processing in Kubernetes with Ease - Andrew Stevenson &amp; Antonios Chalkiopoulos</td>
+<td style="text-align:center"><a href="https://www.youtube.com/watch?v=9TOoThIKafo" target="_blank" rel="noopener">Video</a></td>
+<td style="text-align:center"><a href="https://v.qq.com/x/page/s0689f075nm.html" target="_blank" rel="noopener">视频</a></td>
+<td style="text-align:center"></td>
+</tr>
+<tr>
+<td>ksonnet、Ark和Sonobuoy征服Kubeflow<br>Conquering a Kubeflow Kubernetes Cluster with ksonnet, Ark, &amp; Sonobuoy - Kris Nova &amp; David Aronchick</td>
+<td style="text-align:center"><a href="https://www.youtube.com/watch?v=givpqZ2IchI" target="_blank" rel="noopener">Video</a></td>
+<td style="text-align:center"><a href="https://v.qq.com/x/page/g0689vrh7s5.html" target="_blank" rel="noopener">视频</a></td>
+<td style="text-align:center"></td>
+</tr>
+<tr>
+<td>闪电讲座：混沌工程实践（中级技术水平）<br>Lightning Talk: Chaos Engineering In Practice - Paul Jones, Capgemini UK (Intermediate Skill Level)</td>
+<td style="text-align:center"><a href="https://www.youtube.com/watch?v=ZnQA6o0jkUo" target="_blank" rel="noopener">Video</a></td>
+<td style="text-align:center"><a href="https://v.qq.com/x/page/d0689m45btt.html" target="_blank" rel="noopener">视频</a></td>
+<td style="text-align:center">⚪</td>
+</tr>
+<tr>
+<td>闪电讲座：你为什么要真正重视K8S安全最佳实践<br>Lightning Talk: Why you Should Really Pay Attention to K8S Security Best Practices - Benjy Portnoy</td>
+<td style="text-align:center"><a href="https://www.youtube.com/watch?v=DYDoGYWk_rk" target="_blank" rel="noopener">Video</a></td>
+<td style="text-align:center"><a href="https://v.qq.com/x/page/v0689rvmcs6.html" target="_blank" rel="noopener">视频</a></td>
+<td style="text-align:center">⚪</td>
+</tr>
+<tr>
+<td>闪电讲座：kube-start-stop调度K8s资源的缩放<br>Lightning Talk: Schedule the Scaling of Your Kubernetes Resources Using kube-start-stop - Lili Cosic</td>
+<td style="text-align:center"><a href="https://www.youtube.com/watch?v=KUzCCMLwEoU" target="_blank" rel="noopener">Video</a></td>
+<td style="text-align:center"><a href="https://v.qq.com/x/page/f0689op1qfb.html" target="_blank" rel="noopener">视频</a></td>
+<td style="text-align:center">⚪</td>
+</tr>
+<tr>
+<td>闪电讲座：桌面GUI工具帮助你部署第一个Kubernetes<br>Lightning Talk: A Desktop GUI for your First Kubernetes Deployment - Alessandro Pilotti</td>
+<td style="text-align:center"><a href="https://www.youtube.com/watch?v=wfHUic14z20" target="_blank" rel="noopener">Video</a></td>
+<td style="text-align:center"><a href="https://v.qq.com/x/page/w0689hznpek.html" target="_blank" rel="noopener">视频</a></td>
+<td style="text-align:center">⚪</td>
+</tr>
+<tr>
+<td>闪电讲座：Kubernetes正在火速成长（任何技术水平）<br>Lightning Talk: Kubernetes is Blowing Up - Ron Miller, TechCrunch (Any Skill Level)</td>
+<td style="text-align:center"><a href="https://www.youtube.com/watch?v=VlL2c9eewIc" target="_blank" rel="noopener">Video</a></td>
+<td style="text-align:center"><a href="https://v.qq.com/x/page/b0689q251ue.html" target="_blank" rel="noopener">视频</a></td>
+<td style="text-align:center">⚪</td>
+</tr>
+<tr>
+<td>闪电讲座：使用服务发现缩放分布式深度学习<br>Lightning Talk: Scaling Distributed Deep Learning with Service Discovery - Yong Tang</td>
+<td style="text-align:center"><a href="https://www.youtube.com/watch?v=WBAP91g7Yd0" target="_blank" rel="noopener">Video</a></td>
+<td style="text-align:center"><a href="https://v.qq.com/x/page/b0689fjasaa.html" target="_blank" rel="noopener">视频</a></td>
+<td style="text-align:center">⚪</td>
+</tr>
+<tr>
+<td>闪电讲座：在OpenStack的云供应商环境运行K8s的提示<br>Lightning Talk: Tips for Operating Kubernetes with OpenStack Cloud Provider - Yang Yu &amp; Yifeng Xiao</td>
+<td style="text-align:center"><a href="https://www.youtube.com/watch?v=q0noZh5_HEY" target="_blank" rel="noopener">Video</a></td>
+<td style="text-align:center"><a href="https://v.qq.com/x/page/v0689g5msvo.html" target="_blank" rel="noopener">视频</a></td>
+<td style="text-align:center">⚪</td>
+</tr>
+<tr>
+<td>闪电讲座：使用gRPC扩展Kubernetes<br>Lightning Talk: Extending Kubernetes with gRPC - Vladimir Vivien, VMware</td>
+<td style="text-align:center"><a href="https://www.youtube.com/watch?v=JTzJPko5Shc" target="_blank" rel="noopener">Video</a></td>
+<td style="text-align:center"><a href="https://v.qq.com/x/page/m0689fybcbg.html" target="_blank" rel="noopener">视频</a></td>
+<td style="text-align:center">⚪</td>
+</tr>
+<tr>
+<td>闪电讲座：TSDB：普罗米修斯背后的引擎<br>Lightning Talk: TSDB: The Engine behind Prometheus - Goutham Veeramachaneni, IIT Hyderabad</td>
+<td style="text-align:center"><a href="https://www.youtube.com/watch?v=_529xDFDzI0" target="_blank" rel="noopener">Video</a></td>
+<td style="text-align:center"><a href="https://v.qq.com/x/page/y06895n9lqa.html" target="_blank" rel="noopener">视频</a></td>
+<td style="text-align:center">⚪</td>
+</tr>
+<tr>
+<td>闪电讲座：跑在Kubernetes上FaaS的现状<br>Lightning Talk: The State Of FaaS on Kubernetes - Michael Hausenblas, Red Hat</td>
+<td style="text-align:center"><a href="https://www.youtube.com/watch?v=w4msKFfGZlQ" target="_blank" rel="noopener">Video</a></td>
+<td style="text-align:center"><a href="https://v.qq.com/x/page/r0689c7zrph.html" target="_blank" rel="noopener">视频</a></td>
+<td style="text-align:center">⚪</td>
+</tr>
+<tr>
+<td>闪电讲座：kube-rbac-proxy（任何技术水平）<br>Lightning Talk: I Got your RBAC - kube-rbac-proxy - Frederic Branczyk, CoreOS (Any Skill Level)</td>
+<td style="text-align:center"><a href="https://www.youtube.com/watch?v=LSJpzks0elc" target="_blank" rel="noopener">Video</a></td>
+<td style="text-align:center"><a href="https://v.qq.com/x/page/j06897tdmwf.html" target="_blank" rel="noopener">视频</a></td>
+<td style="text-align:center">⚪</td>
+</tr>
+<tr>
+<td>闪电讲座：不一刀切，如何调整Kubernetes集群大小<br>Lightning Talk: Not One Size Fits All, How to Size Kubernetes Clusters - Jeff Sloyer, IBM</td>
+<td style="text-align:center"><a href="https://www.youtube.com/watch?v=ZzFjPqCibMc" target="_blank" rel="noopener">Video</a></td>
+<td style="text-align:center"><a href="https://v.qq.com/x/page/j0690mcdl1c.html" target="_blank" rel="noopener">视频</a></td>
+<td style="text-align:center">⚪</td>
+</tr>
+<tr>
+<td>大规模容器隔离（介绍gVisor）<br>Container Isolation at Scale (Introducing gVisor) - Dawn Chen &amp; Zhengyu He, Google</td>
+<td style="text-align:center"><a href="https://www.youtube.com/watch?v=pWyJahTWa4I" target="_blank" rel="noopener">Video</a></td>
+<td style="text-align:center"><a href="https://v.qq.com/x/page/z0690uerx6n.html" target="_blank" rel="noopener">视频</a></td>
+<td style="text-align:center">🌕 🔵 ⚪</td>
+</tr>
+<tr>
+<td>主题演讲：塑造云原生的未来<br>Keynote: Shaping the Cloud Native Future - Abby Kearns, Executive Director, Cloud Foundry Foundation</td>
+<td style="text-align:center"><a href="https://www.youtube.com/watch?v=_e8hi57hw40" target="_blank" rel="noopener">Video</a></td>
+<td style="text-align:center"><a href="https://v.qq.com/x/page/e069036u8cy.html" target="_blank" rel="noopener">视频</a></td>
+<td style="text-align:center"></td>
+</tr>
+<tr>
+<td>在无服务器世界组合函数<br>Function Composition in a Serverless World - Erwin van Eyk &amp; Timirah James, Platform9</td>
+<td style="text-align:center"><a href="https://www.youtube.com/watch?v=4_Szfs7eBnk" target="_blank" rel="noopener">Video</a></td>
+<td style="text-align:center"><a href="https://v.qq.com/x/page/k0690c9gpv8.html" target="_blank" rel="noopener">视频</a></td>
+<td style="text-align:center"></td>
+</tr>
+<tr>
+<td>Habitat Builder：云原生应用程序自动化<br>Habitat Builder: Cloud Native Application Automation - Elliott Davis &amp; Fletcher Nichol, Chef.io</td>
+<td style="text-align:center"><a href="https://www.youtube.com/watch?v=5idV8kbyN8M" target="_blank" rel="noopener">Video</a></td>
+<td style="text-align:center"><a href="https://v.qq.com/x/page/w0690u9rzz1.html" target="_blank" rel="noopener">视频</a></td>
+<td style="text-align:center"></td>
+</tr>
+<tr>
+<td>Kubernetes和税收：在挪威税务总局所学到的<br>Kubernetes and Taxes: Lessons Learned at the Norwegian Tax Administration - Bjarte S. Karlsen</td>
+<td style="text-align:center"><a href="https://www.youtube.com/watch?v=VZbDJXUwLbg" target="_blank" rel="noopener">Video</a></td>
+<td style="text-align:center"><a href="https://v.qq.com/x/page/v0690v4grcp.html" target="_blank" rel="noopener">视频</a></td>
+<td style="text-align:center">⚪</td>
+</tr>
+<tr>
+<td>混沌工程工作组简介（任何技术水平）<br>Chaos Engineering WG Intro – Sylvain Hellegouarch, ChaosIQ (Any Skill Level)</td>
+<td style="text-align:center"><a href="https://www.youtube.com/watch?v=nfY7BM9KO0g" target="_blank" rel="noopener">Video</a></td>
+<td style="text-align:center"><a href="https://v.qq.com/x/page/l0690bs6ns8.html" target="_blank" rel="noopener">视频</a></td>
+<td style="text-align:center"></td>
+</tr>
+<tr>
+<td>CRI：容器运行环境的二次繁荣<br>CRI: The Second Boom of Container Runtimes - Harry Zhang &amp; Xu Wang, HyperHQ</td>
+<td style="text-align:center"><a href="https://www.youtube.com/watch?v=gVqa1cNIZT0" target="_blank" rel="noopener">Video</a></td>
+<td style="text-align:center"><a href="https://v.qq.com/x/page/w0690npm2nm.html" target="_blank" rel="noopener">视频</a></td>
+<td style="text-align:center">🌕 🔴</td>
+</tr>
+<tr>
+<td>当我已经有了Cloud Foundry为什么需要K8s？<br>Why Do I Need Kubernetes When I Already Have Cloud Foundry? - Sanjay Patil, SAP</td>
+<td style="text-align:center"><a href="https://www.youtube.com/watch?v=KvfYtca74EI" target="_blank" rel="noopener">Video</a></td>
+<td style="text-align:center"><a href="https://v.qq.com/x/page/u0690bewp1u.html" target="_blank" rel="noopener">视频</a></td>
+<td style="text-align:center"></td>
+</tr>
+<tr>
+<td>我们如何使用Kubernetes编排每月7M+的构建<br>How we Orchestrate 7M+ Builds/Month with Kubernetes - Danielle Tomlinson</td>
+<td style="text-align:center"><a href="https://www.youtube.com/watch?v=b8NQO_vFAYo" target="_blank" rel="noopener">Video</a></td>
+<td style="text-align:center"><a href="https://v.qq.com/x/page/e0690mkt706.html" target="_blank" rel="noopener">视频</a></td>
+<td style="text-align:center"></td>
+</tr>
+<tr>
+<td>containerd简介（任何技术水平）<br>containerd Intro – Stephen Day, Docker (Any Skill Level)</td>
+<td style="text-align:center"><a href="https://www.youtube.com/watch?v=I0xU6nxnZLY" target="_blank" rel="noopener">Video</a></td>
+<td style="text-align:center"><a href="https://v.qq.com/x/page/e0690uhwt2f.html" target="_blank" rel="noopener">视频</a></td>
+<td style="text-align:center">🌕 🔴</td>
+</tr>
+<tr>
+<td>你有没有想过为什么我们在这里？（初级技术水平）<br>You Ever Wonder Why We’re Here? - Sarah Christoff, Cloudreach (Beginner Skill Level)</td>
+<td style="text-align:center"><a href="https://www.youtube.com/watch?v=ZHYFDV3XKQ4" target="_blank" rel="noopener">Video</a></td>
+<td style="text-align:center"><a href="https://v.qq.com/x/page/l0690zi8oo5.html" target="_blank" rel="noopener">视频</a></td>
+<td style="text-align:center"></td>
+</tr>
+<tr>
+<td>使用Telepresence在K8s享受无缝开发环境<br>Seamless Development Environments on Kubernetes using Telepresence - Ara Pulido</td>
+<td style="text-align:center"><a href="https://www.youtube.com/watch?v=8Dl8U-AbJN0" target="_blank" rel="noopener">Video</a></td>
+<td style="text-align:center"><a href="https://v.qq.com/x/page/q0690qonwv8.html" target="_blank" rel="noopener">视频</a></td>
+<td style="text-align:center">🌕</td>
+</tr>
+<tr>
+<td>Grafeas社区聚会BOF（任何技术水平）<br>Grafeas Community Meetup BOF - Wendy Dembowski, Google (Any Skill Level)</td>
+<td style="text-align:center"><a href="https://www.youtube.com/watch?v=Rmpu6HEKTJA" target="_blank" rel="noopener">Video</a></td>
+<td style="text-align:center"><a href="https://v.qq.com/x/page/x0690cfay4h.html" target="_blank" rel="noopener">视频</a></td>
+<td style="text-align:center"></td>
+</tr>
+<tr>
+<td>在企业中建设云原生文化<br>Building a Cloud Native Culture in an Enterprise - Deep Kapadia &amp; Tony Li</td>
+<td style="text-align:center"><a href="https://www.youtube.com/watch?v=Tm4VfJtOHt8" target="_blank" rel="noopener">Video</a></td>
+<td style="text-align:center"><a href="https://v.qq.com/x/page/u069017fwtn.html" target="_blank" rel="noopener">视频</a></td>
+<td style="text-align:center">⚪</td>
+</tr>
+<tr>
+<td>缩放指导非传统贡献者的举措<br>Scaling Non-Traditional Contributor Mentoring Initiatives - Paris Pittman, Google</td>
+<td style="text-align:center"><a href="https://www.youtube.com/watch?v=7-uqMbBd15k" target="_blank" rel="noopener">Video</a></td>
+<td style="text-align:center"><a href="https://v.qq.com/x/page/o0690sjqocr.html" target="_blank" rel="noopener">视频</a></td>
+<td style="text-align:center"></td>
+</tr>
+<tr>
+<td>Kata容器：参与Kata社区<br>Kata Containers: Getting Involved with the Kata Community - Anne Bertucio &amp; Samuel Ortiz</td>
+<td style="text-align:center"><a href="https://www.youtube.com/watch?v=bUOIJBUPPck" target="_blank" rel="noopener">Video</a></td>
+<td style="text-align:center"><a href="https://v.qq.com/x/page/w0690qyfgpa.html" target="_blank" rel="noopener">视频</a></td>
+<td style="text-align:center">⚪</td>
+</tr>
+<tr>
+<td>小组讨论：容器在企业云战略的角色<br>Panel Discussion: Containers in Enterprise Cloud Strategy - Moderated by Anni Lai, Huawei</td>
+<td style="text-align:center"><a href="https://www.youtube.com/watch?v=JXomJ5n3JAU" target="_blank" rel="noopener">Video</a></td>
+<td style="text-align:center"><a href="https://v.qq.com/x/page/r0690qa2dny.html" target="_blank" rel="noopener">视频</a></td>
+<td style="text-align:center"></td>
+</tr>
+<tr>
+<td>从数据中心到云原生<br>From Data Centers to Cloud Native - Dave Zolotusky &amp; James Wen, Spotify</td>
+<td style="text-align:center"><a href="https://www.youtube.com/watch?v=dpJAE3k04hc" target="_blank" rel="noopener">Video</a></td>
+<td style="text-align:center"><a href="https://v.qq.com/x/page/m0690ld561b.html" target="_blank" rel="noopener">视频</a></td>
+<td style="text-align:center"></td>
+</tr>
+<tr>
+<td>一个参与k8s发布过程新人的洞察<br>Insights From a k8s Newcomer Working Within the Release Process - Tim Pepper</td>
+<td style="text-align:center"><a href="https://www.youtube.com/watch?v=goAph8A20gQ" target="_blank" rel="noopener">Video</a></td>
+<td style="text-align:center"><a href="https://v.qq.com/x/page/x06908pftyy.html" target="_blank" rel="noopener">视频</a></td>
+<td style="text-align:center">🔵</td>
+</tr>
+<tr>
+<td>用containerd的Snapshotters控制文件系统<br>Take Control of your Filesystems with containerd’s Snapshotters - Stephen Day, Docker, Inc.</td>
+<td style="text-align:center"><a href="https://www.youtube.com/watch?v=ebynv9XxrLk" target="_blank" rel="noopener">Video</a></td>
+<td style="text-align:center"><a href="https://v.qq.com/x/page/x0690f4ht9z.html" target="_blank" rel="noopener">视频</a></td>
+<td style="text-align:center"></td>
+</tr>
+<tr>
+<td>AWS/kops深潜/黑客会议<br>AWS / kops Deep Dive / Hacking Session – Justin Santa Barbara, FathomDB</td>
+<td style="text-align:center"><a href="https://www.youtube.com/watch?v=HCESuFSSTb8" target="_blank" rel="noopener">Video</a></td>
+<td style="text-align:center"><a href="https://v.qq.com/x/page/f0690gnj6om.html" target="_blank" rel="noopener">视频</a></td>
+<td style="text-align:center"></td>
+</tr>
+<tr>
+<td>应用SIG深潜（中级技术水平）<br>SIG Apps Deep Dive – Janet Kuo &amp; Kenneth Owens, Google (Intermediate Skill Level)</td>
+<td style="text-align:center"><a href="https://www.youtube.com/watch?v=nN3MuZ6_WsA" target="_blank" rel="noopener">Video</a></td>
+<td style="text-align:center"><a href="https://v.qq.com/x/page/l0690954gcx.html" target="_blank" rel="noopener">视频</a></td>
+<td style="text-align:center"></td>
+</tr>
+<tr>
+<td>无服务器工作组BoF（任何技术水平）<br>Serverless WG BoF - Doug Davis, IBM (Any Skill Level)</td>
+<td style="text-align:center"><a href="https://www.youtube.com/watch?v=nMKITmMWP9U" target="_blank" rel="noopener">Video</a></td>
+<td style="text-align:center"><a href="https://v.qq.com/x/page/z0681uw6lnv.html" target="_blank" rel="noopener">视频</a></td>
+<td style="text-align:center"></td>
+</tr>
+<tr>
+<td>主题演讲：闭幕致辞<br>Keynote: Closing Remarks - Liz Rice, Technology Evangelist, Aqua Security</td>
+<td style="text-align:center"><a href="https://www.youtube.com/watch?v=cpwnB9TbRiQ" target="_blank" rel="noopener">Video</a></td>
+<td style="text-align:center"><a href="https://v.qq.com/x/page/w0690wbem62.html" target="_blank" rel="noopener">视频</a></td>
+<td style="text-align:center"></td>
+</tr>
+<tr>
+<td>通过Kubernetes接入控制器应用最小特权<br>Applying Least Privileges through Kubernetes Admission Controllers - Benjy Portnoy, Aqua Security</td>
+<td style="text-align:center"><a href="https://www.youtube.com/watch?v=7mgBxr4D-xs" target="_blank" rel="noopener">Video</a></td>
+<td style="text-align:center"><a href="https://v.qq.com/x/page/h06909rwtdy.html" target="_blank" rel="noopener">视频</a></td>
+<td style="text-align:center">⚪</td>
+</tr>
+<tr>
+<td>通过Kubernetes对象保护无服务器功能<br>Securing Serverless Functions via Kubernetes Objects - Sebastien Goasguen, Bitnami</td>
+<td style="text-align:center"><a href="https://www.youtube.com/watch?v=qs0909rJUt8" target="_blank" rel="noopener">Video</a></td>
+<td style="text-align:center"><a href="https://v.qq.com/x/page/j0694tajnhl.html" target="_blank" rel="noopener">视频</a></td>
+<td style="text-align:center"></td>
+</tr>
+<tr>
+<td>使用Grafeas和in-toto完全保护软件供应链<br>Completely Securing the Software Supply Chain using Grafeas + in-toto - Lukas Puehringer</td>
+<td style="text-align:center"><a href="https://www.youtube.com/watch?v=05zN-YQxEAM" target="_blank" rel="noopener">Video</a></td>
+<td style="text-align:center"><a href="https://v.qq.com/x/page/z0694p44p4l.html" target="_blank" rel="noopener">视频</a></td>
+<td style="text-align:center">⚪</td>
+</tr>
+<tr>
+<td>Understand and Troubleshoot the “Magic” of Kubernetes Networking - Minhan Xia &amp; Rohit Ramkumar-knIJEzTd3kc</td>
+<td style="text-align:center"><a href="#TODO">Video</a></td>
+<td style="text-align:center"><a href="TODO">视频</a></td>
+<td style="text-align:center">⚫</td>
+</tr>
+</tbody>
+</table>
+<h2 id="References"><a href="#References" class="headerlink" title="References"></a>References</h2><ul>
+<li><a href="https://www.youtube.com/watch?v=WS0OcCUt4io&amp;list=PLj6h78yzYM2NDs-iu8WU5fMxINxHXlien" target="_blank" rel="noopener">KubeCon + CloudNativeCon 2019 - San Diego</a></li>
+<li><a href="https://www.youtube.com/playlist?list=PLj6h78yzYM2PpmMAnvpvsnR4c27wJePh3" target="_blank" rel="noopener">KubeCon + CloudNativeCon 2019 - Barcelona</a></li>
+<li><a href="https://www.youtube.com/playlist?list=PLj6h78yzYM2OK087kzLgc4jTPVbZjuNfs" target="_blank" rel="noopener">Shanghai ‘18: KubeCon + CloudNativeCon</a></li>
+<li><a href="https://www.youtube.com/playlist?list=PLj6h78yzYM2N8GdbjmhVU65KYm_68qBmo" target="_blank" rel="noopener">Copenhagen ‘18: KubeCon + CloudNativeCon</a></li>
+<li><a href="https://www.youtube.com/playlist?list=PLj6h78yzYM2P-3-xqvmWaZbbI1sW-ulZb" target="_blank" rel="noopener">KubeCon + CloudNativeCon 2017 - Austin</a></li>
+<li><a href="https://www.youtube.com/playlist?list=PLj6h78yzYM2PAavlbv0iZkod4IVh_iGqV" target="_blank" rel="noopener">CloudNativeCon + KubeCon 2017 - Berlin</a></li>
+<li><a href="https://github.com/cncf/presentations/blob/master/chinese/2016Seattle.md" target="_blank" rel="noopener">KubeCon + CloudNativeCon 2016 - Seattle</a></li>
+<li><a href="https://github.com/cloudyuga/kubecon18-china" target="_blank" rel="noopener">cloudyuga/kubecon18-china</a></li>
+<li><a href="https://github.com/warmchang/KubeCon-North-America-2018" target="_blank" rel="noopener">warmchang/KubeCon-North-America-2018</a></li>
+<li><a href="https://github.com/bbotte/cncf-presentations" target="_blank" rel="noopener">bbotte/cncf-presentations</a></li>
+</ul>
+
+      
+    </div>
+
+    <div>
+      
+        
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/k8s/" rel="tag">#k8s</a>
+          
+            <a href="/tags/Golang/" rel="tag">#Golang</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/07/28/KubeCon 视频 2019-Shanghai/" rel="next" title="KubeCon 视频 2019-Shanghai">
+                <i class="fa fa-chevron-left"></i> KubeCon 视频 2019-Shanghai
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/07/28/KubeCon 视频 2018-Shanghai/" rel="prev" title="KubeCon 视频 2018-Shanghai">
+                KubeCon 视频 2018-Shanghai <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+      <div id="disqus_thread">
+        <noscript>
+          Please enable JavaScript to view the
+          <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a>
+        </noscript>
+      </div>
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel ">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image" src="https://avatars1.githubusercontent.com/u/6964284?v=3&s=460" alt="Frank">
+          <p class="site-author-name" itemprop="name">Frank</p>
+          <p class="site-description motion-element" itemprop="description"></p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">390</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+          
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">207</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/knarfeh" target="_blank">
+                  
+                    <i class="fa fa-github"></i> GitHub
+                  
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://twitter.com/knarfeh" target="_blank">
+                  
+                    <i class="fa fa-globe"></i> Twitter
+                  
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+          <div class="cc-license motion-element" itemprop="license">
+            <a href="http://creativecommons.org/licenses/by-sa/4.0" class="cc-opacity" target="_blank">
+              <img src="/images/cc-by-sa.svg" alt="Creative Commons">
+            </a>
+          </div>
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+      </section>
+
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc-indicator-top post-toc-indicator">
+            <i class="fa fa-angle-double-up"></i>
+          </div>
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Copenhagen-‘18-KubeCon-CloudNativeCon"><span class="nav-number">1.</span> <span class="nav-text">Copenhagen ‘18: KubeCon + CloudNativeCon</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#References"><span class="nav-number">2.</span> <span class="nav-text">References</span></a></li></ol></div>
+            
+          </div>
+          <div class="post-toc-indicator-bottom post-toc-indicator">
+            <i class="fa fa-angle-double-down"></i>
+          </div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">
+  
+  &copy;  2015 - 
+  <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Frank</span>
+</div>
+
+<div class="powered-by">
+  由 <a class="theme-link" href="http://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Muse
+  </a>
+</div>
+
+
+
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+
+  
+
+
+
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+  <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
+
+  <script type="text/javascript" src="/vendors/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  <script type="text/javascript" src="/vendors/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  <script type="text/javascript" src="/vendors/velocity/velocity.min.js"></script>
+
+  <script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js"></script>
+
+  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=0.5.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=0.5.0"></script>
+
+
+
+  
+  
+
+  
+  
+<script type="text/javascript" src="/js/src/scrollspy.js?v=0.5.0"></script>
+
+<script type="text/javascript" id="sidebar.toc.highlight">
+  $(document).ready(function () {
+    var tocSelector = '.post-toc';
+    var $tocSelector = $(tocSelector);
+    var activeCurrentSelector = '.active-current';
+
+    $tocSelector
+      .on('activate.bs.scrollspy', function () {
+        var $currentActiveElement = $(tocSelector + ' .active').last();
+
+        removeCurrentActiveClass();
+        $currentActiveElement.addClass('active-current');
+
+        $tocSelector[0].scrollTop = $currentActiveElement.position().top;
+      })
+      .on('clear.bs.scrollspy', function () {
+        removeCurrentActiveClass();
+      });
+
+    function removeCurrentActiveClass () {
+      $(tocSelector + ' ' + activeCurrentSelector)
+        .removeClass(activeCurrentSelector.substring(1));
+    }
+
+    function processTOC () {
+      getTOCMaxHeight();
+      toggleTOCOverflowIndicators();
+    }
+
+    function getTOCMaxHeight () {
+      var height = $('.sidebar').height() -
+                   $tocSelector.position().top -
+                   $('.post-toc-indicator-bottom').height();
+
+      $tocSelector.css('height', height);
+
+      return height;
+    }
+
+    function toggleTOCOverflowIndicators () {
+      tocOverflowIndicator(
+        '.post-toc-indicator-top',
+        $tocSelector.scrollTop() > 0 ? 'show' : 'hide'
+      );
+
+      tocOverflowIndicator(
+        '.post-toc-indicator-bottom',
+        $tocSelector.scrollTop() >= $tocSelector.find('ol').height() - $tocSelector.height() ? 'hide' : 'show'
+      )
+    }
+
+    $(document).on('sidebar.motion.complete', function () {
+      processTOC();
+    });
+
+    $('body').scrollspy({ target: tocSelector });
+    $(window).on('resize', function () {
+      if ( $('.sidebar').hasClass('sidebar-active') ) {
+        processTOC();
+      }
+    });
+
+    onScroll($tocSelector);
+
+    function onScroll (element) {
+      element.on('mousewheel DOMMouseScroll', function (event) {
+          var oe = event.originalEvent;
+          var delta = oe.wheelDelta || -oe.detail;
+
+          this.scrollTop += ( delta < 0 ? 1 : -1 ) * 30;
+          event.preventDefault();
+
+          toggleTOCOverflowIndicators();
+      });
+    }
+
+    function tocOverflowIndicator (indicator, action) {
+      var $indicator = $(indicator);
+      var opacity = action === 'show' ? 1 : 0;
+      $indicator.velocity ?
+        $indicator.velocity('stop').velocity({
+          opacity: opacity
+        }, { duration: 100 }) :
+        $indicator.stop().animate({
+          opacity: opacity
+        }, 100);
+    }
+
+  });
+</script>
+
+<script type="text/javascript" id="sidebar.nav">
+  $(document).ready(function () {
+    var html = $('html');
+    var TAB_ANIMATE_DURATION = 200;
+    var hasVelocity = $.isFunction(html.velocity);
+
+    $('.sidebar-nav li').on('click', function () {
+      var item = $(this);
+      var activeTabClassName = 'sidebar-nav-active';
+      var activePanelClassName = 'sidebar-panel-active';
+      if (item.hasClass(activeTabClassName)) {
+        return;
+      }
+
+      var currentTarget = $('.' + activePanelClassName);
+      var target = $('.' + item.data('target'));
+
+      hasVelocity ?
+        currentTarget.velocity('transition.slideUpOut', TAB_ANIMATE_DURATION, function () {
+          target
+            .velocity('stop')
+            .velocity('transition.slideDownIn', TAB_ANIMATE_DURATION)
+            .addClass(activePanelClassName);
+        }) :
+        currentTarget.animate({ opacity: 0 }, TAB_ANIMATE_DURATION, function () {
+          currentTarget.hide();
+          target
+            .stop()
+            .css({'opacity': 0, 'display': 'block'})
+            .animate({ opacity: 1 }, TAB_ANIMATE_DURATION, function () {
+              currentTarget.removeClass(activePanelClassName);
+              target.addClass(activePanelClassName);
+            });
+        });
+
+      item.siblings().removeClass(activeTabClassName);
+      item.addClass(activeTabClassName);
+    });
+
+    $('.post-toc a').on('click', function (e) {
+      e.preventDefault();
+      var targetSelector = NexT.utils.escapeSelector(this.getAttribute('href'));
+      var offset = $(targetSelector).offset().top;
+      hasVelocity ?
+        html.velocity('stop').velocity('scroll', {
+          offset: offset  + 'px',
+          mobileHA: false
+        }) :
+        $('html, body').stop().animate({
+          scrollTop: offset
+        }, 500);
+    });
+
+    // Expand sidebar on post detail page by default, when post has a toc.
+    NexT.motion.middleWares.sidebar = function () {
+      var $tocContent = $('.post-toc-content');
+
+      if (CONFIG.scheme !== 'Pisces' && (CONFIG.sidebar.display === 'post' || CONFIG.sidebar.display === 'always')) {
+        if ($tocContent.length > 0 && $tocContent.html().trim().length > 0) {
+          NexT.utils.displaySidebar();
+        }
+      }
+    };
+  });
+</script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=0.5.0"></script>
+
+
+
+  
+
+
+
+  
+
+    <script type="text/javascript">
+      var disqus_shortname = 'knarfeh';
+      var disqus_identifier = '2018/07/28/KubeCon 视频 2018-Copenhagen/';
+      var disqus_title = 'KubeCon 视频 2018-Copenhagen';
+      var disqus_url = 'http://knarfeh.github.io/2018/07/28/KubeCon 视频 2018-Copenhagen/';
+
+      function run_disqus_script(disqus_script){
+        var dsq = document.createElement('script');
+        dsq.type = 'text/javascript';
+        dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/' + disqus_script;
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+      }
+
+      run_disqus_script('count.js');
+      
+        run_disqus_script('embed.js');
+      
+    </script>
+  
+
+
+
+  
+  
+  
+  <script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+      }
+    });
+  </script>
+
+  <script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+      var all = MathJax.Hub.getAllJax(), i;
+      for (i=0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';
+      }
+    });
+  </script>
+
+  
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js"></script>
+    <script type="text/javascript" async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML">
+</script>
+  
+
+
+  
+
+  <script type="text/javascript" src="/js/src/custom.js"></script>
+</body>
+</html>

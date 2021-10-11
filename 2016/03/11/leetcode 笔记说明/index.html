@@ -6,19 +6,15 @@
 
 
 <html class="theme-next muse use-motion">
-<head>
-  <meta charset="UTF-8"/>
-<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
 
 
-<meta http-equiv="Cache-Control" content="no-transform" />
-<meta http-equiv="Cache-Control" content="no-siteapp" />
-
-
-
-
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
 
 
 
@@ -27,7 +23,11 @@
 
 
 
-  <link href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css"/>
+
+
+
+
+  <link href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
 
 
 
@@ -36,21 +36,21 @@
 
 
 
-<link href="/vendors/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+<link href="/vendors/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css">
 
-<link href="/css/main.css?v=0.5.0" rel="stylesheet" type="text/css" />
-
-
-  <meta name="keywords" content="algorithms,leetcode," />
+<link href="/css/main.css?v=0.5.0" rel="stylesheet" type="text/css">
 
 
+  <meta name="keywords" content="algorithms,leetcode,">
 
 
 
 
 
 
-  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=0.5.0" />
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=0.5.0">
 
 
 
@@ -124,7 +124,7 @@
   
 
   <div class="custom-logo-site-title">
-    <a href="/"  class="brand" rel="start">
+    <a href="/" class="brand" rel="start">
       <span class="logo-line-before"><i></i></span>
       <span class="site-title">knarfeh's logbook</span>
       <span class="logo-line-after"><i></i></span>
@@ -151,7 +151,7 @@
         <li class="menu-item menu-item-home">
           <a href="/" rel="section">
             
-              <i class="menu-item-icon fa fa-home fa-fw"></i> <br />
+              <i class="menu-item-icon fa fa-home fa-fw"></i> <br>
             
             首页
           </a>
@@ -161,7 +161,7 @@
         <li class="menu-item menu-item-archives">
           <a href="/archives" rel="section">
             
-              <i class="menu-item-icon fa fa-archive fa-fw"></i> <br />
+              <i class="menu-item-icon fa fa-archive fa-fw"></i> <br>
             
             归档
           </a>
@@ -171,7 +171,7 @@
         <li class="menu-item menu-item-tags">
           <a href="/tags" rel="section">
             
-              <i class="menu-item-icon fa fa-tags fa-fw"></i> <br />
+              <i class="menu-item-icon fa fa-tags fa-fw"></i> <br>
             
             标签
           </a>
@@ -262,7 +262,7 @@
 
       
         <p>对刷过的leetcode上的题目做个记录。很多是以前写的，就当复习了。贴贴代码，写写分析，AC过的题目有的又用其他语言实现了一遍，基本上相当于重做了一遍，日期全写成了2014-03-11，所以这些笔记都排在<a href="http://knarfeh.github.io/2015/03/18/first/">第一篇</a>之前，hiahiahia<br><a id="more"></a></p>
-<p>最开始的时候写了一个markdown格式的模板，有一个这样的<a href="https://gist.github.com/knarfeh/d1c564336728ee8d2f3a" target="_blank" rel="external">markdown文件</a>(gist 在国内被墙了)：</p>
+<p>最开始的时候写了一个markdown格式的模板，有一个这样的<a href="https://gist.github.com/knarfeh/d1c564336728ee8d2f3a" target="_blank" rel="noopener">markdown文件</a>(gist 在国内被墙了)：</p>
 <pre><code>title: &quot;这里是题目&quot;
 date: 2014-03-11 00:33:34
 tags: [algorithms, leetcode]
@@ -290,11 +290,11 @@ tags: [algorithms, leetcode]
 ### [题目来源]()
 </code></pre><p>然后一道题一道题地复制粘贴，写了几道题就烦了，于是写了一个Python脚本解决这个问题。爬取leetcode的问题，自动建立md文件，问题的描述没有爬取，因为描述是会更新的，而且有些内容是html格式的，有的还附带图片，要转化成markdown格式有点麻烦。所以，既然每次都要写分析，贴代码进来，也不在乎这一个复制粘贴了，但tags, similar problems这块是随手爬取了，因为每次都拷贝的话太麻烦。    </p>
 <p>这里给出Python代码：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div><div class="line">80</div><div class="line">81</div><div class="line">82</div><div class="line">83</div><div class="line">84</div><div class="line">85</div><div class="line">86</div><div class="line">87</div><div class="line">88</div><div class="line">89</div><div class="line">90</div><div class="line">91</div><div class="line">92</div><div class="line">93</div><div class="line">94</div><div class="line">95</div><div class="line">96</div><div class="line">97</div><div class="line">98</div><div class="line">99</div><div class="line">100</div><div class="line">101</div><div class="line">102</div><div class="line">103</div><div class="line">104</div><div class="line">105</div><div class="line">106</div><div class="line">107</div><div class="line">108</div><div class="line">109</div></pre></td><td class="code"><pre><div class="line">#!/usr/bin/env python</div><div class="line"># -*- coding: utf-8 -*-</div><div class="line"></div><div class="line">import urllib2</div><div class="line">import re</div><div class="line">from bs4 import BeautifulSoup</div><div class="line"></div><div class="line">import sys</div><div class="line">reload(sys)</div><div class="line">sys.setdefaultencoding( &quot;utf-8&quot; )</div><div class="line"></div><div class="line">leetcode_md = u&quot;&quot;&quot;title: &quot;%s&quot;</div><div class="line">date: 2014-03-11 00:33:34</div><div class="line">tags: [algorithms, leetcode, %s]</div><div class="line">---</div><div class="line"></div><div class="line">### 描述</div><div class="line">---</div><div class="line">这里是描述</div><div class="line">&lt;!--more--&gt;</div><div class="line"></div><div class="line">### 分析</div><div class="line">---</div><div class="line">这里是分析</div><div class="line"></div><div class="line">### 解决方案1(C++)</div><div class="line">---</div><div class="line">### 解决方案2(Java)</div><div class="line">---</div><div class="line">### 解决方案3(Python)</div><div class="line">---</div><div class="line"></div><div class="line">### 相关问题</div><div class="line">---</div><div class="line">%s</div><div class="line">### [题目来源](%s)</div><div class="line">&quot;&quot;&quot;</div><div class="line"></div><div class="line">def get_tag_content(tag):</div><div class="line">    u&quot;&quot;&quot;</div><div class="line">    用于提取bs中tag.contents的内容</div><div class="line">    &quot;&quot;&quot;</div><div class="line">    return &quot;&quot;.join([unicode(x) for x in tag.contents])</div><div class="line"></div><div class="line">def get_attr(dom, attr, defaultValue=&quot;&quot;):</div><div class="line">    u&quot;&quot;&quot;</div><div class="line">    获取bs中tag.content的指定属性</div><div class="line">    若content为空或者没有指定属性则返回默认值</div><div class="line">    &quot;&quot;&quot;</div><div class="line">    if dom is None:</div><div class="line">        return defaultValue</div><div class="line">    return dom.get(attr, defaultValue)</div><div class="line"></div><div class="line">leetcode_problems = &apos;https://leetcode.com/problemset/algorithms/&apos;</div><div class="line"></div><div class="line">html = urllib2.urlopen(leetcode_problems)</div><div class="line">content = html.read()</div><div class="line">soup = BeautifulSoup(content, &apos;lxml&apos;)</div><div class="line"></div><div class="line">problem_list = soup.select(&apos;table.table tbody tr&apos;)</div><div class="line"># print problem_list</div><div class="line"></div><div class="line">for item in problem_list[:5]:</div><div class="line">    soup = BeautifulSoup(str(item), &apos;lxml&apos;)</div><div class="line"></div><div class="line">    problem_id = get_tag_content(soup.select(&apos;td&apos;)[1])</div><div class="line">    problem_name = get_tag_content(soup.select(&apos;td a&apos;)[0]).replace(&apos; &apos;, &apos;-&apos;)</div><div class="line">    href = get_attr(soup.select(&apos;td a&apos;)[0], &apos;href&apos;)</div><div class="line">    problem_href = &apos;https://leetcode.com&apos; + href</div><div class="line"></div><div class="line">    filename = &apos;leetcode-&apos; + str(problem_id) + &apos;-&apos; + str(problem_name) + &quot;.md&quot;</div><div class="line">    problem_name_md = &apos;leetcode-&apos; + str(problem_id) + &apos;-&apos; + str(problem_name)</div><div class="line">    html = urllib2.urlopen(problem_href)</div><div class="line">    content = html.read()</div><div class="line"></div><div class="line">    soup = BeautifulSoup(content, &apos;lxml&apos;)</div><div class="line"></div><div class="line">    problem_tag_list = []</div><div class="line">    similar_problem_list = []</div><div class="line">    if len(soup.select(&apos;span.hidebutton&apos;)) &gt; 0:</div><div class="line">        problem_tag_list = soup.select(&apos;span.hidebutton&apos;)[0].select(&apos;a&apos;)</div><div class="line">    if len(soup.select(&apos;span.hidebutton&apos;)) &gt; 1:</div><div class="line">        similar_problem_list = soup.select(&apos;span.hidebutton&apos;)[1].select(&apos;a&apos;)</div><div class="line">    tags = []</div><div class="line">    for tag_item in problem_tag_list:</div><div class="line">        soup = BeautifulSoup(str(tag_item), &apos;lxml&apos;)</div><div class="line">        tag = get_tag_content(soup.select(&apos;a&apos;)[0]).strip().replace(&apos; &apos;, &apos;-&apos;)</div><div class="line">        tags.append(tag)</div><div class="line"></div><div class="line">    similar_problem = &#123;&#125;</div><div class="line"></div><div class="line">    for similar_item in similar_problem_list:</div><div class="line">        soup = BeautifulSoup(str(similar_item), &apos;lxml&apos;)</div><div class="line">        similar_problem_name = get_tag_content(soup.select(&apos;a&apos;)[0]).strip()</div><div class="line">        href = get_attr(soup.select(&apos;a&apos;)[0], &apos;href&apos;)</div><div class="line">        similar_problem_href = &apos;https://leetcode.com&apos; + href</div><div class="line">        similar_problem[similar_problem_name] = similar_problem_href</div><div class="line"></div><div class="line">    title = problem_name_md</div><div class="line">    md_tags = &apos;, &apos;.join(tags)</div><div class="line">    similar_problem_md = &apos;&apos;</div><div class="line">    for key, value in similar_problem.items():</div><div class="line">        similar_problem_md += (&apos;[&apos;+key+&apos;]&apos;+&apos;(&apos;+value+&apos;)   \n&apos;)     # 加的两个空格是为了在md中显示换行</div><div class="line">    now_leetcode_md = leetcode_md % (title, md_tags, similar_problem_md, problem_href)</div><div class="line"></div><div class="line">    print(u&quot;完成&quot; + filename)</div><div class="line">    f = open(filename, &apos;w&apos;)</div><div class="line">    f.write(now_leetcode_md)</div><div class="line">    f.close()</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br></pre></td><td class="code"><pre><span class="line">#!/usr/bin/env python</span><br><span class="line"># -*- coding: utf-8 -*-</span><br><span class="line"></span><br><span class="line">import urllib2</span><br><span class="line">import re</span><br><span class="line">from bs4 import BeautifulSoup</span><br><span class="line"></span><br><span class="line">import sys</span><br><span class="line">reload(sys)</span><br><span class="line">sys.setdefaultencoding( &quot;utf-8&quot; )</span><br><span class="line"></span><br><span class="line">leetcode_md = u&quot;&quot;&quot;title: &quot;%s&quot;</span><br><span class="line">date: 2014-03-11 00:33:34</span><br><span class="line">tags: [algorithms, leetcode, %s]</span><br><span class="line">---</span><br><span class="line"></span><br><span class="line">### 描述</span><br><span class="line">---</span><br><span class="line">这里是描述</span><br><span class="line">&lt;!--more--&gt;</span><br><span class="line"></span><br><span class="line">### 分析</span><br><span class="line">---</span><br><span class="line">这里是分析</span><br><span class="line"></span><br><span class="line">### 解决方案1(C++)</span><br><span class="line">---</span><br><span class="line">### 解决方案2(Java)</span><br><span class="line">---</span><br><span class="line">### 解决方案3(Python)</span><br><span class="line">---</span><br><span class="line"></span><br><span class="line">### 相关问题</span><br><span class="line">---</span><br><span class="line">%s</span><br><span class="line">### [题目来源](%s)</span><br><span class="line">&quot;&quot;&quot;</span><br><span class="line"></span><br><span class="line">def get_tag_content(tag):</span><br><span class="line">    u&quot;&quot;&quot;</span><br><span class="line">    用于提取bs中tag.contents的内容</span><br><span class="line">    &quot;&quot;&quot;</span><br><span class="line">    return &quot;&quot;.join([unicode(x) for x in tag.contents])</span><br><span class="line"></span><br><span class="line">def get_attr(dom, attr, defaultValue=&quot;&quot;):</span><br><span class="line">    u&quot;&quot;&quot;</span><br><span class="line">    获取bs中tag.content的指定属性</span><br><span class="line">    若content为空或者没有指定属性则返回默认值</span><br><span class="line">    &quot;&quot;&quot;</span><br><span class="line">    if dom is None:</span><br><span class="line">        return defaultValue</span><br><span class="line">    return dom.get(attr, defaultValue)</span><br><span class="line"></span><br><span class="line">leetcode_problems = &apos;https://leetcode.com/problemset/algorithms/&apos;</span><br><span class="line"></span><br><span class="line">html = urllib2.urlopen(leetcode_problems)</span><br><span class="line">content = html.read()</span><br><span class="line">soup = BeautifulSoup(content, &apos;lxml&apos;)</span><br><span class="line"></span><br><span class="line">problem_list = soup.select(&apos;table.table tbody tr&apos;)</span><br><span class="line"># print problem_list</span><br><span class="line"></span><br><span class="line">for item in problem_list[:5]:</span><br><span class="line">    soup = BeautifulSoup(str(item), &apos;lxml&apos;)</span><br><span class="line"></span><br><span class="line">    problem_id = get_tag_content(soup.select(&apos;td&apos;)[1])</span><br><span class="line">    problem_name = get_tag_content(soup.select(&apos;td a&apos;)[0]).replace(&apos; &apos;, &apos;-&apos;)</span><br><span class="line">    href = get_attr(soup.select(&apos;td a&apos;)[0], &apos;href&apos;)</span><br><span class="line">    problem_href = &apos;https://leetcode.com&apos; + href</span><br><span class="line"></span><br><span class="line">    filename = &apos;leetcode-&apos; + str(problem_id) + &apos;-&apos; + str(problem_name) + &quot;.md&quot;</span><br><span class="line">    problem_name_md = &apos;leetcode-&apos; + str(problem_id) + &apos;-&apos; + str(problem_name)</span><br><span class="line">    html = urllib2.urlopen(problem_href)</span><br><span class="line">    content = html.read()</span><br><span class="line"></span><br><span class="line">    soup = BeautifulSoup(content, &apos;lxml&apos;)</span><br><span class="line"></span><br><span class="line">    problem_tag_list = []</span><br><span class="line">    similar_problem_list = []</span><br><span class="line">    if len(soup.select(&apos;span.hidebutton&apos;)) &gt; 0:</span><br><span class="line">        problem_tag_list = soup.select(&apos;span.hidebutton&apos;)[0].select(&apos;a&apos;)</span><br><span class="line">    if len(soup.select(&apos;span.hidebutton&apos;)) &gt; 1:</span><br><span class="line">        similar_problem_list = soup.select(&apos;span.hidebutton&apos;)[1].select(&apos;a&apos;)</span><br><span class="line">    tags = []</span><br><span class="line">    for tag_item in problem_tag_list:</span><br><span class="line">        soup = BeautifulSoup(str(tag_item), &apos;lxml&apos;)</span><br><span class="line">        tag = get_tag_content(soup.select(&apos;a&apos;)[0]).strip().replace(&apos; &apos;, &apos;-&apos;)</span><br><span class="line">        tags.append(tag)</span><br><span class="line"></span><br><span class="line">    similar_problem = &#123;&#125;</span><br><span class="line"></span><br><span class="line">    for similar_item in similar_problem_list:</span><br><span class="line">        soup = BeautifulSoup(str(similar_item), &apos;lxml&apos;)</span><br><span class="line">        similar_problem_name = get_tag_content(soup.select(&apos;a&apos;)[0]).strip()</span><br><span class="line">        href = get_attr(soup.select(&apos;a&apos;)[0], &apos;href&apos;)</span><br><span class="line">        similar_problem_href = &apos;https://leetcode.com&apos; + href</span><br><span class="line">        similar_problem[similar_problem_name] = similar_problem_href</span><br><span class="line"></span><br><span class="line">    title = problem_name_md</span><br><span class="line">    md_tags = &apos;, &apos;.join(tags)</span><br><span class="line">    similar_problem_md = &apos;&apos;</span><br><span class="line">    for key, value in similar_problem.items():</span><br><span class="line">        similar_problem_md += (&apos;[&apos;+key+&apos;]&apos;+&apos;(&apos;+value+&apos;)   \n&apos;)     # 加的两个空格是为了在md中显示换行</span><br><span class="line">    now_leetcode_md = leetcode_md % (title, md_tags, similar_problem_md, problem_href)</span><br><span class="line"></span><br><span class="line">    print(u&quot;完成&quot; + filename)</span><br><span class="line">    f = open(filename, &apos;w&apos;)</span><br><span class="line">    f.write(now_leetcode_md)</span><br><span class="line">    f.close()</span><br></pre></td></tr></table></figure>
 <p>这样一来，就能自动生成所有的markdown文件了（啊哈哈哈哈我果然是天才）：    </p>
-<p><img src="https://knarfeh-1254074221.cos.na-siliconvalley.myqcloud.com/2016-03-11-all_leetcode_md.png" alt=""></p>
+<p><img src="https://knarfeh-1254074221.cos.na-siliconvalley.myqcloud.com/2016-03-11-all_leetcode_md.png" alt></p>
 <p>「Python will save the world. I don’t know how, but it will」</p>
-<p>P.S. 博文中的代码一般情况下是最新的版本，git log 在<a href="https://gist.github.com/knarfeh/ba3a4b3fd49cf5fdf4f4216fd30a2b92" target="_blank" rel="external">这里</a></p>
+<p>P.S. 博文中的代码一般情况下是最新的版本，git log 在<a href="https://gist.github.com/knarfeh/ba3a4b3fd49cf5fdf4f4216fd30a2b92" target="_blank" rel="noopener">这里</a></p>
 <p>Update： 2016-10-23 开始写 leetcode 上数据库相关的题目。</p>
 
       
@@ -329,8 +329,8 @@ tags: [algorithms, leetcode]
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2016/03/14/【podcast】Teahour/" rel="prev" title="【podcast】Teahour">
-                【podcast】Teahour <i class="fa fa-chevron-right"></i>
+              <a href="/2016/03/14/【podcast】TalkPythonToMe/" rel="prev" title="【podcast】TalkPythonToMe">
+                【podcast】TalkPythonToMe <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -386,7 +386,7 @@ tags: [algorithms, leetcode]
 
       
         <ul class="sidebar-nav motion-element">
-          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
             文章目录
           </li>
           <li class="sidebar-nav-overview" data-target="site-overview">
@@ -397,16 +397,14 @@ tags: [algorithms, leetcode]
 
       <section class="site-overview sidebar-panel ">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
-          <img class="site-author-image" itemprop="image"
-               src="https://avatars1.githubusercontent.com/u/6964284?v=3&s=460"
-               alt="Frank" />
+          <img class="site-author-image" itemprop="image" src="https://avatars1.githubusercontent.com/u/6964284?v=3&s=460" alt="Frank">
           <p class="site-author-name" itemprop="name">Frank</p>
           <p class="site-description motion-element" itemprop="description"></p>
         </div>
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">365</span>
+              <span class="site-state-item-count">390</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -416,7 +414,7 @@ tags: [algorithms, leetcode]
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">135</span>
+                <span class="site-state-item-count">207</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
@@ -452,7 +450,7 @@ tags: [algorithms, leetcode]
         
           <div class="cc-license motion-element" itemprop="license">
             <a href="http://creativecommons.org/licenses/by-sa/4.0" class="cc-opacity" target="_blank">
-              <img src="/images/cc-by-sa.svg" alt="Creative Commons" />
+              <img src="/images/cc-by-sa.svg" alt="Creative Commons">
             </a>
           </div>
         
@@ -492,10 +490,10 @@ tags: [algorithms, leetcode]
 
     <footer id="footer" class="footer">
       <div class="footer-inner">
-        <div class="copyright" >
+        <div class="copyright">
   
   &copy;  2015 - 
-  <span itemprop="copyrightYear">2019</span>
+  <span itemprop="copyrightYear">2021</span>
   <span class="with-love">
     <i class="fa fa-heart"></i>
   </span>
