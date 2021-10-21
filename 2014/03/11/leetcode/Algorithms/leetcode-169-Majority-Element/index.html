@@ -65,7 +65,7 @@
 <meta property="og:site_name" content="knarfeh&#39;s logbook">
 <meta property="og:description" content="描述 Given an array of size n, find the majority element. The majority element is the element that appears more than ⌊ n/2 ⌋ times. You may assume that the array is non-empty and the majority element al">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2020-04-02T03:51:40.404Z">
+<meta property="og:updated_time" content="2021-10-18T14:37:41.062Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="leetcode-169-Majority-Element">
 <meta name="twitter:description" content="描述 Given an array of size n, find the majority element. The majority element is the element that appears more than ⌊ n/2 ⌋ times. You may assume that the array is non-empty and the majority element al">
@@ -271,6 +271,8 @@
 <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">majorityElement</span><span class="params">(<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&amp; nums)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> result;</span><br><span class="line">        <span class="keyword">int</span> count = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; nums.size(); i++) &#123;</span><br><span class="line">            <span class="keyword">if</span>(count == <span class="number">0</span>) &#123;</span><br><span class="line">                result = nums[i];</span><br><span class="line">                count = <span class="number">1</span>;</span><br><span class="line">            &#125;<span class="keyword">else</span> &#123;</span><br><span class="line">                <span class="keyword">if</span>(result == nums[i]) &#123;</span><br><span class="line">                    count++;</span><br><span class="line">                &#125;<span class="keyword">else</span> &#123;</span><br><span class="line">                    count--;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> result;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
 <p>在讨论里发现一种很有意思的方法：TODO：写出数学分析(一尺之捶，日取其半，万世不竭，所以，极限是？)  </p>
 <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">majorityElement</span><span class="params">(<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; &amp;num)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> count = <span class="number">0</span>;</span><br><span class="line">		<span class="keyword">while</span>(<span class="literal">true</span>) &#123;</span><br><span class="line">			<span class="keyword">if</span>(num.size() == <span class="number">1</span>) &#123;</span><br><span class="line">				<span class="keyword">return</span> num[<span class="number">0</span>];</span><br><span class="line">			&#125;<span class="keyword">else</span> &#123;</span><br><span class="line">				<span class="keyword">int</span> i = rand() % (num.size() - <span class="number">1</span>);</span><br><span class="line">				<span class="keyword">for</span>(<span class="keyword">int</span> j = <span class="number">0</span>; (<span class="keyword">unsigned</span>)j &lt; num.size(); j++) &#123;</span><br><span class="line">					<span class="keyword">if</span>(num[j] == num[i])&#123;</span><br><span class="line">						count++;</span><br><span class="line">					&#125;</span><br><span class="line">				&#125;</span><br><span class="line">				<span class="keyword">if</span>((<span class="keyword">unsigned</span>)count &gt; (num.size()/<span class="number">2</span>)) &#123;</span><br><span class="line">					<span class="keyword">return</span> num[i];</span><br><span class="line">				&#125;<span class="keyword">else</span> &#123;</span><br><span class="line">					count = <span class="number">0</span>;</span><br><span class="line">					<span class="keyword">continue</span>;</span><br><span class="line">				&#125;</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<h3 id="解决方案2（Golang）"><a href="#解决方案2（Golang）" class="headerlink" title="解决方案2（Golang）"></a>解决方案2（Golang）</h3><hr>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">majorityElement</span><span class="params">(nums []<span class="keyword">int</span>)</span> <span class="title">int</span></span> &#123;</span><br><span class="line">    sort.Ints(nums)</span><br><span class="line">    <span class="keyword">return</span> nums[<span class="built_in">len</span>(nums)/<span class="number">2</span>]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <h3 id="相关问题"><a href="#相关问题" class="headerlink" title="相关问题"></a>相关问题</h3><hr>
 <ul>
 <li><a href="https://leetcode.com/problems/majority-element-ii/" target="_blank" rel="noopener">(M) Majority Element II</a>   </li>
@@ -306,16 +308,16 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2014/03/11/leetcode/Algorithms/leetcode-167-Two-Sum-II---Input-array-is-sorted/" rel="next" title="leetcode-167-Two-Sum-II---Input-array-is-sorted">
-                <i class="fa fa-chevron-left"></i> leetcode-167-Two-Sum-II---Input-array-is-sorted
+              <a href="/2014/03/11/leetcode/Algorithms/leetcode-168-Excel-Sheet-Column-Title/" rel="next" title="leetcode-168-Excel-Sheet-Column-Title">
+                <i class="fa fa-chevron-left"></i> leetcode-168-Excel-Sheet-Column-Title
               </a>
             
           </div>
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2014/03/11/leetcode/Algorithms/leetcode-179-Largest-Number/" rel="prev" title="leetcode-179-Largest-Number">
-                leetcode-179-Largest-Number <i class="fa fa-chevron-right"></i>
+              <a href="/2014/03/11/leetcode/Algorithms/leetcode-167-Two-Sum-II---Input-array-is-sorted/" rel="prev" title="leetcode-167-Two-Sum-II---Input-array-is-sorted">
+                leetcode-167-Two-Sum-II---Input-array-is-sorted <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -389,7 +391,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">390</span>
+              <span class="site-state-item-count">401</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -399,7 +401,7 @@
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">187</span>
+                <span class="site-state-item-count">206</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
@@ -456,7 +458,7 @@
               
             
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#描述"><span class="nav-number">1.</span> <span class="nav-text">描述</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#分析"><span class="nav-number">2.</span> <span class="nav-text">分析</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#解决方案1-C"><span class="nav-number">3.</span> <span class="nav-text">解决方案1(C++)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#相关问题"><span class="nav-number">4.</span> <span class="nav-text">相关问题</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#题目来源"><span class="nav-number">5.</span> <span class="nav-text">题目来源</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#描述"><span class="nav-number">1.</span> <span class="nav-text">描述</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#分析"><span class="nav-number">2.</span> <span class="nav-text">分析</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#解决方案1-C"><span class="nav-number">3.</span> <span class="nav-text">解决方案1(C++)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#解决方案2（Golang）"><span class="nav-number">4.</span> <span class="nav-text">解决方案2（Golang）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#相关问题"><span class="nav-number">5.</span> <span class="nav-text">相关问题</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#题目来源"><span class="nav-number">6.</span> <span class="nav-text">题目来源</span></a></li></ol></div>
             
           </div>
           <div class="post-toc-indicator-bottom post-toc-indicator">

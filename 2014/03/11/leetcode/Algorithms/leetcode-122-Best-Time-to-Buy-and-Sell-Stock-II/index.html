@@ -65,7 +65,7 @@
 <meta property="og:site_name" content="knarfeh&#39;s logbook">
 <meta property="og:description" content="描述 Say you have an array for which the $i^{th}$ element is the price of a given stock on day i. If you were only permitted to complete at most one transaction (ie, buy one and sell one share of the st">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2021-08-21T07:11:00.952Z">
+<meta property="og:updated_time" content="2021-10-13T15:23:59.259Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="leetcode-122-Best-Time-to-Buy-and-Sell-Stock-II">
 <meta name="twitter:description" content="描述 Say you have an array for which the $i^{th}$ element is the price of a given stock on day i. If you were only permitted to complete at most one transaction (ie, buy one and sell one share of the st">
@@ -270,13 +270,14 @@
 <h3 id="解决方案2-Java"><a href="#解决方案2-Java" class="headerlink" title="解决方案2(Java)"></a>解决方案2(Java)</h3><hr>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">maxProfit</span><span class="params">(<span class="keyword">int</span>[] prices)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> result = <span class="number">0</span>, n = prices.length;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i=<span class="number">0</span>; i &lt; n-<span class="number">1</span>; i++) &#123;</span><br><span class="line">            <span class="keyword">if</span> (prices[i] &lt; prices[i+<span class="number">1</span>]) &#123;</span><br><span class="line">                result += (prices[i+<span class="number">1</span>]-prices[i]);                </span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> result;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <h3 id="解决方案3-Golang"><a href="#解决方案3-Golang" class="headerlink" title="解决方案3(Golang)"></a>解决方案3(Golang)</h3><hr>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">func maxProfit(prices []int) int &#123;</span><br><span class="line">    result := 0</span><br><span class="line">    for i:= 0; i &lt; len(prices)-1; i++ &#123;</span><br><span class="line">        if prices[i+1] &gt; prices[i] &#123;</span><br><span class="line">            result += (prices[i+1]-prices[i])</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    return result</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">maxProfit</span><span class="params">(prices []<span class="keyword">int</span>)</span> <span class="title">int</span></span> &#123;</span><br><span class="line">    result := <span class="number">0</span></span><br><span class="line">    <span class="keyword">for</span> i:= <span class="number">0</span>; i &lt; <span class="built_in">len</span>(prices)<span class="number">-1</span>; i++ &#123;</span><br><span class="line">        <span class="keyword">if</span> prices[i+<span class="number">1</span>] &gt; prices[i] &#123;</span><br><span class="line">            result += (prices[i+<span class="number">1</span>]-prices[i])</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> result</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <h3 id="相关问题"><a href="#相关问题" class="headerlink" title="相关问题"></a>相关问题</h3><hr>
 <ul>
+<li><a href="https://leetcode.com/problems/best-time-to-buy-and-sell-stock/" target="_blank" rel="noopener">(E) Best Time to Buy and Sell Stock</a></li>
+<li><a href="https://leetcode.com/problems/best-time-to-buy-and-sell-stock-iii/" target="_blank" rel="noopener">(H) Best Time to Buy and Sell Stock III</a>   </li>
 <li><a href="https://leetcode.com/problems/best-time-to-buy-and-sell-stock-iv/" target="_blank" rel="noopener">(H) Best Time to Buy and Sell Stock IV</a>   </li>
 <li><a href="https://leetcode.com/problems/best-time-to-buy-and-sell-stock-with-cooldown/" target="_blank" rel="noopener">(M) Best Time to Buy and Sell Stock with Cooldown</a>   </li>
-<li><a href="https://leetcode.com/problems/best-time-to-buy-and-sell-stock-iii/" target="_blank" rel="noopener">(H) Best Time to Buy and Sell Stock III</a>   </li>
-<li><a href="https://leetcode.com/problems/best-time-to-buy-and-sell-stock/" target="_blank" rel="noopener">(M) Best Time to Buy and Sell Stock</a>   </li>
+<li><a href="https://leetcode.com/problems/best-time-to-buy-and-sell-stock-with-transaction-fee/" target="_blank" rel="noopener">(M) Best Time to Buy and Sell Stock with Transaction Fee</a></li>
 </ul>
 <h3 id="题目来源"><a href="#题目来源" class="headerlink" title="题目来源"></a><a href="https://leetcode.com/problems/best-time-to-buy-and-sell-stock-ii/" target="_blank" rel="noopener">题目来源</a></h3>
       
@@ -315,8 +316,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2014/03/11/leetcode/Algorithms/leetcode-120-Triangle/" rel="prev" title="leetcode-120-Triangle">
-                leetcode-120-Triangle <i class="fa fa-chevron-right"></i>
+              <a href="/2014/03/11/leetcode/Algorithms/leetcode-124-Binary-Tree-Maximum-Path-Sum/" rel="prev" title="leetcode-124-Binary-Tree-Maximum-Path-Sum">
+                leetcode-124-Binary-Tree-Maximum-Path-Sum <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -390,7 +391,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">390</span>
+              <span class="site-state-item-count">401</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -400,7 +401,7 @@
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">187</span>
+                <span class="site-state-item-count">206</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>

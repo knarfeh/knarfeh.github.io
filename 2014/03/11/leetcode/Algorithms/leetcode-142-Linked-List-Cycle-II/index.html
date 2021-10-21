@@ -65,7 +65,7 @@
 <meta property="og:site_name" content="knarfeh&#39;s logbook">
 <meta property="og:description" content="描述 Given a linked list, return the node where the cycle begins. If there is no cycle, return null. Note: Do not modify the linked list. Follow up:Can you solve it without using extra space?">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-03-05T14:06:09.510Z">
+<meta property="og:updated_time" content="2021-10-18T15:51:57.420Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="leetcode-142-Linked-List-Cycle-II">
 <meta name="twitter:description" content="描述 Given a linked list, return the node where the cycle begins. If there is no cycle, return null. Note: Do not modify the linked list. Follow up:Can you solve it without using extra space?">
@@ -267,6 +267,8 @@
 <p>这道题承接上一题，不过这道题需要找到环的入口。最后再加一个循环即可，让一个指针从 head 往环的方向走，另一个指针在环里转悠，最终两个指针会在环口相遇。</p>
 <h3 id="解决方案1-Java"><a href="#解决方案1-Java" class="headerlink" title="解决方案1(Java)"></a>解决方案1(Java)</h3><hr>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Definition for singly-linked list.</span></span><br><span class="line"><span class="comment"> * class ListNode &#123;</span></span><br><span class="line"><span class="comment"> *     int val;</span></span><br><span class="line"><span class="comment"> *     ListNode next;</span></span><br><span class="line"><span class="comment"> *     ListNode(int x) &#123;</span></span><br><span class="line"><span class="comment"> *         val = x;</span></span><br><span class="line"><span class="comment"> *         next = null;</span></span><br><span class="line"><span class="comment"> *     &#125;</span></span><br><span class="line"><span class="comment"> * &#125;</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> ListNode <span class="title">detectCycle</span><span class="params">(ListNode head)</span> </span>&#123;</span><br><span class="line">        ListNode fast = head, slow = head;</span><br><span class="line">        <span class="keyword">while</span> (fast != <span class="keyword">null</span> &amp;&amp; fast.next != <span class="keyword">null</span>) &#123;</span><br><span class="line">            fast = fast.next.next;</span><br><span class="line">            slow = slow.next;</span><br><span class="line">            <span class="keyword">if</span> (fast == slow) &#123;</span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">if</span> (fast == <span class="keyword">null</span> || fast.next == <span class="keyword">null</span>) &#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">null</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        slow = head;</span><br><span class="line">        <span class="keyword">while</span> (slow != fast) &#123;</span><br><span class="line">            slow = slow.next;</span><br><span class="line">            fast = fast.next;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> fast;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="解决方案2（Golang）"><a href="#解决方案2（Golang）" class="headerlink" title="解决方案2（Golang）"></a>解决方案2（Golang）</h3><hr>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line">/**</span><br><span class="line"> * Definition for singly-linked list.</span><br><span class="line"> * type ListNode struct &#123;</span><br><span class="line"> *     Val int</span><br><span class="line"> *     Next *ListNode</span><br><span class="line"> * &#125;</span><br><span class="line"> */</span><br><span class="line">func detectCycle(head *ListNode) *ListNode &#123;</span><br><span class="line">    slow, fast := head, head</span><br><span class="line">    </span><br><span class="line">    for fast != nil &#123;</span><br><span class="line">        slow = slow.Next</span><br><span class="line">        if fast.Next == nil &#123;</span><br><span class="line">            return nil</span><br><span class="line">        &#125;</span><br><span class="line">        fast = fast.Next.Next</span><br><span class="line">        if fast == slow &#123;</span><br><span class="line">            now := head</span><br><span class="line">            for now != slow &#123;</span><br><span class="line">                now = now.Next</span><br><span class="line">                slow = slow.Next</span><br><span class="line">            &#125;</span><br><span class="line">            return now</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    return nil</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <h3 id="相关问题"><a href="#相关问题" class="headerlink" title="相关问题"></a>相关问题</h3><hr>
 <ul>
 <li><a href="https://leetcode.com/problems/find-the-duplicate-number/" target="_blank" rel="noopener">(H) Find the Duplicate Number</a>   </li>
@@ -301,16 +303,16 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2014/03/11/leetcode/Algorithms/leetcode-144-Binary-Tree-Preorder-Traversal/" rel="next" title="leetcode-144-Binary-Tree-Preorder-Traversal">
-                <i class="fa fa-chevron-left"></i> leetcode-144-Binary-Tree-Preorder-Traversal
+              <a href="/2014/03/11/leetcode/Algorithms/leetcode-145-Binary-Tree-Postorder-Traversal/" rel="next" title="leetcode-145-Binary-Tree-Postorder-Traversal">
+                <i class="fa fa-chevron-left"></i> leetcode-145-Binary-Tree-Postorder-Traversal
               </a>
             
           </div>
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2014/03/11/leetcode/Algorithms/leetcode-14-Longest-Common-Prefix/" rel="prev" title="leetcode-14-Longest-Common-Prefix">
-                leetcode-14-Longest-Common-Prefix <i class="fa fa-chevron-right"></i>
+              <a href="/2014/03/11/leetcode/Algorithms/leetcode-141-Linked-List-Cycle/" rel="prev" title="leetcode-141-Linked-List-Cycle">
+                leetcode-141-Linked-List-Cycle <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -384,7 +386,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">390</span>
+              <span class="site-state-item-count">401</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -394,7 +396,7 @@
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">187</span>
+                <span class="site-state-item-count">206</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
@@ -451,7 +453,7 @@
               
             
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#描述"><span class="nav-number">1.</span> <span class="nav-text">描述</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#分析"><span class="nav-number">2.</span> <span class="nav-text">分析</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#解决方案1-Java"><span class="nav-number">3.</span> <span class="nav-text">解决方案1(Java)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#相关问题"><span class="nav-number">4.</span> <span class="nav-text">相关问题</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#题目来源"><span class="nav-number">5.</span> <span class="nav-text">题目来源</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#描述"><span class="nav-number">1.</span> <span class="nav-text">描述</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#分析"><span class="nav-number">2.</span> <span class="nav-text">分析</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#解决方案1-Java"><span class="nav-number">3.</span> <span class="nav-text">解决方案1(Java)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#解决方案2（Golang）"><span class="nav-number">4.</span> <span class="nav-text">解决方案2（Golang）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#相关问题"><span class="nav-number">5.</span> <span class="nav-text">相关问题</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#题目来源"><span class="nav-number">6.</span> <span class="nav-text">题目来源</span></a></li></ol></div>
             
           </div>
           <div class="post-toc-indicator-bottom post-toc-indicator">

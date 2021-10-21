@@ -65,7 +65,7 @@
 <meta property="og:site_name" content="knarfeh&#39;s logbook">
 <meta property="og:description" content="描述 Given two non-negative integers num1 and num2 represented as string, return the sum of num1 and num2. Note:  The length of both num1 and num2 is &amp;lt; 5100. Both num1 and num2 contains only digits 0">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2021-10-10T14:40:55.370Z">
+<meta property="og:updated_time" content="2021-10-20T14:59:56.531Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="leetcode-415-Add-Strings">
 <meta name="twitter:description" content="描述 Given two non-negative integers num1 and num2 represented as string, return the sum of num1 and num2. Note:  The length of both num1 and num2 is &amp;lt; 5100. Both num1 and num2 contains only digits 0">
@@ -270,7 +270,6 @@
 </ol>
 <a id="more"></a>
 <h3 id="分析"><a href="#分析" class="headerlink" title="分析"></a>分析</h3><hr>
-<p>用两个字符串表示非负的整数，求它们的和，需要注意的是字符串的长度小于 5100，没法用 int 型进行计算。可以一个字符一个字符进行相加计算，处理好进位即可。</p>
 <h3 id="解决方案1-Java"><a href="#解决方案1-Java" class="headerlink" title="解决方案1(Java)"></a>解决方案1(Java)</h3><hr>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">addStrings</span><span class="params">(String num1, String num2)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> i = num1.length() - <span class="number">1</span>, j = num2.length() - <span class="number">1</span>, carry = <span class="number">0</span>;</span><br><span class="line">        String result = <span class="string">""</span>;</span><br><span class="line">        <span class="keyword">while</span> (i &gt;= <span class="number">0</span> || j &gt;= <span class="number">0</span>) &#123;</span><br><span class="line">            <span class="keyword">if</span> (i &gt;= <span class="number">0</span>) &#123;</span><br><span class="line">                carry += num1.charAt(i) - <span class="string">'0'</span>;</span><br><span class="line">                i--;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">if</span> (j &gt;= <span class="number">0</span>) &#123;</span><br><span class="line">                carry += num2.charAt(j) - <span class="string">'0'</span>;</span><br><span class="line">                j--;</span><br><span class="line">            &#125;</span><br><span class="line">            result = Integer.toString(carry % <span class="number">10</span>) + result;</span><br><span class="line">            carry /= <span class="number">10</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> carry != <span class="number">0</span> ? <span class="string">"1"</span> + result: result;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <h3 id="解决方案2（Golang）"><a href="#解决方案2（Golang）" class="headerlink" title="解决方案2（Golang）"></a>解决方案2（Golang）</h3><hr>
@@ -307,16 +306,16 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2014/03/11/leetcode/Algorithms/leetcode-409-Longest-Palindrome/" rel="next" title="leetcode-409-Longest-Palindrome">
-                <i class="fa fa-chevron-left"></i> leetcode-409-Longest-Palindrome
+              <a href="/2014/03/11/leetcode/Algorithms/leetcode-412-Fizz-Buzz/" rel="next" title="leetcode-412-Fizz-Buzz">
+                <i class="fa fa-chevron-left"></i> leetcode-412-Fizz-Buzz
               </a>
             
           </div>
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2014/03/11/leetcode/Algorithms/leetcode-400-Nth-Digit/" rel="prev" title="leetcode-400-Nth-Digit">
-                leetcode-400-Nth-Digit <i class="fa fa-chevron-right"></i>
+              <a href="/2014/03/11/leetcode/Algorithms/leetcode-414-Third-Maximum-Number/" rel="prev" title="leetcode-414-Third-Maximum-Number">
+                leetcode-414-Third-Maximum-Number <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -390,7 +389,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">390</span>
+              <span class="site-state-item-count">401</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -400,7 +399,7 @@
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">187</span>
+                <span class="site-state-item-count">206</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>

@@ -65,7 +65,7 @@
 <meta property="og:site_name" content="knarfeh&#39;s logbook">
 <meta property="og:description" content="描述 Given a binary tree, return the preorder traversal of its nodes’ values. Example: 12345678Input: [1,null,2,3]   1    \     2    /   3Output: [1,2,3] Follow up: Recursive solution is trivial, could">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-03-08T15:08:57.398Z">
+<meta property="og:updated_time" content="2021-10-20T16:23:41.676Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="leetcode-144-Binary-Tree-Preorder-Traversal">
 <meta name="twitter:description" content="描述 Given a binary tree, return the preorder traversal of its nodes’ values. Example: 12345678Input: [1,null,2,3]   1    \     2    /   3Output: [1,2,3] Follow up: Recursive solution is trivial, could">
@@ -269,6 +269,8 @@
 <p>先序遍历，可以当做例题。</p>
 <h3 id="解决方案1-Java"><a href="#解决方案1-Java" class="headerlink" title="解决方案1(Java)"></a>解决方案1(Java)</h3><hr>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Definition for a binary tree node.</span></span><br><span class="line"><span class="comment"> * public class TreeNode &#123;</span></span><br><span class="line"><span class="comment"> *     int val;</span></span><br><span class="line"><span class="comment"> *     TreeNode left;</span></span><br><span class="line"><span class="comment"> *     TreeNode right;</span></span><br><span class="line"><span class="comment"> *     TreeNode(int x) &#123; val = x; &#125;</span></span><br><span class="line"><span class="comment"> * &#125;</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> List&lt;Integer&gt; <span class="title">preorderTraversal</span><span class="params">(TreeNode root)</span> </span>&#123;</span><br><span class="line">        ArrayList&lt;Integer&gt; result = <span class="keyword">new</span> ArrayList&lt;Integer&gt;();</span><br><span class="line">        preOrder(root, result);</span><br><span class="line">        <span class="keyword">return</span> result;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">preOrder</span><span class="params">(TreeNode root, ArrayList&lt;Integer&gt; result)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (root == <span class="keyword">null</span>) &#123;</span><br><span class="line">            <span class="keyword">return</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        result.add(root.val);</span><br><span class="line">        preOrder(root.left, result);</span><br><span class="line">        preOrder(root.right, result);</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="解决方案2（golang）"><a href="#解决方案2（golang）" class="headerlink" title="解决方案2（golang）"></a>解决方案2（golang）</h3><hr>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Definition for a binary tree node.</span></span><br><span class="line"><span class="comment"> * type TreeNode struct &#123;</span></span><br><span class="line"><span class="comment"> *     Val int</span></span><br><span class="line"><span class="comment"> *     Left *TreeNode</span></span><br><span class="line"><span class="comment"> *     Right *TreeNode</span></span><br><span class="line"><span class="comment"> * &#125;</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">preorderTraversal</span><span class="params">(root *TreeNode)</span> []<span class="title">int</span></span> &#123;</span><br><span class="line">    <span class="keyword">if</span> root == <span class="literal">nil</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> []<span class="keyword">int</span>&#123;&#125;</span><br><span class="line">    &#125;</span><br><span class="line">    result := []<span class="keyword">int</span>&#123;&#125;</span><br><span class="line">    result = <span class="built_in">append</span>(result, root.Val)</span><br><span class="line">    left := <span class="built_in">append</span>(result, preorderTraversal(root.Left)...)</span><br><span class="line">    <span class="keyword">return</span> <span class="built_in">append</span>(left, preorderTraversal(root.Right)...)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <h3 id="相关问题"><a href="#相关问题" class="headerlink" title="相关问题"></a>相关问题</h3><hr>
 <ul>
 <li><a href="https://leetcode.com/problems/binary-tree-inorder-traversal/" target="_blank" rel="noopener">(M) Binary Tree Inorder Traversal</a> </li>
@@ -304,16 +306,16 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2014/03/11/leetcode/Algorithms/leetcode-141-Linked-List-Cycle/" rel="next" title="leetcode-141-Linked-List-Cycle">
-                <i class="fa fa-chevron-left"></i> leetcode-141-Linked-List-Cycle
+              <a href="/2014/03/11/leetcode/Algorithms/leetcode-147-Insertion-Sort-List/" rel="next" title="leetcode-147-Insertion-Sort-List">
+                <i class="fa fa-chevron-left"></i> leetcode-147-Insertion-Sort-List
               </a>
             
           </div>
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2014/03/11/leetcode/Algorithms/leetcode-142-Linked-List-Cycle-II/" rel="prev" title="leetcode-142-Linked-List-Cycle-II">
-                leetcode-142-Linked-List-Cycle-II <i class="fa fa-chevron-right"></i>
+              <a href="/2014/03/11/leetcode/Algorithms/leetcode-145-Binary-Tree-Postorder-Traversal/" rel="prev" title="leetcode-145-Binary-Tree-Postorder-Traversal">
+                leetcode-145-Binary-Tree-Postorder-Traversal <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -387,7 +389,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">390</span>
+              <span class="site-state-item-count">401</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -397,7 +399,7 @@
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">187</span>
+                <span class="site-state-item-count">206</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
@@ -454,7 +456,7 @@
               
             
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#描述"><span class="nav-number">1.</span> <span class="nav-text">描述</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#分析"><span class="nav-number">2.</span> <span class="nav-text">分析</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#解决方案1-Java"><span class="nav-number">3.</span> <span class="nav-text">解决方案1(Java)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#相关问题"><span class="nav-number">4.</span> <span class="nav-text">相关问题</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#题目来源"><span class="nav-number">5.</span> <span class="nav-text">题目来源</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#描述"><span class="nav-number">1.</span> <span class="nav-text">描述</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#分析"><span class="nav-number">2.</span> <span class="nav-text">分析</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#解决方案1-Java"><span class="nav-number">3.</span> <span class="nav-text">解决方案1(Java)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#解决方案2（golang）"><span class="nav-number">4.</span> <span class="nav-text">解决方案2（golang）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#相关问题"><span class="nav-number">5.</span> <span class="nav-text">相关问题</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#题目来源"><span class="nav-number">6.</span> <span class="nav-text">题目来源</span></a></li></ol></div>
             
           </div>
           <div class="post-toc-indicator-bottom post-toc-indicator">

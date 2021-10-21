@@ -65,7 +65,7 @@
 <meta property="og:site_name" content="knarfeh&#39;s logbook">
 <meta property="og:description" content="描述 Given a string which consists of lowercase or uppercase letters, find the length of the longest palindromes that can be built with those letters. This is case sensitive, for example &amp;quot;Aa&amp;quot;">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-03-14T14:22:01.454Z">
+<meta property="og:updated_time" content="2021-10-19T09:32:18.911Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="leetcode-409-Longest-Palindrome">
 <meta name="twitter:description" content="描述 Given a string which consists of lowercase or uppercase letters, find the length of the longest palindromes that can be built with those letters. This is case sensitive, for example &amp;quot;Aa&amp;quot;">
@@ -270,6 +270,8 @@
 <p>用一个字符串里的字母组成回文，判断能组成的回文的最大长度。思路是统计每个字符的出现次数。如果字符出现了偶数次，将该字符出现的次数直接加入到结果中，如果出现了奇数次，则将字符出现的次数减一加入到结果中，最后，如果有奇数次的字符，结果加一。</p>
 <h3 id="解决方案1-Java"><a href="#解决方案1-Java" class="headerlink" title="解决方案1(Java)"></a>解决方案1(Java)</h3><hr>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">longestPalindrome</span><span class="params">(String s)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span>[] charCount = <span class="keyword">new</span> <span class="keyword">int</span>[<span class="number">256</span>];</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">char</span> c: s.toCharArray()) &#123;</span><br><span class="line">            charCount[c]++;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">int</span> result = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">int</span> oddCount = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> count: charCount) &#123;</span><br><span class="line">            result += count;</span><br><span class="line">            <span class="keyword">if</span> (count % <span class="number">2</span> == <span class="number">1</span>) &#123;</span><br><span class="line">                oddCount++;</span><br><span class="line">                result--;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> oddCount &gt; <span class="number">0</span> ? result+<span class="number">1</span>: result;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="解决方案2（Golang）"><a href="#解决方案2（Golang）" class="headerlink" title="解决方案2（Golang）"></a>解决方案2（Golang）</h3><hr>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">longestPalindrome</span><span class="params">(s <span class="keyword">string</span>)</span> <span class="title">int</span></span> &#123;</span><br><span class="line">    sSize := <span class="built_in">len</span>(s)</span><br><span class="line">    <span class="keyword">if</span> sSize &lt; <span class="number">2</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> sSize</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    countMap := <span class="built_in">make</span>(<span class="keyword">map</span>[<span class="keyword">byte</span>]<span class="keyword">int</span>)</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">for</span> i := <span class="keyword">range</span> s &#123;</span><br><span class="line">        countMap[s[i]]++</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    result := <span class="number">0</span></span><br><span class="line">    oddCount := <span class="number">0</span></span><br><span class="line">    <span class="keyword">for</span> _, count := <span class="keyword">range</span> countMap &#123;</span><br><span class="line">        result += count</span><br><span class="line">        <span class="keyword">if</span> result % <span class="number">2</span> == <span class="number">1</span>&#123;</span><br><span class="line">            oddCount++</span><br><span class="line">            result--</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span> oddCount &gt; <span class="number">0</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> result+<span class="number">1</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> result</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <h3 id="相关问题"><a href="#相关问题" class="headerlink" title="相关问题"></a>相关问题</h3><hr>
 <ul>
 <li><a href="https://leetcode.com/problems/palindrome-permutation" target="_blank" rel="noopener">(E) Palindrome Permutation</a>   </li>
@@ -309,8 +311,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2014/03/11/leetcode/Algorithms/leetcode-415-Add-Strings/" rel="prev" title="leetcode-415-Add-Strings">
-                leetcode-415-Add-Strings <i class="fa fa-chevron-right"></i>
+              <a href="/2014/03/11/leetcode/Algorithms/leetcode-405-Convert-a-Number-to-Hexadecimal/" rel="prev" title="leetcode-405-Convert-a-Number-to-Hexadecimal">
+                leetcode-405-Convert-a-Number-to-Hexadecimal <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -384,7 +386,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">390</span>
+              <span class="site-state-item-count">401</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -394,7 +396,7 @@
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">187</span>
+                <span class="site-state-item-count">206</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
@@ -451,7 +453,7 @@
               
             
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#描述"><span class="nav-number">1.</span> <span class="nav-text">描述</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#分析"><span class="nav-number">2.</span> <span class="nav-text">分析</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#解决方案1-Java"><span class="nav-number">3.</span> <span class="nav-text">解决方案1(Java)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#相关问题"><span class="nav-number">4.</span> <span class="nav-text">相关问题</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#题目来源"><span class="nav-number">5.</span> <span class="nav-text">题目来源</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#描述"><span class="nav-number">1.</span> <span class="nav-text">描述</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#分析"><span class="nav-number">2.</span> <span class="nav-text">分析</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#解决方案1-Java"><span class="nav-number">3.</span> <span class="nav-text">解决方案1(Java)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#解决方案2（Golang）"><span class="nav-number">4.</span> <span class="nav-text">解决方案2（Golang）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#相关问题"><span class="nav-number">5.</span> <span class="nav-text">相关问题</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#题目来源"><span class="nav-number">6.</span> <span class="nav-text">题目来源</span></a></li></ol></div>
             
           </div>
           <div class="post-toc-indicator-bottom post-toc-indicator">

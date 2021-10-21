@@ -65,7 +65,7 @@
 <meta property="og:site_name" content="knarfeh&#39;s logbook">
 <meta property="og:description" content="描述 Given a sorted (in ascending order) integer array nums of n elements and a target value, write a function to search target in nums. If target exists, then return its index, otherwise return -1. Exa">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2021-10-10T15:00:00.734Z">
+<meta property="og:updated_time" content="2021-10-18T06:57:52.947Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="leetcode-704-Binary-Search">
 <meta name="twitter:description" content="描述 Given a sorted (in ascending order) integer array nums of n elements and a target value, write a function to search target in nums. If target exists, then return its index, otherwise return -1. Exa">
@@ -277,7 +277,7 @@
 <h3 id="解决方案1-Java"><a href="#解决方案1-Java" class="headerlink" title="解决方案1(Java)"></a>解决方案1(Java)</h3><hr>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">search</span><span class="params">(<span class="keyword">int</span>[] nums, <span class="keyword">int</span> target)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> l = <span class="number">0</span>, h = nums.length - <span class="number">1</span>;</span><br><span class="line">        <span class="keyword">while</span> (l &lt;= h) &#123;</span><br><span class="line">            <span class="keyword">int</span> mid = (l + h) &gt;&gt;&gt; <span class="number">1</span>;</span><br><span class="line">            <span class="keyword">if</span> (nums[mid] &lt; target) &#123;</span><br><span class="line">                l = mid + <span class="number">1</span>;</span><br><span class="line">            &#125; <span class="keyword">else</span> <span class="keyword">if</span> (nums[mid] &gt; target) &#123;</span><br><span class="line">                h = mid - <span class="number">1</span>;</span><br><span class="line">            &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                <span class="keyword">return</span> mid;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> -<span class="number">1</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <h3 id="解决方案2（Golang）"><a href="#解决方案2（Golang）" class="headerlink" title="解决方案2（Golang）"></a>解决方案2（Golang）</h3><hr>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">func search(nums []int, target int) int &#123;</span><br><span class="line">    left, right := 0, len(nums)-1</span><br><span class="line">    for left &lt;= right &#123;</span><br><span class="line">        mid := (right-left) / 2 + left</span><br><span class="line">        num := nums[mid]</span><br><span class="line">        if num == target &#123;</span><br><span class="line">            return mid</span><br><span class="line">        &#125; else if num &gt; target &#123;</span><br><span class="line">            right = mid - 1</span><br><span class="line">        &#125; else &#123;</span><br><span class="line">            left = mid + 1</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    return -1</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">search</span><span class="params">(nums []<span class="keyword">int</span>, target <span class="keyword">int</span>)</span> <span class="title">int</span></span> &#123;</span><br><span class="line">    left, right := <span class="number">0</span>, <span class="built_in">len</span>(nums)<span class="number">-1</span></span><br><span class="line">    <span class="keyword">for</span> left &lt;= right &#123;</span><br><span class="line">        mid := (right-left) / <span class="number">2</span> + left</span><br><span class="line">        num := nums[mid]</span><br><span class="line">        <span class="keyword">if</span> num == target &#123;</span><br><span class="line">            <span class="keyword">return</span> mid</span><br><span class="line">        &#125; <span class="keyword">else</span> <span class="keyword">if</span> num &gt; target &#123;</span><br><span class="line">            right = mid - <span class="number">1</span></span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            left = mid + <span class="number">1</span></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">-1</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <h3 id="相关问题"><a href="#相关问题" class="headerlink" title="相关问题"></a>相关问题</h3><hr>
 <ul>
 <li><a href="https://leetcode.com/problems/search-in-a-sorted-array-of-unknown-size" target="_blank" rel="noopener">(M) Search in a Sorted Array of Unknown Size</a>   </li>
@@ -309,16 +309,16 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2014/03/11/leetcode/Algorithms/leetcode-705-Design-HashSet/" rel="next" title="leetcode-705-Design-HashSet">
-                <i class="fa fa-chevron-left"></i> leetcode-705-Design-HashSet
+              <a href="/2014/03/11/leetcode/Algorithms/leetcode-706-Design-HashMap/" rel="next" title="leetcode-706-Design-HashMap">
+                <i class="fa fa-chevron-left"></i> leetcode-706-Design-HashMap
               </a>
             
           </div>
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2014/03/11/leetcode/Algorithms/leetcode-70-Climbing-Stairs/" rel="prev" title="leetcode-70-Climbing-Stairs">
-                leetcode-70-Climbing-Stairs <i class="fa fa-chevron-right"></i>
+              <a href="/2014/03/11/leetcode/Algorithms/leetcode-703-Kth-Largest-Element-in-a-Stream/" rel="prev" title="leetcode-703-Kth-Largest-Element-in-a-Stream">
+                leetcode-703-Kth-Largest-Element-in-a-Stream <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -392,7 +392,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">390</span>
+              <span class="site-state-item-count">401</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -402,7 +402,7 @@
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">187</span>
+                <span class="site-state-item-count">206</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>

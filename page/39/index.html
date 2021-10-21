@@ -211,8 +211,8 @@
             
               
                 
-                <a class="post-title-link" href="/2014/03/11/leetcode/Database/leetcode-175-Combine-Two-Tables/" itemprop="url">
-                  leetcode-175-Combine-Two-Tables
+                <a class="post-title-link" href="/2014/03/11/leetcode/Algorithms/leetcode-1658-Minimum-Operations-to-Reduce-X-to-Zero/" itemprop="url">
+                  leetcode-1658-Minimum-Operations-to-Reduce-X-to-Zero
                 </a>
               
             
@@ -236,8 +236,8 @@
             
               <span class="post-comments-count">
                 &nbsp; | &nbsp;
-                <a href="/2014/03/11/leetcode/Database/leetcode-175-Combine-Two-Tables/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2014/03/11/leetcode/Database/leetcode-175-Combine-Two-Tables/" itemprop="commentsCount"></span>
+                <a href="/2014/03/11/leetcode/Algorithms/leetcode-1658-Minimum-Operations-to-Reduce-X-to-Zero/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2014/03/11/leetcode/Algorithms/leetcode-1658-Minimum-Operations-to-Reduce-X-to-Zero/" itemprop="commentsCount"></span>
                 </a>
               </span>
             
@@ -260,15 +260,24 @@
 
       
         
-          <h3 id="描述"><a href="#描述" class="headerlink" title="描述"></a>描述</h3><hr>
-<p>Table: <code>Person</code></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">+-------------+---------+</span><br><span class="line">| Column Name | Type    |</span><br><span class="line">+-------------+---------+</span><br><span class="line">| PersonId    | int     |</span><br><span class="line">| FirstName   | varchar |</span><br><span class="line">| LastName    | varchar |</span><br><span class="line">+-------------+---------+</span><br><span class="line">PersonId is the primary key column for this table.</span><br></pre></td></tr></table></figure>
-<p>Table: <code>Address</code></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">+-------------+---------+</span><br><span class="line">| Column Name | Type    |</span><br><span class="line">+-------------+---------+</span><br><span class="line">| AddressId   | int     |</span><br><span class="line">| PersonId    | int     |</span><br><span class="line">| City        | varchar |</span><br><span class="line">| State       | varchar |</span><br><span class="line">+-------------+---------+</span><br><span class="line">AddressId is the primary key column for this table.</span><br></pre></td></tr></table></figure>
-<p>Write a SQL query for a report that provides the following information for each person in the Person table, regardless if there is an address for each of those people:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">FirstName, LastName, City, State</span><br></pre></td></tr></table></figure>
+          <p>TOREVIEW</p>
+<h3 id="描述"><a href="#描述" class="headerlink" title="描述"></a>描述</h3><hr>
+<p>You are given an integer array <code>nums</code> and an integer <code>x</code>. In one operation, you can either remove the leftmost or the rightmost element from the array <code>nums</code> and subtract its value from <code>x</code>. Note that this <strong>modifies</strong> the array for future operations.</p>
+<p>Return <em>the <strong>minimum number</strong> of operations to reduce</em> <code>x</code> <em>to <strong>exactly</strong></em> <code>0</code> <em>if it is possible**, otherwise, return</em> <code>-1</code>.</p>
+<p><strong>Example 1:</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Input: nums = [1,1,4,2,3], x = 5</span><br><span class="line">Output: 2</span><br><span class="line">Explanation: The optimal solution is to remove the last two elements to reduce x to zero.</span><br></pre></td></tr></table></figure>
+<p><strong>Example 2:</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Input: nums = [5,6,7,8,9], x = 4</span><br><span class="line">Output: -1</span><br></pre></td></tr></table></figure>
+<p><strong>Example 3:</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Input: nums = [3,2,20,1,1,3], x = 10</span><br><span class="line">Output: 5</span><br><span class="line">Explanation: The optimal solution is to remove the last three elements and the first two elements (5 operations in total) to reduce x to zero.</span><br></pre></td></tr></table></figure>
+<p><strong>Constraints:</strong></p>
+<ul>
+<li><code>1 &lt;= nums.length &lt;= 105</code></li>
+<li><code>1 &lt;= nums[i] &lt;= 104</code></li>
+<li><code>1 &lt;= x &lt;= 109</code></li>
+</ul>
           <div class="post-more-link text-center">
-            <a class="btn" href="/2014/03/11/leetcode/Database/leetcode-175-Combine-Two-Tables/#more" rel="contents">
+            <a class="btn" href="/2014/03/11/leetcode/Algorithms/leetcode-1658-Minimum-Operations-to-Reduce-X-to-Zero/#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
@@ -315,8 +324,8 @@
             
               
                 
-                <a class="post-title-link" href="/2014/03/11/leetcode/Database/leetcode-180-Consecutive-Numbers/" itemprop="url">
-                  leetcode-180-Consecutive-Numbers
+                <a class="post-title-link" href="/2014/03/11/leetcode/Algorithms/leetcode-830-Positions-of-Large-Groups/" itemprop="url">
+                  leetcode-830-Positions-of-Large-Groups
                 </a>
               
             
@@ -340,8 +349,8 @@
             
               <span class="post-comments-count">
                 &nbsp; | &nbsp;
-                <a href="/2014/03/11/leetcode/Database/leetcode-180-Consecutive-Numbers/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2014/03/11/leetcode/Database/leetcode-180-Consecutive-Numbers/" itemprop="commentsCount"></span>
+                <a href="/2014/03/11/leetcode/Algorithms/leetcode-830-Positions-of-Large-Groups/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2014/03/11/leetcode/Algorithms/leetcode-830-Positions-of-Large-Groups/" itemprop="commentsCount"></span>
                 </a>
               </span>
             
@@ -365,214 +374,19 @@
       
         
           <h3 id="描述"><a href="#描述" class="headerlink" title="描述"></a>描述</h3><hr>
-<p>Write a SQL query to find all numbers that appear at least three times consecutively.</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">+----+-----+</span><br><span class="line">| Id | Num |</span><br><span class="line">+----+-----+</span><br><span class="line">| 1  |  1  |</span><br><span class="line">| 2  |  1  |</span><br><span class="line">| 3  |  1  |</span><br><span class="line">| 4  |  2  |</span><br><span class="line">| 5  |  1  |</span><br><span class="line">| 6  |  2  |</span><br><span class="line">| 7  |  2  |</span><br><span class="line">+----+-----+</span><br></pre></td></tr></table></figure>
-<p>For example, given the above Logs table, 1 is the only number that appears consecutively for at least three times.<br>
+<p>In a string <code>S</code> of lowercase letters, these letters form consecutive groups of the same character.</p>
+<p>For example, a string like <code>S = &quot;abbxxxxzyy&quot;</code> has the groups <code>&quot;a&quot;</code>, <code>&quot;bb&quot;</code>, <code>&quot;xxxx&quot;</code>, <code>&quot;z&quot;</code> and <code>&quot;yy&quot;</code>.</p>
+<p>Call a group <em>large</em> if it has 3 or more characters.  We would like the starting and ending positions of every large group.</p>
+<p>The final answer should be in lexicographic order.</p>
+<p><strong>Example 1:</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Input: &quot;abbxxxxzzy&quot;</span><br><span class="line">Output: [[3,6]]</span><br><span class="line">Explanation: &quot;xxxx&quot; is the single large group with starting  3 and ending positions 6.</span><br></pre></td></tr></table></figure>
+<p><strong>Example 2:</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Input: &quot;abc&quot;</span><br><span class="line">Output: []</span><br><span class="line">Explanation: We have &quot;a&quot;,&quot;b&quot; and &quot;c&quot; but no large group.</span><br></pre></td></tr></table></figure>
+<p><strong>Example 3:</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Input: &quot;abcdddeeeeaabbbcd&quot;</span><br><span class="line">Output: [[3,5],[6,9],[12,14]]</span><br></pre></td></tr></table></figure>
+<p><strong>Note:</strong>  <code>1 &lt;= S.length &lt;= 1000</code></p>
           <div class="post-more-link text-center">
-            <a class="btn" href="/2014/03/11/leetcode/Database/leetcode-180-Consecutive-Numbers/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-        
-      
-    </p></div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2014/03/11/leetcode/Database/leetcode-177-Nth-Highest-Salary/" itemprop="url">
-                  leetcode-177-Nth-Highest-Salary
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2014-03-11T00:33:34+08:00" content="2014-03-11">
-              2014-03-11
-            </time>
-          </span>
-
-          
-
-          
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2014/03/11/leetcode/Database/leetcode-177-Nth-Highest-Salary/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2014/03/11/leetcode/Database/leetcode-177-Nth-Highest-Salary/" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <h3 id="描述"><a href="#描述" class="headerlink" title="描述"></a>描述</h3><hr>
-<p>Write a SQL query to get the second highest salary from the <code>Employee</code> table.</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">+----+--------+</span><br><span class="line">| Id | Salary |</span><br><span class="line">+----+--------+</span><br><span class="line">| 1  | 100    |</span><br><span class="line">| 2  | 200    |</span><br><span class="line">| 3  | 300    |</span><br><span class="line">+----+--------+</span><br></pre></td></tr></table></figure>
-<p>For example, given the above Employee table, the $n^{th}$ highest salary where n = 2 is <strong>200</strong>. If there is no $n{th}$ highest salary, then the query should return <strong>null</strong>.<br>
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2014/03/11/leetcode/Database/leetcode-177-Nth-Highest-Salary/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-        
-      
-    </p></div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2014/03/11/leetcode/Database/leetcode-181-Employees-Earning-More-Than-Their-Managers/" itemprop="url">
-                  leetcode-181-Employees-Earning-More-Than-Their-Managers
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2014-03-11T00:33:34+08:00" content="2014-03-11">
-              2014-03-11
-            </time>
-          </span>
-
-          
-
-          
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2014/03/11/leetcode/Database/leetcode-181-Employees-Earning-More-Than-Their-Managers/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2014/03/11/leetcode/Database/leetcode-181-Employees-Earning-More-Than-Their-Managers/" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <h3 id="描述"><a href="#描述" class="headerlink" title="描述"></a>描述</h3><hr>
-<p>The <code>Employee</code> table holds all employees including their managers. Every employee has an Id, and there is also a column for the manager Id.</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">+----+-------+--------+-----------+</span><br><span class="line">| Id | Name  | Salary | ManagerId |</span><br><span class="line">+----+-------+--------+-----------+</span><br><span class="line">| 1  | Joe   | 70000  | 3         |</span><br><span class="line">| 2  | Henry | 80000  | 4         |</span><br><span class="line">| 3  | Sam   | 60000  | NULL      |</span><br><span class="line">| 4  | Max   | 90000  | NULL      |</span><br><span class="line">+----+-------+--------+-----------+</span><br></pre></td></tr></table></figure>
-<p>Given the <code>Employee</code> table, write a SQL query that finds out employees who earn more than their managers. For the above table, Joe is the only employee who earns more than his manager.</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">+----------+</span><br><span class="line">| Employee |</span><br><span class="line">+----------+</span><br><span class="line">| Joe      |</span><br><span class="line">+----------+</span><br></pre></td></tr></table></figure>
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2014/03/11/leetcode/Database/leetcode-181-Employees-Earning-More-Than-Their-Managers/#more" rel="contents">
+            <a class="btn" href="/2014/03/11/leetcode/Algorithms/leetcode-830-Positions-of-Large-Groups/#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
@@ -619,8 +433,8 @@
             
               
                 
-                <a class="post-title-link" href="/2014/03/11/leetcode/Database/leetcode-178-Rank-Scores/" itemprop="url">
-                  leetcode-178-Rank-Scores
+                <a class="post-title-link" href="/2014/03/11/leetcode/Algorithms/leetcode-832-Flipping-an-Image/" itemprop="url">
+                  leetcode-832-Flipping-an-Image
                 </a>
               
             
@@ -644,8 +458,8 @@
             
               <span class="post-comments-count">
                 &nbsp; | &nbsp;
-                <a href="/2014/03/11/leetcode/Database/leetcode-178-Rank-Scores/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2014/03/11/leetcode/Database/leetcode-178-Rank-Scores/" itemprop="commentsCount"></span>
+                <a href="/2014/03/11/leetcode/Algorithms/leetcode-832-Flipping-an-Image/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2014/03/11/leetcode/Algorithms/leetcode-832-Flipping-an-Image/" itemprop="commentsCount"></span>
                 </a>
               </span>
             
@@ -669,12 +483,20 @@
       
         
           <h3 id="描述"><a href="#描述" class="headerlink" title="描述"></a>描述</h3><hr>
-<p>Write a SQL query to rank scores. If there is a tie between two scores, both should have the same ranking. Note that after a tie, the next ranking number should be the next consecutive integer value. In other words, there should be no “holes” between ranks.</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">+----+-------+</span><br><span class="line">| Id | Score |</span><br><span class="line">+----+-------+</span><br><span class="line">| 1  | 3.50  |</span><br><span class="line">| 2  | 3.65  |</span><br><span class="line">| 3  | 4.00  |</span><br><span class="line">| 4  | 3.85  |</span><br><span class="line">| 5  | 4.00  |</span><br><span class="line">| 6  | 3.65  |</span><br><span class="line">+----+-------+</span><br></pre></td></tr></table></figure>
-<p>For example, given the above Scores table, your query should generate the following report (order by highest score):</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">+-------+------+</span><br><span class="line">| Score | Rank |</span><br><span class="line">+-------+------+</span><br><span class="line">| 4.00  | 1    |</span><br><span class="line">| 4.00  | 1    |</span><br><span class="line">| 3.85  | 2    |</span><br><span class="line">| 3.65  | 3    |</span><br><span class="line">| 3.65  | 3    |</span><br><span class="line">| 3.50  | 4    |</span><br><span class="line">+-------+------+</span><br></pre></td></tr></table></figure>
+<p>Given a binary matrix <code>A</code>, we want to flip the image horizontally, then invert it, and return the resulting image.</p>
+<p>To flip an image horizontally means that each row of the image is reversed.  For example, flipping <code>[1, 1, 0]</code> horizontally results in <code>[0, 1, 1]</code>.</p>
+<p>To invert an image means that each <code>0</code> is replaced by <code>1</code>, and each <code>1</code> is replaced by <code>0</code>. For example, inverting <code>[0, 1, 1]</code> results in <code>[1, 0, 0]</code>.</p>
+<p><strong>Example 1:</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">Input: [[1,1,0],[1,0,1],[0,0,0]]</span><br><span class="line">Output: [[1,0,0],[0,1,0],[1,1,1]]</span><br><span class="line">Explanation: First reverse each row: [[0,1,1],[1,0,1],[0,0,0]].</span><br><span class="line">Then, invert the image: [[1,0,0],[0,1,0],[1,1,1]]</span><br></pre></td></tr></table></figure>
+<p><strong>Example 2:</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">Input: [[1,1,0,0],[1,0,0,1],[0,1,1,1],[1,0,1,0]]</span><br><span class="line">Output: [[1,1,0,0],[0,1,1,0],[0,0,0,1],[1,0,1,0]]</span><br><span class="line">Explanation: First reverse each row: [[0,0,1,1],[1,0,0,1],[1,1,1,0],[0,1,0,1]].</span><br><span class="line">Then invert the image: [[1,1,0,0],[0,1,1,0],[0,0,0,1],[1,0,1,0]]</span><br></pre></td></tr></table></figure>
+<p><strong>Notes:</strong></p>
+<ul>
+<li><code>1 &lt;= A.length = A[0].length &lt;= 20</code></li>
+<li><code>0 &lt;= A[i][j] &lt;= 1</code></li>
+</ul>
           <div class="post-more-link text-center">
-            <a class="btn" href="/2014/03/11/leetcode/Database/leetcode-178-Rank-Scores/#more" rel="contents">
+            <a class="btn" href="/2014/03/11/leetcode/Algorithms/leetcode-832-Flipping-an-Image/#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
@@ -721,8 +543,8 @@
             
               
                 
-                <a class="post-title-link" href="/2014/03/11/leetcode/Database/leetcode-182-Duplicate-Emails/" itemprop="url">
-                  leetcode-182-Duplicate-Emails
+                <a class="post-title-link" href="/2014/03/11/leetcode/Algorithms/leetcode-836-Rectangle-Overlap/" itemprop="url">
+                  leetcode-836-Rectangle-Overlap
                 </a>
               
             
@@ -746,8 +568,8 @@
             
               <span class="post-comments-count">
                 &nbsp; | &nbsp;
-                <a href="/2014/03/11/leetcode/Database/leetcode-182-Duplicate-Emails/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2014/03/11/leetcode/Database/leetcode-182-Duplicate-Emails/" itemprop="commentsCount"></span>
+                <a href="/2014/03/11/leetcode/Algorithms/leetcode-836-Rectangle-Overlap/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2014/03/11/leetcode/Algorithms/leetcode-836-Rectangle-Overlap/" itemprop="commentsCount"></span>
                 </a>
               </span>
             
@@ -771,12 +593,20 @@
       
         
           <h3 id="描述"><a href="#描述" class="headerlink" title="描述"></a>描述</h3><hr>
-<p>Write a SQL query to find all duplicate emails in a table named <code>Person</code>.</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">+----+---------+</span><br><span class="line">| Id | Email   |</span><br><span class="line">+----+---------+</span><br><span class="line">| 1  | a@b.com |</span><br><span class="line">| 2  | c@d.com |</span><br><span class="line">| 3  | a@b.com |</span><br><span class="line">+----+---------+</span><br></pre></td></tr></table></figure>
-<p>For example, your query should return the following for the above table:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">+---------+</span><br><span class="line">| Email   |</span><br><span class="line">+---------+</span><br><span class="line">| a@b.com |</span><br><span class="line">+---------+</span><br></pre></td></tr></table></figure>
+<p>A rectangle is represented as a list <code>[x1, y1, x2, y2]</code>, where <code>(x1, y1)</code> are the coordinates of its bottom-left corner, and <code>(x2, y2)</code> are the coordinates of its top-right corner.</p>
+<p>Two rectangles overlap if the area of their intersection is positive.  To be clear, two rectangles that only touch at the corner or edges do not overlap.</p>
+<p>Given two (axis-aligned) rectangles, return whether they overlap.</p>
+<p><strong>Example 1:</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Input: rec1 = [0,0,2,2], rec2 = [1,1,3,3]</span><br><span class="line">Output: true</span><br></pre></td></tr></table></figure>
+<p><strong>Example 2:</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Input: rec1 = [0,0,1,1], rec2 = [1,0,2,1]</span><br><span class="line">Output: false</span><br></pre></td></tr></table></figure>
+<p><strong>Notes:</strong></p>
+<ol>
+<li>Both rectangles <code>rec1</code> and <code>rec2</code> are lists of 4 integers.</li>
+<li>All coordinates in rectangles will be between <code>-10^9</code> and <code>10^9</code>.</li>
+</ol>
           <div class="post-more-link text-center">
-            <a class="btn" href="/2014/03/11/leetcode/Database/leetcode-182-Duplicate-Emails/#more" rel="contents">
+            <a class="btn" href="/2014/03/11/leetcode/Algorithms/leetcode-836-Rectangle-Overlap/#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
@@ -823,8 +653,8 @@
             
               
                 
-                <a class="post-title-link" href="/2014/03/11/leetcode/Database/leetcode-196-Delete-Duplicate-Emails/" itemprop="url">
-                  leetcode-196-Delete-Duplicate-Emails
+                <a class="post-title-link" href="/2014/03/11/leetcode/Algorithms/leetcode-844-Backspace-String-Compare/" itemprop="url">
+                  leetcode-844-Backspace-String-Compare
                 </a>
               
             
@@ -848,8 +678,8 @@
             
               <span class="post-comments-count">
                 &nbsp; | &nbsp;
-                <a href="/2014/03/11/leetcode/Database/leetcode-196-Delete-Duplicate-Emails/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2014/03/11/leetcode/Database/leetcode-196-Delete-Duplicate-Emails/" itemprop="commentsCount"></span>
+                <a href="/2014/03/11/leetcode/Algorithms/leetcode-844-Backspace-String-Compare/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2014/03/11/leetcode/Algorithms/leetcode-844-Backspace-String-Compare/" itemprop="commentsCount"></span>
                 </a>
               </span>
             
@@ -873,12 +703,27 @@
       
         
           <h3 id="描述"><a href="#描述" class="headerlink" title="描述"></a>描述</h3><hr>
-<p>Write a SQL query to delete all duplicate email entries in a table named Person, keeping only unique emails based on its smallest Id.</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">+----+------------------+</span><br><span class="line">| Id | Email            |</span><br><span class="line">+----+------------------+</span><br><span class="line">| 1  | john@example.com |</span><br><span class="line">| 2  | bob@example.com  |</span><br><span class="line">| 3  | john@example.com |</span><br><span class="line">+----+------------------+</span><br><span class="line">Id is the primary key column for this table.</span><br></pre></td></tr></table></figure>
-<p>For example, after running your query, the above Person table should have the following rows:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">+----+------------------+</span><br><span class="line">| Id | Email            |</span><br><span class="line">+----+------------------+</span><br><span class="line">| 1  | john@example.com |</span><br><span class="line">| 2  | bob@example.com  |</span><br><span class="line">+----+------------------+</span><br></pre></td></tr></table></figure>
+<p>Given two strings <code>S</code> and <code>T</code>, return if they are equal when both are typed into empty text editors. <code>#</code> means a backspace character.</p>
+<p><strong>Example 1:</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Input: S = &quot;ab#c&quot;, T = &quot;ad#c&quot;</span><br><span class="line">Output: true</span><br><span class="line">Explanation: Both S and T become &quot;ac&quot;.</span><br></pre></td></tr></table></figure>
+<p><strong>Example 2:</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Input: S = &quot;ab##&quot;, T = &quot;c#d#&quot;</span><br><span class="line">Output: true</span><br><span class="line">Explanation: Both S and T become &quot;&quot;.</span><br></pre></td></tr></table></figure>
+<p><strong>Example 3:</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Input: S = &quot;a##c&quot;, T = &quot;#a#c&quot;</span><br><span class="line">Output: true</span><br><span class="line">Explanation: Both S and T become &quot;c&quot;.</span><br></pre></td></tr></table></figure>
+<p><strong>Example 4:</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Input: S = &quot;a#c&quot;, T = &quot;b&quot;</span><br><span class="line">Output: false</span><br><span class="line">Explanation: S becomes &quot;c&quot; while T becomes &quot;b&quot;.</span><br></pre></td></tr></table></figure>
+<p><strong>Note</strong>:</p>
+<ol>
+<li><code>1 &lt;= S.length &lt;= 200</code></li>
+<li><code>1 &lt;= T.length &lt;= 200</code></li>
+<li><code>S</code> and <code>T</code> only contain lowercase letters and <code>&#39;#&#39;</code> characters.</li>
+</ol>
+<p><strong>Follow up:</strong></p>
+<ul>
+<li>Can you solve it in <code>O(N)</code> time and <code>O(1)</code> space?</li>
+</ul>
           <div class="post-more-link text-center">
-            <a class="btn" href="/2014/03/11/leetcode/Database/leetcode-196-Delete-Duplicate-Emails/#more" rel="contents">
+            <a class="btn" href="/2014/03/11/leetcode/Algorithms/leetcode-844-Backspace-String-Compare/#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
@@ -925,8 +770,8 @@
             
               
                 
-                <a class="post-title-link" href="/2014/03/11/leetcode/Database/leetcode-183-Customers-Who-Never-Order/" itemprop="url">
-                  leetcode-183-Customers-Who-Never-Order
+                <a class="post-title-link" href="/2014/03/11/leetcode/Algorithms/leetcode-860-Lemonade-Change/" itemprop="url">
+                  leetcode-860-Lemonade-Change
                 </a>
               
             
@@ -950,8 +795,8 @@
             
               <span class="post-comments-count">
                 &nbsp; | &nbsp;
-                <a href="/2014/03/11/leetcode/Database/leetcode-183-Customers-Who-Never-Order/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2014/03/11/leetcode/Database/leetcode-183-Customers-Who-Never-Order/" itemprop="commentsCount"></span>
+                <a href="/2014/03/11/leetcode/Algorithms/leetcode-860-Lemonade-Change/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2014/03/11/leetcode/Algorithms/leetcode-860-Lemonade-Change/" itemprop="commentsCount"></span>
                 </a>
               </span>
             
@@ -975,15 +820,26 @@
       
         
           <h3 id="描述"><a href="#描述" class="headerlink" title="描述"></a>描述</h3><hr>
-<p>Suppose that a website contains two tables, the <code>Customers</code> table and the <code>Orders</code> table. Write a SQL query to find all customers who never order anything.</p>
-<p>Table: <code>Customers</code>.</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">+----+-------+</span><br><span class="line">| Id | Name  |</span><br><span class="line">+----+-------+</span><br><span class="line">| 1  | Joe   |</span><br><span class="line">| 2  | Henry |</span><br><span class="line">| 3  | Sam   |</span><br><span class="line">| 4  | Max   |</span><br><span class="line">+----+-------+</span><br></pre></td></tr></table></figure>
-<p>Table: Orders.</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">+----+------------+</span><br><span class="line">| Id | CustomerId |</span><br><span class="line">+----+------------+</span><br><span class="line">| 1  | 3          |</span><br><span class="line">| 2  | 1          |</span><br><span class="line">+----+------------+</span><br></pre></td></tr></table></figure>
-<p>Using the above tables as example, return the following:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">+-----------+</span><br><span class="line">| Customers |</span><br><span class="line">+-----------+</span><br><span class="line">| Henry     |</span><br><span class="line">| Max       |</span><br><span class="line">+-----------+</span><br></pre></td></tr></table></figure>
+<p>At a lemonade stand, each lemonade costs <code>$5</code>. </p>
+<p>Customers are standing in a queue to buy from you, and order one at a time (in the order specified by <code>bills</code>).</p>
+<p>Each customer will only buy one lemonade and pay with either a <code>$5</code>, <code>$10</code>, or <code>$20</code> bill.  You must provide the correct change to each customer, so that the net transaction is that the customer pays $5.</p>
+<p>Note that you don’t have any change in hand at first.</p>
+<p>Return <code>true</code> if and only if you can provide every customer with correct change.</p>
+<p><strong>Example 1:</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">Input: [5,5,5,10,20]</span><br><span class="line">Output: true</span><br><span class="line">Explanation: </span><br><span class="line">From the first 3 customers, we collect three $5 bills in order.</span><br><span class="line">From the fourth customer, we collect a $10 bill and give back a $5.</span><br><span class="line">From the fifth customer, we give a $10 bill and a $5 bill.</span><br><span class="line">Since all customers got correct change, we output true.</span><br></pre></td></tr></table></figure>
+<p><strong>Example 2:</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Input: [5,5,10]</span><br><span class="line">Output: true</span><br></pre></td></tr></table></figure>
+<p><strong>Example 3:</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Input: [10,10]</span><br><span class="line">Output: false</span><br></pre></td></tr></table></figure>
+<p><strong>Example 4:</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">Input: [5,5,10,10,20]</span><br><span class="line">Output: false</span><br><span class="line">Explanation: </span><br><span class="line">From the first two customers in order, we collect two $5 bills.</span><br><span class="line">For the next two customers in order, we collect a $10 bill and give back a $5 bill.</span><br><span class="line">For the last customer, we can&apos;t give change of $15 back because we only have two $10 bills.</span><br><span class="line">Since not every customer received correct change, the answer is false.</span><br></pre></td></tr></table></figure>
+<p><strong>Note:</strong></p>
+<ul>
+<li><code>0 &lt;= bills.length &lt;= 10000</code></li>
+<li><code>bills[i]</code> will be either <code>5</code>, <code>10</code>, or <code>20</code>.</li>
+</ul>
           <div class="post-more-link text-center">
-            <a class="btn" href="/2014/03/11/leetcode/Database/leetcode-183-Customers-Who-Never-Order/#more" rel="contents">
+            <a class="btn" href="/2014/03/11/leetcode/Algorithms/leetcode-860-Lemonade-Change/#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
@@ -1030,8 +886,8 @@
             
               
                 
-                <a class="post-title-link" href="/2014/03/11/leetcode/Database/leetcode-184-Department-Highest-Salary/" itemprop="url">
-                  leetcode-184-Department-Highest-Salary
+                <a class="post-title-link" href="/2014/03/11/leetcode/Algorithms/leetcode-852-Peak-Index-in-a-Mountain-Array/" itemprop="url">
+                  leetcode-852-Peak-Index-in-a-Mountain-Array
                 </a>
               
             
@@ -1055,8 +911,8 @@
             
               <span class="post-comments-count">
                 &nbsp; | &nbsp;
-                <a href="/2014/03/11/leetcode/Database/leetcode-184-Department-Highest-Salary/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2014/03/11/leetcode/Database/leetcode-184-Department-Highest-Salary/" itemprop="commentsCount"></span>
+                <a href="/2014/03/11/leetcode/Algorithms/leetcode-852-Peak-Index-in-a-Mountain-Array/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2014/03/11/leetcode/Algorithms/leetcode-852-Peak-Index-in-a-Mountain-Array/" itemprop="commentsCount"></span>
                 </a>
               </span>
             
@@ -1080,14 +936,24 @@
       
         
           <h3 id="描述"><a href="#描述" class="headerlink" title="描述"></a>描述</h3><hr>
-<p>The Employee table holds all employees. Every employee has an Id, a salary, and there is also a column for the department Id.</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">+----+-------+--------+--------------+</span><br><span class="line">| Id | Name  | Salary | DepartmentId |</span><br><span class="line">+----+-------+--------+--------------+</span><br><span class="line">| 1  | Joe   | 70000  | 1            |</span><br><span class="line">| 2  | Henry | 80000  | 2            |</span><br><span class="line">| 3  | Sam   | 60000  | 2            |</span><br><span class="line">| 4  | Max   | 90000  | 1            |</span><br><span class="line">+----+-------+--------+--------------+</span><br></pre></td></tr></table></figure>
-<p>The Department table holds all departments of the company.</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">+----+----------+</span><br><span class="line">| Id | Name     |</span><br><span class="line">+----+----------+</span><br><span class="line">| 1  | IT       |</span><br><span class="line">| 2  | Sales    |</span><br><span class="line">+----+----------+</span><br></pre></td></tr></table></figure>
-<p>Write a SQL query to find employees who have the highest salary in each of the departments. For the above tables, Max has the highest salary in the IT department and Henry has the highest salary in the Sales department.</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">+------------+----------+--------+</span><br><span class="line">| Department | Employee | Salary |</span><br><span class="line">+------------+----------+--------+</span><br><span class="line">| IT         | Max      | 90000  |</span><br><span class="line">| Sales      | Henry    | 80000  |</span><br><span class="line">+------------+----------+--------+</span><br></pre></td></tr></table></figure>
+<p>Let’s call an array <code>A</code> a <em>mountain</em> if the following properties hold:</p>
+<ul>
+<li><code>A.length &gt;= 3</code></li>
+<li>There exists some <code>0 &lt; i &lt; A.length - 1</code> such that <code>A[0] &lt; A[1] &lt; ... A[i-1] &lt; A[i] &gt; A[i+1] &gt; ... &gt; A[A.length - 1]</code></li>
+</ul>
+<p>Given an array that is definitely a mountain, return any <code>i</code> such that <code>A[0] &lt; A[1] &lt; ... A[i-1] &lt; A[i] &gt; A[i+1] &gt; ... &gt; A[A.length - 1]</code>.</p>
+<p><strong>Example 1:</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Input: [0,1,0]</span><br><span class="line">Output: 1</span><br></pre></td></tr></table></figure>
+<p><strong>Example 2:</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Input: [0,2,1,0]</span><br><span class="line">Output: 1</span><br></pre></td></tr></table></figure>
+<p><strong>Note:</strong></p>
+<ol>
+<li><code>3 &lt;= A.length &lt;= 10000</code></li>
+<li><code>0 &lt;= A[i] &lt;= 10^6</code></li>
+<li>A is a mountain, as defined above.</li>
+</ol>
           <div class="post-more-link text-center">
-            <a class="btn" href="/2014/03/11/leetcode/Database/leetcode-184-Department-Highest-Salary/#more" rel="contents">
+            <a class="btn" href="/2014/03/11/leetcode/Algorithms/leetcode-852-Peak-Index-in-a-Mountain-Array/#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
@@ -1134,8 +1000,8 @@
             
               
                 
-                <a class="post-title-link" href="/2014/03/11/leetcode/Algorithms/leetcode-378-Kth-Smallest-Element-in-a-Sorted-Matrix/" itemprop="url">
-                  leetcode-378-Kth-Smallest-Element-in-a-Sorted-Matrix
+                <a class="post-title-link" href="/2014/03/11/leetcode/Algorithms/leetcode-867-Transpose-Matrix/" itemprop="url">
+                  leetcode-867-Transpose-Matrix
                 </a>
               
             
@@ -1159,8 +1025,8 @@
             
               <span class="post-comments-count">
                 &nbsp; | &nbsp;
-                <a href="/2014/03/11/leetcode/Algorithms/leetcode-378-Kth-Smallest-Element-in-a-Sorted-Matrix/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2014/03/11/leetcode/Algorithms/leetcode-378-Kth-Smallest-Element-in-a-Sorted-Matrix/" itemprop="commentsCount"></span>
+                <a href="/2014/03/11/leetcode/Algorithms/leetcode-867-Transpose-Matrix/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2014/03/11/leetcode/Algorithms/leetcode-867-Transpose-Matrix/" itemprop="commentsCount"></span>
                 </a>
               </span>
             
@@ -1184,13 +1050,244 @@
       
         
           <h3 id="描述"><a href="#描述" class="headerlink" title="描述"></a>描述</h3><hr>
-<p>Given a <em>n</em> x <em>n</em> matrix where each of the rows and columns are sorted in ascending order, find the kth smallest element in the matrix.</p>
-<p>Note that it is the kth smallest element in the sorted order, not the kth distinct element.</p>
-<p><strong>Example:</strong></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">matrix = [</span><br><span class="line">   [ 1,  5,  9],</span><br><span class="line">   [10, 11, 13],</span><br><span class="line">   [12, 13, 15]</span><br><span class="line">],</span><br><span class="line">k = 8,</span><br><span class="line"></span><br><span class="line">return 13.</span><br></pre></td></tr></table></figure>
-<p><strong>Note:</strong><br>You may assume k is always valid, $1 ≤ k ≤ n^2$.</p>
+<p>Given a matrix <code>A</code>, return the transpose of <code>A</code>.</p>
+<p>The transpose of a matrix is the matrix flipped over it’s main diagonal, switching the row and column indices of the matrix.</p>
+<p><strong>Example 1:</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Input: [[1,2,3],[4,5,6],[7,8,9]]</span><br><span class="line">Output: [[1,4,7],[2,5,8],[3,6,9]]</span><br></pre></td></tr></table></figure>
+<p><strong>Example 2:</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Input: [[1,2,3],[4,5,6]]</span><br><span class="line">Output: [[1,4],[2,5],[3,6]]</span><br></pre></td></tr></table></figure>
+<p><strong>Note:</strong></p>
+<ol>
+<li><code>1 &lt;= A.length &lt;= 1000</code></li>
+<li><code>1 &lt;= A[0].length &lt;= 1000</code></li>
+</ol>
           <div class="post-more-link text-center">
-            <a class="btn" href="/2014/03/11/leetcode/Algorithms/leetcode-378-Kth-Smallest-Element-in-a-Sorted-Matrix/#more" rel="contents">
+            <a class="btn" href="/2014/03/11/leetcode/Algorithms/leetcode-867-Transpose-Matrix/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2014/03/11/leetcode/Algorithms/leetcode-841-Keys-and-Rooms/" itemprop="url">
+                  leetcode-841-Keys-and-Rooms
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2014-03-11T00:33:34+08:00" content="2014-03-11">
+              2014-03-11
+            </time>
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2014/03/11/leetcode/Algorithms/leetcode-841-Keys-and-Rooms/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2014/03/11/leetcode/Algorithms/leetcode-841-Keys-and-Rooms/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <h3 id="描述"><a href="#描述" class="headerlink" title="描述"></a>描述</h3><hr>
+<p>There are <code>N</code> rooms and you start in room <code>0</code>.  Each room has a distinct number in <code>0, 1, 2, ..., N-1</code>, and each room may have some keys to access the next room. </p>
+<p>Formally, each room <code>i</code> has a list of keys <code>rooms[i]</code>, and each key <code>rooms[i][j]</code> is an integer in <code>[0, 1, ..., N-1]</code> where <code>N = rooms.length</code>.  A key <code>rooms[i][j] = v</code> opens the room with number <code>v</code>.</p>
+<p>Initially, all the rooms start locked (except for room <code>0</code>). </p>
+<p>You can walk back and forth between rooms freely.</p>
+<p>Return <code>true</code> if and only if you can enter every room.</p>
+<p><strong>Example 1:</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">Input: [[1],[2],[3],[]]</span><br><span class="line">Output: true</span><br><span class="line">Explanation:  </span><br><span class="line">We start in room 0, and pick up key 1.</span><br><span class="line">We then go to room 1, and pick up key 2.</span><br><span class="line">We then go to room 2, and pick up key 3.</span><br><span class="line">We then go to room 3.  Since we were able to go to every room, we return true.</span><br></pre></td></tr></table></figure>
+<p><strong>Example 2:</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Input: [[1,3],[3,0,1],[2],[0]]</span><br><span class="line">Output: false</span><br><span class="line">Explanation: We can&apos;t enter the room with number 2.</span><br></pre></td></tr></table></figure>
+<p><strong>Note:</strong></p>
+<ol>
+<li><code>1 &lt;= rooms.length &lt;= 1000</code></li>
+<li><code>0 &lt;= rooms[i].length &lt;= 1000</code></li>
+<li>The number of keys in all rooms combined is at most <code>3000</code>.</li>
+</ol>
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2014/03/11/leetcode/Algorithms/leetcode-841-Keys-and-Rooms/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2014/03/11/leetcode/Algorithms/leetcode-856-Score-of-Parentheses/" itemprop="url">
+                  leetcode-856-Score-of-Parentheses
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2014-03-11T00:33:34+08:00" content="2014-03-11">
+              2014-03-11
+            </time>
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2014/03/11/leetcode/Algorithms/leetcode-856-Score-of-Parentheses/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2014/03/11/leetcode/Algorithms/leetcode-856-Score-of-Parentheses/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <h3 id="描述"><a href="#描述" class="headerlink" title="描述"></a>描述</h3><hr>
+<p>Given a balanced parentheses string <code>S</code>, compute the score of the string based on the following rule:</p>
+<ul>
+<li><code>()</code> has score 1</li>
+<li><code>AB</code> has score <code>A + B</code>, where A and B are balanced parentheses strings.</li>
+<li><code>(A)</code> has score <code>2 * A</code>, where A is a balanced parentheses string.</li>
+</ul>
+<p><strong>Example 1:</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Input: &quot;()&quot;</span><br><span class="line">Output: 1</span><br></pre></td></tr></table></figure>
+<p><strong>Example 2:</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Input: &quot;(())&quot;</span><br><span class="line">Output: 2</span><br></pre></td></tr></table></figure>
+<p><strong>Example 3:</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Input: &quot;()()&quot;</span><br><span class="line">Output: 2</span><br></pre></td></tr></table></figure>
+<p><strong>Example 4:</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Input: &quot;(()(()))&quot;</span><br><span class="line">Output: 6</span><br></pre></td></tr></table></figure>
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2014/03/11/leetcode/Algorithms/leetcode-856-Score-of-Parentheses/#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
@@ -1220,7 +1317,7 @@
 
   
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/page/38/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/38/">38</a><span class="page-number current">39</span>
+    <a class="extend prev" rel="prev" href="/page/38/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/38/">38</a><span class="page-number current">39</span><a class="page-number" href="/page/40/">40</a><a class="page-number" href="/page/41/">41</a><a class="extend next" rel="next" href="/page/40/"><i class="fa fa-angle-right"></i></a>
   </nav>
 
 
@@ -1259,7 +1356,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">390</span>
+              <span class="site-state-item-count">401</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -1269,7 +1366,7 @@
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">187</span>
+                <span class="site-state-item-count">206</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>

@@ -211,8 +211,8 @@
             
               
                 
-                <a class="post-title-link" href="/2014/03/11/leetcode/Algorithms/leetcode-541-Reverse-String-II/" itemprop="url">
-                  leetcode-541-Reverse-String-II
+                <a class="post-title-link" href="/2014/03/11/leetcode/Algorithms/leetcode-566-Reshape-the-Matrix/" itemprop="url">
+                  leetcode-74-Search-a-2D-Matrix
                 </a>
               
             
@@ -236,8 +236,8 @@
             
               <span class="post-comments-count">
                 &nbsp; | &nbsp;
-                <a href="/2014/03/11/leetcode/Algorithms/leetcode-541-Reverse-String-II/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2014/03/11/leetcode/Algorithms/leetcode-541-Reverse-String-II/" itemprop="commentsCount"></span>
+                <a href="/2014/03/11/leetcode/Algorithms/leetcode-566-Reshape-the-Matrix/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2014/03/11/leetcode/Algorithms/leetcode-566-Reshape-the-Matrix/" itemprop="commentsCount"></span>
                 </a>
               </span>
             
@@ -261,16 +261,557 @@
       
         
           <h3 id="描述"><a href="#描述" class="headerlink" title="描述"></a>描述</h3><hr>
-<p>Given a string and an integer k, you need to reverse the first k characters for every 2k characters counting from the start of the string. If there are less than k characters left, reverse all of them. If there are less than 2k but greater than or equal to k characters, then reverse the first k characters and left the other as original.</p>
+<p>In MATLAB, there is a very useful function called ‘reshape’, which can reshape a matrix into a new one with different size but keep its original data.</p>
+<p>You’re given a matrix represented by a two-dimensional array, and two <strong>positive</strong> integers <strong>r</strong> and <strong>c</strong> representing the <strong>row</strong> number and <strong>column</strong> number of the wanted reshaped matrix, respectively.</p>
+<p>The reshaped matrix need to be filled with all the elements of the original matrix in the same <strong>row-traversing</strong> order as they were.</p>
+<p>If the ‘reshape’ operation with given parameters is possible and legal, output the new reshaped matrix; Otherwise, output the original matrix.</p>
+<p><strong>Example 1:</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">Input: </span><br><span class="line">nums = </span><br><span class="line">[[1,2],</span><br><span class="line"> [3,4]]</span><br><span class="line">r = 1, c = 4</span><br><span class="line">Output: </span><br><span class="line">[[1,2,3,4]]</span><br><span class="line">Explanation:</span><br><span class="line">The row-traversing of nums is [1,2,3,4]. The new reshaped matrix is a 1 * 4 matrix, fill it row by row by using the previous list.</span><br></pre></td></tr></table></figure>
+<p><strong>Example 2:</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">Input: </span><br><span class="line">nums = </span><br><span class="line">[[1,2],</span><br><span class="line"> [3,4]]</span><br><span class="line">r = 2, c = 4</span><br><span class="line">Output: </span><br><span class="line">[[1,2],</span><br><span class="line"> [3,4]]</span><br><span class="line">Explanation:</span><br><span class="line">There is no way to reshape a 2 * 2 matrix to a 2 * 4 matrix. So output the original matrix.</span><br></pre></td></tr></table></figure>
+<p><strong>Note:</strong></p>
+<ol>
+<li>The height and width of the given matrix is in range [1, 100].</li>
+<li>The given r and c are all positive.</li>
+</ol>
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2014/03/11/leetcode/Algorithms/leetcode-566-Reshape-the-Matrix/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2014/03/11/leetcode/Algorithms/leetcode-62-Unique-Paths/" itemprop="url">
+                  leetcode-62-Unique-Paths
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2014-03-11T00:33:34+08:00" content="2014-03-11">
+              2014-03-11
+            </time>
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2014/03/11/leetcode/Algorithms/leetcode-62-Unique-Paths/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2014/03/11/leetcode/Algorithms/leetcode-62-Unique-Paths/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <h3 id="描述"><a href="#描述" class="headerlink" title="描述"></a>描述</h3><hr>
+<p>A robot is located at the top-left corner of a m x n grid (marked ‘Start’ in the diagram below).</p>
+<p>The robot can only move either down or right at any point in time. The robot is trying to reach the bottom-right corner of the grid (marked ‘Finish’ in the diagram below).</p>
+<p>How many possible unique paths are there?</p>
+<p><img src="http://leetcode.com/wp-content/uploads/2014/12/robot_maze.png" alt="unique-path"><br>Above is a 3 x 7 grid. How many possible unique paths are there? </p>
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2014/03/11/leetcode/Algorithms/leetcode-62-Unique-Paths/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2014/03/11/leetcode/Algorithms/leetcode-628-Maximum-Product-of-Three-Numbers/" itemprop="url">
+                  leetcode-628-Maximum-Product-of-Three-Numbers
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2014-03-11T00:33:34+08:00" content="2014-03-11">
+              2014-03-11
+            </time>
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2014/03/11/leetcode/Algorithms/leetcode-628-Maximum-Product-of-Three-Numbers/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2014/03/11/leetcode/Algorithms/leetcode-628-Maximum-Product-of-Three-Numbers/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <h3 id="描述"><a href="#描述" class="headerlink" title="描述"></a>描述</h3><hr>
+<p>Given an integer array, find three numbers whose product is maximum and output the maximum product.</p>
+<p><strong>Example 1:</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Input: [1,2,3]</span><br><span class="line">Output: 6</span><br></pre></td></tr></table></figure>
+<p><strong>Example 2:</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Input: [1,2,3,4]</span><br><span class="line">Output: 24</span><br></pre></td></tr></table></figure>
+<p><strong>Note:</strong></p>
+<ol>
+<li>The length of the given array will be in range [3,104] and all elements are in the range [-1000, 1000].</li>
+<li>Multiplication of any three numbers in the input won’t exceed the range of 32-bit signed integer.</li>
+</ol>
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2014/03/11/leetcode/Algorithms/leetcode-628-Maximum-Product-of-Three-Numbers/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2014/03/11/leetcode/Algorithms/leetcode-633-Sum-of-Square-Numbers/" itemprop="url">
+                  leetcode-633-Sum-of-Square-Numbers
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2014-03-11T00:33:34+08:00" content="2014-03-11">
+              2014-03-11
+            </time>
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2014/03/11/leetcode/Algorithms/leetcode-633-Sum-of-Square-Numbers/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2014/03/11/leetcode/Algorithms/leetcode-633-Sum-of-Square-Numbers/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <h3 id="描述"><a href="#描述" class="headerlink" title="描述"></a>描述</h3><hr>
+<p>Given a non-negative integer <code>c</code>, your task is to decide whether there’re two integers <code>a</code> and <code>b</code> such that a2 + b2 = c.</p>
+<p><strong>Example 1:</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Input: 5</span><br><span class="line">Output: True</span><br><span class="line">Explanation: 1 * 1 + 2 * 2 = 5</span><br></pre></td></tr></table></figure>
+<p><strong>Example 2:</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Input: 3</span><br><span class="line">Output: False</span><br></pre></td></tr></table></figure>
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2014/03/11/leetcode/Algorithms/leetcode-633-Sum-of-Square-Numbers/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2014/03/11/leetcode/Algorithms/leetcode-622-Design-Circular-Queue/" itemprop="url">
+                  leetcode-622-Design-Circular-Queue
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2014-03-11T00:33:34+08:00" content="2014-03-11">
+              2014-03-11
+            </time>
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2014/03/11/leetcode/Algorithms/leetcode-622-Design-Circular-Queue/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2014/03/11/leetcode/Algorithms/leetcode-622-Design-Circular-Queue/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <h3 id="描述"><a href="#描述" class="headerlink" title="描述"></a>描述</h3><hr>
+<p>Design your implementation of the circular queue. The circular queue is a linear data structure in which the operations are performed based on FIFO (First In First Out) principle and the last position is connected back to the first position to make a circle. It is also called “Ring Buffer”.</p>
+<p>One of the benefits of the circular queue is that we can make use of the spaces in front of the queue. In a normal queue, once the queue becomes full, we cannot insert the next element even if there is a space in front of the queue. But using the circular queue, we can use the space to store new values.</p>
+<p>Your implementation should support following operations:</p>
+<ul>
+<li><code>MyCircularQueue(k)</code>: Constructor, set the size of the queue to be k.</li>
+<li><code>Front</code>: Get the front item from the queue. If the queue is empty, return -1.</li>
+<li><code>Rear</code>: Get the last item from the queue. If the queue is empty, return -1.</li>
+<li><code>enQueue(value)</code>: Insert an element into the circular queue. Return true if the operation is successful.</li>
+<li><code>deQueue()</code>: Delete an element from the circular queue. Return true if the operation is successful.</li>
+<li><code>isEmpty()</code>: Checks whether the circular queue is empty or not.</li>
+<li><code>isFull()</code>: Checks whether the circular queue is full or not.</li>
+</ul>
 <p><strong>Example:</strong></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Input: s = &quot;abcdefg&quot;, k = 2</span><br><span class="line">Output: &quot;bacdfeg&quot;</span><br></pre></td></tr></table></figure>
-<p>Restrictions:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">MyCircularQueue circularQueue = new MycircularQueue(3); // set the size to be 3</span><br><span class="line">circularQueue.enQueue(1);  // return true</span><br><span class="line">circularQueue.enQueue(2);  // return true</span><br><span class="line">circularQueue.enQueue(3);  // return true</span><br><span class="line">circularQueue.enQueue(4);  // return false, the queue is full</span><br><span class="line">circularQueue.Rear();  // return 3</span><br><span class="line">circularQueue.isFull();  // return true</span><br><span class="line">circularQueue.deQueue();  // return true</span><br><span class="line">circularQueue.enQueue(4);  // return true</span><br><span class="line">circularQueue.Rear();  // return 4</span><br></pre></td></tr></table></figure>
+<p><strong>Note:</strong></p>
+<ul>
+<li>All values will be in the range of [0, 1000].</li>
+<li>The number of operations will be in the range of [1, 1000].</li>
+<li>Please do not use the built-in Queue library.</li>
+</ul>
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2014/03/11/leetcode/Algorithms/leetcode-622-Design-Circular-Queue/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2014/03/11/leetcode/Algorithms/leetcode-637-Average-of-Levels-in-Binary-Tree/" itemprop="url">
+                  leetcode-637-Average-of-Levels-in-Binary-Tree
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2014-03-11T00:33:34+08:00" content="2014-03-11">
+              2014-03-11
+            </time>
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2014/03/11/leetcode/Algorithms/leetcode-637-Average-of-Levels-in-Binary-Tree/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2014/03/11/leetcode/Algorithms/leetcode-637-Average-of-Levels-in-Binary-Tree/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <h3 id="描述"><a href="#描述" class="headerlink" title="描述"></a>描述</h3><hr>
+<p>Given a non-empty binary tree, return the average value of the nodes on each level in the form of an array.</p>
+<p><strong>Example 1:</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">Input:</span><br><span class="line">    3</span><br><span class="line">   / \</span><br><span class="line">  9  20</span><br><span class="line">    /  \</span><br><span class="line">   15   7</span><br><span class="line">Output: [3, 14.5, 11]</span><br><span class="line">Explanation:</span><br><span class="line">The average value of nodes on level 0 is 3,  on level 1 is 14.5, and on level 2 is 11. Hence return [3, 14.5, 11].</span><br></pre></td></tr></table></figure>
+<p><strong>Note:</strong></p>
 <ol>
-<li>The string consists of lower English letters only.</li>
-<li>Length of the given string and k will in the range [1, 10000]</li>
+<li>The range of node’s value is in the range of 32-bit signed integer.</li>
 </ol>
           <div class="post-more-link text-center">
-            <a class="btn" href="/2014/03/11/leetcode/Algorithms/leetcode-541-Reverse-String-II/#more" rel="contents">
+            <a class="btn" href="/2014/03/11/leetcode/Algorithms/leetcode-637-Average-of-Levels-in-Binary-Tree/#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
@@ -317,8 +858,8 @@
             
               
                 
-                <a class="post-title-link" href="/2014/03/11/leetcode/Algorithms/leetcode-543-Diameter-of-Binary-Tree/" itemprop="url">
-                  leetcode-leetcode-543-Diameter-of-Binary-Tree
+                <a class="post-title-link" href="/2014/03/11/leetcode/Algorithms/leetcode-648-Replace-Words/" itemprop="url">
+                  leetcode-648-Replace-Words
                 </a>
               
             
@@ -342,8 +883,8 @@
             
               <span class="post-comments-count">
                 &nbsp; | &nbsp;
-                <a href="/2014/03/11/leetcode/Algorithms/leetcode-543-Diameter-of-Binary-Tree/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2014/03/11/leetcode/Algorithms/leetcode-543-Diameter-of-Binary-Tree/" itemprop="commentsCount"></span>
+                <a href="/2014/03/11/leetcode/Algorithms/leetcode-648-Replace-Words/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2014/03/11/leetcode/Algorithms/leetcode-648-Replace-Words/" itemprop="commentsCount"></span>
                 </a>
               </span>
             
@@ -367,123 +908,133 @@
       
         
           <h3 id="描述"><a href="#描述" class="headerlink" title="描述"></a>描述</h3><hr>
-<p>Given a binary tree, you need to compute the length of the diameter of the tree. The diameter of a binary tree is the length of the <strong>longest</strong> path between any two nodes in a tree. This path may or may not pass through the root.</p>
-<p><strong>Example:</strong><br>Given a binary tree </p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">    1</span><br><span class="line">   / \</span><br><span class="line">  2   3</span><br><span class="line"> / \     </span><br><span class="line">4   5</span><br></pre></td></tr></table></figure>
-<p>Return <strong>3</strong>, which is the length of the path [4,2,1,3] or [5,2,1,3].</p>
-<p><strong>Note:</strong> The length of path between two nodes is represented by the number of edges between them.</p>
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2014/03/11/leetcode/Algorithms/leetcode-543-Diameter-of-Binary-Tree/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2014/03/11/leetcode/Algorithms/leetcode-547-Friend-Circles/" itemprop="url">
-                  leetcode-547-Friend-Circles
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2014-03-11T00:33:34+08:00" content="2014-03-11">
-              2014-03-11
-            </time>
-          </span>
-
-          
-
-          
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2014/03/11/leetcode/Algorithms/leetcode-547-Friend-Circles/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2014/03/11/leetcode/Algorithms/leetcode-547-Friend-Circles/" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <h3 id="描述"><a href="#描述" class="headerlink" title="描述"></a>描述</h3><hr>
-<p>There are <strong>N</strong> students in a class. Some of them are friends, while some are not. Their friendship is transitive in nature. For example, if A is a <strong>direct</strong> friend of B, and B is a <strong>direct</strong> friend of C, then A is an <strong>indirect</strong> friend of C. And we defined a friend circle is a group of students who are direct or indirect friends.</p>
-<p>Given a <strong>N*N</strong> matrix <strong>M</strong> representing the friend relationship between students in the class. If M[i][j] = 1, then the ith and jth students are <strong>direct</strong> friends with each other, otherwise not. And you have to output the total number of friend circles among all the students.</p>
+<p>In English, we have a concept called <code>root</code>, which can be followed by some other words to form another longer word - let’s call this word <code>successor</code>. For example, the root <code>an</code>, followed by <code>other</code>, which can form another word <code>another</code>.</p>
+<p>Now, given a dictionary consisting of many roots and a sentence. You need to replace all the <code>successor</code> in the sentence with the <code>root</code> forming it. If a <code>successor</code> has many <code>roots</code> can form it, replace it with the root with the shortest length.</p>
+<p>You need to output the sentence after the replacement.</p>
 <p><strong>Example 1:</strong></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">Input: </span><br><span class="line">[[1,1,0],</span><br><span class="line"> [1,1,0],</span><br><span class="line"> [0,0,1]]</span><br><span class="line">Output: 2</span><br><span class="line">Explanation:The 0th and 1st students are direct friends, so they are in a friend circle. </span><br><span class="line">The 2nd student himself is in a friend circle. So return 2.</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Input: dict = [&quot;cat&quot;, &quot;bat&quot;, &quot;rat&quot;]</span><br><span class="line">sentence = &quot;the cattle was rattled by the battery&quot;</span><br><span class="line">Output: &quot;the cat was rat by the bat&quot;</span><br></pre></td></tr></table></figure>
+<p><strong>Note:</strong></p>
+<ol>
+<li>The input will only have lower-case letters.</li>
+<li>1 &lt;= dict words number &lt;= 1000</li>
+<li>1 &lt;= sentence words number &lt;= 1000</li>
+<li>1 &lt;= root length &lt;= 100</li>
+<li>1 &lt;= sentence words length &lt;= 1000</li>
+</ol>
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2014/03/11/leetcode/Algorithms/leetcode-648-Replace-Words/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2014/03/11/leetcode/Algorithms/leetcode-64-Minimum-Path-Sum/" itemprop="url">
+                  leetcode-64-Minimum-Path-Sum
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2014-03-11T00:33:34+08:00" content="2014-03-11">
+              2014-03-11
+            </time>
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2014/03/11/leetcode/Algorithms/leetcode-64-Minimum-Path-Sum/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2014/03/11/leetcode/Algorithms/leetcode-64-Minimum-Path-Sum/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <h3 id="描述"><a href="#描述" class="headerlink" title="描述"></a>描述</h3><hr>
+<p>Given a <code>m x n</code> <code>grid</code> filled with non-negative numbers, find a path from top left to bottom right, which minimizes the sum of all numbers along its path.</p>
+<p><strong>Note:</strong> You can only move either down or right at any point in time.</p>
+<p><strong>Example 1:</strong></p>
+<p><img src="https://assets.leetcode.com/uploads/2020/11/05/minpath.jpg" alt="img"></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Input: grid = [[1,3,1],[1,5,1],[4,2,1]]</span><br><span class="line">Output: 7</span><br><span class="line">Explanation: Because the path 1 → 3 → 1 → 1 → 1 minimizes the sum.</span><br></pre></td></tr></table></figure>
 <p><strong>Example 2:</strong></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">Input: </span><br><span class="line">[[1,1,0],</span><br><span class="line"> [1,1,1],</span><br><span class="line"> [0,1,1]]</span><br><span class="line">Output: 1</span><br><span class="line">Explanation:The 0th and 1st students are direct friends, the 1st and 2nd students are direct friends, </span><br><span class="line">so the 0th and 2nd students are indirect friends. All of them are in the same friend circle, so return 1.</span><br></pre></td></tr></table></figure>
-<p><strong>Note:</strong></p>
-<ol>
-<li>N is in range [1,200].</li>
-<li>M[i][i] = 1 for all students.</li>
-<li>If M[i][j] = 1, then M[j][i] = 1.</li>
-</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Input: grid = [[1,2,3],[4,5,6]]</span><br><span class="line">Output: 12</span><br></pre></td></tr></table></figure>
+<p><strong>Constraints:</strong></p>
+<ul>
+<li><code>m == grid.length</code></li>
+<li><code>n == grid[i].length</code></li>
+<li><code>1 &lt;= m, n &lt;= 200</code></li>
+<li><code>0 &lt;= grid[i][j] &lt;= 100</code></li>
+</ul>
           <div class="post-more-link text-center">
-            <a class="btn" href="/2014/03/11/leetcode/Algorithms/leetcode-547-Friend-Circles/#more" rel="contents">
+            <a class="btn" href="/2014/03/11/leetcode/Algorithms/leetcode-64-Minimum-Path-Sum/#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
@@ -530,8 +1081,8 @@
             
               
                 
-                <a class="post-title-link" href="/2014/03/11/leetcode/Algorithms/leetcode-551-Student-Attendance-Record-I/" itemprop="url">
-                  leetcode-551-Student-Attendance-Record-I
+                <a class="post-title-link" href="/2014/03/11/leetcode/Algorithms/leetcode-652-Find-Duplicate-Subtrees/" itemprop="url">
+                  leetcode-652-Find-Duplicate-Subtrees
                 </a>
               
             
@@ -555,8 +1106,8 @@
             
               <span class="post-comments-count">
                 &nbsp; | &nbsp;
-                <a href="/2014/03/11/leetcode/Algorithms/leetcode-551-Student-Attendance-Record-I/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2014/03/11/leetcode/Algorithms/leetcode-551-Student-Attendance-Record-I/" itemprop="commentsCount"></span>
+                <a href="/2014/03/11/leetcode/Algorithms/leetcode-652-Find-Duplicate-Subtrees/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2014/03/11/leetcode/Algorithms/leetcode-652-Find-Duplicate-Subtrees/" itemprop="commentsCount"></span>
                 </a>
               </span>
             
@@ -580,644 +1131,120 @@
       
         
           <h3 id="描述"><a href="#描述" class="headerlink" title="描述"></a>描述</h3><hr>
-<p>You are given a string representing an attendance record for a student. The record only contains the following three characters:</p>
-<ol>
-<li><strong>‘A’</strong> : Absent.</li>
-<li><strong>‘L’</strong> : Late.</li>
-<li><strong>‘P’</strong> : Present.</li>
-</ol>
-<p>A student could be rewarded if his attendance record doesn’t contain <strong>more than one ‘A’ (absent)</strong> or <strong>more than two continuous ‘L’ (late)</strong>.</p>
-<p>You need to return whether the student could be rewarded according to his attendance record.</p>
+<p>Given a binary tree, return all duplicate subtrees. For each kind of duplicate subtrees, you only need to return the root node of any <strong>one</strong>of them.</p>
+<p>Two trees are duplicate if they have the same structure with same node values.</p>
 <p><strong>Example 1:</strong></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Input: &quot;PPALLP&quot;</span><br><span class="line">Output: True</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">    1</span><br><span class="line">   / \</span><br><span class="line">  2   3</span><br><span class="line"> /   / \</span><br><span class="line">4   2   4</span><br><span class="line">   /</span><br><span class="line">  4</span><br></pre></td></tr></table></figure>
+<p>The following are two duplicate subtrees:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">  2</span><br><span class="line"> /</span><br><span class="line">4</span><br></pre></td></tr></table></figure>
+<p>and</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">4</span><br></pre></td></tr></table></figure>
+<p>Therefore, you need to return above trees’ root in the form of a list.</p>
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2014/03/11/leetcode/Algorithms/leetcode-652-Find-Duplicate-Subtrees/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2014/03/11/leetcode/Algorithms/leetcode-653-Two-Sum-IV-Input-is-a-BST/" itemprop="url">
+                  leetcode-653-Two-Sum-IV-Input-is-a-BST
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2014-03-11T00:33:34+08:00" content="2014-03-11">
+              2014-03-11
+            </time>
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2014/03/11/leetcode/Algorithms/leetcode-653-Two-Sum-IV-Input-is-a-BST/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2014/03/11/leetcode/Algorithms/leetcode-653-Two-Sum-IV-Input-is-a-BST/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <h3 id="描述"><a href="#描述" class="headerlink" title="描述"></a>描述</h3><hr>
+<p>Given a Binary Search Tree and a target number, return true if there exist two elements in the BST such that their sum is equal to the given target.</p>
+<p><strong>Example 1:</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">Input: </span><br><span class="line">    5</span><br><span class="line">   / \</span><br><span class="line">  3   6</span><br><span class="line"> / \   \</span><br><span class="line">2   4   7</span><br><span class="line"></span><br><span class="line">Target = 9</span><br><span class="line"></span><br><span class="line">Output: True</span><br></pre></td></tr></table></figure>
 <p><strong>Example 2:</strong></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Input: &quot;PPALLL&quot;</span><br><span class="line">Output: False</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">Input: </span><br><span class="line">    5</span><br><span class="line">   / \</span><br><span class="line">  3   6</span><br><span class="line"> / \   \</span><br><span class="line">2   4   7</span><br><span class="line"></span><br><span class="line">Target = 28</span><br><span class="line"></span><br><span class="line">Output: False</span><br></pre></td></tr></table></figure>
           <div class="post-more-link text-center">
-            <a class="btn" href="/2014/03/11/leetcode/Algorithms/leetcode-551-Student-Attendance-Record-I/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2014/03/11/leetcode/Algorithms/leetcode-55-Jump-Game/" itemprop="url">
-                  leetcode-55-Jump-Game
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2014-03-11T00:33:34+08:00" content="2014-03-11">
-              2014-03-11
-            </time>
-          </span>
-
-          
-
-          
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2014/03/11/leetcode/Algorithms/leetcode-55-Jump-Game/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2014/03/11/leetcode/Algorithms/leetcode-55-Jump-Game/" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <h3 id="描述"><a href="#描述" class="headerlink" title="描述"></a>描述</h3><hr>
-<p>Given an array of non-negative integers, you are initially positioned at the first index of the array.</p>
-<p>Each element in the array represents your maximum jump length at that position.</p>
-<p>Determine if you are able to reach the last index.</p>
-<p><strong>Example 1:</strong></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Input: [2,3,1,1,4]</span><br><span class="line">Output: true</span><br><span class="line">Explanation: Jump 1 step from index 0 to 1, then 3 steps to the last index.</span><br></pre></td></tr></table></figure>
-<p><strong>Example 2:</strong></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Input: [3,2,1,0,4]</span><br><span class="line">Output: false</span><br><span class="line">Explanation: You will always arrive at index 3 no matter what. Its maximum jump length is 0, which makes it impossible to reach the last index.</span><br></pre></td></tr></table></figure>
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2014/03/11/leetcode/Algorithms/leetcode-55-Jump-Game/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2014/03/11/leetcode/Algorithms/leetcode-557-Reverse-Words-in-a-String-III/" itemprop="url">
-                  leetcode-557-Reverse-Words-in-a-String-III
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2014-03-11T00:33:34+08:00" content="2014-03-11">
-              2014-03-11
-            </time>
-          </span>
-
-          
-
-          
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2014/03/11/leetcode/Algorithms/leetcode-557-Reverse-Words-in-a-String-III/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2014/03/11/leetcode/Algorithms/leetcode-557-Reverse-Words-in-a-String-III/" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <h3 id="描述"><a href="#描述" class="headerlink" title="描述"></a>描述</h3><hr>
-<p>Given a string, you need to reverse the order of characters in each word within a sentence while still preserving whitespace and initial word order.</p>
-<p><strong>Example 1:</strong></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Input: &quot;Let&apos;s take LeetCode contest&quot;</span><br><span class="line">Output: &quot;s&apos;teL ekat edoCteeL tsetnoc&quot;</span><br></pre></td></tr></table></figure>
-<p><strong>Note:</strong> In the string, each word is separated by single space and there will not be any extra space in the string.</p>
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2014/03/11/leetcode/Algorithms/leetcode-557-Reverse-Words-in-a-String-III/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2014/03/11/leetcode/Algorithms/leetcode-553-Optimal-Division/" itemprop="url">
-                  leetcode-553-Optimal-Division
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2014-03-11T00:33:34+08:00" content="2014-03-11">
-              2014-03-11
-            </time>
-          </span>
-
-          
-
-          
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2014/03/11/leetcode/Algorithms/leetcode-553-Optimal-Division/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2014/03/11/leetcode/Algorithms/leetcode-553-Optimal-Division/" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <h3 id="描述"><a href="#描述" class="headerlink" title="描述"></a>描述</h3><hr>
-<p>Given a list of <strong>positive integers</strong>, the adjacent integers will perform the float division. For example, [2,3,4] -&gt; 2 / 3 / 4.</p>
-<p>However, you can add any number of parenthesis at any position to change the priority of operations. You should find out how to add parenthesis to get the <strong>maximum</strong> result, and return the corresponding expression in string format. <strong>Your expression should NOT contain redundant parenthesis.</strong></p>
-<p><strong>Example:</strong></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">Input: [1000,100,10,2]</span><br><span class="line">Output: &quot;1000/(100/10/2)&quot;</span><br><span class="line">Explanation:</span><br><span class="line">1000/(100/10/2) = 1000/((100/10)/2) = 200</span><br><span class="line">However, the bold parenthesis in &quot;1000/((100/10)/2)&quot; are redundant, </span><br><span class="line">since they don&apos;t influence the operation priority. So you should return &quot;1000/(100/10/2)&quot;. </span><br><span class="line"></span><br><span class="line">Other cases:</span><br><span class="line">1000/(100/10)/2 = 50</span><br><span class="line">1000/(100/(10/2)) = 50</span><br><span class="line">1000/100/10/2 = 0.5</span><br><span class="line">1000/100/(10/2) = 2</span><br></pre></td></tr></table></figure>
-<p><strong>Note:</strong></p>
-<ol>
-<li>The length of the input array is [1, 10].</li>
-<li>Elements in the given array will be in range [2, 1000].</li>
-<li>There is only one optimal division for each test case.</li>
-</ol>
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2014/03/11/leetcode/Algorithms/leetcode-553-Optimal-Division/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2014/03/11/leetcode/Algorithms/leetcode-56-Merge-Intervals/" itemprop="url">
-                  leetcode-56-Merge-Intervals
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2014-03-11T00:33:34+08:00" content="2014-03-11">
-              2014-03-11
-            </time>
-          </span>
-
-          
-
-          
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2014/03/11/leetcode/Algorithms/leetcode-56-Merge-Intervals/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2014/03/11/leetcode/Algorithms/leetcode-56-Merge-Intervals/" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <h3 id="描述"><a href="#描述" class="headerlink" title="描述"></a>描述</h3><hr>
-<p>Given a collection of intervals, merge all overlapping intervals.</p>
-<p>For example,<br>Given <code>[1,3],[2,6],[8,10],[15,18],</code><br>return <code>[1,6],[8,10],[15,18].</code></p>
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2014/03/11/leetcode/Algorithms/leetcode-56-Merge-Intervals/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2014/03/11/leetcode/Algorithms/leetcode-560-Subarray-Sum-Equals-K/" itemprop="url">
-                  leetcode-560-Subarray-Sum-Equals-K
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2014-03-11T00:33:34+08:00" content="2014-03-11">
-              2014-03-11
-            </time>
-          </span>
-
-          
-
-          
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2014/03/11/leetcode/Algorithms/leetcode-560-Subarray-Sum-Equals-K/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2014/03/11/leetcode/Algorithms/leetcode-560-Subarray-Sum-Equals-K/" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <h3 id="描述"><a href="#描述" class="headerlink" title="描述"></a>描述</h3><hr>
-<p>Given an array of integers and an integer <strong>k</strong>, you need to find the total number of continuous subarrays whose sum equals to <strong>k</strong>.</p>
-<p><strong>Example 1:</strong></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Input:nums = [1,1,1], k = 2</span><br><span class="line">Output: 2</span><br></pre></td></tr></table></figure>
-<p><strong>Note:</strong></p>
-<ol>
-<li>The length of the array is in range [1, 20,000].</li>
-<li>The range of numbers in the array is [-1000, 1000] and the range of the integer <strong>k</strong> is [-1e7, 1e7].</li>
-</ol>
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2014/03/11/leetcode/Algorithms/leetcode-560-Subarray-Sum-Equals-K/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2014/03/11/leetcode/Algorithms/leetcode-561-Array-Partition-I/" itemprop="url">
-                  leetcode-561-Array-Partition-I
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2014-03-11T00:33:34+08:00" content="2014-03-11">
-              2014-03-11
-            </time>
-          </span>
-
-          
-
-          
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2014/03/11/leetcode/Algorithms/leetcode-561-Array-Partition-I/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2014/03/11/leetcode/Algorithms/leetcode-561-Array-Partition-I/" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <h3 id="描述"><a href="#描述" class="headerlink" title="描述"></a>描述</h3><hr>
-<p>Given an array of <strong>2n</strong> integers, your task is to group these integers into n pairs of integer, say (a1, b1), (a2, b2), …, (an, bn) which makes sum of min(ai, bi) for all i from 1 to n as large as possible.</p>
-<p><strong>Example1</strong>:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">Input: [1,4,3,2]</span><br><span class="line"></span><br><span class="line">Output: 4</span><br><span class="line">Explanation: n is 2, and the maximum sum of pairs is 4.</span><br></pre></td></tr></table></figure>
-<p><strong>Note:</strong></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">1. n is a positive integer, which is in the range of [1, 10000].</span><br><span class="line">2. All the integers in the array will be in the range of [-10000, 10000].</span><br></pre></td></tr></table></figure>
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2014/03/11/leetcode/Algorithms/leetcode-561-Array-Partition-I/#more" rel="contents">
+            <a class="btn" href="/2014/03/11/leetcode/Algorithms/leetcode-653-Two-Sum-IV-Input-is-a-BST/#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
@@ -1247,7 +1274,7 @@
 
   
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/page/25/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/25/">25</a><span class="page-number current">26</span><a class="page-number" href="/page/27/">27</a><span class="space">&hellip;</span><a class="page-number" href="/page/39/">39</a><a class="extend next" rel="next" href="/page/27/"><i class="fa fa-angle-right"></i></a>
+    <a class="extend prev" rel="prev" href="/page/25/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/25/">25</a><span class="page-number current">26</span><a class="page-number" href="/page/27/">27</a><span class="space">&hellip;</span><a class="page-number" href="/page/41/">41</a><a class="extend next" rel="next" href="/page/27/"><i class="fa fa-angle-right"></i></a>
   </nav>
 
 
@@ -1286,7 +1313,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">390</span>
+              <span class="site-state-item-count">401</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -1296,7 +1323,7 @@
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">187</span>
+                <span class="site-state-item-count">206</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>

@@ -1,0 +1,810 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion">
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+  <link href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+  <link href="//fonts.googleapis.com/css?family=Lato:300,400,700,400italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+
+
+
+<link href="/vendors/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=0.5.0" rel="stylesheet" type="text/css">
+
+
+  <meta name="keywords" content="algorithms,leetcode,">
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=0.5.0">
+
+
+
+
+
+
+<meta name="description" content="字符串14求一堆字符串的最长公共前缀 线性表11. Container With Most Water153Sum 125判断一个字符串是否为回文 16810进制转26进制 位运算136找唯一的单身狗 137类似于上一题，一个数组中的元素，除了一个元素外，都是三个三个的重复出现，要求这个元素的值。 191896判断数组是否为单调的 链表141判断一个链表是否有环。 142如果一个链表有环，返回这个">
+<meta name="keywords" content="algorithms,leetcode">
+<meta property="og:type" content="article">
+<meta property="og:title" content="leetcode-习题总结">
+<meta property="og:url" content="http://knarfeh.github.io/2014/03/11/leetcode/Algorithms/leetcode-习题总结/index.html">
+<meta property="og:site_name" content="knarfeh&#39;s logbook">
+<meta property="og:description" content="字符串14求一堆字符串的最长公共前缀 线性表11. Container With Most Water153Sum 125判断一个字符串是否为回文 16810进制转26进制 位运算136找唯一的单身狗 137类似于上一题，一个数组中的元素，除了一个元素外，都是三个三个的重复出现，要求这个元素的值。 191896判断数组是否为单调的 链表141判断一个链表是否有环。 142如果一个链表有环，返回这个">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2020-07-22T10:29:15.397Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="leetcode-习题总结">
+<meta name="twitter:description" content="字符串14求一堆字符串的最长公共前缀 线性表11. Container With Most Water153Sum 125判断一个字符串是否为回文 16810进制转26进制 位运算136找唯一的单身狗 137类似于上一题，一个数组中的元素，除了一个元素外，都是三个三个的重复出现，要求这个元素的值。 191896判断数组是否为单调的 链表141判断一个链表是否有环。 142如果一个链表有环，返回这个">
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    scheme: 'Muse',
+    sidebar: {"display":"hide"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: 0,
+      author: '博主'
+    }
+  };
+</script>
+
+  <title> leetcode-习题总结 | knarfeh's logbook </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+            (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+          m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-75002639-1', 'auto');
+  ga('send', 'pageview');
+</script>
+
+
+
+
+
+
+
+
+
+  
+  
+
+  <div class="container one-collumn  page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">knarfeh's logbook</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle"></p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-home fa-fw"></i> <br>
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-archive fa-fw"></i> <br>
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-tags fa-fw"></i> <br>
+            
+            标签
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                leetcode-习题总结
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2014-03-11T00:33:35+08:00" content="2014-03-11">
+              2014-03-11
+            </time>
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2014/03/11/leetcode/Algorithms/leetcode-习题总结/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2014/03/11/leetcode/Algorithms/leetcode-习题总结/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h2 id="字符串"><a href="#字符串" class="headerlink" title="字符串"></a>字符串</h2><h3 id="14"><a href="#14" class="headerlink" title="14"></a><a href="#TODO">14</a></h3><p>求一堆字符串的最长公共前缀</p>
+<h2 id="线性表"><a href="#线性表" class="headerlink" title="线性表"></a>线性表</h2><h3 id="11-Container-With-Most-Water"><a href="#11-Container-With-Most-Water" class="headerlink" title="11. Container With Most Water"></a><a href="#TODO">11. Container With Most Water</a></h3><h3 id="15"><a href="#15" class="headerlink" title="15"></a><a href="#TODO">15</a></h3><p>3Sum</p>
+<h3 id="125"><a href="#125" class="headerlink" title="125"></a><a href="#TODO">125</a></h3><p>判断一个字符串是否为回文</p>
+<h3 id="168"><a href="#168" class="headerlink" title="168"></a><a href="#TODO">168</a></h3><p>10进制转26进制</p>
+<h3 id="位运算"><a href="#位运算" class="headerlink" title="位运算"></a>位运算</h3><h4 id="136"><a href="#136" class="headerlink" title="136"></a><a href="#TODO">136</a></h4><p>找唯一的单身狗</p>
+<h4 id="137"><a href="#137" class="headerlink" title="137"></a><a href="#TODO">137</a></h4><p>类似于上一题，一个数组中的元素，除了一个元素外，都是三个三个的重复出现，要求这个元素的值。</p>
+<h4 id="191"><a href="#191" class="headerlink" title="191"></a><a href="#TODO">191</a></h4><h4 id="896"><a href="#896" class="headerlink" title="896"></a><a href="#TODO">896</a></h4><p>判断数组是否为单调的</p>
+<h2 id="链表"><a href="#链表" class="headerlink" title="链表"></a>链表</h2><h3 id="141"><a href="#141" class="headerlink" title="141"></a><a href="#TODO">141</a></h3><p>判断一个链表是否有环。</p>
+<h3 id="142"><a href="#142" class="headerlink" title="142"></a><a href="#TODO">142</a></h3><p>如果一个链表有环，返回这个链表的环的入口。</p>
+<h3 id="143"><a href="#143" class="headerlink" title="143"></a><a href="#TODO">143</a></h3><p>把一个 L0→L1→…→Ln-1→Ln 的链表变成 L0→Ln→L1→Ln-1→L2→Ln-2</p>
+<h3 id="146"><a href="#146" class="headerlink" title="146"></a><a href="#TODO">146</a></h3><p>实现 LRU</p>
+<h3 id="147"><a href="#147" class="headerlink" title="147"></a><a href="#TODO">147</a></h3><p>按照顺序构建链表</p>
+<h3 id="148"><a href="#148" class="headerlink" title="148"></a><a href="#TODO">148</a></h3><p>对链表进行排序</p>
+<h3 id="876"><a href="#876" class="headerlink" title="876"></a><a href="#TODO">876</a></h3><p>找链表的中间位置</p>
+<h3 id="917"><a href="#917" class="headerlink" title="917"></a><a href="#TODO">917</a></h3><p>双指针问题</p>
+<h3 id="925"><a href="#925" class="headerlink" title="925"></a><a href="#TODO">925</a></h3><p>双指针问题</p>
+<h2 id="栈"><a href="#栈" class="headerlink" title="栈"></a>栈</h2><h3 id="225-Implement-Stack-using-Queues-stack-queues"><a href="#225-Implement-Stack-using-Queues-stack-queues" class="headerlink" title="225. Implement Stack using Queues :stack:queues:"></a><a href="#TODO">225. Implement Stack using Queues</a> :stack:queues:</h3><p>使用队列实现堆栈</p>
+<h2 id="队列"><a href="#队列" class="headerlink" title="队列"></a>队列</h2><h2 id="树"><a href="#树" class="headerlink" title="树"></a>树</h2><h3 id="二叉树"><a href="#二叉树" class="headerlink" title="二叉树"></a>二叉树</h3><h4 id="98"><a href="#98" class="headerlink" title="98"></a><a href="#TODO">98</a></h4><p>判断一棵树是否为二叉搜索树</p>
+<h4 id="99"><a href="#99" class="headerlink" title="99"></a><a href="#TODO">99</a></h4><p>恢复二叉搜索树</p>
+<h4 id="100-Same-Tree"><a href="#100-Same-Tree" class="headerlink" title="100. Same Tree"></a><a href="#TODO">100. Same Tree</a></h4><p>判断两颗二叉树是否相同。</p>
+<h4 id="101-Symmetric-Tree"><a href="#101-Symmetric-Tree" class="headerlink" title="101. Symmetric Tree"></a><a href="#TODO">101. Symmetric Tree</a></h4><p>判断一颗二叉树是否是对称的。</p>
+<h4 id="102-Binary-Tree-Level-Order-Traversal"><a href="#102-Binary-Tree-Level-Order-Traversal" class="headerlink" title="102. Binary Tree Level Order Traversal"></a><a href="#TODO">102. Binary Tree Level Order Traversal</a></h4><p>层次遍历二叉树。</p>
+<h4 id="103-Binary-Tree-Zigzag-Level-Order-Traversal"><a href="#103-Binary-Tree-Zigzag-Level-Order-Traversal" class="headerlink" title="103. Binary Tree Zigzag Level Order Traversal"></a><a href="#TODO">103. Binary Tree Zigzag Level Order Traversal</a></h4><p>层次遍历二叉树，但是是蛇形的。</p>
+<h4 id="104-Maximum-Depth-of-Binary-Tree"><a href="#104-Maximum-Depth-of-Binary-Tree" class="headerlink" title="104. Maximum Depth of Binary Tree"></a><a href="#TODO">104. Maximum Depth of Binary Tree</a></h4><p>求一颗二叉树的最大深度。几乎一样的题目还有 <a href="#TODO">111. Minimum Depth of Binary Tree</a></p>
+<h4 id="105-Construct-Binary-Tree-from-Preorder-and-Inorder-Traversal"><a href="#105-Construct-Binary-Tree-from-Preorder-and-Inorder-Traversal" class="headerlink" title="105. Construct Binary Tree from Preorder and Inorder Traversal"></a><a href="#TODO">105. Construct Binary Tree from Preorder and Inorder Traversal</a></h4><p>根据先序遍历和中序遍历的结果构建二叉树。</p>
+<h4 id="106-Construct-Binary-Tree-from-Inorder-and-Postorder-Traversal"><a href="#106-Construct-Binary-Tree-from-Inorder-and-Postorder-Traversal" class="headerlink" title="106. Construct Binary Tree from Inorder and Postorder Traversal"></a><a href="#TODO">106. Construct Binary Tree from Inorder and Postorder Traversal</a></h4><p>根据中序遍历和后续遍历的结果构建二叉树。</p>
+<h4 id="107-Binary-Tree-Level-Order-Traversal-II"><a href="#107-Binary-Tree-Level-Order-Traversal-II" class="headerlink" title="107. Binary Tree Level Order Traversal II"></a><a href="#TODO">107. Binary Tree Level Order Traversal II</a></h4><p>层次遍历，返回结果是从最下面一层到最上面一层。</p>
+<h4 id="108-Convert-Sorted-Array-to-Binary-Search-Tree"><a href="#108-Convert-Sorted-Array-to-Binary-Search-Tree" class="headerlink" title="108. Convert Sorted Array to Binary Search Tree"></a><a href="#TODO">108. Convert Sorted Array to Binary Search Tree</a></h4><p>把一个递增数组转换成二叉搜索树。</p>
+<h4 id="109-Convert-Sorted-List-to-Binary-Search-Tree"><a href="#109-Convert-Sorted-List-to-Binary-Search-Tree" class="headerlink" title="109. Convert Sorted List to Binary Search Tree"></a><a href="#TODO">109. Convert Sorted List to Binary Search Tree</a></h4><p>把一个递增链表转换成二叉搜索树。跟上面那道题类似，不过需要用快慢指针找到中间的节点。</p>
+<h4 id="110-Balanced-Binary-Tree"><a href="#110-Balanced-Binary-Tree" class="headerlink" title="110. Balanced Binary Tree"></a><a href="#TODO">110. Balanced Binary Tree</a></h4><p>判断一棵树是不是平衡二叉树</p>
+<h4 id="113-Path-Sum-II"><a href="#113-Path-Sum-II" class="headerlink" title="113. Path Sum II"></a><a href="#TODO">113. Path Sum II</a></h4><p>在一颗二叉树中找出所有节点值的和等于 sum 的路径。</p>
+<h4 id="124"><a href="#124" class="headerlink" title="124"></a><a href="#TODO">124</a></h4><h4 id="129"><a href="#129" class="headerlink" title="129"></a><a href="#TODO">129</a></h4><h4 id="144"><a href="#144" class="headerlink" title="144"></a><a href="#TODO">144</a></h4><p>先序遍历二叉树</p>
+<h4 id="144-1"><a href="#144-1" class="headerlink" title="144"></a><a href="#TODO">144</a></h4><p>后序遍历二叉树</p>
+<h4 id="173"><a href="#173" class="headerlink" title="173"></a><a href="#TODO">173</a></h4><p>实现一个二叉搜索树遍历器</p>
+<h4 id="199"><a href="#199" class="headerlink" title="199"></a><a href="#TODO">199</a></h4><p>bfs</p>
+<h4 id="501"><a href="#501" class="headerlink" title="501"></a><a href="#TODO">501</a></h4><p>求二叉搜索树的众数</p>
+<h4 id="872"><a href="#872" class="headerlink" title="872"></a><a href="#TODO">872</a></h4><p>先序，中序，后序遍历都可以。</p>
+<h4 id="889"><a href="#889" class="headerlink" title="889"></a><a href="#TODO">889</a></h4><p>根据前序遍历和后序遍历结果构建二叉树</p>
+<h4 id="897"><a href="#897" class="headerlink" title="897"></a><a href="#TODO">897</a></h4><p>中序遍历二叉树</p>
+<h4 id="993"><a href="#993" class="headerlink" title="993"></a><a href="#TODO">993</a></h4><p>判断两个子树是否为堂兄弟节点</p>
+<h4 id="1008-Construct-Binary-Search-Tree-from-Preorder-Traversal"><a href="#1008-Construct-Binary-Search-Tree-from-Preorder-Traversal" class="headerlink" title="1008. Construct Binary Search Tree from Preorder Traversal"></a><a href="#TODO">1008. Construct Binary Search Tree from Preorder Traversal</a></h4><p>根据先序遍历的结果构建二叉树。</p>
+<h4 id="1022-Sum-of-Root-To-Leaf-Binary-Numbers"><a href="#1022-Sum-of-Root-To-Leaf-Binary-Numbers" class="headerlink" title="1022. Sum of Root To Leaf Binary Numbers"></a><a href="#TODO">1022. Sum of Root To Leaf Binary Numbers</a></h4><p>求所有根节点到叶子节点的路径之和。</p>
+<h3 id="线段树"><a href="#线段树" class="headerlink" title="线段树"></a>线段树</h3><h4 id="427-Construct-Quad-Tree"><a href="#427-Construct-Quad-Tree" class="headerlink" title="427. Construct Quad Tree"></a><a href="https://leetcode.com/problems/construct-quad-tree/description/" target="_blank" rel="noopener">427. Construct Quad Tree</a></h4><h3 id="堆"><a href="#堆" class="headerlink" title="堆"></a>堆</h3><h4 id="leetcode-215-Kth-Largest-Element-in-an-Array"><a href="#leetcode-215-Kth-Largest-Element-in-an-Array" class="headerlink" title="leetcode-215-Kth-Largest-Element-in-an-Array"></a><a href="#TODO">leetcode-215-Kth-Largest-Element-in-an-Array</a></h4><h4 id="leetcode-973-K-Closest-Points-to-Origin"><a href="#leetcode-973-K-Closest-Points-to-Origin" class="headerlink" title="leetcode-973-K-Closest-Points-to-Origin"></a><a href="#TODO">leetcode-973-K-Closest-Points-to-Origin</a></h4><h4 id="leetcode-1046-Last-Stone-Weight"><a href="#leetcode-1046-Last-Stone-Weight" class="headerlink" title="leetcode-1046-Last-Stone-Weight"></a><a href="https://leetcode.com/problems/last-stone-weight/submissions/" target="_blank" rel="noopener">leetcode-1046-Last-Stone-Weight</a></h4><p>最大堆的应用</p>
+<hr>
+<p>二叉堆，四叉堆<br>堆可以用来实现 <a href="https://github.com/cch123/golang-notes/blob/master/timer.md" target="_blank" rel="noopener">定时器</a></p>
+<h2 id="图"><a href="#图" class="headerlink" title="图"></a>图</h2><h3 id="dfs"><a href="#dfs" class="headerlink" title="dfs"></a>dfs</h3><h4 id="841-Keys-and-Rooms"><a href="#841-Keys-and-Rooms" class="headerlink" title="841. Keys and Rooms"></a><a href="https://leetcode.com/problems/keys-and-rooms/description/" target="_blank" rel="noopener">841. Keys and Rooms</a></h4><h2 id="排序"><a href="#排序" class="headerlink" title="排序"></a>排序</h2><h3 id="归并排序"><a href="#归并排序" class="headerlink" title="归并排序"></a>归并排序</h3><h4 id="TODO"><a href="#TODO" class="headerlink" title="TODO "></a>TODO <a href></a></h4><h2 id="暴力枚举"><a href="#暴力枚举" class="headerlink" title="暴力枚举"></a>暴力枚举</h2><h2 id="深度优先算法"><a href="#深度优先算法" class="headerlink" title="深度优先算法"></a>深度优先算法</h2><h2 id="广度优先算法"><a href="#广度优先算法" class="headerlink" title="广度优先算法"></a>广度优先算法</h2><h2 id="分治法"><a href="#分治法" class="headerlink" title="分治法"></a>分治法</h2><h3 id="leetcode-23-Merge-k-Sorted-Lists"><a href="#leetcode-23-Merge-k-Sorted-Lists" class="headerlink" title="leetcode-23-Merge-k-Sorted-Lists"></a><a href="#TODO">leetcode-23-Merge-k-Sorted-Lists</a></h3><h3 id="leetcode-169-Majority-Element"><a href="#leetcode-169-Majority-Element" class="headerlink" title="leetcode-169-Majority-Element"></a><a href="#TODO">leetcode-169-Majority-Element</a></h3><h2 id="贪心法"><a href="#贪心法" class="headerlink" title="贪心法"></a>贪心法</h2><h3 id="122"><a href="#122" class="headerlink" title="122"></a><a href="#TODO">122</a></h3><h2 id="哈希表"><a href="#哈希表" class="headerlink" title="哈希表"></a>哈希表</h2><h3 id="893"><a href="#893" class="headerlink" title="893"></a><a href="#TODO">893</a></h3><p>根据字符串的字符组成进行分组</p>
+<h3 id="890"><a href="#890" class="headerlink" title="890"></a><a href="#TODO">890</a></h3><h3 id="884"><a href="#884" class="headerlink" title="884"></a><a href="#TODO">884</a></h3><p>找 uncommon word</p>
+<h2 id="动态规划"><a href="#动态规划" class="headerlink" title="动态规划"></a>动态规划</h2><h3 id="leetcode-53-Maximum-Subarray"><a href="#leetcode-53-Maximum-Subarray" class="headerlink" title="leetcode-53-Maximum-Subarray"></a><a href="#TODO">leetcode-53-Maximum-Subarray</a></h3><h3 id="121"><a href="#121" class="headerlink" title="121"></a><a href="#TODO">121</a></h3><h3 id="139"><a href="#139" class="headerlink" title="139"></a><a href="#TODO">139</a></h3><h3 id="198"><a href="#198" class="headerlink" title="198"></a><a href="#TODO">198</a></h3><p>maxv[i] = max(maxv[i-2]+nums[i], maxv[i-1]);</p>
+<h2 id="Resources"><a href="#Resources" class="headerlink" title="Resources"></a>Resources</h2><ul>
+<li><a href="https://www.cs.usfca.edu/~galles/visualization/Algorithms.html" target="_blank" rel="noopener">Data Structure Visualizations</a></li>
+</ul>
+
+      
+    </div>
+
+    <div>
+      
+        
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/algorithms/" rel="tag">#algorithms</a>
+          
+            <a href="/tags/leetcode/" rel="tag">#leetcode</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2014/03/11/leetcode/Algorithms/leetcode-114-Flatten-Binary-Tree-to-Linked-List/" rel="next" title="leetcode-114-Flatten-Binary-Tree-to-Linked-List">
+                <i class="fa fa-chevron-left"></i> leetcode-114-Flatten-Binary-Tree-to-Linked-List
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2015/03/18/first/" rel="prev" title="first">
+                first <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+      <div id="disqus_thread">
+        <noscript>
+          Please enable JavaScript to view the
+          <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a>
+        </noscript>
+      </div>
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel ">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image" src="https://avatars1.githubusercontent.com/u/6964284?v=3&s=460" alt="Frank">
+          <p class="site-author-name" itemprop="name">Frank</p>
+          <p class="site-description motion-element" itemprop="description"></p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">401</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+          
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">206</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/knarfeh" target="_blank">
+                  
+                    <i class="fa fa-github"></i> GitHub
+                  
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://twitter.com/knarfeh" target="_blank">
+                  
+                    <i class="fa fa-globe"></i> Twitter
+                  
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+          <div class="cc-license motion-element" itemprop="license">
+            <a href="http://creativecommons.org/licenses/by-sa/4.0" class="cc-opacity" target="_blank">
+              <img src="/images/cc-by-sa.svg" alt="Creative Commons">
+            </a>
+          </div>
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+      </section>
+
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc-indicator-top post-toc-indicator">
+            <i class="fa fa-angle-double-up"></i>
+          </div>
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#字符串"><span class="nav-number">1.</span> <span class="nav-text">字符串</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#14"><span class="nav-number">1.1.</span> <span class="nav-text">14</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#线性表"><span class="nav-number">2.</span> <span class="nav-text">线性表</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#11-Container-With-Most-Water"><span class="nav-number">2.1.</span> <span class="nav-text">11. Container With Most Water</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#15"><span class="nav-number">2.2.</span> <span class="nav-text">15</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#125"><span class="nav-number">2.3.</span> <span class="nav-text">125</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#168"><span class="nav-number">2.4.</span> <span class="nav-text">168</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#位运算"><span class="nav-number">2.5.</span> <span class="nav-text">位运算</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#136"><span class="nav-number">2.5.1.</span> <span class="nav-text">136</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#137"><span class="nav-number">2.5.2.</span> <span class="nav-text">137</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#191"><span class="nav-number">2.5.3.</span> <span class="nav-text">191</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#896"><span class="nav-number">2.5.4.</span> <span class="nav-text">896</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#链表"><span class="nav-number">3.</span> <span class="nav-text">链表</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#141"><span class="nav-number">3.1.</span> <span class="nav-text">141</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#142"><span class="nav-number">3.2.</span> <span class="nav-text">142</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#143"><span class="nav-number">3.3.</span> <span class="nav-text">143</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#146"><span class="nav-number">3.4.</span> <span class="nav-text">146</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#147"><span class="nav-number">3.5.</span> <span class="nav-text">147</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#148"><span class="nav-number">3.6.</span> <span class="nav-text">148</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#876"><span class="nav-number">3.7.</span> <span class="nav-text">876</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#917"><span class="nav-number">3.8.</span> <span class="nav-text">917</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#925"><span class="nav-number">3.9.</span> <span class="nav-text">925</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#栈"><span class="nav-number">4.</span> <span class="nav-text">栈</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#225-Implement-Stack-using-Queues-stack-queues"><span class="nav-number">4.1.</span> <span class="nav-text">225. Implement Stack using Queues :stack:queues:</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#队列"><span class="nav-number">5.</span> <span class="nav-text">队列</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#树"><span class="nav-number">6.</span> <span class="nav-text">树</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#二叉树"><span class="nav-number">6.1.</span> <span class="nav-text">二叉树</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#98"><span class="nav-number">6.1.1.</span> <span class="nav-text">98</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#99"><span class="nav-number">6.1.2.</span> <span class="nav-text">99</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#100-Same-Tree"><span class="nav-number">6.1.3.</span> <span class="nav-text">100. Same Tree</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#101-Symmetric-Tree"><span class="nav-number">6.1.4.</span> <span class="nav-text">101. Symmetric Tree</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#102-Binary-Tree-Level-Order-Traversal"><span class="nav-number">6.1.5.</span> <span class="nav-text">102. Binary Tree Level Order Traversal</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#103-Binary-Tree-Zigzag-Level-Order-Traversal"><span class="nav-number">6.1.6.</span> <span class="nav-text">103. Binary Tree Zigzag Level Order Traversal</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#104-Maximum-Depth-of-Binary-Tree"><span class="nav-number">6.1.7.</span> <span class="nav-text">104. Maximum Depth of Binary Tree</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#105-Construct-Binary-Tree-from-Preorder-and-Inorder-Traversal"><span class="nav-number">6.1.8.</span> <span class="nav-text">105. Construct Binary Tree from Preorder and Inorder Traversal</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#106-Construct-Binary-Tree-from-Inorder-and-Postorder-Traversal"><span class="nav-number">6.1.9.</span> <span class="nav-text">106. Construct Binary Tree from Inorder and Postorder Traversal</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#107-Binary-Tree-Level-Order-Traversal-II"><span class="nav-number">6.1.10.</span> <span class="nav-text">107. Binary Tree Level Order Traversal II</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#108-Convert-Sorted-Array-to-Binary-Search-Tree"><span class="nav-number">6.1.11.</span> <span class="nav-text">108. Convert Sorted Array to Binary Search Tree</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#109-Convert-Sorted-List-to-Binary-Search-Tree"><span class="nav-number">6.1.12.</span> <span class="nav-text">109. Convert Sorted List to Binary Search Tree</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#110-Balanced-Binary-Tree"><span class="nav-number">6.1.13.</span> <span class="nav-text">110. Balanced Binary Tree</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#113-Path-Sum-II"><span class="nav-number">6.1.14.</span> <span class="nav-text">113. Path Sum II</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#124"><span class="nav-number">6.1.15.</span> <span class="nav-text">124</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#129"><span class="nav-number">6.1.16.</span> <span class="nav-text">129</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#144"><span class="nav-number">6.1.17.</span> <span class="nav-text">144</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#144-1"><span class="nav-number">6.1.18.</span> <span class="nav-text">144</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#173"><span class="nav-number">6.1.19.</span> <span class="nav-text">173</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#199"><span class="nav-number">6.1.20.</span> <span class="nav-text">199</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#501"><span class="nav-number">6.1.21.</span> <span class="nav-text">501</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#872"><span class="nav-number">6.1.22.</span> <span class="nav-text">872</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#889"><span class="nav-number">6.1.23.</span> <span class="nav-text">889</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#897"><span class="nav-number">6.1.24.</span> <span class="nav-text">897</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#993"><span class="nav-number">6.1.25.</span> <span class="nav-text">993</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#1008-Construct-Binary-Search-Tree-from-Preorder-Traversal"><span class="nav-number">6.1.26.</span> <span class="nav-text">1008. Construct Binary Search Tree from Preorder Traversal</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#1022-Sum-of-Root-To-Leaf-Binary-Numbers"><span class="nav-number">6.1.27.</span> <span class="nav-text">1022. Sum of Root To Leaf Binary Numbers</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#线段树"><span class="nav-number">6.2.</span> <span class="nav-text">线段树</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#427-Construct-Quad-Tree"><span class="nav-number">6.2.1.</span> <span class="nav-text">427. Construct Quad Tree</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#堆"><span class="nav-number">6.3.</span> <span class="nav-text">堆</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#leetcode-215-Kth-Largest-Element-in-an-Array"><span class="nav-number">6.3.1.</span> <span class="nav-text">leetcode-215-Kth-Largest-Element-in-an-Array</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#leetcode-973-K-Closest-Points-to-Origin"><span class="nav-number">6.3.2.</span> <span class="nav-text">leetcode-973-K-Closest-Points-to-Origin</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#leetcode-1046-Last-Stone-Weight"><span class="nav-number">6.3.3.</span> <span class="nav-text">leetcode-1046-Last-Stone-Weight</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#图"><span class="nav-number">7.</span> <span class="nav-text">图</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#dfs"><span class="nav-number">7.1.</span> <span class="nav-text">dfs</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#841-Keys-and-Rooms"><span class="nav-number">7.1.1.</span> <span class="nav-text">841. Keys and Rooms</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#排序"><span class="nav-number">8.</span> <span class="nav-text">排序</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#归并排序"><span class="nav-number">8.1.</span> <span class="nav-text">归并排序</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#TODO"><span class="nav-number">8.1.1.</span> <span class="nav-text">TODO </span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#暴力枚举"><span class="nav-number">9.</span> <span class="nav-text">暴力枚举</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#深度优先算法"><span class="nav-number">10.</span> <span class="nav-text">深度优先算法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#广度优先算法"><span class="nav-number">11.</span> <span class="nav-text">广度优先算法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#分治法"><span class="nav-number">12.</span> <span class="nav-text">分治法</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#leetcode-23-Merge-k-Sorted-Lists"><span class="nav-number">12.1.</span> <span class="nav-text">leetcode-23-Merge-k-Sorted-Lists</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#leetcode-169-Majority-Element"><span class="nav-number">12.2.</span> <span class="nav-text">leetcode-169-Majority-Element</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#贪心法"><span class="nav-number">13.</span> <span class="nav-text">贪心法</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#122"><span class="nav-number">13.1.</span> <span class="nav-text">122</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#哈希表"><span class="nav-number">14.</span> <span class="nav-text">哈希表</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#893"><span class="nav-number">14.1.</span> <span class="nav-text">893</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#890"><span class="nav-number">14.2.</span> <span class="nav-text">890</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#884"><span class="nav-number">14.3.</span> <span class="nav-text">884</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#动态规划"><span class="nav-number">15.</span> <span class="nav-text">动态规划</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#leetcode-53-Maximum-Subarray"><span class="nav-number">15.1.</span> <span class="nav-text">leetcode-53-Maximum-Subarray</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#121"><span class="nav-number">15.2.</span> <span class="nav-text">121</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#139"><span class="nav-number">15.3.</span> <span class="nav-text">139</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#198"><span class="nav-number">15.4.</span> <span class="nav-text">198</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Resources"><span class="nav-number">16.</span> <span class="nav-text">Resources</span></a></li></ol></div>
+            
+          </div>
+          <div class="post-toc-indicator-bottom post-toc-indicator">
+            <i class="fa fa-angle-double-down"></i>
+          </div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">
+  
+  &copy;  2015 - 
+  <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Frank</span>
+</div>
+
+<div class="powered-by">
+  由 <a class="theme-link" href="http://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Muse
+  </a>
+</div>
+
+
+
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+
+  
+
+
+
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+  <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
+
+  <script type="text/javascript" src="/vendors/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  <script type="text/javascript" src="/vendors/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  <script type="text/javascript" src="/vendors/velocity/velocity.min.js"></script>
+
+  <script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js"></script>
+
+  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=0.5.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=0.5.0"></script>
+
+
+
+  
+  
+
+  
+  
+<script type="text/javascript" src="/js/src/scrollspy.js?v=0.5.0"></script>
+
+<script type="text/javascript" id="sidebar.toc.highlight">
+  $(document).ready(function () {
+    var tocSelector = '.post-toc';
+    var $tocSelector = $(tocSelector);
+    var activeCurrentSelector = '.active-current';
+
+    $tocSelector
+      .on('activate.bs.scrollspy', function () {
+        var $currentActiveElement = $(tocSelector + ' .active').last();
+
+        removeCurrentActiveClass();
+        $currentActiveElement.addClass('active-current');
+
+        $tocSelector[0].scrollTop = $currentActiveElement.position().top;
+      })
+      .on('clear.bs.scrollspy', function () {
+        removeCurrentActiveClass();
+      });
+
+    function removeCurrentActiveClass () {
+      $(tocSelector + ' ' + activeCurrentSelector)
+        .removeClass(activeCurrentSelector.substring(1));
+    }
+
+    function processTOC () {
+      getTOCMaxHeight();
+      toggleTOCOverflowIndicators();
+    }
+
+    function getTOCMaxHeight () {
+      var height = $('.sidebar').height() -
+                   $tocSelector.position().top -
+                   $('.post-toc-indicator-bottom').height();
+
+      $tocSelector.css('height', height);
+
+      return height;
+    }
+
+    function toggleTOCOverflowIndicators () {
+      tocOverflowIndicator(
+        '.post-toc-indicator-top',
+        $tocSelector.scrollTop() > 0 ? 'show' : 'hide'
+      );
+
+      tocOverflowIndicator(
+        '.post-toc-indicator-bottom',
+        $tocSelector.scrollTop() >= $tocSelector.find('ol').height() - $tocSelector.height() ? 'hide' : 'show'
+      )
+    }
+
+    $(document).on('sidebar.motion.complete', function () {
+      processTOC();
+    });
+
+    $('body').scrollspy({ target: tocSelector });
+    $(window).on('resize', function () {
+      if ( $('.sidebar').hasClass('sidebar-active') ) {
+        processTOC();
+      }
+    });
+
+    onScroll($tocSelector);
+
+    function onScroll (element) {
+      element.on('mousewheel DOMMouseScroll', function (event) {
+          var oe = event.originalEvent;
+          var delta = oe.wheelDelta || -oe.detail;
+
+          this.scrollTop += ( delta < 0 ? 1 : -1 ) * 30;
+          event.preventDefault();
+
+          toggleTOCOverflowIndicators();
+      });
+    }
+
+    function tocOverflowIndicator (indicator, action) {
+      var $indicator = $(indicator);
+      var opacity = action === 'show' ? 1 : 0;
+      $indicator.velocity ?
+        $indicator.velocity('stop').velocity({
+          opacity: opacity
+        }, { duration: 100 }) :
+        $indicator.stop().animate({
+          opacity: opacity
+        }, 100);
+    }
+
+  });
+</script>
+
+<script type="text/javascript" id="sidebar.nav">
+  $(document).ready(function () {
+    var html = $('html');
+    var TAB_ANIMATE_DURATION = 200;
+    var hasVelocity = $.isFunction(html.velocity);
+
+    $('.sidebar-nav li').on('click', function () {
+      var item = $(this);
+      var activeTabClassName = 'sidebar-nav-active';
+      var activePanelClassName = 'sidebar-panel-active';
+      if (item.hasClass(activeTabClassName)) {
+        return;
+      }
+
+      var currentTarget = $('.' + activePanelClassName);
+      var target = $('.' + item.data('target'));
+
+      hasVelocity ?
+        currentTarget.velocity('transition.slideUpOut', TAB_ANIMATE_DURATION, function () {
+          target
+            .velocity('stop')
+            .velocity('transition.slideDownIn', TAB_ANIMATE_DURATION)
+            .addClass(activePanelClassName);
+        }) :
+        currentTarget.animate({ opacity: 0 }, TAB_ANIMATE_DURATION, function () {
+          currentTarget.hide();
+          target
+            .stop()
+            .css({'opacity': 0, 'display': 'block'})
+            .animate({ opacity: 1 }, TAB_ANIMATE_DURATION, function () {
+              currentTarget.removeClass(activePanelClassName);
+              target.addClass(activePanelClassName);
+            });
+        });
+
+      item.siblings().removeClass(activeTabClassName);
+      item.addClass(activeTabClassName);
+    });
+
+    $('.post-toc a').on('click', function (e) {
+      e.preventDefault();
+      var targetSelector = NexT.utils.escapeSelector(this.getAttribute('href'));
+      var offset = $(targetSelector).offset().top;
+      hasVelocity ?
+        html.velocity('stop').velocity('scroll', {
+          offset: offset  + 'px',
+          mobileHA: false
+        }) :
+        $('html, body').stop().animate({
+          scrollTop: offset
+        }, 500);
+    });
+
+    // Expand sidebar on post detail page by default, when post has a toc.
+    NexT.motion.middleWares.sidebar = function () {
+      var $tocContent = $('.post-toc-content');
+
+      if (CONFIG.scheme !== 'Pisces' && (CONFIG.sidebar.display === 'post' || CONFIG.sidebar.display === 'always')) {
+        if ($tocContent.length > 0 && $tocContent.html().trim().length > 0) {
+          NexT.utils.displaySidebar();
+        }
+      }
+    };
+  });
+</script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=0.5.0"></script>
+
+
+
+  
+
+
+
+  
+
+    <script type="text/javascript">
+      var disqus_shortname = 'knarfeh';
+      var disqus_identifier = '2014/03/11/leetcode/Algorithms/leetcode-习题总结/';
+      var disqus_title = 'leetcode-习题总结';
+      var disqus_url = 'http://knarfeh.github.io/2014/03/11/leetcode/Algorithms/leetcode-习题总结/';
+
+      function run_disqus_script(disqus_script){
+        var dsq = document.createElement('script');
+        dsq.type = 'text/javascript';
+        dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/' + disqus_script;
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+      }
+
+      run_disqus_script('count.js');
+      
+        run_disqus_script('embed.js');
+      
+    </script>
+  
+
+
+
+  
+  
+  
+  <script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+      }
+    });
+  </script>
+
+  <script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+      var all = MathJax.Hub.getAllJax(), i;
+      for (i=0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';
+      }
+    });
+  </script>
+
+  
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js"></script>
+    <script type="text/javascript" async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML">
+</script>
+  
+
+
+  
+
+  <script type="text/javascript" src="/js/src/custom.js"></script>
+</body>
+</html>

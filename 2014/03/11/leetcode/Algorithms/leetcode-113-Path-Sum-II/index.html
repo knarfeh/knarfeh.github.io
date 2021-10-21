@@ -65,7 +65,7 @@
 <meta property="og:site_name" content="knarfeh&#39;s logbook">
 <meta property="og:description" content="描述 Given a binary tree and a sum, find all root-to-leaf paths where each path’s sum equals the given sum. Note: A leaf is a node with no children. Example: Given the below binary tree and sum = 22, 12">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-03-05T14:06:09.484Z">
+<meta property="og:updated_time" content="2021-10-17T14:06:26.322Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="leetcode-113-Path-Sum-II">
 <meta name="twitter:description" content="描述 Given a binary tree and a sum, find all root-to-leaf paths where each path’s sum equals the given sum. Note: A leaf is a node with no children. Example: Given the below binary tree and sum = 22, 12">
@@ -272,6 +272,8 @@
 <p>在一颗二叉树中找出所有节点值的和等于 sum 的路径。深度优先遍历。</p>
 <h3 id="解决方案1-Java"><a href="#解决方案1-Java" class="headerlink" title="解决方案1(Java)"></a>解决方案1(Java)</h3><hr>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Definition for a binary tree node.</span></span><br><span class="line"><span class="comment"> * public class TreeNode &#123;</span></span><br><span class="line"><span class="comment"> *     int val;</span></span><br><span class="line"><span class="comment"> *     TreeNode left;</span></span><br><span class="line"><span class="comment"> *     TreeNode right;</span></span><br><span class="line"><span class="comment"> *     TreeNode(int x) &#123; val = x; &#125;</span></span><br><span class="line"><span class="comment"> * &#125;</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="keyword">private</span> List&lt;List&lt;Integer&gt;&gt; result  = <span class="keyword">new</span> LinkedList&lt;List&lt;Integer&gt;&gt;();</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">public</span> List&lt;List&lt;Integer&gt;&gt; pathSum(TreeNode root, <span class="keyword">int</span> sum)&#123;</span><br><span class="line">        List&lt;Integer&gt; equalPath  = <span class="keyword">new</span> LinkedList&lt;Integer&gt;();</span><br><span class="line">        recursion(root, sum, equalPath);</span><br><span class="line">        <span class="keyword">return</span> result;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">recursion</span><span class="params">(TreeNode root, <span class="keyword">int</span> sum, List&lt;Integer&gt; equalPath)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (root == <span class="keyword">null</span>) &#123;</span><br><span class="line">            <span class="keyword">return</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        equalPath.add(<span class="keyword">new</span> Integer(root.val));</span><br><span class="line">        <span class="keyword">if</span> (root.val == sum &amp;&amp; root.left == <span class="keyword">null</span> &amp;&amp; root.right == <span class="keyword">null</span>) &#123;</span><br><span class="line">            result.add(<span class="keyword">new</span> LinkedList(equalPath));</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            recursion(root.left, sum-root.val, equalPath);</span><br><span class="line">            recursion(root.right, sum-root.val, equalPath);</span><br><span class="line">        &#125;</span><br><span class="line">        equalPath.remove(equalPath.size()-<span class="number">1</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="解决方案2（Golang）"><a href="#解决方案2（Golang）" class="headerlink" title="解决方案2（Golang）"></a>解决方案2（Golang）</h3><hr>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line">/**</span><br><span class="line"> * Definition for a binary tree node.</span><br><span class="line"> * type TreeNode struct &#123;</span><br><span class="line"> *     Val int</span><br><span class="line"> *     Left *TreeNode</span><br><span class="line"> *     Right *TreeNode</span><br><span class="line"> * &#125;</span><br><span class="line"> */</span><br><span class="line">func pathSum(root *TreeNode, targetSum int) [][]int &#123;</span><br><span class="line">    result := [][]int&#123;&#125;</span><br><span class="line">    path := []int&#123;&#125;</span><br><span class="line">    dfs(&amp;result, root, path, targetSum)</span><br><span class="line">    return result</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">func dfs(result *[][]int, root *TreeNode, path []int, target int) &#123;</span><br><span class="line">    switch &#123;</span><br><span class="line">    case root == nil:</span><br><span class="line">        return</span><br><span class="line">    case root.Left == nil &amp;&amp; root.Right == nil &amp;&amp; root.Val == target:</span><br><span class="line">        now := make([]int, len(path)+1)</span><br><span class="line">        copy(now, append(path, root.Val))</span><br><span class="line">        *result = append(*result, now)</span><br><span class="line">        return</span><br><span class="line">    &#125;</span><br><span class="line">    path = append(path, root.Val)</span><br><span class="line">    dfs(result, root.Left, path, target-root.Val)</span><br><span class="line">    dfs(result, root.Right, path, target-root.Val)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <h3 id="相关问题"><a href="#相关问题" class="headerlink" title="相关问题"></a>相关问题</h3><hr>
 <ul>
 <li><a href="https://leetcode.com/problems/path-sum/" target="_blank" rel="noopener">(E) Path Sum</a>   </li>
@@ -308,16 +310,16 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2014/03/11/leetcode/Algorithms/leetcode-12-Integer-to-Roman/" rel="next" title="leetcode-12-Integer-to-Roman">
-                <i class="fa fa-chevron-left"></i> leetcode-12-Integer-to-Roman
+              <a href="/2014/03/11/leetcode/Algorithms/leetcode-1008-Construct-Binary-Search-Tree-from-Preorder-Traversal/" rel="next" title="leetcode-1008-Construct-Binary-Search-Tree-from-Preorder-Traversal">
+                <i class="fa fa-chevron-left"></i> leetcode-1008-Construct-Binary-Search-Tree-from-Preorder-Traversal
               </a>
             
           </div>
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2014/03/11/leetcode/Algorithms/leetcode-114-Flatten-Binary-Tree-to-Linked-List/" rel="prev" title="leetcode-114-Flatten-Binary-Tree-to-Linked-List">
-                leetcode-114-Flatten-Binary-Tree-to-Linked-List <i class="fa fa-chevron-right"></i>
+              <a href="/2014/03/11/leetcode/Algorithms/leetcode-59-Spiral-Matrix-II/" rel="prev" title="leetcode-59-Spiral-Matrix-II">
+                leetcode-59-Spiral-Matrix-II <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -391,7 +393,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">390</span>
+              <span class="site-state-item-count">401</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -401,7 +403,7 @@
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">187</span>
+                <span class="site-state-item-count">206</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
@@ -458,7 +460,7 @@
               
             
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#描述"><span class="nav-number">1.</span> <span class="nav-text">描述</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#分析"><span class="nav-number">2.</span> <span class="nav-text">分析</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#解决方案1-Java"><span class="nav-number">3.</span> <span class="nav-text">解决方案1(Java)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#相关问题"><span class="nav-number">4.</span> <span class="nav-text">相关问题</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#题目来源"><span class="nav-number">5.</span> <span class="nav-text">题目来源</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#描述"><span class="nav-number">1.</span> <span class="nav-text">描述</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#分析"><span class="nav-number">2.</span> <span class="nav-text">分析</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#解决方案1-Java"><span class="nav-number">3.</span> <span class="nav-text">解决方案1(Java)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#解决方案2（Golang）"><span class="nav-number">4.</span> <span class="nav-text">解决方案2（Golang）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#相关问题"><span class="nav-number">5.</span> <span class="nav-text">相关问题</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#题目来源"><span class="nav-number">6.</span> <span class="nav-text">题目来源</span></a></li></ol></div>
             
           </div>
           <div class="post-toc-indicator-bottom post-toc-indicator">

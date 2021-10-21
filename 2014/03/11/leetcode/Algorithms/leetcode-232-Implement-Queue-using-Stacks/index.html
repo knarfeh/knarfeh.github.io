@@ -60,14 +60,14 @@
 <meta name="description" content="描述 Implement the following operations of a queue using stacks. push(x) – Push element x to the back of queue.pop() – Removes the element from in front of queue.peek() – Get the front element.empty() –">
 <meta name="keywords" content="Design,algorithms,leetcode,review,stack,queues">
 <meta property="og:type" content="article">
-<meta property="og:title" content="leetcode-225-Implement-Queue-using-Stacks">
+<meta property="og:title" content="leetcode-232-Implement-Queue-using-Stacks">
 <meta property="og:url" content="http://knarfeh.github.io/2014/03/11/leetcode/Algorithms/leetcode-232-Implement-Queue-using-Stacks/index.html">
 <meta property="og:site_name" content="knarfeh&#39;s logbook">
 <meta property="og:description" content="描述 Implement the following operations of a queue using stacks. push(x) – Push element x to the back of queue.pop() – Removes the element from in front of queue.peek() – Get the front element.empty() –">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-03-14T12:07:59.919Z">
+<meta property="og:updated_time" content="2021-10-20T13:17:34.323Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="leetcode-225-Implement-Queue-using-Stacks">
+<meta name="twitter:title" content="leetcode-232-Implement-Queue-using-Stacks">
 <meta name="twitter:description" content="描述 Implement the following operations of a queue using stacks. push(x) – Push element x to the back of queue.pop() – Removes the element from in front of queue.peek() – Get the front element.empty() –">
 
 
@@ -86,7 +86,7 @@
   };
 </script>
 
-  <title> leetcode-225-Implement-Queue-using-Stacks | knarfeh's logbook </title>
+  <title> leetcode-232-Implement-Queue-using-Stacks | knarfeh's logbook </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -213,7 +213,7 @@
             
             
               
-                leetcode-225-Implement-Queue-using-Stacks
+                leetcode-232-Implement-Queue-using-Stacks
               
             
           </h1>
@@ -264,11 +264,15 @@
 <p>push(x) – Push element x to the back of queue.<br>pop() – Removes the element from in front of queue.<br>peek() – Get the front element.<br>empty() – Return whether the queue is empty.</p>
 <a id="more"></a>
 <h3 id="分析"><a href="#分析" class="headerlink" title="分析"></a>分析</h3><hr>
-<p>用堆栈实现队列，与<a href="TODO:建立自己讲解的链接索引" target="_blank" rel="noopener">leetcode-225-Implement-Stack-using-Queues</a>类似。这里的思路是用两个队列(s1, s2)来模拟堆栈的操作。这个问题可以抽象为要取一杯子饼干杯底的那块，我们可以这杯饼干倒入到一个空杯中。push(x)操作，用stack的push即可，empty()操作，当s1,s2都是empty()，队列即是empty()，peek函数的含义是取得队首的元素（即杯底），如果s2中有元素，那么就取出，没有，就执行一次「倒空杯」操作。</p>
-<h3 id="解决方案（C-）"><a href="#解决方案（C-）" class="headerlink" title="解决方案（C++）"></a>解决方案（C++）</h3><hr>
+<p>用堆栈实现队列，与<a href="TODO:建立自己讲解的链接索引" target="_blank" rel="noopener">leetcode-225-Implement-Stack-using-Queues</a>类似。这里的思路是用两个队列(s1, s2)来模拟堆栈的操作。这个问题可以抽象为要取一杯子饼干杯底的那块，我们可以将这杯饼干倒入到一个空杯中。push(x)操作，用stack的push即可，empty()操作，当s1,s2都是empty()，队列即是empty()，peek函数的含义是取得队首的元素（即杯底），如果s2中有元素，那么就取出，没有，就执行一次「倒空杯」操作。</p>
+<h3 id="解决方案1（C-）"><a href="#解决方案1（C-）" class="headerlink" title="解决方案1（C++）"></a>解决方案1（C++）</h3><hr>
 <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Queue</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="comment">// Push element x to the back of queue.</span></span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">push</span><span class="params">(<span class="keyword">int</span> x)</span> </span>&#123;</span><br><span class="line">        s1.push(x);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// Removes the element from in front of queue.</span></span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">pop</span><span class="params">(<span class="keyword">void</span>)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>-&gt;peek();</span><br><span class="line">        <span class="keyword">return</span> s2.pop();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// Get the front element.</span></span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">peek</span><span class="params">(<span class="keyword">void</span>)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(!s2.empty()) <span class="keyword">return</span> s2.top();</span><br><span class="line">        <span class="keyword">while</span>(!s1.empty())&#123;</span><br><span class="line">            <span class="keyword">int</span> temp = s1.top();</span><br><span class="line">            s2.push(temp);</span><br><span class="line">            s1.pop();</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> s2.top();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// Return whether the queue is empty.</span></span><br><span class="line">    <span class="function"><span class="keyword">bool</span> <span class="title">empty</span><span class="params">(<span class="keyword">void</span>)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> s1.empty() &amp;&amp; s2.empty();</span><br><span class="line">    &#125;</span><br><span class="line"><span class="keyword">private</span>:</span><br><span class="line">    <span class="built_in">stack</span>&lt;<span class="keyword">int</span>&gt; s1, s2;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<h3 id="解决方案2（Golang）"><a href="#解决方案2（Golang）" class="headerlink" title="解决方案2（Golang）"></a>解决方案2（Golang）</h3><hr>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> <span class="string">"container/list"</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">type</span> MyQueue <span class="keyword">struct</span> &#123;</span><br><span class="line">    Stack1 *list.List</span><br><span class="line">    Stack2 *list.List</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">Constructor</span><span class="params">()</span> <span class="title">MyQueue</span></span> &#123;</span><br><span class="line">    result := MyQueue&#123;&#125;</span><br><span class="line">    result.Stack1 = list.New()</span><br><span class="line">    result.Stack2 = list.New()</span><br><span class="line">    <span class="keyword">return</span> result</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="params">(this *MyQueue)</span> <span class="title">Push</span><span class="params">(x <span class="keyword">int</span>)</span></span>  &#123;</span><br><span class="line">    this.Stack1.PushBack(x)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="params">(this *MyQueue)</span> <span class="title">Pop</span><span class="params">()</span> <span class="title">int</span></span> &#123;</span><br><span class="line">    this.Peek()</span><br><span class="line">    result := this.Stack2.Back()</span><br><span class="line">    this.Stack2.Remove(result)</span><br><span class="line">    intResult, _ := result.Value.(<span class="keyword">int</span>)</span><br><span class="line">    <span class="keyword">return</span> intResult</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="params">(this *MyQueue)</span> <span class="title">Peek</span><span class="params">()</span> <span class="title">int</span></span> &#123;</span><br><span class="line">    <span class="keyword">if</span> this.Stack2.Len() == <span class="number">0</span> &#123;</span><br><span class="line">        <span class="keyword">for</span> this.Stack1.Len() != <span class="number">0</span> &#123;</span><br><span class="line">            now := this.Stack1.Back()</span><br><span class="line">            this.Stack1.Remove(now)</span><br><span class="line">            this.Stack2.PushBack(now.Value.(<span class="keyword">int</span>))</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    result := this.Stack2.Back()</span><br><span class="line">    intResult, _ := result.Value.(<span class="keyword">int</span>)</span><br><span class="line">    <span class="keyword">return</span> intResult</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="params">(this *MyQueue)</span> <span class="title">Empty</span><span class="params">()</span> <span class="title">bool</span></span> &#123;</span><br><span class="line">    <span class="keyword">if</span> this.Stack1.Len() == <span class="number">0</span> &amp;&amp; this.Stack2.Len() == <span class="number">0</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">true</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="literal">false</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Your MyQueue object will be instantiated and called as such:</span></span><br><span class="line"><span class="comment"> * obj := Constructor();</span></span><br><span class="line"><span class="comment"> * obj.Push(x);</span></span><br><span class="line"><span class="comment"> * param_2 := obj.Pop();</span></span><br><span class="line"><span class="comment"> * param_3 := obj.Peek();</span></span><br><span class="line"><span class="comment"> * param_4 := obj.Empty();</span></span><br><span class="line"><span class="comment"> */</span></span><br></pre></td></tr></table></figure>
 <h3 id="相关问题"><a href="#相关问题" class="headerlink" title="相关问题"></a>相关问题</h3><hr>
-<p><a href="https://leetcode.com/problems/implement-stack-using-queues/" target="_blank" rel="noopener">implement-stack-using-queues</a></p>
+<ul>
+<li><a href="https://leetcode.com/problems/implement-stack-using-queues/" target="_blank" rel="noopener">implement-stack-using-queues</a></li>
+</ul>
 <h3 id="题目来源"><a href="#题目来源" class="headerlink" title="题目来源"></a><a href="https://leetcode.com/problems/implement-queue-using-stacks/" target="_blank" rel="noopener">题目来源</a></h3>
       
     </div>
@@ -302,16 +306,16 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2014/03/11/leetcode/Algorithms/leetcode-231-Power-of-Two/" rel="next" title="leetcode-231-Power-of-Two">
-                <i class="fa fa-chevron-left"></i> leetcode-231-Power-of-Two
+              <a href="/2014/03/11/leetcode/Algorithms/leetcode-217-Contains-Duplicate/" rel="next" title="leetcode-217-Contains-Duplicate">
+                <i class="fa fa-chevron-left"></i> leetcode-217-Contains-Duplicate
               </a>
             
           </div>
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2014/03/11/leetcode/Algorithms/leetcode-227-Basic-Calculator-II/" rel="prev" title="leetcode-227-Basic-Calculator-II">
-                leetcode-227-Basic-Calculator-II <i class="fa fa-chevron-right"></i>
+              <a href="/2014/03/11/leetcode/Algorithms/leetcode-231-Power-of-Two/" rel="prev" title="leetcode-231-Power-of-Two">
+                leetcode-231-Power-of-Two <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -385,7 +389,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">390</span>
+              <span class="site-state-item-count">401</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -395,7 +399,7 @@
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">187</span>
+                <span class="site-state-item-count">206</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
@@ -452,7 +456,7 @@
               
             
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#描述"><span class="nav-number">1.</span> <span class="nav-text">描述</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#分析"><span class="nav-number">2.</span> <span class="nav-text">分析</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#解决方案（C-）"><span class="nav-number">3.</span> <span class="nav-text">解决方案（C++）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#相关问题"><span class="nav-number">4.</span> <span class="nav-text">相关问题</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#题目来源"><span class="nav-number">5.</span> <span class="nav-text">题目来源</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#描述"><span class="nav-number">1.</span> <span class="nav-text">描述</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#分析"><span class="nav-number">2.</span> <span class="nav-text">分析</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#解决方案1（C-）"><span class="nav-number">3.</span> <span class="nav-text">解决方案1（C++）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#解决方案2（Golang）"><span class="nav-number">4.</span> <span class="nav-text">解决方案2（Golang）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#相关问题"><span class="nav-number">5.</span> <span class="nav-text">相关问题</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#题目来源"><span class="nav-number">6.</span> <span class="nav-text">题目来源</span></a></li></ol></div>
             
           </div>
           <div class="post-toc-indicator-bottom post-toc-indicator">
@@ -721,7 +725,7 @@
     <script type="text/javascript">
       var disqus_shortname = 'knarfeh';
       var disqus_identifier = '2014/03/11/leetcode/Algorithms/leetcode-232-Implement-Queue-using-Stacks/';
-      var disqus_title = 'leetcode-225-Implement-Queue-using-Stacks';
+      var disqus_title = 'leetcode-232-Implement-Queue-using-Stacks';
       var disqus_url = 'http://knarfeh.github.io/2014/03/11/leetcode/Algorithms/leetcode-232-Implement-Queue-using-Stacks/';
 
       function run_disqus_script(disqus_script){
