@@ -65,7 +65,7 @@
 <meta property="og:site_name" content="knarfeh&#39;s logbook">
 <meta property="og:description" content="描述 A sentence S is given, composed of words separated by spaces. Each word consists of lowercase and uppercase letters only. We would like to convert the sentence to “Goat Latin” (a made-up language s">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-03-18T13:08:01.756Z">
+<meta property="og:updated_time" content="2021-10-23T03:16:35.370Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="leetcode-824-Goat-Latin">
 <meta name="twitter:description" content="描述 A sentence S is given, composed of words separated by spaces. Each word consists of lowercase and uppercase letters only. We would like to convert the sentence to “Goat Latin” (a made-up language s">
@@ -286,6 +286,8 @@
 <p>按照三种转换规则一个单词一个单词进行处理即可。</p>
 <h3 id="解决方案1-Java"><a href="#解决方案1-Java" class="headerlink" title="解决方案1(Java)"></a>解决方案1(Java)</h3><hr>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">toGoatLatin</span><span class="params">(String S)</span> </span>&#123;</span><br><span class="line">        Set&lt;Character&gt; vowel = <span class="keyword">new</span> HashSet&lt;&gt;();</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">char</span> c: <span class="keyword">new</span> <span class="keyword">char</span>[]&#123;<span class="string">'a'</span>, <span class="string">'e'</span>, <span class="string">'i'</span>, <span class="string">'o'</span>, <span class="string">'u'</span>, <span class="string">'A'</span>, <span class="string">'E'</span>, <span class="string">'I'</span>, <span class="string">'O'</span>, <span class="string">'U'</span>&#125;) &#123;</span><br><span class="line">            vowel.add(c);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">int</span> indexNum = <span class="number">1</span>;</span><br><span class="line">        StringBuilder result = <span class="keyword">new</span> StringBuilder();</span><br><span class="line">        <span class="keyword">for</span> (String word: S.split(<span class="string">"\\s"</span>)) &#123;</span><br><span class="line">            <span class="keyword">char</span> first = word.charAt(<span class="number">0</span>);</span><br><span class="line">            <span class="keyword">if</span> (vowel.contains(first)) &#123;</span><br><span class="line">                result.append(word);</span><br><span class="line">            &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                result.append(word.substring(<span class="number">1</span>));</span><br><span class="line">                result.append(word.substring(<span class="number">0</span>, <span class="number">1</span>));</span><br><span class="line">            &#125;</span><br><span class="line">            result.append(<span class="string">"ma"</span>);</span><br><span class="line">            <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; indexNum; i++) &#123;</span><br><span class="line">                result.append(<span class="string">"a"</span>);</span><br><span class="line">            &#125;</span><br><span class="line">            result.append(<span class="string">" "</span>);</span><br><span class="line">            indexNum++;</span><br><span class="line">        &#125;</span><br><span class="line">        result.deleteCharAt(result.length() - <span class="number">1</span>);</span><br><span class="line">        <span class="keyword">return</span> result.toString();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="解决方案2（Golang）"><a href="#解决方案2（Golang）" class="headerlink" title="解决方案2（Golang）"></a>解决方案2（Golang）</h3><hr>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line">var vowelMap = map[byte]bool &#123;</span><br><span class="line">    &apos;a&apos;: true,</span><br><span class="line">	&apos;e&apos;: true,</span><br><span class="line">	&apos;i&apos;: true,</span><br><span class="line">	&apos;o&apos;: true,</span><br><span class="line">	&apos;u&apos;: true,</span><br><span class="line">	&apos;A&apos;: true,</span><br><span class="line">	&apos;E&apos;: true,</span><br><span class="line">	&apos;I&apos;: true,</span><br><span class="line">	&apos;O&apos;: true,</span><br><span class="line">	&apos;U&apos;: true,</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">func toGoatLatin(sentence string) string &#123;</span><br><span class="line">    sentenceSlice := strings.Split(sentence, &quot; &quot;)</span><br><span class="line">    result := make([]string, len(sentenceSlice))</span><br><span class="line">    </span><br><span class="line">    i := 0</span><br><span class="line">    for _, word := range sentenceSlice &#123;</span><br><span class="line">        now := []byte(word)</span><br><span class="line">        if _, ok := vowelMap[now[0]]; ok &#123;</span><br><span class="line">            result[i] = word + &quot;ma&quot;</span><br><span class="line">        &#125; else &#123;</span><br><span class="line">            result[i] = word[1:] + word[0:1] + &quot;ma&quot;</span><br><span class="line">        &#125;</span><br><span class="line">        result[i] = result[i] + strings.Repeat(&quot;a&quot;, i+1)</span><br><span class="line">        i++</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    return strings.Join(result, &quot; &quot;)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <h3 id="题目来源"><a href="#题目来源" class="headerlink" title="题目来源"></a><a href="https://leetcode.com/problems/goat-latin/description/" target="_blank" rel="noopener">题目来源</a></h3>
       
     </div>
@@ -313,16 +315,16 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2014/03/11/leetcode/Algorithms/leetcode-83-Remove-Duplicates-from-Sorted-List/" rel="next" title="leetcode-83-Remove-Duplicates-from-Sorted-List">
-                <i class="fa fa-chevron-left"></i> leetcode-83-Remove-Duplicates-from-Sorted-List
+              <a href="/2014/03/11/leetcode/Algorithms/leetcode-830-Positions-of-Large-Groups/" rel="next" title="leetcode-830-Positions-of-Large-Groups">
+                <i class="fa fa-chevron-left"></i> leetcode-830-Positions-of-Large-Groups
               </a>
             
           </div>
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2014/03/11/leetcode/Algorithms/leetcode-821-Shortest-Distance-to-a-Character/" rel="prev" title="leetcode-821-Shortest-Distance-to-a-Character">
-                leetcode-821-Shortest-Distance-to-a-Character <i class="fa fa-chevron-right"></i>
+              <a href="/2014/03/11/leetcode/Algorithms/leetcode-817-Linked-List-Components/" rel="prev" title="leetcode-817-Linked-List-Components">
+                leetcode-817-Linked-List-Components <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -396,7 +398,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">401</span>
+              <span class="site-state-item-count">404</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -406,7 +408,7 @@
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">206</span>
+                <span class="site-state-item-count">207</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
@@ -463,7 +465,7 @@
               
             
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#描述"><span class="nav-number">1.</span> <span class="nav-text">描述</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#分析"><span class="nav-number">2.</span> <span class="nav-text">分析</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#解决方案1-Java"><span class="nav-number">3.</span> <span class="nav-text">解决方案1(Java)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#题目来源"><span class="nav-number">4.</span> <span class="nav-text">题目来源</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#描述"><span class="nav-number">1.</span> <span class="nav-text">描述</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#分析"><span class="nav-number">2.</span> <span class="nav-text">分析</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#解决方案1-Java"><span class="nav-number">3.</span> <span class="nav-text">解决方案1(Java)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#解决方案2（Golang）"><span class="nav-number">4.</span> <span class="nav-text">解决方案2（Golang）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#题目来源"><span class="nav-number">5.</span> <span class="nav-text">题目来源</span></a></li></ol></div>
             
           </div>
           <div class="post-toc-indicator-bottom post-toc-indicator">
