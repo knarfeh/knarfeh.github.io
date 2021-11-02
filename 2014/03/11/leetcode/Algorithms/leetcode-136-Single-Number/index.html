@@ -65,7 +65,7 @@
 <meta property="og:site_name" content="knarfeh&#39;s logbook">
 <meta property="og:description" content="描述 Given an array of integers, every element appears twice except for one. Find that single one. Note:Your algorithm should have a linear runtime complexity. Could you implement it without using extra">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2021-10-18T09:22:56.528Z">
+<meta property="og:updated_time" content="2021-11-02T12:37:22.529Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="leetcode-136-Single-Number">
 <meta name="twitter:description" content="描述 Given an array of integers, every element appears twice except for one. Find that single one. Note:Your algorithm should have a linear runtime complexity. Could you implement it without using extra">
@@ -265,6 +265,8 @@
 <a id="more"></a>
 <h3 id="分析"><a href="#分析" class="headerlink" title="分析"></a>分析</h3><hr>
 <p>题意是有一堆元素，基本都是成双成对的，只有一只单身狗，要写一个算法找到这个单身狗。嗯，而且题目要求时间复杂度是线性的，空间复杂度是常数。将所有元素放一起进行异或运算即可</p>
+<h3 id="解决方案1（Python）"><a href="#解决方案1（Python）" class="headerlink" title="解决方案1（Python）"></a>解决方案1（Python）</h3><hr>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">class Solution:</span><br><span class="line">    def singleNumber(self, nums: List[int]) -&gt; int:</span><br><span class="line">        return reduce(lambda x, y: x^y, nums)</span><br></pre></td></tr></table></figure>
 <h3 id="解决方案1-C"><a href="#解决方案1-C" class="headerlink" title="解决方案1(C++)"></a>解决方案1(C++)</h3><hr>
 <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">singleNumber</span><span class="params">(<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&amp; nums)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> result = nums[<span class="number">0</span>];</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">1</span>; i &lt; nums.size(); i++) &#123;</span><br><span class="line">            result = result ^ nums[i];</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> result;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
 <h3 id="解决方案2-Java"><a href="#解决方案2-Java" class="headerlink" title="解决方案2(Java)"></a>解决方案2(Java)</h3><hr>
@@ -307,16 +309,16 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2014/03/11/leetcode/Algorithms/leetcode-148-Sort-List/" rel="next" title="leetcode-148-Sort-List">
-                <i class="fa fa-chevron-left"></i> leetcode-148-Sort-List
+              <a href="/2014/03/11/leetcode/Algorithms/leetcode-144-Binary-Tree-Preorder-Traversal/" rel="next" title="leetcode-144-Binary-Tree-Preorder-Traversal">
+                <i class="fa fa-chevron-left"></i> leetcode-144-Binary-Tree-Preorder-Traversal
               </a>
             
           </div>
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2014/03/11/leetcode/Algorithms/leetcode-16-3Sum-Closest/" rel="prev" title="leetcode-16-3Sum-Closest">
-                leetcode-16-3Sum-Closest <i class="fa fa-chevron-right"></i>
+              <a href="/2014/03/11/leetcode/Algorithms/leetcode-142-Linked-List-Cycle-II/" rel="prev" title="leetcode-142-Linked-List-Cycle-II">
+                leetcode-142-Linked-List-Cycle-II <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -390,7 +392,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">404</span>
+              <span class="site-state-item-count">415</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -457,7 +459,7 @@
               
             
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#描述"><span class="nav-number">1.</span> <span class="nav-text">描述</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#分析"><span class="nav-number">2.</span> <span class="nav-text">分析</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#解决方案1-C"><span class="nav-number">3.</span> <span class="nav-text">解决方案1(C++)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#解决方案2-Java"><span class="nav-number">4.</span> <span class="nav-text">解决方案2(Java)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#解决方案3（Golang）"><span class="nav-number">5.</span> <span class="nav-text">解决方案3（Golang）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#相关问题"><span class="nav-number">6.</span> <span class="nav-text">相关问题</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#题目来源"><span class="nav-number">7.</span> <span class="nav-text">题目来源</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#描述"><span class="nav-number">1.</span> <span class="nav-text">描述</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#分析"><span class="nav-number">2.</span> <span class="nav-text">分析</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#解决方案1（Python）"><span class="nav-number">3.</span> <span class="nav-text">解决方案1（Python）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#解决方案1-C"><span class="nav-number">4.</span> <span class="nav-text">解决方案1(C++)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#解决方案2-Java"><span class="nav-number">5.</span> <span class="nav-text">解决方案2(Java)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#解决方案3（Golang）"><span class="nav-number">6.</span> <span class="nav-text">解决方案3（Golang）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#相关问题"><span class="nav-number">7.</span> <span class="nav-text">相关问题</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#题目来源"><span class="nav-number">8.</span> <span class="nav-text">题目来源</span></a></li></ol></div>
             
           </div>
           <div class="post-toc-indicator-bottom post-toc-indicator">

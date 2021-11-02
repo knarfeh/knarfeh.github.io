@@ -65,7 +65,7 @@
 <meta property="og:site_name" content="knarfeh&#39;s logbook">
 <meta property="og:description" content="描述 Write a function to find the longest common prefix string amongst an array of strings. If there is no common prefix, return an empty string &amp;quot;&amp;quot;. Example 1: 12Input: [&amp;quot;flower&amp;quot;,&amp;qu">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2021-10-20T16:21:37.798Z">
+<meta property="og:updated_time" content="2021-10-31T05:41:24.543Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="leetcode-14-Longest-Common-Prefix">
 <meta name="twitter:description" content="描述 Write a function to find the longest common prefix string amongst an array of strings. If there is no common prefix, return an empty string &amp;quot;&amp;quot;. Example 1: 12Input: [&amp;quot;flower&amp;quot;,&amp;qu">
@@ -270,6 +270,8 @@
 <p>All given inputs are in lowercase letters <code>a-z</code>.</p>
 <a id="more"></a>
 <h3 id="分析"><a href="#分析" class="headerlink" title="分析"></a>分析</h3><p>题意是有一堆字符串，求这些字符串中的最长公共前缀，可以将第一个字符串作为操作对象，比较第 n 个字符，只要出现一个字符串的第 n 个字符不等于第一个字符串的第 n 个字符，就返回第一个字符串的 0~n-1 子串。</p>
+<h3 id="解决方案1（Python）"><a href="#解决方案1（Python）" class="headerlink" title="解决方案1（Python）"></a>解决方案1（Python）</h3><hr>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">class Solution:</span><br><span class="line">    def longestCommonPrefix(self, strs: List[str]) -&gt; str:</span><br><span class="line">        if not strs:</span><br><span class="line">            return &quot;&quot;</span><br><span class="line">        </span><br><span class="line">        length, count = len(strs[0]), len(strs)</span><br><span class="line">        </span><br><span class="line">        for i in range(length):</span><br><span class="line">            nowCh = strs[0][i]</span><br><span class="line">            if any(i == len(strs[j]) or strs[j][i] != nowCh for j in range(1, count)):</span><br><span class="line">                return strs[0][:i]</span><br><span class="line">        return strs[0]</span><br></pre></td></tr></table></figure>
 <h3 id="解决方案1-C"><a href="#解决方案1-C" class="headerlink" title="解决方案1(C++)"></a>解决方案1(C++)</h3><hr>
 <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="built_in">string</span> <span class="title">longestCommonPrefix</span><span class="params">(<span class="built_in">vector</span>&lt;<span class="built_in">string</span>&gt;&amp; strs)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(strs.empty()) &#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="string">""</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; strs[<span class="number">0</span>].size(); i++) &#123;</span><br><span class="line">            <span class="keyword">for</span>(<span class="keyword">int</span> j = <span class="number">1</span>; j &lt; strs.size(); j++) &#123;</span><br><span class="line">                <span class="keyword">if</span>(strs[<span class="number">0</span>][i] != strs[j][i]) &#123;</span><br><span class="line">                    <span class="keyword">return</span> strs[<span class="number">0</span>].substr(<span class="number">0</span>, i);</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> strs[<span class="number">0</span>];</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
 <h3 id="解决方案2-Rust"><a href="#解决方案2-Rust" class="headerlink" title="解决方案2(Rust)"></a>解决方案2(Rust)</h3><hr>
@@ -303,16 +305,16 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2014/03/11/leetcode/Algorithms/leetcode-145-Binary-Tree-Postorder-Traversal/" rel="next" title="leetcode-145-Binary-Tree-Postorder-Traversal">
-                <i class="fa fa-chevron-left"></i> leetcode-145-Binary-Tree-Postorder-Traversal
+              <a href="/2014/03/11/leetcode/Algorithms/leetcode-141-Linked-List-Cycle/" rel="next" title="leetcode-141-Linked-List-Cycle">
+                <i class="fa fa-chevron-left"></i> leetcode-141-Linked-List-Cycle
               </a>
             
           </div>
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2014/03/11/leetcode/Algorithms/leetcode-124-Binary-Tree-Maximum-Path-Sum/" rel="prev" title="leetcode-124-Binary-Tree-Maximum-Path-Sum">
-                leetcode-124-Binary-Tree-Maximum-Path-Sum <i class="fa fa-chevron-right"></i>
+              <a href="/2014/03/11/leetcode/Algorithms/leetcode-13-Roman-to-Integer/" rel="prev" title="leetcode-13-Roman-to-Integer">
+                leetcode-13-Roman-to-Integer <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -386,7 +388,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">404</span>
+              <span class="site-state-item-count">415</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -453,7 +455,7 @@
               
             
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#描述"><span class="nav-number">1.</span> <span class="nav-text">描述</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#分析"><span class="nav-number">2.</span> <span class="nav-text">分析</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#解决方案1-C"><span class="nav-number">3.</span> <span class="nav-text">解决方案1(C++)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#解决方案2-Rust"><span class="nav-number">4.</span> <span class="nav-text">解决方案2(Rust)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#解决方案3（Golang）"><span class="nav-number">5.</span> <span class="nav-text">解决方案3（Golang）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#题目来源"><span class="nav-number">6.</span> <span class="nav-text">题目来源</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#描述"><span class="nav-number">1.</span> <span class="nav-text">描述</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#分析"><span class="nav-number">2.</span> <span class="nav-text">分析</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#解决方案1（Python）"><span class="nav-number">3.</span> <span class="nav-text">解决方案1（Python）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#解决方案1-C"><span class="nav-number">4.</span> <span class="nav-text">解决方案1(C++)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#解决方案2-Rust"><span class="nav-number">5.</span> <span class="nav-text">解决方案2(Rust)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#解决方案3（Golang）"><span class="nav-number">6.</span> <span class="nav-text">解决方案3（Golang）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#题目来源"><span class="nav-number">7.</span> <span class="nav-text">题目来源</span></a></li></ol></div>
             
           </div>
           <div class="post-toc-indicator-bottom post-toc-indicator">

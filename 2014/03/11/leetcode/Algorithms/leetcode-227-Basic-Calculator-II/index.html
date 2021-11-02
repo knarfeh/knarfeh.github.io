@@ -65,7 +65,7 @@
 <meta property="og:site_name" content="knarfeh&#39;s logbook">
 <meta property="og:description" content="描述 Given a string s which represents an expression, evaluate this expression and return its value.  The integer division should truncate toward zero. Note: You are not allowed to use any built-in func">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2021-10-10T03:26:03.265Z">
+<meta property="og:updated_time" content="2021-10-31T16:07:42.509Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="leetcode-227-Basic-Calculator-II">
 <meta name="twitter:description" content="描述 Given a string s which represents an expression, evaluate this expression and return its value.  The integer division should truncate toward zero. Note: You are not allowed to use any built-in func">
@@ -280,7 +280,9 @@
 <a id="more"></a>
 <h3 id="分析"><a href="#分析" class="headerlink" title="分析"></a>分析</h3><hr>
 <p>解析字符串表达式，实现一个基础的计算器。利用栈实现。</p>
-<h3 id="解决方案1-Golang"><a href="#解决方案1-Golang" class="headerlink" title="解决方案1(Golang)"></a>解决方案1(Golang)</h3><hr>
+<h3 id="解决方案1（Python）"><a href="#解决方案1（Python）" class="headerlink" title="解决方案1（Python）"></a>解决方案1（Python）</h3><hr>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">class Solution:</span><br><span class="line">    def calculate(self, s: str) -&gt; int:</span><br><span class="line">        sLen = len(s)</span><br><span class="line">        stack = []</span><br><span class="line">        preSign = &quot;+&quot;</span><br><span class="line">        num = 0</span><br><span class="line">        </span><br><span class="line">        for i in range(sLen):</span><br><span class="line">            if s[i] != &apos; &apos; and s[i].isdigit():</span><br><span class="line">                num = num * 10 + ord(s[i]) - ord(&apos;0&apos;)</span><br><span class="line">            if i == sLen-1 or s[i] in &apos;+-*/&apos;:</span><br><span class="line">                if preSign == &quot;+&quot;:</span><br><span class="line">                    stack.append(num)</span><br><span class="line">                elif preSign == &quot;-&quot;:</span><br><span class="line">                    stack.append(-num)</span><br><span class="line">                elif preSign == &quot;*&quot;:</span><br><span class="line">                    stack.append(stack.pop() * num)</span><br><span class="line">                else:</span><br><span class="line">                    stack.append(int(stack.pop() / num))</span><br><span class="line">                preSign = s[i]</span><br><span class="line">                num = 0</span><br><span class="line">        return sum(stack)</span><br></pre></td></tr></table></figure>
+<h3 id="解决方案2-Golang"><a href="#解决方案2-Golang" class="headerlink" title="解决方案2(Golang)"></a>解决方案2(Golang)</h3><hr>
 <figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">calculate</span><span class="params">(s <span class="keyword">string</span>)</span> <span class="title">int</span></span> &#123;</span><br><span class="line">    stack, preCh, num, result := []<span class="keyword">int</span>&#123;&#125;, <span class="string">'+'</span>, <span class="number">0</span>, <span class="number">0</span></span><br><span class="line">    <span class="keyword">for</span> i, ch := <span class="keyword">range</span> s &#123;</span><br><span class="line">        isDigit := <span class="literal">false</span></span><br><span class="line">        <span class="keyword">if</span> <span class="string">'0'</span> &lt;= ch &amp;&amp; ch &lt;= <span class="string">'9'</span> &#123;</span><br><span class="line">            isDigit = <span class="literal">true</span></span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span> isDigit &#123;</span><br><span class="line">            num = num * <span class="number">10</span> + <span class="keyword">int</span>(ch-<span class="string">'0'</span>)</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span> !isDigit &amp;&amp; ch != <span class="string">' '</span> || i == <span class="built_in">len</span>(s) - <span class="number">1</span> &#123;</span><br><span class="line">            <span class="keyword">switch</span> preCh &#123;</span><br><span class="line">                <span class="keyword">case</span> <span class="string">'+'</span>:</span><br><span class="line">                    stack = <span class="built_in">append</span>(stack, num)</span><br><span class="line">                <span class="keyword">case</span> <span class="string">'-'</span>:</span><br><span class="line">                    stack = <span class="built_in">append</span>(stack, -num)</span><br><span class="line">                <span class="keyword">case</span> <span class="string">'*'</span>:</span><br><span class="line">                    stack[<span class="built_in">len</span>(stack) - <span class="number">1</span>] *= num</span><br><span class="line">                <span class="keyword">default</span>:</span><br><span class="line">                    stack[<span class="built_in">len</span>(stack)<span class="number">-1</span>] /= num  </span><br><span class="line">            &#125;</span><br><span class="line">            preCh = ch</span><br><span class="line">            num = <span class="number">0</span></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">for</span> _, v := <span class="keyword">range</span> stack &#123;</span><br><span class="line">        result += v</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> result</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <h3 id="相关问题"><a href="#相关问题" class="headerlink" title="相关问题"></a>相关问题</h3><hr>
 <ul>
@@ -314,16 +316,16 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2014/03/11/leetcode/Algorithms/leetcode-232-Implement-Queue-using-Stacks/" rel="next" title="leetcode-232-Implement-Queue-using-Stacks">
-                <i class="fa fa-chevron-left"></i> leetcode-232-Implement-Queue-using-Stacks
+              <a href="/2014/03/11/leetcode/Algorithms/leetcode-235-Lowest-Common-Ancestor-of-a-Binary-Search-Tree/" rel="next" title="leetcode-235-Lowest-Common-Ancestor-of-a-Binary-Search-Tree">
+                <i class="fa fa-chevron-left"></i> leetcode-235-Lowest-Common-Ancestor-of-a-Binary-Search-Tree
               </a>
             
           </div>
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2014/03/11/leetcode/Algorithms/leetcode-231-Power-of-Two/" rel="prev" title="leetcode-231-Power-of-Two">
-                leetcode-231-Power-of-Two <i class="fa fa-chevron-right"></i>
+              <a href="/2014/03/11/leetcode/Algorithms/leetcode-230-Kth-Smallest-Element-in-a-BST/" rel="prev" title="leetcode-230-Kth-Smallest-Element-in-a-BST">
+                leetcode-230-Kth-Smallest-Element-in-a-BST <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -397,7 +399,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">404</span>
+              <span class="site-state-item-count">415</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -464,7 +466,7 @@
               
             
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#描述"><span class="nav-number">1.</span> <span class="nav-text">描述</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#分析"><span class="nav-number">2.</span> <span class="nav-text">分析</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#解决方案1-Golang"><span class="nav-number">3.</span> <span class="nav-text">解决方案1(Golang)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#相关问题"><span class="nav-number">4.</span> <span class="nav-text">相关问题</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#题目来源"><span class="nav-number">5.</span> <span class="nav-text">题目来源</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#描述"><span class="nav-number">1.</span> <span class="nav-text">描述</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#分析"><span class="nav-number">2.</span> <span class="nav-text">分析</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#解决方案1（Python）"><span class="nav-number">3.</span> <span class="nav-text">解决方案1（Python）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#解决方案2-Golang"><span class="nav-number">4.</span> <span class="nav-text">解决方案2(Golang)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#相关问题"><span class="nav-number">5.</span> <span class="nav-text">相关问题</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#题目来源"><span class="nav-number">6.</span> <span class="nav-text">题目来源</span></a></li></ol></div>
             
           </div>
           <div class="post-toc-indicator-bottom post-toc-indicator">

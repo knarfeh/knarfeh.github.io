@@ -41,7 +41,7 @@
 <link href="/css/main.css?v=0.5.0" rel="stylesheet" type="text/css">
 
 
-  <meta name="keywords" content="algorithms,leetcode,Array,Dynamic-Programming,Divide-and-Conquer,">
+  <meta name="keywords" content="algorithms,leetcode,Dynamic-Programming,Array,Divide-and-Conquer,">
 
 
 
@@ -58,14 +58,14 @@
 
 
 <meta name="description" content="描述 Find the contiguous subarray within an array (containing at least one number) which has the largest sum. For example, given the array [-2,1,-3,4,-1,2,1,-5,4],the contiguous subarray [4,-1,2,1] has">
-<meta name="keywords" content="algorithms,leetcode,Array,Dynamic-Programming,Divide-and-Conquer">
+<meta name="keywords" content="algorithms,leetcode,Dynamic-Programming,Array,Divide-and-Conquer">
 <meta property="og:type" content="article">
 <meta property="og:title" content="leetcode-53-Maximum-Subarray">
 <meta property="og:url" content="http://knarfeh.github.io/2014/03/11/leetcode/Algorithms/leetcode-53-Maximum-Subarray/index.html">
 <meta property="og:site_name" content="knarfeh&#39;s logbook">
 <meta property="og:description" content="描述 Find the contiguous subarray within an array (containing at least one number) which has the largest sum. For example, given the array [-2,1,-3,4,-1,2,1,-5,4],the contiguous subarray [4,-1,2,1] has">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2021-10-10T09:29:02.572Z">
+<meta property="og:updated_time" content="2021-10-30T07:34:28.098Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="leetcode-53-Maximum-Subarray">
 <meta name="twitter:description" content="描述 Find the contiguous subarray within an array (containing at least one number) which has the largest sum. For example, given the array [-2,1,-3,4,-1,2,1,-5,4],the contiguous subarray [4,-1,2,1] has">
@@ -266,10 +266,10 @@
 <h3 id="分析"><a href="#分析" class="headerlink" title="分析"></a>分析</h3><p>求最大子序列和，非常经典的动态规划问题。首先，如果这个数组只有1个值，显而易见结果就是这个唯一的值 s[0]，如果是2个值，那么我们将考虑第2个值是否对结果有利，如果第1个值和第2个值相加是大于第2个值的，那么整个数组的最大值就是 s[0]+s[1]，否则就是 s[1]，以此类推，如果数组里的第 n 个值对之前的结果是有利的，那么我们把它加进来，从 1 到 n 这个数组的最大子序列和就是 f(n-1) + s[n]，否则，1 到 n 这个数组的最大子序列和是 s[n]。依靠这些条件我们可以得到状态转移方程：<br>$$<br>f(i) =<br>\begin{cases}<br>s[0], &amp; (i=0) \\<br>max(f(i-1)+s[i], s[i]), &amp; (1 \le i \le n)<br>\end{cases}<br>$$</p>
 <p>$$<br>result = max(f(i)), 0 \le i \le n<br>$$</p>
 <hr>
-<h3 id="解决方案1-C"><a href="#解决方案1-C" class="headerlink" title="解决方案1(C++)"></a>解决方案1(C++)</h3><hr>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">maxSubArray</span><span class="params">(<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&amp; nums)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> result = INT_MIN, f = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i=<span class="number">0</span>; i &lt; nums.size(); i++) &#123;</span><br><span class="line">            f = max(f+nums[i], nums[i]);</span><br><span class="line">            result = max(result, f);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> result;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-<h3 id="解决方案2-Python"><a href="#解决方案2-Python" class="headerlink" title="解决方案2(Python)"></a>解决方案2(Python)</h3><hr>
+<h3 id="解决方案1-Python"><a href="#解决方案1-Python" class="headerlink" title="解决方案1(Python)"></a>解决方案1(Python)</h3><hr>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span><span class="params">(object)</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">maxSubArray</span><span class="params">(self, nums)</span>:</span></span><br><span class="line">        <span class="string">"""</span></span><br><span class="line"><span class="string">        :type nums: List[int]</span></span><br><span class="line"><span class="string">        :rtype: int</span></span><br><span class="line"><span class="string">        """</span></span><br><span class="line">        result = nums[<span class="number">0</span>]</span><br><span class="line">        f = <span class="number">0</span></span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> range(len(nums)):</span><br><span class="line">            f = max(f+nums[i], nums[i])</span><br><span class="line">            result = max(result, f)</span><br><span class="line">            </span><br><span class="line">        <span class="keyword">return</span> result</span><br></pre></td></tr></table></figure>
+<h3 id="解决方案2-C"><a href="#解决方案2-C" class="headerlink" title="解决方案2(C++)"></a>解决方案2(C++)</h3><hr>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">maxSubArray</span><span class="params">(<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&amp; nums)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> result = INT_MIN, f = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i=<span class="number">0</span>; i &lt; nums.size(); i++) &#123;</span><br><span class="line">            f = max(f+nums[i], nums[i]);</span><br><span class="line">            result = max(result, f);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> result;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
 <h3 id="解决方案3（Golang）"><a href="#解决方案3（Golang）" class="headerlink" title="解决方案3（Golang）"></a>解决方案3（Golang）</h3><hr>
 <figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">maxSubArray</span><span class="params">(nums []<span class="keyword">int</span>)</span> <span class="title">int</span></span> &#123;</span><br><span class="line">    <span class="keyword">if</span> <span class="built_in">len</span>(nums) == <span class="number">1</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> nums[<span class="number">0</span>]</span><br><span class="line">    &#125;   </span><br><span class="line">    dp := <span class="built_in">make</span>([]<span class="keyword">int</span>, <span class="built_in">len</span>(nums))</span><br><span class="line">    dp[<span class="number">0</span>] = nums[<span class="number">0</span>]</span><br><span class="line">    result := dp[<span class="number">0</span>]</span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span> i := <span class="number">1</span>; i &lt; <span class="built_in">len</span>(nums); i++ &#123;</span><br><span class="line">        <span class="keyword">if</span> nums[i] + dp[i<span class="number">-1</span>] &gt; nums[i] &#123;</span><br><span class="line">            dp[i] = nums[i] + dp[i<span class="number">-1</span>]</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            dp[i] = nums[i]</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span> dp[i] &gt; result &#123;</span><br><span class="line">            result = dp[i]</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> result</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <h3 id="相关问题"><a href="#相关问题" class="headerlink" title="相关问题"></a>相关问题</h3><hr>
@@ -295,9 +295,9 @@
           
             <a href="/tags/leetcode/" rel="tag">#leetcode</a>
           
-            <a href="/tags/Array/" rel="tag">#Array</a>
-          
             <a href="/tags/Dynamic-Programming/" rel="tag">#Dynamic-Programming</a>
+          
+            <a href="/tags/Array/" rel="tag">#Array</a>
           
             <a href="/tags/Divide-and-Conquer/" rel="tag">#Divide-and-Conquer</a>
           
@@ -308,16 +308,16 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2014/03/11/leetcode/Algorithms/leetcode-530-Minimum-Absolute-Difference-in-BST/" rel="next" title="leetcode-530-Minimum-Absolute-Difference-in-BST">
-                <i class="fa fa-chevron-left"></i> leetcode-530-Minimum-Absolute-Difference-in-BST
+              <a href="/2014/03/11/leetcode/Algorithms/leetcode-535-Encode-and-Decode-TinyURL/" rel="next" title="leetcode-535-Encode-and-Decode-TinyURL">
+                <i class="fa fa-chevron-left"></i> leetcode-535-Encode-and-Decode-TinyURL
               </a>
             
           </div>
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2014/03/11/leetcode/Algorithms/leetcode-513-Find-Bottom-Left-Tree-Value/" rel="prev" title="leetcode-513-Find-Bottom-Left-Tree-Value">
-                leetcode-513-Find-Bottom-Left-Tree-Value <i class="fa fa-chevron-right"></i>
+              <a href="/2014/03/11/leetcode/Algorithms/leetcode-521-Longest-Uncommon-Subsequence-I/" rel="prev" title="leetcode-521-Longest-Uncommon-Subsequence-I">
+                leetcode-521-Longest-Uncommon-Subsequence-I <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -391,7 +391,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">404</span>
+              <span class="site-state-item-count">415</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -458,7 +458,7 @@
               
             
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#描述"><span class="nav-number">1.</span> <span class="nav-text">描述</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#分析"><span class="nav-number">2.</span> <span class="nav-text">分析</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#解决方案1-C"><span class="nav-number">3.</span> <span class="nav-text">解决方案1(C++)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#解决方案2-Python"><span class="nav-number">4.</span> <span class="nav-text">解决方案2(Python)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#解决方案3（Golang）"><span class="nav-number">5.</span> <span class="nav-text">解决方案3（Golang）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#相关问题"><span class="nav-number">6.</span> <span class="nav-text">相关问题</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#题目来源"><span class="nav-number">7.</span> <span class="nav-text">题目来源</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#描述"><span class="nav-number">1.</span> <span class="nav-text">描述</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#分析"><span class="nav-number">2.</span> <span class="nav-text">分析</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#解决方案1-Python"><span class="nav-number">3.</span> <span class="nav-text">解决方案1(Python)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#解决方案2-C"><span class="nav-number">4.</span> <span class="nav-text">解决方案2(C++)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#解决方案3（Golang）"><span class="nav-number">5.</span> <span class="nav-text">解决方案3（Golang）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#相关问题"><span class="nav-number">6.</span> <span class="nav-text">相关问题</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#题目来源"><span class="nav-number">7.</span> <span class="nav-text">题目来源</span></a></li></ol></div>
             
           </div>
           <div class="post-toc-indicator-bottom post-toc-indicator">

@@ -65,7 +65,7 @@
 <meta property="og:site_name" content="knarfeh&#39;s logbook">
 <meta property="og:description" content="描述 Count the number of prime numbers less than a non-negative number, n. Credits:Special thanks to @mithmatt for adding this problem and creating all test cases.">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-03-08T15:12:47.752Z">
+<meta property="og:updated_time" content="2021-10-31T16:12:20.852Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="leetcode-204-Count-Primes">
 <meta name="twitter:description" content="描述 Count the number of prime numbers less than a non-negative number, n. Credits:Special thanks to @mithmatt for adding this problem and creating all test cases.">
@@ -263,11 +263,15 @@
 <p>Count the number of prime numbers less than a non-negative number, n.</p>
 <p><strong>Credits</strong>:<br>Special thanks to @mithmatt for adding this problem and creating all test cases.<br><a id="more"></a></p>
 <h3 id="分析"><a href="#分析" class="headerlink" title="分析"></a>分析</h3><hr>
-<p>题意是找到小于n的质数的个数，如果是用常规方法判定，肯定会超时，其实可以采用<a href="https://zh.wikipedia.org/wiki/%E5%9F%83%E6%8B%89%E6%89%98%E6%96%AF%E7%89%B9%E5%B0%BC%E7%AD%9B%E6%B3%95" target="_blank" rel="noopener">厄拉托斯特尼筛法</a>，先用2筛选，把2的倍数筛掉，再用下一个质数3，把3的倍数筛掉，接下来是5，把5的倍数筛掉，不断重复，知道$\sqrt{n}$</p>
+<p>题意是找到小于n的质数的个数，如果是用常规方法判定，肯定会超时，其实可以采用<a href="https://zh.wikipedia.org/wiki/%E5%9F%83%E6%8B%89%E6%89%98%E6%96%AF%E7%89%B9%E5%B0%BC%E7%AD%9B%E6%B3%95" target="_blank" rel="noopener">厄拉托斯特尼筛法</a>，先用2筛选，把2的倍数筛掉，再用下一个质数3，把3的倍数筛掉，接下来是5，把5的倍数筛掉，不断重复，直到$\sqrt{n}$</p>
 <h3 id="解决方案1-C"><a href="#解决方案1-C" class="headerlink" title="解决方案1(C++)"></a>解决方案1(C++)</h3><hr>
 <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">countPrimes</span><span class="params">(<span class="keyword">int</span> n)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">bool</span> *result = <span class="keyword">new</span> <span class="keyword">bool</span>[n];</span><br><span class="line">        result[<span class="number">2</span>] = <span class="literal">false</span>;</span><br><span class="line">        <span class="keyword">int</span> count = <span class="number">0</span>;</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">3</span>; i &lt; n; i++) &#123;</span><br><span class="line">            <span class="keyword">if</span>(i % <span class="number">2</span> == <span class="number">0</span>) &#123;</span><br><span class="line">                result[i] = <span class="literal">true</span>;</span><br><span class="line">            &#125;<span class="keyword">else</span> &#123;</span><br><span class="line">                result[i] = <span class="literal">false</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">3</span>; i*i &lt; n; i += <span class="number">2</span>) &#123;</span><br><span class="line">            <span class="keyword">if</span>(!result[i]) &#123;</span><br><span class="line">                <span class="keyword">for</span>(<span class="keyword">int</span> j = <span class="number">2</span>; i*j &lt; n; j++) &#123;</span><br><span class="line">                    result[i*j] = <span class="literal">true</span>;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">2</span>; i &lt; n; i++) &#123;</span><br><span class="line">            <span class="keyword">if</span>(!result[i]) &#123;</span><br><span class="line">                count++;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> count;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
 <h3 id="相关问题"><a href="#相关问题" class="headerlink" title="相关问题"></a>相关问题</h3><hr>
-<p><a href="https://leetcode.com/problems/ugly-number/" target="_blank" rel="noopener">(E) Ugly Number</a><br><a href="https://leetcode.com/problems/perfect-squares/" target="_blank" rel="noopener">(M) Perfect Squares</a><br><a href="https://leetcode.com/problems/ugly-number-ii/" target="_blank" rel="noopener">(M) Ugly Number II</a>   </p>
+<ul>
+<li><a href="https://leetcode.com/problems/ugly-number/" target="_blank" rel="noopener">(E) Ugly Number</a>   </li>
+<li><a href="https://leetcode.com/problems/perfect-squares/" target="_blank" rel="noopener">(M) Perfect Squares</a>   </li>
+<li><a href="https://leetcode.com/problems/ugly-number-ii/" target="_blank" rel="noopener">(M) Ugly Number II</a>   </li>
+</ul>
 <h3 id="题目来源"><a href="#题目来源" class="headerlink" title="题目来源"></a><a href="https://leetcode.com/problems/count-primes/" target="_blank" rel="noopener">题目来源</a></h3>
       
     </div>
@@ -297,16 +301,16 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2014/03/11/leetcode/Algorithms/leetcode-202-Happy-Number/" rel="next" title="leetcode-202-Happy-Number">
-                <i class="fa fa-chevron-left"></i> leetcode-202-Happy-Number
+              <a href="/2014/03/11/leetcode/Algorithms/leetcode-33-Search-in-Rotated-Sorted-Array/" rel="next" title="leetcode-33-Search-in-Rotated-Sorted-Array">
+                <i class="fa fa-chevron-left"></i> leetcode-33-Search-in-Rotated-Sorted-Array
               </a>
             
           </div>
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2014/03/11/leetcode/Algorithms/leetcode-2-Add-Two-Numbers/" rel="prev" title="leetcode-2-Add-Two-Numbers">
-                leetcode-2-Add-Two-Numbers <i class="fa fa-chevron-right"></i>
+              <a href="/2014/03/11/leetcode/Algorithms/leetcode-319-Bulb-Switcher/" rel="prev" title="leetcode-319-Bulb-Switcher">
+                leetcode-319-Bulb-Switcher <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -380,7 +384,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">404</span>
+              <span class="site-state-item-count">415</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>

@@ -65,7 +65,7 @@
 <meta property="og:site_name" content="knarfeh&#39;s logbook">
 <meta property="og:description" content="描述 You are climbing a stair case. It takes n steps to reach to the top. Each time you can either climb 1 or 2 steps. In how many distinct ways can you climb to the top? Subscribe to see which companie">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2021-10-11T06:25:57.167Z">
+<meta property="og:updated_time" content="2021-10-31T05:41:24.571Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="leetcode-70-Climbing-Stairs">
 <meta name="twitter:description" content="描述 You are climbing a stair case. It takes n steps to reach to the top. Each time you can either climb 1 or 2 steps. In how many distinct ways can you climb to the top? Subscribe to see which companie">
@@ -265,9 +265,11 @@
 <p>Subscribe to see which companies asked this question<br><a id="more"></a></p>
 <h3 id="分析"><a href="#分析" class="headerlink" title="分析"></a>分析</h3><hr>
 <p>典型的动态规划题目，一句话说明动态规划这类题目的特点：某个状态总是依赖于前面1个或2个甚至多个状态，可能是前2个状态求最大值，也可能是求和，而边界状态是已知的。比如这题，如果是1阶的楼梯，有1种方式，2阶的楼梯，有2种方式，走到第n阶楼梯，可能是从n-1阶来的，也可能是从n-2阶来的，因此走第n阶可能的方式总数等于走n-1阶的方式总数加走n-2阶的方式总数。</p>
-<h3 id="解决方案1-C"><a href="#解决方案1-C" class="headerlink" title="解决方案1(C++)"></a>解决方案1(C++)</h3><hr>
+<h3 id="解决方案1（python）"><a href="#解决方案1（python）" class="headerlink" title="解决方案1（python）"></a>解决方案1（python）</h3><hr>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">class Solution:</span><br><span class="line">    def climbStairs(self, n: int) -&gt; int:</span><br><span class="line">        dp = &#123;&#125;</span><br><span class="line">        dp[1] = 1</span><br><span class="line">        dp[2] = 2</span><br><span class="line">        for i in range(3, n+1):</span><br><span class="line">            dp[i] = dp[i-1] + dp[i-2]</span><br><span class="line">        return dp[n]</span><br></pre></td></tr></table></figure>
+<h3 id="解决方案2-C"><a href="#解决方案2-C" class="headerlink" title="解决方案2(C++)"></a>解决方案2(C++)</h3><hr>
 <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">climbStairs</span><span class="params">(<span class="keyword">int</span> n)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> p[n] = &#123;<span class="number">0</span>&#125;;</span><br><span class="line">        p[<span class="number">0</span>] = <span class="number">1</span>;</span><br><span class="line">        p[<span class="number">1</span>] = <span class="number">2</span>;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">2</span>; i &lt; n; i++) &#123;</span><br><span class="line">            p[i] = p[i<span class="number">-1</span>] + p[i<span class="number">-2</span>];</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> p[n<span class="number">-1</span>];</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-<h3 id="解决方案2（Golang）"><a href="#解决方案2（Golang）" class="headerlink" title="解决方案2（Golang）"></a>解决方案2（Golang）</h3><hr>
+<h3 id="解决方案3（Golang）"><a href="#解决方案3（Golang）" class="headerlink" title="解决方案3（Golang）"></a>解决方案3（Golang）</h3><hr>
 <figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">climbStairs</span><span class="params">(n <span class="keyword">int</span>)</span> <span class="title">int</span></span> &#123;</span><br><span class="line">    <span class="keyword">if</span> n == <span class="number">1</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="number">1</span></span><br><span class="line">    &#125;</span><br><span class="line">    dp := <span class="built_in">make</span>([]<span class="keyword">int</span>, n+<span class="number">1</span>)</span><br><span class="line">    dp[<span class="number">0</span>] = <span class="number">1</span></span><br><span class="line">    dp[<span class="number">1</span>] = <span class="number">2</span></span><br><span class="line">    <span class="keyword">for</span> i := <span class="number">2</span>; i &lt; n; i++ &#123;</span><br><span class="line">        dp[i] = dp[i<span class="number">-1</span>] + dp[i<span class="number">-2</span>]</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> dp[n<span class="number">-1</span>]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <h3 id="相关问题"><a href="#相关问题" class="headerlink" title="相关问题"></a>相关问题</h3><hr>
 <h3 id="题目来源"><a href="#题目来源" class="headerlink" title="题目来源"></a><a href="https://leetcode.com/problems/climbing-stairs/" target="_blank" rel="noopener">题目来源</a></h3>
@@ -299,16 +301,16 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2014/03/11/leetcode/Algorithms/leetcode-700-Search-in-a-Binary-Search-Tree/" rel="next" title="leetcode-700-Search-in-a-Binary-Search-Tree">
-                <i class="fa fa-chevron-left"></i> leetcode-700-Search-in-a-Binary-Search-Tree
+              <a href="/2014/03/11/leetcode/Algorithms/leetcode-697-Degree-of-an-Array/" rel="next" title="leetcode-697-Degree-of-an-Array">
+                <i class="fa fa-chevron-left"></i> leetcode-697-Degree-of-an-Array
               </a>
             
           </div>
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2014/03/11/leetcode/Algorithms/leetcode-7-Reverse-Integer/" rel="prev" title="leetcode-7-Reverse-Integer">
-                leetcode-7-Reverse-Integer <i class="fa fa-chevron-right"></i>
+              <a href="/2014/03/11/leetcode/Algorithms/leetcode-695-Max-Area-of-Island/" rel="prev" title="leetcode-695-Max-Area-of-Island">
+                leetcode-695-Max-Area-of-Island <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -382,7 +384,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">404</span>
+              <span class="site-state-item-count">415</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -449,7 +451,7 @@
               
             
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#描述"><span class="nav-number">1.</span> <span class="nav-text">描述</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#分析"><span class="nav-number">2.</span> <span class="nav-text">分析</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#解决方案1-C"><span class="nav-number">3.</span> <span class="nav-text">解决方案1(C++)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#解决方案2（Golang）"><span class="nav-number">4.</span> <span class="nav-text">解决方案2（Golang）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#相关问题"><span class="nav-number">5.</span> <span class="nav-text">相关问题</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#题目来源"><span class="nav-number">6.</span> <span class="nav-text">题目来源</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#描述"><span class="nav-number">1.</span> <span class="nav-text">描述</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#分析"><span class="nav-number">2.</span> <span class="nav-text">分析</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#解决方案1（python）"><span class="nav-number">3.</span> <span class="nav-text">解决方案1（python）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#解决方案2-C"><span class="nav-number">4.</span> <span class="nav-text">解决方案2(C++)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#解决方案3（Golang）"><span class="nav-number">5.</span> <span class="nav-text">解决方案3（Golang）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#相关问题"><span class="nav-number">6.</span> <span class="nav-text">相关问题</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#题目来源"><span class="nav-number">7.</span> <span class="nav-text">题目来源</span></a></li></ol></div>
             
           </div>
           <div class="post-toc-indicator-bottom post-toc-indicator">

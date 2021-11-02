@@ -65,7 +65,7 @@
 <meta property="og:site_name" content="knarfeh&#39;s logbook">
 <meta property="og:description" content="描述 Find the kth largest element in an unsorted array. Note that it is the kth largest element in the sorted order, not the kth distinct element. Example 1: 12Input: [3,2,1,5,6,4] and k = 2Output: 5 Ex">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-03-08T15:13:54.110Z">
+<meta property="og:updated_time" content="2021-10-31T05:41:24.558Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="leetcode-215-Kth-Largest-Element-in-an-Array">
 <meta name="twitter:description" content="描述 Find the kth largest element in an unsorted array. Note that it is the kth largest element in the sorted order, not the kth distinct element. Example 1: 12Input: [3,2,1,5,6,4] and k = 2Output: 5 Ex">
@@ -268,6 +268,8 @@
 <p><strong>Note:</strong><br>You may assume k is always valid, 1 ≤ k ≤ array’s length.<br><a id="more"></a></p>
 <h3 id="分析"><a href="#分析" class="headerlink" title="分析"></a>分析</h3><hr>
 <p>和 <a href="https://leetcode.com/problems/kth-smallest-element-in-a-sorted-matrix" target="_blank" rel="noopener">Kth Smallest Element in a Sorted Matrix</a> 这道题类似，可以用优先队列解决，不过那道题用的是最大堆，这道题用的是最小堆，在堆顶的是整个数组中由大到小排列的第 k 个数，它的 k-1 个子节点都比它大。</p>
+<h3 id="解决方案1（Python）"><a href="#解决方案1（Python）" class="headerlink" title="解决方案1（Python）"></a>解决方案1（Python）</h3><hr>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line">class Solution:</span><br><span class="line">    def findKthLargest(self, nums: List[int], k: int) -&gt; int:</span><br><span class="line">        numsLen = len(nums)</span><br><span class="line">        self.buildMaxHeap(nums)</span><br><span class="line">        for i in range(k-1):</span><br><span class="line">            nums[0], nums[numsLen-1-i] = nums[numsLen-1-i], nums[0]</span><br><span class="line">            self.adjust(nums, 0, numsLen-1-i-1)</span><br><span class="line">        return nums[0]</span><br><span class="line">        </span><br><span class="line">    def buildMaxHeap(self, nums):</span><br><span class="line">        numsLen = len(nums)</span><br><span class="line">        for root in range(numsLen//2, -1, -1):</span><br><span class="line">            self.adjust(nums, root, numsLen-1)</span><br><span class="line">    </span><br><span class="line">    def adjust(self, nums, root, high):</span><br><span class="line">        if root &gt; high:</span><br><span class="line">            return</span><br><span class="line">        originRootValue = nums[root]</span><br><span class="line">        child = 2*root + 1</span><br><span class="line">        </span><br><span class="line">        while child &lt;= high:</span><br><span class="line">            if child+1 &lt;= high and nums[child] &lt; nums[child+1]:</span><br><span class="line">                child += 1</span><br><span class="line">            if originRootValue &gt;= nums[child]:</span><br><span class="line">                break</span><br><span class="line">            nums[root] = nums[child]</span><br><span class="line">            root = child</span><br><span class="line">            child = 2 * root + 1</span><br><span class="line">        nums[root] = originRootValue</span><br></pre></td></tr></table></figure>
 <h3 id="解决方案1-Java"><a href="#解决方案1-Java" class="headerlink" title="解决方案1(Java)"></a>解决方案1(Java)</h3><hr>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">findKthLargest</span><span class="params">(<span class="keyword">int</span>[] nums, <span class="keyword">int</span> k)</span> </span>&#123;</span><br><span class="line">        PriorityQueue&lt;Integer&gt; heap = <span class="keyword">new</span> PriorityQueue&lt;&gt;(k);</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; nums.length; i++) &#123;</span><br><span class="line">            heap.add(nums[i]);</span><br><span class="line">            <span class="keyword">if</span> (heap.size() &gt; k) &#123;</span><br><span class="line">                heap.poll();</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> heap.peek();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <h3 id="相关问题"><a href="#相关问题" class="headerlink" title="相关问题"></a>相关问题</h3><hr>
@@ -306,16 +308,16 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2014/03/11/leetcode/Algorithms/leetcode-230-Kth-Smallest-Element-in-a-BST/" rel="next" title="leetcode-230-Kth-Smallest-Element-in-a-BST">
-                <i class="fa fa-chevron-left"></i> leetcode-230-Kth-Smallest-Element-in-a-BST
+              <a href="/2014/03/11/leetcode/Algorithms/leetcode-167-Two-Sum-II---Input-array-is-sorted/" rel="next" title="leetcode-167-Two-Sum-II---Input-array-is-sorted">
+                <i class="fa fa-chevron-left"></i> leetcode-167-Two-Sum-II---Input-array-is-sorted
               </a>
             
           </div>
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2014/03/11/leetcode/Algorithms/leetcode-219-Contains-Duplicate-II/" rel="prev" title="leetcode-219-Contains-Duplicate-II">
-                leetcode-219-Contains-Duplicate-II <i class="fa fa-chevron-right"></i>
+              <a href="/2014/03/11/leetcode/Algorithms/leetcode-205-Isomorphic-Strings/" rel="prev" title="leetcode-205-Isomorphic-Strings">
+                leetcode-205-Isomorphic-Strings <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -389,7 +391,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">404</span>
+              <span class="site-state-item-count">415</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -456,7 +458,7 @@
               
             
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#描述"><span class="nav-number">1.</span> <span class="nav-text">描述</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#分析"><span class="nav-number">2.</span> <span class="nav-text">分析</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#解决方案1-Java"><span class="nav-number">3.</span> <span class="nav-text">解决方案1(Java)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#相关问题"><span class="nav-number">4.</span> <span class="nav-text">相关问题</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#题目来源"><span class="nav-number">5.</span> <span class="nav-text">题目来源</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#描述"><span class="nav-number">1.</span> <span class="nav-text">描述</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#分析"><span class="nav-number">2.</span> <span class="nav-text">分析</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#解决方案1（Python）"><span class="nav-number">3.</span> <span class="nav-text">解决方案1（Python）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#解决方案1-Java"><span class="nav-number">4.</span> <span class="nav-text">解决方案1(Java)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#相关问题"><span class="nav-number">5.</span> <span class="nav-text">相关问题</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#题目来源"><span class="nav-number">6.</span> <span class="nav-text">题目来源</span></a></li></ol></div>
             
           </div>
           <div class="post-toc-indicator-bottom post-toc-indicator">

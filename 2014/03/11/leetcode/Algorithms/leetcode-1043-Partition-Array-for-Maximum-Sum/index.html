@@ -65,7 +65,7 @@
 <meta property="og:site_name" content="knarfeh&#39;s logbook">
 <meta property="og:description" content="描述 Given an integer array A, you partition the array into (contiguous) subarrays of length at most K.  After partitioning, each subarray has their values changed to become the maximum value of that su">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2021-10-24T07:21:32.379Z">
+<meta property="og:updated_time" content="2021-10-28T09:04:36.171Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="leetcode-1043-Partition-Array-for-Maximum-Sum">
 <meta name="twitter:description" content="描述 Given an integer array A, you partition the array into (contiguous) subarrays of length at most K.  After partitioning, each subarray has their values changed to become the maximum value of that su">
@@ -271,6 +271,7 @@
 </ol>
 <a id="more"></a>
 <h3 id="分析"><a href="#分析" class="headerlink" title="分析"></a>分析</h3><hr>
+<p>分割数组，然后每个数组中的元素变成该数组中的最大值，找到能够得到的最大和。</p>
 <p>动态规划题目，转移方程可以这样推导，用 result[i] 表示划分了前 i 个数字产生的最大和，初始时 result[0] 为0，考虑第 i 个数字是，与之前 k 个数字组成子数组，取 result[i] 与 result[i-j] + current_max 的最大值，其中 current_max 是 A[i-j] 到 A[i-1] 之间的最大值。</p>
 <h3 id="解决方案1-Python"><a href="#解决方案1-Python" class="headerlink" title="解决方案1(Python)"></a>解决方案1(Python)</h3><hr>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span><span class="params">(object)</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">maxSumAfterPartitioning</span><span class="params">(self, A, K)</span>:</span></span><br><span class="line">        <span class="string">"""</span></span><br><span class="line"><span class="string">        :type A: List[int]</span></span><br><span class="line"><span class="string">        :type K: int</span></span><br><span class="line"><span class="string">        :rtype: int</span></span><br><span class="line"><span class="string">        """</span></span><br><span class="line">        result = [<span class="number">-1</span>] * (len(A)+<span class="number">1</span>)</span><br><span class="line">        result[<span class="number">0</span>] = <span class="number">0</span></span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> xrange(<span class="number">1</span>, len(A)+<span class="number">1</span>):</span><br><span class="line">            current_max = <span class="number">-1</span></span><br><span class="line">            j = <span class="number">1</span></span><br><span class="line">            <span class="keyword">while</span> j &lt;= K <span class="keyword">and</span> i-j &gt;= <span class="number">0</span>:</span><br><span class="line">                current_max = max(current_max, A[i-j])</span><br><span class="line">                result[i] = max(result[i], result[i-j] + current_max*j)</span><br><span class="line">                j = j+<span class="number">1</span></span><br><span class="line">        <span class="keyword">return</span> result[len(A)]</span><br></pre></td></tr></table></figure>
@@ -301,16 +302,16 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2014/03/11/leetcode/Algorithms/leetcode-104-Maximum-Depth-of-Binary-Tree/" rel="next" title="leetcode-104-Maximum-Depth-of-Binary-Tree">
-                <i class="fa fa-chevron-left"></i> leetcode-104-Maximum-Depth-of-Binary-Tree
+              <a href="/2014/03/11/leetcode/Algorithms/leetcode-1013-Partition-Array-Into-Three-Parts-With-Equal-Sum/" rel="next" title="leetcode-1013-Partition-Array-Into-Three-Parts-With-Equal-Sum">
+                <i class="fa fa-chevron-left"></i> leetcode-1013-Partition-Array-Into-Three-Parts-With-Equal-Sum
               </a>
             
           </div>
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2014/03/11/leetcode/Algorithms/leetcode-103-Binary-Tree-Zigzag-Level-Order-Traversal/" rel="prev" title="leetcode-103-Binary-Tree-Zigzag-Level-Order-Traversal">
-                leetcode-103-Binary-Tree-Zigzag-Level-Order-Traversal <i class="fa fa-chevron-right"></i>
+              <a href="/2014/03/11/leetcode/Algorithms/leetcode-1022-Sum-of-Root-To-Leaf-Binary-Numbers/" rel="prev" title="leetcode-1022-Sum-of-Root-To-Leaf-Binary-Numbers">
+                leetcode-1022-Sum-of-Root-To-Leaf-Binary-Numbers <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -384,7 +385,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">404</span>
+              <span class="site-state-item-count">415</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>

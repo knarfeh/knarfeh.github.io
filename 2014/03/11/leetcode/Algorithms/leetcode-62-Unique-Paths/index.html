@@ -41,7 +41,7 @@
 <link href="/css/main.css?v=0.5.0" rel="stylesheet" type="text/css">
 
 
-  <meta name="keywords" content="algorithms,leetcode,Array,Dynamic-Programming,">
+  <meta name="keywords" content="algorithms,leetcode,Dynamic-Programming,Array,">
 
 
 
@@ -58,7 +58,7 @@
 
 
 <meta name="description" content="描述 A robot is located at the top-left corner of a m x n grid (marked ‘Start’ in the diagram below). The robot can only move either down or right at any point in time. The robot is trying to reach the">
-<meta name="keywords" content="algorithms,leetcode,Array,Dynamic-Programming">
+<meta name="keywords" content="algorithms,leetcode,Dynamic-Programming,Array">
 <meta property="og:type" content="article">
 <meta property="og:title" content="leetcode-62-Unique-Paths">
 <meta property="og:url" content="http://knarfeh.github.io/2014/03/11/leetcode/Algorithms/leetcode-62-Unique-Paths/index.html">
@@ -66,7 +66,7 @@
 <meta property="og:description" content="描述 A robot is located at the top-left corner of a m x n grid (marked ‘Start’ in the diagram below). The robot can only move either down or right at any point in time. The robot is trying to reach the">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="http://leetcode.com/wp-content/uploads/2014/12/robot_maze.png">
-<meta property="og:updated_time" content="2021-10-19T15:22:15.051Z">
+<meta property="og:updated_time" content="2021-10-31T05:41:24.568Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="leetcode-62-Unique-Paths">
 <meta name="twitter:description" content="描述 A robot is located at the top-left corner of a m x n grid (marked ‘Start’ in the diagram below). The robot can only move either down or right at any point in time. The robot is trying to reach the">
@@ -269,9 +269,11 @@
 <a id="more"></a>
 <h3 id="分析"><a href="#分析" class="headerlink" title="分析"></a>分析</h3><hr>
 <p>动态规划，每一个位置的数量等于这个位置上方位置和左边位置数量相加。</p>
-<h3 id="解决方案1-C"><a href="#解决方案1-C" class="headerlink" title="解决方案1(C++)"></a>解决方案1(C++)</h3><hr>
+<h3 id="解决方案1（python）"><a href="#解决方案1（python）" class="headerlink" title="解决方案1（python）"></a>解决方案1（python）</h3><hr>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">class Solution:</span><br><span class="line">    def uniquePaths(self, m: int, n: int) -&gt; int:</span><br><span class="line">        dp = [[1] * n] + [[1] + [0] * (n-1) for _ in range(m-1)]</span><br><span class="line">        for i in range(1, m):</span><br><span class="line">            for j in range(1, n):</span><br><span class="line">                dp[i][j] = dp[i-1][j] + dp[i][j-1]</span><br><span class="line">        return dp[-1][-1]</span><br></pre></td></tr></table></figure>
+<h3 id="解决方案2-C"><a href="#解决方案2-C" class="headerlink" title="解决方案2(C++)"></a>解决方案2(C++)</h3><hr>
 <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">uniquePaths</span><span class="params">(<span class="keyword">int</span> m, <span class="keyword">int</span> n)</span> </span>&#123;</span><br><span class="line">        <span class="function"><span class="built_in">vector</span>&lt;<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; &gt; <span class="title">table</span><span class="params">(m, <span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;(n, <span class="number">1</span>))</span></span>;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">1</span>; i &lt; m; i++) &#123;</span><br><span class="line">            <span class="keyword">for</span>(<span class="keyword">int</span> j = <span class="number">1</span>; j &lt; n; j++) &#123;</span><br><span class="line">                table[i][j] = table[i<span class="number">-1</span>][j] + table[i][j<span class="number">-1</span>];</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> table[m<span class="number">-1</span>][n<span class="number">-1</span>];</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-<h3 id="解决方案2（Golang）"><a href="#解决方案2（Golang）" class="headerlink" title="解决方案2（Golang）"></a>解决方案2（Golang）</h3><hr>
+<h3 id="解决方案3（Golang）"><a href="#解决方案3（Golang）" class="headerlink" title="解决方案3（Golang）"></a>解决方案3（Golang）</h3><hr>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">func uniquePaths(m int, n int) int &#123;</span><br><span class="line">    dp := make([][]int, m)</span><br><span class="line">    for i := range dp &#123;</span><br><span class="line">        dp[i] = make([]int, n)</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    for i := 0; i &lt; m; i++ &#123;</span><br><span class="line">        for j := 0; j &lt; n; j++ &#123;</span><br><span class="line">            if i == 0 || j == 0 &#123;</span><br><span class="line">                dp[i][j] = 1</span><br><span class="line">            &#125; else &#123;</span><br><span class="line">                dp[i][j] = dp[i-1][j] + dp[i][j-1]</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    return dp[m-1][n-1]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <h3 id="相关问题"><a href="#相关问题" class="headerlink" title="相关问题"></a>相关问题</h3><hr>
 <ul>
@@ -297,9 +299,9 @@
           
             <a href="/tags/leetcode/" rel="tag">#leetcode</a>
           
-            <a href="/tags/Array/" rel="tag">#Array</a>
-          
             <a href="/tags/Dynamic-Programming/" rel="tag">#Dynamic-Programming</a>
+          
+            <a href="/tags/Array/" rel="tag">#Array</a>
           
         </div>
       
@@ -308,16 +310,16 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2014/03/11/leetcode/Algorithms/leetcode-622-Design-Circular-Queue/" rel="next" title="leetcode-622-Design-Circular-Queue">
-                <i class="fa fa-chevron-left"></i> leetcode-622-Design-Circular-Queue
+              <a href="/2014/03/11/leetcode/Algorithms/leetcode-606-Construct-String-from-Binary-Tree/" rel="next" title="leetcode-606-Construct-String-from-Binary-Tree">
+                <i class="fa fa-chevron-left"></i> leetcode-606-Construct-String-from-Binary-Tree
               </a>
             
           </div>
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2014/03/11/leetcode/Algorithms/leetcode-609-Find-Duplicate-File-in-System/" rel="prev" title="leetcode-609-Find-Duplicate-File-in-System">
-                leetcode-609-Find-Duplicate-File-in-System <i class="fa fa-chevron-right"></i>
+              <a href="/2014/03/11/leetcode/Algorithms/leetcode-59-Spiral-Matrix-II/" rel="prev" title="leetcode-59-Spiral-Matrix-II">
+                leetcode-59-Spiral-Matrix-II <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -391,7 +393,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">404</span>
+              <span class="site-state-item-count">415</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -458,7 +460,7 @@
               
             
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#描述"><span class="nav-number">1.</span> <span class="nav-text">描述</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#分析"><span class="nav-number">2.</span> <span class="nav-text">分析</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#解决方案1-C"><span class="nav-number">3.</span> <span class="nav-text">解决方案1(C++)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#解决方案2（Golang）"><span class="nav-number">4.</span> <span class="nav-text">解决方案2（Golang）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#相关问题"><span class="nav-number">5.</span> <span class="nav-text">相关问题</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#题目来源"><span class="nav-number">6.</span> <span class="nav-text">题目来源</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#描述"><span class="nav-number">1.</span> <span class="nav-text">描述</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#分析"><span class="nav-number">2.</span> <span class="nav-text">分析</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#解决方案1（python）"><span class="nav-number">3.</span> <span class="nav-text">解决方案1（python）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#解决方案2-C"><span class="nav-number">4.</span> <span class="nav-text">解决方案2(C++)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#解决方案3（Golang）"><span class="nav-number">5.</span> <span class="nav-text">解决方案3（Golang）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#相关问题"><span class="nav-number">6.</span> <span class="nav-text">相关问题</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#题目来源"><span class="nav-number">7.</span> <span class="nav-text">题目来源</span></a></li></ol></div>
             
           </div>
           <div class="post-toc-indicator-bottom post-toc-indicator">

@@ -65,7 +65,7 @@
 <meta property="og:site_name" content="knarfeh&#39;s logbook">
 <meta property="og:description" content="描述 Reverse digits of an integer. Example1: x = 123, return 321Example2: x = -123, return -321">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-04-10T14:42:39.094Z">
+<meta property="og:updated_time" content="2021-10-28T11:25:54.533Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="leetcode-7-Reverse-Integer">
 <meta name="twitter:description" content="描述 Reverse digits of an integer. Example1: x = 123, return 321Example2: x = -123, return -321">
@@ -264,10 +264,14 @@
 <p><strong>Example1</strong>: x = 123, return 321<br><strong>Example2</strong>: x = -123, return -321<br><a id="more"></a></p>
 <h3 id="分析"><a href="#分析" class="headerlink" title="分析"></a>分析</h3><hr>
 <p>把一个数字倒过来，题目不难，需要考虑的是边界情况，如果越界，返回0</p>
-<h3 id="解决方案1-C"><a href="#解决方案1-C" class="headerlink" title="解决方案1(C++)"></a>解决方案1(C++)</h3><hr>
+<h3 id="解决方案1（python）"><a href="#解决方案1（python）" class="headerlink" title="解决方案1（python）"></a>解决方案1（python）</h3><hr>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">class Solution:</span><br><span class="line">    def reverse(self, x: int) -&gt; int:</span><br><span class="line">        INT_MIN, INT_MAX = -2**31, 2**31-1</span><br><span class="line">        </span><br><span class="line">        result = 0</span><br><span class="line">        while x != 0:</span><br><span class="line">            if result &lt; INT_MIN // 10 + 1 or result &gt; INT_MAX // 10:</span><br><span class="line">                return 0</span><br><span class="line">            nowDigit = x % 10</span><br><span class="line">            if x &lt; 0 and nowDigit &lt; 10:</span><br><span class="line">                nowDigit -= 10</span><br><span class="line">            x = (x - nowDigit) // 10</span><br><span class="line">            result = result * 10 + nowDigit</span><br><span class="line">        return result</span><br></pre></td></tr></table></figure>
+<h3 id="解决方案2-C"><a href="#解决方案2-C" class="headerlink" title="解决方案2(C++)"></a>解决方案2(C++)</h3><hr>
 <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">reverse</span><span class="params">(<span class="keyword">int</span> x)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">long</span> <span class="keyword">long</span> result = <span class="number">0</span>;</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">while</span>(x != <span class="number">0</span>) &#123;</span><br><span class="line">            <span class="keyword">int</span> now = x % <span class="number">10</span>;</span><br><span class="line">            result = result * <span class="number">10</span> + now;</span><br><span class="line">            <span class="keyword">if</span>(result &gt; INT_MAX || result &lt; INT_MIN) &#123;</span><br><span class="line">                <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">            &#125;</span><br><span class="line">            x = x / <span class="number">10</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> result;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-<h3 id="解决方案2-Rust"><a href="#解决方案2-Rust" class="headerlink" title="解决方案2(Rust)"></a>解决方案2(Rust)</h3><hr>
+<h3 id="解决方案3-Rust"><a href="#解决方案3-Rust" class="headerlink" title="解决方案3(Rust)"></a>解决方案3(Rust)</h3><hr>
 <figure class="highlight rust"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">impl</span> Solution &#123;</span><br><span class="line">    <span class="keyword">pub</span> <span class="function"><span class="keyword">fn</span> <span class="title">reverse</span></span>(x: <span class="built_in">i32</span>) -&gt; <span class="built_in">i32</span> &#123;</span><br><span class="line">        x.signum() * x</span><br><span class="line">            .abs()</span><br><span class="line">            .to_string()</span><br><span class="line">            .chars()</span><br><span class="line">            .rev()</span><br><span class="line">            .collect::&lt;<span class="built_in">String</span>&gt;()</span><br><span class="line">            .parse::&lt;<span class="built_in">i32</span>&gt;()</span><br><span class="line">            .unwrap_or(<span class="number">0</span>)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="解决方案4（Golang）"><a href="#解决方案4（Golang）" class="headerlink" title="解决方案4（Golang）"></a>解决方案4（Golang）</h3><hr>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">func reverse(x int) int &#123;</span><br><span class="line">    result := 0</span><br><span class="line">    for x != 0 &#123;</span><br><span class="line">        if result &lt; math.MinInt32 / 10 || result &gt; math.MaxInt32 / 10 &#123;</span><br><span class="line">            return 0</span><br><span class="line">        &#125;</span><br><span class="line">        nowDigit := x % 10</span><br><span class="line">        x /= 10</span><br><span class="line">        result = result * 10 + nowDigit</span><br><span class="line">    &#125;</span><br><span class="line">    return result</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <h3 id="相关问题"><a href="#相关问题" class="headerlink" title="相关问题"></a>相关问题</h3><hr>
 <ul>
 <li><a href="https://leetcode.com/problems/string-to-integer-atoi/" target="_blank" rel="noopener">(E) String to Integer (atoi)</a>   </li>
@@ -299,16 +303,16 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2014/03/11/leetcode/Algorithms/leetcode-70-Climbing-Stairs/" rel="next" title="leetcode-70-Climbing-Stairs">
-                <i class="fa fa-chevron-left"></i> leetcode-70-Climbing-Stairs
+              <a href="/2014/03/11/leetcode/Algorithms/leetcode-696-Count-Binary-Substrings/" rel="next" title="leetcode-696-Count-Binary-Substrings">
+                <i class="fa fa-chevron-left"></i> leetcode-696-Count-Binary-Substrings
               </a>
             
           </div>
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2014/03/11/leetcode/Algorithms/leetcode-695-Max-Area-of-Island/" rel="prev" title="leetcode-695-Max-Area-of-Island">
-                leetcode-695-Max-Area-of-Island <i class="fa fa-chevron-right"></i>
+              <a href="/2014/03/11/leetcode/Algorithms/leetcode-697-Degree-of-an-Array/" rel="prev" title="leetcode-697-Degree-of-an-Array">
+                leetcode-697-Degree-of-an-Array <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -382,7 +386,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">404</span>
+              <span class="site-state-item-count">415</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -449,7 +453,7 @@
               
             
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#描述"><span class="nav-number">1.</span> <span class="nav-text">描述</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#分析"><span class="nav-number">2.</span> <span class="nav-text">分析</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#解决方案1-C"><span class="nav-number">3.</span> <span class="nav-text">解决方案1(C++)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#解决方案2-Rust"><span class="nav-number">4.</span> <span class="nav-text">解决方案2(Rust)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#相关问题"><span class="nav-number">5.</span> <span class="nav-text">相关问题</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#题目来源"><span class="nav-number">6.</span> <span class="nav-text">题目来源</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#描述"><span class="nav-number">1.</span> <span class="nav-text">描述</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#分析"><span class="nav-number">2.</span> <span class="nav-text">分析</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#解决方案1（python）"><span class="nav-number">3.</span> <span class="nav-text">解决方案1（python）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#解决方案2-C"><span class="nav-number">4.</span> <span class="nav-text">解决方案2(C++)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#解决方案3-Rust"><span class="nav-number">5.</span> <span class="nav-text">解决方案3(Rust)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#解决方案4（Golang）"><span class="nav-number">6.</span> <span class="nav-text">解决方案4（Golang）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#相关问题"><span class="nav-number">7.</span> <span class="nav-text">相关问题</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#题目来源"><span class="nav-number">8.</span> <span class="nav-text">题目来源</span></a></li></ol></div>
             
           </div>
           <div class="post-toc-indicator-bottom post-toc-indicator">
