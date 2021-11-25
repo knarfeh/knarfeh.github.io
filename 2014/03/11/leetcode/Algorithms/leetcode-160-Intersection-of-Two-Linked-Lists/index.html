@@ -69,7 +69,7 @@
 <meta property="og:image" content="https://assets.leetcode.com/uploads/2021/03/05/160_example_1_1.png">
 <meta property="og:image" content="https://assets.leetcode.com/uploads/2021/03/05/160_example_2.png">
 <meta property="og:image" content="https://assets.leetcode.com/uploads/2021/03/05/160_example_3.png">
-<meta property="og:updated_time" content="2021-11-01T07:52:48.540Z">
+<meta property="og:updated_time" content="2021-11-22T08:19:51.730Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="leetcode-160-Intersection-of-Two-Linked-Lists">
 <meta name="twitter:description" content="描述 Given the heads of two singly linked-lists headA and headB, return the node at which the two lists intersect. If the two linked lists have no intersection at all, return null. For example, the foll">
@@ -303,7 +303,8 @@
 <p><strong>Follow up:</strong> Could you write a solution that runs in <code>O(n)</code> time and use only <code>O(1)</code> memory?<a id="more"></a></p>
 <h3 id="分析"><a href="#分析" class="headerlink" title="分析"></a>分析</h3><hr>
 <p>这是个双指针问题。走一个8字型的路线，两个指针最终会相遇在相交的位置。</p>
-<h3 id="解决方案1-Golang"><a href="#解决方案1-Golang" class="headerlink" title="解决方案1(Golang)"></a>解决方案1(Golang)</h3><hr>
+<h3 id="解决方案1（Python）"><a href="#解决方案1（Python）" class="headerlink" title="解决方案1（Python）"></a>解决方案1（Python）</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"># Definition for singly-linked list.</span><br><span class="line"># class ListNode:</span><br><span class="line">#     def __init__(self, x):</span><br><span class="line">#         self.val = x</span><br><span class="line">#         self.next = None</span><br><span class="line"></span><br><span class="line">class Solution:</span><br><span class="line">    def getIntersectionNode(self, headA: ListNode, headB: ListNode) -&gt; ListNode:</span><br><span class="line">        nowA, nowB = headA, headB</span><br><span class="line">        while nowA != nowB:</span><br><span class="line">            nowA = nowA.next if nowA else headB</span><br><span class="line">            nowB = nowB.next if nowB else headA</span><br><span class="line">        return nowA</span><br></pre></td></tr></table></figure>
+<h3 id="解决方案2-Golang"><a href="#解决方案2-Golang" class="headerlink" title="解决方案2(Golang)"></a>解决方案2(Golang)</h3><hr>
 <figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Definition for singly-linked list.</span></span><br><span class="line"><span class="comment"> * type ListNode struct &#123;</span></span><br><span class="line"><span class="comment"> *     Val int</span></span><br><span class="line"><span class="comment"> *     Next *ListNode</span></span><br><span class="line"><span class="comment"> * &#125;</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">getIntersectionNode</span><span class="params">(headA, headB *ListNode)</span> *<span class="title">ListNode</span></span> &#123;</span><br><span class="line">    <span class="keyword">if</span> headA == <span class="literal">nil</span> || headB == <span class="literal">nil</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">nil</span></span><br><span class="line">    &#125;</span><br><span class="line">    nodeA, nodeB := headA, headB</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">for</span> nodeA != nodeB &#123;</span><br><span class="line">        <span class="keyword">if</span> nodeA == <span class="literal">nil</span> &#123;</span><br><span class="line">            nodeA = headB</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            nodeA = nodeA.Next</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">if</span> nodeB == <span class="literal">nil</span> &#123;</span><br><span class="line">            nodeB = headA</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            nodeB = nodeB.Next</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> nodeA</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <h3 id="相关问题"><a href="#相关问题" class="headerlink" title="相关问题"></a>相关问题</h3><hr>
 <ul>
@@ -336,8 +337,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2014/03/11/leetcode/Algorithms/leetcode-169-Majority-Element/" rel="next" title="leetcode-169-Majority-Element">
-                <i class="fa fa-chevron-left"></i> leetcode-169-Majority-Element
+              <a href="/2014/03/11/leetcode/Algorithms/leetcode-1658-Minimum-Operations-to-Reduce-X-to-Zero/" rel="next" title="leetcode-1658-Minimum-Operations-to-Reduce-X-to-Zero">
+                <i class="fa fa-chevron-left"></i> leetcode-1658-Minimum-Operations-to-Reduce-X-to-Zero
               </a>
             
           </div>
@@ -419,7 +420,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">418</span>
+              <span class="site-state-item-count">417</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -486,7 +487,7 @@
               
             
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#描述"><span class="nav-number">1.</span> <span class="nav-text">描述</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#分析"><span class="nav-number">2.</span> <span class="nav-text">分析</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#解决方案1-Golang"><span class="nav-number">3.</span> <span class="nav-text">解决方案1(Golang)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#相关问题"><span class="nav-number">4.</span> <span class="nav-text">相关问题</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#题目来源"><span class="nav-number">5.</span> <span class="nav-text">题目来源</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#描述"><span class="nav-number">1.</span> <span class="nav-text">描述</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#分析"><span class="nav-number">2.</span> <span class="nav-text">分析</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#解决方案1（Python）"><span class="nav-number">3.</span> <span class="nav-text">解决方案1（Python）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#解决方案2-Golang"><span class="nav-number">4.</span> <span class="nav-text">解决方案2(Golang)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#相关问题"><span class="nav-number">5.</span> <span class="nav-text">相关问题</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#题目来源"><span class="nav-number">6.</span> <span class="nav-text">题目来源</span></a></li></ol></div>
             
           </div>
           <div class="post-toc-indicator-bottom post-toc-indicator">

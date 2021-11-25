@@ -41,7 +41,7 @@
 <link href="/css/main.css?v=0.5.0" rel="stylesheet" type="text/css">
 
 
-  <meta name="keywords" content="algorithms,leetcode,Dynamic-Programming,Tree,">
+  <meta name="keywords" content="algorithms,leetcode,Tree,Dynamic-Programming,">
 
 
 
@@ -58,14 +58,14 @@
 
 
 <meta name="description" content="描述 Given n, generate all structurally unique BST’s (binary search trees) that store values 1…n. For example,Given n = 3, your program should return all 5 unique BST’s shown below.">
-<meta name="keywords" content="algorithms,leetcode,Dynamic-Programming,Tree">
+<meta name="keywords" content="algorithms,leetcode,Tree,Dynamic-Programming">
 <meta property="og:type" content="article">
 <meta property="og:title" content="leetcode-95-Unique-Binary-Search-Trees-II">
 <meta property="og:url" content="http://knarfeh.github.io/2014/03/11/leetcode/Algorithms/leetcode-95-Unique-Binary-Search-Trees-II/index.html">
 <meta property="og:site_name" content="knarfeh&#39;s logbook">
 <meta property="og:description" content="描述 Given n, generate all structurally unique BST’s (binary search trees) that store values 1…n. For example,Given n = 3, your program should return all 5 unique BST’s shown below.">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-03-05T14:06:09.539Z">
+<meta property="og:updated_time" content="2021-11-22T11:54:51.895Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="leetcode-95-Unique-Binary-Search-Trees-II">
 <meta name="twitter:description" content="描述 Given n, generate all structurally unique BST’s (binary search trees) that store values 1…n. For example,Given n = 3, your program should return all 5 unique BST’s shown below.">
@@ -268,7 +268,10 @@
 <h3 id="解决方案1-C"><a href="#解决方案1-C" class="headerlink" title="解决方案1(C++)"></a>解决方案1(C++)</h3><hr>
 <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Definition for a binary tree node.</span></span><br><span class="line"><span class="comment"> * struct TreeNode &#123;</span></span><br><span class="line"><span class="comment"> *     int val;</span></span><br><span class="line"><span class="comment"> *     TreeNode *left;</span></span><br><span class="line"><span class="comment"> *     TreeNode *right;</span></span><br><span class="line"><span class="comment"> *     TreeNode(int x) : val(x), left(NULL), right(NULL) &#123;&#125;</span></span><br><span class="line"><span class="comment"> * &#125;;</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="built_in">vector</span>&lt;TreeNode*&gt; <span class="title">generateTrees</span><span class="params">(<span class="keyword">int</span> n)</span> </span>&#123;</span><br><span class="line">        <span class="built_in">vector</span>&lt;TreeNode *&gt; result;</span><br><span class="line">        <span class="keyword">if</span>(n == <span class="number">0</span>) &#123;</span><br><span class="line">            <span class="keyword">return</span> result;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> generate(<span class="number">1</span>, n);</span><br><span class="line">    &#125;</span><br><span class="line"><span class="keyword">private</span>:</span><br><span class="line">    <span class="function"><span class="built_in">vector</span>&lt;TreeNode*&gt; <span class="title">generate</span><span class="params">(<span class="keyword">int</span> start, <span class="keyword">int</span> end)</span> </span>&#123;</span><br><span class="line">        <span class="built_in">vector</span>&lt;TreeNode *&gt; result;</span><br><span class="line">        <span class="keyword">if</span>(start &gt; end) &#123;</span><br><span class="line">            result.push_back(<span class="literal">NULL</span>);</span><br><span class="line">            <span class="keyword">return</span> result;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> k = start; k &lt;= end; k++) &#123;</span><br><span class="line">            <span class="built_in">vector</span>&lt;TreeNode *&gt; left = generate(start, k<span class="number">-1</span>);</span><br><span class="line">            <span class="built_in">vector</span>&lt;TreeNode *&gt; right = generate(k+<span class="number">1</span>, end);</span><br><span class="line">            </span><br><span class="line">            <span class="keyword">for</span>(<span class="keyword">auto</span> i: left) &#123;</span><br><span class="line">                <span class="keyword">for</span>(<span class="keyword">auto</span> j: right) &#123;</span><br><span class="line">                    TreeNode *node = <span class="keyword">new</span> TreeNode(k);</span><br><span class="line">                    node-&gt;left = i;</span><br><span class="line">                    node-&gt;right = j;</span><br><span class="line">                    result.push_back(node);</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> result;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
 <h3 id="相关问题"><a href="#相关问题" class="headerlink" title="相关问题"></a>相关问题</h3><hr>
-<p><a href="https://leetcode.com/problems/different-ways-to-add-parentheses/" target="_blank" rel="noopener">(M) Different Ways to Add Parentheses</a><br><a href="https://leetcode.com/problems/unique-binary-search-trees/" target="_blank" rel="noopener">(M) Unique Binary Search Trees</a>   </p>
+<ul>
+<li><a href="https://leetcode.com/problems/different-ways-to-add-parentheses/" target="_blank" rel="noopener">(M) Different Ways to Add Parentheses</a>   </li>
+<li><a href="https://leetcode.com/problems/unique-binary-search-trees/" target="_blank" rel="noopener">(M) Unique Binary Search Trees</a>   </li>
+</ul>
 <h3 id="题目来源"><a href="#题目来源" class="headerlink" title="题目来源"></a><a href="https://leetcode.com/problems/unique-binary-search-trees-ii/" target="_blank" rel="noopener">题目来源</a></h3>
       
     </div>
@@ -287,9 +290,9 @@
           
             <a href="/tags/leetcode/" rel="tag">#leetcode</a>
           
-            <a href="/tags/Dynamic-Programming/" rel="tag">#Dynamic-Programming</a>
-          
             <a href="/tags/Tree/" rel="tag">#Tree</a>
+          
+            <a href="/tags/Dynamic-Programming/" rel="tag">#Dynamic-Programming</a>
           
         </div>
       
@@ -298,16 +301,16 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2014/03/11/leetcode/Algorithms/leetcode-98-Validate-Binary-Search-Tree/" rel="next" title="leetcode-98-Validate-Binary-Search-Tree">
-                <i class="fa fa-chevron-left"></i> leetcode-98-Validate-Binary-Search-Tree
+              <a href="/2014/03/11/leetcode/Shell/leetcode-193-Valid-Phone-Numbers/" rel="next" title="leetcode-193-Valid-Phone-Numbers">
+                <i class="fa fa-chevron-left"></i> leetcode-193-Valid-Phone-Numbers
               </a>
             
           </div>
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2014/03/11/leetcode/Algorithms/leetcode-94-Binary-Tree-Inorder-Traversal/" rel="prev" title="leetcode-94-Binary-Tree-Inorder-Traversal">
-                leetcode-94-Binary-Tree-Inorder-Traversal <i class="fa fa-chevron-right"></i>
+              <a href="/2014/03/11/leetcode/Database/leetcode-627-Swap-Salary/" rel="prev" title="leetcode-627-Swap-Salary">
+                leetcode-627-Swap-Salary <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -381,7 +384,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">418</span>
+              <span class="site-state-item-count">417</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>

@@ -211,8 +211,8 @@
             
               
                 
-                <a class="post-title-link" href="/2014/03/11/leetcode/Algorithms/leetcode-80-Remove-Duplicates-from-Sorted-Array-II/" itemprop="url">
-                  leetcode-80-Remove-Duplicates-from-Sorted-Array-II
+                <a class="post-title-link" href="/2014/03/11/leetcode/Algorithms/leetcode-88-Merge-Sorted-Array/" itemprop="url">
+                  leetcode-88-Merge-Sorted-Array
                 </a>
               
             
@@ -236,125 +236,8 @@
             
               <span class="post-comments-count">
                 &nbsp; | &nbsp;
-                <a href="/2014/03/11/leetcode/Algorithms/leetcode-80-Remove-Duplicates-from-Sorted-Array-II/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2014/03/11/leetcode/Algorithms/leetcode-80-Remove-Duplicates-from-Sorted-Array-II/" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <p>TOREVIEW</p>
-<h3 id="描述"><a href="#描述" class="headerlink" title="描述"></a>描述</h3><hr>
-<p>Given an integer array <code>nums</code> sorted in <strong>non-decreasing order</strong>, remove some duplicates <a href="https://en.wikipedia.org/wiki/In-place_algorithm" target="_blank" rel="noopener"><strong>in-place</strong></a> such that each unique element appears <strong>at most twice</strong>. The <strong>relative order</strong> of the elements should be kept the <strong>same</strong>.</p>
-<p>Since it is impossible to change the length of the array in some languages, you must instead have the result be placed in the <strong>first part</strong> of the array <code>nums</code>. More formally, if there are <code>k</code> elements after removing the duplicates, then the first <code>k</code> elements of <code>nums</code> should hold the final result. It does not matter what you leave beyond the first <code>k</code> elements.</p>
-<p>Return <code>k</code> <em>after placing the final result in the first</em> <code>k</code> <em>slots of</em> <code>nums</code>.</p>
-<p>Do <strong>not</strong> allocate extra space for another array. You must do this by <strong>modifying the input array <a href="https://en.wikipedia.org/wiki/In-place_algorithm" target="_blank" rel="noopener">in-place</a></strong> with O(1) extra memory.</p>
-<p><strong>Custom Judge:</strong></p>
-<p>The judge will test your solution with the following code:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">int[] nums = [...]; // Input array</span><br><span class="line">int[] expectedNums = [...]; // The expected answer with correct length</span><br><span class="line"></span><br><span class="line">int k = removeDuplicates(nums); // Calls your implementation</span><br><span class="line"></span><br><span class="line">assert k == expectedNums.length;</span><br><span class="line">for (int i = 0; i &lt; k; i++) &#123;</span><br><span class="line">    assert nums[i] == expectedNums[i];</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>If all assertions pass, then your solution will be <strong>accepted</strong>.</p>
-<p><strong>Example 1:</strong></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">Input: nums = [1,1,1,2,2,3]</span><br><span class="line">Output: 5, nums = [1,1,2,2,3,_]</span><br><span class="line">Explanation: Your function should return k = 5, with the first five elements of nums being 1, 1, 2, 2 and 3 respectively.</span><br><span class="line">It does not matter what you leave beyond the returned k (hence they are underscores).</span><br></pre></td></tr></table></figure>
-<p><strong>Example 2:</strong></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">Input: nums = [0,0,1,1,1,1,2,3,3]</span><br><span class="line">Output: 7, nums = [0,0,1,1,2,3,3,_,_]</span><br><span class="line">Explanation: Your function should return k = 7, with the first seven elements of nums being 0, 0, 1, 1, 2, 3 and 3 respectively.</span><br><span class="line">It does not matter what you leave beyond the returned k (hence they are underscores).</span><br></pre></td></tr></table></figure>
-<p><strong>Constraints:</strong></p>
-<ul>
-<li><code>1 &lt;= nums.length &lt;= 3 * 104</code></li>
-<li><code>-104 &lt;= nums[i] &lt;= 104</code></li>
-<li><code>nums</code> is sorted in <strong>non-decreasing</strong> order.</li>
-</ul>
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2014/03/11/leetcode/Algorithms/leetcode-80-Remove-Duplicates-from-Sorted-Array-II/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2014/03/11/leetcode/Algorithms/leetcode-812-Largest-Triangle-Area/" itemprop="url">
-                  leetcode-812-Largest-Triangle-Area
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2014-03-11T00:33:34+08:00" content="2014-03-11">
-              2014-03-11
-            </time>
-          </span>
-
-          
-
-          
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2014/03/11/leetcode/Algorithms/leetcode-812-Largest-Triangle-Area/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2014/03/11/leetcode/Algorithms/leetcode-812-Largest-Triangle-Area/" itemprop="commentsCount"></span>
+                <a href="/2014/03/11/leetcode/Algorithms/leetcode-88-Merge-Sorted-Array/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2014/03/11/leetcode/Algorithms/leetcode-88-Merge-Sorted-Array/" itemprop="commentsCount"></span>
                 </a>
               </span>
             
@@ -378,448 +261,10 @@
       
         
           <h3 id="描述"><a href="#描述" class="headerlink" title="描述"></a>描述</h3><hr>
-<p>You have a list of points in the plane. Return the area of the largest triangle that can be formed by any 3 of the points.</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">Example:</span><br><span class="line">Input: points = [[0,0],[0,1],[1,0],[0,2],[2,0]]</span><br><span class="line">Output: 2</span><br><span class="line">Explanation: </span><br><span class="line">The five points are show in the figure below. The red triangle is the largest.</span><br></pre></td></tr></table></figure>
-<p><img src="https://s3-lc-upload.s3.amazonaws.com/uploads/2018/04/04/1027.png" alt="img"></p>
-<p><strong>Notes:</strong></p>
-<ul>
-<li><code>3 &lt;= points.length &lt;= 50</code>.</li>
-<li>No points will be duplicated.</li>
-<li><code>-50 &lt;= points[i][j] &lt;= 50</code>.</li>
-<li>Answers within <code>10^-6</code> of the true value will be accepted as correct.</li>
-</ul>
+<p>Given two sorted integer arrays nums1 and nums2, merge nums2 into nums1 as one sorted array.</p>
+<p>Note:<br>You may assume that nums1 has enough space (size that is greater or equal to m + n) to hold additional elements from nums2. The number of elements initialized in nums1 and nums2 are m and n respectively.<br>
           <div class="post-more-link text-center">
-            <a class="btn" href="/2014/03/11/leetcode/Algorithms/leetcode-812-Largest-Triangle-Area/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2014/03/11/leetcode/Algorithms/leetcode-811-Subdomain-Visit-Count/" itemprop="url">
-                  leetcode-811-Subdomain-Visit-Count
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2014-03-11T00:33:34+08:00" content="2014-03-11">
-              2014-03-11
-            </time>
-          </span>
-
-          
-
-          
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2014/03/11/leetcode/Algorithms/leetcode-811-Subdomain-Visit-Count/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2014/03/11/leetcode/Algorithms/leetcode-811-Subdomain-Visit-Count/" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <h3 id="描述"><a href="#描述" class="headerlink" title="描述"></a>描述</h3><hr>
-<p>A website domain like “discuss.leetcode.com” consists of various subdomains. At the top level, we have “com”, at the next level, we have “leetcode.com”, and at the lowest level, “discuss.leetcode.com”. When we visit a domain like “discuss.leetcode.com”, we will also visit the parent domains “leetcode.com” and “com” implicitly.</p>
-<p>Now, call a “count-paired domain” to be a count (representing the number of visits this domain received), followed by a space, followed by the address. An example of a count-paired domain might be “9001 discuss.leetcode.com”.</p>
-<p>We are given a list <code>cpdomains</code> of count-paired domains. We would like a list of count-paired domains, (in the same format as the input, and in any order), that explicitly counts the number of visits to each subdomain.</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">Example 1:</span><br><span class="line">Input: </span><br><span class="line">[&quot;9001 discuss.leetcode.com&quot;]</span><br><span class="line">Output: </span><br><span class="line">[&quot;9001 discuss.leetcode.com&quot;, &quot;9001 leetcode.com&quot;, &quot;9001 com&quot;]</span><br><span class="line">Explanation: </span><br><span class="line">We only have one website domain: &quot;discuss.leetcode.com&quot;. As discussed above, the subdomain &quot;leetcode.com&quot; and &quot;com&quot; will also be visited. So they will all be visited 9001 times.</span><br><span class="line">Example 2:</span><br><span class="line">Input: </span><br><span class="line">[&quot;900 google.mail.com&quot;, &quot;50 yahoo.com&quot;, &quot;1 intel.mail.com&quot;, &quot;5 wiki.org&quot;]</span><br><span class="line">Output: </span><br><span class="line">[&quot;901 mail.com&quot;,&quot;50 yahoo.com&quot;,&quot;900 google.mail.com&quot;,&quot;5 wiki.org&quot;,&quot;5 org&quot;,&quot;1 intel.mail.com&quot;,&quot;951 com&quot;]</span><br><span class="line">Explanation: </span><br><span class="line">We will visit &quot;google.mail.com&quot; 900 times, &quot;yahoo.com&quot; 50 times, &quot;intel.mail.com&quot; once and &quot;wiki.org&quot; 5 times. For the subdomains, we will visit &quot;mail.com&quot; 900 + 1 = 901 times, &quot;com&quot; 900 + 50 + 1 = 951 times, and &quot;org&quot; 5 times.</span><br></pre></td></tr></table></figure>
-<p><strong>Notes:</strong></p>
-<ul>
-<li>The length of <code>cpdomains</code> will not exceed <code>100</code>. </li>
-<li>The length of each domain name will not exceed <code>100</code>.</li>
-<li>Each address will have either 1 or 2 “.” characters.</li>
-<li>The input count in any count-paired domain will not exceed <code>10000</code>.</li>
-<li>The answer output can be returned in any order.</li>
-</ul>
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2014/03/11/leetcode/Algorithms/leetcode-811-Subdomain-Visit-Count/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2014/03/11/leetcode/Algorithms/leetcode-807-Max-Increase-to-Keep-City-Skyline/" itemprop="url">
-                  leetcode-807-Max-Increase-to-Keep-City-Skyline
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2014-03-11T00:33:34+08:00" content="2014-03-11">
-              2014-03-11
-            </time>
-          </span>
-
-          
-
-          
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2014/03/11/leetcode/Algorithms/leetcode-807-Max-Increase-to-Keep-City-Skyline/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2014/03/11/leetcode/Algorithms/leetcode-807-Max-Increase-to-Keep-City-Skyline/" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <h3 id="描述"><a href="#描述" class="headerlink" title="描述"></a>描述</h3><hr>
-<p>In a 2 dimensional array <code>grid</code>, each value <code>grid[i][j]</code> represents the height of a building located there. We are allowed to increase the height of any number of buildings, by any amount (the amounts can be different for different buildings). Height 0 is considered to be a building as well. </p>
-<p>At the end, the “skyline” when viewed from all four directions of the grid, i.e. top, bottom, left, and right, must be the same as the skyline of the original grid. A city’s skyline is the outer contour of the rectangles formed by all the buildings when viewed from a distance. See the following example.</p>
-<p>What is the maximum total sum that the height of the buildings can be increased?</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">Example:</span><br><span class="line">Input: grid = [[3,0,8,4],[2,4,5,7],[9,2,6,3],[0,3,1,0]]</span><br><span class="line">Output: 35</span><br><span class="line">Explanation: </span><br><span class="line">The grid is:</span><br><span class="line">[ [3, 0, 8, 4], </span><br><span class="line">  [2, 4, 5, 7],</span><br><span class="line">  [9, 2, 6, 3],</span><br><span class="line">  [0, 3, 1, 0] ]</span><br><span class="line"></span><br><span class="line">The skyline viewed from top or bottom is: [9, 4, 8, 7]</span><br><span class="line">The skyline viewed from left or right is: [8, 7, 9, 3]</span><br><span class="line"></span><br><span class="line">The grid after increasing the height of buildings without affecting skylines is:</span><br><span class="line"></span><br><span class="line">gridNew = [ [8, 4, 8, 7],</span><br><span class="line">            [7, 4, 7, 7],</span><br><span class="line">            [9, 4, 8, 7],</span><br><span class="line">            [3, 3, 3, 3] ]</span><br></pre></td></tr></table></figure>
-<p><strong>Notes:</strong></p>
-<ul>
-<li><code>1 &lt; grid.length = grid[0].length &lt;= 50</code>.</li>
-<li>All heights <code>grid[i][j]</code> are in the range <code>[0, 100]</code>.</li>
-<li>All buildings in <code>grid[i][j]</code> occupy the entire grid cell: that is, they are a <code>1 x 1 x grid[i][j]</code> rectangular prism.</li>
-</ul>
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2014/03/11/leetcode/Algorithms/leetcode-807-Max-Increase-to-Keep-City-Skyline/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2014/03/11/leetcode/Algorithms/leetcode-814-Binary-Tree-Pruning/" itemprop="url">
-                  leetcode-814-Binary-Tree-Pruning
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2014-03-11T00:33:34+08:00" content="2014-03-11">
-              2014-03-11
-            </time>
-          </span>
-
-          
-
-          
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2014/03/11/leetcode/Algorithms/leetcode-814-Binary-Tree-Pruning/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2014/03/11/leetcode/Algorithms/leetcode-814-Binary-Tree-Pruning/" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <h3 id="描述"><a href="#描述" class="headerlink" title="描述"></a>描述</h3><hr>
-<p>We are given the head node <code>root</code> of a binary tree, where additionally every node’s value is either a 0 or a 1.</p>
-<p>Return the same tree where every subtree (of the given tree) not containing a 1 has been removed.</p>
-<p>(Recall that the subtree of a node X is X, plus every node that is a descendant of X.)</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">Example 1:</span><br><span class="line">Input: [1,null,0,0,1]</span><br><span class="line">Output: [1,null,0,null,1]</span><br><span class="line"> </span><br><span class="line">Explanation: </span><br><span class="line">Only the red nodes satisfy the property &quot;every subtree not containing a 1&quot;.</span><br><span class="line">The diagram on the right represents the answer.</span><br></pre></td></tr></table></figure>
-<p><img src="https://s3-lc-upload.s3.amazonaws.com/uploads/2018/04/06/1028_2.png" alt></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Example 2:</span><br><span class="line">Input: [1,0,1,0,0,0,1]</span><br><span class="line">Output: [1,null,1,null,1]</span><br></pre></td></tr></table></figure>
-<p><img src="https://s3-lc-upload.s3.amazonaws.com/uploads/2018/04/06/1028_1.png" alt></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Example 3:</span><br><span class="line">Input: [1,1,0,1,1,0,1,0]</span><br><span class="line">Output: [1,1,0,1,1,null,1]</span><br></pre></td></tr></table></figure>
-<p><img src="https://s3-lc-upload.s3.amazonaws.com/uploads/2018/04/05/1028.png" alt></p>
-<p><strong>Note:</strong></p>
-<ul>
-<li>The binary tree will have at most <code>100 nodes</code>.</li>
-<li>The value of each node will only be <code>0</code> or <code>1</code>.</li>
-</ul>
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2014/03/11/leetcode/Algorithms/leetcode-814-Binary-Tree-Pruning/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2014/03/11/leetcode/Algorithms/leetcode-83-Remove-Duplicates-from-Sorted-List/" itemprop="url">
-                  leetcode-83-Remove-Duplicates-from-Sorted-List
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2014-03-11T00:33:34+08:00" content="2014-03-11">
-              2014-03-11
-            </time>
-          </span>
-
-          
-
-          
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2014/03/11/leetcode/Algorithms/leetcode-83-Remove-Duplicates-from-Sorted-List/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2014/03/11/leetcode/Algorithms/leetcode-83-Remove-Duplicates-from-Sorted-List/" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <h3 id="描述"><a href="#描述" class="headerlink" title="描述"></a>描述</h3><hr>
-<p>Given a sorted linked list, delete all duplicates such that each element appear only once.</p>
-<p>For example,<br>Given 1-&gt;1-&gt;2, return 1-&gt;2.<br>Given 1-&gt;1-&gt;2-&gt;3-&gt;3, return 1-&gt;2-&gt;3.<br>
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2014/03/11/leetcode/Algorithms/leetcode-83-Remove-Duplicates-from-Sorted-List/#more" rel="contents">
+            <a class="btn" href="/2014/03/11/leetcode/Algorithms/leetcode-88-Merge-Sorted-Array/#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
@@ -866,8 +311,8 @@
             
               
                 
-                <a class="post-title-link" href="/2014/03/11/leetcode/Algorithms/leetcode-817-Linked-List-Components/" itemprop="url">
-                  leetcode-817-Linked-List-Components
+                <a class="post-title-link" href="/2014/03/11/leetcode/Algorithms/leetcode-884-Uncommon-Words-from-Two-Sentences/" itemprop="url">
+                  leetcode-884-Uncommon-Words-from-Two-Sentences
                 </a>
               
             
@@ -891,8 +336,8 @@
             
               <span class="post-comments-count">
                 &nbsp; | &nbsp;
-                <a href="/2014/03/11/leetcode/Algorithms/leetcode-817-Linked-List-Components/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2014/03/11/leetcode/Algorithms/leetcode-817-Linked-List-Components/" itemprop="commentsCount"></span>
+                <a href="/2014/03/11/leetcode/Algorithms/leetcode-884-Uncommon-Words-from-Two-Sentences/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2014/03/11/leetcode/Algorithms/leetcode-884-Uncommon-Words-from-Two-Sentences/" itemprop="commentsCount"></span>
                 </a>
               </span>
             
@@ -916,248 +361,22 @@
       
         
           <h3 id="描述"><a href="#描述" class="headerlink" title="描述"></a>描述</h3><hr>
-<p>We are given <code>head</code>, the head node of a linked list containing <strong>unique integer values</strong>.</p>
-<p>We are also given the list <code>G</code>, a subset of the values in the linked list.</p>
-<p>Return the number of connected components in <code>G</code>, where two values are connected if they appear consecutively in the linked list.</p>
+<p>We are given two sentences <code>A</code> and <code>B</code>.  (A <em>sentence</em> is a string of space separated words.  Each <em>word</em> consists only of lowercase letters.)</p>
+<p>A word is <em>uncommon</em> if it appears exactly once in one of the sentences, and does not appear in the other sentence.</p>
+<p>Return a list of all uncommon words. </p>
+<p>You may return the list in any order.</p>
 <p><strong>Example 1:</strong></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">Input: </span><br><span class="line">head: 0-&gt;1-&gt;2-&gt;3</span><br><span class="line">G = [0, 1, 3]</span><br><span class="line">Output: 2</span><br><span class="line">Explanation: </span><br><span class="line">0 and 1 are connected, so [0, 1] and [3] are the two connected components.</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Input: A = &quot;this apple is sweet&quot;, B = &quot;this apple is sour&quot;</span><br><span class="line">Output: [&quot;sweet&quot;,&quot;sour&quot;]</span><br></pre></td></tr></table></figure>
 <p><strong>Example 2:</strong></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">Input: </span><br><span class="line">head: 0-&gt;1-&gt;2-&gt;3-&gt;4</span><br><span class="line">G = [0, 3, 1, 4]</span><br><span class="line">Output: 2</span><br><span class="line">Explanation: </span><br><span class="line">0 and 1 are connected, 3 and 4 are connected, so [0, 1] and [3, 4] are the two connected components.</span><br></pre></td></tr></table></figure>
-<p><strong>Note:</strong></p>
-<ul>
-<li>If <code>N</code> is the length of the linked list given by <code>head</code>, <code>1 &lt;= N &lt;= 10000</code>.</li>
-<li>The value of each node in the linked list will be in the range<code>[0, N - 1]</code>.</li>
-<li><code>1 &lt;= G.length &lt;= 10000</code>.</li>
-<li><code>G</code> is a subset of all values in the linked list.</li>
-</ul>
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2014/03/11/leetcode/Algorithms/leetcode-817-Linked-List-Components/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2014/03/11/leetcode/Algorithms/leetcode-824-Goat-Latin/" itemprop="url">
-                  leetcode-824-Goat-Latin
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2014-03-11T00:33:34+08:00" content="2014-03-11">
-              2014-03-11
-            </time>
-          </span>
-
-          
-
-          
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2014/03/11/leetcode/Algorithms/leetcode-824-Goat-Latin/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2014/03/11/leetcode/Algorithms/leetcode-824-Goat-Latin/" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <h3 id="描述"><a href="#描述" class="headerlink" title="描述"></a>描述</h3><hr>
-<p>A sentence <code>S</code> is given, composed of words separated by spaces. Each word consists of lowercase and uppercase letters only.</p>
-<p>We would like to convert the sentence to “<em>Goat Latin”</em> (a made-up language similar to Pig Latin.)</p>
-<p>The rules of Goat Latin are as follows:</p>
-<ul>
-<li><p>If a word begins with a vowel (a, e, i, o, or u), append <code>&quot;ma&quot;</code> to the end of the word.<br>For example, the word ‘apple’ becomes ‘applema’.</p>
-</li>
-<li><p>If a word begins with a consonant (i.e. not a vowel), remove the first letter and append it to the end, then add <code>&quot;ma&quot;</code>.<br>For example, the word <code>&quot;goat&quot;</code> becomes <code>&quot;oatgma&quot;</code>.</p>
-</li>
-<li><p>Add one letter <code>&#39;a&#39;</code> to the end of each word per its word index in the sentence, starting with 1.<br>For example, the first word gets <code>&quot;a&quot;</code> added to the end, the second word gets <code>&quot;aa&quot;</code> added to the end and so on.</p>
-</li>
-</ul>
-<p>Return the final sentence representing the conversion from <code>S</code> to Goat Latin. </p>
-<p><strong>Example 1:</strong></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Input: &quot;I speak Goat Latin&quot;</span><br><span class="line">Output: &quot;Imaa peaksmaaa oatGmaaaa atinLmaaaaa&quot;</span><br></pre></td></tr></table></figure>
-<p><strong>Example 2:</strong></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Input: &quot;The quick brown fox jumped over the lazy dog&quot;</span><br><span class="line">Output: &quot;heTmaa uickqmaaa rownbmaaaa oxfmaaaaa umpedjmaaaaaa overmaaaaaaa hetmaaaaaaaa azylmaaaaaaaaa ogdmaaaaaaaaaa&quot;</span><br></pre></td></tr></table></figure>
-<p>Notes:</p>
-<ul>
-<li><code>S</code> contains only uppercase, lowercase and spaces. Exactly one space between each word.</li>
-<li><code>1 &lt;= S.length &lt;= 150</code>.</li>
-</ul>
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2014/03/11/leetcode/Algorithms/leetcode-824-Goat-Latin/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2014/03/11/leetcode/Algorithms/leetcode-821-Shortest-Distance-to-a-Character/" itemprop="url">
-                  leetcode-821-Shortest-Distance-to-a-Character
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2014-03-11T00:33:34+08:00" content="2014-03-11">
-              2014-03-11
-            </time>
-          </span>
-
-          
-
-          
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2014/03/11/leetcode/Algorithms/leetcode-821-Shortest-Distance-to-a-Character/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2014/03/11/leetcode/Algorithms/leetcode-821-Shortest-Distance-to-a-Character/" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <h3 id="描述"><a href="#描述" class="headerlink" title="描述"></a>描述</h3><hr>
-<p>Given a string <code>S</code> and a character <code>C</code>, return an array of integers representing the shortest distance from the character <code>C</code> in the string.</p>
-<p><strong>Example 1:</strong></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Input: S = &quot;loveleetcode&quot;, C = &apos;e&apos;</span><br><span class="line">Output: [3, 2, 1, 0, 1, 0, 0, 1, 2, 2, 1, 0]</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Input: A = &quot;apple apple&quot;, B = &quot;banana&quot;</span><br><span class="line">Output: [&quot;banana&quot;]</span><br></pre></td></tr></table></figure>
 <p><strong>Note:</strong></p>
 <ol>
-<li><code>S</code> string length is in <code>[1, 10000].</code></li>
-<li><code>C</code> is a single character, and guaranteed to be in string <code>S</code>.</li>
-<li>All letters in <code>S</code> and <code>C</code> are lowercase.</li>
+<li><code>0 &lt;= A.length &lt;= 200</code></li>
+<li><code>0 &lt;= B.length &lt;= 200</code></li>
+<li><code>A</code> and <code>B</code> both contain only spaces and lowercase letters.</li>
 </ol>
           <div class="post-more-link text-center">
-            <a class="btn" href="/2014/03/11/leetcode/Algorithms/leetcode-821-Shortest-Distance-to-a-Character/#more" rel="contents">
+            <a class="btn" href="/2014/03/11/leetcode/Algorithms/leetcode-884-Uncommon-Words-from-Two-Sentences/#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
@@ -1204,8 +423,8 @@
             
               
                 
-                <a class="post-title-link" href="/2014/03/11/leetcode/Algorithms/leetcode-762-Prime-Number-of-Set-Bits-in-Binary-Representation/" itemprop="url">
-                  leetcode-762-Prime-Number-of-Set-Bits-in-Binary-Representation
+                <a class="post-title-link" href="/2014/03/11/leetcode/Algorithms/leetcode-883-Projection-Area-of-3D-Shapes/" itemprop="url">
+                  leetcode-883-Projection-Area-of-3D-Shapes
                 </a>
               
             
@@ -1229,8 +448,8 @@
             
               <span class="post-comments-count">
                 &nbsp; | &nbsp;
-                <a href="/2014/03/11/leetcode/Algorithms/leetcode-762-Prime-Number-of-Set-Bits-in-Binary-Representation/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2014/03/11/leetcode/Algorithms/leetcode-762-Prime-Number-of-Set-Bits-in-Binary-Representation/" itemprop="commentsCount"></span>
+                <a href="/2014/03/11/leetcode/Algorithms/leetcode-883-Projection-Area-of-3D-Shapes/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2014/03/11/leetcode/Algorithms/leetcode-883-Projection-Area-of-3D-Shapes/" itemprop="commentsCount"></span>
                 </a>
               </span>
             
@@ -1254,19 +473,797 @@
       
         
           <h3 id="描述"><a href="#描述" class="headerlink" title="描述"></a>描述</h3><hr>
-<p>Given two integers <code>L</code> and <code>R</code>, find the count of numbers in the range <code>[L, R]</code> (inclusive) having a prime number of set bits in their binary representation.</p>
-<p>(Recall that the number of set bits an integer has is the number of <code>1</code>s present when written in binary. For example, <code>21</code> written in binary is <code>10101</code> which has 3 set bits. Also, 1 is not a prime.)</p>
+<p>On a <code>N * N</code> grid, we place some <code>1 * 1 * 1</code>cubes that are axis-aligned with the x, y, and z axes.</p>
+<p>Each value <code>v = grid[i][j]</code> represents a tower of <code>v</code> cubes placed on top of grid cell <code>(i, j)</code>.</p>
+<p>Now we view the <em>projection</em> of these cubes onto the xy, yz, and zx planes.</p>
+<p>A projection is like a shadow, that maps our 3 dimensional figure to a 2 dimensional plane. </p>
+<p>Here, we are viewing the “shadow” when looking at the cubes from the top, the front, and the side.</p>
+<p>Return the total area of all three projections.</p>
 <p><strong>Example 1:</strong></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">Input: L = 6, R = 10</span><br><span class="line">Output: 4</span><br><span class="line">Explanation:</span><br><span class="line">6 -&gt; 110 (2 set bits, 2 is prime)</span><br><span class="line">7 -&gt; 111 (3 set bits, 3 is prime)</span><br><span class="line">9 -&gt; 1001 (2 set bits , 2 is prime)</span><br><span class="line">10-&gt;1010 (2 set bits , 2 is prime)</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Input: [[2]]</span><br><span class="line">Output: 5</span><br></pre></td></tr></table></figure>
 <p><strong>Example 2:</strong></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">Input: L = 10, R = 15</span><br><span class="line">Output: 5</span><br><span class="line">Explanation:</span><br><span class="line">10 -&gt; 1010 (2 set bits, 2 is prime)</span><br><span class="line">11 -&gt; 1011 (3 set bits, 3 is prime)</span><br><span class="line">12 -&gt; 1100 (2 set bits, 2 is prime)</span><br><span class="line">13 -&gt; 1101 (3 set bits, 3 is prime)</span><br><span class="line">14 -&gt; 1110 (3 set bits, 3 is prime)</span><br><span class="line">15 -&gt; 1111 (4 set bits, 4 is not prime)</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">Input: [[1,2],[3,4]]</span><br><span class="line">Output: 17</span><br><span class="line">Explanation: </span><br><span class="line">Here are the three projections (&quot;shadows&quot;) of the shape made with each axis-aligned plane.</span><br></pre></td></tr></table></figure>
+<p><img src="https://s3-lc-upload.s3.amazonaws.com/uploads/2018/08/02/shadow.png" alt="shadow"></p>
+<p><strong>Example 3:</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Input: [[1,0],[0,2]]</span><br><span class="line">Output: 8</span><br></pre></td></tr></table></figure>
+<p><strong>Example 4:</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Input: [[1,1,1],[1,0,1],[1,1,1]]</span><br><span class="line">Output: 14</span><br></pre></td></tr></table></figure>
+<p><strong>Example 5:</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Input: [[2,2,2],[2,1,2],[2,2,2]]</span><br><span class="line">Output: 21</span><br></pre></td></tr></table></figure>
+<p><strong>Note:</strong></p>
+<ul>
+<li><code>1 &lt;= grid.length = grid[0].length &lt;= 50</code></li>
+<li><code>0 &lt;= grid[i][j] &lt;= 50</code></li>
+</ul>
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2014/03/11/leetcode/Algorithms/leetcode-883-Projection-Area-of-3D-Shapes/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2014/03/11/leetcode/Algorithms/leetcode-889-Construct-Binary-Tree-from-Preorder-and-Postorder-Traversal/" itemprop="url">
+                  leetcode-889-Construct-Binary-Tree-from-Preorder-and-Postorder-Traversal
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2014-03-11T00:33:34+08:00" content="2014-03-11">
+              2014-03-11
+            </time>
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2014/03/11/leetcode/Algorithms/leetcode-889-Construct-Binary-Tree-from-Preorder-and-Postorder-Traversal/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2014/03/11/leetcode/Algorithms/leetcode-889-Construct-Binary-Tree-from-Preorder-and-Postorder-Traversal/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <h3 id="描述"><a href="#描述" class="headerlink" title="描述"></a>描述</h3><hr>
+<p>Return any binary tree that matches the given preorder and postorder traversals.</p>
+<p>Values in the traversals <code>pre</code> and <code>post</code> are distinct positive integers.</p>
+<p><strong>Example 1:</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Input: pre = [1,2,4,5,3,6,7], post = [4,5,2,6,7,3,1]</span><br><span class="line">Output: [1,2,3,4,5,6,7]</span><br></pre></td></tr></table></figure>
+<p><strong>Note:</strong></p>
+<ul>
+<li><code>1 &lt;= pre.length == post.length &lt;= 30</code></li>
+<li><code>pre[]</code> and <code>post[]</code> are both permutations of <code>1, 2, ..., pre.length</code>.</li>
+<li>It is guaranteed an answer exists. If there exists multiple answers, you can return any of them.</li>
+</ul>
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2014/03/11/leetcode/Algorithms/leetcode-889-Construct-Binary-Tree-from-Preorder-and-Postorder-Traversal/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2014/03/11/leetcode/Algorithms/leetcode-890-Find-and-Replace-Pattern/" itemprop="url">
+                  leetcode-890-Find-and-Replace-Pattern
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2014-03-11T00:33:34+08:00" content="2014-03-11">
+              2014-03-11
+            </time>
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2014/03/11/leetcode/Algorithms/leetcode-890-Find-and-Replace-Pattern/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2014/03/11/leetcode/Algorithms/leetcode-890-Find-and-Replace-Pattern/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <h3 id="描述"><a href="#描述" class="headerlink" title="描述"></a>描述</h3><hr>
+<p>You have a list of <code>words</code> and a <code>pattern</code>, and you want to know which words in <code>words</code> matches the pattern.</p>
+<p>A word matches the pattern if there exists a permutation of letters <code>p</code> so that after replacing every letter <code>x</code> in the pattern with <code>p(x)</code>, we get the desired word.</p>
+<p>(<em>Recall that a permutation of letters is a bijection from letters to letters: every letter maps to another letter, and no two letters map to the same letter.</em>)</p>
+<p>Return a list of the words in <code>words</code> that match the given pattern. </p>
+<p>You may return the answer in any order.</p>
+<p><strong>Example 1:</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">Input: words = [&quot;abc&quot;,&quot;deq&quot;,&quot;mee&quot;,&quot;aqq&quot;,&quot;dkd&quot;,&quot;ccc&quot;], pattern = &quot;abb&quot;</span><br><span class="line">Output: [&quot;mee&quot;,&quot;aqq&quot;]</span><br><span class="line">Explanation: &quot;mee&quot; matches the pattern because there is a permutation &#123;a -&gt; m, b -&gt; e, ...&#125;. </span><br><span class="line">&quot;ccc&quot; does not match the pattern because &#123;a -&gt; c, b -&gt; c, ...&#125; is not a permutation,</span><br><span class="line">since a and b map to the same letter.</span><br></pre></td></tr></table></figure>
+<p><strong>Note:</strong></p>
+<ul>
+<li><code>1 &lt;= words.length &lt;= 50</code></li>
+<li><code>1 &lt;= pattern.length = words[i].length &lt;= 20</code></li>
+</ul>
+<hr>
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2014/03/11/leetcode/Algorithms/leetcode-890-Find-and-Replace-Pattern/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2014/03/11/leetcode/Algorithms/leetcode-89-Gray-Code/" itemprop="url">
+                  leetcode-89-Gray-Code
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2014-03-11T00:33:34+08:00" content="2014-03-11">
+              2014-03-11
+            </time>
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2014/03/11/leetcode/Algorithms/leetcode-89-Gray-Code/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2014/03/11/leetcode/Algorithms/leetcode-89-Gray-Code/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <h3 id="描述"><a href="#描述" class="headerlink" title="描述"></a>描述</h3><hr>
+<p>The gray code is a binary numeral system where two successive values differ in only one bit.</p>
+<p>Given a non-negative integer n representing the total number of bits in the code, print the sequence of gray code. A gray code sequence must begin with 0.</p>
+<p>For example, given n = 2, return [0,1,3,2]. Its gray code sequence is:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">00 - 0</span><br><span class="line">01 - 1</span><br><span class="line">11 - 3</span><br><span class="line">10 - 2</span><br></pre></td></tr></table></figure>
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2014/03/11/leetcode/Algorithms/leetcode-89-Gray-Code/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2014/03/11/leetcode/Algorithms/leetcode-893-Groups-of-Special-Equivalent-Strings/" itemprop="url">
+                  leetcode-893-Groups-of-Special-Equivalent-Strings
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2014-03-11T00:33:34+08:00" content="2014-03-11">
+              2014-03-11
+            </time>
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2014/03/11/leetcode/Algorithms/leetcode-893-Groups-of-Special-Equivalent-Strings/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2014/03/11/leetcode/Algorithms/leetcode-893-Groups-of-Special-Equivalent-Strings/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <h3 id="描述"><a href="#描述" class="headerlink" title="描述"></a>描述</h3><hr>
+<p>You are given an array <code>A</code> of strings.</p>
+<p>Two strings <code>S</code> and <code>T</code> are <em>special-equivalent</em> if after any number of <em>moves</em>, S == T.</p>
+<p>A <em>move</em> consists of choosing two indices <code>i</code> and <code>j</code> with <code>i % 2 == j % 2</code>, and swapping <code>S[i]</code> with <code>S[j]</code>.</p>
+<p>Now, a <em>group of special-equivalent strings from A</em> is a non-empty subset S of <code>A</code> such that any string not in S is not special-equivalent with any string in S.</p>
+<p>Return the number of groups of special-equivalent strings from <code>A</code>.</p>
+<p><strong>Example 1:</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Input: [&quot;a&quot;,&quot;b&quot;,&quot;c&quot;,&quot;a&quot;,&quot;c&quot;,&quot;c&quot;]</span><br><span class="line">Output: 3</span><br><span class="line">Explanation: 3 groups [&quot;a&quot;,&quot;a&quot;], [&quot;b&quot;], [&quot;c&quot;,&quot;c&quot;,&quot;c&quot;]</span><br></pre></td></tr></table></figure>
+<p><strong>Example 2:</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Input: [&quot;aa&quot;,&quot;bb&quot;,&quot;ab&quot;,&quot;ba&quot;]</span><br><span class="line">Output: 4</span><br><span class="line">Explanation: 4 groups [&quot;aa&quot;], [&quot;bb&quot;], [&quot;ab&quot;], [&quot;ba&quot;]</span><br></pre></td></tr></table></figure>
+<p><strong>Example 3:</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Input: [&quot;abc&quot;,&quot;acb&quot;,&quot;bac&quot;,&quot;bca&quot;,&quot;cab&quot;,&quot;cba&quot;]</span><br><span class="line">Output: 3</span><br><span class="line">Explanation: 3 groups [&quot;abc&quot;,&quot;cba&quot;], [&quot;acb&quot;,&quot;bca&quot;], [&quot;bac&quot;,&quot;cab&quot;]</span><br></pre></td></tr></table></figure>
+<p><strong>Example 4:</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Input: [&quot;abcd&quot;,&quot;cdab&quot;,&quot;adcb&quot;,&quot;cbad&quot;]</span><br><span class="line">Output: 1</span><br><span class="line">Explanation: 1 group [&quot;abcd&quot;,&quot;cdab&quot;,&quot;adcb&quot;,&quot;cbad&quot;]</span><br></pre></td></tr></table></figure>
+<p><strong>Note:</strong></p>
+<ul>
+<li><code>1 &lt;= A.length &lt;= 1000</code></li>
+<li><code>1 &lt;= A[i].length &lt;= 20</code></li>
+<li>All <code>A[i]</code> have the same length.</li>
+<li>All <code>A[i]</code> consist of only lowercase letters.</li>
+</ul>
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2014/03/11/leetcode/Algorithms/leetcode-893-Groups-of-Special-Equivalent-Strings/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2014/03/11/leetcode/Algorithms/leetcode-897-Increasing-Order-Search-Tree/" itemprop="url">
+                  leetcode-897-Increasing-Order-Search-Tree
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2014-03-11T00:33:34+08:00" content="2014-03-11">
+              2014-03-11
+            </time>
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2014/03/11/leetcode/Algorithms/leetcode-897-Increasing-Order-Search-Tree/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2014/03/11/leetcode/Algorithms/leetcode-897-Increasing-Order-Search-Tree/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <h3 id="描述"><a href="#描述" class="headerlink" title="描述"></a>描述</h3><hr>
+<p>Given a tree, rearrange the tree in <strong>in-order</strong> so that the leftmost node in the tree is now the root of the tree, and every node has no left child and only 1 right child.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line">Example 1:</span><br><span class="line">Input: [5,3,6,2,4,null,8,1,null,null,null,7,9]</span><br><span class="line"></span><br><span class="line">       5</span><br><span class="line">      / \</span><br><span class="line">    3    6</span><br><span class="line">   / \    \</span><br><span class="line">  2   4    8</span><br><span class="line"> /        / \ </span><br><span class="line">1        7   9</span><br><span class="line"></span><br><span class="line">Output: [1,null,2,null,3,null,4,null,5,null,6,null,7,null,8,null,9]</span><br><span class="line"></span><br><span class="line"> 1</span><br><span class="line">  \</span><br><span class="line">   2</span><br><span class="line">    \</span><br><span class="line">     3</span><br><span class="line">      \</span><br><span class="line">       4</span><br><span class="line">        \</span><br><span class="line">         5</span><br><span class="line">          \</span><br><span class="line">           6</span><br><span class="line">            \</span><br><span class="line">             7</span><br><span class="line">              \</span><br><span class="line">               8</span><br><span class="line">                \</span><br><span class="line">                 9</span><br></pre></td></tr></table></figure>
 <p><strong>Note:</strong></p>
 <ol>
-<li><code>L, R</code> will be integers <code>L &lt;= R</code> in the range <code>[1, 10^6]</code>.</li>
-<li><code>R - L</code> will be at most 10000.</li>
+<li>The number of nodes in the given tree will be between 1 and 100.</li>
+<li>Each node will have a unique integer value from 0 to 1000.</li>
 </ol>
           <div class="post-more-link text-center">
-            <a class="btn" href="/2014/03/11/leetcode/Algorithms/leetcode-762-Prime-Number-of-Set-Bits-in-Binary-Representation/#more" rel="contents">
+            <a class="btn" href="/2014/03/11/leetcode/Algorithms/leetcode-897-Increasing-Order-Search-Tree/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2014/03/11/leetcode/Algorithms/leetcode-892-Surface-Area-of-3D-Shapes/" itemprop="url">
+                  leetcode-892-Surface-Area-of-3D-Shapes
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2014-03-11T00:33:34+08:00" content="2014-03-11">
+              2014-03-11
+            </time>
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2014/03/11/leetcode/Algorithms/leetcode-892-Surface-Area-of-3D-Shapes/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2014/03/11/leetcode/Algorithms/leetcode-892-Surface-Area-of-3D-Shapes/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <h3 id="描述"><a href="#描述" class="headerlink" title="描述"></a>描述</h3><hr>
+<p>On a <code>N * N</code> grid, we place some <code>1 * 1 * 1</code>cubes.</p>
+<p>Each value <code>v = grid[i][j]</code> represents a tower of <code>v</code> cubes placed on top of grid cell <code>(i, j)</code>.</p>
+<p>Return the total surface area of the resulting shapes.</p>
+<p><strong>Example 1:</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Input: [[2]]</span><br><span class="line">Output: 10</span><br></pre></td></tr></table></figure>
+<p><strong>Example 2:</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Input: [[1,2],[3,4]]</span><br><span class="line">Output: 34</span><br></pre></td></tr></table></figure>
+<p><strong>Example 3:</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Input: [[1,0],[0,2]]</span><br><span class="line">Output: 16</span><br></pre></td></tr></table></figure>
+<p><strong>Example 4:</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Input: [[1,1,1],[1,0,1],[1,1,1]]</span><br><span class="line">Output: 32</span><br></pre></td></tr></table></figure>
+<p><strong>Example 5:</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Input: [[2,2,2],[2,1,2],[2,2,2]]</span><br><span class="line">Output: 46</span><br></pre></td></tr></table></figure>
+<p><strong>Note:</strong></p>
+<ul>
+<li><code>1 &lt;= N &lt;= 50</code></li>
+<li><code>0 &lt;= grid[i][j] &lt;= 50</code></li>
+</ul>
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2014/03/11/leetcode/Algorithms/leetcode-892-Surface-Area-of-3D-Shapes/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2014/03/11/leetcode/Algorithms/leetcode-905-Sort-Array-By-Parity/" itemprop="url">
+                  leetcode-905-Sort-Array-By-Parity
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2014-03-11T00:33:34+08:00" content="2014-03-11">
+              2014-03-11
+            </time>
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2014/03/11/leetcode/Algorithms/leetcode-905-Sort-Array-By-Parity/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2014/03/11/leetcode/Algorithms/leetcode-905-Sort-Array-By-Parity/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <h3 id="描述"><a href="#描述" class="headerlink" title="描述"></a>描述</h3><hr>
+<p>Given an array <code>A</code> of non-negative integers, return an array consisting of all the even elements of <code>A</code>, followed by all the odd elements of <code>A</code>.</p>
+<p>You may return any answer array that satisfies this condition.</p>
+<p><strong>Example 1:</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Input: [3,1,2,4]</span><br><span class="line">Output: [2,4,3,1]</span><br><span class="line">The outputs [4,2,3,1], [2,4,1,3], and [4,2,1,3] would also be accepted.</span><br></pre></td></tr></table></figure>
+<p><strong>Note:</strong></p>
+<ol>
+<li><code>1 &lt;= A.length &lt;= 5000</code></li>
+<li><code>0 &lt;= A[i] &lt;= 5000</code></li>
+</ol>
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2014/03/11/leetcode/Algorithms/leetcode-905-Sort-Array-By-Parity/#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
@@ -1335,7 +1332,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">418</span>
+              <span class="site-state-item-count">417</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>

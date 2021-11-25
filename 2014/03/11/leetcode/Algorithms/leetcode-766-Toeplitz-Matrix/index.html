@@ -65,7 +65,7 @@
 <meta property="og:site_name" content="knarfeh&#39;s logbook">
 <meta property="og:description" content="描述A matrix is Toeplitz if every diagonal from top-left to bottom-right has the same element. Now given an M x N matrix, return True if and only if the matrix is Toeplitz. Example 1: 1234567891011Input">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-03-18T13:08:01.706Z">
+<meta property="og:updated_time" content="2021-11-24T13:49:52.744Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="leetcode-766-Toeplitz-Matrix">
 <meta name="twitter:description" content="描述A matrix is Toeplitz if every diagonal from top-left to bottom-right has the same element. Now given an M x N matrix, return True if and only if the matrix is Toeplitz. Example 1: 1234567891011Input">
@@ -283,7 +283,9 @@
 <h3 id="解决方案1-Java"><a href="#解决方案1-Java" class="headerlink" title="解决方案1(Java)"></a>解决方案1(Java)</h3><hr>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">isToeplitzMatrix</span><span class="params">(<span class="keyword">int</span>[][] matrix)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; matrix.length; i++) &#123;</span><br><span class="line">            <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">0</span>; j &lt; matrix[<span class="number">0</span>].length; j++) &#123;</span><br><span class="line">                <span class="keyword">if</span> (i &gt; <span class="number">0</span> &amp;&amp; j &gt; <span class="number">0</span> &amp;&amp; matrix[i-<span class="number">1</span>][j-<span class="number">1</span>] != matrix[i][j]) &#123;</span><br><span class="line">                    <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <h3 id="相关问题"><a href="#相关问题" class="headerlink" title="相关问题"></a>相关问题</h3><hr>
-<p><a href="https://leetcode.com/problems/valid-word-square" target="_blank" rel="noopener">(E) Valid Word Square</a>   </p>
+<ul>
+<li><a href="https://leetcode.com/problems/valid-word-square" target="_blank" rel="noopener">(E) Valid Word Square</a>   </li>
+</ul>
 <h3 id="题目来源"><a href="#题目来源" class="headerlink" title="题目来源"></a><a href="https://leetcode.com/problems/toeplitz-matrix/description/" target="_blank" rel="noopener">题目来源</a></h3>
       
     </div>
@@ -311,16 +313,16 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2014/03/11/leetcode/Algorithms/leetcode-705-Design-HashSet/" rel="next" title="leetcode-705-Design-HashSet">
-                <i class="fa fa-chevron-left"></i> leetcode-705-Design-HashSet
+              <a href="/2014/03/11/leetcode/Algorithms/leetcode-98-Validate-Binary-Search-Tree/" rel="next" title="leetcode-98-Validate-Binary-Search-Tree">
+                <i class="fa fa-chevron-left"></i> leetcode-98-Validate-Binary-Search-Tree
               </a>
             
           </div>
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2014/03/11/leetcode/Algorithms/leetcode-74-Search-a-2D-Matrix/" rel="prev" title="leetcode-74-Search-a-2D-Matrix">
-                leetcode-74-Search-a-2D-Matrix <i class="fa fa-chevron-right"></i>
+              <a href="/2014/03/11/leetcode/Algorithms/leetcode-938-Range-Sum-of-BST/" rel="prev" title="leetcode-938-Range-Sum-of-BST">
+                leetcode-938-Range-Sum-of-BST <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -394,7 +396,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">418</span>
+              <span class="site-state-item-count">417</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>

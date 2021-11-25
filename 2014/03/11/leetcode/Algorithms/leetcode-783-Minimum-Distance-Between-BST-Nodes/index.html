@@ -65,7 +65,7 @@
 <meta property="og:site_name" content="knarfeh&#39;s logbook">
 <meta property="og:description" content="描述 Given a Binary Search Tree (BST) with the root node root, return the minimum difference between the values of any two different nodes in the tree. Example : 1234567891011121314Input: root = [4,2,6,">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-03-18T13:08:01.714Z">
+<meta property="og:updated_time" content="2021-11-20T15:40:45.166Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="leetcode-783-Minimum-Distance-Between-BST-Nodes">
 <meta name="twitter:description" content="描述 Given a Binary Search Tree (BST) with the root node root, return the minimum difference between the values of any two different nodes in the tree. Example : 1234567891011121314Input: root = [4,2,6,">
@@ -274,7 +274,9 @@
 <h3 id="解决方案1-Java"><a href="#解决方案1-Java" class="headerlink" title="解决方案1(Java)"></a>解决方案1(Java)</h3><hr>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Definition for a binary tree node.</span></span><br><span class="line"><span class="comment"> * public class TreeNode &#123;</span></span><br><span class="line"><span class="comment"> *     int val;</span></span><br><span class="line"><span class="comment"> *     TreeNode left;</span></span><br><span class="line"><span class="comment"> *     TreeNode right;</span></span><br><span class="line"><span class="comment"> *     TreeNode(int x) &#123; val = x; &#125;</span></span><br><span class="line"><span class="comment"> * &#125;</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    Integer result = Integer.MAX_VALUE, pre = <span class="keyword">null</span>;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">minDiffInBST</span><span class="params">(TreeNode root)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (root.left != <span class="keyword">null</span>) &#123;</span><br><span class="line">            minDiffInBST(root.left);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span> (pre != <span class="keyword">null</span>) &#123;</span><br><span class="line">            result = Math.min(result, root.val - pre);</span><br><span class="line">        &#125;</span><br><span class="line">        pre = root.val;</span><br><span class="line">        <span class="keyword">if</span> (root.right != <span class="keyword">null</span>) &#123;</span><br><span class="line">            minDiffInBST(root.right);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> result;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <h3 id="相关问题"><a href="#相关问题" class="headerlink" title="相关问题"></a>相关问题</h3><hr>
-<p><a href="https://leetcode.com/problems/binary-tree-inorder-traversal" target="_blank" rel="noopener">(M) Binary Tree Inorder Traversal</a>   </p>
+<ul>
+<li><a href="https://leetcode.com/problems/binary-tree-inorder-traversal" target="_blank" rel="noopener">(M) Binary Tree Inorder Traversal</a>   </li>
+</ul>
 <h3 id="题目来源"><a href="#题目来源" class="headerlink" title="题目来源"></a><a href="https://leetcode.com/problems/minimum-distance-between-bst-nodes/description/" target="_blank" rel="noopener">题目来源</a></h3>
       
     </div>
@@ -385,7 +387,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">418</span>
+              <span class="site-state-item-count">417</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>

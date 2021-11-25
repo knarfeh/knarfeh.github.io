@@ -65,7 +65,7 @@
 <meta property="og:site_name" content="knarfeh&#39;s logbook">
 <meta property="og:description" content="描述 You are given two non-empty linked lists representing two non-negative integers. The most significant digit comes first and each of their nodes contain a single digit. Add the two numbers and retur">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-03-14T14:23:20.137Z">
+<meta property="og:updated_time" content="2021-11-20T15:39:28.134Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="leetcode-445-Add-Two-Numbers-II">
 <meta name="twitter:description" content="描述 You are given two non-empty linked lists representing two non-negative integers. The most significant digit comes first and each of their nodes contain a single digit. Add the two numbers and retur">
@@ -271,7 +271,9 @@
 <h3 id="解决方案1-Java"><a href="#解决方案1-Java" class="headerlink" title="解决方案1(Java)"></a>解决方案1(Java)</h3><hr>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Definition for singly-linked list.</span></span><br><span class="line"><span class="comment"> * public class ListNode &#123;</span></span><br><span class="line"><span class="comment"> *     int val;</span></span><br><span class="line"><span class="comment"> *     ListNode next;</span></span><br><span class="line"><span class="comment"> *     ListNode(int x) &#123; val = x; &#125;</span></span><br><span class="line"><span class="comment"> * &#125;</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> ListNode <span class="title">addTwoNumbers</span><span class="params">(ListNode l1, ListNode l2)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> carry = <span class="number">0</span>;</span><br><span class="line">        Deque&lt;ListNode&gt; deque1 = <span class="keyword">new</span> LinkedList&lt;&gt;(), deque2 = <span class="keyword">new</span> LinkedList&lt;&gt;();</span><br><span class="line">        ListNode current1 = l1, current2 = l2;</span><br><span class="line">        <span class="keyword">while</span> (current1 != <span class="keyword">null</span> || current2 != <span class="keyword">null</span>) &#123;</span><br><span class="line">            <span class="keyword">if</span> (current1 != <span class="keyword">null</span>) &#123;</span><br><span class="line">                deque1.push(current1);</span><br><span class="line">                current1 = current1.next;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">if</span> (current2 != <span class="keyword">null</span>) &#123;</span><br><span class="line">                deque2.push(current2);</span><br><span class="line">                current2 = current2.next;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        ListNode head = <span class="keyword">new</span> ListNode(<span class="number">0</span>), tmp = <span class="keyword">null</span>;</span><br><span class="line">        <span class="keyword">while</span>(!deque1.isEmpty() || !deque2.isEmpty()) &#123;</span><br><span class="line">            <span class="keyword">int</span> n1 = deque1.isEmpty()? <span class="number">0</span>: deque1.pop().val;</span><br><span class="line">            <span class="keyword">int</span> n2 = deque2.isEmpty()? <span class="number">0</span>: deque2.pop().val;</span><br><span class="line">            <span class="keyword">int</span> sum = n1 + n2 + carry;</span><br><span class="line">            carry = sum / <span class="number">10</span>;</span><br><span class="line">            head.val = sum % <span class="number">10</span>;</span><br><span class="line">            tmp = <span class="keyword">new</span> ListNode(<span class="number">0</span>);</span><br><span class="line">            tmp.next = head;</span><br><span class="line">            head = tmp;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span> (carry == <span class="number">1</span>) &#123;</span><br><span class="line">            head.val = <span class="number">1</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> carry == <span class="number">1</span> ? head: head.next;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <h3 id="相关问题"><a href="#相关问题" class="headerlink" title="相关问题"></a>相关问题</h3><hr>
-<p><a href="https://leetcode.com/problems/add-two-numbers" target="_blank" rel="noopener">(M) Add Two Numbers</a>   </p>
+<ul>
+<li><a href="https://leetcode.com/problems/add-two-numbers" target="_blank" rel="noopener">(M) Add Two Numbers</a>   </li>
+</ul>
 <h3 id="题目来源"><a href="#题目来源" class="headerlink" title="题目来源"></a><a href="https://leetcode.com/problems/add-two-numbers-ii/description/" target="_blank" rel="noopener">题目来源</a></h3>
       
     </div>
@@ -299,8 +301,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2014/03/11/leetcode/Algorithms/leetcode-453-Minimum-Moves-to-Equal-Array-Elements/" rel="next" title="leetcode-453-Minimum-Moves-to-Equal-Array-Elements">
-                <i class="fa fa-chevron-left"></i> leetcode-453-Minimum-Moves-to-Equal-Array-Elements
+              <a href="/2014/03/11/leetcode/Algorithms/leetcode-101-Symmetric-Tree/" rel="next" title="leetcode-101-Symmetric-Tree">
+                <i class="fa fa-chevron-left"></i> leetcode-101-Symmetric-Tree
               </a>
             
           </div>
@@ -382,7 +384,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">418</span>
+              <span class="site-state-item-count">417</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>

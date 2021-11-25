@@ -66,7 +66,7 @@
 <meta property="og:description" content="描述  Given a linked list, swap every two adjacent nodes and return its head. For example,Given 1-&amp;gt;2-&amp;gt;3-&amp;gt;4, you should return the list as 2-&amp;gt;1-&amp;gt;4-&amp;gt;3. Your algorithm should use only con">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="https://knarfeh-1254074221.cos.na-siliconvalley.myqcloud.com/24Swap%20Nodes%20in%20Pairs.jpg">
-<meta property="og:updated_time" content="2019-03-05T14:06:09.515Z">
+<meta property="og:updated_time" content="2021-11-16T06:58:26.157Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="leetcode-24-Swap-Nodes-in-Pairs">
 <meta name="twitter:description" content="描述  Given a linked list, swap every two adjacent nodes and return its head. For example,Given 1-&amp;gt;2-&amp;gt;3-&amp;gt;4, you should return the list as 2-&amp;gt;1-&amp;gt;4-&amp;gt;3. Your algorithm should use only con">
@@ -271,7 +271,9 @@
 <h3 id="解决方案1-C"><a href="#解决方案1-C" class="headerlink" title="解决方案1(C++)"></a>解决方案1(C++)</h3><hr>
 <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Definition for singly-linked list.</span></span><br><span class="line"><span class="comment"> * struct ListNode &#123;</span></span><br><span class="line"><span class="comment"> *     int val;</span></span><br><span class="line"><span class="comment"> *     ListNode *next;</span></span><br><span class="line"><span class="comment"> *     ListNode(int x) : val(x), next(NULL) &#123;&#125;</span></span><br><span class="line"><span class="comment"> * &#125;;</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function">ListNode* <span class="title">swapPairs</span><span class="params">(ListNode* head)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(head == <span class="literal">NULL</span> || head-&gt;next == <span class="literal">NULL</span>) &#123;</span><br><span class="line">            <span class="keyword">return</span> head;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="function">ListNode <span class="title">head_pre</span><span class="params">(<span class="number">-1</span>)</span></span>;</span><br><span class="line">        head_pre.next = head;</span><br><span class="line">        </span><br><span class="line">        ListNode *pre = &amp;head_pre;</span><br><span class="line">        ListNode *cur = pre-&gt;next;</span><br><span class="line">        ListNode *next = cur-&gt;next;</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">for</span>(; next!=<span class="literal">NULL</span>; pre=cur, cur=pre-&gt;next, next=cur?cur-&gt;next: <span class="literal">NULL</span>) &#123;</span><br><span class="line">            pre-&gt;next = next;</span><br><span class="line">            cur-&gt;next = next-&gt;next;</span><br><span class="line">            next-&gt;next = cur;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> head_pre.next;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
 <h3 id="相关问题"><a href="#相关问题" class="headerlink" title="相关问题"></a>相关问题</h3><hr>
-<p><a href="https://leetcode.com/problems/reverse-nodes-in-k-group/" target="_blank" rel="noopener">(H) Reverse Nodes in k-Group</a>   </p>
+<ul>
+<li><a href="https://leetcode.com/problems/reverse-nodes-in-k-group/" target="_blank" rel="noopener">(H) Reverse Nodes in k-Group</a>   </li>
+</ul>
 <h3 id="题目来源"><a href="#题目来源" class="headerlink" title="题目来源"></a><a href="https://leetcode.com/problems/swap-nodes-in-pairs/" target="_blank" rel="noopener">题目来源</a></h3>
       
     </div>
@@ -299,16 +301,16 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2014/03/11/leetcode/Algorithms/leetcode-25-Reverse-Nodes-in-k-Group/" rel="next" title="leetcode-25-Reverse-Nodes-in-k-Group">
-                <i class="fa fa-chevron-left"></i> leetcode-25-Reverse-Nodes-in-k-Group
+              <a href="/2014/03/11/leetcode/Algorithms/leetcode-238-Product-of-Array-Except-Self/" rel="next" title="leetcode-238-Product-of-Array-Except-Self">
+                <i class="fa fa-chevron-left"></i> leetcode-238-Product-of-Array-Except-Self
               </a>
             
           </div>
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2014/03/11/leetcode/Algorithms/leetcode-217-Contains-Duplicate/" rel="prev" title="leetcode-217-Contains-Duplicate">
-                leetcode-217-Contains-Duplicate <i class="fa fa-chevron-right"></i>
+              <a href="/2014/03/11/leetcode/Algorithms/leetcode-237-Delete-Node-in-a-Linked-List/" rel="prev" title="leetcode-237-Delete-Node-in-a-Linked-List">
+                leetcode-237-Delete-Node-in-a-Linked-List <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -382,7 +384,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">418</span>
+              <span class="site-state-item-count">417</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>

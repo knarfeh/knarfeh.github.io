@@ -65,7 +65,7 @@
 <meta property="og:site_name" content="knarfeh&#39;s logbook">
 <meta property="og:description" content="描述 There is a robot starting at position (0, 0), the origin, on a 2D plane. Given a sequence of its moves, judge if this robot ends up at (0, 0)after it completes its moves. The move sequence is repre">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-03-18T13:08:01.638Z">
+<meta property="og:updated_time" content="2021-11-13T15:29:17.530Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="leetcode-657-Robot-Return-to-Origin">
 <meta name="twitter:description" content="描述 There is a robot starting at position (0, 0), the origin, on a 2D plane. Given a sequence of its moves, judge if this robot ends up at (0, 0)after it completes its moves. The move sequence is repre">
@@ -272,7 +272,9 @@
 <h3 id="解决方案1-Java"><a href="#解决方案1-Java" class="headerlink" title="解决方案1(Java)"></a>解决方案1(Java)</h3><hr>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">judgeCircle</span><span class="params">(String moves)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> x = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">int</span> y = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">char</span> move: moves.toCharArray()) &#123;</span><br><span class="line">            <span class="keyword">if</span> (move == <span class="string">'U'</span>) &#123;</span><br><span class="line">                y++;</span><br><span class="line">            &#125; <span class="keyword">else</span> <span class="keyword">if</span> (move == <span class="string">'D'</span>) &#123;</span><br><span class="line">                y--;</span><br><span class="line">            &#125; <span class="keyword">else</span> <span class="keyword">if</span> (move == <span class="string">'L'</span>) &#123;</span><br><span class="line">                x--;</span><br><span class="line">            &#125; <span class="keyword">else</span> <span class="keyword">if</span> (move == <span class="string">'R'</span>) &#123;</span><br><span class="line">                x++;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> x == <span class="number">0</span> &amp;&amp; y == <span class="number">0</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <h3 id="相关问题"><a href="#相关问题" class="headerlink" title="相关问题"></a>相关问题</h3><hr>
-<p><a href="https://leetcode.com/problems/friend-circles" target="_blank" rel="noopener">(M) Friend Circles</a>   </p>
+<ul>
+<li><a href="https://leetcode.com/problems/friend-circles" target="_blank" rel="noopener">(M) Friend Circles</a>   </li>
+</ul>
 <h3 id="题目来源"><a href="#题目来源" class="headerlink" title="题目来源"></a><a href="https://leetcode.com/problems/robot-return-to-origin/description/" target="_blank" rel="noopener">题目来源</a></h3>
       
     </div>
@@ -308,8 +310,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2014/03/11/leetcode/Algorithms/leetcode-655-Print-Binary-Tree/" rel="prev" title="leetcode-655-Print-Binary-Tree">
-                leetcode-655-Print-Binary-Tree <i class="fa fa-chevron-right"></i>
+              <a href="/2014/03/11/leetcode/Algorithms/leetcode-654-Maximum-Binary-Tree/" rel="prev" title="leetcode-654-Maximum-Binary-Tree">
+                leetcode-654-Maximum-Binary-Tree <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -383,7 +385,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">418</span>
+              <span class="site-state-item-count">417</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
